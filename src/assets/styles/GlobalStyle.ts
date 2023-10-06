@@ -3,6 +3,8 @@ import { createGlobalStyle } from 'styled-components';
 export const GlobalStyle = createGlobalStyle`
     * {
         font-size: ${({ theme }) => theme.fontSizes.standard};
+        margin: 0;
+        padding: 0;
     }
     a {
         vertical-align: baseline;
