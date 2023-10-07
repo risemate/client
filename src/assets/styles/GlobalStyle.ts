@@ -1,10 +1,18 @@
 import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
+
+import { fontFamily } from './font';
 
 export const GlobalStyle = createGlobalStyle`
+    ${reset}
+    ${fontFamily}
     * {
-        font-size: ${({ theme }) => theme.fontSizes.standard};
+        font-size: ${({ theme }) => theme.fontSizes.default};
         margin: 0;
         padding: 0;
+    }
+    body {
+        font-family: "Pretendard";
     }
     a {
         vertical-align: baseline;
