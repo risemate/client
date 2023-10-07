@@ -5,6 +5,7 @@
 			"@common/*": ["components/common/*"],
 			"@components/*": ["components/*"],
 			"@styles/*": ["assets/styles/*"],
+			"@images/*": ["assets/images/*"],
 			"@assets/*": ["assets/*"],
 			"@hooks/*": ["hooks/*"],
 			"@utils/*": ["utils/*"]
