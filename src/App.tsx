@@ -1,8 +1,7 @@
-import React from 'react';
 import 'normalize.css';
 import { ThemeProvider } from 'styled-components';
-import theme from './assets/styles/theme';
 import { GlobalStyle } from './assets/styles/GlobalStyle';
+import theme from './assets/styles/theme';
 
 function App() {
   return (
