@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"baseUrl": "src",
+		"paths": {
+			"@common/*": ["components/common/*"],
+			"@components/*": ["components/*"],
+			"@assets/*": ["assets/*"],
+			"@hooks/*": ["hooks/*"],
+			"@utils/*": ["utils/*"]
+		}
+	},
+	"include": ["src", "types/**/*.d.ts"]
+}

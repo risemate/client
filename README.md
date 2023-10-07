@@ -24,18 +24,18 @@ The pre-set Prettiter format is as follows. You can change Prettier format as yo
 
 ```json
 {
-  "bracketSpacing": true,
-  "jsxBracketSameLine": false,
-  "jsxSingleQuote": true,
-  "singleQuote": true,
-  "proseWrap": "preserve",
-  "semi": true,
-  "printWidth": 100,
-  "endOfLine": "lf",
-  "useTabs": false,
-  "tabWidth": 2,
-  "trailingComma": "all",
-  "arrowParens": "always"
+	"bracketSpacing": true,
+	"jsxBracketSameLine": false,
+	"jsxSingleQuote": true,
+	"singleQuote": true,
+	"proseWrap": "preserve",
+	"semi": true,
+	"printWidth": 100,
+	"endOfLine": "lf",
+	"useTabs": false,
+	"tabWidth": 2,
+	"trailingComma": "all",
+	"arrowParens": "always"
 }
 ```
 
@@ -45,31 +45,31 @@ The pre-set ESLint format is as follows. You can change Eslint format as you wan
 
 ```json
 {
-  "env": {
-    "es2021": true,
-    "browser": true
-  },
-  "extends": [
-    "eslint:recommended",
-    "prettier",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["react", "@typescript-eslint"],
-  "rules": {
-    "no-var": "error",
-    "no-multiple-empty-lines": "error",
-    "no-console": ["warn", { "allow": ["warn", "error", "info"] }],
-    "eqeqeq": "error",
-    "dot-notation": "error",
-    "no-unused-vars": "error"
-  }
+	"env": {
+		"es2021": true,
+		"browser": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"prettier",
+		"plugin:react/recommended",
+		"plugin:@typescript-eslint/recommended"
+	],
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"parser": "@typescript-eslint/parser",
+	"plugins": ["react", "@typescript-eslint"],
+	"rules": {
+		"no-var": "error",
+		"no-multiple-empty-lines": "error",
+		"no-console": ["warn", { "allow": ["warn", "error", "info"] }],
+		"eqeqeq": "error",
+		"dot-notation": "error",
+		"no-unused-vars": "error"
+	}
 }
 ```
 
