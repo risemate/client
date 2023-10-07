@@ -4,10 +4,10 @@
 		"paths": {
 			"@common/*": ["components/common/*"],
 			"@components/*": ["components/*"],
+			"@styles/*": ["assets/styles/*"],
 			"@assets/*": ["assets/*"],
 			"@hooks/*": ["hooks/*"],
 			"@utils/*": ["utils/*"]
 		}
-	},
-	"include": ["src", "types/**/*.d.ts"]
+	}
 }

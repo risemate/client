@@ -5,8 +5,8 @@ import GlobalNavBar from '@components/GlobalNavBar';
 
 import useTab from '@hooks/useTab';
 
-import { GlobalStyle } from '@assets/styles/GlobalStyle';
-import theme from '@assets/styles/theme';
+import { GlobalStyle } from '@styles/GlobalStyle';
+import theme from '@styles/theme';
 
 import 'normalize.css';
 
