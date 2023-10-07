@@ -20,6 +20,7 @@ module.exports = {
 		'^@components(.*)|^@common(.*)|^@/(.*)$',
 		'^@store(.*)|^@redux(.*)|^@hooks(.*)$',
 		'^@config(.*)|^@utils(.*)$',
+		'^@styles(.*)$',
 		'^@assets(.*)$',
 		'^.*\\.css|^.*\\.*css(.*)$',
 	],
