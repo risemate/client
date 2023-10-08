@@ -1,8 +1,13 @@
 import logoMain from '@images/logo-main.svg';
 import React from 'react';
-import { FaBell, FaRegUserCircle } from 'react-icons/fa';
+import { FaBell } from 'react-icons/fa';
+import { FaCircleUser } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+
+import AuthModal from './auth/AuthModal';
+
+import useModal from '@hooks/useModal';
 
 interface NavBarProps {
 	isLogin: boolean;
@@ -19,6 +24,7 @@ export default function NavBar({ isLogin, isExpert }: NavBarProps) {
 		{ name: '네트워킹', route: '/' },
 	];
 	const isAlert = true;
+	const { isModalOpen, closeModal, openModal } = useModal();
 	return (
 		<StyledHeader>
 			<nav>
@@ -46,11 +52,16 @@ export default function NavBar({ isLogin, isExpert }: NavBarProps) {
 								<FaBell />
 							</button>
 							<button type='button' onClick={() => navigate('/mypage')}>
-								<FaRegUserCircle />
+								<FaCircleUser />
 							</button>
 						</>
 					) : (
-						<button type='button'>로그인 | 회원가입</button>
+						<>
+							<button type='button' onClick={openModal}>
+								로그인 | 회원가입
+							</button>
+							{isModalOpen && <AuthModal closeModal={closeModal} />}
+						</>
 					)}
 				</StyledMyPage>
 			</nav>
