@@ -1,7 +1,6 @@
 import { ThemeProvider } from 'styled-components';
 
 import Button from '@common/Button';
-import GlobalNavBar from '@components/GlobalNavBar';
 
 import useTab from '@hooks/useTab';
 
@@ -17,7 +16,6 @@ function App() {
 		<ThemeProvider theme={theme}>
 			<GlobalStyle />
 			<Button variant='mint'>버튼</Button>
-			<GlobalNavBar />
 		</ThemeProvider>
 	);
 }
