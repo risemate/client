@@ -1,7 +1,8 @@
 import React, { MouseEvent, ReactNode, useRef } from 'react';
+import { IoCloseSharp } from 'react-icons/io5';
 import styled from 'styled-components';
 
-import iconClose from '@assets/images/icon-close.svg';
+import ModalPortal from './ModalPortal';
 
 interface ModalBaseProps {
 	closeModal: () => void;
@@ -16,14 +17,16 @@ export default function ModalBase({ closeModal, children }: ModalBaseProps) {
 		}
 	};
 	return (
-		<StyledModalBase ref={modalRef} onClick={event => modalOutSideClick(event)}>
-			<article>
-				{children}
-				<button className='btn-close' onClick={closeModal}>
-					<img src={iconClose} alt='모달 닫기 버튼' />
-				</button>
-			</article>
-		</StyledModalBase>
+		<ModalPortal>
+			<StyledModalBase ref={modalRef} onClick={event => modalOutSideClick(event)}>
+				<article>
+					{children}
+					<button className='btn-close' onClick={closeModal}>
+						<IoCloseSharp />
+					</button>
+				</article>
+			</StyledModalBase>
+		</ModalPortal>
 	);
 }
 
@@ -45,7 +48,14 @@ const StyledModalBase = styled.div`
 	}
 	.btn-close {
 		position: absolute;
-		top: 30px;
-		right: 30px;
+		top: 25px;
+		right: 25px;
+		width: 25px;
+		height: 25px;
+		svg {
+			width: 100%;
+			height: 100%;
+			color: ${({ theme }) => theme.colors.navy};
+		}
 	}
 `;

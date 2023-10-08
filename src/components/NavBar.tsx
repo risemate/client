@@ -68,6 +68,7 @@ const StyledHeader = styled.header`
 		display: flex;
 		gap: 40px;
 		align-items: center;
+		margin: auto;
 	}
 `;
 
