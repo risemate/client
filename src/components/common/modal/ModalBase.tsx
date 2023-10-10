@@ -1,4 +1,4 @@
-import React, { MouseEvent, ReactNode, useRef } from 'react';
+import { MouseEvent, ReactNode, useRef } from 'react';
 import { IoCloseSharp } from 'react-icons/io5';
 import styled from 'styled-components';
 
