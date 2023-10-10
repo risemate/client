@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
 type Variant = 'navy' | 'mint' | 'blue' | 'lightGrey' | 'white' | 'border';
-type Size = 'small' | 'medium' | 'large';
+type Size = 'small' | 'medium' | 'large' | 'full';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	variant: Variant;
@@ -74,16 +74,19 @@ const sizeStyle = css<Props>`
 				return css`
 					width: 200px;
 				`;
+			case 'full':
+				return css`
+					width: 100%;
+				`;
 		}
 	}}
 `;
 
 const StyledButton = styled.button<Props>`
 	${({ theme }) => css`
-		padding: 10px;
+		padding: 10px 20px;
 		user-select: none;
 		border-radius: 50px;
-		width: 100%;
 		color: ${theme.colors.white};
 		transition: all 0.3s ease-out;
 		&:disabled {
@@ -93,7 +96,6 @@ const StyledButton = styled.button<Props>`
 			cursor: initial;
 		}
 	`}
-
 	&:hover {
 		filter: brightness(0.9);
 	}
