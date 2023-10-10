@@ -78,10 +78,8 @@ const StyledHeader = styled.header`
 	width: 100%;
 	border-bottom: 0.5px solid ${({ theme }) => theme.colors.lightGrey};
 	nav {
-		max-width: 1200px;
-		min-width: 768px;
+		${({ theme }) => theme.common.minmaxWidth};
 		height: 75px;
-		padding: 0 32px;
 		display: flex;
 		gap: 40px;
 		align-items: center;
