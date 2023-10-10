@@ -1,15 +1,19 @@
 import { Outlet } from 'react-router-dom';
 
+import Footer from '@components/Footer';
 import NavBar from '@components/NavBar';
 
 import 'normalize.css';
 
 function RootLayout() {
 	return (
-		<div>
+		<>
 			<NavBar />
-			<Outlet />
-		</div>
+			<main>
+				<Outlet />
+			</main>
+			<Footer />
+		</>
 	);
 }
 
