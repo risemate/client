@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
         font-size: ${({ theme }) => theme.fontSizes.default};
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
     }
     body {
         font-family: "Pretendard";
