@@ -1,10 +1,11 @@
 import logoMain from '@images/logo-main.svg';
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { FaBell } from 'react-icons/fa';
 import { FaCircleUser } from 'react-icons/fa6';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
+import Alarm from './alarm/Alarm';
 import AuthModal from './auth/AuthModal';
 
 import useModal from '@hooks/useModal';
@@ -23,14 +24,19 @@ export default function NavBar({ isLogin, isExpert }: NavBarProps) {
 		{ name: '코치 찾기', route: '/' },
 		{ name: '네트워킹', route: '/' },
 	];
-	const isAlert = true;
 	const { isModalOpen, closeModal, openModal } = useModal();
+
+	const hasNewAlarm = true;
+	const [isAlarmOpen, setIsAlarmOpen] = useState(true);
+	const toggleAlarm = () => setIsAlarmOpen(prev => !prev);
+	const closeAlarm = () => setIsAlarmOpen(false);
+	const btnAlarmRef = useRef<HTMLButtonElement | null>(null);
 	return (
 		<StyledHeader>
 			<nav>
-				<button type='button' onClick={() => navigate('/')}>
+				<Link to='/'>
 					<img src={logoMain} alt='라이즈 메이트' />
-				</button>
+				</Link>
 				<StyledNavList>
 					{navItems.map((item, index) => {
 						if (!isExpert && item?.onlyExpert) {
@@ -38,9 +44,7 @@ export default function NavBar({ isLogin, isExpert }: NavBarProps) {
 						}
 						return (
 							<li key={index}>
-								<button type='button' onClick={() => navigate(item.route)}>
-									{item.name}
-								</button>
+								<Link to={item.route}>{item.name}</Link>
 							</li>
 						);
 					})}
@@ -48,9 +52,15 @@ export default function NavBar({ isLogin, isExpert }: NavBarProps) {
 				<StyledMyPage>
 					{isLogin ? (
 						<>
-							<button type='button' className={isAlert ? 'alert' : undefined}>
+							<button
+								type='button'
+								className={hasNewAlarm ? 'alert' : undefined}
+								onClick={toggleAlarm}
+								ref={btnAlarmRef}
+							>
 								<FaBell />
 							</button>
+							{isAlarmOpen && <Alarm closeAlarm={closeAlarm} btnAlarmRef={btnAlarmRef} />}
 							<button type='button' onClick={() => navigate('/mypage')}>
 								<FaCircleUser />
 							</button>
@@ -74,6 +84,7 @@ const StyledHeader = styled.header`
 	border-bottom: 0.5px solid ${({ theme }) => theme.colors.lightGrey};
 	nav {
 		max-width: 1200px;
+		min-width: 768px;
 		height: 75px;
 		padding: 0 32px;
 		display: flex;
@@ -87,13 +98,13 @@ const StyledNavList = styled.ul`
 	display: flex;
 	align-items: center;
 	gap: 25px;
-	&:hover button {
+	&:hover a {
 		color: ${({ theme }) => theme.colors.darkGrey};
 	}
 	li {
 		height: 100%;
 	}
-	button {
+	a {
 		color: ${({ theme }) => theme.colors.navy};
 		font-weight: bold;
 		height: 100%;
@@ -106,6 +117,7 @@ const StyledNavList = styled.ul`
 const StyledMyPage = styled.div`
 	margin-left: auto;
 	height: 100%;
+	position: relative;
 	button {
 		color: ${({ theme }) => theme.colors.navy};
 		height: 100%;
