@@ -20,7 +20,6 @@ export default function NavBar() {
 		{ name: '네트워킹', route: '/' },
 	];
 	const isAlert = true;
-	// const { isModalOpen, closeModal, openModal } = useModal();
 	const { isModal, openModal } = useModal();
 	const { auth } = useAuth();
 	return (

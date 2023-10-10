@@ -15,9 +15,9 @@ export default function AuthModal() {
 		popupLogin('google').then((result: any) => {
 			if (result.success) {
 				closeModal();
-				alert('로그인 완료');
 				//: 유저정보 받아오기 refetch()
 				//: alert(auth?.nickname + '님 완영합니다.');
+				alert('로그인 완료');
 			} else {
 				alert(result.message);
 				closeModal();
