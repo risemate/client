@@ -1,25 +1,38 @@
 import logoIcon from '@images/logo-icon.svg';
-import React from 'react';
+import { useAuth } from '@query/hooks/useAuth';
+import { useModal } from 'atoms/useModalAtom';
 import { FcGoogle } from 'react-icons/fc';
 import { SiNaver } from 'react-icons/si';
 import styled from 'styled-components';
 
 import ModalBase from '../common/modal/ModalBase';
+import { popupLogin } from './popupLogin';
 
-interface AuthModalProps {
-	closeModal: () => void;
-}
-
-export default function AuthModal({ closeModal }: AuthModalProps) {
+export default function AuthModal() {
+	const { closeModal } = useModal();
+	const { auth, refetch } = useAuth();
+	const login = () => {
+		popupLogin('google').then((result: any) => {
+			if (result.success) {
+				closeModal();
+				alert('로그인 완료');
+				//: 유저정보 받아오기 refetch()
+				//: alert(auth?.nickname + '님 완영합니다.');
+			} else {
+				alert(result.message);
+				closeModal();
+			}
+		});
+	};
 	return (
-		<ModalBase closeModal={closeModal}>
+		<ModalBase>
 			<StyledH1>
 				<img src={logoIcon} alt='라이즈메이트 로고' />
 				<br />
 				로그인
 			</StyledH1>
 			<StyledButtonDiv>
-				<button type='button' onClick={() => alert('구글 로그인')}>
+				<button type='button' onClick={login}>
 					<FcGoogle /> Google 로그인
 				</button>
 				<button type='button' onClick={() => alert('네이버 로그인')}>

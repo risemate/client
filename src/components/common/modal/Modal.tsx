@@ -1,4 +1,4 @@
-import React from 'react';
+import { useModal } from 'atoms/useModalAtom';
 import styled from 'styled-components';
 
 import Button from '../Button';
@@ -12,13 +12,14 @@ interface ModalProps {
 }
 
 export default function Modal({ closeModal, title, content, onClick }: ModalProps) {
+	const { openModal } = useModal();
 	return (
-		<ModalBase closeModal={closeModal}>
+		<ModalBase>
 			<StyledDiv>
 				<h1>{title}</h1>
 				<p>{content}</p>
 				<div>
-					<Button variant='border' onClick={() => closeModal()}>
+					<Button variant='border' onClick={() => openModal()}>
 						취소
 					</Button>
 					<Button

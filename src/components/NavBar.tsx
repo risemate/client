@@ -1,5 +1,8 @@
+// import useModal from '@hooks/useModal';
 import logoMain from '@images/logo-main.svg';
-import React from 'react';
+import { useAuth } from '@query/hooks/useAuth';
+import theme from '@styles/theme';
+import { useModal } from 'atoms/useModalAtom';
 import { FaBell } from 'react-icons/fa';
 import { FaCircleUser } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
@@ -7,24 +10,19 @@ import styled from 'styled-components';
 
 import AuthModal from './auth/AuthModal';
 
-import useModal from '@hooks/useModal';
-
-interface NavBarProps {
-	isLogin: boolean;
-	isExpert: boolean;
-}
-
-export default function NavBar({ isLogin, isExpert }: NavBarProps) {
+export default function NavBar() {
 	const navigate = useNavigate();
 	const navItems = [
-		{ name: '내 이력서', route: '/' },
-		{ name: '코칭 관리', route: '/', onlyExpert: true },
+		{ name: '내 이력서', route: '/auth/career' },
+		{ name: '코칭 관리', route: '/', expert: true, color: theme.colors.blue },
 		{ name: 'AI 코치', route: '/' },
 		{ name: '코치 찾기', route: '/' },
 		{ name: '네트워킹', route: '/' },
 	];
 	const isAlert = true;
-	const { isModalOpen, closeModal, openModal } = useModal();
+	// const { isModalOpen, closeModal, openModal } = useModal();
+	const { isModal, openModal } = useModal();
+	const { auth } = useAuth();
 	return (
 		<StyledHeader>
 			<nav>
@@ -33,12 +31,16 @@ export default function NavBar({ isLogin, isExpert }: NavBarProps) {
 				</button>
 				<StyledNavList>
 					{navItems.map((item, index) => {
-						if (!isExpert && item?.onlyExpert) {
-							return;
-						}
+						// if (item?.expert && auth?.role !== 'expert') {
+						// 	return;
+						// }
 						return (
 							<li key={index}>
-								<button type='button' onClick={() => navigate(item.route)}>
+								<button
+									type='button'
+									onClick={() => navigate(item.route)}
+									style={{ color: item.color }}
+								>
 									{item.name}
 								</button>
 							</li>
@@ -46,7 +48,7 @@ export default function NavBar({ isLogin, isExpert }: NavBarProps) {
 					})}
 				</StyledNavList>
 				<StyledMyPage>
-					{isLogin ? (
+					{auth ? (
 						<>
 							<button type='button' className={isAlert ? 'alert' : undefined}>
 								<FaBell />
@@ -60,7 +62,7 @@ export default function NavBar({ isLogin, isExpert }: NavBarProps) {
 							<button type='button' onClick={openModal}>
 								로그인 | 회원가입
 							</button>
-							{isModalOpen && <AuthModal closeModal={closeModal} />}
+							{isModal && <AuthModal />}
 						</>
 					)}
 				</StyledMyPage>
