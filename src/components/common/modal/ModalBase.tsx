@@ -1,15 +1,16 @@
-import React, { MouseEvent, ReactNode, useRef } from 'react';
+import { useModal } from 'atoms/useModalAtom';
+import { MouseEvent, ReactNode, useRef } from 'react';
 import { IoCloseSharp } from 'react-icons/io5';
 import styled from 'styled-components';
 
 import ModalPortal from './ModalPortal';
 
 interface ModalBaseProps {
-	closeModal: () => void;
 	children: ReactNode;
 }
 
-export default function ModalBase({ closeModal, children }: ModalBaseProps) {
+export default function ModalBase({ children }: ModalBaseProps) {
+	const { closeModal } = useModal();
 	const modalRef = useRef<HTMLDivElement | null>(null);
 	const modalOutSideClick = (event: MouseEvent<HTMLDivElement>) => {
 		if (modalRef.current === event.target) {

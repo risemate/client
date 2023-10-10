@@ -8,7 +8,8 @@
 			"@images/*": ["assets/images/*"],
 			"@assets/*": ["assets/*"],
 			"@hooks/*": ["hooks/*"],
-			"@utils/*": ["utils/*"]
+			"@utils/*": ["utils/*"],
+			"@query/*": ["query/*"]
 		}
 	}
 }

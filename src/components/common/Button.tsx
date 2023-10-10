@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
 type Variant = 'navy' | 'mint' | 'blue' | 'lightGrey' | 'white' | 'border';
