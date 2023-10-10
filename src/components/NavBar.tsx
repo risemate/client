@@ -31,9 +31,11 @@ export default function NavBar() {
 	return (
 		<StyledHeader>
 			<nav>
-				<Link to='/'>
-					<img src={logoMain} alt='라이즈 메이트' />
-				</Link>
+				<h1>
+					<Link to='/'>
+						<img src={logoMain} alt='라이즈 메이트' />
+					</Link>
+				</h1>
 				<StyledNavList>
 					{navItems.map((item, index) => {
 						return (
