@@ -36,7 +36,6 @@ const common = {
 	minmaxWidth: `
 	max-width: 1200px;
 	min-width: 768px;
-	padding: 0 32px;
   `,
 };
 

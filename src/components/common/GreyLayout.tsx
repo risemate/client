@@ -34,9 +34,11 @@ const StyledLayout = styled.main`
 	padding: 32px;
 	& > div {
 		${({ theme }) => theme.common.minmaxWidth};
+		max-width: 1136px;
 		padding: 30px;
+		margin: auto;
 		&:not(:last-child) {
-			margin: 0 auto 30px;
+			margin-bottom: 30px;
 		}
 		border-radius: 40px;
 		background: ${({ theme }) => theme.colors.white};
