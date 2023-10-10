@@ -1,7 +1,8 @@
-import useModal from '@hooks/useModal';
+// import useModal from '@hooks/useModal';
 import logoMain from '@images/logo-main.svg';
 import { useAuth } from '@query/hooks/useAuth';
 import theme from '@styles/theme';
+import { useModal } from 'atoms/useModalAtom';
 import { FaBell } from 'react-icons/fa';
 import { FaCircleUser } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
@@ -19,7 +20,8 @@ export default function NavBar() {
 		{ name: '네트워킹', route: '/' },
 	];
 	const isAlert = true;
-	const { isModalOpen, closeModal, openModal } = useModal();
+	// const { isModalOpen, closeModal, openModal } = useModal();
+	const { isModal, openModal } = useModal();
 	const { auth } = useAuth();
 	return (
 		<StyledHeader>
@@ -60,7 +62,7 @@ export default function NavBar() {
 							<button type='button' onClick={openModal}>
 								로그인 | 회원가입
 							</button>
-							{isModalOpen && <AuthModal closeModal={closeModal} />}
+							{isModal && <AuthModal />}
 						</>
 					)}
 				</StyledMyPage>
