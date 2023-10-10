@@ -1,7 +1,7 @@
 const pixelToRem = (size: number) => `${size / 16}rem`;
 
 const fontSizes = {
-	tiny: pixelToRem(8),
+	tiny: pixelToRem(10),
 	small: pixelToRem(12),
 	default: pixelToRem(16),
 	medium: pixelToRem(24),
