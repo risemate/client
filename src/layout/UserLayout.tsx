@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
 import GreyLayout from '@common/GreyLayout';
-import Footer from '@components/Footer';
 import NavBar from '@components/NavBar';
 
 import 'normalize.css';
@@ -13,7 +12,6 @@ function UserLayout() {
 			<GreyLayout>
 				<Outlet />
 			</GreyLayout>
-			<Footer />
 		</>
 	);
 }

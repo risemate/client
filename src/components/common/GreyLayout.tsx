@@ -29,7 +29,7 @@ const headingStyle = css`
 
 const StyledLayout = styled.main`
 	width: 100%;
-	height: calc(100vh - 75px - 150px);
+	min-height: calc(100vh - 75px);
 	background: ${({ theme }) => theme.colors.lightGrey};
 	padding: 32px;
 	& > div {
