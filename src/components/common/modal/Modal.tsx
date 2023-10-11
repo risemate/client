@@ -1,4 +1,4 @@
-import { useModal } from 'atoms/useModalAtom';
+import { useModal } from '@hooks/atoms/useModalAtom';
 import styled from 'styled-components';
 
 import Button from '../Button';

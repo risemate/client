@@ -1,6 +1,6 @@
-import { useModal } from 'atoms/useModalAtom';
+import { useModal } from '@hooks/atoms/useModalAtom';
+import { IconCloseSharp } from '@icons/index';
 import { MouseEvent, ReactNode, useRef } from 'react';
-import { IoCloseSharp } from 'react-icons/io5';
 import styled from 'styled-components';
 
 import ModalPortal from './ModalPortal';
@@ -23,7 +23,7 @@ export default function ModalBase({ children }: ModalBaseProps) {
 				<article>
 					{children}
 					<button className='btn-close' onClick={closeModal}>
-						<IoCloseSharp />
+						<IconCloseSharp />
 					</button>
 				</article>
 			</StyledModalBase>

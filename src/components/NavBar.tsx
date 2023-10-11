@@ -1,9 +1,8 @@
+import { useModal } from '@hooks/atoms/useModalAtom';
+import { IconBell, IconCircleUser } from '@icons/index';
 import logoMain from '@images/logo-main.svg';
 import { useAuth } from '@query/hooks/useAuth';
-import { useModal } from 'atoms/useModalAtom';
-import React, { useRef, useState } from 'react';
-import { FaBell } from 'react-icons/fa';
-import { FaCircleUser } from 'react-icons/fa6';
+import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -55,11 +54,11 @@ export default function NavBar() {
 								onClick={toggleAlarm}
 								ref={btnAlarmRef}
 							>
-								<FaBell />
+								<IconBell />
 							</button>
 							{isAlarmOpen && <Alarm closeAlarm={closeAlarm} btnAlarmRef={btnAlarmRef} />}
 							<button type='button' onClick={() => navigate('/mypage')}>
-								<FaCircleUser />
+								<IconCircleUser />
 							</button>
 						</>
 					) : (

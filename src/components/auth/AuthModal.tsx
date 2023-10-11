@@ -1,8 +1,7 @@
+import { useModal } from '@hooks/atoms/useModalAtom';
+import { IconGoogle, IconNaver } from '@icons/index';
 import logoIcon from '@images/logo-icon.svg';
 import { useAuth } from '@query/hooks/useAuth';
-import { useModal } from 'atoms/useModalAtom';
-import { FcGoogle } from 'react-icons/fc';
-import { SiNaver } from 'react-icons/si';
 import styled from 'styled-components';
 
 import ModalBase from '../common/modal/ModalBase';
@@ -35,10 +34,10 @@ export default function AuthModal() {
 			</StyledH1>
 			<StyledButtonDiv>
 				<button type='button' onClick={login}>
-					<FcGoogle /> Google 로그인
+					<IconGoogle /> Google 로그인
 				</button>
 				<button type='button' onClick={() => alert('네이버 로그인')}>
-					<SiNaver />
+					<IconNaver />
 					Naver 로그인
 				</button>
 			</StyledButtonDiv>
