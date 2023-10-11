@@ -1,8 +1,6 @@
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
-
-type Variant = 'navy' | 'mint' | 'blue' | 'lightGrey' | 'white' | 'border';
-type Size = 'small' | 'medium' | 'large' | 'full';
+import { Variant, Size } from 'types/Button';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	variant: Variant;
