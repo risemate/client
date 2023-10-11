@@ -1,5 +1,5 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
-import { IconGoogle, IconNaver } from '@icons/index';
+import { IconGoogle, IconNaver } from '@icons';
 import logoIcon from '@images/logo-icon.svg';
 import { useAuth } from '@query/hooks/useAuth';
 import styled from 'styled-components';

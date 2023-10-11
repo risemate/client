@@ -1,5 +1,5 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
-import { IconBell, IconCircleUser } from '@icons/index';
+import { IconBell, IconCircleUser } from '@icons';
 import logoMain from '@images/logo-main.svg';
 import { useAuth } from '@query/hooks/useAuth';
 import { useRef, useState } from 'react';

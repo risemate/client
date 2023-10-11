@@ -1,5 +1,5 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
-import { IconCloseSharp } from '@icons/index';
+import { IconCloseSharp } from '@icons';
 import { MouseEvent, ReactNode, useRef } from 'react';
 import styled from 'styled-components';
 
