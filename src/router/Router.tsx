@@ -2,6 +2,7 @@ import RootLayout from 'layout/RootLayout';
 import UserLayout from 'layout/UserLayout';
 import Experts from 'pages/Experts';
 import Home from 'pages/Home';
+import Network from 'pages/Network';
 import NotFound from 'pages/NotFound';
 import Resume from 'pages/Resume';
 import { createBrowserRouter } from 'react-router-dom';
@@ -23,7 +24,7 @@ export const router = createBrowserRouter([
 				children: [
 					{
 						index: true,
-						element: <div>이력서 목록?</div>,
+						element: <Network />,
 					},
 					{
 						path: '/network:id',
