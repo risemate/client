@@ -45,23 +45,22 @@ export default function Banner({ variant, children }: BannerProps) {
 type Props = Partial<BannerProps>;
 
 const mainStyle = css`
-    width: calc(100% - 64px);
-    min-width: 
-    max-width: 800px;
-    border-radius: 10px;
-    background: ${({ theme }) => theme.colors.white};
-    box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.10);
-    text-align: center;
-    padding: 30px 50px;
-    h2 {
-        margin-bottom: 15px;
-    }
-    button {
-        box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.15);
-    }
-    button:first-of-type {
-        margin-right: 20px;
-    }
+	width: calc(100% - 64px);
+	max-width: 800px;
+	border-radius: 10px;
+	background: ${({ theme }) => theme.colors.white};
+	box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+	text-align: center;
+	padding: 30px 50px;
+	h2 {
+		margin-bottom: 15px;
+	}
+	button {
+		box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.15);
+	}
+	button:first-of-type {
+		margin-right: 20px;
+	}
 `;
 
 const tabStyle = css`
@@ -106,7 +105,7 @@ const variantStyle = css<Props>`
 
 const StyledBanner = styled.section<Props>`
 	width: 100%;
-	${({ theme }) => theme.common.minmaxWidth}
+	min-width: ${({ theme }) => theme.widths.minWidth};
 	height: 250px;
 	padding: 0 32px;
 	text-align: center;
