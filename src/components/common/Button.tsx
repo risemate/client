@@ -48,10 +48,6 @@ const variantStyle = css<Props>`
 					color: ${colors.navy};
 					box-shadow: 0 0 0 2px ${colors.navy} inset;
 				`;
-			default:
-				return css`
-					color: ${colors.white};
-				`;
 		}
 	}}
 `;

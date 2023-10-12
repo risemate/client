@@ -7,7 +7,7 @@ type Size = 'small' | 'medium';
 type Shape = 'square' | 'rectangle';
 
 interface DefaultImageProps {
-	variant?: Variant;
+	variant: Variant;
 	size?: Size;
 	shape?: Shape;
 }
@@ -40,10 +40,6 @@ const variantStyle = css<Props>`
 			case 'lightGrey':
 				return css`
 					background-color: ${colors.lightgrey};
-				`;
-			default:
-				return css`
-					background-color: ${colors.navy};
 				`;
 		}
 	}}
