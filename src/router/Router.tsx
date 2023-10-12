@@ -1,5 +1,6 @@
 import RootLayout from 'layout/RootLayout';
 import UserLayout from 'layout/UserLayout';
+import Experts from 'pages/Experts';
 import Home from 'pages/Home';
 import NotFound from 'pages/NotFound';
 import Resume from 'pages/Resume';
@@ -35,7 +36,7 @@ export const router = createBrowserRouter([
 				children: [
 					{
 						index: true,
-						element: <div>전문가 목록?</div>,
+						element: <Experts />,
 					},
 					{
 						path: '/experts:id',
