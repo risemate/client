@@ -106,6 +106,7 @@ const variantStyle = css<Props>`
 
 const StyledBanner = styled.section<Props>`
 	width: 100%;
+	${({ theme }) => theme.common.minmaxWidth}
 	height: 250px;
 	padding: 0 32px;
 	text-align: center;
