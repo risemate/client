@@ -59,6 +59,7 @@ const sizeStyle = css<Props>`
 				return css`
 					width: 100px;
 					font-size: ${theme.fontSizes.small};
+					padding: 8px;
 				`;
 			case 'medium':
 				return css`
