@@ -47,7 +47,7 @@ const StyledCardItem = styled.button`
 	transition: all 0.2s ease;
 	&:hover {
 		transform: translateY(-5px);
-		filter: brightness(0.9);
+		filter: brightness(0.96);
 	}
 	.tag {
 		color: ${({ theme }) => theme.colors.white};
