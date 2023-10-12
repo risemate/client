@@ -12,10 +12,10 @@ import AuthModal from './auth/AuthModal';
 export default function NavBar() {
 	const navigate = useNavigate();
 	const navItems = [
-		{ name: '내 이력서', route: '/auth/career' },
-		{ name: 'AI 코치', route: '/' },
-		{ name: '코치 찾기', route: '/' },
-		{ name: '네트워킹', route: '/' },
+		{ name: '내 이력서', route: '/resumes' },
+		{ name: 'AI 코치', route: '/ai' },
+		{ name: '코치 찾기', route: '/experts' },
+		{ name: '네트워킹', route: '/network' },
 	];
 
 	const { isModal, openModal } = useModal();
@@ -47,7 +47,7 @@ export default function NavBar() {
 				<StyledMyPage>
 					{auth ? (
 						<>
-							{isExpert && <Link to='/'>코칭 관리</Link>}
+							{isExpert && <Link to='/coaching'>코칭 관리</Link>}
 							<button
 								type='button'
 								className={hasNewAlarm ? 'alert' : undefined}
