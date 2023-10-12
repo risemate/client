@@ -6,7 +6,7 @@ import styled, { css } from 'styled-components';
 import Button from './Button';
 import Tab from './Tab';
 
-type Variant = 'main' | 'tab' | 'default';
+type Variant = 'home' | 'tab' | 'default';
 
 interface BannerProps {
 	variant: Variant;
@@ -19,7 +19,7 @@ export default function Banner({ variant, children }: BannerProps) {
 	const { changeTab, isCurrentTab } = useTab(menus);
 	return (
 		<StyledBanner variant={variant}>
-			{variant === 'main' && (
+			{variant === 'home' && (
 				<div>
 					{children}
 					<Button variant='navy' size='small' onClick={() => navigate('/ai')}>
@@ -30,7 +30,7 @@ export default function Banner({ variant, children }: BannerProps) {
 					</Button>
 				</div>
 			)}
-			{variant !== 'main' && (
+			{variant !== 'home' && (
 				<>
 					{children}
 					{variant === 'tab' && (
@@ -44,7 +44,7 @@ export default function Banner({ variant, children }: BannerProps) {
 
 type Props = Partial<BannerProps>;
 
-const mainStyle = css`
+const homeStyle = css`
 	width: calc(100% - 64px);
 	max-width: 800px;
 	border-radius: 10px;
@@ -83,12 +83,12 @@ const tabStyle = css`
 const variantStyle = css<Props>`
 	${({ variant, theme }) => {
 		switch (variant) {
-			case 'main':
+			case 'home':
 				return css`
 					background: ${`linear-gradient(91deg, ${theme.colors.mint} -0.94%, ${theme.colors.blue} 80.11%, ${theme.colors.navy} 106.39%)`};
 					${theme.common.flexCenter};
 					& > div {
-						${mainStyle}
+						${homeStyle}
 					}
 				`;
 			case 'tab':
