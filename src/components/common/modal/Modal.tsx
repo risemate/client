@@ -5,14 +5,14 @@ import Button from '../Button';
 import ModalBase from './ModalBase';
 
 interface ModalProps {
-	closeModal: () => void;
 	title: string;
 	content: string;
-	onClick: () => void;
+	confirm?: string;
+	onClick?: () => void;
 }
 
-export default function Modal({ closeModal, title, content, onClick }: ModalProps) {
-	const { openModal } = useModal();
+export default function Modal({ title, content, confirm, onClick }: ModalProps) {
+	const { openModal, closeModal } = useModal();
 	return (
 		<ModalBase>
 			<StyledDiv>
@@ -25,11 +25,13 @@ export default function Modal({ closeModal, title, content, onClick }: ModalProp
 					<Button
 						variant='navy'
 						onClick={() => {
-							onClick();
+							{
+								onClick && onClick();
+							}
 							closeModal();
 						}}
 					>
-						헬로
+						{confirm ? confirm : '확인'}
 					</Button>
 				</div>
 			</StyledDiv>
