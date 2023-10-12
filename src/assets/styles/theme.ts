@@ -17,8 +17,6 @@ const colors = {
 	grey: '#CFCFCF',
 	darkGrey: '#767676',
 	black: '#000000',
-	mainGredient:
-		'linear-gradient(91deg, #67E0B2 -0.94%, #576EE7 80.11%, #313964 106.39%))',
 };
 
 const common = {
@@ -30,7 +28,7 @@ const common = {
 	flexCenterColumn: `
     display: flex;
     flex-direction: column;
-    justify-contents: center;
+    justify-content: center;
     align-items: center;
   `,
 	minmaxWidth: `
