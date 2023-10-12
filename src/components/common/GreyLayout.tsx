@@ -10,13 +10,13 @@ export default function GreyLayout({ children }: GreyLayoutProps) {
 }
 
 const headingStyle = css`
-	h1 {
+	h2 {
 		font-size: ${({ theme }) => theme.fontSizes.large};
 		font-weight: bold;
 		padding-bottom: 20px;
 		border-bottom: 2px solid ${({ theme }) => theme.colors.black};
 	}
-	h2 {
+	h3 {
 		color: ${({ theme }) => theme.colors.navy};
 		font-weight: bold;
 		font-size: ${({ theme }) => theme.fontSizes.medium};

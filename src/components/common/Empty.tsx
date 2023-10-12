@@ -12,7 +12,7 @@ export default function Empty({ name, moveToLink }: EmptyProps) {
 	return (
 		<StyledSection>
 			<span />
-			<h2>아직 작성하신 {name} 없어요!</h2>
+			<h3>아직 작성하신 {name} 없어요!</h3>
 			<Button variant='blue' onClick={() => moveToLink()}>
 				{name.slice(0, -1)} 작성하기 ➔
 			</Button>
