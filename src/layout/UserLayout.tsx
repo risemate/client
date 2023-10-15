@@ -1,6 +1,6 @@
+import GreyLayout from 'layout/GreyLayout';
 import { Outlet } from 'react-router-dom';
 
-import GreyLayout from '@common/GreyLayout';
 import NavBar from '@components/NavBar';
 
 import 'normalize.css';
