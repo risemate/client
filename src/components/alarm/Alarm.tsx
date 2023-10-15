@@ -89,6 +89,7 @@ const StyledAlarm = styled.div`
 	border: 1px solid var(--grey, #cfcfcf);
 	background: var(--white, #fff);
 	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+	z-index: 100;
 	& > label {
 		position: absolute;
 		top: 15px;
