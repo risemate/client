@@ -51,6 +51,7 @@ const sizeStyle = css<Props>`
 			case 'small':
 				return css`
 					padding: 20px;
+					width: 100px;
 					img {
 						width: 110px;
 					}

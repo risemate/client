@@ -72,6 +72,7 @@ const sizeStyle = css<Props>`
 			case 'full':
 				return css`
 					width: 100%;
+					padding: 15px;
 				`;
 		}
 	}}
