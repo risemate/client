@@ -2,6 +2,7 @@ import RootLayout from 'layout/RootLayout';
 import UserLayout from 'layout/UserLayout';
 import Experts from 'pages/Experts';
 import Home from 'pages/Home';
+import MyPage from 'pages/MyPage';
 import Network from 'pages/Network';
 import NotFound from 'pages/NotFound';
 import Resume from 'pages/Resume';
@@ -55,7 +56,7 @@ export const router = createBrowserRouter([
 		children: [
 			{
 				path: 'mypage',
-				element: <div>auth settings</div>,
+				element: <MyPage />,
 			},
 			{
 				path: 'resumes',
