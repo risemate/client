@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Column } from 'types/Column';
 
 import Table from '@common/Table';
@@ -50,11 +49,9 @@ export default function Payment() {
 		{ key: '총 받은 금액', value: '20,000원' },
 	];
 	return (
-		<StyledPayment>
+		<section>
 			<h3>결제 내역 확인</h3>
 			<Table columns={columns} data={data} totals={totals} />
-		</StyledPayment>
+		</section>
 	);
 }
-
-const StyledPayment = styled.section``;
