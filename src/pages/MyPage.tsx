@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { MyPageMode } from 'types/Page';
 
 import EditUserInfo from '@components/mypage/EditUserInfo';
+import Payment from '@components/mypage/Payment';
 import PageDetail from '@components/userpage/PageDetail';
 import UserInfo from '@components/userpage/UserInfo';
 
@@ -17,6 +18,7 @@ export default function MyPage() {
 			<UserInfo page='mypage' changeMode={changeMode} />
 			{mode === 'home' && <PageDetail page='mypage' changeMode={changeMode} />}
 			{mode === 'edit' && <EditUserInfo />}
+			{mode === 'payment' && <Payment />}
 		</StyledPage>
 	);
 }
