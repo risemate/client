@@ -41,6 +41,7 @@ const StyledPage = styled.div`
 		height: initial;
 		section:nth-child(2) {
 			width: 100%;
+			min-height: 300px;
 			margin: 0;
 		}
 		section > h3 {
