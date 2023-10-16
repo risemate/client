@@ -16,7 +16,7 @@ export default function Tab({
 	isCurrentTab,
 }: TabProps) {
 	return (
-		<StyledTab center={center} underline={underline}>
+		<StyledTab $center={center} $underline={underline}>
 			{menus.map(menu => {
 				return (
 					<li key={menu}>
@@ -33,13 +33,11 @@ export default function Tab({
 	);
 }
 
-type Props = Partial<TabProps>;
-
-const StyledTab = styled.ul<Props>`
-	${({ underline, theme }) =>
-		underline && `border-bottom: 2px solid ${theme.colors.darkGrey}`};
+const StyledTab = styled.ul<{ $underline?: boolean; $center?: boolean }>`
+	${({ $underline, theme }) =>
+		$underline && `border-bottom: 2px solid ${theme.colors.darkGrey}`};
 	display: flex;
-	justify-content: ${({ center }) => (center ? 'center' : 'flex-start')};
+	justify-content: ${({ $center }) => ($center ? 'center' : 'flex-start')};
 `;
 
 const StyledButton = styled.button`

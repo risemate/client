@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 import NetworkCard from './NetworkCard';
@@ -10,7 +9,7 @@ interface NetworkCardListProps {
 
 export default function NetworkCardList({ networks, home }: NetworkCardListProps) {
 	return (
-		<StyledCardList home={home}>
+		<StyledCardList $home={home}>
 			{networks.map((network, index) => {
 				return (
 					<li key={index}>
@@ -22,14 +21,13 @@ export default function NetworkCardList({ networks, home }: NetworkCardListProps
 	);
 }
 
-type Props = Partial<NetworkCardListProps>;
-
-const StyledCardList = styled.ul<Props>`
+const StyledCardList = styled.ul<{ $home?: boolean }>`
 	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 24px;
 	@media screen and (max-width: 990px) {
-		grid-template-columns: ${({ home }) => (home ? 'repeat(4, 1fr)' : 'repeat(3, 1fr)')};
+		grid-template-columns: ${({ $home }) =>
+			$home ? 'repeat(4, 1fr)' : 'repeat(3, 1fr)'};
 	}
 `;

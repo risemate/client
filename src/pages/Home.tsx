@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { CSSProp } from 'styled-components';
 
 import Banner from '@common/Banner';
 import Button from '@common/Button';
@@ -26,18 +26,18 @@ function Home() {
 					이력서 더보기
 				</Button>
 			</StyledSection>
-			<StyledExpertSection>
+			<StyledSection css={{ marginBottom: '80px' }}>
 				<h3>이력서/자소서 전문가를 만나보세요!</h3>
 				<ExpertCardList experts={experts.slice(0, 4)} home />
 				<Button variant='navy' size='small' onClick={() => navigate('/experts')}>
 					전문가 더보기
 				</Button>
-			</StyledExpertSection>
+			</StyledSection>
 		</>
 	);
 }
 
-const StyledSection = styled.section`
+const StyledSection = styled.section<{ css?: CSSProp }>`
 	${({ theme }) => theme.common.minmaxWidth};
 	margin: 100px auto 0;
 	position: relative;
@@ -63,10 +63,7 @@ const StyledSection = styled.section`
 		top: -3px;
 		right: 32px;
 	}
-`;
-
-const StyledExpertSection = styled(StyledSection)`
-	margin-bottom: 80px;
+	${({ css }) => css};
 `;
 
 export default Home;
