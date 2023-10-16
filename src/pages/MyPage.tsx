@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { MyPageMode } from 'types/Page';
 
@@ -9,15 +10,16 @@ import PageDetail from '@components/userpage/PageDetail';
 import UserInfo from '@components/userpage/UserInfo';
 
 export default function MyPage() {
-	const [mode, setMode] = useState<MyPageMode>('home');
+	const [searchParams, setSearchParams] = useSearchParams('');
+	const mode = searchParams.get('mode');
 	const changeMode = (newMode: MyPageMode) => {
-		setMode(newMode);
+		setSearchParams({ mode: newMode });
 	};
 
 	return (
 		<StyledPage className='border'>
 			<UserInfo page='mypage' changeMode={changeMode} />
-			{mode === 'home' && <PageDetail page='mypage' changeMode={changeMode} />}
+			{mode === null && <PageDetail page='mypage' changeMode={changeMode} />}
 			{mode === 'edit' && <EditUserInfo />}
 			{mode === 'payment' && <Payment />}
 			{mode === 'review' && <Review />}
