@@ -22,6 +22,12 @@ export default function Table<T>({ columns, data, totals }: TableProps<T>) {
 				})}
 			</StyledTotal>
 			<StyledTable>
+				<colgroup>
+					{columns.map((_, index) => {
+						const width = index === 0 ? '130' : index === 1 ? '*' : '100';
+						return <col key={index} width={width} />;
+					})}
+				</colgroup>
 				<thead>
 					<tr>
 						{columns.map((column, index) => (
@@ -63,11 +69,13 @@ const StyledTable = styled.table`
 	background: white;
 	color: ${({ theme }) => theme.colors.darkGrey};
 	font-size: ${({ theme }) => theme.fontSizes.small};
+	table-layout: fixed;
 	thead {
 		background: ${({ theme }) => theme.colors.lightGrey};
 		font-weight: bold;
 		tr th {
-			padding: 15px 0;
+			padding: 15px 10px;
+			${({ theme }) => theme.common.ellipsisOneLine};
 		}
 	}
 	tbody > tr {
@@ -77,7 +85,9 @@ const StyledTable = styled.table`
 			padding: 15px 0;
 		}
 		td:nth-child(2) {
+			width: 100;
 			text-align: start;
+			${({ theme }) => theme.common.ellipsisOneLine};
 		}
 	}
 `;
