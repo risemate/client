@@ -8,9 +8,8 @@ interface NetworkCardProps {
 	network: string;
 }
 
+// eslint-disable-next-line
 export default function NetworkCard({ network }: NetworkCardProps) {
-	// eslint-disable-next-line
-	console.log(network);
 	const navigate = useNavigate();
 	const image = true;
 	const moveToDetail = () => {

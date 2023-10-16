@@ -8,9 +8,8 @@ interface ExpertCardProps {
 	expert: string;
 }
 
+// eslint-disable-next-line
 export default function ExpertCard({ expert }: ExpertCardProps) {
-	// eslint-disable-next-line
-	console.log(expert);
 	const navigate = useNavigate();
 	const moveToDetail = () => {
 		navigate('/');
