@@ -3,9 +3,9 @@ import UserLayout from 'layout/UserLayout';
 import Experts from 'pages/Experts';
 import Home from 'pages/Home';
 import MyPage from 'pages/MyPage';
+import MyResume from 'pages/MyResume';
 import Network from 'pages/Network';
 import NotFound from 'pages/NotFound';
-import Resume from 'pages/Resume';
 import { createBrowserRouter } from 'react-router-dom';
 
 import { signLoader } from './loader';
@@ -60,7 +60,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: 'resumes',
-				element: <Resume />,
+				element: <MyResume />,
 			},
 			{
 				path: 'ai',
