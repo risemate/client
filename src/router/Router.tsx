@@ -4,6 +4,7 @@ import CaochInfo from 'pages/CoachInfo';
 import Experts from 'pages/Experts';
 import Home from 'pages/Home';
 import MyInfoPage from 'pages/MyInfo';
+import MyResume from 'pages/MyResume';
 import Network from 'pages/Network';
 import NotFound from 'pages/NotFound';
 import { createBrowserRouter } from 'react-router-dom';
@@ -60,12 +61,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: 'resumes',
-				element: <
-        
-        
-        
-        
-        />,
+				element: <MyResume />,
 			},
 			{
 				path: 'ai',
