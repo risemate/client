@@ -15,7 +15,7 @@ import Payment from '../common/Payment';
 import Review from '../common/Review';
 
 export default function CoachInfoDetail() {
-	const { queryParam, changeParam } = useShearchParam('mode');
+	const { queryParam } = useShearchParam('mode');
 
 	return (
 		<>

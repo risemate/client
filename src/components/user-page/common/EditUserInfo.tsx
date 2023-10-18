@@ -1,5 +1,5 @@
 import useInput from '@hooks/useInput';
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import styled from 'styled-components';
 
 import Button from '@common/Button';

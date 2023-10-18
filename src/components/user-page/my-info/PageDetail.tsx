@@ -2,17 +2,11 @@ import { useShearchParam } from '@hooks/useShearchParams';
 import { IconCheck, IconCoin, IconComment, IconProceeding } from '@icons';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { MyPageMode } from 'types/Page';
 
 import EditUserInfo from '../common/EditUserInfo';
 import PageItem from '../common/PageItem';
 import Payment from '../common/Payment';
 import Review from '../common/Review';
-
-interface PageDetailProps {
-	page: 'myinfo' | 'coach-info';
-	changeMode: (newMode: MyPageMode) => void;
-}
 
 export default function MyInfoDetail() {
 	const { queryParam, changeParam } = useShearchParam('mode');

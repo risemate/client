@@ -1,20 +1,15 @@
 import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { MyPageMode } from 'types/Page';
 
 import CoachInfoDetail from '@components/user-page/coach-info/PageDetail';
 import EditUserInfo from '@components/user-page/common/EditUserInfo';
 import Payment from '@components/user-page/common/Payment';
 import Review from '@components/user-page/common/Review';
-import MyInfoDetail from '@components/user-page/my-info/PageDetail';
 import UserInfo from '@components/user-page/my-info/UserInfo';
 
 export default function CaochInfo() {
-	const [searchParams, setSearchParams] = useSearchParams('');
+	const [searchParams] = useSearchParams('');
 	const mode = searchParams.get('mode');
-	const changeMode = (newMode: MyPageMode) => {
-		setSearchParams({ mode: newMode });
-	};
 
 	return (
 		<StyledPage className='border'>

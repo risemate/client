@@ -1,14 +1,8 @@
 import { useShearchParam } from '@hooks/useShearchParams';
 import styled, { css } from 'styled-components';
-import { MyPageMode } from 'types/Page';
 
 import Button from '@common/Button';
 import DefaultImage from '@common/DefaultImage';
-
-interface UserInfoProps {
-	page: 'myinfo' | 'coach-info';
-	changeMode: (newMode: MyPageMode) => void;
-}
 
 export default function UserInfo() {
 	const { changeParam } = useShearchParam('mode');
