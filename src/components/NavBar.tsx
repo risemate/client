@@ -47,7 +47,7 @@ export default function NavBar() {
 				<StyledMyPage>
 					{auth ? (
 						<>
-							{isExpert && <Link to='/coaching'>코칭 관리</Link>}
+							{isExpert && <Link to='/coach-info'>코칭 관리</Link>}
 							<button
 								type='button'
 								className={hasNewAlarm ? 'alert' : undefined}
@@ -57,7 +57,7 @@ export default function NavBar() {
 								<IconBell />
 							</button>
 							{isAlarmOpen && <Alarm closeAlarm={closeAlarm} btnAlarmRef={btnAlarmRef} />}
-							<button type='button' onClick={() => navigate('/mypage')}>
+							<button type='button' onClick={() => navigate('/myinfo')}>
 								<IconCircleUser />
 							</button>
 						</>
