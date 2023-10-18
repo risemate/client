@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import MyInfoDetail from '@components/user-page/my-info/PageDetail';
+import MyInfoDetail from '@components/user-page/my-info/MyInfoDetail';
 import UserInfo from '@components/user-page/my-info/UserInfo';
 
 export default function MyInfoPage() {

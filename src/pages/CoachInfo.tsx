@@ -1,10 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-import CoachInfoDetail from '@components/user-page/coach-info/PageDetail';
-import EditUserInfo from '@components/user-page/common/EditUserInfo';
-import Payment from '@components/user-page/common/Payment';
-import Review from '@components/user-page/common/Review';
+import CoachInfoDetail from '@components/user-page/coach-info/CoachInfoDetail';
 import UserInfo from '@components/user-page/my-info/UserInfo';
 
 export default function CoachInfo() {
@@ -15,9 +12,6 @@ export default function CoachInfo() {
 		<StyledPage className='border'>
 			<UserInfo />
 			{<CoachInfoDetail />}
-			{mode === 'edit' && <EditUserInfo />}
-			{mode === 'payment' && <Payment />}
-			{mode === 'review' && <Review />}
 		</StyledPage>
 	);
 }
