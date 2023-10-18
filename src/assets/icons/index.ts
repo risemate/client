@@ -11,5 +11,5 @@ export { FcGoogle as IconGoogle } from 'react-icons/fc';
 export { IoCloseSharp as IconCloseSharp } from 'react-icons/io5';
 export { SiNaver as IconNaver } from 'react-icons/si';
 export { BiSolidDollarCircle as IconCoin } from 'react-icons/bi';
-export { MdComment as IconComment } from 'react-icons/md';
+export { MdComment as IconComment, MdOutlineAddCircle as IconAdd } from 'react-icons/md';
 export { AiFillCheckCircle as IconCheck } from 'react-icons/ai';

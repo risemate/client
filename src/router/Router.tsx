@@ -6,7 +6,6 @@ import Home from 'pages/Home';
 import MyInfoPage from 'pages/MyInfo';
 import Network from 'pages/Network';
 import NotFound from 'pages/NotFound';
-import Resume from 'pages/Resume';
 import { createBrowserRouter } from 'react-router-dom';
 
 import { signLoader } from './loader';
@@ -61,7 +60,12 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: 'resumes',
-				element: <Resume />,
+				element: <
+        
+        
+        
+        
+        />,
 			},
 			{
 				path: 'ai',
