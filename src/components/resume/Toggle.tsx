@@ -2,53 +2,32 @@ import React, { ChangeEvent } from 'react';
 import styled from 'styled-components';
 
 interface ToggleProps {
-	size?: 'full';
-	toggleItems: {
-		name: string;
-		checked: boolean;
-		onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-	}[];
+	name: string;
+	checked: boolean;
+	onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function Toggle({ size, toggleItems }: ToggleProps) {
+export default function Toggle({ name, checked, onChange }: ToggleProps) {
 	return (
-		<StyledToggle $size={size}>
-			{toggleItems.map((item, index) => {
-				return (
-					<label key={index}>
-						<span>{item.name}</span>
-						<input
-							role='switch'
-							type='checkbox'
-							checked={item.checked}
-							onChange={item.onChange}
-						/>
-					</label>
-				);
-			})}
+		<StyledToggle>
+			<span>{name}</span>
+			<input role='switch' type='checkbox' checked={checked} onChange={onChange} />
 		</StyledToggle>
 	);
 }
 
-const StyledToggle = styled.article<{ $size?: 'full' }>`
-	background: ${({ theme }) => theme.colors.lightGrey};
-	display: ${({ $size }) => ($size === 'full' ? 'block' : 'inline-block')};
-	text-align: ${({ $size }) => ($size === 'full' ? 'center' : 'start')};
-	border-radius: 10px;
-	padding: 5px 20px;
-	label {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.5rem;
-		cursor: pointer;
-		span {
-			font-size: ${({ theme }) => theme.fontSizes.small};
-			color: ${({ theme }) => theme.colors.darkGrey};
-		}
-		&:not(:last-child) {
-			margin-right: 20px;
-		}
+const StyledToggle = styled.label`
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	cursor: pointer;
+	span {
+		font-size: ${({ theme }) => theme.fontSizes.small};
+		color: ${({ theme }) => theme.colors.darkGrey};
+	}
+	&:not(:last-child) {
+		margin-right: 20px;
 	}
 	[type='checkbox'] {
 		appearance: none;

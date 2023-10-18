@@ -17,15 +17,6 @@ export default function ResumeCard() {
 		setContactCheck(event.target.checked);
 	};
 
-	const resumeToggle = [
-		{ name: '게시물 공개', checked: postCheck, onChange: changePostCheck },
-		{ name: '연락처 공개', checked: contactCheck, onChange: changeContactCheck },
-	];
-	// eslint-disable-next-line
-	const coverToggle = [
-		{ name: '게시물 공개', checked: postCheck, onChange: changePostCheck },
-	];
-
 	return (
 		<StyledResumeCard>
 			<div>
@@ -44,8 +35,10 @@ export default function ResumeCard() {
 				전문가 첨삭 이력서
 			</Button>
 			{/* <p>아직 전문가 첨삭이 없습니다.</p> */}
-			<Toggle size='full' toggleItems={resumeToggle} />
-			{/* <Toggle toggleItems={coverToggle} /> */}
+			<div className='toggle-wrapper'>
+				<Toggle name='게시물 공개' checked={postCheck} onChange={changePostCheck} />
+				<Toggle name='연락처 공개' checked={contactCheck} onChange={changeContactCheck} />
+			</div>
 		</StyledResumeCard>
 	);
 }
@@ -82,5 +75,11 @@ const StyledResumeCard = styled.div`
 		font-size: ${({ theme }) => theme.fontSizes.small};
 		color: ${({ theme }) => theme.colors.darkGrey};
 		padding: 13.2px;
+	}
+	.toggle-wrapper {
+		background: ${({ theme }) => theme.colors.lightGrey};
+		width: fit-content;
+		border-radius: 10px;
+		padding: 5px 20px;
 	}
 `;
