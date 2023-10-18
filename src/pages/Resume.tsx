@@ -1,16 +1,14 @@
 import { isEmpty } from '@utils/helpers';
 import React from 'react';
 import styled from 'styled-components';
-import { Resume } from 'types/Resume';
+import { Resume as ResumeType } from 'types/Resume';
 
 import Empty from '@common/Empty';
-import ResumeNav from '@common/ResumeNav';
-import AddResume from '@components/resume/AddResume';
-import ResumeCard from '@components/resume/ResumeCard';
+import ResumeCard from '@components/resume/resume-home//ResumeCard';
+import AddResume from '@components/resume/resume-home/AddResume';
 
-export default function MyResume() {
-	// const resume: Resume[] = [];
-	const resumes: Resume[] = [
+export default function Resume() {
+	const resumes: ResumeType[] = [
 		{
 			_id: 289193,
 			resumeTitle: '저...세상으로 가는 개발자',
@@ -184,11 +182,7 @@ export default function MyResume() {
 			lookingForJob: true, //구직 유무
 		},
 	];
-	const resumeNavItems = [
-		{ name: '이력서 작성', onClick: () => alert('hi') },
-		{ name: '이력서 수정', onClick: () => alert('hi') },
-		{ name: '이력서 작성', onClick: () => alert('hi') },
-	];
+
 	return (
 		<>
 			<h2 className='a11y-hidden'>나의 이력서</h2>
@@ -212,7 +206,6 @@ export default function MyResume() {
 					</StyledList>
 				</section>
 			</StyledResume>
-			<ResumeNav resumeNavItems={resumeNavItems} />
 		</>
 	);
 }
@@ -234,7 +227,6 @@ const StyledResume = styled.div`
 			margin-bottom: 70px;
 		}
 	}
-	/* overflow-x: scroll; */
 `;
 
 const StyledList = styled.ul`

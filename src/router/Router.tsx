@@ -4,9 +4,10 @@ import CoachInfo from 'pages/CoachInfo';
 import Experts from 'pages/Experts';
 import Home from 'pages/Home';
 import MyInfoPage from 'pages/MyInfo';
-import MyResume from 'pages/MyResume';
 import Network from 'pages/Network';
 import NotFound from 'pages/NotFound';
+import Resume from 'pages/Resume';
+import ResumeView from 'pages/ResumeView';
 import { createBrowserRouter } from 'react-router-dom';
 
 import { signLoader } from './loader';
@@ -61,7 +62,16 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: 'resumes',
-				element: <MyResume />,
+				children: [
+					{
+						index: true,
+						element: <Resume />,
+					},
+					{
+						path: '/resumes:id',
+						element: <ResumeView />,
+					},
+				],
 			},
 			{
 				path: 'ai',
