@@ -14,7 +14,7 @@ interface DefaultImageProps {
 
 export default function DefaultImage({ variant, size, shape }: DefaultImageProps) {
 	return (
-		<StyledDefaultImage variant={variant} size={size} shape={shape}>
+		<StyledDefaultImage variant={variant} size={size} shape={shape} className='img'>
 			<img src={logoIconMono} alt='' />
 		</StyledDefaultImage>
 	);
@@ -59,8 +59,9 @@ const sizeStyle = css<Props>`
 			case 'medium':
 				return css`
 					padding: 30px;
+					width: 210px;
 					img {
-						width: 155px;
+						width: 110px;
 					}
 				`;
 			default:
