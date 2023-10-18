@@ -1,4 +1,4 @@
-import React from 'react';
+import { useShearchParam } from '@hooks/useShearchParams';
 import styled, { css } from 'styled-components';
 import { MyPageMode } from 'types/Page';
 
@@ -6,12 +6,13 @@ import Button from '@common/Button';
 import DefaultImage from '@common/DefaultImage';
 
 interface UserInfoProps {
-	page: 'mypage' | 'coaching';
+	page: 'myinfo' | 'coach-info';
 	changeMode: (newMode: MyPageMode) => void;
 }
 
-// eslint-disable-next-line
-export default function UserInfo({ page, changeMode }: UserInfoProps) {
+export default function UserInfo() {
+	const { changeParam } = useShearchParam('mode');
+
 	return (
 		<StyledUserInfo>
 			<div className='user-wrapper'>
@@ -23,7 +24,7 @@ export default function UserInfo({ page, changeMode }: UserInfoProps) {
 						<span className='nickname'>길동이시다</span>
 					</h2>
 				</div>
-				<button type='button' onClick={() => changeMode('edit')}>
+				<button type='button' onClick={() => changeParam('edit')}>
 					사용자 정보 수정하기 {'>'}
 				</button>
 			</div>

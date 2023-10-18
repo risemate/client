@@ -1,15 +1,15 @@
-import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { MyPageMode } from 'types/Page';
 
-import EditUserInfo from '@components/mypage/EditUserInfo';
-import Payment from '@components/mypage/Payment';
-import Review from '@components/mypage/Review';
-import PageDetail from '@components/userpage/PageDetail';
-import UserInfo from '@components/userpage/UserInfo';
+import CoachInfoDetail from '@components/user-page/coach-info/PageDetail';
+import EditUserInfo from '@components/user-page/common/EditUserInfo';
+import Payment from '@components/user-page/common/Payment';
+import Review from '@components/user-page/common/Review';
+import MyInfoDetail from '@components/user-page/my-info/PageDetail';
+import UserInfo from '@components/user-page/my-info/UserInfo';
 
-export default function MyPage() {
+export default function CaochInfo() {
 	const [searchParams, setSearchParams] = useSearchParams('');
 	const mode = searchParams.get('mode');
 	const changeMode = (newMode: MyPageMode) => {
@@ -18,8 +18,8 @@ export default function MyPage() {
 
 	return (
 		<StyledPage className='border'>
-			<UserInfo page='mypage' changeMode={changeMode} />
-			{mode === null && <PageDetail page='mypage' changeMode={changeMode} />}
+			<UserInfo />
+			{<CoachInfoDetail />}
 			{mode === 'edit' && <EditUserInfo />}
 			{mode === 'payment' && <Payment />}
 			{mode === 'review' && <Review />}
