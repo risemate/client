@@ -7,7 +7,7 @@ import Payment from '@components/user-page/common/Payment';
 import Review from '@components/user-page/common/Review';
 import UserInfo from '@components/user-page/my-info/UserInfo';
 
-export default function CaochInfo() {
+export default function CoachInfo() {
 	const [searchParams] = useSearchParams('');
 	const mode = searchParams.get('mode');
 

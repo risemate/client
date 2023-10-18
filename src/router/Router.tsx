@@ -1,6 +1,6 @@
 import RootLayout from 'layout/RootLayout';
 import UserLayout from 'layout/UserLayout';
-import CaochInfo from 'pages/CoachInfo';
+import CoachInfo from 'pages/CoachInfo';
 import Experts from 'pages/Experts';
 import Home from 'pages/Home';
 import MyInfoPage from 'pages/MyInfo';
@@ -69,7 +69,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: 'coach-info',
-				element: <CaochInfo />,
+				element: <CoachInfo />,
 			},
 		],
 		loader: signLoader,
