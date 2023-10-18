@@ -32,6 +32,20 @@ export default function Alarm({ closeAlarm, btnAlarmRef }: AlarmProps) {
 			time: '2023.09.22 (금)',
 			isRead: false,
 		},
+		{
+			title: '이력서 첨삭 요청',
+			content:
+				'@000 님에게 이력서 첨삭 요청이 왔습니다. 2일 이상 미응답시 자동 거절 처리됩니다. ',
+			time: '2023.09.22 (금)',
+			isRead: false,
+		},
+		{
+			title: '이력서 첨삭 요청',
+			content:
+				'@000 님에게 이력서 첨삭 요청이 왔습니다. 2일 이상 미응답시 자동 거절 처리됩니다. ',
+			time: '2023.09.22 (금)',
+			isRead: false,
+		},
 	];
 	useEffect(() => {
 		function alarmOutsideClick(event: MouseEvent) {
@@ -76,9 +90,14 @@ export default function Alarm({ closeAlarm, btnAlarmRef }: AlarmProps) {
 	);
 }
 
-const StyledAlarm = styled.div`
+const StyledAlarm = styled.article`
 	position: absolute;
-	overflow: scroll;
+	overflow-y: scroll;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	&::-webkit-scrollbar {
+		display: none;
+	}
 	top: 85px;
 	right: 0;
 	width: 375px;
@@ -86,8 +105,8 @@ const StyledAlarm = styled.div`
 	padding: 30px;
 	flex-shrink: 0;
 	border-radius: 10px;
-	border: 1px solid var(--grey, #cfcfcf);
-	background: var(--white, #fff);
+	border: 1px solid ${({ theme }) => theme.colors.grey};
+	background: ${({ theme }) => theme.colors.white};
 	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
 	z-index: 100;
 	& > label {
