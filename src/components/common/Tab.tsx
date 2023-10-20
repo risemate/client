@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
 interface TabProps {
-	menus: string[];
+	items: string[];
 	center?: boolean;
 	underline?: boolean;
-	changeTab: (menu: string) => void;
-	isCurrentTab: (menu: string) => boolean;
+	changeTab: (item: string) => void;
+	isCurrentTab: (item: string) => boolean;
 }
 
 export default function Tab({
-	menus,
+	items,
 	center,
 	underline,
 	changeTab,
@@ -17,14 +17,14 @@ export default function Tab({
 }: TabProps) {
 	return (
 		<StyledTab $center={center} $underline={underline}>
-			{menus.map(menu => {
+			{items.map(item => {
 				return (
-					<li key={menu}>
+					<li key={item}>
 						<StyledButton
-							className={isCurrentTab(menu) ? 'active' : undefined}
-							onClick={() => changeTab(menu)}
+							className={isCurrentTab(item) ? 'active' : undefined}
+							onClick={() => changeTab(item)}
 						>
-							{menu}
+							{item}
 						</StyledButton>
 					</li>
 				);

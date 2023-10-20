@@ -15,8 +15,8 @@ interface BannerProps {
 
 export default function Banner({ variant, children }: BannerProps) {
 	const navigate = useNavigate();
-	const menus = ['전체', '이력서', '자기소개서', '입시자소서'];
-	const { changeTab, isCurrentTab } = useTab(menus);
+	const tabItems = ['전체', '이력서', '자기소개서', '입시자소서'];
+	const { changeTab, isCurrentTab } = useTab(tabItems);
 	return (
 		<StyledBanner variant={variant}>
 			{variant === 'home' && (
@@ -34,7 +34,12 @@ export default function Banner({ variant, children }: BannerProps) {
 				<>
 					{children}
 					{variant === 'tab' && (
-						<Tab menus={menus} changeTab={changeTab} isCurrentTab={isCurrentTab} center />
+						<Tab
+							items={tabItems}
+							changeTab={changeTab}
+							isCurrentTab={isCurrentTab}
+							center
+						/>
 					)}
 				</>
 			)}

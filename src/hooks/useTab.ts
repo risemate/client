@@ -1,14 +1,14 @@
 import { useState } from 'react';
 
-export default function useTab(menus: string[]) {
-	const [currentTab, setCurrentTab] = useState(menus[0]);
+export default function useTab(items: string[]) {
+	const [currentTab, setCurrentTab] = useState(items[0]);
 
-	const changeTab = (menu: string) => {
-		setCurrentTab(menu);
+	const changeTab = (item: string) => {
+		setCurrentTab(item);
 	};
 
-	const isCurrentTab = (menu: string) => {
-		return currentTab === menu ? true : false;
+	const isCurrentTab = (item: string) => {
+		return currentTab === item ? true : false;
 	};
 
 	return { currentTab, changeTab, isCurrentTab };
