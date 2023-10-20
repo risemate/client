@@ -30,7 +30,7 @@ type Link = {
 	linkUrl: string;
 };
 
-type WorkExperience = {
+export type WorkExperience = {
 	companyName: string;
 	departmentName: string;
 	role: string;
@@ -42,7 +42,7 @@ type WorkExperience = {
 	links: Link[];
 };
 
-type Project = {
+export type Project = {
 	projectName: string;
 	summaryIntro: string; // 오타 수정: summaryintro -> projectSummaryIntro
 	projectStartedAt: string; // 날짜 형식으로 변경 필요
@@ -53,7 +53,7 @@ type Project = {
 	links: Link[];
 };
 
-type Education = {
+export type Education = {
 	schoolName: string;
 	major: string;
 	graduationStatus: 'ATTEND' | 'GRADUATED' | '중도 퇴학' | '기타'; // 다른 상태가 있을 수 있습니다.
@@ -62,7 +62,7 @@ type Education = {
 	links: Link[];
 };
 
-type Activity = {
+export type Activity = {
 	activityName: string;
 	activityYear: number;
 	activityDescription: string;

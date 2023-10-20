@@ -2,16 +2,17 @@ import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import CoachInfoDetail from '@components/user-page/coach-info/CoachInfoDetail';
-import UserInfo from '@components/user-page/my-info/UserInfo';
+import CoachProfile from '@components/user-page/coach-info/CoachProfile';
 
 export default function CoachInfo() {
 	const [searchParams] = useSearchParams('');
+	// eslint-disable-next-line
 	const mode = searchParams.get('mode');
 
 	return (
 		<StyledPage className='border'>
-			<UserInfo />
-			{<CoachInfoDetail />}
+			<CoachProfile />
+			<CoachInfoDetail />
 		</StyledPage>
 	);
 }
@@ -24,12 +25,6 @@ const StyledPage = styled.div`
 	section:nth-child(2) {
 		width: calc(100% - 250px);
 		margin-left: 50px;
-	}
-	section > h3 {
-		font-weight: bold;
-		color: ${({ theme }) => theme.colors.navy};
-		padding-bottom: 15px;
-		border-bottom: 1px solid ${({ theme }) => theme.colors.grey};
 	}
 	@media screen and (max-width: 990px) {
 		flex-direction: column;

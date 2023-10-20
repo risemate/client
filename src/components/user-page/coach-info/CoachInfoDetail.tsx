@@ -7,24 +7,30 @@ import {
 	IconQuestion,
 	IconWaiting,
 } from '@icons';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import EditUserInfo from '../common/EditUserInfo';
+import Empty from '@common/Empty';
+
 import PageItem from '../common/PageItem';
-import Payment from '../common/Payment';
-import Review from '../common/Review';
+import Withdraw from './Withdraw';
 
 export default function CoachInfoDetail() {
-	const { queryParam } = useShearchParam('mode');
-
+	const { queryParam, changeParam } = useShearchParam('mode');
+	const hasPost = true;
+	const navigate = useNavigate();
 	return (
 		<>
-			{!queryParam && (
+			{!hasPost && <Empty name='게시물이' moveToLink={() => navigate('/edit')} />}
+			{hasPost && !queryParam && (
 				<StyledPageDetail>
 					<div>
 						<PageItem
 							items={[{ name: '보유 캐시', icon: <IconCoin />, state: '100,000' }]}
-							buttonEvent={{ name: '출금 요청하기', onClick: () => alert('hello') }}
+							buttonEvent={{
+								name: '출금 요청하기',
+								onClick: () => changeParam('withdraw'),
+							}}
 						/>
 						<PageItem
 							items={[{ name: '후기', icon: <IconComment />, state: '100개' }]}
@@ -42,15 +48,15 @@ export default function CoachInfoDetail() {
 								{ name: '진행 중', icon: <IconProceeding />, state: '10개' },
 								{ name: '완료', icon: <IconCheck />, state: '10개' },
 							]}
-							buttonEvent={{ name: '페이지로 이동', onClick: () => alert('hello') }}
+							buttonEvent={{
+								name: '코칭 관리하기',
+								onClick: () => navigate('/coach-management'),
+							}}
 						/>
 					</div>
 				</StyledPageDetail>
 			)}
-
-			{queryParam === 'edit' && <EditUserInfo />}
-			{queryParam === 'payment' && <Payment />}
-			{queryParam === 'review' && <Review />}
+			{queryParam === 'withdraw' && <Withdraw />}
 		</>
 	);
 }

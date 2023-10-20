@@ -1,8 +1,4 @@
-export {
-	FaBell as IconBell,
-	FaHourglassHalf as IconProceeding,
-	FaQuestionCircle as IconQuestion,
-} from 'react-icons/fa';
+export { FaBell as IconBell, FaHourglassHalf as IconProceeding } from 'react-icons/fa';
 export {
 	FaCircleUser as IconCircleUser,
 	FaHourglass as IconWaiting,
@@ -13,3 +9,4 @@ export { SiNaver as IconNaver } from 'react-icons/si';
 export { BiSolidDollarCircle as IconCoin } from 'react-icons/bi';
 export { MdComment as IconComment, MdOutlineAddCircle as IconAdd } from 'react-icons/md';
 export { AiFillCheckCircle as IconCheck } from 'react-icons/ai';
+export { HiMiniQuestionMarkCircle as IconQuestion } from 'react-icons/hi2';
