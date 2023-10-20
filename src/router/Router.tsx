@@ -1,6 +1,7 @@
 import RootLayout from 'layout/RootLayout';
 import UserLayout from 'layout/UserLayout';
 import CoachInfo from 'pages/CoachInfo';
+import CoachManagement from 'pages/CoachManagement';
 import Experts from 'pages/Experts';
 import Home from 'pages/Home';
 import MyInfoPage from 'pages/MyInfo';
@@ -80,6 +81,10 @@ export const router = createBrowserRouter([
 			{
 				path: 'coach-info',
 				element: <CoachInfo />,
+			},
+			{
+				path: 'coach-management',
+				element: <CoachManagement />,
 			},
 		],
 		loader: signLoader,

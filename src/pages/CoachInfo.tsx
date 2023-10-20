@@ -1,14 +1,9 @@
-import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import CoachInfoDetail from '@components/user-page/coach-info/CoachInfoDetail';
 import CoachProfile from '@components/user-page/coach-info/CoachProfile';
 
 export default function CoachInfo() {
-	const [searchParams] = useSearchParams('');
-	// eslint-disable-next-line
-	const mode = searchParams.get('mode');
-
 	return (
 		<StyledPage className='border'>
 			<CoachProfile />
