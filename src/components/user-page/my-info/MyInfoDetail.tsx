@@ -1,4 +1,4 @@
-import { useShearchParam } from '@hooks/useShearchParams';
+import { useSearchParam } from '@hooks/useSearchParam';
 import { IconCheck, IconCoin, IconComment, IconProceeding } from '@icons';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -9,7 +9,7 @@ import Payment from '../common/Payment';
 import Review from '../common/Review';
 
 export default function MyInfoDetail() {
-	const { queryParam, changeParam } = useShearchParam('mode');
+	const { queryParam, changeParam } = useSearchParam('mode');
 	const navigate = useNavigate();
 
 	return (

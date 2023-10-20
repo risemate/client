@@ -1,4 +1,4 @@
-import { useShearchParam } from '@hooks/useShearchParams';
+import { useSearchParam } from '@hooks/useSearchParam';
 import {
 	IconCheck,
 	IconCoin,
@@ -16,7 +16,7 @@ import PageItem from '../common/PageItem';
 import Withdraw from './Withdraw';
 
 export default function CoachInfoDetail() {
-	const { queryParam, changeParam } = useShearchParam('mode');
+	const { queryParam, changeParam } = useSearchParam('mode');
 	const hasPost = true;
 	const navigate = useNavigate();
 	return (

@@ -1,4 +1,4 @@
-import { useShearchParam } from '@hooks/useShearchParams';
+import { useSearchParam } from '@hooks/useSearchParam';
 import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
@@ -6,7 +6,7 @@ import Button from '@common/Button';
 import DefaultImage from '@common/DefaultImage';
 
 export default function UserProfile() {
-	const { changeParam } = useShearchParam('mode');
+	const { changeParam } = useSearchParam('mode');
 	const navigate = useNavigate();
 	const isExpert = true;
 	return (
