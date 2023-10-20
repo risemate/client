@@ -30,8 +30,9 @@ const StyledSection = styled.section`
 		width: 50px;
 		height: 50px;
 	}
-	h2 {
+	h3 {
 		font-size: ${({ theme }) => theme.fontSizes.medium};
+		color: ${({ theme }) => theme.colors.navy};
 		font-weight: bold;
 	}
 `;
