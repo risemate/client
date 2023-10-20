@@ -39,7 +39,7 @@ const StyledCardItem = styled.button`
 	min-width: 200px;
 	border-radius: 10px;
 	border: 1px solid ${({ theme }) => theme.colors.lightGrey};
-	background: ${({ theme }) => theme.colors.white};
+	background: white;
 	padding: 45px 20px 50px;
 	position: relative;
 	text-align: start;
@@ -49,7 +49,7 @@ const StyledCardItem = styled.button`
 		filter: brightness(0.96);
 	}
 	.tag {
-		color: ${({ theme }) => theme.colors.white};
+		color: white;
 		font-weight: bold;
 		font-size: ${({ theme }) => theme.fontSizes.small};
 		background: ${({ theme }) => theme.colors.blue};

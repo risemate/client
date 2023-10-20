@@ -45,7 +45,7 @@ const StyledLayout = styled.main`
 			margin-bottom: 30px;
 		}
 		border-radius: 40px;
-		background: ${({ theme }) => theme.colors.white};
+		background: white;
 		box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
 		&.border {
 			border: 1px solid ${({ theme }) => theme.colors.navy};

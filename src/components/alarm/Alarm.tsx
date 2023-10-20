@@ -95,6 +95,7 @@ const StyledAlarm = styled.article`
 	overflow-y: scroll;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
+	color: white;
 	&::-webkit-scrollbar {
 		display: none;
 	}
@@ -106,7 +107,7 @@ const StyledAlarm = styled.article`
 	flex-shrink: 0;
 	border-radius: 10px;
 	border: 1px solid ${({ theme }) => theme.colors.grey};
-	background: ${({ theme }) => theme.colors.white};
+	background: white;
 	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
 	z-index: 100;
 	& > label {
@@ -141,7 +142,7 @@ const StyledRadio = styled.label`
 		width: 10px;
 		border-radius: 50%;
 		border: 1px solid ${({ theme }) => theme.colors.navy};
-		background-color: ${({ theme }) => theme.colors.white};
+		background-color: white;
 		&:after {
 			content: '';
 			position: absolute;

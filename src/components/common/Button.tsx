@@ -39,12 +39,12 @@ const variantStyle = css<Props>`
 				`;
 			case 'white':
 				return css`
-					background-color: ${colors.white};
+					background-color: white;
 					color: ${colors.navy};
 				`;
 			case 'border':
 				return css`
-					background-color: ${colors.white};
+					background-color: white;
 					color: ${colors.navy};
 					box-shadow: 0 0 0 2px ${colors.navy} inset;
 				`;
@@ -83,11 +83,11 @@ const StyledButton = styled.button<Props>`
 		padding: 10px 20px;
 		user-select: none;
 		border-radius: 50px;
-		color: ${theme.colors.white};
+		color: white;
 		transition: all 0.3s ease-out;
 		&:disabled {
 			box-shadow: none;
-			color: ${theme.colors.white};
+			color: white;
 			background-color: ${theme.colors.grey};
 			cursor: initial;
 		}

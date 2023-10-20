@@ -53,7 +53,7 @@ const homeStyle = css`
 	width: calc(100% - 64px);
 	max-width: 800px;
 	border-radius: 10px;
-	background: ${({ theme }) => theme.colors.white};
+	background: white;
 	box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
 	text-align: center;
 	padding: 30px 50px;

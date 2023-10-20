@@ -12,11 +12,9 @@ const colors = {
 	navy: '#313964',
 	blue: '#576EE7',
 	mint: '#67E0B2',
-	white: '#FFFFFF',
 	lightGrey: '#EEEEEE',
 	grey: '#CFCFCF',
 	darkGrey: '#767676',
-	black: '#000000',
 };
 
 const widths = {

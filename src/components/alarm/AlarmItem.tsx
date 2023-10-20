@@ -80,7 +80,7 @@ const StyledCheckbox = styled.label`
 		width: 15px;
 		border-radius: 10%;
 		border: 2px solid ${({ theme }) => theme.colors.mint};
-		background-color: ${({ theme }) => theme.colors.white};
+		background-color: white;
 		&:after {
 			content: '';
 			position: absolute;

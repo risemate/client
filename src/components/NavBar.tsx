@@ -45,7 +45,7 @@ export default function NavBar() {
 					})}
 				</StyledNavList>
 				<StyledMyPage>
-					{auth ? (
+					{!auth ? (
 						<>
 							{isExpert && <Link to='/coach-info'>코칭 관리</Link>}
 							<button
@@ -117,7 +117,7 @@ const StyledMyPage = styled.div`
 	align-items: center;
 	a {
 		background: ${({ theme }) => theme.colors.navy};
-		color: ${({ theme }) => theme.colors.white};
+		color: white;
 		font-weight: bold;
 		padding: 5px 10px;
 		border-radius: 30px;

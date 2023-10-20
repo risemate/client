@@ -79,7 +79,7 @@ const StyledButtonDiv = styled.div`
 		color: ${({ theme }) => theme.colors.darkGrey};
 	}
 	button:nth-child(2) {
-		color: ${({ theme }) => theme.colors.white};
+		color: white;
 		background: #56bc75;
 	}
 `;

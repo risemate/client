@@ -46,7 +46,7 @@ const StyledToggle = styled.label`
 		height: 20px;
 		border-radius: 50%;
 		transform: scale(0.8);
-		background-color: ${({ theme }) => theme.colors.white};
+		background-color: white;
 		transition: left 250ms linear;
 	}
 	[type='checkbox']:checked::before {
