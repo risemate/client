@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 import MyInfoDetail from '@components/user-page/my-info/MyInfoDetail';
-import UserInfo from '@components/user-page/my-info/UserInfo';
+import UserProfile from '@components/user-page/my-info/UserProfile';
 
 export default function MyInfoPage() {
 	return (
 		<StyledPage className='border'>
-			<UserInfo />
+			<UserProfile />
 			<MyInfoDetail />
 		</StyledPage>
 	);

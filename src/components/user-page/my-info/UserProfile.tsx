@@ -1,12 +1,14 @@
 import { useShearchParam } from '@hooks/useShearchParams';
+import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import Button from '@common/Button';
 import DefaultImage from '@common/DefaultImage';
 
-export default function UserInfo() {
+export default function UserProfile() {
 	const { changeParam } = useShearchParam('mode');
-
+	const navigate = useNavigate();
+	const isExpert = true;
 	return (
 		<StyledUserInfo>
 			<div className='user-wrapper'>
@@ -23,9 +25,15 @@ export default function UserInfo() {
 				</button>
 			</div>
 			<div className='btn-wrapper'>
-				<Button variant='navy' size='full'>
-					전문가 신청하기
-				</Button>
+				{isExpert ? (
+					<Button variant='navy' size='full' onClick={() => navigate('/coach-info')}>
+						전문가로 변환하기
+					</Button>
+				) : (
+					<Button variant='navy' size='full'>
+						전문가 신청하기
+					</Button>
+				)}
 				<Button variant='border' size='full'>
 					로그아웃
 				</Button>
@@ -38,13 +46,10 @@ const tabletSizeStyle = css`
 	@media screen and (max-width: 990px) {
 		max-width: 100%;
 		padding: 0 0 20px;
-		display: flex;
-		justify-content: space-between;
 		border-right: none;
 		border-bottom: 3px solid ${({ theme }) => theme.colors.navy};
-		.btn-wrapper {
-			margin: 0;
-		}
+		flex-direction: row;
+		align-items: end;
 	}
 `;
 
@@ -53,6 +58,9 @@ const StyledUserInfo = styled.section`
 	height: 100%;
 	padding-right: 50px;
 	border-right: 3px solid ${({ theme }) => theme.colors.navy};
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	.user-wrapper {
 		div {
 			display: flex;
@@ -75,7 +83,6 @@ const StyledUserInfo = styled.section`
 		}
 	}
 	.btn-wrapper {
-		margin-top: 245px;
 		button:first-child {
 			margin-bottom: 10px;
 		}
