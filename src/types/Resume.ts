@@ -23,6 +23,7 @@ export type Resume = {
 	entryLevel: boolean;
 	careerYears: number;
 	lookingForJob: boolean;
+	public: true;
 };
 
 type Link = {

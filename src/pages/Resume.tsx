@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { Resume as ResumeType } from 'types/Resume';
 
 import Empty from '@common/Empty';
-import ResumeCard from '@components/resume/resume-home//ResumeCard';
-import AddResume from '@components/resume/resume-home/AddResume';
+import AddResume from '@components/resume/resume-list/AddResume';
+import ResumeCard from '@components/resume/resume-list/ResumeCard';
 
 export default function Resume() {
 	const resumes: ResumeType[] = [
@@ -180,6 +180,7 @@ export default function Resume() {
 			entryLevel: false, //신입 여부
 			careerYears: 2, // 신입이면 경력이 0
 			lookingForJob: true, //구직 유무
+			public: true,
 		},
 	];
 
