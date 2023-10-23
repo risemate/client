@@ -1,19 +1,41 @@
-import GreyLayout from 'layout/GreyLayout';
 import { Outlet } from 'react-router-dom';
+import styled from 'styled-components';
 
 import NavBar from '@components/NavBar';
 
 import 'normalize.css';
 
-function UserLayout() {
+export default function UserLayout() {
 	return (
 		<>
 			<NavBar />
-			<GreyLayout>
+			<StyledLayout>
 				<Outlet />
-			</GreyLayout>
+			</StyledLayout>
 		</>
 	);
 }
 
-export default UserLayout;
+const StyledLayout = styled.main`
+	width: 100%;
+	${({ theme }) => theme.common.flexCenterColumn};
+	min-height: calc(100vh - 75px);
+	background: ${({ theme }) => theme.colors.lightGrey};
+	gap: 30px;
+	padding: 32px;
+	& > div,
+	& > section {
+		width: 100%;
+		max-width: calc(${({ theme }) => theme.widths.maxWidth} - 64px);
+		min-width: calc(${({ theme }) => theme.widths.minWidth} - 64px);
+		&:not(:last-child) {
+			margin-bottom: 30px;
+		}
+		border-radius: 40px;
+		background: white;
+		box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+		&.border {
+			border: 1px solid ${({ theme }) => theme.colors.navy};
+		}
+	}
+`;
