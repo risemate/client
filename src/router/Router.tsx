@@ -8,7 +8,7 @@ import MyInfoPage from 'pages/MyInfo';
 import Network from 'pages/Network';
 import NotFound from 'pages/NotFound';
 import Resume from 'pages/Resume';
-import ResumeView from 'pages/ResumeView';
+import ResumeDetail from 'pages/ResumeDetail';
 import { createBrowserRouter } from 'react-router-dom';
 
 import { signLoader } from './loader';
@@ -70,7 +70,7 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: '/resumes:id',
-						element: <ResumeView />,
+						element: <ResumeDetail />,
 					},
 				],
 			},

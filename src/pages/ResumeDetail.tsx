@@ -1,19 +1,15 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
 import { Resume as ResumeType } from 'types/Resume';
 
-import DefaultImage from '@common/DefaultImage';
-import ResumeNav from '@common/ResumeNav';
-import Projects from '@components/resume/resume-view/Projects';
-import WorkExperiences from '@components/resume/resume-view/WorkExperiences';
+import ResumeEdit from '@components/resume/resume-edit/ResumeEdit';
+import ResumeView from '@components/resume/resume-view/ResumeView';
 
-export default function ResumeView() {
-	const resumeNavItems = [
-		{ name: '이력서 수정', onClick: () => alert('hi') },
-		{ name: 'AI 첨삭 받기', onClick: () => alert('hi') },
-		{ name: '전문가 찾아보기', onClick: () => alert('hi') },
-	];
-	const resumes: ResumeType = {
+export default function ResumeDetail() {
+	const [mode, setMode] = useState<'view' | 'edit'>('view');
+	const changeMode = (newMode: 'view' | 'edit') => {
+		setMode(newMode);
+	};
+	const resume: ResumeType = {
 		_id: 289193,
 		resumeTitle: '저...세상으로 가는 개발자',
 		parentId: '', // BASIC 이력서 한개당 AI는 1개, COACHING은 여러개 일수 있다,  parentId를 공유한다.  BASIC은 parentId를 가질 수 없다.
@@ -184,114 +180,12 @@ export default function ResumeView() {
 		entryLevel: false, //신입 여부
 		careerYears: 2, // 신입이면 경력이 0
 		lookingForJob: true, //구직 유무
+		public: true,
 	};
 	return (
-		<StyledResume>
-			<StyledBasicSection>
-				<DefaultImage variant='navy' size='medium' />
-				<h2>
-					홍길동
-					<br />
-					<span>성장하는 프론트엔드 개발자</span>
-				</h2>
-				<ul className='list-contact'>
-					<li>
-						phone-number: <span>010-0000-0000</span>
-					</li>
-					<li>
-						GitHub: <span>github.com/hongildong</span>
-					</li>
-					<li>
-						email: <span>hongildon@gmail.com</span>
-					</li>
-					<li>
-						Blog: <span>velog.com/@hongildong</span>
-					</li>
-				</ul>
-				<p>
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia velit,
-					reiciendis quo sed recusandae maxime quas animi quam quibusdam est temporibus
-					fuga maiores. Vel temporibus corporis, maxime impedit eos ut!
-				</p>
-				<ul className='list-skills'>
-					<li>JavaScript</li>
-					<li>TypeScript</li>
-					<li>React</li>
-				</ul>
-			</StyledBasicSection>
-			<WorkExperiences workExperiences={resumes.workExperiences} />
-			<Projects projects={resumes.projects} />
-			<ResumeNav resumeNavItems={resumeNavItems} />
-		</StyledResume>
+		<>
+			{mode === 'view' && <ResumeView resume={resume} changeMode={changeMode} />}
+			{mode === 'edit' && <ResumeEdit resume={resume} changeMode={changeMode} />}
+		</>
 	);
 }
-
-const StyledResume = styled.div`
-	min-height: 500px;
-	height: calc(100vh - 300px);
-	padding: 50px;
-	section {
-		padding-bottom: 30px;
-		&:not(:last-child) {
-			border-bottom: 2px solid ${({ theme }) => theme.colors.navy};
-		}
-		h3 {
-			font-weight: bold;
-			color: ${({ theme }) => theme.colors.navy};
-			font-size: ${({ theme }) => theme.fontSizes.medium};
-			padding: 20px 0px;
-		}
-	}
-`;
-
-const StyledBasicSection = styled.section`
-	display: grid;
-	grid-template-columns: 210px calc(100% - 210px);
-	gap: 25px;
-	.img,
-	img {
-		grid-column: 1 / 2;
-		grid-row: 1 / 3;
-	}
-	h2 {
-		font-size: ${({ theme }) => theme.fontSizes.large};
-		font-weight: bold;
-		grid-column: 2 / 3;
-		grid-row: 1 / 2;
-		line-height: 40px;
-		span {
-			font-size: ${({ theme }) => theme.fontSizes.medium};
-			font-weight: normal;
-		}
-	}
-	ul.list-contact {
-		grid-row: 2 / 3;
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		li {
-			font-weight: bold;
-			span {
-				font-weight: 400;
-			}
-		}
-	}
-	p {
-		grid-column: 1 / 3;
-		line-height: 28px;
-	}
-	ul.list-skills {
-		width: fit-content;
-		display: flex;
-		gap: 10px;
-		grid-column: 1 / 3;
-		li {
-			width: fit-content;
-			background: ${({ theme }) => theme.colors.grey};
-			border-radius: 50px;
-			padding: 8px 15px;
-			color: white;
-			display: flex;
-			align-items: center;
-		}
-	}
-`;
