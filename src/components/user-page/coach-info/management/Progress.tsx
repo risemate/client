@@ -54,6 +54,7 @@ export default function Progress({ progress }: ProgressProps) {
 }
 
 const StyledProgress = styled.div`
+	/* overflow: hidden; */
 	.link-wrapper {
 		margin: 10px 0;
 		button {
@@ -80,7 +81,7 @@ const StyledProgress = styled.div`
 			}
 			&:not(:last-child):after {
 				content: '';
-				width: 130px;
+				width: 150px;
 				height: 10px;
 				display: inline-block;
 				position: absolute;
@@ -89,6 +90,11 @@ const StyledProgress = styled.div`
 			&:nth-of-type(3):after {
 				left: 150px;
 			}
+		}
+	}
+	@media screen and (max-width: 920px) {
+		.progress-bar p:not(:last-child):after {
+			width: 100px;
 		}
 	}
 `;
