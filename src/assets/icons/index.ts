@@ -1,4 +1,8 @@
-export { FaBell as IconBell, FaHourglassHalf as IconProceeding } from 'react-icons/fa';
+export {
+	FaBell as IconBell,
+	FaHourglassHalf as IconProceeding,
+	FaPlus as IconPlus,
+} from 'react-icons/fa';
 export {
 	FaCircleUser as IconCircleUser,
 	FaHourglass as IconWaiting,

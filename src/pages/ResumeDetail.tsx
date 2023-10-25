@@ -9,6 +9,33 @@ export default function ResumeDetail() {
 	const changeMode = (newMode: 'view' | 'edit') => {
 		setMode(newMode);
 	};
+	const defaultResume: ResumeType = {
+		_id: 0,
+		resumeTitle: '',
+		parentId: '',
+		resumeType: 'BASIC',
+		name: '',
+		job: '',
+		postion: '',
+		profileImage: '',
+		coverLetter: '',
+		techStack: {
+			skills: [],
+		},
+		workExperiences: [],
+		projects: [],
+		portfolio: {
+			links: [],
+			attachFiles: [],
+		},
+		educations: [],
+		activities: [],
+		careerStatus: false,
+		entryLevel: false,
+		careerYears: 0,
+		lookingForJob: true,
+		public: true,
+	};
 	const resume: ResumeType = {
 		_id: 289193,
 		resumeTitle: '저...세상으로 가는 개발자',
@@ -182,10 +209,13 @@ export default function ResumeDetail() {
 		lookingForJob: true, //구직 유무
 		public: true,
 	};
+
 	return (
 		<>
 			{mode === 'view' && <ResumeView resume={resume} changeMode={changeMode} />}
-			{mode === 'edit' && <ResumeEdit resume={resume} changeMode={changeMode} />}
+			{mode === 'edit' && (
+				<ResumeEdit initialResume={defaultResume} changeMode={changeMode} />
+			)}
 		</>
 	);
 }

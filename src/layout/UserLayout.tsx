@@ -27,6 +27,7 @@ const StyledLayout = styled.main`
 	& > section {
 		width: 100%;
 		max-width: calc(${({ theme }) => theme.widths.maxWidth} - 64px);
+		height: fit-content;
 		min-width: calc(${({ theme }) => theme.widths.minWidth} - 64px);
 		&:not(:last-child) {
 			margin-bottom: 30px;
@@ -37,5 +38,8 @@ const StyledLayout = styled.main`
 		&.border {
 			border: 1px solid ${({ theme }) => theme.colors.navy};
 		}
+	}
+	& > section {
+		min-width: 800px;
 	}
 `;
