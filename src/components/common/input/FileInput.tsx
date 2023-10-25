@@ -2,6 +2,7 @@ import { IconCloseSharp } from '@icons';
 import { isEmpty } from '@utils/helpers';
 import React, { useState, ChangeEvent } from 'react';
 import styled, { css } from 'styled-components';
+import { Resume } from 'types/Resume';
 
 import DefaultImage, { Size } from '@common/DefaultImage';
 
@@ -9,9 +10,15 @@ interface FileInputProps {
 	label?: string;
 	image: string;
 	size?: Size;
+	handleImageInput?: (field: keyof Resume, value: string | number) => void;
 }
 
-export default function FileInput({ label, image, size }: FileInputProps) {
+export default function FileInput({
+	label,
+	image,
+	size,
+	handleImageInput,
+}: FileInputProps) {
 	const [selectedImage, setSelectedImage] = useState(image);
 	const changeImage = (event: ChangeEvent<HTMLInputElement>) => {
 		const file = event.target?.files?.[0];
@@ -21,14 +28,19 @@ export default function FileInput({ label, image, size }: FileInputProps) {
 				const result = event.target?.result;
 				if (typeof result === 'string') {
 					setSelectedImage(result);
+					if (handleImageInput) {
+						handleImageInput('profileImage', result);
+					}
 				}
 			};
-
 			reader.readAsDataURL(file);
 		}
 	};
 	const resetImage = () => {
 		setSelectedImage('');
+		if (handleImageInput) {
+			handleImageInput('profileImage', '');
+		}
 	};
 	return (
 		<StyledFileInput $size={size}>
@@ -98,6 +110,9 @@ const StyledFileInput = styled.div<Props>`
 		& > div {
 			margin-top: 8px;
 		}
+	}
+	& > span {
+		font-size: ${({ theme }) => theme.fontSizes.tiny};
 	}
 	& > button {
 		position: absolute;

@@ -48,7 +48,7 @@ export default function EditUserInfo() {
 			<h3>사용자 정보 수정</h3>
 			{isSelfVerified ? (
 				<form onSubmit={changeUserInfo}>
-					<FileInput label='이미지' image={userInfo.image} />
+					<FileInput label='이미지' image={userInfo.image} size='small' />
 					<Input
 						label='본명'
 						warning='변경할 수 없습니다.'
