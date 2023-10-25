@@ -27,13 +27,23 @@ export default function ResumeEdit({ initialResume, changeMode }: ResumeEditProp
 		}));
 	};
 
+	const updateTechStack = (newSkills: string[]) => {
+		setResume(prevResume => ({
+			...prevResume,
+			techStack: {
+				...prevResume.techStack,
+				skills: newSkills,
+			},
+		}));
+	};
+
 	return (
 		<>
 			<h2 className='a11y-hidden'>
 				{isEmpty(resume.resumeTitle) ? '새로운 이력서' : resume.resumeTitle};
 			</h2>
 			<Profile profile={resume} handleInputChange={handleInputChange} />
-			<TechStack />
+			<TechStack techStack={resume.techStack.skills} updateTechStack={updateTechStack} />
 			<section></section>
 			<ResumeNav resumeNavItems={resumeNavItems} />
 		</>

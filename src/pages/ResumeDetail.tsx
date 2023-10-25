@@ -9,6 +9,7 @@ export default function ResumeDetail() {
 	const changeMode = (newMode: 'view' | 'edit') => {
 		setMode(newMode);
 	};
+	// eslint-disable-next-line
 	const defaultResume: ResumeType = {
 		_id: 0,
 		resumeTitle: '',
@@ -213,9 +214,7 @@ export default function ResumeDetail() {
 	return (
 		<>
 			{mode === 'view' && <ResumeView resume={resume} changeMode={changeMode} />}
-			{mode === 'edit' && (
-				<ResumeEdit initialResume={defaultResume} changeMode={changeMode} />
-			)}
+			{mode === 'edit' && <ResumeEdit initialResume={resume} changeMode={changeMode} />}
 		</>
 	);
 }

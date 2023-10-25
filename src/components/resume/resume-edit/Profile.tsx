@@ -91,7 +91,7 @@ const StyledProfile = styled.section`
 		gap: 30px;
 		align-items: end;
 		padding-bottom: 10px;
-		margin-bottom: 10px;
+		margin-bottom: 20px;
 		h3 {
 			color: ${({ theme }) => theme.colors.navy};
 			font-weight: bold;

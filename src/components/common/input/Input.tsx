@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	label: string;
-	width?: string;
 	warning?: string;
 	explanation?: string;
 	help?: boolean;
