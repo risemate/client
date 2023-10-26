@@ -92,7 +92,7 @@ const StyledButton = styled.button<Props>`
 			cursor: initial;
 		}
 	`}
-	&:hover {
+	&:not(:disabled):hover {
 		filter: brightness(0.9);
 	}
 	${variantStyle}
