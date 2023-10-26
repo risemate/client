@@ -1,7 +1,9 @@
 import { IconCloseSharp } from '@icons';
+import { isEmpty } from '@utils/helpers';
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import styled from 'styled-components';
 
+import Button from '@common/Button';
 import Input from '@common/input/Input';
 
 interface TechStackProps {
@@ -21,8 +23,9 @@ export default function TechStack({ techStack, updateTechStack }: TechStackProps
 		setStack('');
 	};
 
-	const removeTechStack = (removeStack: string) => {
-		const newTechStack = techStack.filter(stack => !stack.includes(removeStack));
+	const removeTechStack = (index: number) => {
+		const newTechStack = [...techStack];
+		newTechStack.splice(index, 1);
 		updateTechStack(newTechStack);
 	};
 	return (
@@ -30,13 +33,16 @@ export default function TechStack({ techStack, updateTechStack }: TechStackProps
 			<h3>기술 스택</h3>
 			<form onSubmit={event => addTechStack(event)}>
 				<Input label='기술 입력' value={stack} onChange={event => changeStack(event)} />
+				<Button variant='navy' size='small' type='submit' disabled={isEmpty(stack)}>
+					추가
+				</Button>
 			</form>
 			<ul>
 				{techStack.map((stack, index) => {
 					return (
 						<li key={index}>
 							{stack}
-							<button type='button' onClick={() => removeTechStack(stack)}>
+							<button type='button' onClick={() => removeTechStack(index)}>
 								<IconCloseSharp />
 							</button>
 						</li>
@@ -49,6 +55,16 @@ export default function TechStack({ techStack, updateTechStack }: TechStackProps
 
 const StyledTech = styled.section`
 	padding: 40px;
+	form {
+		position: relative;
+		button {
+			position: absolute;
+			top: 22px;
+			right: 0;
+			height: 35px;
+			border-radius: 0 10px 10px 0;
+		}
+	}
 	h3 {
 		color: ${({ theme }) => theme.colors.navy};
 		font-weight: bold;
