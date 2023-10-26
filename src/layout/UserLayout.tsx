@@ -21,7 +21,7 @@ const StyledLayout = styled.main`
 	${({ theme }) => theme.common.flexCenterColumn};
 	min-height: calc(100vh - 75px);
 	background: ${({ theme }) => theme.colors.lightGrey};
-	gap: 30px;
+	gap: 10px;
 	padding: 32px;
 	& > div,
 	& > section {
