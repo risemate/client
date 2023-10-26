@@ -13,7 +13,7 @@ interface LinkInputProps {
 }
 
 export default function LinkInput({ links, index, updateLinks }: LinkInputProps) {
-	const [initialLink, setInitialLink] = useState('[{linkTitle}]linkUrl');
+	const [initialLink, setInitialLink] = useState('[linkTitle](linkUrl)');
 	const linkToString = (link: LinkType) => {
 		return `${link.linkTitle}: ${link.linkUrl}`;
 	};
@@ -48,7 +48,7 @@ export default function LinkInput({ links, index, updateLinks }: LinkInputProps)
 		if (index !== undefined) {
 			updateLinks(index, 'links', newLinks);
 		}
-		setInitialLink('[{linkTitle}]linkUrl');
+		setInitialLink('[linkTitle](linkUrl)');
 	};
 
 	const deleteLink = (itemIdx: number) => {
@@ -65,7 +65,7 @@ export default function LinkInput({ links, index, updateLinks }: LinkInputProps)
 				<Input
 					label='Link'
 					type='text'
-					explanation='예시) [{Github}]https://www.github.com'
+					explanation='예시) [Github](https://www.github.com)'
 					value={initialLink}
 					onChange={changeLink}
 				/>
@@ -107,7 +107,7 @@ const StyledLink = styled.div`
 			width: fit-content;
 			background: ${({ theme }) => theme.colors.blue};
 			color: white;
-			padding: 7px;
+			padding: 7px 7px 7px 15px;
 			border-radius: 5px;
 			font-size: ${({ theme }) => theme.fontSizes.small};
 			display: flex;
