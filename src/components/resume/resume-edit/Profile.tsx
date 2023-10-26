@@ -1,15 +1,15 @@
 import { IconPlus } from '@icons';
 import React from 'react';
 import styled from 'styled-components';
-import { Resume } from 'types/Resume';
+import { Resume as ResumeType } from 'types/Resume';
 
 import FileInput from '@common/input/FileInput';
 import Input from '@common/input/Input';
 import TextArea from '@common/input/TextArea';
 
 interface ProfileProps {
-	profile: Resume;
-	handleInputChange: (field: keyof Resume, value: string | number) => void;
+	profile: ResumeType;
+	handleInputChange: (field: keyof ResumeType, value: string | number) => void;
 }
 
 export default function Profile({ profile, handleInputChange }: ProfileProps) {
@@ -77,10 +77,6 @@ export default function Profile({ profile, handleInputChange }: ProfileProps) {
 
 const StyledProfile = styled.section`
 	padding: 40px;
-	input {
-		font-weight: bold;
-		color: ${({ theme }) => theme.colors.darkGrey};
-	}
 	input::placeholder {
 		color: ${({ theme }) => theme.colors.grey};
 		font-weight: bold;
@@ -128,6 +124,8 @@ const StyledInputs = styled.div`
 		input {
 			width: 100%;
 			padding: 5px;
+			font-weight: bold;
+			color: ${({ theme }) => theme.colors.darkGrey};
 		}
 	}
 	.input-job {
@@ -137,6 +135,8 @@ const StyledInputs = styled.div`
 		input {
 			width: 100%;
 			padding: 5px;
+			font-weight: bold;
+			color: ${({ theme }) => theme.colors.darkGrey};
 		}
 	}
 	.contact-wrapper {
