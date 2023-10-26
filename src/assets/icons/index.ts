@@ -2,6 +2,7 @@ export {
 	FaBell as IconBell,
 	FaHourglassHalf as IconProceeding,
 	FaPlus as IconPlus,
+	FaTrash as IconTrash,
 } from 'react-icons/fa';
 export {
 	FaCircleUser as IconCircleUser,

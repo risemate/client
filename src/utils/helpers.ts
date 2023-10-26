@@ -17,3 +17,10 @@ export const isEmpty = (value: null | undefined | string | object): boolean => {
 
 	return false;
 };
+
+export const isKoreanSingleCharacter = (query: string) => {
+	const lastCharacter = query.charAt(query.length - 1);
+	if (lastCharacter === ' ') return true;
+	const pattern = /[ㄱ-ㅎㅏ-ㅣ]/;
+	return pattern.test(lastCharacter);
+};

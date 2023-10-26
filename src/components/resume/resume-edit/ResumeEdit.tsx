@@ -1,11 +1,12 @@
 import { isEmpty } from '@utils/helpers';
 import React, { useState } from 'react';
-import { Resume } from 'types/Resume';
+import { Resume, WorkExperience as WorkExperienceType } from 'types/Resume';
 
 import ResumeNav from '@common/ResumeNav';
 
 import Profile from './Profile';
 import TechStack from './TechStack';
+import WorkExperiences from './WorkExperiences';
 
 interface ResumeEditProps {
 	initialResume: Resume;
@@ -20,7 +21,10 @@ export default function ResumeEdit({ initialResume, changeMode }: ResumeEditProp
 	];
 
 	const [resume, setResume] = useState<Resume>(initialResume);
-	const handleInputChange = (field: keyof Resume, value: string | number) => {
+	const handleInputChange = (
+		field: keyof Resume,
+		value: string | number | WorkExperienceType[],
+	) => {
 		setResume(prevResume => ({
 			...prevResume,
 			[field]: value,
@@ -44,7 +48,10 @@ export default function ResumeEdit({ initialResume, changeMode }: ResumeEditProp
 			</h2>
 			<Profile profile={resume} handleInputChange={handleInputChange} />
 			<TechStack techStack={resume.techStack.skills} updateTechStack={updateTechStack} />
-			<section></section>
+			<WorkExperiences
+				workExperiences={resume.workExperiences}
+				handleInputChange={handleInputChange}
+			/>
 			<ResumeNav resumeNavItems={resumeNavItems} />
 		</>
 	);
