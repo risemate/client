@@ -1,34 +1,24 @@
-import { IconQuestion } from '@icons';
 import React, { InputHTMLAttributes } from 'react';
 import styled from 'styled-components';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-	label: string;
+	label?: string;
 	warning?: string;
 	explanation?: string;
-	help?: boolean;
 }
 
 export default function Input({
 	label,
 	warning,
 	explanation,
-	help,
 	...InputProps
 }: InputProps) {
 	return (
 		<StyledLabel>
-			<div>
-				<span>{label}</span>
-				{help && (
-					<p className='help'>
-						<IconQuestion />
-						<span>{explanation}</span>
-					</p>
-				)}
-			</div>
+			{label && <span>{label}</span>}
 			<input {...InputProps} />
 			{warning && <span className='warning'>{warning}</span>}
+			{explanation && <span>{explanation}</span>}
 		</StyledLabel>
 	);
 }
