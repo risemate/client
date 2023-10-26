@@ -26,17 +26,23 @@ export type Resume = {
 	public: true;
 };
 
-type Link = {
+export type Link = {
 	linkTitle: string;
 	linkUrl: string;
 };
+
+type JobType = '정규직' | '계약직' | '인턴' | '기타';
+export const JobType: JobType[] = ['정규직', '계약직', '인턴', '기타'];
+
+type EmploymentStatus = '재직 중' | '퇴직' | '기타';
+export const EmploymentStatus: EmploymentStatus[] = ['재직 중', '퇴직', '기타'];
 
 export type WorkExperience = {
 	companyName: string;
 	departmentName: string;
 	role: string;
-	jobType: '정규직' | '계약직'; // 또는 다른 유형 추가
-	employmentStatus: 'EMPLOYMENT' | 'RESIGNATION' | '기타'; // 다른 상태가 있을 수 있습니다.
+	jobType: JobType;
+	employmentStatus: EmploymentStatus;
 	workStartedAt: string; // 날짜 형식으로 변경 필요
 	workEndedAt: string; // 날짜 형식으로 변경 필요
 	assignedTask: string;

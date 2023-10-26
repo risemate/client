@@ -56,18 +56,18 @@ export default function ResumeDetail() {
 				departmentName: '기능개발',
 				role: '프론트엔드 개발자',
 				jobType: '정규직',
-				employmentStatus: 'EMPLOYMENT',
+				employmentStatus: '재직 중',
 				workStartedAt: '2018-10',
 				workEndedAt: '2020-10',
 				assignedTask: `- 이력서 작성 등록 기능 개발 -알림 확인 여부 기능 개발  -결제 기능 개발`,
 				links: [
 					{
 						linkTitle: '라메 기술 블로그',
-						linkUrl: 'https:',
+						linkUrl: 'https://velog.com',
 					},
 					{
 						linkTitle: '라메 기술 블로그',
-						linkUrl: 'https://',
+						linkUrl: 'https://velog.com',
 					},
 				],
 			},
@@ -76,18 +76,18 @@ export default function ResumeDetail() {
 				departmentName: '기능개발',
 				role: '프론트엔드 개발자',
 				jobType: '정규직',
-				employmentStatus: 'RESIGNATION',
+				employmentStatus: '퇴직',
 				workStartedAt: '2018-10',
 				workEndedAt: '2020-10',
 				assignedTask: `- 이력서 작성 등록 기능 개발 -알림 확인 여부 기능 개발  -결제 기능 개발`,
 				links: [
 					{
 						linkTitle: '라메 기술 블로그',
-						linkUrl: 'https:',
+						linkUrl: 'https://velog.com',
 					},
 					{
 						linkTitle: '라메 기술 블로그',
-						linkUrl: 'https://',
+						linkUrl: 'https://velog.com',
 					},
 				],
 			},
@@ -105,11 +105,11 @@ export default function ResumeDetail() {
 				links: [
 					{
 						linkTitle: '라메 기술 블로그',
-						linkUrl: 'https:',
+						linkUrl: 'https://velog.com',
 					},
 					{
 						linkTitle: '라메 기술 블로그',
-						linkUrl: 'https://',
+						linkUrl: 'https://velog.com',
 					},
 				],
 			},
@@ -125,11 +125,11 @@ export default function ResumeDetail() {
 				links: [
 					{
 						linkTitle: '라메 기술 블로그',
-						linkUrl: 'https:',
+						linkUrl: 'https://velog.com',
 					},
 					{
 						linkTitle: '라메 기술 블로그',
-						linkUrl: 'https://',
+						linkUrl: 'https://velog.com',
 					},
 				],
 			},

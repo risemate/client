@@ -7,7 +7,6 @@ interface WorkExperiencesProps {
 }
 
 export default function WorkExperiences({ workExperiences }: WorkExperiencesProps) {
-	const status = { EMPLOYMENT: '재직 중', RESIGNATION: '퇴사', 기타: '기타' };
 	return (
 		<StyledWork>
 			<h3>경력</h3>
@@ -19,7 +18,7 @@ export default function WorkExperiences({ workExperiences }: WorkExperiencesProp
 							{work.departmentName} | {work.role}
 						</li>
 						<li>
-							{work.jobType} | {status[work.employmentStatus]}
+							{work.jobType} | {work.employmentStatus}
 						</li>
 						<li>
 							{work.workStartedAt} ~ {work.workEndedAt}
