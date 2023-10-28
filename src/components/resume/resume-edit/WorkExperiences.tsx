@@ -1,6 +1,5 @@
 import { IconPlus, IconTrash } from '@icons';
 import React from 'react';
-import styled from 'styled-components';
 import {
 	EmploymentStatus,
 	JobType,
@@ -14,7 +13,8 @@ import Input from '@common/input/Input';
 import Select from '@common/input/Select';
 import TextArea from '@common/input/TextArea';
 
-import LinkInput from './LinkInput';
+import LinkInput from '../../common/input/LinkInput';
+import BaseSection from './BaseSection';
 
 interface WorkExperienceProps {
 	workExperiences: WorkExperienceType[];
@@ -63,15 +63,15 @@ export default function WorkExperiences({
 	};
 
 	return (
-		<StyledWork>
-			<div className='heading'>
+		<BaseSection>
+			<div>
 				<h3>경력</h3>
 				<button type='button' onClick={addWorkExperience}>
 					<IconPlus />
 				</button>
 			</div>
 			{workExperiences.map((work, index) => (
-				<StyledItem key={index}>
+				<div key={index}>
 					<h4>경력</h4>
 					<ul>
 						<li>
@@ -125,9 +125,10 @@ export default function WorkExperiences({
 							/>
 						</li>
 						<li>
-							<DateInput
+							<DateInput<WorkExperienceType>
 								label='재직 기간'
 								index={index}
+								keyword='work'
 								startDate={work.workStartedAt}
 								endDate={work.workEndedAt}
 								updateDateInput={updateWorkExperience}
@@ -155,71 +156,8 @@ export default function WorkExperiences({
 					<button type='button' onClick={() => deleteWorkExperience(index)}>
 						<IconTrash />
 					</button>
-				</StyledItem>
+				</div>
 			))}
-		</StyledWork>
+		</BaseSection>
 	);
 }
-
-const StyledWork = styled.section`
-	padding: 40px;
-	& > div:not(:last-child) {
-		margin-bottom: 30px;
-		padding-bottom: 30px;
-		border-bottom: 1px solid ${({ theme }) => theme.colors.grey};
-	}
-	& > div.heading {
-		border-bottom: 2px solid ${({ theme }) => theme.colors.navy};
-		display: flex;
-		gap: 30px;
-		justify-content: space-between;
-		align-items: end;
-		padding-bottom: 10px;
-		margin-bottom: 20px;
-		h3 {
-			color: ${({ theme }) => theme.colors.navy};
-			font-weight: bold;
-			font-size: ${({ theme }) => theme.fontSizes.medium};
-		}
-		button {
-			svg {
-				color: ${({ theme }) => theme.colors.navy};
-			}
-		}
-	}
-`;
-
-const StyledItem = styled.div`
-	position: relative;
-	h4 {
-		color: ${({ theme }) => theme.colors.navy};
-		font-weight: bold;
-		margin-bottom: 20px;
-	}
-	ul {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 20px;
-		li:nth-child(7),
-		:last-child {
-			grid-column: 1 / 4;
-		}
-	}
-	& > button {
-		width: 30px;
-		height: 30px;
-		border: 0.5px solid ${({ theme }) => theme.colors.grey};
-		padding: 6px 5px;
-		border-radius: 5px;
-		background: white;
-		position: absolute;
-		top: 0;
-		right: 0;
-		&:hover {
-			filter: brightness(0.95);
-		}
-		svg {
-			color: ${({ theme }) => theme.colors.grey};
-		}
-	}
-`;
