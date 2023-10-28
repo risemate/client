@@ -1,10 +1,15 @@
 import { isEmpty } from '@utils/helpers';
 import React, { useState } from 'react';
-import { Resume, WorkExperience as WorkExperienceType } from 'types/Resume';
+import {
+	Project as ProjectType,
+	Resume,
+	WorkExperience as WorkExperienceType,
+} from 'types/Resume';
 
 import ResumeNav from '@common/ResumeNav';
 
 import Profile from './Profile';
+import Projects from './Projects';
 import TechStack from './TechStack';
 import WorkExperiences from './WorkExperiences';
 
@@ -23,7 +28,7 @@ export default function ResumeEdit({ initialResume, changeMode }: ResumeEditProp
 	const [resume, setResume] = useState<Resume>(initialResume);
 	const handleInputChange = (
 		field: keyof Resume,
-		value: string | number | WorkExperienceType[],
+		value: string | number | WorkExperienceType[] | ProjectType[],
 	) => {
 		setResume(prevResume => ({
 			...prevResume,
@@ -52,6 +57,7 @@ export default function ResumeEdit({ initialResume, changeMode }: ResumeEditProp
 				workExperiences={resume.workExperiences}
 				handleInputChange={handleInputChange}
 			/>
+			<Projects projects={resume.projects} handleInputChange={handleInputChange} />
 			<ResumeNav resumeNavItems={resumeNavItems} />
 		</>
 	);
