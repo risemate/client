@@ -1,32 +1,29 @@
 import React, { ChangeEvent, InputHTMLAttributes } from 'react';
 import styled from 'styled-components';
-import { WorkExperience as WorkExperienceType } from 'types/Resume';
 
-interface DateInputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface DateInputProps<T> extends InputHTMLAttributes<HTMLInputElement> {
 	label: string;
 	index: number;
 	startDate: string;
 	endDate: string;
-	updateDateInput: (
-		index: number,
-		field: keyof WorkExperienceType,
-		value: string,
-	) => void;
+	keyword: string;
+	updateDateInput: (index: number, field: keyof T, value: string) => void;
 }
 
-export default function DateInput({
+export default function DateInput<T>({
 	label,
 	index,
 	startDate,
 	endDate,
+	keyword,
 	updateDateInput,
 	...InputProps
-}: DateInputProps) {
+}: DateInputProps<T>) {
 	const updateStartDate = (event: ChangeEvent<HTMLInputElement>) => {
-		updateDateInput(index, 'workStartedAt', event.target.value);
+		updateDateInput(index, (keyword + 'StartedAt') as keyof T, event.target.value);
 	};
 	const updateEndDate = (event: ChangeEvent<HTMLInputElement>) => {
-		updateDateInput(index, 'workEndedAt', event.target.value);
+		updateDateInput(index, (keyword + 'EndedAt') as keyof T, event.target.value);
 	};
 	return (
 		<StyledDate>
