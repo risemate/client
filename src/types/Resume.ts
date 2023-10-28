@@ -49,13 +49,21 @@ export type WorkExperience = {
 	links: Link[];
 };
 
+type ProjectStatus = '완료' | '진행 중' | '리팩토링 중' | '완료되지 않음' | '기타';
+export const ProjectStatus: ProjectStatus[] = [
+	'완료',
+	'진행 중',
+	'리팩토링 중',
+	'완료되지 않음',
+	'기타',
+];
 export type Project = {
 	projectName: string;
 	summaryIntro: string; // 오타 수정: summaryintro -> projectSummaryIntro
 	projectStartedAt: string; // 날짜 형식으로 변경 필요
 	projectEndedAt: string; // 날짜 형식으로 변경 필요
 	projectDescription: string;
-	projectStatus: 'DONE' | 'ATTEND' | '진행 중' | '완료되지 않음'; // 다른 상태가 있을 수 있습니다.
+	projectStatus: ProjectStatus;
 	projectOrganization: string; // 또는 다른 유형 추가
 	links: Link[];
 };

@@ -100,7 +100,7 @@ export default function ResumeDetail() {
 				projectEndedAt: '2023-10',
 				projectDescription:
 					'- 기존에 Server Side Rendering으로 생성하던 페이지에 Static Site Generation을 적용하여 서버 자원 절약 및 응답 속도 개선',
-				projectStatus: 'DONE',
+				projectStatus: '완료',
 				projectOrganization: 'https://github.com/risemate/client',
 				links: [
 					{
@@ -120,7 +120,7 @@ export default function ResumeDetail() {
 				projectEndedAt: '2023-10',
 				projectDescription:
 					'- 기존에 Server Side Rendering으로 생성하던 페이지에 Static Site Generation을 적용하여 서버 자원 절약 및 응답 속도 개선',
-				projectStatus: 'ATTEND',
+				projectStatus: '완료',
 				projectOrganization: '',
 				links: [
 					{
