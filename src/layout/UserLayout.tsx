@@ -22,12 +22,11 @@ const StyledLayout = styled.main`
 	min-height: calc(100vh - 75px);
 	background: ${({ theme }) => theme.colors.lightGrey};
 	gap: 10px;
-	padding: 32px;
+	padding: 32px 32px 100px;
 	& > div,
 	& > section {
 		width: 100%;
 		max-width: calc(${({ theme }) => theme.widths.maxWidth} - 64px);
-		height: fit-content;
 		min-width: calc(${({ theme }) => theme.widths.minWidth} - 64px);
 		&:not(:last-child) {
 			margin-bottom: 30px;

@@ -1,20 +1,24 @@
 import { isEmpty } from '@utils/helpers';
 import React, { useState } from 'react';
 import {
+	Activity as ActivityType,
+	Education as EducationType,
 	Project as ProjectType,
-	Resume,
+	Resume as ResumeType,
 	WorkExperience as WorkExperienceType,
 } from 'types/Resume';
 
 import ResumeNav from '@common/ResumeNav';
 
+import Activity from './Activity';
+import Education from './Education';
 import Profile from './Profile';
-import Projects from './Projects';
+import Project from './Project';
 import TechStack from './TechStack';
-import WorkExperiences from './WorkExperiences';
+import WorkExperience from './WorkExperience';
 
 interface ResumeEditProps {
-	initialResume: Resume;
+	initialResume: ResumeType;
 	changeMode: (newMode: 'view' | 'edit') => void;
 }
 
@@ -25,10 +29,16 @@ export default function ResumeEdit({ initialResume, changeMode }: ResumeEditProp
 		{ name: '저장하기', onClick: () => alert('hi') },
 	];
 
-	const [resume, setResume] = useState<Resume>(initialResume);
+	const [resume, setResume] = useState<ResumeType>(initialResume);
 	const handleInputChange = (
-		field: keyof Resume,
-		value: string | number | WorkExperienceType[] | ProjectType[],
+		field: keyof ResumeType,
+		value:
+			| string
+			| number
+			| WorkExperienceType[]
+			| ProjectType[]
+			| EducationType[]
+			| ActivityType[],
 	) => {
 		setResume(prevResume => ({
 			...prevResume,
@@ -53,11 +63,13 @@ export default function ResumeEdit({ initialResume, changeMode }: ResumeEditProp
 			</h2>
 			<Profile profile={resume} handleInputChange={handleInputChange} />
 			<TechStack techStack={resume.techStack.skills} updateTechStack={updateTechStack} />
-			<WorkExperiences
+			<WorkExperience
 				workExperiences={resume.workExperiences}
 				handleInputChange={handleInputChange}
 			/>
-			<Projects projects={resume.projects} handleInputChange={handleInputChange} />
+			<Project projects={resume.projects} handleInputChange={handleInputChange} />
+			<Education educations={resume.educations} handleInputChange={handleInputChange} />
+			<Activity activities={resume.activities} handleInputChange={handleInputChange} />
 			<ResumeNav resumeNavItems={resumeNavItems} />
 		</>
 	);
