@@ -84,7 +84,11 @@ export default function Activity({ activities, handleInputChange }: ActivityProp
 							/>
 						</li>
 						<li>
-							<LinkInput links={activity.links} updateLinks={updateActivity} />
+							<LinkInput
+								links={activity.links}
+								index={index}
+								updateLinks={updateActivity}
+							/>
 						</li>
 					</ul>
 					<button type='button' onClick={() => deleteActivity(index)}>
