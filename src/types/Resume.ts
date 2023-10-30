@@ -68,10 +68,18 @@ export type Project = {
 	links: Link[];
 };
 
+type GraduationStatus = '학기 중' | '졸업' | '편입' | '중도 퇴학' | '기타';
+export const GraduationStatus: GraduationStatus[] = [
+	'학기 중',
+	'졸업',
+	'편입',
+	'중도 퇴학',
+	'기타',
+];
 export type Education = {
 	schoolName: string;
 	major: string;
-	graduationStatus: 'ATTEND' | 'GRADUATED' | '중도 퇴학' | '기타'; // 다른 상태가 있을 수 있습니다.
+	graduationStatus: GraduationStatus;
 	enrollmentStartedAt: string; // 날짜 형식으로 변경 필요
 	enrollmentEndedAt: string; // 날짜 형식으로 변경 필요
 	links: Link[];
@@ -79,7 +87,7 @@ export type Education = {
 
 export type Activity = {
 	activityName: string;
-	activityYear: number;
+	activityYear: number | undefined;
 	activityDescription: string;
 	activityOrganization: string;
 	links: Link[];

@@ -152,7 +152,7 @@ export default function ResumeDetail() {
 			{
 				schoolName: 'NHN NEXT',
 				major: 'WEB UI',
-				graduationStatus: 'ATTEND',
+				graduationStatus: '학기 중',
 				enrollmentStartedAt: '1914-03',
 				enrollmentEndedAt: '1914-12',
 				links: [
@@ -169,7 +169,7 @@ export default function ResumeDetail() {
 			{
 				schoolName: '경희대학교',
 				major: '기계공학과',
-				graduationStatus: 'GRADUATED',
+				graduationStatus: '졸업',
 				enrollmentStartedAt: '1914-02',
 				enrollmentEndedAt: '1910-03',
 				links: [
