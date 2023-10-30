@@ -1,8 +1,8 @@
+import useResumeEdit from '@hooks/useResumeEdit';
 import { IconPlus, IconTrash } from '@icons';
 import React from 'react';
 import styled from 'styled-components';
 import {
-	Link as LinkType,
 	ProjectStatus,
 	Project as ProjectType,
 	Resume as ResumeType,
@@ -21,42 +21,23 @@ interface ProjectProps {
 	handleInputChange: (field: keyof ResumeType, value: ProjectType[]) => void;
 }
 
-export default function Projects({ projects, handleInputChange }: ProjectProps) {
-	const addProject = () => {
-		const newProjects: ProjectType[] = [
-			{
-				projectName: '',
-				summaryIntro: '',
-				projectStartedAt: '',
-				projectEndedAt: '',
-				projectDescription: '',
-				projectStatus: '완료',
-				projectOrganization: '',
-				links: [],
-			},
-			...projects,
-		];
-		handleInputChange('projects', newProjects);
+export default function Project({ projects, handleInputChange }: ProjectProps) {
+	const defaultProject: ProjectType = {
+		projectName: '',
+		summaryIntro: '',
+		projectStartedAt: '',
+		projectEndedAt: '',
+		projectDescription: '',
+		projectStatus: '완료',
+		projectOrganization: '',
+		links: [],
 	};
+	const {
+		addData: addProject,
+		deleteData: deleteProject,
+		updateData: updateProject,
+	} = useResumeEdit<ProjectType>(projects, defaultProject, 'projects', handleInputChange);
 
-	const deleteProject = (index: number) => {
-		const newProjects = [...projects];
-		newProjects.splice(index, 1);
-		handleInputChange('projects', newProjects);
-	};
-
-	const updateProject = (
-		index: number,
-		field: keyof ProjectType,
-		value: string | LinkType[],
-	) => {
-		const updatedProject = [...projects];
-		updatedProject[index] = {
-			...updatedProject[index],
-			[field]: value,
-		};
-		handleInputChange('projects', updatedProject);
-	};
 	return (
 		<BaseSection>
 			<div>

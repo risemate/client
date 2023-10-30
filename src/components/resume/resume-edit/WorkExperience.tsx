@@ -1,9 +1,9 @@
+import useResumeEdit from '@hooks/useResumeEdit';
 import { IconPlus, IconTrash } from '@icons';
 import React from 'react';
 import {
 	EmploymentStatus,
 	JobType,
-	Link as LinkType,
 	Resume as ResumeType,
 	WorkExperience as WorkExperienceType,
 } from 'types/Resume';
@@ -21,46 +21,31 @@ interface WorkExperienceProps {
 	handleInputChange: (field: keyof ResumeType, value: WorkExperienceType[]) => void;
 }
 
-export default function WorkExperiences({
+export default function WorkExperience({
 	workExperiences,
 	handleInputChange,
 }: WorkExperienceProps) {
-	const addWorkExperience = () => {
-		const newWorkExperiences: WorkExperienceType[] = [
-			{
-				companyName: '',
-				departmentName: '',
-				role: '',
-				jobType: '정규직',
-				employmentStatus: '재직 중',
-				workStartedAt: '',
-				workEndedAt: '',
-				assignedTask: '',
-				links: [],
-			},
-			...workExperiences,
-		];
-		handleInputChange('workExperiences', newWorkExperiences);
+	const defaultWorkExperience: WorkExperienceType = {
+		companyName: '',
+		departmentName: '',
+		role: '',
+		jobType: '정규직',
+		employmentStatus: '재직 중',
+		workStartedAt: '',
+		workEndedAt: '',
+		assignedTask: '',
+		links: [],
 	};
-
-	const deleteWorkExperience = (index: number) => {
-		const newWorkExperiences = [...workExperiences];
-		newWorkExperiences.splice(index, 1);
-		handleInputChange('workExperiences', newWorkExperiences);
-	};
-
-	const updateWorkExperience = (
-		index: number,
-		field: keyof WorkExperienceType,
-		value: string | LinkType[],
-	) => {
-		const updatedWorkExperience = [...workExperiences];
-		updatedWorkExperience[index] = {
-			...updatedWorkExperience[index],
-			[field]: value,
-		};
-		handleInputChange('workExperiences', updatedWorkExperience);
-	};
+	const {
+		addData: addWorkExperience,
+		deleteData: deleteWorkExperience,
+		updateData: updateWorkExperience,
+	} = useResumeEdit<WorkExperienceType>(
+		workExperiences,
+		defaultWorkExperience,
+		'workExperiences',
+		handleInputChange,
+	);
 
 	return (
 		<BaseSection>
