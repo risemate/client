@@ -1,3 +1,4 @@
+import { isEmpty } from '@utils/helpers';
 import React from 'react';
 import styled from 'styled-components';
 import { Resume } from 'types/Resume';
@@ -22,9 +23,11 @@ export default function ResumeView({ resume, changeMode }: ResumeViewProps) {
 	return (
 		<StyledResume>
 			<Profile resume={resume} />
-			<WorkExperience workExperiences={resume.workExperiences} />
+			{isEmpty(resume.workExperiences) || (
+				<WorkExperience workExperiences={resume.workExperiences} />
+			)}
+			{isEmpty(resume.projects) || <Project projects={resume.projects} />}
 			<ResumeNav resumeNavItems={resumeNavItems} />
-			<Project projects={resume.projects} />
 		</StyledResume>
 	);
 }
@@ -36,7 +39,7 @@ const StyledResume = styled.div`
 	margin-bottom: 40px;
 	section {
 		padding-bottom: 30px;
-		&:not(:last-child) {
+		&:not(:last-of-type) {
 			border-bottom: 2px solid ${({ theme }) => theme.colors.navy};
 		}
 		h3 {
@@ -45,5 +48,6 @@ const StyledResume = styled.div`
 			font-size: ${({ theme }) => theme.fontSizes.medium};
 			padding: 20px 0px;
 		}
+		&
 	}
 `;
