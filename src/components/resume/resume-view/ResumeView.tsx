@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { Resume } from 'types/Resume';
 
-import DefaultImage from '@common/DefaultImage';
 import ResumeNav from '@common/ResumeNav';
 
-import Projects from './Projects';
-import WorkExperiences from './WorkExperiences';
+import Profile from './Profile';
+import Project from './Project';
+import WorkExperience from './WorkExperience';
 
 interface ResumeViewProps {
 	resume: Resume;
@@ -21,49 +21,19 @@ export default function ResumeView({ resume, changeMode }: ResumeViewProps) {
 	];
 	return (
 		<StyledResume>
-			<StyledBasicSection>
-				<DefaultImage variant='navy' size='large' />
-				<h2>
-					홍길동
-					<br />
-					<span>성장하는 프론트엔드 개발자</span>
-				</h2>
-				<ul className='list-contact'>
-					<li>
-						phone-number: <span>010-0000-0000</span>
-					</li>
-					<li>
-						GitHub: <span>github.com/hongildong</span>
-					</li>
-					<li>
-						email: <span>hongildon@gmail.com</span>
-					</li>
-					<li>
-						Blog: <span>velog.com/@hongildong</span>
-					</li>
-				</ul>
-				<p>
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia velit,
-					reiciendis quo sed recusandae maxime quas animi quam quibusdam est temporibus
-					fuga maiores. Vel temporibus corporis, maxime impedit eos ut!
-				</p>
-				<ul className='list-skills'>
-					<li>JavaScript</li>
-					<li>TypeScript</li>
-					<li>React</li>
-				</ul>
-			</StyledBasicSection>
-			<WorkExperiences workExperiences={resume.workExperiences} />
-			<Projects projects={resume.projects} />
+			<Profile resume={resume} />
+			<WorkExperience workExperiences={resume.workExperiences} />
 			<ResumeNav resumeNavItems={resumeNavItems} />
+			<Project projects={resume.projects} />
 		</StyledResume>
 	);
 }
 
 const StyledResume = styled.div`
 	min-height: 500px;
-	height: calc(100vh - 300px);
+	height: fit-content;
 	padding: 50px;
+	margin-bottom: 40px;
 	section {
 		padding-bottom: 30px;
 		&:not(:last-child) {
@@ -74,58 +44,6 @@ const StyledResume = styled.div`
 			color: ${({ theme }) => theme.colors.navy};
 			font-size: ${({ theme }) => theme.fontSizes.medium};
 			padding: 20px 0px;
-		}
-	}
-`;
-
-const StyledBasicSection = styled.section`
-	display: grid;
-	grid-template-columns: 210px calc(100% - 210px);
-	gap: 25px;
-	.img,
-	img {
-		grid-column: 1 / 2;
-		grid-row: 1 / 3;
-	}
-	h2 {
-		font-size: ${({ theme }) => theme.fontSizes.large};
-		font-weight: bold;
-		grid-column: 2 / 3;
-		grid-row: 1 / 2;
-		line-height: 40px;
-		span {
-			font-size: ${({ theme }) => theme.fontSizes.medium};
-			font-weight: normal;
-		}
-	}
-	ul.list-contact {
-		grid-row: 2 / 3;
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		li {
-			font-weight: bold;
-			span {
-				font-weight: 400;
-			}
-		}
-	}
-	p {
-		grid-column: 1 / 3;
-		line-height: 28px;
-	}
-	ul.list-skills {
-		width: fit-content;
-		display: flex;
-		gap: 10px;
-		grid-column: 1 / 3;
-		li {
-			width: fit-content;
-			background: ${({ theme }) => theme.colors.grey};
-			border-radius: 50px;
-			padding: 8px 15px;
-			color: white;
-			display: flex;
-			align-items: center;
 		}
 	}
 `;
