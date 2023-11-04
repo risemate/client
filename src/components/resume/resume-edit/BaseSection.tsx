@@ -1,12 +1,25 @@
+import { IconPlus } from '@icons';
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 interface BaseSectionProps {
+	title: string;
+	addData: () => void;
 	children: ReactNode;
 }
 
-export default function BaseSection({ children }: BaseSectionProps) {
-	return <StyledSection>{children}</StyledSection>;
+export default function BaseSection({ title, addData, children }: BaseSectionProps) {
+	return (
+		<StyledSection>
+			<div>
+				<h3>{title}</h3>
+				<button type='button' onClick={addData}>
+					<IconPlus />
+				</button>
+			</div>
+			{children}
+		</StyledSection>
+	);
 }
 
 const StyledSection = styled.section`

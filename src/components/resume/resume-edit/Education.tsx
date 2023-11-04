@@ -1,5 +1,4 @@
 import useResumeEdit from '@hooks/useResumeEdit';
-import { IconPlus, IconTrash } from '@icons';
 import React from 'react';
 import {
 	Education as EducationType,
@@ -13,6 +12,7 @@ import LinkInput from '@common/input/LinkInput';
 import Select from '@common/input/Select';
 
 import BaseSection from './BaseSection';
+import EditButton from './EditButton';
 
 interface EducationProps {
 	educations: EducationType[];
@@ -32,6 +32,7 @@ export default function Education({ educations, handleInputChange }: EducationPr
 		addData: addEducation,
 		deleteData: deleteEducation,
 		updateData: updateEducation,
+		changeIndex,
 	} = useResumeEdit<EducationType>(
 		educations,
 		defaultEducation,
@@ -40,13 +41,7 @@ export default function Education({ educations, handleInputChange }: EducationPr
 	);
 
 	return (
-		<BaseSection>
-			<div>
-				<h3>교육</h3>
-				<button type='button' onClick={addEducation}>
-					<IconPlus />
-				</button>
-			</div>
+		<BaseSection title='교육' addData={addEducation}>
 			{educations.map((education, index) => (
 				<div key={index}>
 					<h4>교육</h4>
@@ -96,9 +91,11 @@ export default function Education({ educations, handleInputChange }: EducationPr
 							/>
 						</li>
 					</ul>
-					<button type='button' onClick={() => deleteEducation(index)}>
-						<IconTrash />
-					</button>
+					<EditButton
+						index={index}
+						changeIndex={changeIndex}
+						deleteData={deleteEducation}
+					/>
 				</div>
 			))}
 		</BaseSection>

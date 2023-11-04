@@ -1,5 +1,4 @@
 import useResumeEdit from '@hooks/useResumeEdit';
-import { IconPlus, IconTrash } from '@icons';
 import React from 'react';
 import { Activity as ActivityType, Resume as ResumeType } from 'types/Resume';
 
@@ -8,6 +7,7 @@ import LinkInput from '@common/input/LinkInput';
 import TextArea from '@common/input/TextArea';
 
 import BaseSection from './BaseSection';
+import EditButton from './EditButton';
 
 interface ActivityProps {
 	activities: ActivityType[];
@@ -26,6 +26,7 @@ export default function Activity({ activities, handleInputChange }: ActivityProp
 		addData: addAcitivty,
 		deleteData: deleteActivity,
 		updateData: updateActivity,
+		changeIndex,
 	} = useResumeEdit<ActivityType>(
 		activities,
 		defaultActivity,
@@ -34,13 +35,7 @@ export default function Activity({ activities, handleInputChange }: ActivityProp
 	);
 
 	return (
-		<BaseSection>
-			<div>
-				<h3>대외활동</h3>
-				<button type='button' onClick={addAcitivty}>
-					<IconPlus />
-				</button>
-			</div>
+		<BaseSection title='대외활동' addData={addAcitivty}>
 			{activities.map((activity, index) => (
 				<div key={index}>
 					<h4>대외활동</h4>
@@ -91,9 +86,11 @@ export default function Activity({ activities, handleInputChange }: ActivityProp
 							/>
 						</li>
 					</ul>
-					<button type='button' onClick={() => deleteActivity(index)}>
-						<IconTrash />
-					</button>
+					<EditButton
+						index={index}
+						changeIndex={changeIndex}
+						deleteData={deleteActivity}
+					/>
 				</div>
 			))}
 		</BaseSection>

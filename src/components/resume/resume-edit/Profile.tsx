@@ -95,7 +95,9 @@ const StyledProfile = styled.section`
 		}
 		input {
 			width: 300px;
-			padding: 5px;
+			padding: 3px;
+			font-weight: bold;
+			color: ${({ theme }) => theme.colors.darkGrey};
 		}
 		p {
 			color: red;

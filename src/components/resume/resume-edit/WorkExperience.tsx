@@ -1,5 +1,4 @@
 import useResumeEdit from '@hooks/useResumeEdit';
-import { IconPlus, IconTrash } from '@icons';
 import React from 'react';
 import {
 	EmploymentStatus,
@@ -15,6 +14,7 @@ import TextArea from '@common/input/TextArea';
 
 import LinkInput from '../../common/input/LinkInput';
 import BaseSection from './BaseSection';
+import EditButton from './EditButton';
 
 interface WorkExperienceProps {
 	workExperiences: WorkExperienceType[];
@@ -40,6 +40,7 @@ export default function WorkExperience({
 		addData: addWorkExperience,
 		deleteData: deleteWorkExperience,
 		updateData: updateWorkExperience,
+		changeIndex,
 	} = useResumeEdit<WorkExperienceType>(
 		workExperiences,
 		defaultWorkExperience,
@@ -48,13 +49,7 @@ export default function WorkExperience({
 	);
 
 	return (
-		<BaseSection>
-			<div>
-				<h3>경력</h3>
-				<button type='button' onClick={addWorkExperience}>
-					<IconPlus />
-				</button>
-			</div>
+		<BaseSection title='경력' addData={addWorkExperience}>
 			{workExperiences.map((work, index) => (
 				<div key={index}>
 					<h4>경력</h4>
@@ -138,9 +133,11 @@ export default function WorkExperience({
 							/>
 						</li>
 					</ul>
-					<button type='button' onClick={() => deleteWorkExperience(index)}>
-						<IconTrash />
-					</button>
+					<EditButton
+						index={index}
+						changeIndex={changeIndex}
+						deleteData={deleteWorkExperience}
+					/>
 				</div>
 			))}
 		</BaseSection>

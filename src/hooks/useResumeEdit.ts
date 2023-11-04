@@ -30,5 +30,17 @@ export default function useResumeEdit<T>(
 		handleInputChange(keyword as keyof ResumeType, newData);
 	};
 
-	return { addData, deleteData, updateData };
+	const changeIndex = (index: number, increase: boolean) => {
+		const newData = [...data];
+		if (increase) {
+			if (index <= 0) return;
+			[newData[index - 1], newData[index]] = [newData[index], newData[index - 1]];
+		} else {
+			if (index >= newData.length - 1) return;
+			[newData[index], newData[index + 1]] = [newData[index + 1], newData[index]];
+		}
+		handleInputChange(keyword as keyof ResumeType, newData);
+	};
+
+	return { addData, deleteData, updateData, changeIndex };
 }

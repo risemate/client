@@ -1,5 +1,4 @@
 import useResumeEdit from '@hooks/useResumeEdit';
-import { IconPlus, IconTrash } from '@icons';
 import React from 'react';
 import styled from 'styled-components';
 import {
@@ -15,6 +14,7 @@ import Select from '@common/input/Select';
 import TextArea from '@common/input/TextArea';
 
 import BaseSection from './BaseSection';
+import EditButton from './EditButton';
 
 interface ProjectProps {
 	projects: ProjectType[];
@@ -36,16 +36,11 @@ export default function Project({ projects, handleInputChange }: ProjectProps) {
 		addData: addProject,
 		deleteData: deleteProject,
 		updateData: updateProject,
+		changeIndex,
 	} = useResumeEdit<ProjectType>(projects, defaultProject, 'projects', handleInputChange);
 
 	return (
-		<BaseSection>
-			<div>
-				<h3>프로젝트</h3>
-				<button type='button' onClick={addProject}>
-					<IconPlus />
-				</button>
-			</div>
+		<BaseSection title='프로젝트' addData={addProject}>
 			{projects.map((project, index) => (
 				<div key={index}>
 					<h4>프로젝트</h4>
@@ -115,9 +110,11 @@ export default function Project({ projects, handleInputChange }: ProjectProps) {
 							/>
 						</li>
 					</StyledLayout>
-					<button type='button' onClick={() => deleteProject(index)}>
-						<IconTrash />
-					</button>
+					<EditButton
+						index={index}
+						changeIndex={changeIndex}
+						deleteData={deleteProject}
+					/>
 				</div>
 			))}
 		</BaseSection>
