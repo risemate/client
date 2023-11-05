@@ -115,7 +115,7 @@ const StyledMyPage = styled.div`
 	position: relative;
 	display: flex;
 	align-items: center;
-	a {
+	& > a {
 		background: ${({ theme }) => theme.colors.navy};
 		color: white;
 		font-weight: bold;
