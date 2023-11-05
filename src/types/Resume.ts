@@ -106,14 +106,54 @@ export const defaultResume: Resume = {
 	techStack: {
 		skills: [],
 	},
-	workExperiences: [],
-	projects: [],
+	workExperiences: [
+		{
+			companyName: '',
+			departmentName: '',
+			role: '',
+			jobType: '정규직',
+			employmentStatus: '재직 중',
+			workStartedAt: '',
+			workEndedAt: '',
+			assignedTask: ``,
+			links: [],
+		},
+	],
+	projects: [
+		{
+			projectName: '',
+			summaryIntro: '',
+			projectStartedAt: '',
+			projectEndedAt: '',
+			projectDescription: '',
+			projectStatus: '완료',
+			projectOrganization: '',
+			links: [],
+		},
+	],
 	portfolio: {
 		links: [],
 		attachFiles: [],
 	},
-	educations: [],
-	activities: [],
+	educations: [
+		{
+			schoolName: '',
+			major: '',
+			graduationStatus: '학기 중',
+			enrollmentStartedAt: '',
+			enrollmentEndedAt: '',
+			links: [],
+		},
+	],
+	activities: [
+		{
+			activityName: '',
+			activityYear: undefined,
+			activityDescription: '',
+			activityOrganization: '', //주관사
+			links: [],
+		},
+	],
 	careerStatus: false,
 	entryLevel: false,
 	careerYears: 0,

@@ -1,10 +1,12 @@
 import { IconAdd } from '@icons';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 export default function AddResume() {
+	const navigate = useNavigate();
 	return (
-		<StyledAddResume type='button'>
+		<StyledAddResume type='button' onClick={() => navigate('new')}>
 			<IconAdd />
 			<p>새 이력서 추가</p>
 		</StyledAddResume>
