@@ -30,7 +30,7 @@ export default function Alarm({ closeAlarm, btnAlarmRef }: AlarmProps) {
 			content:
 				'@000 님에게 이력서 첨삭 요청이 왔습니다. 2일 이상 미응답시 자동 거절 처리됩니다. ',
 			time: '2023.09.22 (금)',
-			isRead: false,
+			isRead: true,
 		},
 		{
 			title: '이력서 첨삭 요청',
@@ -119,6 +119,11 @@ const StyledAlarm = styled.article`
 		input {
 			color: ${({ theme }) => theme.colors.navy};
 			padding-right: 10px;
+		}
+	}
+	ul > li {
+		&:not(:last-child) {
+			border-bottom: 0.5px solid ${({ theme }) => theme.colors.grey};
 		}
 	}
 `;
