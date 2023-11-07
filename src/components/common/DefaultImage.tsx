@@ -28,14 +28,14 @@ export default function DefaultImage({ variant, size, shape, image }: DefaultIma
 	);
 }
 
-interface Props {
+interface StyledImageProps {
 	$variant?: Variant;
 	$size?: Size;
 	$shape?: Shape;
 	$hasImage: boolean;
 }
 
-const variantStyle = css<Props>`
+const variantStyle = css<StyledImageProps>`
 	${({ $variant, theme: { colors } }) => {
 		switch ($variant) {
 			case 'navy':
@@ -58,7 +58,7 @@ const variantStyle = css<Props>`
 	}}
 `;
 
-const sizeStyle = css<Props>`
+const sizeStyle = css<StyledImageProps>`
 	${({ $size, $hasImage }) => {
 		if ($hasImage) {
 			switch ($size) {
@@ -116,7 +116,7 @@ const sizeStyle = css<Props>`
 	}}
 `;
 
-const shapeStyle = css<Props>`
+const shapeStyle = css<StyledImageProps>`
 	${({ $shape }) => {
 		switch ($shape) {
 			case 'square':
@@ -135,7 +135,7 @@ const shapeStyle = css<Props>`
 	}}
 `;
 
-const imgStyle = css<Props>`
+const imgStyle = css<StyledImageProps>`
 	${({ $hasImage }) => {
 		if ($hasImage) {
 			return css`
@@ -151,7 +151,7 @@ const imgStyle = css<Props>`
 	}}
 `;
 
-const StyledDefaultImage = styled.div<Props>`
+const StyledDefaultImage = styled.div<StyledImageProps>`
 	width: 100%;
 	border-radius: 10px;
 	text-align: center;

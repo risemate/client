@@ -18,7 +18,7 @@ export default function Banner({ variant, children }: BannerProps) {
 	const tabItems = ['전체', '이력서', '자기소개서', '입시자소서'];
 	const { changeTab, isCurrentTab } = useTab(tabItems);
 	return (
-		<StyledBanner variant={variant}>
+		<StyledBanner $variant={variant}>
 			{variant === 'home' && (
 				<div>
 					{children}
@@ -47,7 +47,9 @@ export default function Banner({ variant, children }: BannerProps) {
 	);
 }
 
-type Props = Partial<BannerProps>;
+interface StyledBannerProps {
+	$variant?: Variant;
+}
 
 const homeStyle = css`
 	width: calc(100% - 64px);
@@ -85,9 +87,9 @@ const tabStyle = css`
 	}
 `;
 
-const variantStyle = css<Props>`
-	${({ variant, theme }) => {
-		switch (variant) {
+const variantStyle = css<StyledBannerProps>`
+	${({ $variant, theme }) => {
+		switch ($variant) {
 			case 'home':
 				return css`
 					background: ${`linear-gradient(91deg, ${theme.colors.mint} -0.94%, ${theme.colors.blue} 80.11%, ${theme.colors.navy} 106.39%)`};
@@ -108,7 +110,7 @@ const variantStyle = css<Props>`
 	}}
 `;
 
-const StyledBanner = styled.section<Props>`
+const StyledBanner = styled.section<StyledBannerProps>`
 	width: 100%;
 	min-width: ${({ theme }) => theme.widths.minWidth};
 	height: 250px;

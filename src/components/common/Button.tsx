@@ -10,17 +10,20 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export default function Button({ variant, size, children, ...ButtonProps }: ButtonProps) {
 	return (
-		<StyledButton variant={variant} size={size} {...ButtonProps}>
+		<StyledButton $variant={variant} $size={size} {...ButtonProps}>
 			{children}
 		</StyledButton>
 	);
 }
 
-type Props = Partial<ButtonProps>;
+interface StyledButtonProps {
+	$variant?: Variant;
+	$size?: Size;
+}
 
-const variantStyle = css<Props>`
-	${({ variant, theme: { colors } }) => {
-		switch (variant) {
+const variantStyle = css<StyledButtonProps>`
+	${({ $variant, theme: { colors } }) => {
+		switch ($variant) {
 			case 'navy':
 				return css`
 					background-color: ${colors.navy};
@@ -52,9 +55,9 @@ const variantStyle = css<Props>`
 	}}
 `;
 
-const sizeStyle = css<Props>`
-	${({ size, theme }) => {
-		switch (size) {
+const sizeStyle = css<StyledButtonProps>`
+	${({ $size, theme }) => {
+		switch ($size) {
 			case 'small':
 				return css`
 					width: 100px;
@@ -78,7 +81,7 @@ const sizeStyle = css<Props>`
 	}}
 `;
 
-const StyledButton = styled.button<Props>`
+const StyledButton = styled.button<StyledButtonProps>`
 	${({ theme }) => css`
 		padding: 10px 20px;
 		user-select: none;

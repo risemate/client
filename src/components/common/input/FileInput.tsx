@@ -59,11 +59,11 @@ export default function FileInput({
 	);
 }
 
-interface Props {
+interface StyledInputProps {
 	$size?: Size;
 }
 
-const sizeStyle = css<Props>`
+const sizeStyle = css<StyledInputProps>`
 	${({ $size }) => {
 		switch ($size) {
 			case 'small':
@@ -90,7 +90,7 @@ const sizeStyle = css<Props>`
 	}}
 `;
 
-const StyledFileInput = styled.div<Props>`
+const StyledFileInput = styled.div<StyledInputProps>`
 	font-size: ${({ theme }) => theme.fontSizes.small};
 	color: ${({ theme }) => theme.colors.darkGrey};
 	display: flex;
