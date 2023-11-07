@@ -3,7 +3,7 @@ import styled, { CSSProp } from 'styled-components';
 
 import Banner from '@common/Banner';
 import Button from '@common/Button';
-import ExpertCardList from '@components/experts/ExpertCardList';
+import ExpertCardList from '@components/experts/expert-list/ExpertCardList';
 import NetworkCardList from '@components/network/NetworkCardList';
 
 import 'normalize.css';

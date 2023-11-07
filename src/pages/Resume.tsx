@@ -38,7 +38,6 @@ export default function Resume() {
 
 const StyledResume = styled.div`
 	min-height: 500px;
-	height: calc(100vh - 300px);
 	padding: 50px;
 	section {
 		display: flex;

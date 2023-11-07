@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Banner from '@common/Banner';
-import ExpertCardList from '@components/experts/ExpertCardList';
+import ExpertCardList from '@components/experts/expert-list/ExpertCardList';
 
 export default function Experts() {
 	const experts = Array(6).fill('hello');

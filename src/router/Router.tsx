@@ -2,6 +2,7 @@ import RootLayout from 'layout/RootLayout';
 import UserLayout from 'layout/UserLayout';
 import CoachInfo from 'pages/CoachInfo';
 import CoachManagement from 'pages/CoachManagement';
+import ExpertDetail from 'pages/ExpertDetail';
 import Experts from 'pages/Experts';
 import Home from 'pages/Home';
 import MyInfoPage from 'pages/MyInfo';
@@ -45,7 +46,7 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: '/experts:id',
-						element: <div>전문가</div>,
+						element: <ExpertDetail />,
 					},
 				],
 			},
