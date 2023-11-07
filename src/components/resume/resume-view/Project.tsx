@@ -19,13 +19,17 @@ export default function Project({ projects }: ProjectProps) {
 						<li>
 							{project.projectStartedAt} ~ {project.projectEndedAt}
 						</li>
-						<li>{project.projectOrganization}</li>
+						<li>
+							<a href={project.projectOrganization} target='_blank' rel='noreferrer'>
+								{project.projectOrganization}
+							</a>
+						</li>
 					</ul>
 					<div>
 						<ul className='list-task'>
-							<li>{project.summaryIntro}</li>
+							<li className='summary'>{project.summaryIntro}</li>
 							{project.projectDescription.split('\n').map((task, taskIndex) => (
-								<li key={taskIndex}>{task.replace('-', '•')}</li>
+								<li key={taskIndex}>{task.replace('-', '')}</li>
 							))}
 						</ul>
 						<ul className='list-link'>

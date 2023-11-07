@@ -28,7 +28,7 @@ export default function WorkExperience({ workExperiences }: WorkExperiencesProps
 					<div>
 						<ul className='list-task'>
 							{work.assignedTask.split('\n').map((task, taskIndex) => (
-								<li key={taskIndex}>{task.replace('-', '•')}</li>
+								<li key={taskIndex}>{task.replace('-', '')}</li>
 							))}
 						</ul>
 						<ul className='list-link'>

@@ -5,6 +5,7 @@ import { Resume } from 'types/Resume';
 
 import ResumeNav from '@common/ResumeNav';
 
+import Education from './Education';
 import Profile from './Profile';
 import Project from './Project';
 import WorkExperience from './WorkExperience';
@@ -27,6 +28,7 @@ export default function ResumeView({ resume, changeMode }: ResumeViewProps) {
 				<WorkExperience workExperiences={resume.workExperiences} />
 			)}
 			{isEmpty(resume.projects) || <Project projects={resume.projects} />}
+			{isEmpty(resume.educations) || <Education educations={resume.educations} />}
 			<ResumeNav resumeNavItems={resumeNavItems} />
 		</StyledResume>
 	);

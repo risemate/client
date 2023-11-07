@@ -29,12 +29,21 @@ const StyledSection = styled.section`
 		grid-column: 1 / 2;
 		margin-bottom: 10px;
 		word-break: keep-all;
+		line-height: 30px;
+	}
+	a {
+		transition: 0.5s all;
+		&:hover {
+			filter: brightness(0.9);
+		}
 	}
 	ul:nth-of-type(1) {
 		grid-column: 1 / 2;
 		color: ${({ theme }) => theme.colors.darkGrey};
+		font-size: ${({ theme }) => theme.fontSizes.small};
 		li {
-			margin-bottom: 3px;
+			margin-bottom: 5px;
+			word-break: break-word;
 		}
 	}
 	.list-task {
@@ -42,7 +51,25 @@ const StyledSection = styled.section`
 		flex-direction: column;
 		gap: 3px;
 		li {
+			color: black;
 			word-break: keep-all;
+			position: relative;
+			font-size: ${({ theme }) => theme.fontSizes.default};
+			line-height: 20px;
+		}
+		li:not(.summary) {
+			padding-left: 15px;
+			&:before {
+				content: '';
+				display: inline-block;
+				position: absolute;
+				left: 0;
+				top: 4px;
+				width: 6px;
+				height: 6px;
+				background: black;
+				border-radius: 50%;
+			}
 		}
 	}
 	.list-link {
