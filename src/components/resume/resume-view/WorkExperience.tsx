@@ -1,48 +1,41 @@
 import React from 'react';
 import { WorkExperience as WorkExperienceType } from 'types/Resume';
 
-import BaseSection from './BaseSection';
-
 interface WorkExperiencesProps {
-	workExperiences: WorkExperienceType[];
+	workExperience: WorkExperienceType;
 }
 
-export default function WorkExperience({ workExperiences }: WorkExperiencesProps) {
+export default function WorkExperience({ workExperience }: WorkExperiencesProps) {
 	return (
-		<BaseSection>
-			<h3>경력</h3>
-			{workExperiences.map((work, index) => (
-				<article key={index}>
-					<h4>{work.companyName}</h4>
-					<ul className='list-workinfo'>
-						<li>
-							{work.departmentName} | {work.role}
+		<article>
+			<h4>{workExperience.companyName}</h4>
+			<ul className='list-workinfo'>
+				<li>
+					{workExperience.departmentName} | {workExperience.role}
+				</li>
+				<li>
+					{workExperience.jobType} | {workExperience.employmentStatus}
+				</li>
+				<li>
+					{workExperience.workStartedAt} ~ {workExperience.workEndedAt}
+				</li>
+			</ul>
+			<div>
+				<ul className='list-task'>
+					{workExperience.assignedTask.split('\n').map((task, taskIndex) => (
+						<li key={taskIndex}>{task.replace('-', '')}</li>
+					))}
+				</ul>
+				<ul className='list-link'>
+					{workExperience.links.map((link, linkIndex) => (
+						<li key={linkIndex}>
+							<a href={link.linkUrl} target='_blank' rel='noopener noreferrer'>
+								🔗 {link.linkTitle}
+							</a>
 						</li>
-						<li>
-							{work.jobType} | {work.employmentStatus}
-						</li>
-						<li>
-							{work.workStartedAt} ~ {work.workEndedAt}
-						</li>
-					</ul>
-					<div>
-						<ul className='list-task'>
-							{work.assignedTask.split('\n').map((task, taskIndex) => (
-								<li key={taskIndex}>{task.replace('-', '')}</li>
-							))}
-						</ul>
-						<ul className='list-link'>
-							{work.links.map((link, linkIndex) => (
-								<li key={linkIndex}>
-									<a href={link.linkUrl} target='_blank' rel='noopener noreferrer'>
-										🔗 {link.linkTitle}
-									</a>
-								</li>
-							))}
-						</ul>
-					</div>
-				</article>
-			))}
-		</BaseSection>
+					))}
+				</ul>
+			</div>
+		</article>
 	);
 }

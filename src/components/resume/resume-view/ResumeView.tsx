@@ -5,8 +5,9 @@ import { Resume } from 'types/Resume';
 import DefaultImage from '@common/DefaultImage';
 import ResumeNav from '@common/ResumeNav';
 
-import Projects from './Project';
-import WorkExperiences from './WorkExperience';
+import BaseSection from './BaseSection';
+import Project from './Project';
+import WorkExperience from './WorkExperience';
 
 interface ResumeViewProps {
 	resume: Resume;
@@ -53,8 +54,19 @@ export default function ResumeView({ resume, changeMode }: ResumeViewProps) {
 					<li>React</li>
 				</ul>
 			</StyledBasicSection>
-			<WorkExperiences workExperiences={resume.workExperiences} />
-			<Projects projects={resume.projects} />
+			<BaseSection>
+				<h3>경력</h3>
+				{resume.workExperiences.map((work, index) => (
+					<WorkExperience key={index} workExperience={work} />
+				))}
+			</BaseSection>
+			<BaseSection>
+				<h3>프로젝트</h3>
+				{resume.projects.map((project, index) => (
+					<Project key={index} project={project} />
+				))}
+			</BaseSection>
+
 			<ResumeNav resumeNavItems={resumeNavItems} />
 		</StyledResume>
 	);
@@ -62,7 +74,6 @@ export default function ResumeView({ resume, changeMode }: ResumeViewProps) {
 
 const StyledResume = styled.div`
 	min-height: 500px;
-	height: calc(100vh - 300px);
 	padding: 50px;
 	section {
 		padding-bottom: 30px;
