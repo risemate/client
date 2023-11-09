@@ -17,7 +17,7 @@ export async function popupLogin(provider = 'google') {
 				setTimeout(() => {
 					popup?.close();
 					resolve({ success: false, message: event.data });
-				}, 10);
+				}, 100);
 			}
 		});
 	});
