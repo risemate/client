@@ -5,7 +5,7 @@ import { Variant } from 'types/Button';
 import Button from './Button';
 
 interface ResumeNavProps {
-	resumeNavItems: { name: string; onClick: () => void }[];
+	resumeNavItems: { name: string; onClick?: () => void }[];
 }
 
 export default function ResumeNav({ resumeNavItems }: ResumeNavProps) {
@@ -14,13 +14,18 @@ export default function ResumeNav({ resumeNavItems }: ResumeNavProps) {
 	return (
 		<StyledResumeNav>
 			{resumeNavItems.map((item, index) => {
-				return (
+				return item.onClick ? (
 					<Button
 						variant={btnColor[index]}
 						size='medium'
-						onClick={() => item.onClick()}
+						type='button'
+						onClick={item?.onClick}
 						key={index}
 					>
+						{item.name}
+					</Button>
+				) : (
+					<Button variant={btnColor[index]} size='medium' type='submit' key={index}>
 						{item.name}
 					</Button>
 				);
