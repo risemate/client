@@ -1,5 +1,6 @@
+import useKeyboard from '@hooks/useKeyboard';
 import { IconCloseSharp } from '@icons';
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
 import { Link as LinkType } from 'types/Resume';
 
@@ -13,7 +14,7 @@ interface LinkInputProps {
 }
 
 export default function LinkInput({ links, index, updateLinks }: LinkInputProps) {
-	const [initialLink, setInitialLink] = useState('[linkTitle](linkUrl)');
+	const [link, setLink] = useState('[linkTitle](linkUrl)');
 	const linkToString = (link: LinkType) => {
 		return `${link.linkTitle}: ${link.linkUrl}`;
 	};
@@ -30,12 +31,11 @@ export default function LinkInput({ links, index, updateLinks }: LinkInputProps)
 	};
 
 	const changeLink = (event: ChangeEvent<HTMLInputElement>) => {
-		setInitialLink(event.target.value);
+		setLink(event.target.value);
 	};
 
-	const addLink = (event: FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
-		const newLinks = [...links, stringToLink(initialLink)];
+	const addLink = () => {
+		const newLinks = [...links, stringToLink(link)];
 		newLinks.sort((a, b) => {
 			if (a.linkTitle < b.linkTitle) {
 				return -1;
@@ -48,7 +48,7 @@ export default function LinkInput({ links, index, updateLinks }: LinkInputProps)
 		if (index !== undefined) {
 			updateLinks(index, 'links', newLinks);
 		}
-		setInitialLink('[linkTitle](linkUrl)');
+		setLink('[linkTitle](linkUrl)');
 	};
 
 	const deleteLink = (itemIdx: number) => {
@@ -59,20 +59,23 @@ export default function LinkInput({ links, index, updateLinks }: LinkInputProps)
 		}
 	};
 
+	const { handleEnter } = useKeyboard();
+
 	return (
 		<StyledLink>
-			<form onSubmit={event => addLink(event)}>
+			<div>
 				<Input
 					label='Link'
 					type='text'
 					explanation='예시) [Github](https://www.github.com)'
-					value={initialLink}
+					value={link}
 					onChange={changeLink}
+					onKeyUp={event => handleEnter(event, link, addLink)}
 				/>
-				<Button variant='navy' size='small'>
+				<Button variant='navy' size='small' type='button' onClick={() => addLink()}>
 					추가
 				</Button>
-			</form>
+			</div>
 			<ul>
 				{links.map((link, index) => (
 					<li key={index}>
@@ -88,7 +91,7 @@ export default function LinkInput({ links, index, updateLinks }: LinkInputProps)
 }
 
 const StyledLink = styled.div`
-	form {
+	& > div {
 		position: relative;
 		button {
 			position: absolute;

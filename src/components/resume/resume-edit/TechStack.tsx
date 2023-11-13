@@ -1,6 +1,7 @@
+import useKeyboard from '@hooks/useKeyboard';
 import { IconCloseSharp } from '@icons';
 import { isEmpty } from '@utils/helpers';
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
 
 import Button from '@common/Button';
@@ -17,8 +18,7 @@ export default function TechStack({ techStack, updateTechStack }: TechStackProps
 		setStack(event.target.value);
 	};
 
-	const addTechStack = (event: FormEvent) => {
-		event.preventDefault();
+	const addTechStack = () => {
 		updateTechStack([...techStack, stack]);
 		setStack('');
 	};
@@ -28,15 +28,29 @@ export default function TechStack({ techStack, updateTechStack }: TechStackProps
 		newTechStack.splice(index, 1);
 		updateTechStack(newTechStack);
 	};
+
+	const { handleEnter } = useKeyboard();
+
 	return (
 		<StyledTech>
 			<h3>기술 스택</h3>
-			<form onSubmit={event => addTechStack(event)}>
-				<Input label='기술 입력' value={stack} onChange={event => changeStack(event)} />
-				<Button variant='navy' size='small' type='submit' disabled={isEmpty(stack)}>
+			<div>
+				<Input
+					label='기술 입력'
+					value={stack}
+					onChange={event => changeStack(event)}
+					onKeyUp={event => handleEnter(event, stack, addTechStack)}
+				/>
+				<Button
+					variant='navy'
+					size='small'
+					type='button'
+					onClick={() => addTechStack()}
+					disabled={isEmpty(stack)}
+				>
 					추가
 				</Button>
-			</form>
+			</div>
 			<ul>
 				{techStack.map((stack, index) => {
 					return (
@@ -55,7 +69,7 @@ export default function TechStack({ techStack, updateTechStack }: TechStackProps
 
 const StyledTech = styled.section`
 	padding: 40px;
-	form {
+	& > div {
 		position: relative;
 		button {
 			position: absolute;
