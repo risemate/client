@@ -45,7 +45,7 @@ export default function NavBar() {
 					})}
 				</StyledNavList>
 				<StyledMyPage>
-					{!auth ? (
+					{auth ? (
 						<>
 							{isExpert && <Link to='/coach-info'>코칭 관리</Link>}
 							<button
@@ -93,6 +93,7 @@ const StyledNavList = styled.ul`
 	display: flex;
 	align-items: center;
 	gap: 25px;
+	height: 100%;
 	&:hover a {
 		color: ${({ theme }) => theme.colors.darkGrey};
 	}
@@ -102,6 +103,8 @@ const StyledNavList = styled.ul`
 	a {
 		color: ${({ theme }) => theme.colors.navy};
 		font-weight: bold;
+		display: flex;
+		align-items: center;
 		height: 100%;
 		&:hover {
 			color: ${({ theme }) => theme.colors.navy};
@@ -122,7 +125,7 @@ const StyledMyPage = styled.div`
 		padding: 5px 10px;
 		border-radius: 30px;
 	}
-	button {
+	& > button {
 		color: ${({ theme }) => theme.colors.navy};
 		height: 100%;
 		margin-left: 15px;

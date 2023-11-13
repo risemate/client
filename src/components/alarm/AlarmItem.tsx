@@ -44,11 +44,12 @@ const Title = styled.h3`
 	span {
 		display: inline-block;
 		vertical-align: top;
-		width: 4px;
-		height: 4px;
-		background-color: red;
+		width: 5px;
+		height: 5px;
+		background-color: ${({ theme }) => theme.colors.blue};
 		border-radius: 100%;
-		margin-right: 5px;
+		margin-right: 4px;
+		margin-top: 3.5px;
 	}
 `;
 

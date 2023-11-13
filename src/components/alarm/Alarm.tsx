@@ -1,4 +1,5 @@
-import React, { RefObject, useEffect, useRef } from 'react';
+import useClickOutside from '@hooks/useClickOutside';
+import React, { RefObject, useRef } from 'react';
 import styled from 'styled-components';
 
 import AlarmItem from './AlarmItem';
@@ -47,22 +48,8 @@ export default function Alarm({ closeAlarm, btnAlarmRef }: AlarmProps) {
 			isRead: false,
 		},
 	];
-	useEffect(() => {
-		function alarmOutsideClick(event: MouseEvent) {
-			if (
-				alarmRef.current &&
-				!alarmRef.current.contains(event.target as Node) &&
-				btnAlarmRef.current &&
-				!btnAlarmRef.current.contains(event.target as Node)
-			) {
-				closeAlarm();
-			}
-		}
-		document.addEventListener('click', alarmOutsideClick);
-		return () => {
-			document.removeEventListener('click', alarmOutsideClick);
-		};
-	}, [closeAlarm]);
+
+	useClickOutside([alarmRef, btnAlarmRef], closeAlarm);
 
 	const readAllAlarm = () => {
 		alarms.forEach(alarm => {
@@ -103,7 +90,7 @@ const StyledAlarm = styled.article`
 	right: 0;
 	width: 375px;
 	max-height: 500px;
-	padding: 30px;
+	padding: 15px 30px;
 	flex-shrink: 0;
 	border-radius: 10px;
 	border: 1px solid ${({ theme }) => theme.colors.grey};
