@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Resume as ResumeType, defaultResume, mockResume } from 'types/Resume';
+import { defaultResume, mockResume } from 'types/Resume';
 
 import ResumeEdit from '@components/resume/resume-edit/ResumeEdit';
 import ResumeView from '@components/resume/resume-view/ResumeView';
@@ -11,10 +11,8 @@ export default function ResumeDetail() {
 	const changeMode = (newMode: 'view' | 'edit') => {
 		setMode(newMode);
 	};
-	// eslint-disable-next-line
-	const [resume, setResume] = useState<ResumeType>(
-		id === 'new' ? defaultResume : mockResume,
-	);
+
+	const resume = id === 'new' ? defaultResume : mockResume;
 
 	return (
 		<>
