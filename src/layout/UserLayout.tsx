@@ -24,7 +24,8 @@ const StyledLayout = styled.main`
 	gap: 10px;
 	padding: 32px 32px 100px;
 	& > div,
-	& > section {
+	& > section,
+	& > form > section {
 		width: 100%;
 		max-width: calc(${({ theme }) => theme.widths.maxWidth} - 64px);
 		min-width: calc(${({ theme }) => theme.widths.minWidth} - 64px);
