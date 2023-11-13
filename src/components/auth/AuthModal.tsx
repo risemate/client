@@ -11,15 +11,17 @@ export default function AuthModal() {
 	const { closeModal } = useModal();
 	// eslint-disable-next-line
 	const { auth, refetch } = useAuth();
-	const login = () => {
+	const login = (provider?: string) => {
 		// eslint-disable-next-line
-		popupLogin('google').then((result: any) => {
+		popupLogin(provider).then((result: any) => {
 			if (result.success) {
 				closeModal();
 				//: 유저정보 받아오기 refetch()
 				//: alert(auth?.nickname + '님 완영합니다.');
 				alert('로그인 완료');
 			} else {
+				// eslint-disable-next-line
+				console.log(result.message);
 				alert(result.message);
 				closeModal();
 			}
@@ -33,10 +35,10 @@ export default function AuthModal() {
 				로그인
 			</StyledH1>
 			<StyledButtonDiv>
-				<button type='button' onClick={login}>
+				<button type='button' onClick={() => login('google')}>
 					<IconGoogle /> Google 로그인
 				</button>
-				<button type='button' onClick={() => alert('네이버 로그인')}>
+				<button type='button' onClick={() => login('naver')}>
 					<IconNaver />
 					Naver 로그인
 				</button>
