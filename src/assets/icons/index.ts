@@ -7,6 +7,7 @@ export {
 export {
 	FaCircleUser as IconCircleUser,
 	FaHourglass as IconWaiting,
+	FaClock as IconClock,
 } from 'react-icons/fa6';
 export { FcGoogle as IconGoogle } from 'react-icons/fc';
 export { IoCloseSharp as IconCloseSharp } from 'react-icons/io5';
