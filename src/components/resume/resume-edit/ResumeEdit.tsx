@@ -1,5 +1,5 @@
 import { isEmpty } from '@utils/helpers';
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import {
 	Activity as ActivityType,
 	Education as EducationType,
@@ -26,7 +26,7 @@ export default function ResumeEdit({ initialResume, changeMode }: ResumeEditProp
 	const resumeNavItems = [
 		{ name: '미리보기', onClick: () => changeMode('view') },
 		{ name: '섹션 추가', onClick: () => alert('hi') },
-		{ name: '저장하기', onClick: () => alert('hi') },
+		{ name: '저장하기' },
 	];
 
 	const [resume, setResume] = useState<ResumeType>(initialResume);
@@ -56,8 +56,14 @@ export default function ResumeEdit({ initialResume, changeMode }: ResumeEditProp
 		}));
 	};
 
+	const submitResume = (event: FormEvent) => {
+		event.preventDefault();
+		// eslint-disable-next-line
+		console.log(resume);
+	};
+
 	return (
-		<>
+		<form onSubmit={event => submitResume(event)}>
 			<h2 className='a11y-hidden'>
 				{isEmpty(resume.resumeTitle) ? '새로운 이력서' : resume.resumeTitle};
 			</h2>
@@ -71,6 +77,6 @@ export default function ResumeEdit({ initialResume, changeMode }: ResumeEditProp
 			<Education educations={resume.educations} handleInputChange={handleInputChange} />
 			<Activity activities={resume.activities} handleInputChange={handleInputChange} />
 			<ResumeNav resumeNavItems={resumeNavItems} />
-		</>
+		</form>
 	);
 }
