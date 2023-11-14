@@ -45,7 +45,7 @@ export default function Profile({ profile, handleInputChange }: ProfileProps) {
 				<label className='input-job'>
 					<input
 						type='text'
-						placeholder='직업 입력'
+						placeholder='포지션 입력'
 						value={profile.job}
 						onChange={event => handleInputChange('job', event.target.value)}
 					/>
