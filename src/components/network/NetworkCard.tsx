@@ -37,7 +37,7 @@ const StyledCardItem = styled.button`
 	text-align: start;
 	transition: all 0.2s ease;
 	&:hover {
-		transform: scale(103%);
+		transform: translateY(-5px);
 		filter: brightness(0.96);
 	}
 	h4 {
