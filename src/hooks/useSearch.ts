@@ -7,7 +7,9 @@ export default function useSearch(searchLimit: number, data: string[]) {
 	const [suggestions, setSuggestions] = useState<string[]>(() => []);
 
 	const getSuggestion = async (keyword: string) => {
-		const filteredData = data.filter(item => item.includes(keyword));
+		const filteredData = data.filter(item =>
+			item.toLowerCase().includes(keyword.toLowerCase()),
+		);
 		setSuggestions(filteredData.slice(0, SEARCH_LIMIT));
 	};
 
