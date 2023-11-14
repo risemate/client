@@ -45,7 +45,7 @@ export default function NavBar() {
 					})}
 				</StyledNavList>
 				<StyledMyPage>
-					{!auth ? (
+					{auth ? (
 						<>
 							{isExpert && <Link to='/coach-info'>코칭 관리</Link>}
 							<button

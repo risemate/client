@@ -21,7 +21,6 @@ export default function AuthModal() {
 				alert('로그인 완료');
 			} else {
 				// eslint-disable-next-line
-				console.log(result.message);
 				alert(result.message);
 				closeModal();
 			}
