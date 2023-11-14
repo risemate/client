@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 import DefaultImage from '@common/DefaultImage';
 
+import StarRating from '../StarRating';
+
 interface ExpertCardProps {
 	expert: string;
 }
@@ -16,7 +18,7 @@ export default function ExpertCard({ expert }: ExpertCardProps) {
 	};
 	return (
 		<StyledCardItem onClick={moveToDetail}>
-			<span className='tag'>FRONTEND</span>
+			<StyledTag>FRONTEND</StyledTag>
 			<DefaultImage variant='navy' />
 			<h4>성장하는 프론트엔드 개발자</h4>
 			<p className='explanation'>
@@ -26,10 +28,11 @@ export default function ExpertCard({ expert }: ExpertCardProps) {
 				안녕하세요, TypeScript, React.js 기반의 2년 프론트엔드 개발자 000이라고 합니다.
 				잘부탁드립니다.
 			</p>
-			<p className='product-detail'>
+			<StyledProduct>
 				<span className='price'>20000원~</span>
-				<span className='num-review'>10개의 리뷰</span>
-			</p>
+				{/* <span className='num-review'>10개의 리뷰</span> */}
+				<StarRating rating={4.5} numReview={10} />
+			</StyledProduct>
 		</StyledCardItem>
 	);
 }
@@ -48,18 +51,6 @@ const StyledCardItem = styled.button`
 		transform: translateY(-5px);
 		filter: brightness(0.96);
 	}
-	.tag {
-		color: white;
-		font-weight: bold;
-		font-size: ${({ theme }) => theme.fontSizes.small};
-		background: ${({ theme }) => theme.colors.blue};
-		padding: 3px 10px;
-		position: absolute;
-		border-radius: 10px;
-		margin-bottom: 5px;
-		top: 20px;
-		right: 20px;
-	}
 	h4 {
 		margin: 10px 0 5px;
 		font-weight: bold;
@@ -77,22 +68,32 @@ const StyledCardItem = styled.button`
 		line-height: 15px;
 		${({ theme }) => theme.common.ellipsisTwoLine};
 	}
-	.product-detail {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		border-top: 1px solid ${({ theme }) => theme.colors.lightGrey};
-		padding: 10px 20px;
-		display: flex;
-		justify-content: space-between;
-		align-items: end;
-		.price {
-			font-weight: bold;
-		}
-		.num-review {
-			font-size: ${({ theme }) => theme.fontSizes.small};
-			color: ${({ theme }) => theme.colors.darkGrey};
-		}
+`;
+
+const StyledTag = styled.span`
+	color: white;
+	font-weight: bold;
+	font-size: ${({ theme }) => theme.fontSizes.small};
+	background: ${({ theme }) => theme.colors.blue};
+	padding: 3px 10px;
+	position: absolute;
+	border-radius: 10px;
+	margin-bottom: 5px;
+	top: 20px;
+	right: 20px;
+`;
+
+const StyledProduct = styled.p`
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	border-top: 1px solid ${({ theme }) => theme.colors.lightGrey};
+	padding: 10px 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	span:first-child {
+		font-weight: bold;
 	}
 `;

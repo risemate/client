@@ -20,3 +20,8 @@ export {
 export { MdComment as IconComment, MdOutlineAddCircle as IconAdd } from 'react-icons/md';
 export { AiFillCheckCircle as IconCheck } from 'react-icons/ai';
 export { HiMiniQuestionMarkCircle as IconQuestion } from 'react-icons/hi2';
+export {
+	BsStarFill as IconStar,
+	BsStarHalf as IconStarHalf,
+	BsStar as IconStarEmpty,
+} from 'react-icons/bs';
