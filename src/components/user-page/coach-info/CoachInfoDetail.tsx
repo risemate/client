@@ -50,7 +50,7 @@ export default function CoachInfoDetail() {
 							]}
 							buttonEvent={{
 								name: '코칭 관리하기',
-								onClick: () => navigate('/coach-management'),
+								onClick: () => navigate('management'),
 							}}
 						/>
 					</div>

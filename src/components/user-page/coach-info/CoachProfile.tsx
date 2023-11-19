@@ -26,7 +26,7 @@ export default function CoachProfile() {
 						</Button>
 					</>
 				)}
-				<Button variant='navy' size='full' onClick={() => navigate('/myinfo')}>
+				<Button variant='navy' size='full' onClick={() => navigate('/my-info')}>
 					일반 유저로 전환하기
 				</Button>
 				<Button variant='border' size='full'>

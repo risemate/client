@@ -24,7 +24,7 @@
 		"build": "craco build",
 		"test": "craco test",
 		"eject": "react-scripts eject",
-		"prepare": "husky install | chmod ug+x .husky/*",
+		"prepare": "husky install || chmod ug+x .husky/*",
 		"format": "prettier --ignore-path .gitignore --write --cache .",
 		"lint": "eslint --ext .js,.jsx,.ts,.tsx src --color --cache --max-warnings=0"
 	},

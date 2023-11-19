@@ -5,11 +5,12 @@ import NavBar from '@components/NavBar';
 
 import 'normalize.css';
 
-export default function UserLayout() {
+export default function UserLayout({ backgroundColor }: { backgroundColor?: string }) {
+	console.log(backgroundColor);
 	return (
 		<>
 			<NavBar />
-			<StyledLayout>
+			<StyledLayout style={{ backgroundColor }}>
 				<Outlet />
 			</StyledLayout>
 		</>
