@@ -1,6 +1,6 @@
+import { defaultResume, mockResume } from 'models/ResumeData';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { defaultResume, mockResume } from 'types/Resume';
 
 import ResumeEdit from '@components/resume/resume-edit/ResumeEdit';
 import ResumeView from '@components/resume/resume-view/ResumeView';

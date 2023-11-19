@@ -1,7 +1,7 @@
 import { isEmpty } from '@utils/helpers';
+import { mockResume } from 'models/ResumeData';
 import React from 'react';
 import styled from 'styled-components';
-import { mockResume } from 'types/Resume';
 
 import Empty from '@common/Empty';
 import AddResume from '@components/resume/resume-list/AddResume';

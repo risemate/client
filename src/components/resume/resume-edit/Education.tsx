@@ -1,6 +1,7 @@
+import { defaultEducation } from 'models/ResumeData';
 import React from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
-import { Education as EducationType, GraduationStatus } from 'types/Resume';
+import { GraduationStatus } from 'types/Resume';
 
 import DateInput from '@common/input/DateInput';
 import Input from '@common/input/Input';
@@ -11,15 +12,6 @@ import BaseSection from './BaseSection';
 import EditButton from './EditButton';
 
 export default function Education() {
-	const defaultEducation: EducationType = {
-		schoolName: '',
-		major: '',
-		graduationStatus: '학기 중',
-		enrollmentStartedAt: '',
-		enrollmentEndedAt: '',
-		links: [],
-	};
-
 	const FIELD = 'educations';
 	const { register, control, watch } = useFormContext();
 	const { fields, prepend, remove, swap } = useFieldArray({

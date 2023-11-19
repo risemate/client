@@ -1,10 +1,7 @@
+import { defaultWorkExperience } from 'models/ResumeData';
 import React from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
-import {
-	EmploymentStatus,
-	JobType,
-	WorkExperience as WorkExperienceType,
-} from 'types/Resume';
+import { EmploymentStatus, JobType } from 'types/Resume';
 
 import DateInput from '@common/input/DateInput';
 import Input from '@common/input/Input';
@@ -16,18 +13,6 @@ import BaseSection from './BaseSection';
 import EditButton from './EditButton';
 
 export default function WorkExperience() {
-	const defaultWorkExperience: WorkExperienceType = {
-		companyName: '',
-		departmentName: '',
-		role: '',
-		jobType: '정규직',
-		employmentStatus: '재직 중',
-		workStartedAt: '',
-		workEndedAt: '',
-		assignedTask: '',
-		links: [],
-	};
-
 	const FIELD = 'workExperiences';
 	const { register, control, watch } = useFormContext();
 	const { fields, prepend, remove, swap } = useFieldArray({

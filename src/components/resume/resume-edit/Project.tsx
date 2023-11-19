@@ -1,7 +1,8 @@
+import { defaultProject } from 'models/ResumeData';
 import React from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
-import { ProjectStatus, Project as ProjectType } from 'types/Resume';
+import { ProjectStatus } from 'types/Resume';
 
 import DateInput from '@common/input/DateInput';
 import Input from '@common/input/Input';
@@ -13,16 +14,6 @@ import BaseSection from './BaseSection';
 import EditButton from './EditButton';
 
 export default function Project() {
-	const defaultProject: ProjectType = {
-		projectName: '',
-		summaryIntro: '',
-		projectStartedAt: '',
-		projectEndedAt: '',
-		projectDescription: '',
-		projectStatus: '완료',
-		projectOrganization: '',
-		links: [],
-	};
 	const FIELD = 'projects';
 	const { register, control, watch } = useFormContext();
 	const { fields, prepend, remove, swap } = useFieldArray({

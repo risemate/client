@@ -1,6 +1,6 @@
+import { defaultActivity } from 'models/ResumeData';
 import React from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
-import { Activity as ActivityType } from 'types/Resume';
 
 import Input from '@common/input/Input';
 import LinkInput from '@common/input/LinkInput';
@@ -10,14 +10,6 @@ import BaseSection from './BaseSection';
 import EditButton from './EditButton';
 
 export default function Activity() {
-	const defaultActivity: ActivityType = {
-		activityName: '',
-		activityYear: undefined,
-		activityDescription: '',
-		activityOrganization: '',
-		links: [],
-	};
-
 	const FIELD = 'activities';
 	const { register, control, watch } = useFormContext();
 	const { fields, prepend, remove, swap } = useFieldArray({
