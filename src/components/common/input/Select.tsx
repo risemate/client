@@ -1,4 +1,4 @@
-import React, { SelectHTMLAttributes } from 'react';
+import React, { ForwardedRef, SelectHTMLAttributes, forwardRef } from 'react';
 import styled from 'styled-components';
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
@@ -6,11 +6,14 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 	options: string[];
 }
 
-export default function Select({ label, options, ...SelectProps }: SelectProps) {
+const Select = forwardRef(function Select(
+	{ label, options, ...SelectProps }: SelectProps,
+	ref: ForwardedRef<HTMLSelectElement>,
+) {
 	return (
 		<StyledSelect>
 			{label}
-			<select {...SelectProps}>
+			<select ref={ref} {...SelectProps}>
 				{options.map((option, index) => (
 					<option key={index} value={option}>
 						{option}
@@ -19,7 +22,7 @@ export default function Select({ label, options, ...SelectProps }: SelectProps) 
 			</select>
 		</StyledSelect>
 	);
-}
+});
 
 const StyledSelect = styled.div`
 	font-size: ${({ theme }) => theme.fontSizes.small};
@@ -33,3 +36,5 @@ const StyledSelect = styled.div`
 		padding: 10px;
 	}
 `;
+
+export default Select;

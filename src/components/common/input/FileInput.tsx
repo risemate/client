@@ -1,25 +1,21 @@
 import { IconCloseSharp } from '@icons';
 import { isEmpty } from '@utils/helpers';
 import React, { useState, ChangeEvent } from 'react';
+import { useFormContext } from 'react-hook-form';
 import styled, { css } from 'styled-components';
-import { Resume } from 'types/Resume';
 
 import DefaultImage, { Size } from '@common/DefaultImage';
 
 interface FileInputProps {
 	label?: string;
 	image: string;
+	inputName: string;
 	size?: Size;
-	handleImageInput?: (field: keyof Resume, value: string | number) => void;
 }
 
-export default function FileInput({
-	label,
-	image,
-	size,
-	handleImageInput,
-}: FileInputProps) {
+export default function FileInput({ label, image, inputName, size }: FileInputProps) {
 	const [selectedImage, setSelectedImage] = useState(image);
+	const { setValue } = useFormContext();
 	const changeImage = (event: ChangeEvent<HTMLInputElement>) => {
 		const file = event.target?.files?.[0];
 		if (file) {
@@ -28,9 +24,7 @@ export default function FileInput({
 				const result = event.target?.result;
 				if (typeof result === 'string') {
 					setSelectedImage(result);
-					if (handleImageInput) {
-						handleImageInput('profileImage', result);
-					}
+					setValue(inputName, result);
 				}
 			};
 			reader.readAsDataURL(file);
@@ -38,9 +32,7 @@ export default function FileInput({
 	};
 	const resetImage = () => {
 		setSelectedImage('');
-		if (handleImageInput) {
-			handleImageInput('profileImage', '');
-		}
+		setValue(inputName, '');
 	};
 	return (
 		<StyledFileInput $size={size}>

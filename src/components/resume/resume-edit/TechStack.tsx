@@ -5,19 +5,17 @@ import useSearch from '@hooks/useSearch';
 import { IconCloseSharp } from '@icons';
 import { isEmpty } from '@utils/helpers';
 import React, { useRef, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
 
 import Button from '@common/Button';
 import Input from '@common/input/Input';
 import SearchList from '@common/SearchList';
 
-interface TechStackProps {
-	techStack: string[];
-	updateTechStack: (newSkiils: string[]) => void;
-}
+export default function TechStack() {
+	const { watch, setValue } = useFormContext();
+	const techStack = watch('techStack');
 
-export default function TechStack({ techStack, updateTechStack }: TechStackProps) {
-	// const [stack, setStack] = useState('');
 	const { searchText, suggestions, inputChange, handleSuggestionClick, resetSearchText } =
 		useSearch(5, techStackData.keyword);
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -26,19 +24,18 @@ export default function TechStack({ techStack, updateTechStack }: TechStackProps
 	const searchRef = useRef<HTMLDivElement | null>(null);
 
 	const addTechStack = () => {
-		updateTechStack([...techStack, searchText]);
+		setValue('techStack.skills', [...techStack.skills, searchText]);
 		resetSearchText();
 		closeSearchList();
 	};
 
 	const removeTechStack = (index: number) => {
-		const newTechStack = [...techStack];
+		const newTechStack = [...techStack.skills];
 		newTechStack.splice(index, 1);
-		updateTechStack(newTechStack);
+		setValue('techStack.skills', newTechStack);
 	};
 
 	const { handleEnter } = useKeyboard();
-
 	useClickOutside([searchRef], closeSearchList);
 
 	return (
@@ -69,7 +66,7 @@ export default function TechStack({ techStack, updateTechStack }: TechStackProps
 				)}
 			</div>
 			<StyledList>
-				{techStack.map((stack, index) => {
+				{techStack.skills.map((stack: string, index: number) => {
 					return (
 						<li key={index}>
 							{stack}

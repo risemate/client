@@ -30,7 +30,6 @@ export default function ExpertCard({ expert }: ExpertCardProps) {
 			</p>
 			<StyledProduct>
 				<span className='price'>20000원~</span>
-				{/* <span className='num-review'>10개의 리뷰</span> */}
 				<StarRating rating={4.5} numReview={10} />
 			</StyledProduct>
 		</StyledCardItem>
@@ -83,7 +82,7 @@ const StyledTag = styled.span`
 	right: 20px;
 `;
 
-const StyledProduct = styled.p`
+const StyledProduct = styled.div`
 	position: absolute;
 	bottom: 0;
 	left: 0;

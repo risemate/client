@@ -1,48 +1,24 @@
-import React, { ChangeEvent, InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes } from 'react';
+import { useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
 
-interface DateInputProps<T> extends InputHTMLAttributes<HTMLInputElement> {
+interface DateInputProps extends InputHTMLAttributes<HTMLInputElement> {
 	label: string;
-	index: number;
-	startDate: string;
-	endDate: string;
-	keyword: string;
-	updateDateInput: (index: number, field: keyof T, value: string) => void;
+	inputName: string;
 }
 
-export default function DateInput<T>({
-	label,
-	index,
-	startDate,
-	endDate,
-	keyword,
-	updateDateInput,
-	...InputProps
-}: DateInputProps<T>) {
-	const updateStartDate = (event: ChangeEvent<HTMLInputElement>) => {
-		updateDateInput(index, (keyword + 'StartedAt') as keyof T, event.target.value);
-	};
-	const updateEndDate = (event: ChangeEvent<HTMLInputElement>) => {
-		updateDateInput(index, (keyword + 'EndedAt') as keyof T, event.target.value);
-	};
+export default function DateInput({ label, inputName, ...InputProps }: DateInputProps) {
+	const { register } = useFormContext();
 	return (
 		<StyledDate>
 			<span>{label}</span>
 			<div>
 				<label>
-					<input
-						value={startDate}
-						onChange={event => updateStartDate(event)}
-						{...InputProps}
-					/>
+					<input {...register(`${inputName}StartedAt` as const)} {...InputProps} />
 				</label>
 				<span>~</span>
 				<label>
-					<input
-						value={endDate}
-						onChange={event => updateEndDate(event)}
-						{...InputProps}
-					/>
+					<input {...register(`${inputName}EndedAt` as const)} {...InputProps} />
 				</label>
 			</div>
 		</StyledDate>

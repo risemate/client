@@ -1,28 +1,33 @@
 import useInput from '@hooks/useInput';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import styled from 'styled-components';
+import { Auth } from 'types/User';
 
 import Button from '@common/Button';
 import FileInput from '@common/input/FileInput';
 import Input from '@common/input/Input';
 
 export default function EditUserInfo() {
-	const [isSelfVerified, setIsSelfVerified] = useState(false);
 	const userInfo = {
 		name: '홍길동',
 		password: 'hello',
 		nickaname: '길동이시오다',
-		image: '',
+		picture: '',
 		email: 'gildong@gmail.com',
 	};
+	const methods = useForm<Auth>({
+		mode: 'onSubmit',
+		defaultValues: userInfo,
+	});
+
+	const { getValues, watch, register, handleSubmit } = methods;
+	const [isSelfVerified, setIsSelfVerified] = useState(false);
 	const {
 		warning: passwordWarning,
 		changeValue: changePasswordValue,
 		checkTarget: checkPasswordTarget,
 	} = useInput('', userInfo.password);
-	const { inputValue: nickname, changeValue: changeNicknameValue } = useInput(
-		userInfo.nickaname,
-	);
 
 	const checkPassword = (event: FormEvent) => {
 		event.preventDefault();
@@ -35,65 +40,63 @@ export default function EditUserInfo() {
 		changePasswordValue(event.target.value);
 	};
 
-	const changeNickname = (event: ChangeEvent<HTMLInputElement>) => {
-		changeNicknameValue(event.target.value);
-	};
-
-	const changeUserInfo = (event: FormEvent) => {
-		event.preventDefault();
+	const changeUserInfo = (data: Auth) => {
+		// eslint-disable-next-line
+		console.log(data);
 	};
 
 	return (
-		<StyledEditUserInfo>
-			<h3>사용자 정보 수정</h3>
-			{isSelfVerified ? (
-				<form onSubmit={changeUserInfo}>
-					<FileInput label='이미지' image={userInfo.image} size='small' />
-					<Input
-						label='본명'
-						warning='변경할 수 없습니다.'
-						type='text'
-						value={userInfo.name}
-						readOnly
-					/>
-					<Input
-						label='이메일'
-						warning='변경할 수 없습니다.'
-						type='text'
-						value={userInfo.email}
-						readOnly
-					/>
-					<Input
-						label='닉네임'
-						type='text'
-						value={nickname}
-						placeholder='닉네임을 입력해주세요.'
-						onChange={event => changeNickname(event)}
-					/>
-					<Button
-						variant='navy'
-						size='medium'
-						type='submit'
-						onClick={event => checkPassword(event)}
-					>
-						정보 수정
-					</Button>
-				</form>
-			) : (
-				<form onSubmit={event => checkPassword(event)}>
-					<Input
-						label='비밀번호'
-						warning={passwordWarning}
-						type='password'
-						placeholder='비밀번호를 입력해주세요.'
-						onChange={event => changePassword(event)}
-					/>
-					<Button variant='navy' size='medium' type='submit'>
-						비밀번호 확인
-					</Button>
-				</form>
-			)}
-		</StyledEditUserInfo>
+		<FormProvider {...methods}>
+			<StyledEditUserInfo>
+				<h3>사용자 정보 수정</h3>
+				{isSelfVerified ? (
+					<form onSubmit={handleSubmit(changeUserInfo)}>
+						<FileInput
+							label='이미지'
+							image={watch('picture')}
+							inputName='picture'
+							size='small'
+						/>
+						<Input
+							label='본명'
+							warning='변경할 수 없습니다.'
+							type='text'
+							value={getValues('name')}
+							readOnly
+						/>
+						<Input
+							label='이메일'
+							warning='변경할 수 없습니다.'
+							type='text'
+							value={getValues('email')}
+							readOnly
+						/>
+						<Input
+							label='닉네임'
+							type='text'
+							placeholder='닉네임을 입력해주세요.'
+							{...register('nickname')}
+						/>
+						<Button variant='navy' size='medium' type='submit'>
+							정보 수정
+						</Button>
+					</form>
+				) : (
+					<form onSubmit={event => checkPassword(event)}>
+						<Input
+							label='비밀번호'
+							warning={passwordWarning}
+							type='password'
+							placeholder='비밀번호를 입력해주세요.'
+							onChange={event => changePassword(event)}
+						/>
+						<Button variant='navy' size='medium' type='submit'>
+							비밀번호 확인
+						</Button>
+					</form>
+				)}
+			</StyledEditUserInfo>
+		</FormProvider>
 	);
 }
 

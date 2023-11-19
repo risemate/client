@@ -1,6 +1,7 @@
 import useKeyboard from '@hooks/useKeyboard';
 import { IconCloseSharp } from '@icons';
 import React, { ChangeEvent, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
 import { Link as LinkType } from 'types/Resume';
 
@@ -9,12 +10,12 @@ import Input from '@common/input/Input';
 
 interface LinkInputProps {
 	links: LinkType[];
-	index?: number;
-	updateLinks: (index: number, field: 'links', value: LinkType[]) => void;
+	inputName: string;
 }
 
-export default function LinkInput({ links, index, updateLinks }: LinkInputProps) {
+export default function LinkInput({ links, inputName }: LinkInputProps) {
 	const [link, setLink] = useState('[linkTitle](linkUrl)');
+	const { setValue } = useFormContext();
 	const linkToString = (link: LinkType) => {
 		return `${link.linkTitle}: ${link.linkUrl}`;
 	};
@@ -45,18 +46,14 @@ export default function LinkInput({ links, index, updateLinks }: LinkInputProps)
 			}
 			return 0;
 		});
-		if (index !== undefined) {
-			updateLinks(index, 'links', newLinks);
-		}
+		setValue(inputName, newLinks);
 		setLink('[linkTitle](linkUrl)');
 	};
 
 	const deleteLink = (itemIdx: number) => {
 		const newLinks = [...links];
 		newLinks.splice(itemIdx, 1);
-		if (index !== undefined) {
-			updateLinks(index, 'links', newLinks);
-		}
+		setValue(inputName, newLinks);
 	};
 
 	const { handleEnter } = useKeyboard();

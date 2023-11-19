@@ -1,18 +1,14 @@
 import { IconPlus } from '@icons';
 import React from 'react';
+import { useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
-import { Resume as ResumeType } from 'types/Resume';
 
 import FileInput from '@common/input/FileInput';
 import Input from '@common/input/Input';
 import TextArea from '@common/input/TextArea';
 
-interface ProfileProps {
-	profile: ResumeType;
-	handleInputChange: (field: keyof ResumeType, value: string | number) => void;
-}
-
-export default function Profile({ profile, handleInputChange }: ProfileProps) {
+export default function Profile() {
+	const { watch, register } = useFormContext();
 	return (
 		<StyledProfile>
 			<div className='heading'>
@@ -22,33 +18,18 @@ export default function Profile({ profile, handleInputChange }: ProfileProps) {
 					<input
 						type='text'
 						placeholder='이력서 이름 입력'
-						value={profile.resumeTitle}
-						onChange={event => handleInputChange('resumeTitle', event.target.value)}
+						{...register('resumeTitle')}
 					/>
 				</label>
 				<p>* 내용이 없을 시 이력서에 표기되지 않습니다.</p>
 			</div>
 			<StyledInputs>
-				<FileInput
-					image={profile.profileImage}
-					size='medium'
-					handleImageInput={handleInputChange}
-				/>
+				<FileInput image={watch('profileImage')} inputName='profileImage' size='medium' />
 				<label className='input-name'>
-					<input
-						type='text'
-						placeholder='이름 입력'
-						value={profile.name}
-						onChange={event => handleInputChange('name', event.target.value)}
-					/>
+					<input type='text' placeholder='이름 입력' {...register('name')} />
 				</label>
 				<label className='input-job'>
-					<input
-						type='text'
-						placeholder='포지션 입력'
-						value={profile.job}
-						onChange={event => handleInputChange('job', event.target.value)}
-					/>
+					<input type='text' placeholder='포지션 입력' {...register('job')} />
 				</label>
 				<div className='contact-wrapper'>
 					<Input label='휴대폰 번호' type='text' />
@@ -64,12 +45,7 @@ export default function Profile({ profile, handleInputChange }: ProfileProps) {
 						<IconPlus />
 					</button>
 				</div>
-				<TextArea
-					label='자기소개'
-					value={profile.coverLetter}
-					onChange={event => handleInputChange('coverLetter', event.target.value)}
-					help
-				/>
+				<TextArea label='자기소개' help {...register('coverLetter')} />
 			</StyledInputs>
 		</StyledProfile>
 	);

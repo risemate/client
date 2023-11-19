@@ -1,12 +1,7 @@
 import { isEmpty } from '@utils/helpers';
-import React, { FormEvent, useState } from 'react';
-import {
-	Activity as ActivityType,
-	Education as EducationType,
-	Project as ProjectType,
-	Resume as ResumeType,
-	WorkExperience as WorkExperienceType,
-} from 'types/Resume';
+import React from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import { Resume as ResumeType } from 'types/Resume';
 
 import ResumeNav from '@common/ResumeNav';
 
@@ -29,54 +24,33 @@ export default function ResumeEdit({ initialResume, changeMode }: ResumeEditProp
 		{ name: '저장하기' },
 	];
 
-	const [resume, setResume] = useState<ResumeType>(initialResume);
-	const handleInputChange = (
-		field: keyof ResumeType,
-		value:
-			| string
-			| number
-			| WorkExperienceType[]
-			| ProjectType[]
-			| EducationType[]
-			| ActivityType[],
-	) => {
-		setResume(prevResume => ({
-			...prevResume,
-			[field]: value,
-		}));
-	};
+	const methods = useForm<ResumeType>({
+		mode: 'onSubmit',
+		defaultValues: initialResume,
+	});
 
-	const updateTechStack = (newSkills: string[]) => {
-		setResume(prevResume => ({
-			...prevResume,
-			techStack: {
-				...prevResume.techStack,
-				skills: newSkills,
-			},
-		}));
-	};
+	const { handleSubmit, getValues } = methods;
 
-	const submitResume = (event: FormEvent) => {
-		event.preventDefault();
+	const submitResume = (data: ResumeType) => {
 		// eslint-disable-next-line
-		console.log(resume);
+		console.log(data);
 	};
 
 	return (
-		<form onSubmit={event => submitResume(event)}>
-			<h2 className='a11y-hidden'>
-				{isEmpty(resume.resumeTitle) ? '새로운 이력서' : resume.resumeTitle};
-			</h2>
-			<Profile profile={resume} handleInputChange={handleInputChange} />
-			<TechStack techStack={resume.techStack.skills} updateTechStack={updateTechStack} />
-			<WorkExperience
-				workExperiences={resume.workExperiences}
-				handleInputChange={handleInputChange}
-			/>
-			<Project projects={resume.projects} handleInputChange={handleInputChange} />
-			<Education educations={resume.educations} handleInputChange={handleInputChange} />
-			<Activity activities={resume.activities} handleInputChange={handleInputChange} />
-			<ResumeNav resumeNavItems={resumeNavItems} />
-		</form>
+		<FormProvider {...methods}>
+			<form onSubmit={handleSubmit(submitResume)}>
+				<h2 className='a11y-hidden'>
+					{isEmpty(getValues('resumeTitle')) ? '새로운 이력서' : getValues('resumeTitle')}
+					;
+				</h2>
+				<Profile />
+				<TechStack />
+				<WorkExperience />
+				<Project />
+				<Education />
+				<Activity />
+				<ResumeNav resumeNavItems={resumeNavItems} />
+			</form>
+		</FormProvider>
 	);
 }

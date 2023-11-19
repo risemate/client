@@ -1,5 +1,5 @@
 import { IconQuestion } from '@icons';
-import React, { TextareaHTMLAttributes } from 'react';
+import React, { ForwardedRef, TextareaHTMLAttributes, forwardRef } from 'react';
 import styled from 'styled-components';
 
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
@@ -8,12 +8,10 @@ interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 	help?: boolean;
 }
 
-export default function TextArea({
-	label,
-	warning,
-	help,
-	...TextAreaProps
-}: TextAreaProps) {
+const TextArea = forwardRef(function TextArea(
+	{ label, warning, help, ...TextAreaProps }: TextAreaProps,
+	ref: ForwardedRef<HTMLTextAreaElement>,
+) {
 	return (
 		<StyledLabel>
 			<div>
@@ -28,11 +26,11 @@ export default function TextArea({
 					</p>
 				)}
 			</div>
-			<textarea rows={6} {...TextAreaProps}></textarea>
+			<textarea rows={6} ref={ref} {...TextAreaProps}></textarea>
 			{warning && <span className='warning'>{warning}</span>}
 		</StyledLabel>
 	);
-}
+});
 
 const StyledLabel = styled.label`
 	font-size: ${({ theme }) => theme.fontSizes.small};
@@ -76,3 +74,5 @@ const StyledLabel = styled.label`
 		word-break: break-all;
 	}
 `;
+
+export default TextArea;

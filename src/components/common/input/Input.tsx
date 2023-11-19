@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from 'react';
+import React, { ForwardedRef, InputHTMLAttributes, forwardRef } from 'react';
 import styled from 'styled-components';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -7,21 +7,19 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	explanation?: string;
 }
 
-export default function Input({
-	label,
-	warning,
-	explanation,
-	...InputProps
-}: InputProps) {
+const Input = forwardRef(function Input(
+	{ label, warning, explanation, ...InputProps }: InputProps,
+	ref: ForwardedRef<HTMLInputElement>,
+) {
 	return (
 		<StyledLabel>
 			{label && <span>{label}</span>}
-			<input {...InputProps} />
+			<input ref={ref} {...InputProps} />
 			{warning && <span className='warning'>{warning}</span>}
 			{explanation && <span>{explanation}</span>}
 		</StyledLabel>
 	);
-}
+});
 
 const StyledLabel = styled.label`
 	font-size: ${({ theme }) => theme.fontSizes.small};
@@ -65,3 +63,5 @@ const StyledLabel = styled.label`
 		word-break: break-all;
 	}
 `;
+
+export default Input;

@@ -1,23 +1,37 @@
 import { IconArrowDown, IconArrowUp, IconTrash } from '@icons';
 import React from 'react';
+import { UseFieldArraySwap } from 'react-hook-form';
 import styled from 'styled-components';
 
 interface EditButtonProps {
 	index: number;
-	changeIndex: (index: number, increase: boolean) => void;
 	deleteData: (index: number) => void;
+	swap: UseFieldArraySwap;
+	length: number;
 }
 
-export default function EditButton({ index, changeIndex, deleteData }: EditButtonProps) {
+export default function EditButton({ index, deleteData, swap, length }: EditButtonProps) {
+	const swapItems = (index: number, isUp: boolean) => {
+		if (swap && length) {
+			if (isUp) {
+				if (index <= 0) return;
+				swap(index, index - 1);
+			} else {
+				if (index >= length - 1) return;
+				swap(index, index + 1);
+			}
+		}
+	};
+
 	return (
 		<StyledButton>
-			<button type='button' onClick={() => changeIndex(index, false)}>
+			<button type='button' onClick={() => swapItems(index, false)}>
 				<IconArrowDown />
 			</button>
 			<button type='button' onClick={() => deleteData(index)}>
 				<IconTrash />
 			</button>
-			<button type='button' onClick={() => changeIndex(index, true)}>
+			<button type='button' onClick={() => swapItems(index, true)}>
 				<IconArrowUp />
 			</button>
 		</StyledButton>

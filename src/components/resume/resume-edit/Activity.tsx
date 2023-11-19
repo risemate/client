@@ -1,6 +1,6 @@
-import useResumeEdit from '@hooks/useResumeEdit';
 import React from 'react';
-import { Activity as ActivityType, Resume as ResumeType } from 'types/Resume';
+import { useFieldArray, useFormContext } from 'react-hook-form';
+import { Activity as ActivityType } from 'types/Resume';
 
 import Input from '@common/input/Input';
 import LinkInput from '@common/input/LinkInput';
@@ -9,12 +9,7 @@ import TextArea from '@common/input/TextArea';
 import BaseSection from './BaseSection';
 import EditButton from './EditButton';
 
-interface ActivityProps {
-	activities: ActivityType[];
-	handleInputChange: (field: keyof ResumeType, value: ActivityType[]) => void;
-}
-
-export default function Activity({ activities, handleInputChange }: ActivityProps) {
+export default function Activity() {
 	const defaultActivity: ActivityType = {
 		activityName: '',
 		activityYear: undefined,
@@ -22,77 +17,65 @@ export default function Activity({ activities, handleInputChange }: ActivityProp
 		activityOrganization: '',
 		links: [],
 	};
-	const {
-		addData: addAcitivty,
-		deleteData: deleteActivity,
-		updateData: updateActivity,
-		changeIndex,
-	} = useResumeEdit<ActivityType>(
-		activities,
-		defaultActivity,
-		'activities',
-		handleInputChange,
-	);
+
+	const FIELD = 'activities';
+	const { register, control, watch } = useFormContext();
+	const { fields, prepend, remove, swap } = useFieldArray({
+		control,
+		name: FIELD,
+	});
 
 	return (
-		<BaseSection title='대외활동' addData={addAcitivty}>
-			{activities.map((activity, index) => (
-				<div key={index}>
-					<h4>대외활동</h4>
-					<ul>
-						<li>
-							<Input
-								label='대외활동명'
-								type='text'
-								value={activity.activityName}
-								onChange={event =>
-									updateActivity(index, 'activityName', event.target.value)
-								}
-							/>
-						</li>
-						<li>
-							<Input
-								label='활동년도'
-								type='number'
-								value={activity.activityYear}
-								onChange={event =>
-									updateActivity(index, 'activityYear', event.target.value)
-								}
-							/>
-						</li>
-						<li>
-							<Input
-								label='주관사'
-								value={activity.activityOrganization}
-								onChange={event =>
-									updateActivity(index, 'activityOrganization', event.target.value)
-								}
-							/>
-						</li>
-						<li>
-							<TextArea
-								label='활동 설명'
-								value={activity.activityDescription}
-								onChange={event =>
-									updateActivity(index, 'activityDescription', event.target.value)
-								}
-							/>
-						</li>
-						<li>
-							<LinkInput
-								links={activity.links}
-								index={index}
-								updateLinks={updateActivity}
-							/>
-						</li>
-					</ul>
-					<EditButton
-						index={index}
-						changeIndex={changeIndex}
-						deleteData={deleteActivity}
-					/>
-				</div>
-			))}
+		<BaseSection title='대외활동' addData={() => prepend(defaultActivity)}>
+			{fields.map((activity, index) => {
+				const inputName = (name: string) => `${FIELD}.${index}.${name}`;
+				return (
+					<div key={activity.id}>
+						<h4>대외활동</h4>
+						<ul>
+							<li>
+								<Input
+									label='대외활동명'
+									type='text'
+									{...register(inputName('activityName'))}
+								/>
+							</li>
+							<li>
+								<Input
+									label='활동년도'
+									type='number'
+									{...register(inputName('activityYear'))}
+								/>
+							</li>
+							<li>
+								<Input
+									label='주관사'
+									type='text'
+									{...register(inputName('activityOrganization'))}
+								/>
+							</li>
+							<li>
+								<TextArea
+									label='활동 설명'
+									{...register(inputName('activityDescription'))}
+								/>
+							</li>
+							<li>
+								<LinkInput
+									links={watch(FIELD)[index].links}
+									inputName={inputName('links')}
+								/>
+							</li>
+						</ul>
+						<EditButton
+							index={index}
+							deleteData={() => remove(index)}
+							swap={swap}
+							length={fields.length}
+						/>
+					</div>
+				);
+			})}
 		</BaseSection>
 	);
 }
