@@ -26,15 +26,15 @@ export const router = createBrowserRouter([
 				element: <Home />,
 			},
 			{
-				path: 'network',
+				path: 'networks',
 				children: [
 					{
 						index: true,
 						element: <Network />,
 					},
 					{
-						path: '/network:id',
-						element: <div>이력서</div>,
+						path: 'resumes/:id',
+						element: <ResumeDetail />,
 					},
 				],
 			},
@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
 						element: <Experts />,
 					},
 					{
-						path: '/experts:id',
+						path: ':id',
 						element: <ExpertDetail />,
 					},
 				],
@@ -91,11 +91,6 @@ export const router = createBrowserRouter([
 			{
 				index: true,
 				element: <CoachInfo />,
-			},
-
-			{
-				path: 'ai',
-				element: <div>ai 코치</div>,
 			},
 
 			{
