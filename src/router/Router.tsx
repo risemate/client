@@ -1,3 +1,4 @@
+import theme from '@styles/theme';
 import RootLayout from 'layout/RootLayout';
 import UserLayout from 'layout/UserLayout';
 import CoachInfo from 'pages/CoachInfo';
@@ -55,11 +56,11 @@ export const router = createBrowserRouter([
 	},
 
 	{
-		path: '/',
+		path: 'my-info',
 		element: <UserLayout />,
 		children: [
 			{
-				path: 'myinfo',
+				index: true,
 				element: <MyInfoPage />,
 			},
 			{
@@ -70,7 +71,7 @@ export const router = createBrowserRouter([
 						element: <Resume />,
 					},
 					{
-						path: '/resumes:id',
+						path: ':id',
 						element: <ResumeDetail />,
 					},
 				],
@@ -79,12 +80,26 @@ export const router = createBrowserRouter([
 				path: 'ai',
 				element: <div>ai 코치</div>,
 			},
+		],
+		loader: signLoader,
+		errorElement: <NotFound />,
+	},
+	{
+		path: 'coach-info',
+		element: <UserLayout backgroundColor={theme.colors.grey} />,
+		children: [
 			{
-				path: 'coach-info',
+				index: true,
 				element: <CoachInfo />,
 			},
+
 			{
-				path: 'coach-management',
+				path: 'ai',
+				element: <div>ai 코치</div>,
+			},
+
+			{
+				path: 'management',
 				element: <CoachManagement />,
 			},
 		],
