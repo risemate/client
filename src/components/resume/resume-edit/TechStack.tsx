@@ -17,7 +17,7 @@ export default function TechStack() {
 	const techStack = watch('techStack');
 
 	const { searchText, suggestions, inputChange, handleSuggestionClick, resetSearchText } =
-		useSearch(5, techStackData.keyword);
+		useSearch(20, techStackData.keyword);
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
 	const openSearchList = () => setIsSearchOpen(true);
 	const closeSearchList = () => setIsSearchOpen(false);

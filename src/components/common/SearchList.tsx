@@ -27,17 +27,19 @@ export default function SearchList({
 
 const StyledSearchList = styled.ul`
 	background: white;
-	border: 1px solid ${({ theme }) => theme.colors.grey};
+	border: 0.5px solid ${({ theme }) => theme.colors.grey};
 	border-radius: 10px;
-	${({ theme }) => theme.common.flexCenterColumn};
+	display: flex;
+	flex-wrap: wrap;
 	gap: 10px;
-	padding: 10px;
+	padding: 20px;
+	color: ${({ theme }) => theme.colors.darkGrey};
 	li {
-		width: 100%;
-		font-size: ${({ theme }) => theme.fontSizes.small};
 		button {
-			width: 100%;
-			padding: 5px 0;
+			color: ${({ theme }) => theme.colors.darkGrey};
+			border-radius: 50px;
+			border: 1px solid ${({ theme }) => theme.colors.grey};
+			padding: 5px 10px;
 			&:hover {
 				background: ${({ theme }) => theme.colors.lightGrey};
 			}
