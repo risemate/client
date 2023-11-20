@@ -12,10 +12,10 @@ import AuthModal from './auth/AuthModal';
 export default function NavBar() {
 	const navigate = useNavigate();
 	const navItems = [
-		{ name: '내 이력서', route: '/resumes' },
-		{ name: 'AI 코치', route: '/ai' },
+		{ name: '내 이력서', route: '/my-info/resumes' },
+		{ name: 'AI 코치', route: '/my-info/ai' },
 		{ name: '코치 찾기', route: '/experts' },
-		{ name: '네트워킹', route: '/network' },
+		{ name: '네트워킹', route: '/networks' },
 	];
 
 	const { isModal, openModal } = useModal();
@@ -57,7 +57,7 @@ export default function NavBar() {
 								<IconBell />
 							</button>
 							{isAlarmOpen && <Alarm closeAlarm={closeAlarm} btnAlarmRef={btnAlarmRef} />}
-							<button type='button' onClick={() => navigate('/myinfo')}>
+							<button type='button' onClick={() => navigate('/my-info')}>
 								<IconCircleUser />
 							</button>
 						</>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import DefaultImage from '@common/DefaultImage';
@@ -10,13 +10,10 @@ interface NetworkCardProps {
 
 // eslint-disable-next-line
 export default function NetworkCard({ network }: NetworkCardProps) {
-	const navigate = useNavigate();
 	const image = true;
-	const moveToDetail = () => {
-		navigate('/');
-	};
+
 	return (
-		<StyledCardItem onClick={moveToDetail}>
+		<StyledCardItem to={'/networks/resumes/1'}>
 			{image ? (
 				<DefaultImage variant='blue' shape='rectangle' />
 			) : (
@@ -31,7 +28,7 @@ export default function NetworkCard({ network }: NetworkCardProps) {
 	);
 }
 
-const StyledCardItem = styled.button`
+const StyledCardItem = styled(Link)`
 	max-width: 250px;
 	min-width: 200px;
 	text-align: start;
