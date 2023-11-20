@@ -4,8 +4,8 @@ export const defaultWorkExperience: WorkExperience = {
 	companyName: '',
 	departmentName: '',
 	role: '',
-	jobType: '정규직',
-	employmentStatus: '재직 중',
+	jobType: '선택',
+	employmentStatus: '선택',
 	workStartedAt: '',
 	workEndedAt: '',
 	assignedTask: '',
@@ -18,7 +18,7 @@ export const defaultProject: Project = {
 	projectStartedAt: '',
 	projectEndedAt: '',
 	projectDescription: '',
-	projectStatus: '완료',
+	projectStatus: '선택',
 	projectOrganization: '',
 	links: [],
 };
@@ -26,7 +26,7 @@ export const defaultProject: Project = {
 export const defaultEducation: Education = {
 	schoolName: '',
 	major: '',
-	graduationStatus: '학기 중',
+	graduationStatus: '선택',
 	enrollmentStartedAt: '',
 	enrollmentEndedAt: '',
 	links: [],

@@ -31,11 +31,11 @@ export type Link = {
 	linkUrl: string;
 };
 
-type JobType = '정규직' | '계약직' | '인턴' | '기타';
-export const JobType: JobType[] = ['정규직', '계약직', '인턴', '기타'];
+type JobType = '정규직' | '계약직' | '인턴' | '선택';
+export const JobType: JobType[] = ['선택', '정규직', '계약직', '인턴'];
 
-type EmploymentStatus = '재직 중' | '퇴직' | '기타';
-export const EmploymentStatus: EmploymentStatus[] = ['재직 중', '퇴직', '기타'];
+type EmploymentStatus = '재직 중' | '퇴직' | '선택';
+export const EmploymentStatus: EmploymentStatus[] = ['선택', '재직 중', '퇴직'];
 
 export type WorkExperience = {
 	companyName: string;
@@ -49,13 +49,13 @@ export type WorkExperience = {
 	links: Link[];
 };
 
-type ProjectStatus = '완료' | '진행 중' | '리팩토링 중' | '완료되지 않음' | '기타';
+type ProjectStatus = '완료' | '진행 중' | '리팩토링 중' | '완료되지 않음' | '선택';
 export const ProjectStatus: ProjectStatus[] = [
+	'선택',
 	'완료',
 	'진행 중',
 	'리팩토링 중',
 	'완료되지 않음',
-	'기타',
 ];
 export type Project = {
 	projectName: string;
@@ -68,13 +68,13 @@ export type Project = {
 	links: Link[];
 };
 
-type GraduationStatus = '학기 중' | '졸업' | '편입' | '중도 퇴학' | '기타';
+type GraduationStatus = '학기 중' | '졸업' | '편입' | '중도 퇴학' | '선택';
 export const GraduationStatus: GraduationStatus[] = [
+	'선택',
 	'학기 중',
 	'졸업',
 	'편입',
 	'중도 퇴학',
-	'기타',
 ];
 export type Education = {
 	schoolName: string;
