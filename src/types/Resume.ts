@@ -82,6 +82,7 @@ export type Education = {
 	graduationStatus: GraduationStatus;
 	enrollmentStartedAt: string; // 날짜 형식으로 변경 필요
 	enrollmentEndedAt: string; // 날짜 형식으로 변경 필요
+	educationDescription: string;
 	links: Link[];
 };
 

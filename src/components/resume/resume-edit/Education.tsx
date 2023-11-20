@@ -10,6 +10,7 @@ import Select from '@common/input/Select';
 
 import BaseSection from './BaseSection';
 import EditButton from './EditButton';
+import TextArea from '@common/input/TextArea';
 
 export default function Education() {
 	const FIELD = 'educations';
@@ -49,6 +50,13 @@ export default function Education() {
 									label='교육 기간'
 									inputName={inputName('enrollment')}
 									type='month'
+								/>
+							</li>
+							<li>
+								<TextArea 
+									label='교육 설명'
+									help
+									{...register(inputName('educationDescription'))}
 								/>
 							</li>
 							<li>

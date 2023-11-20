@@ -29,6 +29,7 @@ export const defaultEducation: Education = {
 	graduationStatus: '선택',
 	enrollmentStartedAt: '',
 	enrollmentEndedAt: '',
+	educationDescription: '',
 	links: [],
 };
 
@@ -186,6 +187,7 @@ export const mockResume: Resume = {
 			graduationStatus: '학기 중',
 			enrollmentStartedAt: '1914-03',
 			enrollmentEndedAt: '1914-12',
+			educationDescription: '',
 			links: [
 				{
 					linkTitle: '라메 기술 블로그',
@@ -203,6 +205,7 @@ export const mockResume: Resume = {
 			graduationStatus: '졸업',
 			enrollmentStartedAt: '1914-02',
 			enrollmentEndedAt: '1910-03',
+			educationDescription: '',
 			links: [
 				{
 					linkTitle: '라메 기술 블로그',
