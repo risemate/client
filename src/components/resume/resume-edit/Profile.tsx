@@ -8,7 +8,7 @@ import Input from '@common/input/Input';
 import TextArea from '@common/input/TextArea';
 
 export default function Profile() {
-	const { watch, register } = useFormContext();
+	const { register } = useFormContext();
 	return (
 		<StyledProfile>
 			<div className='heading'>
@@ -24,7 +24,7 @@ export default function Profile() {
 				<p>* 내용이 없을 시 이력서에 표기되지 않습니다.</p>
 			</div>
 			<StyledInputs>
-				<FileInput image={watch('profileImage')} inputName='profileImage' size='medium' />
+				<FileInput inputName='profileImage' size='medium' />
 				<label className='input-name'>
 					<input type='text' placeholder='이름 입력' {...register('name')} />
 				</label>

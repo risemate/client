@@ -1,6 +1,6 @@
 import { IconCloseSharp } from '@icons';
 import { isEmpty } from '@utils/helpers';
-import React, { useState, ChangeEvent } from 'react';
+import React, { ChangeEvent } from 'react';
 import { useFormContext } from 'react-hook-form';
 import styled, { css } from 'styled-components';
 
@@ -8,14 +8,12 @@ import DefaultImage, { Size } from '@common/DefaultImage';
 
 interface FileInputProps {
 	label?: string;
-	image: string;
 	inputName: string;
 	size?: Size;
 }
 
-export default function FileInput({ label, image, inputName, size }: FileInputProps) {
-	const [selectedImage, setSelectedImage] = useState(image);
-	const { setValue } = useFormContext();
+export default function FileInput({ label, inputName, size }: FileInputProps) {
+	const { watch, setValue } = useFormContext();
 	const changeImage = (event: ChangeEvent<HTMLInputElement>) => {
 		const file = event.target?.files?.[0];
 		if (file) {
@@ -23,7 +21,6 @@ export default function FileInput({ label, image, inputName, size }: FileInputPr
 			reader.onload = event => {
 				const result = event.target?.result;
 				if (typeof result === 'string') {
-					setSelectedImage(result);
 					setValue(inputName, result);
 				}
 			};
@@ -31,14 +28,13 @@ export default function FileInput({ label, image, inputName, size }: FileInputPr
 		}
 	};
 	const resetImage = () => {
-		setSelectedImage('');
 		setValue(inputName, '');
 	};
 	return (
 		<StyledFileInput $size={size}>
 			<label>
 				{!isEmpty(label) && label}
-				<DefaultImage variant='grey' size={size} image={selectedImage} />
+				<DefaultImage variant='grey' size={size} image={watch(inputName)} />
 				<input type='file' onChange={event => changeImage(event)} />
 			</label>
 			<span>
@@ -61,7 +57,7 @@ const sizeStyle = css<StyledInputProps>`
 			case 'small':
 				return css`
 					top: 15px;
-					left: 80px;
+					left: 85px;
 				`;
 			case 'medium':
 				return css`
@@ -70,7 +66,7 @@ const sizeStyle = css<StyledInputProps>`
 				`;
 			case 'large':
 				return css`
-					top: 25px;
+					top: 30px;
 					left: 180px;
 				`;
 			default:
