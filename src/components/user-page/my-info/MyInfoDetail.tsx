@@ -1,12 +1,12 @@
 import { useSearchParam } from '@hooks/useSearchParam';
-import { IconCheck, IconCoin, IconComment, IconProceeding } from '@icons';
+import { IconCheck, IconCoin, IconComment, IconProceeding, IconWaiting } from '@icons';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import EditUserInfo from '../common/EditUserInfo';
+import EditUserInfo from './EditUserInfo';
 import PageItem from '../common/PageItem';
-import Payment from '../common/Payment';
-import Review from '../common/Review';
+import Payment from './Payment';
+import Review from './Review';
 
 export default function MyInfoDetail() {
 	const { queryParam, changeParam } = useSearchParam('mode');
@@ -35,10 +35,11 @@ export default function MyInfoDetail() {
 					<div>
 						<PageItem
 							items={[
-								{ name: '진행 중인 첨삭', icon: <IconProceeding />, state: '0개' },
-								{ name: '완료한 첨삭', icon: <IconCheck />, state: '1개' },
+								{ name: '응답 대기', icon: <IconWaiting />, state: '10개' },
+								{ name: '진행 중', icon: <IconProceeding />, state: '0개' },
+								{ name: '완료', icon: <IconCheck />, state: '1개' },
 							]}
-							buttonEvent={{ name: '페이지로 이동', onClick: () => navigate('/resumes') }}
+							buttonEvent={{ name: '첨삭 페이지 이동', onClick: () => navigate('/resumes') }}
 						/>
 					</div>
 				</StyledPageDetail>
