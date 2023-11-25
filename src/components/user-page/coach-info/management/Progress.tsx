@@ -13,7 +13,7 @@ export default function Progress({ progress }: ProgressProps) {
 	const level = 1;
 	const progressBarItems = [
 		'결제 완료',
-		'결제 완료',
+		'요청 완료',
 		'피드백\n문서 완성\nand\n온/오프 미팅\n완료',
 		'첨삭 완료\n및 정산',
 	];
