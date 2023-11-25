@@ -49,6 +49,7 @@ export default function Activity() {
 							<li>
 								<TextArea
 									label='활동 설명'
+									help
 									{...register(inputName('activityDescription'))}
 								/>
 							</li>
