@@ -1,5 +1,5 @@
 import { IconArrowDown, IconArrowUp, IconTrash } from '@icons';
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import { UseFieldArraySwap } from 'react-hook-form';
 import styled from 'styled-components';
 
@@ -11,7 +11,7 @@ interface EditButtonProps {
 }
 
 export default function EditButton({ index, deleteData, swap, length }: EditButtonProps) {
-	const swapItems = (index: number, isUp: boolean) => {
+	const swapItems = (event: MouseEvent<HTMLButtonElement>, index: number, isUp: boolean) => {
 		if (swap && length) {
 			if (isUp) {
 				if (index <= 0) return;
@@ -21,24 +21,38 @@ export default function EditButton({ index, deleteData, swap, length }: EditButt
 				swap(index, index + 1);
 			}
 		}
+		focusChangeColor(event)
 	};
 
+	const focusChangeColor = (event: MouseEvent<HTMLButtonElement>) => {
+		const focusedItem = (event.target as HTMLElement).closest('div');
+		if(focusedItem) {
+			focusedItem.style.backgroundColor = '#F0FAF6';
+			focusedItem.style.transition = 'background-color 0.3s ease-in-out'
+			setTimeout(() => {
+				focusedItem.style.backgroundColor = 'white';
+				focusedItem.style.transition = 'background-color 0s'
+			}, 3000);
+		}
+	}
+
+	// 
 	return (
 		<StyledButton>
-			<button type='button' onClick={() => swapItems(index, false)}>
+			<button type='button' onClick={(event) => swapItems(event, index, false)}>
 				<IconArrowDown />
 			</button>
 			<button type='button' onClick={() => deleteData(index)}>
 				<IconTrash />
 			</button>
-			<button type='button' onClick={() => swapItems(index, true)}>
+			<button type='button' onClick={(event) => swapItems(event, index, true)}>
 				<IconArrowUp />
 			</button>
 		</StyledButton>
 	);
 }
 
-const StyledButton = styled.div`
+const StyledButton = styled.span`
 	border: 0.5px solid ${({ theme }) => theme.colors.grey};
 	border-radius: 5px;
 	position: absolute;
