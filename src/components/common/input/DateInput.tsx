@@ -29,6 +29,7 @@ const StyledDate = styled.div`
 	font-size: ${({ theme }) => theme.fontSizes.small};
 	color: ${({ theme }) => theme.colors.darkGrey};
 	& > div {
+		background: white;
 		border-radius: 10px;
 		border: 0.5px solid ${({ theme }) => theme.colors.grey};
 		padding: 10px;
