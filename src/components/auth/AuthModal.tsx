@@ -52,6 +52,7 @@ const StyledH1 = styled.h1`
 	font-weight: bold;
 	text-align: center;
 	margin-bottom: 60px;
+	height: 100px;
 	img {
 		margin: 15px 0;
 	}
@@ -68,6 +69,9 @@ const StyledButtonDiv = styled.div`
 		box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
 		font-weight: bold;
 		position: relative;
+		&:not(:disabled):hover {
+			filter: brightness(0.9);
+		}
 		svg {
 			width: 30px;
 			height: 30px;
@@ -78,6 +82,7 @@ const StyledButtonDiv = styled.div`
 	}
 	button:nth-child(1) {
 		color: ${({ theme }) => theme.colors.darkGrey};
+		background: white;
 	}
 	button:nth-child(2) {
 		color: white;
