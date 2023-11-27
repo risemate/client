@@ -82,19 +82,18 @@ const sizeStyle = css<StyledButtonProps>`
 `;
 
 const StyledButton = styled.button<StyledButtonProps>`
-	${({ theme }) => css`
-		padding: 10px 20px;
-		user-select: none;
-		border-radius: 50px;
+	padding: 10px 20px;
+	user-select: none;
+	border-radius: 50px;
+	color: white;
+	transition: all 0.3s ease-out;
+	white-space: nowrap;
+	&:disabled {
+		box-shadow: none;
 		color: white;
-		transition: all 0.3s ease-out;
-		&:disabled {
-			box-shadow: none;
-			color: white;
-			background-color: ${theme.colors.grey};
-			cursor: initial;
-		}
-	`}
+		background-color: ${({ theme }) => theme.colors.grey};
+		cursor: initial;
+	}
 	&:not(:disabled):hover {
 		filter: brightness(0.9);
 	}
