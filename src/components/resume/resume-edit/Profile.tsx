@@ -1,51 +1,42 @@
-import { IconPlus } from '@icons';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
 
 import FileInput from '@common/input/FileInput';
 import Input from '@common/input/Input';
+import LinkInput from '@common/input/LinkInput';
 import TextArea from '@common/input/TextArea';
 
 export default function Profile() {
-	const { register } = useFormContext();
+	const { register, watch } = useFormContext();
 	return (
 		<StyledProfile>
 			<div className='heading'>
 				<h3>기본 정보</h3>
 				<label>
 					<span className='a11y-hidden'>이력서 이름 입력</span>
-					<input
-						type='text'
-						placeholder='이력서 이름 입력'
-						{...register('resumeTitle')}
-					/>
+					<input type='text' placeholder='이력서 이름 입력' {...register('docsTitle')} />
 				</label>
 				<p>* 내용이 없을 시 이력서에 표기되지 않습니다.</p>
 			</div>
 			<StyledInputs>
-				<FileInput inputName='profileImage' size='medium' />
+				<FileInput inputName='profile.profileImage' size='medium' />
 				<label className='input-name'>
-					<input type='text' placeholder='이름 입력' {...register('name')} />
+					<input type='text' placeholder='이름 입력' {...register('profile.name')} />
 				</label>
 				<label className='input-job'>
-					<input type='text' placeholder='포지션 입력' {...register('job')} />
+					<input
+						type='text'
+						placeholder='포지션 입력'
+						{...register('profile.position')}
+					/>
 				</label>
 				<div className='contact-wrapper'>
-					<Input label='휴대폰 번호' type='text' />
-					<Input label='이메일' type='email' />
+					<Input label='휴대폰 번호' type='text' {...register('profile.phoneNumber')} />
+					<Input label='이메일' type='email' {...register('profile.email')} />
 				</div>
-				<div className='link-wrapper'>
-					<Input
-						label='Link'
-						type='text'
-						explanation='예시) [{Github}]https://www.github.com'
-					/>
-					<button type='button'>
-						<IconPlus />
-					</button>
-				</div>
-				<TextArea label='자기소개' help {...register('coverLetter')} />
+				<LinkInput links={watch('links')} inputName='links' />
+				<TextArea label='자기소개' help {...register('profile.coverLetter')} />
 			</StyledInputs>
 		</StyledProfile>
 	);
@@ -87,7 +78,7 @@ const StyledProfile = styled.section`
 const StyledInputs = styled.div`
 	display: grid;
 	grid-template-columns: 160px 0.8fr 1fr 1fr;
-	grid-template-rows: 70px 130px 150px;
+	grid-template-rows: 70px auto 150px;
 	gap: 5px 20px;
 	& > div:nth-child(1) {
 		grid-column: 1 / 2;
@@ -118,33 +109,23 @@ const StyledInputs = styled.div`
 		}
 	}
 	.contact-wrapper {
-		grid-column: 3 / 4;
-		grid-row: 1 / 3;
+		grid-column: 3 / 5;
+		grid-row: 1 / 2;
+		display: flex;
+		gap: 30px;
+		margin-top: 20px;
 		label {
-			margin-top: 20px;
+			width: 100%;
 		}
 	}
-	.link-wrapper {
-		grid-column: 4 / 5;
-		grid-row: 1 / 3;
-		position: relative;
-		label {
-			margin: 20px 0 5px;
-		}
-		button {
-			position: absolute;
-			top: 15px;
-			right: 10px;
-			svg {
-				color: ${({ theme }) => theme.colors.navy};
-			}
-		}
+	& > div:last-of-type {
+		grid-column: 3 / 5;
+		grid-row: 2 / 3;
+		margin-top: 20px;
 	}
 	label:nth-of-type(3) {
 		grid-column: 1 / 5;
 		grid-row: 3 / 4;
-		input {
-			height: 100%;
-		}
+		margin-top: 20px;
 	}
 `;
