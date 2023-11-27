@@ -13,3 +13,9 @@ export type Auth = {
 export interface Career {
 	_id: string;
 }
+
+export type User = {
+	nickname: string;
+	picture: string;
+	_id: string;
+};

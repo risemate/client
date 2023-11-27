@@ -4,5 +4,5 @@ import React from 'react';
 import Profile from '@components/resume/resume-view/Profile';
 
 export default function ExpertProfile() {
-	return <Profile resume={mockResume} />;
+	return <Profile profile={mockResume.profile} />;
 }

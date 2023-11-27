@@ -1,4 +1,20 @@
-import { Activity, Education, Project, Resume, WorkExperience } from 'types/Resume';
+import {
+	Activity,
+	Education,
+	Profile,
+	Project,
+	Resume,
+	WorkExperience,
+} from 'types/Resume';
+
+export const defaultProfile: Profile = {
+	name: '',
+	email: '',
+	phoneNumber: '',
+	profileImage: '',
+	position: '',
+	coverLetter: '',
+};
 
 export const defaultWorkExperience: WorkExperience = {
 	companyName: '',
@@ -42,43 +58,46 @@ export const defaultActivity: Activity = {
 };
 
 export const defaultResume: Resume = {
-	_id: 0,
-	resumeTitle: '',
-	parentId: '',
+	user: { nickname: '', picture: '', _id: '' },
+	public: true,
 	resumeType: 'BASIC',
-	name: '',
-	job: '',
-	postion: '',
-	profileImage: '',
-	coverLetter: '',
+	docsTitle: '',
+	parentId: null,
+	profile: defaultProfile,
 	techStack: {
 		skills: [],
 	},
 	workExperiences: [defaultWorkExperience],
 	projects: [defaultProject],
-	portfolio: {
-		links: [],
-		attachFiles: [],
-	},
 	educations: [defaultEducation],
 	activities: [defaultActivity],
-	careerStatus: false,
-	entryLevel: false,
-	careerYears: 0,
+	links: [],
+	hasNewCommentAlarm: false,
+	careerYears: 1,
 	lookingForJob: true,
-	public: true,
+	_id: '',
+	createdAt: '',
+	updatedAt: '',
 };
 
 export const mockResume: Resume = {
-	_id: 289193,
-	resumeTitle: '저...세상으로 가는 개발자',
+	_id: '',
+	user: { nickname: '', picture: '', _id: '' },
+	hasNewCommentAlarm: false,
+	docsTitle: '저...세상으로 가는 개발자',
 	parentId: '', // BASIC 이력서 한개당 AI는 1개, COACHING은 여러개 일수 있다,  parentId를 공유한다.  BASIC은 parentId를 가질 수 없다.
 	resumeType: 'BASIC',
-	name: '김서방',
-	job: '프론트엔드 개발자',
-	postion: '프론트엔드',
-	profileImage: '',
-	coverLetter: '프론트엔드 개발자입니다.',
+	careerYears: 2, // 신입이면 경력이 0
+	lookingForJob: true, //구직 유무
+	public: true,
+	profile: {
+		name: '김서방',
+		email: 'gildong@risemate.com',
+		phoneNumber: '010-1111-2222',
+		profileImage: '',
+		position: '프론트엔드',
+		coverLetter: '프론트엔드 개발자입니다.',
+	},
 	techStack: {
 		skills: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Jest'],
 	},
@@ -166,20 +185,16 @@ export const mockResume: Resume = {
 			],
 		},
 	],
-	portfolio: {
-		//기타 추가 링크들
-		links: [
-			{
-				linkTitle: '라메 기술 블로그',
-				linkUrl: 'https:',
-			},
-			{
-				linkTitle: '라메 기술 블로그',
-				linkUrl: 'https://',
-			},
-		],
-		attachFiles: [],
-	},
+	links: [
+		{
+			linkTitle: '라메 기술 블로그',
+			linkUrl: 'https:',
+		},
+		{
+			linkTitle: '라메 기술 블로그',
+			linkUrl: 'https://',
+		},
+	],
 	educations: [
 		{
 			schoolName: 'NHN NEXT',
@@ -237,10 +252,6 @@ export const mockResume: Resume = {
 			],
 		},
 	],
-
-	careerStatus: false, // 재직 유무
-	entryLevel: false, //신입 여부
-	careerYears: 2, // 신입이면 경력이 0
-	lookingForJob: true, //구직 유무
-	public: true,
+	createdAt: '',
+	updatedAt: '',
 };

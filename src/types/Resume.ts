@@ -1,29 +1,35 @@
+import { User } from './User';
+
 export type Resume = {
-	_id: number;
-	resumeTitle: string;
-	parentId: string;
+	user: User;
+	public: boolean;
 	resumeType: 'BASIC' | 'AI' | 'COACHING';
-	name: string;
-	job: string;
-	postion: string;
-	profileImage: string;
-	coverLetter: string;
+	docsTitle: string;
+	parentId: string | null;
+	profile: Profile;
 	techStack: {
 		skills: string[];
 	};
 	workExperiences: WorkExperience[];
 	projects: Project[];
-	portfolio: {
-		links: Link[];
-		attachFiles: string[]; // 여기에 첨부 파일에 대한 타입을 추가해야 합니다.
-	};
 	educations: Education[];
 	activities: Activity[];
-	careerStatus: boolean;
-	entryLevel: boolean;
+	links: Link[];
+	hasNewCommentAlarm: boolean;
 	careerYears: number;
 	lookingForJob: boolean;
-	public: true;
+	_id: string;
+	createdAt: string;
+	updatedAt: string;
+};
+
+export type Profile = {
+	name: string;
+	email: string;
+	phoneNumber: string;
+	profileImage: string;
+	position: string;
+	coverLetter: string;
 };
 
 export type Link = {

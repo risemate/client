@@ -1,21 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Resume as ResumeType } from 'types/Resume';
+import { Profile as ProfileType } from 'types/Resume';
 
 import DefaultImage from '@common/DefaultImage';
 
 interface ProfileProps {
-	resume: ResumeType;
+	profile: ProfileType;
+	techStack?: { skills: string[] };
 }
 
-export default function Profile({ resume }: ProfileProps) {
+export default function Profile({ profile, techStack }: ProfileProps) {
 	return (
 		<StyledProfile>
-			<DefaultImage variant='navy' size='large' image={resume.profileImage} />
+			<DefaultImage variant='navy' size='large' image={profile.profileImage} />
 			<h2>
-				{resume.name}
+				{profile.name}
 				<br />
-				<span>{resume.job}</span>
+				<span>{profile.position}</span>
 			</h2>
 			<ul className='list-contact'>
 				<li>
@@ -31,12 +32,14 @@ export default function Profile({ resume }: ProfileProps) {
 					Blog: <span>velog.com/@hongildong</span>
 				</li>
 			</ul>
-			<p>{resume.coverLetter}</p>
-			<ul className='list-skills'>
-				{resume.techStack.skills.map((stack, index) => (
-					<li key={index}>{stack}</li>
-				))}
-			</ul>
+			<p>{profile.coverLetter}</p>
+			{techStack && (
+				<ul className='list-skills'>
+					{techStack.skills.map((stack, index) => (
+						<li key={index}>{stack}</li>
+					))}
+				</ul>
+			)}
 		</StyledProfile>
 	);
 }
