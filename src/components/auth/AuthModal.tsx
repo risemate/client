@@ -33,6 +33,9 @@ export default function AuthModal() {
 				<br />
 				로그인
 			</StyledH1>
+			<StyledContent>
+				RiseMate에서 로그인하고 <br /> 다양한 서비스를 즐겨보세요!
+			</StyledContent>
 			<StyledButtonDiv>
 				<button type='button' onClick={() => login('google')}>
 					<IconGoogle /> Google 로그인
@@ -51,11 +54,18 @@ const StyledH1 = styled.h1`
 	font-size: ${({ theme }) => theme.fontSizes.large};
 	font-weight: bold;
 	text-align: center;
-	margin-bottom: 60px;
+	margin-bottom: 30px;
 	height: 100px;
 	img {
 		margin: 15px 0;
 	}
+`;
+
+const StyledContent = styled.p`
+	text-align: center;
+	margin-bottom: 30px;
+	line-height: 25px;
+	color: ${({ theme }) => theme.colors.navy};
 `;
 
 const StyledButtonDiv = styled.div`
