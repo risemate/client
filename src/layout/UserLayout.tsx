@@ -19,10 +19,11 @@ export default function UserLayout({ backgroundColor }: { backgroundColor?: stri
 const StyledLayout = styled.main`
 	width: 100%;
 	${({ theme }) => theme.common.flexCenterColumn};
-	min-height: calc(100vh - 75px);
+	min-height: 100vh;
 	background: ${({ theme }) => theme.colors.lightGrey};
 	gap: 10px;
-	padding: 32px 32px 100px;
+	padding: 100px 32px 100px;
+	/* margin-top: 75px; */
 	& > div,
 	& > section,
 	& > form > section {

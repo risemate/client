@@ -78,6 +78,9 @@ export default function NavBar() {
 const StyledHeader = styled.header`
 	width: 100%;
 	border-bottom: 0.5px solid ${({ theme }) => theme.colors.lightGrey};
+	position: fixed;
+	z-index: 1;
+	background: white;
 	nav {
 		${({ theme }) => theme.common.minmaxWidth};
 		padding: 0 32px;
