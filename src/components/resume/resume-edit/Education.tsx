@@ -7,10 +7,10 @@ import DateInput from '@common/input/DateInput';
 import Input from '@common/input/Input';
 import LinkInput from '@common/input/LinkInput';
 import Select from '@common/input/Select';
+import TextArea from '@common/input/TextArea';
 
 import BaseSection from './BaseSection';
 import EditButton from './EditButton';
-import TextArea from '@common/input/TextArea';
 
 export default function Education() {
 	const FIELD = 'educations';
@@ -53,7 +53,7 @@ export default function Education() {
 								/>
 							</li>
 							<li>
-								<TextArea 
+								<TextArea
 									label='교육 설명'
 									help
 									{...register(inputName('educationDescription'))}

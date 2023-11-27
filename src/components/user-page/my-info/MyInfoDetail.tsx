@@ -3,8 +3,8 @@ import { IconCheck, IconCoin, IconComment, IconProceeding, IconWaiting } from '@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import EditUserInfo from './EditUserInfo';
 import PageItem from '../common/PageItem';
+import EditUserInfo from './EditUserInfo';
 import Payment from './Payment';
 import Review from './Review';
 
@@ -39,7 +39,10 @@ export default function MyInfoDetail() {
 								{ name: '진행 중', icon: <IconProceeding />, state: '0개' },
 								{ name: '완료', icon: <IconCheck />, state: '1개' },
 							]}
-							buttonEvent={{ name: '첨삭 페이지 이동', onClick: () => navigate('/resumes') }}
+							buttonEvent={{
+								name: '첨삭 페이지 이동',
+								onClick: () => navigate('/resumes'),
+							}}
 						/>
 					</div>
 				</StyledPageDetail>
