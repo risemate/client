@@ -1,45 +1,27 @@
 import { isEmpty } from '@utils/helpers';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
 
 interface KeywordSuggestionProps {
 	keyword: string;
-	keywordList: string[];
-	selectItems: string[];
-	setSelectItems: React.Dispatch<React.SetStateAction<string[]>>;
-	maxSuggestion?: number;
+	suggestions: string[];
 }
 
 export default function KeywordSuggestions({
 	keyword,
-	keywordList,
-	selectItems,
-	setSelectItems,
-	maxSuggestion = 20,
+	suggestions,
 }: KeywordSuggestionProps) {
-	const [suggestions, setSuggestions] = useState<string[]>([]);
-
-	const getSuggestions = (keyword: string) => {
-		const filteredData = keywordList.filter(item =>
-			item.toLowerCase().includes(keyword.toLowerCase()),
-		);
-		return filteredData;
-	};
+	const { getValues, setValue } = useFormContext();
 
 	const onClickedSuggetionItem = (item: string) => {
-		setSelectItems(pre => {
-			if (pre.includes(item)) {
-				return pre.filter(v => v !== item);
-			} else return [...pre, item];
-		});
-	};
-
-	useEffect(() => {
-		if (!keyword) {
-			return setSuggestions(['react', 'java', 'python', 'pytorch', 'tensorflow']);
+		const storedList = getValues(keyword);
+		if (storedList.includes(item)) {
+			setValue(keyword, [...storedList.filter((store: string) => store !== item)]);
+		} else {
+			setValue(keyword, [...storedList, item]);
 		}
-		setSuggestions(getSuggestions(keyword).slice(0, maxSuggestion));
-	}, [keyword]);
+	};
 
 	return (
 		<StyledSuggestonsWrap>
@@ -49,7 +31,7 @@ export default function KeywordSuggestions({
 					key={index}
 					type='button'
 					onClick={() => onClickedSuggetionItem(item)}
-					style={{ borderColor: selectItems.includes(item) ? 'blue' : '' }}
+					$selected={getValues(keyword).includes(item)}
 				>
 					{item}
 				</Item>
@@ -59,28 +41,23 @@ export default function KeywordSuggestions({
 }
 
 const StyledSuggestonsWrap = styled.div`
-	position: relative;
 	background: white;
-	border: 1px solid ${({ theme }) => theme.colors.grey};
+	border: 0.5px solid ${({ theme }) => theme.colors.grey};
 	border-radius: 10px;
-	${({ theme }) => theme.common.flexCenterColumn};
-	gap: 10px;
-	padding: 25px 10px;
 	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
 	flex-wrap: wrap;
-	font-size: ${({ theme }) => theme.fontSizes.small};
-	z-index: 1;
+	gap: 10px;
+	padding: 20px;
+	color: ${({ theme }) => theme.colors.darkGrey};
 `;
 
-const Item = styled.button`
-	padding: 5px 10px;
-	border: solid 1px #5050504c;
-	border-radius: 5px;
-	white-space: pre;
-	font-size: ${({ theme }) => theme.fontSizes.small};
+const Item = styled.button<{ $selected: boolean }>`
+	color: ${({ theme }) => theme.colors.darkGrey};
+	border-radius: 50px;
+	border: 1px solid ${({ theme }) => theme.colors.grey};
+	padding: 5px 15px;
 	&:hover {
-		background: ${({ theme }) => theme.colors.lightGrey};
+		background: ${({ theme }) => theme.colors.grey};
 	}
+	background: ${({ theme, $selected }) => ($selected ? theme.colors.lightGrey : 'white')};
 `;

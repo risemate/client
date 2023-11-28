@@ -1,82 +1,63 @@
 import techStackData from '@assets/data/techstack.json';
 import useClickOutside from '@hooks/useClickOutside';
-import useKeyboard from '@hooks/useKeyboard';
 import useSearch from '@hooks/useSearch';
 import { IconCloseSharp } from '@icons';
-import { isEmpty } from '@utils/helpers';
 import React, { useRef, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
 
-import Button from '@common/Button';
 import Input from '@common/input/Input';
-import SearchList from '@common/SearchList';
+import KeywordSuggestions from '@common/KeywordSuggestions';
 
 export default function TechStack() {
 	const { watch, setValue } = useFormContext();
 	const techStack = watch('techStack');
 
-	const { searchText, suggestions, inputChange, handleSuggestionClick, resetSearchText } =
-		useSearch(20, techStackData.keyword);
+	const { searchText, suggestions, inputChange } = useSearch(
+		20,
+		techStackData.default,
+		techStackData.keyword,
+	);
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
 	const openSearchList = () => setIsSearchOpen(true);
 	const closeSearchList = () => setIsSearchOpen(false);
 	const searchRef = useRef<HTMLDivElement | null>(null);
 
-	const addTechStack = () => {
-		setValue('techStack.skills', [...techStack.skills, searchText]);
-		resetSearchText();
-		closeSearchList();
-	};
-
-	const removeTechStack = (index: number) => {
+	const removeSelectedItem = (index: number) => {
 		const newTechStack = [...techStack.skills];
 		newTechStack.splice(index, 1);
 		setValue('techStack.skills', newTechStack);
 	};
 
-	const { handleEnter } = useKeyboard();
 	useClickOutside([searchRef], closeSearchList);
-
 	return (
 		<StyledTech>
 			<h3>기술 스택</h3>
-			<div ref={searchRef}>
-				<Input
-					label='기술 입력'
-					value={searchText}
-					onChange={inputChange}
-					onKeyUp={event => handleEnter(event, searchText, addTechStack)}
-					onFocus={openSearchList}
-				/>
-				<Button
-					variant='navy'
-					size='small'
-					type='button'
-					onClick={() => addTechStack()}
-					disabled={isEmpty(searchText)}
-				>
-					추가
-				</Button>
-				{isSearchOpen && (
-					<SearchList
-						suggestions={suggestions}
-						handleSuggestionClick={handleSuggestionClick}
-					/>
-				)}
-			</div>
 			<StyledList>
 				{techStack.skills.map((stack: string, index: number) => {
 					return (
-						<li key={index}>
+						<span key={index}>
 							{stack}
-							<button type='button' onClick={() => removeTechStack(index)}>
+							<button type='button' onClick={() => removeSelectedItem(index)}>
 								<IconCloseSharp />
 							</button>
-						</li>
+						</span>
 					);
 				})}
 			</StyledList>
+			<div ref={searchRef}>
+				<Input
+					value={searchText}
+					onChange={inputChange}
+					onFocus={openSearchList}
+					placeholder='기술을 검색하세요.'
+				/>
+				{isSearchOpen && (
+					<StyledSuggestionWrap>
+						<KeywordSuggestions keyword='techStack.skills' suggestions={suggestions} />
+					</StyledSuggestionWrap>
+				)}
+			</div>
 		</StyledTech>
 	);
 }
@@ -85,18 +66,13 @@ const StyledTech = styled.section`
 	padding: 40px;
 	& > div {
 		position: relative;
-		& > button {
+		/* & > button {
 			position: absolute;
 			top: 22px;
 			right: 0;
 			height: 35px;
 			border-radius: 0 10px 10px 0;
-		}
-		& > ul {
-			margin-top: 10px;
-			position: absolute;
-			width: calc(100% - 100px);
-		}
+		} */
 	}
 	h3 {
 		color: ${({ theme }) => theme.colors.navy};
@@ -108,11 +84,12 @@ const StyledTech = styled.section`
 	}
 `;
 
-const StyledList = styled.ul`
+const StyledList = styled.div`
 	display: flex;
 	gap: 10px;
-	margin-top: 20px;
-	li {
+	margin: 20px 0;
+	flex-wrap: wrap;
+	span {
 		width: fit-content;
 		background: ${({ theme }) => theme.colors.grey};
 		border-radius: 50px;
@@ -120,10 +97,18 @@ const StyledList = styled.ul`
 		color: white;
 		display: flex;
 		align-items: center;
+		white-space: pre;
 	}
 	button {
 		color: white;
 		height: 16px;
 		margin-left: 3px;
 	}
+`;
+
+const StyledSuggestionWrap = styled.div`
+	position: absolute;
+	width: 100%;
+	margin-top: 20px;
+	z-index: 1;
 `;

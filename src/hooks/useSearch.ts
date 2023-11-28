@@ -1,10 +1,14 @@
 import { isKoreanSingleCharacter } from '@utils/helpers';
 import { ChangeEvent, useCallback, useState } from 'react';
 
-export default function useSearch(searchLimit: number, data: string[]) {
+export default function useSearch(
+	searchLimit: number,
+	defaultValues: string[],
+	data: string[],
+) {
 	const SEARCH_LIMIT = searchLimit;
 	const [searchText, setSearchText] = useState('');
-	const [suggestions, setSuggestions] = useState<string[]>(() => []);
+	const [suggestions, setSuggestions] = useState<string[]>(defaultValues);
 
 	const getSuggestion = async (keyword: string) => {
 		const filteredData = data.filter(item =>
@@ -18,24 +22,25 @@ export default function useSearch(searchLimit: number, data: string[]) {
 		setSearchText(keyword);
 		if (isKoreanSingleCharacter(keyword)) return;
 		if (!keyword) {
-			setSuggestions([]);
-			return;
+			setSuggestions(defaultValues);
+		} else {
+			getSuggestion(keyword);
 		}
-		getSuggestion(keyword);
 	};
 
 	const handleSuggestionClick = useCallback(
-		(keyword: string) => {
-			setSearchText(keyword);
-			getSuggestion(keyword);
+		(callback: () => void) => {
+			resetSearchText();
+			callback();
 		},
 		[suggestions],
 	);
 
 	const resetSearchText = () => {
 		setSearchText('');
-		setSuggestions([]);
+		setSuggestions(defaultValues);
 	};
+
 	return {
 		searchText,
 		suggestions,

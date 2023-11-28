@@ -9,8 +9,7 @@ import Activity from './Activity';
 import Education from './Education';
 import Profile from './Profile';
 import Project from './Project';
-// import TechStack from './TechStack';
-import TechStack from './TechStacktest';
+import TechStack from './TechStack';
 import WorkExperience from './WorkExperience';
 
 interface ResumeEditProps {
