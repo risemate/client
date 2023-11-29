@@ -61,7 +61,7 @@ const StyledSection = styled.section`
 	& > div:not(:last-child) {
 		margin-bottom: 30px;
 		padding-bottom: 30px;
-		border-bottom: 1px solid ${({ theme }) => theme.colors.grey};
+		border-bottom: 2px solid ${({ theme }) => theme.colors.grey};
 	}
 	& > div:first-child {
 		border-bottom: 2px solid ${({ theme }) => theme.colors.navy};
