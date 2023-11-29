@@ -29,20 +29,50 @@ export default function EditButton({ index, deleteData, swap, length }: EditButt
 				swap(index, index + 1);
 			}
 		}
-		focusChangeColor(event);
+		// changeColor.focus(event);
 	};
 
-	const focusChangeColor = (event: MouseEvent<HTMLButtonElement>) => {
-		const focusedItem = (event.target as HTMLElement).closest('div');
-		if (focusedItem) {
-			focusedItem.style.backgroundColor = '#F0FAF6';
-			focusedItem.style.transition = 'background-color 0.3s ease-in-out';
-			setTimeout(() => {
-				focusedItem.style.backgroundColor = 'white';
-				focusedItem.style.transition = 'background-color 0s';
-			}, 3000);
-		}
-	};
+	// const changeColor = {
+	// 	focus: (event: MouseEvent<HTMLButtonElement>) => {
+	// 		setIsHover(true);
+	// 		const focusedItem = (event.target as HTMLElement).closest('div');
+	// 		if (focusedItem) {
+	// 			focusedItem.style.backgroundColor = '#ededed';
+	// 			focusedItem.style.transition = 'background-color 0.3s ease-in-out';
+	// 			setTimeout(() => {
+	// 				focusedItem.style.backgroundColor = 'white';
+	// 				focusedItem.style.transition = 'background-color 0s';
+	// 				setIsHover(false);
+	// 			}, 2000);
+	// 		}
+	// 	},
+	// 	mouseover: (event: MouseEvent<HTMLButtonElement>) => {
+	// 		console.log("mouseover");
+	// 		setIsHover(true);
+	// 		const focusedItem = (event.target as HTMLElement).closest('div');
+	// 		if (focusedItem) {
+	// 			focusedItem.style.backgroundColor = '#ededed';
+	// 			focusedItem.style.transition = 'background-color 0.3s ease-in-out';
+	// 			setTimeout(() => {
+	// 				focusedItem.style.backgroundColor = 'white';
+	// 				focusedItem.style.transition = 'background-color 0s';
+	// 				setIsHover(false);
+	// 			}, 500);
+	// 		}
+	// 	},
+	// 	mouseleave: (event: MouseEvent<HTMLButtonElement>) => {
+	// 		console.log("mouseleave")
+	// 		setIsHover(false);
+	// 		const focusedItem = (event.target as HTMLElement).closest('div');
+	// 		console.log(isHover);
+	// 		if(focusedItem) {
+	// 			console.log("hello");
+	// 			focusedItem.style.backgroundColor = 'white';
+	// 			focusedItem.style.transition = 'background-color 0s';
+	// 		}
+	// 	}
+	// }
+
 	return (
 		<>
 			<StyledButton>
