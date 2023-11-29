@@ -19,11 +19,12 @@ export default function Modal({ title, content, confirm, onClick }: ModalProps) 
 				<h1>{title}</h1>
 				<p>{content}</p>
 				<div>
-					<Button variant='border' onClick={() => openModal()}>
+					<Button variant='border' size='full' onClick={() => openModal()}>
 						취소
 					</Button>
 					<Button
 						variant='navy'
+						size='full'
 						onClick={() => {
 							{
 								onClick && onClick();

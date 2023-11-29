@@ -1,7 +1,10 @@
+import { useModal } from '@hooks/atoms/useModalAtom';
 import { IconArrowDown, IconArrowUp, IconTrash } from '@icons';
 import React, { MouseEvent } from 'react';
 import { UseFieldArraySwap } from 'react-hook-form';
 import styled from 'styled-components';
+
+import Modal from '@common/modal/Modal';
 
 interface EditButtonProps {
 	index: number;
@@ -11,6 +14,7 @@ interface EditButtonProps {
 }
 
 export default function EditButton({ index, deleteData, swap, length }: EditButtonProps) {
+	const { isModal, openModal } = useModal();
 	const swapItems = (
 		event: MouseEvent<HTMLButtonElement>,
 		index: number,
@@ -39,20 +43,27 @@ export default function EditButton({ index, deleteData, swap, length }: EditButt
 			}, 3000);
 		}
 	};
-
-	//
 	return (
-		<StyledButton>
-			<button type='button' onClick={event => swapItems(event, index, false)}>
-				<IconArrowDown />
-			</button>
-			<button type='button' onClick={() => deleteData(index)}>
-				<IconTrash />
-			</button>
-			<button type='button' onClick={event => swapItems(event, index, true)}>
-				<IconArrowUp />
-			</button>
-		</StyledButton>
+		<>
+			<StyledButton>
+				<button type='button' onClick={event => swapItems(event, index, false)}>
+					<IconArrowDown />
+				</button>
+				<button type='button' onClick={openModal}>
+					<IconTrash />
+				</button>
+				<button type='button' onClick={event => swapItems(event, index, true)}>
+					<IconArrowUp />
+				</button>
+			</StyledButton>
+			{isModal && (
+				<Modal
+					title='목록 삭제'
+					content='해당 목록을 삭제하시겠습니까? 다시 복구할 수 없습니다.'
+					onClick={() => deleteData(index)}
+				/>
+			)}
+		</>
 	);
 }
 
