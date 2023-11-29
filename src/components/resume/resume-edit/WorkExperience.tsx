@@ -60,7 +60,7 @@ export default function WorkExperience() {
 								/>
 							</li>
 							<li>
-								<DateInput label='재직 기간' inputName={inputName('work')} type='month' />
+								<DateInput label='재직 기간' inputName={inputName('work')} />
 							</li>
 							<li>
 								<TextArea

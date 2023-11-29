@@ -46,11 +46,7 @@ export default function Education() {
 								/>
 							</li>
 							<li>
-								<DateInput
-									label='교육 기간'
-									inputName={inputName('enrollment')}
-									type='month'
-								/>
+								<DateInput label='교육 기간' inputName={inputName('enrollment')} />
 							</li>
 							<li>
 								<TextArea

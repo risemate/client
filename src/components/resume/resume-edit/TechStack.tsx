@@ -66,13 +66,6 @@ const StyledTech = styled.section`
 	padding: 40px;
 	& > div {
 		position: relative;
-		/* & > button {
-			position: absolute;
-			top: 22px;
-			right: 0;
-			height: 35px;
-			border-radius: 0 10px 10px 0;
-		} */
 	}
 	h3 {
 		color: ${({ theme }) => theme.colors.navy};

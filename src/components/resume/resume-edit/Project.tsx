@@ -40,11 +40,7 @@ export default function Project() {
 								/>
 							</li>
 							<li>
-								<DateInput
-									label='프로젝트 기간'
-									inputName={inputName('project')}
-									type='month'
-								/>
+								<DateInput label='프로젝트 기간' inputName={inputName('project')} />
 							</li>
 							<li>
 								<Input

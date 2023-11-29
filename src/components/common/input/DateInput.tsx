@@ -1,25 +1,49 @@
-import React, { InputHTMLAttributes } from 'react';
+import { isEmpty } from '@utils/helpers';
+import React from 'react';
+import DatePicker from 'react-datepicker';
 import { useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
 
-interface DateInputProps extends InputHTMLAttributes<HTMLInputElement> {
+import 'react-datepicker/dist/react-datepicker.css';
+
+interface DateInputProps {
 	label: string;
 	inputName: string;
 }
 
-export default function DateInput({ label, inputName, ...InputProps }: DateInputProps) {
-	const { register } = useFormContext();
+export default function DateInput({ label, inputName }: DateInputProps) {
+	const { watch, setValue } = useFormContext();
+	const startInputName = `${inputName}StartedAt`;
+	const endInputName = `${inputName}EndedAt`;
+	const stringToDate = (dateString: string) => {
+		if (isEmpty(dateString)) {
+			return new Date();
+		}
+		return new Date(dateString + '-01');
+	};
+	const dateToString = (date: Date) => {
+		const year = date.getFullYear();
+		const month = (date.getMonth() + 1).toString().padStart(2, '0');
+		return `${year}-${month}`;
+	};
 	return (
 		<StyledDate>
 			<span>{label}</span>
 			<div>
-				<label>
-					<input {...register(`${inputName}StartedAt` as const)} {...InputProps} />
-				</label>
-				<span>~</span>
-				<label>
-					<input {...register(`${inputName}EndedAt` as const)} {...InputProps} />
-				</label>
+				<DatePicker
+					selected={stringToDate(watch(startInputName))}
+					onChange={(date: Date) => setValue(startInputName, dateToString(date))}
+					dateFormat={'yyyy-MM'}
+					showMonthYearPicker
+					showIcon
+				/>
+				<DatePicker
+					selected={stringToDate(watch(endInputName))}
+					onChange={(date: Date) => setValue(endInputName, dateToString(date))}
+					dateFormat={'yyyy-MM'}
+					showMonthYearPicker
+					showIcon
+				/>
 			</div>
 		</StyledDate>
 	);
@@ -32,9 +56,14 @@ const StyledDate = styled.div`
 		background: white;
 		border-radius: 10px;
 		border: 0.5px solid ${({ theme }) => theme.colors.grey};
-		padding: 10px;
+		padding: 6px;
 		margin-top: 10px;
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
+		svg {
+			width: 12px;
+			height: 12px;
+		}
 	}
 `;
