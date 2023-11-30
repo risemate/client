@@ -40,7 +40,7 @@ const StyledCardItem = styled.button`
 	max-width: 250px;
 	min-width: 200px;
 	border-radius: 10px;
-	border: 1px solid ${({ theme }) => theme.colors.lightGrey};
+	border: 1px solid ${({ theme }) => theme.colors.grey};
 	background: white;
 	padding: 45px 20px 50px;
 	position: relative;
@@ -87,7 +87,7 @@ const StyledProduct = styled.div`
 	bottom: 0;
 	left: 0;
 	width: 100%;
-	border-top: 1px solid ${({ theme }) => theme.colors.lightGrey};
+	border-top: 1px solid ${({ theme }) => theme.colors.grey};
 	padding: 10px 20px;
 	display: flex;
 	justify-content: space-between;

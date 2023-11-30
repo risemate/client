@@ -49,5 +49,6 @@ const StyledCardItem = styled(Link)`
 		${({ theme }) => theme.common.ellipsisTwoLine};
 		margin-top: 5px;
 		padding-left: 10px;
+		line-height: 15px;
 	}
 `;
