@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
+import Footer from '@components/Footer';
 import NavBar from '@components/NavBar';
 
 import 'normalize.css';
@@ -12,6 +13,7 @@ export default function UserLayout({ backgroundColor }: { backgroundColor?: stri
 			<StyledLayout style={{ backgroundColor }}>
 				<Outlet />
 			</StyledLayout>
+			<Footer />
 		</>
 	);
 }
@@ -19,7 +21,7 @@ export default function UserLayout({ backgroundColor }: { backgroundColor?: stri
 const StyledLayout = styled.main`
 	width: 100%;
 	${({ theme }) => theme.common.flexCenterColumn};
-	min-height: 100vh;
+	min-height: calc(100vh - 150px);
 	background: ${({ theme }) => theme.colors.lightGrey};
 	gap: 10px;
 	padding: 100px 32px 100px;
@@ -35,7 +37,7 @@ const StyledLayout = styled.main`
 		}
 		border-radius: 40px;
 		background: white;
-		box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+		box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
 		&.border {
 			border: 1px solid ${({ theme }) => theme.colors.navy};
 		}
