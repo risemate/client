@@ -23,13 +23,7 @@ export default function Profile({ profile, techStack }: ProfileProps) {
 					phone-number: <span>010-0000-0000</span>
 				</li>
 				<li>
-					GitHub: <span>github.com/hongildong</span>
-				</li>
-				<li>
 					email: <span>hongildon@gmail.com</span>
-				</li>
-				<li>
-					Blog: <span>velog.com/@hongildong</span>
 				</li>
 			</ul>
 			<p>{profile.coverLetter}</p>
@@ -66,8 +60,10 @@ const StyledProfile = styled.section`
 	}
 	ul.list-contact {
 		grid-row: 2 / 3;
-		display: grid;
-		grid-template-columns: 1fr 1fr;
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+		justify-content: end;
 		li {
 			font-weight: bold;
 			span {

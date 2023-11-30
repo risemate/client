@@ -1,41 +1,47 @@
 import React from 'react';
 import { WorkExperience as WorkExperienceType } from 'types/Resume';
 
+import BaseSection from './BaseSection/BaseSection';
+
 interface WorkExperiencesProps {
-	workExperience: WorkExperienceType;
+	workExperiences: WorkExperienceType[];
 }
 
-export default function WorkExperience({ workExperience }: WorkExperiencesProps) {
+export default function WorkExperience({ workExperiences }: WorkExperiencesProps) {
 	return (
-		<article>
-			<h4>{workExperience.companyName}</h4>
-			<ul className='list-workinfo'>
-				<li>
-					{workExperience.departmentName} | {workExperience.role}
-				</li>
-				<li>
-					{workExperience.jobType} | {workExperience.employmentStatus}
-				</li>
-				<li>
-					{workExperience.workStartedAt} ~ {workExperience.workEndedAt}
-				</li>
-			</ul>
-			<div>
-				<ul className='list-task'>
-					{workExperience.assignedTask.split('\n').map((task, taskIndex) => (
-						<li key={taskIndex}>{task.replace('-', '')}</li>
-					))}
-				</ul>
-				<ul className='list-link'>
-					{workExperience.links.map((link, linkIndex) => (
-						<li key={linkIndex}>
-							<a href={link.linkUrl} target='_blank' rel='noopener noreferrer'>
-								🔗 {link.linkTitle}
-							</a>
+		<BaseSection>
+			{workExperiences.map((work, index) => (
+				<article key={index}>
+					<BaseSection.Title>{work.companyName}</BaseSection.Title>
+					<BaseSection.BasicInfo>
+						<li>
+							{work.departmentName} | {work.role}
 						</li>
-					))}
-				</ul>
-			</div>
-		</article>
+						<li>
+							{work.jobType} | {work.employmentStatus}
+						</li>
+						<li>
+							{work.workStartedAt} ~ {work.workEndedAt}
+						</li>
+					</BaseSection.BasicInfo>
+					<div>
+						<BaseSection.Task>
+							{work.assignedTask.split('\n').map((task, taskIndex) => (
+								<li key={taskIndex}>{task.replace('-', '')}</li>
+							))}
+						</BaseSection.Task>
+						<BaseSection.Link>
+							{work.links.map((link, linkIndex) => (
+								<li key={linkIndex}>
+									<a href={link.linkUrl} target='_blank' rel='noopener noreferrer'>
+										🔗 {link.linkTitle}
+									</a>
+								</li>
+							))}
+						</BaseSection.Link>
+					</div>
+				</article>
+			))}
+		</BaseSection>
 	);
 }

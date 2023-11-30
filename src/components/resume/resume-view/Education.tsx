@@ -1,7 +1,7 @@
 import React from 'react';
 import { Education as EducationType } from 'types/Resume';
 
-import BaseSection from './BaseSection';
+import BaseSection from './BaseSection/BaseSection';
 
 interface EducationProps {
 	educations: EducationType[];
@@ -10,10 +10,17 @@ interface EducationProps {
 export default function Education({ educations }: EducationProps) {
 	return (
 		<BaseSection>
-			<h3>교육</h3>
 			{educations.map((education, index) => (
 				<article key={index}>
-					<h4>{education.schoolName}</h4>
+					<BaseSection.Title>{education.schoolName}</BaseSection.Title>
+					<BaseSection.BasicInfo>
+						<li>
+							{education.major} | {education.graduationStatus}
+						</li>
+						<li>
+							{education.enrollmentStartedAt} ~ {education.enrollmentEndedAt}
+						</li>
+					</BaseSection.BasicInfo>
 				</article>
 			))}
 		</BaseSection>
