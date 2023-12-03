@@ -19,14 +19,18 @@ export default function Profile({ profile, techStack }: ProfileProps) {
 				<span>{profile.position}</span>
 			</h2>
 			<ul className='list-contact'>
-				<li>
-					phone-number: <span>010-0000-0000</span>
-				</li>
-				<li>
-					email: <span>hongildon@gmail.com</span>
-				</li>
+				{profile.phoneNumber && (
+					<li>
+						phone-number: <span>{profile.phoneNumber}</span>
+					</li>
+				)}
+				{profile.email && (
+					<li>
+						email: <span>{profile.email}</span>
+					</li>
+				)}
 			</ul>
-			<p>{profile.coverLetter}</p>
+			{profile.coverLetter && <p>{profile.coverLetter}</p>}
 			{techStack && (
 				<ul className='list-skills'>
 					{techStack.skills.map((stack, index) => (

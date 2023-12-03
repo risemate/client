@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 import BaseSectionBasicInfo from './BaseSectionBasicInfo';
 import BaseSectionLink from './BaseSectionLink';
+import BaseSectionMainTitle from './BaseSectionMainTitle';
 import BaseSectionTask from './BaseSectionTask';
 import BaseSectionTitle from './BaseSectionTitle';
-import BaseSectionMainTitle from './BaseSectionMainTitle';
 
 interface BaseSectionProps {
 	children: ReactNode;

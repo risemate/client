@@ -24,20 +24,20 @@ export default function WorkExperience({ workExperiences }: WorkExperiencesProps
 							{work.workStartedAt} ~ {work.workEndedAt}
 						</li>
 					</BaseSection.BasicInfo>
-						<BaseSection.Task>
-							{work.assignedTask.split('\n').map((task, taskIndex) => (
-								<li key={taskIndex}>{task.replace('-', '')}</li>
-							))}
-						</BaseSection.Task>
-						<BaseSection.Link>
-							{work.links.map((link, linkIndex) => (
-								<li key={linkIndex}>
-									<a href={link.linkUrl} target='_blank' rel='noopener noreferrer'>
-										🔗 {link.linkTitle}
-									</a>
-								</li>
-							))}
-						</BaseSection.Link>
+					<BaseSection.Task>
+						{work.assignedTask.split('\n').map((task, taskIndex) => (
+							<li key={taskIndex}>{task.replace('-', '')}</li>
+						))}
+					</BaseSection.Task>
+					<BaseSection.Link>
+						{work.links.map((link, linkIndex) => (
+							<li key={linkIndex}>
+								<a href={link.linkUrl} target='_blank' rel='noopener noreferrer'>
+									🔗 {link.linkTitle}
+								</a>
+							</li>
+						))}
+					</BaseSection.Link>
 				</article>
 			))}
 		</BaseSection>

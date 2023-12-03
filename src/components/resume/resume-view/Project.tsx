@@ -1,5 +1,6 @@
 import React from 'react';
 import { Project as ProjectType } from 'types/Resume';
+
 import BaseSection from './BaseSection';
 
 interface ProjectProps {
@@ -23,24 +24,23 @@ export default function Project({ projects }: ProjectProps) {
 							</a>
 						</li>
 					</BaseSection.BasicInfo>
-						<BaseSection.Task>
-							<li className='summary'>{project.summaryIntro}</li>
-							{project.projectDescription.split('\n').map((task, taskIndex) => (
-								<li key={taskIndex}>{task.replace('-', '')}</li>
-							))}
-						</BaseSection.Task>
-						<BaseSection.Link>
-							{project.links.map((link, linkIndex) => (
-								<li key={linkIndex}>
-									<a href={link.linkUrl} target='_black'>
-										🔗 {link.linkTitle}
-									</a>
-								</li>
-							))}
-						</BaseSection.Link>
+					<BaseSection.Task>
+						<li className='summary'>{project.summaryIntro}</li>
+						{project.projectDescription.split('\n').map((task, taskIndex) => (
+							<li key={taskIndex}>{task.replace('-', '')}</li>
+						))}
+					</BaseSection.Task>
+					<BaseSection.Link>
+						{project.links.map((link, linkIndex) => (
+							<li key={linkIndex}>
+								<a href={link.linkUrl} target='_black'>
+									🔗 {link.linkTitle}
+								</a>
+							</li>
+						))}
+					</BaseSection.Link>
 				</article>
 			))}
 		</BaseSection>
-		
 	);
 }
