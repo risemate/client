@@ -9,9 +9,9 @@ import {
 
 import Tab from '@common/Tab';
 
-import Complete from '../components/user-page/coach-info/management/Complete';
-import Pending from '../components/user-page/coach-info/management/Pending';
-import Progress from '../components/user-page/coach-info/management/Progress';
+import Complete from '../components/editing-management/coach/Complete';
+import Pending from '../components/editing-management/coach/Pending';
+import Progress from '../components/editing-management/coach/Progress';
 
 export default function CoachManagement() {
 	const tabItems = ['대기', '진행 중', '완료'];
