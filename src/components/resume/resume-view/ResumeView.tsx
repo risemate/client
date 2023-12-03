@@ -8,6 +8,7 @@ import Education from './Education';
 import Profile from './Profile';
 import Project from './Project';
 import WorkExperience from './WorkExperience';
+import Activity from './Activity';
 
 interface ResumeViewProps {
 	resume: Resume;
@@ -27,6 +28,7 @@ export default function ResumeView({ resume, changeMode }: ResumeViewProps) {
 				<WorkExperience workExperiences={resume.workExperiences} />
 				<Project projects={resume.projects} />
 				<Education educations={resume.educations} />
+				<Activity activities={resume.activities}/>
 			</StyledResume>
 			<ResumeNav resumeNavItems={resumeNavItems} />
 		</>

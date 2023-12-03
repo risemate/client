@@ -12,7 +12,9 @@ export default function BaseSectionTask({ children }: TaskProps) {
 const StyledTask = styled.ul`
 	display: flex;
 	flex-direction: column;
-	gap: 3px;
+	gap: 8px;
+	grid-column: 2 / 3;
+	grid-row: 1 / 3;
 	li {
 		color: black;
 		word-break: keep-all;

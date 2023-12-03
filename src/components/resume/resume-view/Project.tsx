@@ -1,7 +1,6 @@
 import React from 'react';
 import { Project as ProjectType } from 'types/Resume';
-
-import BaseSection from './BaseSection/BaseSection';
+import BaseSection from './BaseSection';
 
 interface ProjectProps {
 	projects: ProjectType[];
@@ -24,7 +23,6 @@ export default function Project({ projects }: ProjectProps) {
 							</a>
 						</li>
 					</BaseSection.BasicInfo>
-					<div>
 						<BaseSection.Task>
 							<li className='summary'>{project.summaryIntro}</li>
 							{project.projectDescription.split('\n').map((task, taskIndex) => (
@@ -40,9 +38,9 @@ export default function Project({ projects }: ProjectProps) {
 								</li>
 							))}
 						</BaseSection.Link>
-					</div>
 				</article>
 			))}
 		</BaseSection>
+		
 	);
 }

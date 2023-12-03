@@ -1,7 +1,7 @@
 import React from 'react';
 import { WorkExperience as WorkExperienceType } from 'types/Resume';
 
-import BaseSection from './BaseSection/BaseSection';
+import BaseSection from './BaseSection';
 
 interface WorkExperiencesProps {
 	workExperiences: WorkExperienceType[];
@@ -24,7 +24,6 @@ export default function WorkExperience({ workExperiences }: WorkExperiencesProps
 							{work.workStartedAt} ~ {work.workEndedAt}
 						</li>
 					</BaseSection.BasicInfo>
-					<div>
 						<BaseSection.Task>
 							{work.assignedTask.split('\n').map((task, taskIndex) => (
 								<li key={taskIndex}>{task.replace('-', '')}</li>
@@ -39,7 +38,6 @@ export default function WorkExperience({ workExperiences }: WorkExperiencesProps
 								</li>
 							))}
 						</BaseSection.Link>
-					</div>
 				</article>
 			))}
 		</BaseSection>

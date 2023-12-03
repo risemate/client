@@ -5,6 +5,7 @@ import BaseSectionBasicInfo from './BaseSectionBasicInfo';
 import BaseSectionLink from './BaseSectionLink';
 import BaseSectionTask from './BaseSectionTask';
 import BaseSectionTitle from './BaseSectionTitle';
+import BaseSectionMainTitle from './BaseSectionMainTitle';
 
 interface BaseSectionProps {
 	children: ReactNode;
@@ -15,6 +16,7 @@ const BaseSectionMain = ({ children }: BaseSectionProps) => {
 };
 
 const BaseSection = Object.assign(BaseSectionMain, {
+	MainTitle: BaseSectionMainTitle,
 	Title: BaseSectionTitle,
 	BasicInfo: BaseSectionBasicInfo,
 	Task: BaseSectionTask,
@@ -26,14 +28,15 @@ const StyledSection = styled.section`
 		padding: 20px 5px 0;
 		display: grid;
 		grid-template-columns: 1fr 3fr;
+		/* grid-template-rows: auto 25px; */
 		&:not(:last-child) {
 			border-bottom: 0.5px solid ${({ theme }) => theme.colors.grey};
 			padding-bottom: 20px;
 		}
-		& > div {
+		/* & > div {
 			grid-column: 2 / 3;
 			grid-row: 1 / 3;
-		}
+		} */
 	}
 `;
 
