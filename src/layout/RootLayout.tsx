@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import styled from 'styled-components';
 
 import Footer from '@components/Footer';
 import NavBar from '@components/NavBar';
@@ -9,12 +10,18 @@ function RootLayout() {
 	return (
 		<>
 			<NavBar />
-			<main>
+			<StyledLayout>
 				<Outlet />
-			</main>
+			</StyledLayout>
 			<Footer />
 		</>
 	);
 }
+
+const StyledLayout = styled.main`
+	& > div {
+		${({ theme }) => theme.common.minmaxWidth}
+	}
+`;
 
 export default RootLayout;
