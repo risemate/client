@@ -4,8 +4,8 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 type Variant = 'navy' | 'mint' | 'blue' | 'grey';
-export type Size = 'small' | 'medium' | 'large';
-type Shape = 'square' | 'rectangle';
+export type Size = 'tiny' | 'small' | 'medium' | 'large';
+type Shape = 'circle' | 'square' | 'rectangle';
 
 interface DefaultImageProps {
 	variant?: Variant;
@@ -62,6 +62,10 @@ const sizeStyle = css<StyledImageProps>`
 	${({ $size, $hasImage }) => {
 		if ($hasImage) {
 			switch ($size) {
+				case 'tiny':
+					return css`
+						width: 40px;
+					`;
 				case 'small':
 					return css`
 						width: 100px;
@@ -81,6 +85,14 @@ const sizeStyle = css<StyledImageProps>`
 			}
 		} else {
 			switch ($size) {
+				case 'tiny':
+					return css`
+						padding: 5px;
+						width: 40px;
+						img {
+							width: 40px;
+						}
+					`;
 				case 'small':
 					return css`
 						padding: 20px;
@@ -119,6 +131,11 @@ const sizeStyle = css<StyledImageProps>`
 const shapeStyle = css<StyledImageProps>`
 	${({ $shape }) => {
 		switch ($shape) {
+			case 'circle':
+				return css`
+					aspect-ratio: 1/1;
+					border-radius: 50%;
+				`;
 			case 'square':
 				return css`
 					aspect-ratio: 1/1;
