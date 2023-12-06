@@ -35,9 +35,7 @@ const StyledLayout = styled.main`
 		&:not(:last-child) {
 			margin-bottom: 30px;
 		}
-		border-radius: 40px;
-		background: white;
-		box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
+		${({ theme }) => theme.style.whiteBox};
 		&.border {
 			border: 1px solid ${({ theme }) => theme.colors.navy};
 		}

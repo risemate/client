@@ -15,6 +15,7 @@ const colors = {
 	lightGrey: '#EEEEEE',
 	grey: '#CFCFCF',
 	darkGrey: '#767676',
+	darkerGrey: '#4B4B4B',
 };
 
 const widths = {
@@ -53,11 +54,20 @@ const common = {
   `,
 };
 
+const style = {
+	whiteBox: `
+		border-radius: 40px;
+		background: white;
+		box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
+	`,
+};
+
 const theme = {
 	fontSizes,
 	colors,
 	widths,
 	common,
+	style,
 };
 
 export default theme;
