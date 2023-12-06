@@ -3,7 +3,7 @@ import React, { ForwardedRef, TextareaHTMLAttributes, forwardRef } from 'react';
 import styled from 'styled-components';
 
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-	label: string;
+	label?: string;
 	warning?: string;
 	help?: boolean;
 }
@@ -14,18 +14,20 @@ const TextArea = forwardRef(function TextArea(
 ) {
 	return (
 		<StyledLabel>
-			<div>
-				<span>{label}</span>
-				{help && (
-					<p className='help'>
-						<IconQuestion />
-						<span>
-							해당 목록을 리스트 형태로 정리하려면 아래와 같이 &#34;-&#34; 기호를 사용하여
-							불릿 포인트 목록을 만들 수 있습니다.
-						</span>
-					</p>
-				)}
-			</div>
+			{label && help && (
+				<div>
+					{label && <span>{label}</span>}
+					{help && (
+						<p className='help'>
+							<IconQuestion />
+							<span>
+								해당 목록을 리스트 형태로 정리하려면 아래와 같이 &#34;-&#34; 기호를
+								사용하여 불릿 포인트 목록을 만들 수 있습니다.
+							</span>
+						</p>
+					)}
+				</div>
+			)}
 			<textarea rows={6} ref={ref} {...TextAreaProps}></textarea>
 			{warning && <span className='warning'>{warning}</span>}
 		</StyledLabel>
@@ -41,7 +43,7 @@ const StyledLabel = styled.label`
 	textarea {
 		border-radius: 10px;
 		border: 0.5px solid ${({ theme }) => theme.colors.grey};
-		padding: 10px;
+		padding: 15px;
 	}
 	.warning {
 		color: red;
