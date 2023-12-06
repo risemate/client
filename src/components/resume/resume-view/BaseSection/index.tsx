@@ -27,7 +27,7 @@ const StyledSection = styled.section`
 	& > article {
 		padding: 20px 5px 0;
 		display: grid;
-		grid-template-columns: 1fr 3fr;
+		grid-template-columns: 250px auto;
 		/* grid-template-rows: auto 25px; */
 		&:not(:last-child) {
 			border-bottom: 0.5px solid ${({ theme }) => theme.colors.grey};

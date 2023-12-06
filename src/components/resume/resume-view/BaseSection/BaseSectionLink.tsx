@@ -11,6 +11,7 @@ export default function BaseSectionLink({ children }: LinkProps) {
 
 const StyledLink = styled.ul`
 	display: flex;
+	flex-wrap: wrap;
 	gap: 15px;
 	grid-column: 2 / 3;
 	a {
