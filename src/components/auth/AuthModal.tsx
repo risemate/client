@@ -2,6 +2,7 @@ import { useModal } from '@hooks/atoms/useModalAtom';
 import { IconGoogle, IconNaver } from '@icons';
 import logoIcon from '@images/logo-icon.svg';
 import { useAuth } from '@query/hooks/useAuth';
+import axios from 'axios';
 import styled from 'styled-components';
 
 import ModalBase from '../common/modal/ModalBase';
@@ -9,23 +10,25 @@ import { popupLogin } from './popupLogin';
 
 export default function AuthModal() {
 	const { closeModal } = useModal();
-	// eslint-disable-next-line
 	const { auth, refetch } = useAuth();
-	const login = (provider?: string) => {
-		// eslint-disable-next-line
-		popupLogin(provider).then((result: any) => {
-			if (result.success) {
-				closeModal();
+	const login = async (provider?: string) => {
+		await popupLogin(provider).then(result => {
+			if (result.accessToken) {
+				console.log(result.accessToken);
+
 				//: 유저정보 받아오기 refetch()
 				//: alert(auth?.nickname + '님 완영합니다.');
 				alert('로그인 완료');
-			} else {
-				// eslint-disable-next-line
-				alert(result.message);
+				// setlocal(result.accessToken);
+				localStorage.setItem('rm-checkpoint', result.accessToken);
+				axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+				axios.defaults.headers.common.Authorization = `Bearer ${result.accessToken}`;
+				axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 				closeModal();
 			}
 		});
 	};
+
 	return (
 		<ModalBase>
 			<StyledH1>
