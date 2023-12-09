@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ForwardedRef, ReactNode, forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 import { Variant, Size } from 'types/Button';
 
@@ -8,13 +8,16 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	children: ReactNode;
 }
 
-export default function Button({ variant, size, children, ...ButtonProps }: ButtonProps) {
+const Button = forwardRef(function Button(
+	{ variant, size, children, ...ButtonProps }: ButtonProps,
+	ref: ForwardedRef<HTMLButtonElement>,
+) {
 	return (
-		<StyledButton $variant={variant} $size={size} {...ButtonProps}>
+		<StyledButton $variant={variant} $size={size} ref={ref} {...ButtonProps}>
 			{children}
 		</StyledButton>
 	);
-}
+});
 
 interface StyledButtonProps {
 	$variant?: Variant;
@@ -38,7 +41,8 @@ const variantStyle = css<StyledButtonProps>`
 				`;
 			case 'lightGrey':
 				return css`
-					background-color: ${colors.lightgrey};
+					color: ${colors.darkerGrey};
+					background-color: ${colors.lightGrey};
 				`;
 			case 'white':
 				return css`
@@ -100,3 +104,5 @@ const StyledButton = styled.button<StyledButtonProps>`
 	${variantStyle}
 	${sizeStyle}
 `;
+
+export default Button;
