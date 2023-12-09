@@ -24,3 +24,27 @@ export const isKoreanSingleCharacter = (query: string) => {
 	const pattern = /[ㄱ-ㅎㅏ-ㅣ]/;
 	return pattern.test(lastCharacter);
 };
+
+export const removeNullValues = <T>(obj: T) => {
+	const newObj: T = {} as T;
+	for (const key in obj) {
+		if (obj[key] !== null) {
+			newObj[key] = obj[key];
+		}
+	}
+	return newObj;
+};
+
+export const numberWithCommas = (num: number | null | undefined | string) => {
+	if (num === null || num === undefined) return null;
+	if (typeof num === 'string') return parseInt(num).toLocaleString();
+	return num.toLocaleString();
+};
+
+export const maskString = (str: string, start: number, mask: string) => {
+	if (isEmpty(str)) {
+		return '';
+	}
+	const maskedPart = str.slice(start).replace(/./g, mask);
+	return str.slice(0, start) + maskedPart;
+};
