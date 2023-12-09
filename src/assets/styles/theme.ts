@@ -12,6 +12,7 @@ const colors = {
 	navy: '#313964',
 	blue: '#576EE7',
 	mint: '#67E0B2',
+	lighterGrey: '#F4F4F4',
 	lightGrey: '#EEEEEE',
 	grey: '#CFCFCF',
 	darkGrey: '#767676',
