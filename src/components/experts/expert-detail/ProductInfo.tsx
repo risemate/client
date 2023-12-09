@@ -1,13 +1,26 @@
 import useTab from '@hooks/useTab';
 import { IconCheck, IconClock } from '@icons';
+import { numberWithCommas, removeNullValues } from '@utils/helpers';
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { Package as PackageType } from 'types/Product';
 
 import Button from '@common/Button';
 import Tab from '@common/Tab';
 
-export default function ProductInfo() {
-	const tabItems = ['Standard', 'Premium'];
+interface ProductInfoProps {
+	packages: PackageType;
+	reviewCount: number;
+	avgReviewScore: number;
+}
+
+export default function ProductInfo({
+	packages,
+	reviewCount,
+	avgReviewScore,
+}: ProductInfoProps) {
+	const filteredPackages = removeNullValues<PackageType>(packages);
+	const tabItems = Object.keys(filteredPackages);
 	const { currentTab, changeTab, isCurrentTab } = useTab(tabItems);
 	return (
 		<article>
@@ -20,36 +33,23 @@ export default function ProductInfo() {
 					center
 				/>
 				<h3>포함 서비스 목록</h3>
-				{currentTab === 'Standard' && (
-					<ul>
-						<li>
-							해당 문서의 섹션마다 피드백을 남긴 문서와 30분 간의 미팅을 진행합니다.
-						</li>
-						<li>
-							<IconCheck /> 해당 문서의 피드백 문서
-						</li>
-						<li>
-							<IconCheck /> 30분의 온/오프라인 미팅
-						</li>
-					</ul>
+				{Object.entries(filteredPackages).map(
+					([key, pack]) =>
+						currentTab === key && (
+							<div key={key}>
+								<ul>
+									<li>{pack?.description}</li>
+									{pack?.providerOptions.map(option => (
+										<li key={option.name}>
+											<IconCheck />
+											{option.name}
+										</li>
+									))}
+								</ul>
+								<p>{numberWithCommas(pack?.price)}원</p>
+							</div>
+						),
 				)}
-				{currentTab === 'Premium' && (
-					<ul>
-						<li>
-							해당 문서의 섹션마다 피드백을 남긴 문서와 30분 간의 미팅을 진행합니다.
-						</li>
-						<li>
-							<IconCheck /> 해당 문서의 피드백 문서
-						</li>
-						<li>
-							<IconCheck /> 1시간의 온/오프라인 미팅
-						</li>
-						<li>
-							<IconCheck /> 3번의 수정 요청 가능
-						</li>
-					</ul>
-				)}
-				<p>10,000원</p>
 				<Button variant='mint' size='full'>
 					문의하기
 				</Button>
@@ -65,13 +65,13 @@ export default function ProductInfo() {
 				</p>
 				<ul>
 					<li>
-						10건<span>거래 수</span>
+						{reviewCount}건<span>거래 수</span>
 					</li>
 					<li>
-						100%<span>만족도</span>
+						{avgReviewScore * 20}%<span>만족도</span>
 					</li>
 					<li>
-						10건<span>리뷰 수</span>
+						{reviewCount}건<span>리뷰 수</span>
 					</li>
 				</ul>
 			</StyledReview>
@@ -94,7 +94,7 @@ const StyledProduct = styled.div`
 		font-weight: bold;
 		padding: 15px 0;
 	}
-	h3 + ul {
+	h3 + div > ul {
 		background: ${({ theme }) => theme.colors.lightGrey};
 		font-size: ${({ theme }) => theme.fontSizes.small};
 		padding: 10px;
