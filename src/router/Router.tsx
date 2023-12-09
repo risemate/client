@@ -1,4 +1,5 @@
 import theme from '@styles/theme';
+import axios from 'axios';
 import RootLayout from 'layout/RootLayout';
 import UserLayout from 'layout/UserLayout';
 import CoachInfo from 'pages/CoachInfo';
@@ -14,6 +15,11 @@ import ResumeDetail from 'pages/ResumeDetail';
 import { createBrowserRouter } from 'react-router-dom';
 
 import { signLoader } from './loader';
+
+const token = localStorage.getItem('rm-checkpoint');
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 export const router = createBrowserRouter([
 	//:layout별로 분리하면 좋을 듯?.

@@ -19,3 +19,8 @@ export type User = {
 	picture: string;
 	_id: string;
 };
+
+export type LoginResponse = {
+	accessToken: string;
+	user: User;
+};

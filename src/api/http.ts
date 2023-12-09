@@ -1,10 +1,14 @@
 import axios, { AxiosInstance } from 'axios';
 
-export default class Http {
+export default class HttpRequest {
 	private axiosInstance: AxiosInstance;
-	constructor(BASE_URL: string) {
+	private token = localStorage.getItem('rm-checkpoint');
+	constructor() {
 		this.axiosInstance = axios.create({
-			baseURL: BASE_URL,
+			baseURL: process.env.REACT_APP_API_URL,
+			headers: {
+				Authorization: `Bearer ${this.token}`,
+			},
 		});
 	}
 
@@ -62,3 +66,5 @@ export default class Http {
 		}
 	}
 }
+
+export const http = new HttpRequest();
