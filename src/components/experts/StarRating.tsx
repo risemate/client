@@ -1,33 +1,73 @@
 import { IconStar, IconStarEmpty, IconStarHalf } from '@icons';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface StarRatingProps {
 	rating: number;
 	numReview?: number;
+	size?: 'small' | 'medium' | 'large';
+	onClick?: (rating: number) => void;
 }
-export default function StarRating({ rating, numReview }: StarRatingProps) {
+export default function StarRating({
+	rating,
+	numReview,
+	size,
+	onClick,
+}: StarRatingProps) {
 	const ratingList = [1, 2, 3, 4, 5];
 	return (
-		<StyledStar>
-			{ratingList.map((item, index) => {
-				if (item <= rating) return <IconStar key={index} />;
-				else if (item - rating >= 0.3 && item - rating <= 0.8)
-					return <IconStarHalf key={index} />;
-				else return <IconStarEmpty key={index} />;
-			})}
+		<StyledStar $size={size}>
+			{onClick
+				? ratingList.map((item, index) => (
+						<button key={index} type='button' onClick={() => onClick(item)}>
+							{item <= rating ? <IconStar /> : <IconStarEmpty />}
+						</button>
+				  ))
+				: ratingList.map((item, index) => {
+						if (item <= rating) return <IconStar key={index} />;
+						else if (item - rating > 0 && item - rating <= 0.5)
+							return <IconStarHalf key={index} />;
+						else return <IconStarEmpty key={index} />;
+				  })}
 			{numReview && <span>({numReview})</span>}
 		</StyledStar>
 	);
 }
 
-const StyledStar = styled.div`
+interface StyledProps {
+	$size?: 'small' | 'medium' | 'large';
+}
+
+const sizeStyle = css<StyledProps>`
+	${({ $size }) => {
+		switch ($size) {
+			case 'small':
+				return css`
+					width: 12px;
+				`;
+			case 'medium':
+				return css`
+					width: 15px;
+				`;
+			case 'large':
+				return css`
+					width: 20px;
+				`;
+			default:
+				return css`
+					width: 12px;
+				`;
+		}
+	}}
+`;
+
+const StyledStar = styled.div<StyledProps>`
 	display: flex;
 	align-items: end;
 	svg {
-		width: 12px;
 		color: #f9d448;
 		margin-right: 2px;
+		${sizeStyle}
 	}
 	& > span {
 		font-size: ${({ theme }) => theme.fontSizes.tiny};
