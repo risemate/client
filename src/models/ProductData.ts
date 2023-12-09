@@ -175,7 +175,7 @@ export const mockProduct: ProductType = {
 	__v: 0,
 };
 
-export const mockInquriy: InquiryType[] = [
+export const mockInquiry: InquiryType[] = [
 	{
 		_id: '656d80faa277ee4836b8fc89',
 		user: {
@@ -209,6 +209,34 @@ export const mockInquriy: InquiryType[] = [
 			updatedAt: '2023-12-04T08:08:16.874Z',
 		},
 		__v: 0,
+		createdAt: '2023-12-05T02:56:42.996Z',
+		updatedAt: '2023-12-05T02:56:42.996Z',
+	},
+	{
+		_id: '656d80faa277ee4836b8fc89',
+		user: {
+			nickname: 'bonobono',
+			picture:
+				'https://lh3.googleusercontent.com/a/ACg8ocJMMK0-56PhKyhKJkdy3UhcAXaNHM7uBFQeA_JAZwwz2w=s96-c',
+			_id: '650d44a6398de0dbd2eb30bd',
+		},
+		product: {
+			productTitle: '프론트엔드 개발자 이력서 첨삭해드립니다.',
+			subTitle: '취업 성공까지 책입지겠습니다.....',
+			coverImage: '취업 성공까지 책입지겠습니다.....',
+			expert: {
+				nickname: 'aba',
+				name: 'aba',
+				_id: '650d44a6398de0dbd2eb30bd',
+			},
+			_id: '6565404a6b54e0c960d92c6a',
+		},
+		content: 'cs내용 변경',
+		completed: false,
+		answer: null,
+		__v: 0,
+		createdAt: '2023-12-05T02:56:42.996Z',
+		updatedAt: '2023-12-05T02:56:42.996Z',
 	},
 ];
 
@@ -270,17 +298,32 @@ export const mockReview: ReviewType[] = [
 		},
 		score: 4.2,
 		content: '리뷰테스트 업데이트 2',
-		answer: {
-			content: '리뷰에 대한 답변',
+		answer: null,
+		createdAt: '2023-12-05T02:56:42.996Z',
+		updatedAt: '2023-12-05T02:56:42.996Z',
+		__v: 0,
+	},
+	{
+		_id: '656e8ec09f14054fcebd7c6a',
+		user: {
+			nickname: 'shin kim',
+			picture: '',
+			_id: '650d43fcaec6caefbadc15c7',
+		},
+		product: {
+			productTitle: '프론트엔드 개발자 이력서 첨삭해드립니다.',
+			subTitle: '취업 성공까지 책입지겠습니다.....',
+			coverImage: 'https://... default null',
 			expert: {
 				nickname: 'aba',
 				name: 'aba',
 				_id: '650d44a6398de0dbd2eb30bd',
 			},
-			_id: '656e916a9f14054fcebd7c9e',
-			createdAt: '2023-12-05T02:56:42.996Z',
-			updatedAt: '2023-12-05T02:56:42.996Z',
+			_id: '6565404a6b54e0c960d92c6a',
 		},
+		score: 4.2,
+		content: '리뷰테스트 업데이트 2',
+		answer: null,
 		createdAt: '2023-12-05T02:56:42.996Z',
 		updatedAt: '2023-12-05T02:56:42.996Z',
 		__v: 0,

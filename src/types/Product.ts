@@ -80,7 +80,9 @@ export type Inquriy = {
 	};
 	content: string;
 	completed: boolean;
-	answer: Answer;
+	answer: Answer | null;
+	createdAt: string;
+	updatedAt: string;
 	__v: number;
 };
 
@@ -96,7 +98,7 @@ export type Review = {
 	};
 	score: number;
 	content: string;
-	answer: Answer;
+	answer: Answer | null;
 	createdAt: string;
 	updatedAt: string;
 	__v: number;
