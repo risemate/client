@@ -14,7 +14,7 @@ interface ExpertCardProps {
 export default function ExpertCard({ expert }: ExpertCardProps) {
 	const navigate = useNavigate();
 	const moveToDetail = () => {
-		navigate('/');
+		navigate('/experts/1');
 	};
 	return (
 		<StyledCardItem onClick={moveToDetail}>
