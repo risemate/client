@@ -10,10 +10,12 @@ import { popupLogin } from './popupLogin';
 
 export default function AuthModal() {
 	const { closeModal } = useModal();
+	// eslint-disable-next-line
 	const { auth, refetch } = useAuth();
 	const login = async (provider?: string) => {
 		await popupLogin(provider).then(result => {
 			if (result.accessToken) {
+				// eslint-disable-next-line
 				console.log(result.accessToken);
 
 				//: 유저정보 받아오기 refetch()

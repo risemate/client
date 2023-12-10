@@ -1,6 +1,7 @@
 import { LoginResponse } from 'types/User';
 
 export async function popupLogin(provider = 'google'): Promise<LoginResponse> {
+	// eslint-disable-next-line
 	return new Promise((resolve, _) => {
 		window.open(
 			`${process.env.REACT_APP_API_URL}/auth/login/${provider}`,
