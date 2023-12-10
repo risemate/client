@@ -2,6 +2,7 @@ import theme from '@styles/theme';
 import axios from 'axios';
 import RootLayout from 'layout/RootLayout';
 import UserLayout from 'layout/UserLayout';
+import Ai from 'pages/Ai';
 import CoachInfo from 'pages/CoachInfo';
 import CoachManagement from 'pages/CoachManagement';
 import ExpertDetail from 'pages/ExpertDetail';
@@ -22,7 +23,6 @@ axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 export const router = createBrowserRouter([
-	//:layout별로 분리하면 좋을 듯?.
 	{
 		path: '/',
 		element: <RootLayout />,
@@ -84,7 +84,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: 'ai',
-				element: <div>ai 코치</div>,
+				element: <Ai />,
 			},
 		],
 		loader: signLoader,
