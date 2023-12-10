@@ -1,4 +1,5 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
+import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import Button from '../Button';
@@ -6,20 +7,20 @@ import ModalBase from './ModalBase';
 
 interface ModalProps {
 	title: string;
-	content: string;
+	children: ReactNode;
 	confirm?: string;
 	onClick?: () => void;
 }
 
-export default function Modal({ title, content, confirm, onClick }: ModalProps) {
-	const { openModal, closeModal } = useModal();
+export default function Modal({ title, children, confirm, onClick }: ModalProps) {
+	const { closeModal } = useModal();
 	return (
 		<ModalBase>
 			<StyledDiv>
 				<h1>{title}</h1>
-				<p>{content}</p>
+				<p>{children}</p>
 				<div>
-					<Button variant='border' size='full' onClick={() => openModal()}>
+					<Button variant='border' size='full' onClick={() => closeModal()}>
 						취소
 					</Button>
 					<Button
@@ -50,6 +51,7 @@ const StyledDiv = styled.div`
 	}
 	p {
 		color: ${({ theme }) => theme.colors.darkGrey};
+		line-height: 25px;
 	}
 	div {
 		display: flex;

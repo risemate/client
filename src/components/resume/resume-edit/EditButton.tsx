@@ -87,11 +87,9 @@ export default function EditButton({ index, deleteData, swap, length }: EditButt
 				</button>
 			</StyledButton>
 			{isModal && (
-				<Modal
-					title='목록 삭제'
-					content='해당 목록을 삭제하시겠습니까? 다시 복구할 수 없습니다.'
-					onClick={() => deleteData(index)}
-				/>
+				<Modal title='목록 삭제' onClick={() => deleteData(index)}>
+					해당 목록을 삭제하시겠습니까? 다시 복구할 수 없습니다.
+				</Modal>
 			)}
 		</>
 	);
