@@ -7,9 +7,11 @@ import DefaultImage from '@common/DefaultImage';
 interface ProfileProps {
 	profile: ProfileType;
 	techStack?: { skills: string[] };
+	feedback?: string;
 }
 
-export default function Profile({ profile, techStack }: ProfileProps) {
+// eslint-disable-next-line
+export default function Profile({ profile, techStack, feedback }: ProfileProps) {
 	return (
 		<StyledProfile>
 			<DefaultImage variant='navy' size='large' image={profile.profileImage} />

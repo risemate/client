@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Resume } from 'types/Resume';
+import { Feedback as FeedbackType, Resume as ResumeType } from 'types/Resume';
 
 import ResumeNav from '@common/ResumeNav';
 
@@ -11,11 +11,12 @@ import Project from './Project';
 import WorkExperience from './WorkExperience';
 
 interface ResumeViewProps {
-	resume: Resume;
+	resume: ResumeType;
+	feedback?: FeedbackType;
 	changeMode: (newMode: 'view' | 'edit') => void;
 }
 
-export default function ResumeView({ resume, changeMode }: ResumeViewProps) {
+export default function ResumeView({ resume, feedback, changeMode }: ResumeViewProps) {
 	const resumeNavItems = [
 		{ name: '이력서 수정', onClick: () => changeMode('edit') },
 		{ name: 'AI 첨삭 받기', onClick: () => alert('hi') },
@@ -24,16 +25,44 @@ export default function ResumeView({ resume, changeMode }: ResumeViewProps) {
 	return (
 		<>
 			<StyledResume>
+				{feedback && (
+					<StyledFeedback>
+						<div>{feedback.notice}</div>
+						<h3>전체적인 피드백</h3>
+						<p>{feedback.total}</p>
+					</StyledFeedback>
+				)}
 				<Profile profile={resume.profile} techStack={resume.techStack} />
-				<WorkExperience workExperiences={resume.workExperiences} />
-				<Project projects={resume.projects} />
-				<Education educations={resume.educations} />
-				<Activity activities={resume.activities} />
+				<WorkExperience
+					workExperiences={resume.workExperiences}
+					feedback={feedback?.workExperience}
+				/>
+				<Project projects={resume.projects} feedback={feedback?.project} />
+				<Education educations={resume.educations} feedback={feedback?.education} />
+				<Activity activities={resume.activities} feedback={feedback?.activity} />
 			</StyledResume>
-			<ResumeNav resumeNavItems={resumeNavItems} />
+			{!feedback && <ResumeNav resumeNavItems={resumeNavItems} />}
 		</>
 	);
 }
+
+const StyledFeedback = styled.div`
+	padding: 10px;
+	margin-bottom: 30px;
+	background: ${({ theme }) => theme.colors.lighterGrey};
+	border-radius: 5px;
+	color: ${({ theme }) => theme.colors.darkerGrey};
+	line-height: 25px;
+	& > div {
+		border-bottom: 1px solid ${({ theme }) => theme.colors.darkGrey};
+		padding-bottom: 10px;
+		margin-bottom: 10px;
+	}
+	h3 {
+		font-weight: bold;
+		padding-bottom: 10px;
+	}
+`;
 
 const StyledResume = styled.div`
 	min-height: 500px;
@@ -43,12 +72,6 @@ const StyledResume = styled.div`
 		padding-bottom: 30px;
 		&:not(:last-child) {
 			border-bottom: 2px solid ${({ theme }) => theme.colors.navy};
-		}
-		h3 {
-			font-weight: bold;
-			color: ${({ theme }) => theme.colors.navy};
-			font-size: ${({ theme }) => theme.fontSizes.medium};
-			padding: 20px 0px;
 		}
 	}
 `;

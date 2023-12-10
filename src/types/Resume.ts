@@ -99,3 +99,13 @@ export type Activity = {
 	activityOrganization: string;
 	links: Link[];
 };
+
+export type Feedback = {
+	notice: string;
+	total: string;
+	coverLetter: string;
+	workExperience: string;
+	project: string;
+	education: string;
+	activity: string;
+};

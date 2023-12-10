@@ -5,11 +5,19 @@ import BaseSection from './BaseSection';
 
 interface ActivityProps {
 	activities: ActivityType[];
+	feedback?: string;
 }
 
-export default function Activity({ activities }: ActivityProps) {
+export default function Activity({ activities, feedback }: ActivityProps) {
 	return (
 		<BaseSection>
+			<BaseSection.MainTitle>대외활동</BaseSection.MainTitle>
+			{feedback && (
+				<BaseSection.Feedback>
+					<h3>대외활동에 대한 피드백</h3>
+					<p>{feedback}</p>
+				</BaseSection.Feedback>
+			)}
 			{activities.map((activity, index) => (
 				<article key={index}>
 					<BaseSection.Title>{activity.activityName}</BaseSection.Title>

@@ -6,11 +6,19 @@ import BaseSection from './BaseSection';
 
 interface EducationProps {
 	educations: EducationType[];
+	feedback?: string;
 }
 
-export default function Education({ educations }: EducationProps) {
+export default function Education({ educations, feedback }: EducationProps) {
 	return (
 		<BaseSection>
+			<BaseSection.MainTitle>교육</BaseSection.MainTitle>
+			{feedback && (
+				<BaseSection.Feedback>
+					<h3>교육에 대한 피드백</h3>
+					<p>{feedback}</p>
+				</BaseSection.Feedback>
+			)}
 			{educations.map((education, index) => (
 				<article key={index}>
 					<BaseSection.Title>{education.schoolName}</BaseSection.Title>

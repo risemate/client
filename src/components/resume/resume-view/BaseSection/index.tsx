@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import BaseSectionBasicInfo from './BaseSectionBasicInfo';
+import BaseSectionFeedback from './BaseSectionFeedback';
 import BaseSectionLink from './BaseSectionLink';
 import BaseSectionMainTitle from './BaseSectionMainTitle';
 import BaseSectionTask from './BaseSectionTask';
@@ -21,6 +22,7 @@ const BaseSection = Object.assign(BaseSectionMain, {
 	BasicInfo: BaseSectionBasicInfo,
 	Task: BaseSectionTask,
 	Link: BaseSectionLink,
+	Feedback: BaseSectionFeedback,
 });
 
 const StyledSection = styled.section`

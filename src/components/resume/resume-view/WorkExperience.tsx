@@ -5,11 +5,22 @@ import BaseSection from './BaseSection';
 
 interface WorkExperiencesProps {
 	workExperiences: WorkExperienceType[];
+	feedback?: string;
 }
 
-export default function WorkExperience({ workExperiences }: WorkExperiencesProps) {
+export default function WorkExperience({
+	workExperiences,
+	feedback,
+}: WorkExperiencesProps) {
 	return (
 		<BaseSection>
+			<BaseSection.MainTitle>경력</BaseSection.MainTitle>
+			{feedback && (
+				<BaseSection.Feedback>
+					<h3>경력에 대한 피드백</h3>
+					<p>{feedback}</p>
+				</BaseSection.Feedback>
+			)}
 			{workExperiences.map((work, index) => (
 				<article key={index}>
 					<BaseSection.Title>{work.companyName}</BaseSection.Title>

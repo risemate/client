@@ -5,11 +5,19 @@ import BaseSection from './BaseSection';
 
 interface ProjectProps {
 	projects: ProjectType[];
+	feedback?: string;
 }
 
-export default function Project({ projects }: ProjectProps) {
+export default function Project({ projects, feedback }: ProjectProps) {
 	return (
 		<BaseSection>
+			<BaseSection.MainTitle>프로젝트</BaseSection.MainTitle>
+			{feedback && (
+				<BaseSection.Feedback>
+					<h3>프로젝트에 대한 피드백</h3>
+					<p>{feedback}</p>
+				</BaseSection.Feedback>
+			)}
 			{projects.map((project, index) => (
 				<article key={index}>
 					<BaseSection.Title>{project.projectName}</BaseSection.Title>
