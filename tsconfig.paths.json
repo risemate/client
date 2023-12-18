@@ -8,10 +8,13 @@
 			"@icons/*": ["assets/icons/*"],
 			"@styles/*": ["assets/styles/*"],
 			"@images/*": ["assets/images/*"],
+			"@data/*": ["assets/data/*"],
 			"@assets/*": ["assets/*"],
 			"@hooks/*": ["hooks/*"],
 			"@utils/*": ["utils/*"],
-			"@query/*": ["query/*"]
+			"@services": ["services/*"],
+			"@queries/*": ["services/queries/*"],
+			"@api/*": ["services/api/*"]
 		}
 	}
 }

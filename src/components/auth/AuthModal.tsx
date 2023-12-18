@@ -1,11 +1,11 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
 import { IconGoogle, IconNaver } from '@icons';
 import logoIcon from '@images/logo-icon.svg';
-import { useAuth } from '@query/hooks/useAuth';
 import axios from 'axios';
+import { useAuth } from 'services/queries/hooks/useAuth';
 import styled from 'styled-components';
 
-import ModalBase from '../common/modal/ModalBase';
+import ModalBase from '../modal/ModalBase';
 import { popupLogin } from './popupLogin';
 
 export default function AuthModal() {

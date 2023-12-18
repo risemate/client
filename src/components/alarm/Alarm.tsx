@@ -1,4 +1,4 @@
-import useClickOutside from '@hooks/useClickOutside';
+import useClickOutside from '@hooks/common/useClickOutside';
 import React, { RefObject, useRef } from 'react';
 import styled from 'styled-components';
 

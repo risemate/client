@@ -1,4 +1,4 @@
-import useTab from '@hooks/useTab';
+import useTab from '@hooks/common/useTab';
 import React, { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';

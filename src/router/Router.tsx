@@ -1,7 +1,5 @@
 import theme from '@styles/theme';
 import axios from 'axios';
-import RootLayout from 'layout/RootLayout';
-import UserLayout from 'layout/UserLayout';
 import Ai from 'pages/Ai';
 import CoachInfo from 'pages/CoachInfo';
 import CoachManagement from 'pages/CoachManagement';
@@ -12,8 +10,12 @@ import MyInfoPage from 'pages/MyInfo';
 import Network from 'pages/Network';
 import NotFound from 'pages/NotFound';
 import Resume from 'pages/Resume';
-import ResumeDetail from 'pages/ResumeDetail';
+import ResumeEdit from 'pages/ResumeEdit';
+import ResumeView from 'pages/ResumeView';
 import { createBrowserRouter } from 'react-router-dom';
+
+import RootLayout from '@components/layout/RootLayout';
+import UserLayout from '@components/layout/UserLayout';
 
 import { signLoader } from './loader';
 
@@ -40,7 +42,7 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: 'resumes/:id',
-						element: <ResumeDetail />,
+						element: <ResumeView />,
 					},
 				],
 			},
@@ -78,7 +80,11 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: ':id',
-						element: <ResumeDetail />,
+						element: <ResumeView />,
+					},
+					{
+						path: 'edit/:id',
+						element: <ResumeEdit />,
 					},
 				],
 			},
