@@ -32,7 +32,7 @@ export default function ResumeView() {
 	};
 	return (
 		<>
-			<ResumeTemplate resume={mockResume} feedback={feedback} />
+			<ResumeTemplate resume={mockResume.doc} feedback={feedback} />
 			<ResumeNav resumeNavItems={resumeNavItems} />
 		</>
 	);

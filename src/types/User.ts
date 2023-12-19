@@ -14,7 +14,7 @@ export interface Career {
 	_id: string;
 }
 
-export type User = {
+export type BaseUser = {
 	nickname: string;
 	picture: string;
 	_id: string;
@@ -22,5 +22,5 @@ export type User = {
 
 export type LoginResponse = {
 	accessToken: string;
-	user: User;
+	user: BaseUser;
 };

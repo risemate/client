@@ -12,7 +12,7 @@ import TextArea from '@components/input/TextArea';
 import BaseSection from '../../../components/wrappers/EditBaseSection';
 
 export default function WorkExperience() {
-	const FIELD = 'workExperiences';
+	const FIELD = 'doc.workExperiences';
 	const { register, control, watch } = useFormContext();
 	const { fields, prepend, remove, swap } = useFieldArray({
 		control,

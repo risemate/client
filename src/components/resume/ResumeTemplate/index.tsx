@@ -19,11 +19,11 @@ export default function ResumeTemplate({ resume, feedback }: ResumeViewProps) {
 	return (
 		<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
 			{feedback && (
-				<StyledFeedback>
+				<FeedbackWrapper>
 					<div>{feedback.notice}</div>
 					<h3>전체적인 피드백</h3>
 					<p>{feedback.total}</p>
-				</StyledFeedback>
+				</FeedbackWrapper>
 			)}
 			<Profile
 				profile={resume.profile}
@@ -53,7 +53,7 @@ const resumeWrapperStyle = css`
 	}
 `;
 
-const StyledFeedback = styled.div`
+const FeedbackWrapper = styled.div`
 	padding: 10px;
 	margin-bottom: 30px;
 	background: ${({ theme }) => theme.colors.lighterGrey};

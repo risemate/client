@@ -11,7 +11,7 @@ export const defaultPackage: PackageDetail = {
 	packageTitle: '',
 	description: '',
 	providerOptions: [],
-	_id: '',
+	_id: '6562b04c461c70f74b259dd5',
 };
 
 export const convertToProfile = ({
@@ -25,7 +25,8 @@ export const convertToProfile = ({
 		phoneNumber: '',
 		profileImage: coverImage || '',
 		position: subTitle || '',
-		coverLetter: '',
+		description: '',
+		job: '',
 	};
 };
 

@@ -12,7 +12,7 @@ import BaseSection from '@components/wrappers/EditBaseSection';
 
 export default function TechStack() {
 	const { watch, setValue } = useFormContext();
-	const techStack = watch('techStack');
+	const techStack = watch('doc.techStack');
 
 	const { searchText, suggestions, inputChange } = useSearch(
 		20,
@@ -55,7 +55,7 @@ export default function TechStack() {
 				/>
 				{isSearchOpen && (
 					<SuggestionWrapper>
-						<KeywordSuggestions keyword='techStack.skills' suggestions={suggestions} />
+						<KeywordSuggestions keyword='doc.techStack.skills' suggestions={suggestions} />
 					</SuggestionWrapper>
 				)}
 			</div>

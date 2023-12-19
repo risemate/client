@@ -1,11 +1,14 @@
-import { User } from '../User';
+export type CareerType = 'RESUME' | 'COVERLETTER';
+export const CareerTypeList: CareerType[] = ['RESUME', 'COVERLETTER'];
+
+export type DocType = 'BASIC' | 'AI' | 'COACHING';
+export const DocTypeList: DocType[] = ['BASIC', 'AI', 'COACHING'];
 
 export type Resume = {
-	user: User;
+	coverImage?: string;
+	coverLetter?: string;
 	public: boolean;
-	resumeType: 'BASIC' | 'AI' | 'COACHING';
-	docsTitle: string;
-	parentId: string | null;
+	docTitle: string;
 	profile: Profile;
 	techStack: {
 		skills: string[];
@@ -15,12 +18,8 @@ export type Resume = {
 	educations: Education[];
 	activities: Activity[];
 	links: Link[];
-	hasNewCommentAlarm: boolean;
 	careerYears: number;
 	lookingForJob: boolean;
-	_id: string;
-	createdAt: string;
-	updatedAt: string;
 };
 
 export type Profile = {
@@ -29,7 +28,8 @@ export type Profile = {
 	phoneNumber: string;
 	profileImage: string;
 	position: string;
-	coverLetter: string;
+	description: string;
+	job: string;
 };
 
 export type Link = {

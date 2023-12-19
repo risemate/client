@@ -38,7 +38,7 @@ export default function ResumeEdit() {
 		<FormProvider {...methods}>
 			<form onSubmit={handleSubmit(submitResume)}>
 				<h2 className='a11y-hidden'>
-					{isEmpty(getValues('docsTitle')) ? '새로운 이력서' : getValues('docsTitle')};
+					{isEmpty(getValues('docTitle')) ? '새로운 이력서' : getValues('docTitle')};
 				</h2>
 				<Profile />
 				<TechStack />

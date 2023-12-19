@@ -1,8 +1,8 @@
 import { Project, WorkExperience } from '../Resume';
-import { User } from '../User';
+import { BaseUser } from '../User';
 
 export type Product = {
-	user: User;
+	user: BaseUser;
 	public: boolean;
 	productTitle: string;
 	subTitle: string;
@@ -70,7 +70,7 @@ export type Answer = {
 
 export type Inquriy = {
 	_id: string;
-	user: User;
+	user: BaseUser;
 	product: {
 		productTitle: string;
 		subTitle: string;
@@ -88,7 +88,7 @@ export type Inquriy = {
 
 export type Review = {
 	_id: string;
-	user: User;
+	user: BaseUser;
 	product: {
 		productTitle: string;
 		subTitle: string;

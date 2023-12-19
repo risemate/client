@@ -33,7 +33,7 @@ export default function Profile({ profile, techStack, feedback }: ProfileProps) 
 					</li>
 				)}
 			</ContactList>
-			{profile.coverLetter && <p>{profile.coverLetter}</p>}
+			{profile.description && <p>{profile.description}</p>}
 			{feedback && (
 				<BaseSectionFeedback>
 					<h4>자기소개에 대한 피드백</h4>

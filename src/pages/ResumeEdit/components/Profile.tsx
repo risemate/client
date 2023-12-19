@@ -7,36 +7,38 @@ import Input from '@components/input/Input';
 import LinkInput from '@components/input/LinkInput';
 import TextArea from '@components/input/TextArea';
 import BaseSection from '@components/wrappers/EditBaseSection';
+import { Profile as ProfileType } from 'types/Resume';
 
 export default function Profile() {
 	const { register, watch } = useFormContext();
+	const inputName = (field: keyof ProfileType) => `doc.profile.${field}`;
 	return (
 		<BaseSection>
 			<BaseSection.Title title='기본 정보'>
 				<ResumeTitleInput>
 					<span className='a11y-hidden'>이력서 이름 입력</span>
-					<input type='text' placeholder='이력서 이름 입력' {...register('docsTitle')} />
+					<input type='text' placeholder='이력서 이름 입력' {...register('docTitle')} />
 				</ResumeTitleInput>
 				<WarningText>* 내용이 없을 시 이력서에 표기되지 않습니다.</WarningText>
 			</BaseSection.Title>
 			<InputWrapper>
-				<FileInput inputName='profile.profileImage' size='medium' />
+				<FileInput inputName={inputName('profileImage')} size='medium' />
 				<NameInput>
-					<input type='text' placeholder='이름 입력' {...register('profile.name')} />
+					<input type='text' placeholder='이름 입력' {...register(inputName('name'))} />
 				</NameInput>
 				<JobInput>
 					<input
 						type='text'
 						placeholder='포지션 입력'
-						{...register('profile.position')}
+						{...register(inputName('position'))}
 					/>
 				</JobInput>
 				<ContactWrapper className='contact-wrapper'>
-					<Input label='휴대폰 번호' type='text' {...register('profile.phoneNumber')} />
-					<Input label='이메일' type='email' {...register('profile.email')} />
+					<Input label='휴대폰 번호' type='text' {...register(inputName('phoneNumber'))} />
+					<Input label='이메일' type='email' {...register(inputName('email'))} />
 				</ContactWrapper>
-				<LinkInput links={watch('links')} inputName='links' />
-				<TextArea label='자기소개' help {...register('profile.coverLetter')} />
+				<LinkInput links={watch('doc.links')} inputName='doc.links' />
+				<TextArea label='자기소개' help {...register(inputName('description'))} />
 			</InputWrapper>
 		</BaseSection>
 	);
