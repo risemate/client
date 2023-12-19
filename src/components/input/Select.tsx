@@ -11,7 +11,7 @@ const Select = forwardRef(function Select(
 	ref: ForwardedRef<HTMLSelectElement>,
 ) {
 	return (
-		<StyledSelect>
+		<SelectWrapper>
 			{label}
 			<select ref={ref} {...SelectProps}>
 				{options.map((option, index) => (
@@ -20,11 +20,11 @@ const Select = forwardRef(function Select(
 					</option>
 				))}
 			</select>
-		</StyledSelect>
+		</SelectWrapper>
 	);
 });
 
-const StyledSelect = styled.div`
+const SelectWrapper = styled.div`
 	font-size: ${({ theme }) => theme.fontSizes.small};
 	color: ${({ theme }) => theme.colors.darkGrey};
 	display: flex;

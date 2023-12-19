@@ -34,7 +34,7 @@ export default function TechStack() {
 	return (
 		<BaseSection>
 			<BaseSection.Title title='기술 스택' />
-			<StyledList>
+			<StackList>
 				{techStack.skills.map((stack: string, index: number) => {
 					return (
 						<span key={index}>
@@ -45,7 +45,7 @@ export default function TechStack() {
 						</span>
 					);
 				})}
-			</StyledList>
+			</StackList>
 			<div ref={searchRef}>
 				<Input
 					value={searchText}
@@ -63,7 +63,7 @@ export default function TechStack() {
 	);
 }
 
-const StyledList = styled.div`
+const StackList = styled.div`
 	display: flex;
 	gap: 10px;
 	margin: 20px 0;

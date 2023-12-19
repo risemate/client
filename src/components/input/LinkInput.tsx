@@ -59,7 +59,7 @@ export default function LinkInput({ links, inputName }: LinkInputProps) {
 	const { handleEnter } = useKeyboard();
 
 	return (
-		<StyledLink>
+		<LinkInputWrapper>
 			<div>
 				<Input
 					label='Link'
@@ -73,7 +73,7 @@ export default function LinkInput({ links, inputName }: LinkInputProps) {
 					추가
 				</Button>
 			</div>
-			<ul>
+			<LinkList>
 				{links.map((link, index) => (
 					<li key={index}>
 						{linkToString(link)}
@@ -82,12 +82,12 @@ export default function LinkInput({ links, inputName }: LinkInputProps) {
 						</button>
 					</li>
 				))}
-			</ul>
-		</StyledLink>
+			</LinkList>
+		</LinkInputWrapper>
 	);
 }
 
-const StyledLink = styled.div`
+const LinkInputWrapper = styled.div`
 	& > div {
 		position: relative;
 		button {
@@ -98,24 +98,25 @@ const StyledLink = styled.div`
 			border-radius: 0 10px 10px 0;
 		}
 	}
-	ul {
+`;
+
+const LinkList = styled.ul`
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 10px;
+	li {
+		width: fit-content;
+		background: ${({ theme }) => theme.colors.blue};
+		color: white;
+		padding: 7px 7px 7px 15px;
+		border-radius: 5px;
+		font-size: ${({ theme }) => theme.fontSizes.small};
 		display: flex;
-		flex-wrap: wrap;
-		gap: 10px;
-		margin-top: 10px;
-		li {
-			width: fit-content;
-			background: ${({ theme }) => theme.colors.blue};
+		align-items: center;
+		button {
 			color: white;
-			padding: 7px 7px 7px 15px;
-			border-radius: 5px;
-			font-size: ${({ theme }) => theme.fontSizes.small};
-			display: flex;
-			align-items: center;
-			button {
-				color: white;
-				margin-left: 10px;
-			}
+			margin-left: 10px;
 		}
 	}
 `;

@@ -17,26 +17,26 @@ export default function ExpertCard({ expert }: ExpertCardProps) {
 		navigate('/experts/1');
 	};
 	return (
-		<StyledCardItem onClick={moveToDetail}>
-			<StyledTag>FRONTEND</StyledTag>
+		<CardItemButton onClick={moveToDetail}>
+			<Tag>FRONTEND</Tag>
 			<DefaultImage variant='navy' />
 			<h4>성장하는 프론트엔드 개발자</h4>
-			<p className='explanation'>
+			<p>
 				커리어 | 2년차, 3개 회사 근무 <br /> 최근 소속 | 라이즈메이트
 			</p>
-			<p className='introduction'>
+			<p>
 				안녕하세요, TypeScript, React.js 기반의 2년 프론트엔드 개발자 000이라고 합니다.
 				잘부탁드립니다.
 			</p>
-			<StyledProduct>
+			<ProductInfoWrapper>
 				<span className='price'>20000원~</span>
 				<StarRating rating={4.5} numReview={10} />
-			</StyledProduct>
-		</StyledCardItem>
+			</ProductInfoWrapper>
+		</CardItemButton>
 	);
 }
 
-const StyledCardItem = styled.button`
+const CardItemButton = styled.button`
 	max-width: 250px;
 	min-width: 200px;
 	border-radius: 10px;
@@ -55,13 +55,13 @@ const StyledCardItem = styled.button`
 		font-weight: bold;
 		${({ theme }) => theme.common.ellipsisOneLine};
 	}
-	.explanation {
+	& > p:nth-of-type(1) {
 		font-size: ${({ theme }) => theme.fontSizes.small};
 		${({ theme }) => theme.common.ellipsisTwoLine};
 		line-height: 15px;
 		margin-bottom: 5px;
 	}
-	.introduction {
+	& > p:nth-of-type(2) {
 		font-size: ${({ theme }) => theme.fontSizes.small};
 		color: ${({ theme }) => theme.colors.darkGrey};
 		line-height: 15px;
@@ -69,7 +69,7 @@ const StyledCardItem = styled.button`
 	}
 `;
 
-const StyledTag = styled.span`
+const Tag = styled.span`
 	color: white;
 	font-weight: bold;
 	font-size: ${({ theme }) => theme.fontSizes.small};
@@ -82,7 +82,7 @@ const StyledTag = styled.span`
 	right: 20px;
 `;
 
-const StyledProduct = styled.div`
+const ProductInfoWrapper = styled.div`
 	position: absolute;
 	bottom: 0;
 	left: 0;

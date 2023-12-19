@@ -18,21 +18,21 @@ export default function AlarmItem({ alarm }: AlarmItemProps) {
 		navigate('/알람내용페이지로 보내기');
 	};
 	return (
-		<StyledAlarmItem onClick={alarmClicked}>
-			<Title>
+		<AlarmItemButton onClick={alarmClicked}>
+			<AlarmItemTitle>
 				{!alarm.isRead && <span />}
 				{alarm.title}
-			</Title>
+			</AlarmItemTitle>
 			<div className='contents'>
 				<span>{alarm.content}</span>
 				<br />
 				<time>{alarm.time}</time>
 			</div>
-		</StyledAlarmItem>
+		</AlarmItemButton>
 	);
 }
 
-const Title = styled.h3`
+const AlarmItemTitle = styled.h3`
 	position: relative;
 	cursor: pointer;
 	position: relative;
@@ -53,7 +53,7 @@ const Title = styled.h3`
 	}
 `;
 
-const StyledAlarmItem = styled.button`
+const AlarmItemButton = styled.button`
 	display: flex;
 	flex-direction: column;
 	padding: 20px 0;

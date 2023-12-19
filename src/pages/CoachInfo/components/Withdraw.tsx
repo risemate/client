@@ -3,13 +3,13 @@ import styled from 'styled-components';
 
 export default function Withdraw() {
 	return (
-		<StyledWithdraw>
+		<WithdrawSection>
 			<h3>출금 요청</h3>
-		</StyledWithdraw>
+		</WithdrawSection>
 	);
 }
 
-const StyledWithdraw = styled.section`
+const WithdrawSection = styled.section`
 	h3 {
 		font-weight: bold;
 		color: ${({ theme }) => theme.colors.navy};

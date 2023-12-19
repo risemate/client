@@ -10,7 +10,7 @@ interface BaseSectionProps {
 	children: ReactNode;
 }
 
-const BaseSectionMain = ({ children }: BaseSectionProps) => {
+const BaseSection = ({ children }: BaseSectionProps) => {
 	return (
 		<WhiteBoxWrapper type='section' customCss={resumeEditWrapperStyle}>
 			{children}
@@ -18,7 +18,7 @@ const BaseSectionMain = ({ children }: BaseSectionProps) => {
 	);
 };
 
-const BaseSection = Object.assign(BaseSectionMain, {
+const EditBaseSection = Object.assign(BaseSection, {
 	Title: BaseSectionTitle,
 	Content: BaseSectionContent,
 	Item: BaseSectionContentItem,
@@ -34,4 +34,4 @@ const resumeEditWrapperStyle = css`
 	}
 `;
 
-export default BaseSection;
+export default EditBaseSection;

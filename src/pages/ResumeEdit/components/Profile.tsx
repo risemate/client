@@ -19,7 +19,7 @@ export default function Profile() {
 				</ResumeTitleInput>
 				<WarningText>* 내용이 없을 시 이력서에 표기되지 않습니다.</WarningText>
 			</BaseSection.Title>
-			<StyledInputs>
+			<InputWrapper>
 				<FileInput inputName='profile.profileImage' size='medium' />
 				<NameInput>
 					<input type='text' placeholder='이름 입력' {...register('profile.name')} />
@@ -37,7 +37,7 @@ export default function Profile() {
 				</ContactWrapper>
 				<LinkInput links={watch('links')} inputName='links' />
 				<TextArea label='자기소개' help {...register('profile.coverLetter')} />
-			</StyledInputs>
+			</InputWrapper>
 		</BaseSection>
 	);
 }
@@ -99,7 +99,7 @@ const ContactWrapper = styled.div`
 	}
 `;
 
-const StyledInputs = styled.div`
+const InputWrapper = styled.div`
 	display: grid;
 	grid-template-columns: 160px 0.8fr 1fr 1fr;
 	grid-template-rows: 70px auto 150px;

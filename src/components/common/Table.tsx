@@ -11,7 +11,7 @@ interface TableProps<T> {
 export default function Table<T>({ columns, data, totals }: TableProps<T>) {
 	return (
 		<>
-			<StyledTotal>
+			<TotalInfoWrapper>
 				{totals?.map((total, index) => {
 					return (
 						<p key={index}>
@@ -20,7 +20,7 @@ export default function Table<T>({ columns, data, totals }: TableProps<T>) {
 						</p>
 					);
 				})}
-			</StyledTotal>
+			</TotalInfoWrapper>
 			<StyledTable>
 				<colgroup>
 					{columns.map((_, index) => {
@@ -52,7 +52,7 @@ export default function Table<T>({ columns, data, totals }: TableProps<T>) {
 	);
 }
 
-const StyledTotal = styled.div`
+const TotalInfoWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
 	padding: 20px 0;

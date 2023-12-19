@@ -19,7 +19,7 @@ export default function ExpertDetail() {
 	const { productTitle, subTitle, coverImage } = product;
 
 	return (
-		<StyledExpert>
+		<ExpertDetailWrapper>
 			<div>
 				<Profile profile={convertToProfile({ productTitle, subTitle, coverImage })} />
 				<Tab
@@ -52,11 +52,11 @@ export default function ExpertDetail() {
 				reviewCount={product.reviewCount}
 				avgReviewScore={product.avgReviewScore}
 			/>
-		</StyledExpert>
+		</ExpertDetailWrapper>
 	);
 }
 
-const StyledExpert = styled.div`
+const ExpertDetailWrapper = styled.div`
 	max-width: ${({ theme }) => theme.widths.maxWidth};
 	margin: auto;
 	padding: 50px 32px;

@@ -10,8 +10,8 @@ export default function UserProfile() {
 	const navigate = useNavigate();
 	const isExpert = true;
 	return (
-		<StyledUserInfo>
-			<div className='user-wrapper'>
+		<UserInfoSection>
+			<UserWrapper>
 				<div>
 					<DefaultImage variant='mint' size='small' />
 					<h2>
@@ -23,8 +23,8 @@ export default function UserProfile() {
 				<button type='button' onClick={() => changeParam('edit')}>
 					사용자 정보 수정하기 {'>'}
 				</button>
-			</div>
-			<div className='btn-wrapper'>
+			</UserWrapper>
+			<ButtonWrappper>
 				{isExpert ? (
 					<Button variant='navy' size='full' onClick={() => navigate('/coach-info')}>
 						전문가로 변환하기
@@ -37,8 +37,8 @@ export default function UserProfile() {
 				<Button variant='border' size='full'>
 					로그아웃
 				</Button>
-			</div>
-		</StyledUserInfo>
+			</ButtonWrappper>
+		</UserInfoSection>
 	);
 }
 
@@ -53,7 +53,7 @@ const tabletSizeStyle = css`
 	}
 `;
 
-const StyledUserInfo = styled.section`
+const UserInfoSection = styled.section`
 	max-width: 250px;
 	height: 100%;
 	padding-right: 50px;
@@ -61,31 +61,33 @@ const StyledUserInfo = styled.section`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	.user-wrapper {
-		div {
-			display: flex;
-			gap: 10px;
-			h2 {
-				color: ${({ theme }) => theme.colors.navy};
-				font-size: ${({ theme }) => theme.fontSizes.medium};
-				font-weight: bold;
-				line-height: 30px;
-				.nickname {
-					font-size: ${({ theme }) => theme.fontSizes.default};
-					font-weight: 400;
-				}
+	${tabletSizeStyle}
+`;
+
+const UserWrapper = styled.div`
+	div {
+		display: flex;
+		gap: 10px;
+		h2 {
+			color: ${({ theme }) => theme.colors.navy};
+			font-size: ${({ theme }) => theme.fontSizes.medium};
+			font-weight: bold;
+			line-height: 30px;
+			.nickname {
+				font-size: ${({ theme }) => theme.fontSizes.default};
+				font-weight: 400;
 			}
 		}
-		& > button {
-			color: ${({ theme }) => theme.colors.darkGrey};
-			padding: 10px 5px;
-			margin-top: 5px;
-		}
 	}
-	.btn-wrapper {
-		button:first-child {
-			margin-bottom: 10px;
-		}
+	& > button {
+		color: ${({ theme }) => theme.colors.darkGrey};
+		padding: 10px 5px;
+		margin-top: 5px;
 	}
-	${tabletSizeStyle}
+`;
+
+const ButtonWrappper = styled.div`
+	button:first-child {
+		margin-bottom: 10px;
+	}
 `;

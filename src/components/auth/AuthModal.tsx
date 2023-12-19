@@ -33,15 +33,15 @@ export default function AuthModal() {
 
 	return (
 		<ModalBase>
-			<StyledH1>
+			<ModalTitle>
 				<img src={logoIcon} alt='라이즈메이트 로고' />
 				<br />
 				로그인
-			</StyledH1>
-			<StyledContent>
+			</ModalTitle>
+			<ModalContent>
 				RiseMate에서 로그인하고 <br /> 다양한 서비스를 즐겨보세요!
-			</StyledContent>
-			<StyledButtonDiv>
+			</ModalContent>
+			<ModalButtonWrapper>
 				<button type='button' onClick={() => login('google')}>
 					<IconGoogle /> Google 로그인
 				</button>
@@ -49,12 +49,12 @@ export default function AuthModal() {
 					<IconNaver />
 					Naver 로그인
 				</button>
-			</StyledButtonDiv>
+			</ModalButtonWrapper>
 		</ModalBase>
 	);
 }
 
-const StyledH1 = styled.h1`
+const ModalTitle = styled.h1`
 	color: ${({ theme }) => theme.colors.navy};
 	font-size: ${({ theme }) => theme.fontSizes.large};
 	font-weight: bold;
@@ -66,14 +66,14 @@ const StyledH1 = styled.h1`
 	}
 `;
 
-const StyledContent = styled.p`
+const ModalContent = styled.p`
 	text-align: center;
 	margin-bottom: 30px;
 	line-height: 25px;
 	color: ${({ theme }) => theme.colors.navy};
 `;
 
-const StyledButtonDiv = styled.div`
+const ModalButtonWrapper = styled.div`
 	${({ theme }) => theme.common.flexCenterColumn};
 	gap: 25px;
 	padding-bottom: 20px;

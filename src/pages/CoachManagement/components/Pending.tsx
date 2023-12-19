@@ -12,9 +12,9 @@ interface PendingProps {
 // eslint-disable-next-line
 export default function Pending({ pending }: PendingProps) {
 	return (
-		<StyledPedning>
+		<PedningWrapper>
 			<h4>@ 00님의 이력서 첨삭 요청이 있습니다.</h4>
-			<div className='link-wrapper'>
+			<div>
 				이력서 Link{' '}
 				<Button variant='blue' size='small'>
 					바로 가기
@@ -24,7 +24,7 @@ export default function Pending({ pending }: PendingProps) {
 			<p>
 				응답 처리까지 남은 시간: <span>47:00:59</span>
 			</p>
-			<div className='btn-wrapper'>
+			<div>
 				<Button variant='navy' size='medium'>
 					수락
 				</Button>
@@ -32,12 +32,12 @@ export default function Pending({ pending }: PendingProps) {
 					거절
 				</Button>
 			</div>
-		</StyledPedning>
+		</PedningWrapper>
 	);
 }
 
-const StyledPedning = styled.div`
-	.link-wrapper {
+const PedningWrapper = styled.div`
+	div:nth-of-type(1) {
 		margin: 10px 0;
 		button {
 			margin-left: 10px;
@@ -52,7 +52,7 @@ const StyledPedning = styled.div`
 			font-weight: bold;
 		}
 	}
-	.btn-wrapper {
+	div:nth-of-type(2) {
 		text-align: center;
 		margin-top: 10px;
 		button:first-child {

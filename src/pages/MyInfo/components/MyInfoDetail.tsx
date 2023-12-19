@@ -15,7 +15,7 @@ export default function MyInfoDetail() {
 	return (
 		<>
 			{!queryParam && (
-				<StyledPageDetail>
+				<PageDetailSection>
 					<div>
 						<PageItem
 							items={[{ name: '보유 코인', icon: <IconCoin />, state: '220p' }]}
@@ -45,7 +45,7 @@ export default function MyInfoDetail() {
 							}}
 						/>
 					</div>
-				</StyledPageDetail>
+				</PageDetailSection>
 			)}
 			{queryParam === 'edit' && <EditUserInfo />}
 			{queryParam === 'payment' && <Payment />}
@@ -54,7 +54,7 @@ export default function MyInfoDetail() {
 	);
 }
 
-const StyledPageDetail = styled.section`
+const PageDetailSection = styled.section`
 	${({ theme }) => theme.common.flexCenterColumn};
 	justify-content: space-between;
 	& > div:first-child {

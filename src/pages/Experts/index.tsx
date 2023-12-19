@@ -14,14 +14,14 @@ export default function Experts() {
 					전문가를 찾아보세요!
 				</h2>
 			</Banner>
-			<StyledSection>
+			<ExpertSection>
 				<ExpertCardList experts={experts} />
-			</StyledSection>
+			</ExpertSection>
 		</>
 	);
 }
 
-const StyledSection = styled.section`
+const ExpertSection = styled.section`
 	${({ theme }) => theme.common.minmaxWidth};
 	padding: 100px 32px;
 	margin: auto;

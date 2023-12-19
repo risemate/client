@@ -24,7 +24,7 @@ export default function ProductInfo({
 	const { currentTab, changeTab, isCurrentTab } = useTab(tabItems);
 	return (
 		<article>
-			<StyledProduct>
+			<ProductWrapper>
 				<Tab
 					items={tabItems}
 					changeTab={changeTab}
@@ -56,8 +56,8 @@ export default function ProductInfo({
 				<Button variant='blue' size='full'>
 					첨삭 요청하기
 				</Button>
-			</StyledProduct>
-			<StyledReview>
+			</ProductWrapper>
+			<ReviewWrapper>
 				<p>서비스 제공이 완료된 이후에 전문가에게 결제 대금이 전달됩니다.</p>
 				<p>
 					<IconClock />
@@ -74,7 +74,7 @@ export default function ProductInfo({
 						{reviewCount}건<span>리뷰 수</span>
 					</li>
 				</ul>
-			</StyledReview>
+			</ReviewWrapper>
 		</article>
 	);
 }
@@ -87,7 +87,7 @@ const baseStyle = css`
 	border-radius: 10px;
 `;
 
-const StyledProduct = styled.div`
+const ProductWrapper = styled.div`
 	${baseStyle}
 	margin-bottom: 20px;
 	h3 {
@@ -121,7 +121,7 @@ const StyledProduct = styled.div`
 	}
 `;
 
-const StyledReview = styled.div`
+const ReviewWrapper = styled.div`
 	${baseStyle}
 	font-size: ${({ theme }) => theme.fontSizes.small};
 	color: ${({ theme }) => theme.colors.darkGrey};

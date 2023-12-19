@@ -16,31 +16,31 @@ export default function Tab({
 	isCurrentTab,
 }: TabProps) {
 	return (
-		<StyledTab $center={center} $underline={underline}>
+		<TabList $center={center} $underline={underline}>
 			{items.map(item => {
 				return (
 					<li key={item}>
-						<StyledButton
+						<TabItemButton
 							className={isCurrentTab(item) ? 'active' : undefined}
 							onClick={() => changeTab(item)}
 						>
 							{item}
-						</StyledButton>
+						</TabItemButton>
 					</li>
 				);
 			})}
-		</StyledTab>
+		</TabList>
 	);
 }
 
-const StyledTab = styled.ul<{ $underline?: boolean; $center?: boolean }>`
+const TabList = styled.ul<{ $underline?: boolean; $center?: boolean }>`
 	${({ $underline, theme }) =>
 		$underline && `border-bottom: 2px solid ${theme.colors.darkGrey}`};
 	display: flex;
 	justify-content: ${({ $center }) => ($center ? 'center' : 'flex-start')};
 `;
 
-const StyledButton = styled.button`
+const TabItemButton = styled.button`
 	font-weight: bold;
 	color: ${({ theme }) => theme.colors.darkGrey};
 	padding: 5px 20px;

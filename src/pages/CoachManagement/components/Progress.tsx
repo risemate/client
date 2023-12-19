@@ -18,15 +18,15 @@ export default function Progress({ progress }: ProgressProps) {
 		'첨삭 완료\n및 정산',
 	];
 	return (
-		<StyledProgress>
+		<ProgressWrapper>
 			<h4>@ 00님의 이력서 첨삭 코칭</h4>
-			<div className='link-wrapper'>
+			<div>
 				이력서 Link{' '}
 				<Button variant='blue' size='small'>
 					바로 가기
 				</Button>
 			</div>
-			<div className='progress-bar'>
+			<ProgressBarWrapper>
 				{progressBarItems.map((item, index) =>
 					level >= index + 1 ? (
 						<ColoredProgressBar key={index}>
@@ -48,52 +48,53 @@ export default function Progress({ progress }: ProgressProps) {
 						</NoColoredProgressBar>
 					),
 				)}
-			</div>
-		</StyledProgress>
+			</ProgressBarWrapper>
+		</ProgressWrapper>
 	);
 }
 
-const StyledProgress = styled.div`
+const ProgressWrapper = styled.div`
 	/* overflow: hidden; */
-	.link-wrapper {
+	& > div:nth-of-type(1) {
 		margin: 10px 0;
 		button {
 			margin-left: 10px;
 		}
 	}
-	.progress-bar {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		p {
-			width: 100px;
-			height: 100px;
-			color: white;
-			font-weight: bold;
-			border-radius: 50%;
-			text-align: center;
-			line-height: 20px;
-			${({ theme }) => theme.common.flexCenter};
-			position: relative;
-			&:nth-of-type(3) {
-				width: 150px;
-				height: 150px;
-			}
-			&:not(:last-child):after {
-				content: '';
-				width: 150px;
-				height: 10px;
-				display: inline-block;
-				position: absolute;
-				left: 100px;
-			}
-			&:nth-of-type(3):after {
-				left: 150px;
-			}
+`;
+
+const ProgressBarWrapper = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	p {
+		width: 100px;
+		height: 100px;
+		color: white;
+		font-weight: bold;
+		border-radius: 50%;
+		text-align: center;
+		line-height: 20px;
+		${({ theme }) => theme.common.flexCenter};
+		position: relative;
+		&:nth-of-type(3) {
+			width: 150px;
+			height: 150px;
+		}
+		&:not(:last-child):after {
+			content: '';
+			width: 150px;
+			height: 10px;
+			display: inline-block;
+			position: absolute;
+			left: 100px;
+		}
+		&:nth-of-type(3):after {
+			left: 150px;
 		}
 	}
 	@media screen and (max-width: 920px) {
-		.progress-bar p:not(:last-child):after {
+		p:not(:last-child):after {
 			width: 100px;
 		}
 	}

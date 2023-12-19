@@ -31,27 +31,54 @@ export default function FileInput({ label, inputName, size }: FileInputProps) {
 		setValue(inputName, '');
 	};
 	return (
-		<StyledFileInput $size={size}>
-			<label>
+		<FileInputWrapper>
+			<FileInputLabel>
 				{!isEmpty(label) && label}
 				<DefaultImage variant='grey' size={size} image={watch(inputName)} />
 				<input type='file' onChange={event => changeImage(event)} />
-			</label>
+			</FileInputLabel>
 			<span>
 				- 가로 600px, 세로 600px / 5MB이하 <br /> - 등록 가능 확장자: jpg, png , jpeg
 			</span>
-			<button type='button' onClick={() => resetImage()}>
+			<ResetButton type='button' onClick={() => resetImage()} $size={size}>
 				<IconCloseSharp />
-			</button>
-		</StyledFileInput>
+			</ResetButton>
+		</FileInputWrapper>
 	);
 }
 
-interface StyledInputProps {
+const FileInputWrapper = styled.div`
+	font-size: ${({ theme }) => theme.fontSizes.small};
+	color: ${({ theme }) => theme.colors.darkGrey};
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	position: relative;
+	& > span {
+		font-size: ${({ theme }) => theme.fontSizes.tiny};
+	}
+`;
+
+const FileInputLabel = styled.label`
+	cursor: pointer;
+	& > input[type='file'] {
+		position: absolute;
+		width: 0;
+		height: 0;
+		padding: 0;
+		overflow: hidden;
+		border: 0;
+	}
+	& > div {
+		margin-top: 8px;
+	}
+`;
+
+interface ResetButtonProps {
 	$size?: Size;
 }
 
-const sizeStyle = css<StyledInputProps>`
+const sizeStyle = css<ResetButtonProps>`
 	${({ $size }) => {
 		switch ($size) {
 			case 'small':
@@ -78,40 +105,15 @@ const sizeStyle = css<StyledInputProps>`
 	}}
 `;
 
-const StyledFileInput = styled.div<StyledInputProps>`
-	font-size: ${({ theme }) => theme.fontSizes.small};
-	color: ${({ theme }) => theme.colors.darkGrey};
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	position: relative;
-	label {
-		cursor: pointer;
-		& > input[type='file'] {
-			position: absolute;
-			width: 0;
-			height: 0;
-			padding: 0;
-			overflow: hidden;
-			border: 0;
-		}
-		& > div {
-			margin-top: 8px;
-		}
-	}
-	& > span {
-		font-size: ${({ theme }) => theme.fontSizes.tiny};
-	}
-	& > button {
-		position: absolute;
-		${sizeStyle}
-		border-radius: 50%;
-		background: ${({ theme }) => theme.colors.navy};
-		width: 20px;
-		height: 20px;
-		padding-top: 2px;
-		svg {
-			color: white;
-		}
+const ResetButton = styled.button<ResetButtonProps>`
+	position: absolute;
+	${sizeStyle}
+	border-radius: 50%;
+	background: ${({ theme }) => theme.colors.navy};
+	width: 20px;
+	height: 20px;
+	padding-top: 2px;
+	svg {
+		color: white;
 	}
 `;

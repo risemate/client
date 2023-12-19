@@ -41,7 +41,7 @@ export default function NavBar() {
 						<img src={logoMain} alt='라이즈 메이트' />
 					</Link>
 				</h1>
-				<StyledNavList>
+				<NavBarList>
 					<button onClick={first}>Auth</button>
 					{navItems.map((item, index) => {
 						return (
@@ -50,8 +50,8 @@ export default function NavBar() {
 							</li>
 						);
 					})}
-				</StyledNavList>
-				<StyledMyPage>
+				</NavBarList>
+				<MyPageWrapper>
 					{!auth ? (
 						<>
 							{isExpert && <Link to='/coach-info'>코칭 관리</Link>}
@@ -76,7 +76,7 @@ export default function NavBar() {
 							{isModal && <AuthModal />}
 						</>
 					)}
-				</StyledMyPage>
+				</MyPageWrapper>
 			</nav>
 		</StyledHeader>
 	);
@@ -99,7 +99,7 @@ const StyledHeader = styled.header`
 	}
 `;
 
-const StyledNavList = styled.ul`
+const NavBarList = styled.ul`
 	display: flex;
 	align-items: center;
 	gap: 25px;
@@ -122,7 +122,7 @@ const StyledNavList = styled.ul`
 	}
 `;
 
-const StyledMyPage = styled.div`
+const MyPageWrapper = styled.div`
 	margin-left: auto;
 	height: 100%;
 	position: relative;

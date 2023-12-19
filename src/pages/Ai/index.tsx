@@ -26,7 +26,7 @@ export default function Ai() {
 				이력서/자기소개서를 첨삭 받아보세요!
 			</Banner>
 			<WhiteBoxWrapper type='div' customCss={aiWrapperStyle}>
-				<section>
+				<AiSection>
 					<h3>이력서</h3>
 					<ul>
 						{resumeList.map((resume, index) => (
@@ -40,8 +40,8 @@ export default function Ai() {
 							</li>
 						))}
 					</ul>
-				</section>
-				<section>
+				</AiSection>
+				<AiSection>
 					<h3>자기소개서</h3>
 					<ul>
 						{resumeList.map((resume, index) => (
@@ -55,7 +55,7 @@ export default function Ai() {
 							</li>
 						))}
 					</ul>
-				</section>
+				</AiSection>
 				<Button
 					variant='mint'
 					size='medium'
@@ -80,27 +80,28 @@ const aiWrapperStyle = css`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	section {
-		h3 {
-			color: ${({ theme }) => theme.colors.navy};
-			font-weight: bold;
-			font-size: ${({ theme }) => theme.fontSizes.medium};
-			margin-bottom: 30px;
-		}
-		ul {
-			width: 100%;
-			display: flex;
-			gap: 20px;
-			justify-content: start;
-			overflow-x: scroll;
-			padding: 10px;
-		}
-		&:not(:last-child) {
-			margin-bottom: 70px;
-		}
-	}
 	& > button {
 		align-self: center;
+	}
+`;
+
+const AiSection = styled.section`
+	h3 {
+		color: ${({ theme }) => theme.colors.navy};
+		font-weight: bold;
+		font-size: ${({ theme }) => theme.fontSizes.medium};
+		margin-bottom: 30px;
+	}
+	ul {
+		width: 100%;
+		display: flex;
+		gap: 20px;
+		justify-content: start;
+		overflow-x: scroll;
+		padding: 10px;
+	}
+	&:not(:last-child) {
+		margin-bottom: 70px;
 	}
 `;
 

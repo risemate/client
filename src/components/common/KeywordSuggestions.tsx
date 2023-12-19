@@ -24,23 +24,23 @@ export default function KeywordSuggestions({
 	};
 
 	return (
-		<StyledSuggestonsWrap>
+		<SuggestonsWrapper>
 			{isEmpty(suggestions) && <p>추천 검색어가 없습니다</p>}
 			{suggestions.map((item, index) => (
-				<Item
+				<SuggestionItemButton
 					key={index}
 					type='button'
 					onClick={() => onClickedSuggetionItem(item)}
 					$selected={getValues(keyword).includes(item)}
 				>
 					{item}
-				</Item>
+				</SuggestionItemButton>
 			))}
-		</StyledSuggestonsWrap>
+		</SuggestonsWrapper>
 	);
 }
 
-const StyledSuggestonsWrap = styled.div`
+const SuggestonsWrapper = styled.div`
 	background: white;
 	border: 0.5px solid ${({ theme }) => theme.colors.grey};
 	border-radius: 10px;
@@ -51,7 +51,7 @@ const StyledSuggestonsWrap = styled.div`
 	color: ${({ theme }) => theme.colors.darkGrey};
 `;
 
-const Item = styled.button<{ $selected: boolean }>`
+const SuggestionItemButton = styled.button<{ $selected: boolean }>`
 	color: ${({ theme }) => theme.colors.darkGrey};
 	border-radius: 50px;
 	border: 1px solid ${({ theme }) => theme.colors.grey};

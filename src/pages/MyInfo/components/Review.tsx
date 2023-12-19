@@ -21,7 +21,7 @@ export default function Review() {
 			date: '2023.05.39 12:30',
 			content:
 				'000전문가님 덕분에 원하는 곳 서류합격했습니다! 피드백도 확실하고 명확하게 해주셔서 알아보기 편했습니다.',
-			link: <StyledButton type='button'>링크로 이동</StyledButton>,
+			link: <LinkButton type='button'>링크로 이동</LinkButton>,
 		},
 	];
 
@@ -34,6 +34,6 @@ export default function Review() {
 	);
 }
 
-const StyledButton = styled.button`
+const LinkButton = styled.button`
 	color: ${({ theme }) => theme.colors.darkGrey};
 `;

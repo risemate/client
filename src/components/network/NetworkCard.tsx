@@ -13,7 +13,7 @@ export default function NetworkCard({ network }: NetworkCardProps) {
 	const image = true;
 
 	return (
-		<StyledCardItem to={'/networks/resumes/1'}>
+		<CardItemLink to={'/networks/resumes/1'}>
 			{image ? (
 				<DefaultImage variant='blue' shape='rectangle' />
 			) : (
@@ -24,11 +24,11 @@ export default function NetworkCard({ network }: NetworkCardProps) {
 				안녕하세요, TypeScript, React.js 기반의 2년 프론트엔드 개발자 000이라고
 				합니다.잘부탁드립니다.
 			</p>
-		</StyledCardItem>
+		</CardItemLink>
 	);
 }
 
-const StyledCardItem = styled(Link)`
+const CardItemLink = styled(Link)`
 	max-width: 250px;
 	min-width: 200px;
 	text-align: start;

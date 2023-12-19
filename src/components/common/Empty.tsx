@@ -10,17 +10,17 @@ interface EmptyProps {
 
 export default function Empty({ name, moveToLink }: EmptyProps) {
 	return (
-		<StyledSection>
+		<EmptySection>
 			<span />
 			<h3>아직 작성하신 {name} 없어요!</h3>
 			<Button variant='blue' onClick={() => moveToLink()}>
 				{name.slice(0, -1)} 작성하기 ➔
 			</Button>
-		</StyledSection>
+		</EmptySection>
 	);
 }
 
-const StyledSection = styled.section`
+const EmptySection = styled.section`
 	${({ theme }) => theme.common.flexCenterColumn};
 	gap: 20px;
 	span {

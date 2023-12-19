@@ -17,20 +17,20 @@ export default function Resume() {
 				{isEmpty(resumes) && <Empty name='이력서가' moveToLink={() => alert('hello')} />}
 				<section>
 					<h3>이력서</h3>
-					<StyledList>
+					<ResumeList>
 						<AddResume />
 						<ResumeCard />
 						<ResumeCard />
 						<ResumeCard />
-					</StyledList>
+					</ResumeList>
 				</section>
 				<section>
 					<h3>자기소개서</h3>
-					<StyledList>
+					<ResumeList>
 						<AddResume />
 						<ResumeCard />
 						<ResumeCard />
-					</StyledList>
+					</ResumeList>
 				</section>
 			</WhiteBoxWrapper>
 		</>
@@ -55,7 +55,7 @@ const resumeWrapperStyle = css`
 	}
 `;
 
-const StyledList = styled.ul`
+const ResumeList = styled.ul`
 	width: 100%;
 	display: flex;
 	gap: 20px;

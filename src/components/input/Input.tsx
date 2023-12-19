@@ -12,16 +12,16 @@ const Input = forwardRef(function Input(
 	ref: ForwardedRef<HTMLInputElement>,
 ) {
 	return (
-		<StyledLabel>
+		<InputLabel>
 			{label && <span>{label}</span>}
 			<input ref={ref} {...InputProps} />
 			{warning && <span className='warning'>{warning}</span>}
 			{explanation && <span>{explanation}</span>}
-		</StyledLabel>
+		</InputLabel>
 	);
 });
 
-const StyledLabel = styled.label`
+const InputLabel = styled.label`
 	font-size: ${({ theme }) => theme.fontSizes.small};
 	color: ${({ theme }) => theme.colors.darkGrey};
 	display: flex;
@@ -35,29 +35,6 @@ const StyledLabel = styled.label`
 	.warning {
 		color: red;
 		padding-left: 10px;
-	}
-	& > div {
-		display: flex;
-		align-items: center;
-		gap: 5px;
-		p {
-			position: relative;
-			span {
-				display: none;
-				width: 310px;
-				position: absolute;
-				background: ${({ theme }) => theme.colors.darkGrey};
-				color: white;
-				padding: 10px;
-				border-radius: 10px;
-				line-height: 20px;
-				top: -40px;
-				left: 20px;
-			}
-		}
-		p:hover span {
-			display: inline-block;
-		}
 	}
 	span:last-child {
 		word-break: break-all;

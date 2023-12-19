@@ -29,7 +29,7 @@ export default function EditUserInfo() {
 
 	return (
 		<FormProvider {...methods}>
-			<StyledEditUserInfo>
+			<UserInfoSection>
 				<h3>사용자 정보 수정</h3>
 				<form onSubmit={handleSubmit(changeUserInfo)}>
 					<FileInput label='이미지' inputName='picture' size='small' />
@@ -57,12 +57,12 @@ export default function EditUserInfo() {
 						정보 수정
 					</Button>
 				</form>
-			</StyledEditUserInfo>
+			</UserInfoSection>
 		</FormProvider>
 	);
 }
 
-const StyledEditUserInfo = styled.section`
+const UserInfoSection = styled.section`
 	width: 100%;
 	& > form {
 		height: 100%;

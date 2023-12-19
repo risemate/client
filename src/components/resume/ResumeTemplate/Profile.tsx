@@ -14,14 +14,14 @@ interface ProfileProps {
 // eslint-disable-next-line
 export default function Profile({ profile, techStack, feedback }: ProfileProps) {
 	return (
-		<StyledProfile>
+		<ProfileSection>
 			<DefaultImage variant='navy' size='large' image={profile.profileImage} />
-			<h2>
+			<ProfileHeading>
 				{profile.name}
 				<br />
 				<span>{profile.position}</span>
-			</h2>
-			<ul className='list-contact'>
+			</ProfileHeading>
+			<ContactList>
 				{profile.phoneNumber && (
 					<li>
 						phone-number: <span>{profile.phoneNumber}</span>
@@ -32,7 +32,7 @@ export default function Profile({ profile, techStack, feedback }: ProfileProps) 
 						email: <span>{profile.email}</span>
 					</li>
 				)}
-			</ul>
+			</ContactList>
 			{profile.coverLetter && <p>{profile.coverLetter}</p>}
 			{feedback && (
 				<BaseSectionFeedback>
@@ -41,17 +41,17 @@ export default function Profile({ profile, techStack, feedback }: ProfileProps) 
 				</BaseSectionFeedback>
 			)}
 			{techStack && (
-				<ul className='list-skills'>
+				<SkillList>
 					{techStack.skills.map((stack, index) => (
 						<li key={index}>{stack}</li>
 					))}
-				</ul>
+				</SkillList>
 			)}
-		</StyledProfile>
+		</ProfileSection>
 	);
 }
 
-const StyledProfile = styled.section`
+const ProfileSection = styled.section`
 	display: grid;
 	grid-template-columns: 210px auto;
 	gap: 25px;
@@ -60,47 +60,50 @@ const StyledProfile = styled.section`
 		grid-column: 1 / 2;
 		grid-row: 1 / 3;
 	}
-	h2 {
-		font-size: ${({ theme }) => theme.fontSizes.large};
-		font-weight: bold;
-		grid-column: 2 / 3;
-		grid-row: 1 / 2;
-		line-height: 40px;
-		span {
-			font-size: ${({ theme }) => theme.fontSizes.medium};
-			font-weight: normal;
-		}
-	}
-	ul.list-contact {
-		grid-row: 2 / 3;
-		display: flex;
-		flex-direction: column;
-		gap: 30px;
-		justify-content: end;
-		li {
-			font-weight: bold;
-			span {
-				font-weight: 400;
-			}
-		}
-	}
 	p {
 		grid-column: 1 / 3;
 		line-height: 28px;
 	}
-	ul.list-skills {
-		width: fit-content;
-		display: flex;
-		gap: 10px;
-		grid-column: 1 / 3;
-		li {
-			width: fit-content;
-			border-radius: 50px;
-			padding: 5px 15px;
-			color: ${({ theme }) => theme.colors.navy};
-			border: 2px solid ${({ theme }) => theme.colors.navy};
-			display: flex;
-			align-items: center;
+`;
+
+const ProfileHeading = styled.h2`
+	font-size: ${({ theme }) => theme.fontSizes.large};
+	font-weight: bold;
+	grid-column: 2 / 3;
+	grid-row: 1 / 2;
+	line-height: 40px;
+	span {
+		font-size: ${({ theme }) => theme.fontSizes.medium};
+		font-weight: normal;
+	}
+`;
+
+const ContactList = styled.ul`
+	grid-row: 2 / 3;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	justify-content: end;
+	li {
+		font-weight: bold;
+		span {
+			font-weight: 400;
 		}
+	}
+`;
+
+const SkillList = styled.ul`
+	width: fit-content;
+	display: flex;
+	gap: 10px;
+	grid-column: 1 / 3;
+	li {
+		width: fit-content;
+		border-radius: 50px;
+		padding: 5px 15px;
+		color: ${({ theme }) => theme.colors.navy};
+		border: 2px solid ${({ theme }) => theme.colors.navy};
+		display: flex;
+		align-items: center;
 	}
 `;

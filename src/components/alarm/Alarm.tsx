@@ -58,12 +58,12 @@ export default function Alarm({ closeAlarm, btnAlarmRef }: AlarmProps) {
 	};
 
 	return (
-		<StyledAlarm ref={alarmRef}>
-			<StyledRadio>
+		<AlarmArticle ref={alarmRef}>
+			<ReadAllInput>
 				<input type='radio' onChange={readAllAlarm} />
 				<span />
 				전체 읽음 처리
-			</StyledRadio>
+			</ReadAllInput>
 			<ul>
 				{alarms.map((alarm, index) => {
 					return (
@@ -73,11 +73,11 @@ export default function Alarm({ closeAlarm, btnAlarmRef }: AlarmProps) {
 					);
 				})}
 			</ul>
-		</StyledAlarm>
+		</AlarmArticle>
 	);
 }
 
-const StyledAlarm = styled.article`
+const AlarmArticle = styled.article`
 	position: absolute;
 	overflow-y: scroll;
 	-ms-overflow-style: none;
@@ -97,17 +97,6 @@ const StyledAlarm = styled.article`
 	background: white;
 	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
 	z-index: 100;
-	& > label {
-		position: absolute;
-		top: 15px;
-		right: 20px;
-		color: ${({ theme }) => theme.colors.navy};
-		font-size: ${({ theme }) => theme.fontSizes.tiny};
-		input {
-			color: ${({ theme }) => theme.colors.navy};
-			padding-right: 10px;
-		}
-	}
 	ul > li {
 		&:not(:last-child) {
 			border-bottom: 0.5px solid ${({ theme }) => theme.colors.grey};
@@ -115,16 +104,23 @@ const StyledAlarm = styled.article`
 	}
 `;
 
-const StyledRadio = styled.label`
+const ReadAllInput = styled.label`
 	cursor: pointer;
 	position: relative;
 	font-weight: 400;
 	padding-left: 15px;
+	position: absolute;
+	top: 15px;
+	right: 20px;
+	color: ${({ theme }) => theme.colors.navy};
+	font-size: ${({ theme }) => theme.fontSizes.tiny};
 	input[type='radio'] {
 		position: absolute;
 		opacity: 0;
 		height: 0;
 		width: 0;
+		color: ${({ theme }) => theme.colors.navy};
+		padding-right: 10px;
 	}
 	span {
 		position: absolute;

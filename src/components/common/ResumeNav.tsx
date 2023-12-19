@@ -12,7 +12,7 @@ export default function ResumeNav({ resumeNavItems }: ResumeNavProps) {
 	const btnColor: Variant[] =
 		resumeNavItems.length > 2 ? ['white', 'blue', 'mint'] : ['blue', 'mint'];
 	return (
-		<StyledResumeNav>
+		<ResumeNavArticle>
 			{resumeNavItems.map((item, index) => {
 				return item.onClick ? (
 					<Button
@@ -30,11 +30,11 @@ export default function ResumeNav({ resumeNavItems }: ResumeNavProps) {
 					</Button>
 				);
 			})}
-		</StyledResumeNav>
+		</ResumeNavArticle>
 	);
 }
 
-const StyledResumeNav = styled.article`
+const ResumeNavArticle = styled.article`
 	position: fixed;
 	bottom: 45px;
 	left: 50%;

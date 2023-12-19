@@ -6,10 +6,10 @@ interface BasicInfoProps {
 }
 
 export default function BaseSectionBasicInfo({ children }: BasicInfoProps) {
-	return <StyledBasicInfo>{children}</StyledBasicInfo>;
+	return <BasicInfoList>{children}</BasicInfoList>;
 }
 
-const StyledBasicInfo = styled.ul`
+const BasicInfoList = styled.ul`
 	grid-column: 1 / 2;
 	color: ${({ theme }) => theme.colors.darkGrey};
 	font-size: ${({ theme }) => theme.fontSizes.small};

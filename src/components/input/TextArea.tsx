@@ -13,9 +13,9 @@ const TextArea = forwardRef(function TextArea(
 	ref: ForwardedRef<HTMLTextAreaElement>,
 ) {
 	return (
-		<StyledLabel>
+		<TextAreaLabel>
 			{label && help && (
-				<div>
+				<HelperWrapper>
 					{label && <span>{label}</span>}
 					{help && (
 						<p className='help'>
@@ -26,15 +26,15 @@ const TextArea = forwardRef(function TextArea(
 							</span>
 						</p>
 					)}
-				</div>
+				</HelperWrapper>
 			)}
 			<textarea rows={6} ref={ref} {...TextAreaProps}></textarea>
 			{warning && <span className='warning'>{warning}</span>}
-		</StyledLabel>
+		</TextAreaLabel>
 	);
 });
 
-const StyledLabel = styled.label`
+const TextAreaLabel = styled.label`
 	font-size: ${({ theme }) => theme.fontSizes.small};
 	color: ${({ theme }) => theme.colors.darkGrey};
 	display: flex;
@@ -49,31 +49,32 @@ const StyledLabel = styled.label`
 		color: red;
 		padding-left: 10px;
 	}
-	& > div {
-		display: flex;
-		align-items: center;
-		gap: 5px;
-		p {
-			position: relative;
-			span {
-				display: none;
-				width: 310px;
-				position: absolute;
-				background: ${({ theme }) => theme.colors.darkGrey};
-				color: white;
-				padding: 10px;
-				border-radius: 10px;
-				line-height: 20px;
-				top: -40px;
-				left: 20px;
-			}
-		}
-		p:hover span {
-			display: inline-block;
-		}
-	}
 	span:last-child {
 		word-break: break-all;
+	}
+`;
+
+const HelperWrapper = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	p {
+		position: relative;
+		span {
+			display: none;
+			width: 310px;
+			position: absolute;
+			background: ${({ theme }) => theme.colors.darkGrey};
+			color: white;
+			padding: 10px;
+			border-radius: 10px;
+			line-height: 20px;
+			top: -40px;
+			left: 20px;
+		}
+	}
+	p:hover span {
+		display: inline-block;
 	}
 `;
 

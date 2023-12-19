@@ -6,14 +6,14 @@ import styled from 'styled-components';
 export default function AddResume() {
 	const navigate = useNavigate();
 	return (
-		<StyledAddResume type='button' onClick={() => navigate('edit/new')}>
+		<ResumeAddResume type='button' onClick={() => navigate('edit/new')}>
 			<IconAdd />
 			<p>새 이력서 추가</p>
-		</StyledAddResume>
+		</ResumeAddResume>
 	);
 }
 
-const StyledAddResume = styled.button`
+const ResumeAddResume = styled.button`
 	width: 330px;
 	height: 255px;
 	flex-shrink: 0;

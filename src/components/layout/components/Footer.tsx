@@ -5,7 +5,7 @@ import styled from 'styled-components';
 export default function Footer() {
 	return (
 		<StyledFooter>
-			<div>
+			<FooterWrapper>
 				<div>
 					<h1>
 						<img src={logoMono} alt='Risemate 로고' />
@@ -20,7 +20,7 @@ export default function Footer() {
 				</ul>
 				<p>GitHub: https://github.com/risemate</p>
 				<p>@Risemate. All rights reserved.</p>
-			</div>
+			</FooterWrapper>
 		</StyledFooter>
 	);
 }
@@ -29,31 +29,31 @@ const StyledFooter = styled.footer`
 	width: 100%;
 	height: 150px;
 	border-top: 1px solid ${({ theme }) => theme.colors.lightGrey};
+`;
 
+const FooterWrapper = styled.div`
+	${({ theme }) => theme.common.minmaxWidth};
+	padding: 32px;
+	margin: auto;
+	& > * {
+		font-size: ${({ theme }) => theme.fontSizes.small};
+		color: ${({ theme }) => theme.colors.darkGrey};
+	}
 	& > div {
-		${({ theme }) => theme.common.minmaxWidth};
-		padding: 32px;
-		margin: auto;
-		& > * {
-			font-size: ${({ theme }) => theme.fontSizes.small};
-			color: ${({ theme }) => theme.colors.darkGrey};
+		display: flex;
+		gap: 20px;
+		align-items: end;
+		padding-bottom: 20px;
+	}
+	ul {
+		display: flex;
+		gap: 5px;
+		padding-bottom: 5px;
+		li:not(:last-child):after {
+			content: '  |';
 		}
-		& > div {
-			display: flex;
-			gap: 20px;
-			align-items: end;
-			padding-bottom: 20px;
-		}
-		ul {
-			display: flex;
-			gap: 5px;
-			padding-bottom: 5px;
-			li:not(:last-child):after {
-				content: '  |';
-			}
-		}
-		p:not(:last-child) {
-			padding-bottom: 5px;
-		}
+	}
+	p:not(:last-child) {
+		padding-bottom: 5px;
 	}
 `;

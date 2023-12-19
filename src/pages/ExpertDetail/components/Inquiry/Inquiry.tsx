@@ -19,7 +19,7 @@ export default function Inquiry() {
 	return (
 		<BaseSection>
 			<h3>상품 문의</h3>
-			<StyledInquiry>
+			<InquiryWrapper>
 				{!isMyProduct && <InquiryForm isMyProduct={isMyProduct} />}
 				<ul>
 					{mockInquiry.map((inquiry, index) => (
@@ -32,12 +32,12 @@ export default function Inquiry() {
 						/>
 					))}
 				</ul>
-			</StyledInquiry>
+			</InquiryWrapper>
 		</BaseSection>
 	);
 }
 
-const StyledInquiry = styled.div`
+const InquiryWrapper = styled.div`
 	& > span {
 		font-weight: bold;
 	}

@@ -22,7 +22,7 @@ export default function CoachManagement() {
 	const completeList: CompleteType[] = [{ temp: 1 }, { temp: 1 }, { temp: 1 }];
 	return (
 		<WhiteBoxWrapper type='div' customCss={managementWrapperStyle}>
-			<ManagementH2>코칭 관리</ManagementH2>
+			<ManagementTitle>코칭 관리</ManagementTitle>
 			<Tab items={tabItems} changeTab={changeTab} isCurrentTab={isCurrentTab} underline />
 			{currentTab === '대기' && (
 				<ManagementTabWrapper>
@@ -31,37 +31,37 @@ export default function CoachManagement() {
 						미확인 첨삭요청이 있습니다. <br />
 						<span>2일 이상 미응답시 자동 거절처리 됩니다.</span>
 					</p>
-					<ul>
+					<ManagementList>
 						{pendingList.map((pending, index) => (
 							<li key={index}>
 								<Pending pending={pending} />
 							</li>
 						))}
-					</ul>
+					</ManagementList>
 				</ManagementTabWrapper>
 			)}
 			{currentTab === '진행 중' && (
 				<ManagementTabWrapper>
 					<h3>진행 중인 첨삭 코칭</h3>
-					<ul>
+					<ManagementList>
 						{progressList.map((progress, index) => (
 							<li key={index}>
 								<Progress progress={progress} />
 							</li>
 						))}
-					</ul>
+					</ManagementList>
 				</ManagementTabWrapper>
 			)}
 			{currentTab === '완료' && (
 				<ManagementTabWrapper>
 					<h3>완료한 첨삭 코칭</h3>
-					<ul>
+					<ManagementList>
 						{completeList.map((complete, index) => (
 							<li key={index}>
 								<Complete complete={complete} />
 							</li>
 						))}
-					</ul>
+					</ManagementList>
 				</ManagementTabWrapper>
 			)}
 		</WhiteBoxWrapper>
@@ -75,7 +75,7 @@ const managementWrapperStyle = css`
 	margin-top: 70px;
 `;
 
-const ManagementH2 = styled.h2`
+const ManagementTitle = styled.h2`
 	color: ${({ theme }) => theme.colors.navy};
 	font-size: ${({ theme }) => theme.fontSizes.medium};
 	font-weight: bold;
@@ -97,15 +97,16 @@ const ManagementTabWrapper = styled.div`
 			font-weight: 200;
 		}
 	}
-	ul {
-		height: calc(100vh - 740px);
-		display: flex;
-		flex-direction: column;
-		gap: 30px;
-		padding-top: 20px;
-		overflow-y: scroll;
-	}
-	ul li > div {
+`;
+
+const ManagementList = styled.ul`
+	height: calc(100vh - 740px);
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	padding-top: 20px;
+	overflow-y: scroll;
+	li > div {
 		position: relative;
 		padding: 30px;
 		border-radius: 10px;

@@ -16,7 +16,7 @@ export default function Modal({ title, children, confirm, onClick }: ModalProps)
 	const { closeModal } = useModal();
 	return (
 		<ModalBase>
-			<StyledDiv>
+			<ModalWrapper>
 				<h1>{title}</h1>
 				<p>{children}</p>
 				<div>
@@ -34,12 +34,12 @@ export default function Modal({ title, children, confirm, onClick }: ModalProps)
 						{confirm ? confirm : '확인'}
 					</Button>
 				</div>
-			</StyledDiv>
+			</ModalWrapper>
 		</ModalBase>
 	);
 }
 
-const StyledDiv = styled.div`
+const ModalWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 20px;

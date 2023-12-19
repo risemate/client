@@ -19,25 +19,25 @@ function Home() {
 					라메에서 이력서를 <span className='highlight mint'>코칭</span>받아보세요!
 				</h2>
 			</Banner>
-			<StyledSection>
+			<HomeSection>
 				<h3>다양한 이력서를 구경해보세요!</h3>
 				<NetworkCardList networks={networks.slice(0, 4)} home />
 				<Button variant='navy' size='small' onClick={() => navigate('/network')}>
 					이력서 더보기
 				</Button>
-			</StyledSection>
-			<StyledSection css={{ marginBottom: '80px' }}>
+			</HomeSection>
+			<HomeSection css={{ marginBottom: '80px' }}>
 				<h3>이력서/자소서 전문가를 만나보세요!</h3>
 				<ExpertCardList experts={experts.slice(0, 4)} home />
 				<Button variant='navy' size='small' onClick={() => navigate('/experts')}>
 					전문가 더보기
 				</Button>
-			</StyledSection>
+			</HomeSection>
 		</>
 	);
 }
 
-const StyledSection = styled.section<{ css?: CSSProp }>`
+const HomeSection = styled.section<{ css?: CSSProp }>`
 	${({ theme }) => theme.common.minmaxWidth};
 	margin: 100px auto 0;
 	position: relative;

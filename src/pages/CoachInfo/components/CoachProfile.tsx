@@ -7,15 +7,15 @@ export default function CoachProfile() {
 	const navigate = useNavigate();
 	const hasPost = true;
 	return (
-		<StyledUserInfo>
-			<div className='user-wrapper'>
+		<InfoSection>
+			<UserWrapper>
 				<h2>
 					전문가 홍길동<span className='a11y-hidden'>의 마이페이지</span>
 					<br />
 				</h2>
 				{hasPost && <Link to='link'>내 게시물 확인하러 가기 {'>'}</Link>}
-			</div>
-			<div className='btn-wrapper'>
+			</UserWrapper>
+			<ButtonWrapper>
 				{hasPost && (
 					<>
 						<Button variant='blue' size='full'>
@@ -32,8 +32,8 @@ export default function CoachProfile() {
 				<Button variant='border' size='full'>
 					로그아웃
 				</Button>
-			</div>
-		</StyledUserInfo>
+			</ButtonWrapper>
+		</InfoSection>
 	);
 }
 
@@ -48,7 +48,7 @@ const tabletSizeStyle = css`
 	}
 `;
 
-const StyledUserInfo = styled.section`
+const InfoSection = styled.section`
 	max-width: 250px;
 	height: 100%;
 	padding-right: 50px;
@@ -56,22 +56,24 @@ const StyledUserInfo = styled.section`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	.user-wrapper {
-		h2 {
-			color: ${({ theme }) => theme.colors.navy};
-			font-size: ${({ theme }) => theme.fontSizes.medium};
-			font-weight: bold;
-			margin-bottom: 10px;
-		}
-		& > a {
-			color: ${({ theme }) => theme.colors.darkGrey};
-		}
-	}
-	.btn-wrapper {
-		max-width: 250px;
-		button:not(:last-child) {
-			margin-bottom: 10px;
-		}
-	}
 	${tabletSizeStyle}
+`;
+
+const UserWrapper = styled.div`
+	h2 {
+		color: ${({ theme }) => theme.colors.navy};
+		font-size: ${({ theme }) => theme.fontSizes.medium};
+		font-weight: bold;
+		margin-bottom: 10px;
+	}
+	& > a {
+		color: ${({ theme }) => theme.colors.darkGrey};
+	}
+`;
+
+const ButtonWrapper = styled.div`
+	max-width: 250px;
+	button:not(:last-child) {
+		margin-bottom: 10px;
+	}
 `;

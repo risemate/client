@@ -55,14 +55,14 @@ export default function ReviewItem({
 				<ReviewForm isMyProduct={isMyProduct} />
 			)}
 			{review.answer && (
-				<StyledAnswer>
+				<AnswerWrapper>
 					<p>
 						<span>{maskString(review.answer.expert.name, 2, '*')}</span>
 						<span>({maskString(review.answer.expert.nickname, 2, '*')})</span>
 						<span>| {sliceDate(review.answer.createdAt)}</span>
 					</p>
 					<p>{review.answer.content}</p>
-				</StyledAnswer>
+				</AnswerWrapper>
 			)}
 		</StyledItem>
 	);
@@ -107,7 +107,7 @@ const StyledItem = styled.li`
 	}
 `;
 
-const StyledAnswer = styled.div`
+const AnswerWrapper = styled.div`
 	grid-column: 1 / 3;
 	background: ${({ theme }) => theme.colors.lighterGrey};
 	margin-top: 20px;

@@ -23,7 +23,7 @@ export default function CoachInfoDetail() {
 		<>
 			{!hasPost && <Empty name='게시물이' moveToLink={() => navigate('/edit')} />}
 			{hasPost && !queryParam && (
-				<StyledPageDetail>
+				<InfoDetailSection>
 					<div>
 						<PageItem
 							items={[{ name: '보유 캐시', icon: <IconCoin />, state: '100,000' }]}
@@ -54,14 +54,14 @@ export default function CoachInfoDetail() {
 							}}
 						/>
 					</div>
-				</StyledPageDetail>
+				</InfoDetailSection>
 			)}
 			{queryParam === 'withdraw' && <Withdraw />}
 		</>
 	);
 }
 
-const StyledPageDetail = styled.section`
+const InfoDetailSection = styled.section`
 	${({ theme }) => theme.common.flexCenterColumn};
 	justify-content: space-between;
 	& > div:first-child {

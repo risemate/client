@@ -11,7 +11,7 @@ interface CompleteProps {
 // eslint-disable-next-line
 export default function Complete({ complete }: CompleteProps) {
 	return (
-		<StyledComplete>
+		<CompleteWrapper>
 			<h4>@ 00님의 이력서 첨삭</h4>
 			<time>2023.08.31</time>
 			<Button variant='navy' size='medium'>
@@ -20,11 +20,11 @@ export default function Complete({ complete }: CompleteProps) {
 			<Button variant='navy' size='medium'>
 				피드백 문서 보기
 			</Button>
-		</StyledComplete>
+		</CompleteWrapper>
 	);
 }
 
-const StyledComplete = styled.div`
+const CompleteWrapper = styled.div`
 	h4 {
 		margin-bottom: 20px;
 	}

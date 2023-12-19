@@ -10,50 +10,49 @@ interface PageItemProps {
 
 export default function PageItem({ items, buttonEvent }: PageItemProps) {
 	return (
-		<StyledPageItem>
+		<PageItemWrapper>
 			<div>
-				{items.map((item, index) => {
-					return (
-						<div key={index}>
-							{item.icon}
-							<h3>{item.name}</h3>
-							<p>{item.state}</p>
-						</div>
-					);
-				})}
+				{items.map((item, index) => (
+					<SinglePageItem key={index}>
+						{item.icon}
+						<h3>{item.name}</h3>
+						<p>{item.state}</p>
+					</SinglePageItem>
+				))}
 			</div>
 			<Button variant='navy' size='medium' onClick={buttonEvent.onClick}>
 				{buttonEvent.name}
 			</Button>
-		</StyledPageItem>
+		</PageItemWrapper>
 	);
 }
 
-const StyledPageItem = styled.div`
+const PageItemWrapper = styled.div`
 	width: 100%;
 	text-align: center;
 	& > div {
 		display: flex;
 		justify-content: space-around;
 		padding-bottom: 30px;
-		& > div {
-			${({ theme }) => theme.common.flexCenterColumn};
-			gap: 10px;
-			svg {
-				width: 35px;
-				height: 35px;
-				margin-bottom: 5px;
-				color: ${({ theme }) => theme.colors.navy};
-			}
-			h3 {
-				font-weight: bold;
-				color: ${({ theme }) => theme.colors.navy};
-			}
-			p {
-				color: ${({ theme }) => theme.colors.blue};
-				font-size: ${({ theme }) => theme.fontSizes.medium};
-				font-weight: 200;
-			}
-		}
+	}
+`;
+
+const SinglePageItem = styled.div`
+	${({ theme }) => theme.common.flexCenterColumn};
+	gap: 10px;
+	svg {
+		width: 35px;
+		height: 35px;
+		margin-bottom: 5px;
+		color: ${({ theme }) => theme.colors.navy};
+	}
+	h3 {
+		font-weight: bold;
+		color: ${({ theme }) => theme.colors.navy};
+	}
+	p {
+		color: ${({ theme }) => theme.colors.blue};
+		font-size: ${({ theme }) => theme.fontSizes.medium};
+		font-weight: 200;
 	}
 `;

@@ -71,7 +71,7 @@ export default function EditButton({ index, remove, swap, length }: EditButtonPr
 
 	return (
 		<>
-			<StyledButton>
+			<EditButtonWrapper>
 				<button type='button' onClick={event => swapItems(event, index, false)}>
 					<IconArrowDown />
 				</button>
@@ -81,7 +81,7 @@ export default function EditButton({ index, remove, swap, length }: EditButtonPr
 				<button type='button' onClick={event => swapItems(event, index, true)}>
 					<IconArrowUp />
 				</button>
-			</StyledButton>
+			</EditButtonWrapper>
 			{/* {isModal && (
 				<Modal title='목록 삭제' onClick={() => {deleteItem(index)}}>
 					해당 목록을 삭제하시겠습니까? 다시 복구할 수 없습니다.
@@ -91,7 +91,7 @@ export default function EditButton({ index, remove, swap, length }: EditButtonPr
 	);
 }
 
-const StyledButton = styled.span`
+const EditButtonWrapper = styled.span`
 	border: 0.5px solid ${({ theme }) => theme.colors.grey};
 	border-radius: 5px;
 	position: absolute;

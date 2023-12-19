@@ -26,12 +26,12 @@ export default function Review({ avgReviewScore, reviewCount }: ReviewProps) {
 	return (
 		<BaseSection>
 			<h3>서비스 후기</h3>
-			<StyledStarRating>
+			<StarRatingWrapper>
 				<StarRating rating={avgReviewScore} size='large' />
 				<span>{avgReviewScore}</span>
 				<span>| {reviewCount}건</span>
-			</StyledStarRating>
-			<StyledReview>
+			</StarRatingWrapper>
+			<ReviewWrapper>
 				<span>전체 리뷰 {reviewCount}건</span>
 				{usedProduct && <ReviewForm isMyProduct={isMyProduct} />}
 				<ul>
@@ -45,12 +45,12 @@ export default function Review({ avgReviewScore, reviewCount }: ReviewProps) {
 						/>
 					))}
 				</ul>
-			</StyledReview>
+			</ReviewWrapper>
 		</BaseSection>
 	);
 }
 
-const StyledStarRating = styled.div`
+const StarRatingWrapper = styled.div`
 	padding: 20px 0 40px;
 	display: flex;
 	align-items: center;
@@ -64,7 +64,7 @@ const StyledStarRating = styled.div`
 	}
 `;
 
-const StyledReview = styled.div`
+const ReviewWrapper = styled.div`
 	& > span {
 		font-weight: bold;
 	}

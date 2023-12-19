@@ -19,19 +19,19 @@ export default function ModalBase({ children }: ModalBaseProps) {
 	};
 	return (
 		<ModalPortal>
-			<StyledModalBase ref={modalRef} onClick={event => modalOutSideClick(event)}>
+			<ModalBaseWrapper ref={modalRef} onClick={event => modalOutSideClick(event)}>
 				<article>
 					{children}
-					<button className='btn-close' onClick={() => closeModal()}>
+					<CloseButton className='btn-close' onClick={() => closeModal()}>
 						<IconCloseSharp />
-					</button>
+					</CloseButton>
 				</article>
-			</StyledModalBase>
+			</ModalBaseWrapper>
 		</ModalPortal>
 	);
 }
 
-const StyledModalBase = styled.div`
+const ModalBaseWrapper = styled.div`
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -48,16 +48,17 @@ const StyledModalBase = styled.div`
 		background: white;
 		box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
 	}
-	.btn-close {
-		position: absolute;
-		top: 25px;
-		right: 25px;
-		width: 25px;
-		height: 25px;
-		svg {
-			width: 100%;
-			height: 100%;
-			color: ${({ theme }) => theme.colors.navy};
-		}
+`;
+
+const CloseButton = styled.button`
+	position: absolute;
+	top: 25px;
+	right: 25px;
+	width: 25px;
+	height: 25px;
+	svg {
+		width: 100%;
+		height: 100%;
+		color: ${({ theme }) => theme.colors.navy};
 	}
 `;

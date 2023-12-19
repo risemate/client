@@ -12,11 +12,11 @@ interface BaseSectionProps {
 	children: ReactNode;
 }
 
-const BaseSectionMain = ({ children }: BaseSectionProps) => {
+const BaseSection = ({ children }: BaseSectionProps) => {
 	return <ResumeViewSection>{children}</ResumeViewSection>;
 };
 
-const BaseSection = Object.assign(BaseSectionMain, {
+const ResumeViewBaseSection = Object.assign(BaseSection, {
 	MainTitle: BaseSectionMainTitle,
 	Title: BaseSectionTitle,
 	BasicInfo: BaseSectionBasicInfo,
@@ -37,4 +37,4 @@ const ResumeViewSection = styled.section`
 	}
 `;
 
-export default BaseSection;
+export default ResumeViewBaseSection;

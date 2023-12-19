@@ -27,7 +27,7 @@ export default function DateInput({ label, inputName }: DateInputProps) {
 		return `${year}-${month}`;
 	};
 	return (
-		<StyledDate>
+		<DateInputWrapper>
 			<span>{label}</span>
 			<div>
 				<DatePicker
@@ -45,11 +45,11 @@ export default function DateInput({ label, inputName }: DateInputProps) {
 					showIcon
 				/>
 			</div>
-		</StyledDate>
+		</DateInputWrapper>
 	);
 }
 
-const StyledDate = styled.div`
+const DateInputWrapper = styled.div`
 	font-size: ${({ theme }) => theme.fontSizes.small};
 	color: ${({ theme }) => theme.colors.darkGrey};
 	& > div {

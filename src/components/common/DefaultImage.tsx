@@ -16,7 +16,7 @@ interface DefaultImageProps {
 
 export default function DefaultImage({ variant, size, shape, image }: DefaultImageProps) {
 	return (
-		<StyledDefaultImage
+		<DefaultImageWrapper
 			$variant={variant}
 			$size={size}
 			$shape={shape}
@@ -24,7 +24,7 @@ export default function DefaultImage({ variant, size, shape, image }: DefaultIma
 			className='img'
 		>
 			<img src={isEmpty(image) ? logoIconMono : image} alt='' />
-		</StyledDefaultImage>
+		</DefaultImageWrapper>
 	);
 }
 
@@ -168,7 +168,7 @@ const imgStyle = css<StyledImageProps>`
 	}}
 `;
 
-const StyledDefaultImage = styled.div<StyledImageProps>`
+const DefaultImageWrapper = styled.div<StyledImageProps>`
 	width: 100%;
 	border-radius: 10px;
 	text-align: center;

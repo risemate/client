@@ -9,14 +9,14 @@ interface ToggleProps {
 
 export default function Toggle({ name, checked, onChange }: ToggleProps) {
 	return (
-		<StyledToggle>
+		<ToggleLabel>
 			<span>{name}</span>
 			<input role='switch' type='checkbox' checked={checked} onChange={onChange} />
-		</StyledToggle>
+		</ToggleLabel>
 	);
 }
 
-const StyledToggle = styled.label`
+const ToggleLabel = styled.label`
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;

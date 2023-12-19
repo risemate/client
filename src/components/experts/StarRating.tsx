@@ -16,7 +16,7 @@ export default function StarRating({
 }: StarRatingProps) {
 	const ratingList = [1, 2, 3, 4, 5];
 	return (
-		<StyledStar $size={size}>
+		<StarRatingWrapper $size={size}>
 			{onClick
 				? ratingList.map((item, index) => (
 						<button key={index} type='button' onClick={() => onClick(item)}>
@@ -30,15 +30,15 @@ export default function StarRating({
 						else return <IconStarEmpty key={index} />;
 				  })}
 			{numReview && <span>({numReview})</span>}
-		</StyledStar>
+		</StarRatingWrapper>
 	);
 }
 
-interface StyledProps {
+interface StyledStarProps {
 	$size?: 'small' | 'medium' | 'large';
 }
 
-const sizeStyle = css<StyledProps>`
+const sizeStyle = css<StyledStarProps>`
 	${({ $size }) => {
 		switch ($size) {
 			case 'small':
@@ -61,7 +61,7 @@ const sizeStyle = css<StyledProps>`
 	}}
 `;
 
-const StyledStar = styled.div<StyledProps>`
+const StarRatingWrapper = styled.div<StyledStarProps>`
 	display: flex;
 	align-items: end;
 	svg {
