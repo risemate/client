@@ -1,22 +1,13 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import useAlarm from './Alarm.hook';
 
 interface AlarmItemProps {
 	alarm: { title: string; content: string; time: string; isRead: boolean };
 }
 
 export default function AlarmItem({ alarm }: AlarmItemProps) {
-	const navigate = useNavigate();
-
-	const submitAlarmState = async () => {
-		console.info('서버에 읽음 처리 요청 하기');
-	};
-
-	const alarmClicked = async () => {
-		await submitAlarmState();
-		navigate('/알람내용페이지로 보내기');
-	};
+	const {alarmClicked} = useAlarm();
 	return (
 		<AlarmItemButton onClick={alarmClicked}>
 			<AlarmItemTitle>

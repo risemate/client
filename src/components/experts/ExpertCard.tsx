@@ -1,10 +1,10 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import DefaultImage from '@common/DefaultImage';
 
 import StarRating from './StarRating';
+import useExpert from './Experts.hook';
 
 interface ExpertCardProps {
 	expert: string;
@@ -12,10 +12,7 @@ interface ExpertCardProps {
 
 // eslint-disable-next-line
 export default function ExpertCard({ expert }: ExpertCardProps) {
-	const navigate = useNavigate();
-	const moveToDetail = () => {
-		navigate('/experts/1');
-	};
+	const { moveToDetail } = useExpert();
 	return (
 		<CardItemButton onClick={moveToDetail}>
 			<Tag>FRONTEND</Tag>

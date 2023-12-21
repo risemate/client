@@ -1,8 +1,9 @@
 import useClickOutside from '@hooks/common/useClickOutside';
-import React, { RefObject, useRef } from 'react';
+import React, { RefObject } from 'react';
 import styled from 'styled-components';
 
 import AlarmItem from './AlarmItem';
+import useAlarm from './Alarm.hook';
 
 interface AlarmProps {
 	closeAlarm: () => void;
@@ -10,52 +11,8 @@ interface AlarmProps {
 }
 
 export default function Alarm({ closeAlarm, btnAlarmRef }: AlarmProps) {
-	const alarmRef = useRef<HTMLDivElement | null>(null);
-	const alarms = [
-		{
-			title: '이력서 첨삭 요청',
-			content:
-				'@000 님에게 이력서 첨삭 요청이 왔습니다. 2일 이상 미응답시 자동 거절 처리됩니다. ',
-			time: '2023.09.22 (금)',
-			isRead: true,
-		},
-		{
-			title: '이력서 첨삭 요청',
-			content:
-				'@000 님에게 이력서 첨삭 요청이 왔습니다. 2일 이상 미응답시 자동 거절 처리됩니다. ',
-			time: '2023.09.22 (금)',
-			isRead: false,
-		},
-		{
-			title: '이력서 첨삭 요청',
-			content:
-				'@000 님에게 이력서 첨삭 요청이 왔습니다. 2일 이상 미응답시 자동 거절 처리됩니다. ',
-			time: '2023.09.22 (금)',
-			isRead: true,
-		},
-		{
-			title: '이력서 첨삭 요청',
-			content:
-				'@000 님에게 이력서 첨삭 요청이 왔습니다. 2일 이상 미응답시 자동 거절 처리됩니다. ',
-			time: '2023.09.22 (금)',
-			isRead: false,
-		},
-		{
-			title: '이력서 첨삭 요청',
-			content:
-				'@000 님에게 이력서 첨삭 요청이 왔습니다. 2일 이상 미응답시 자동 거절 처리됩니다. ',
-			time: '2023.09.22 (금)',
-			isRead: false,
-		},
-	];
-
+	const {alarmRef, alarms, readAllAlarm} = useAlarm();
 	useClickOutside([alarmRef, btnAlarmRef], closeAlarm);
-
-	const readAllAlarm = () => {
-		alarms.forEach(alarm => {
-			alarm.isRead = true;
-		});
-	};
 
 	return (
 		<AlarmArticle ref={alarmRef}>
