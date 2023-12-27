@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import useAlarm from './Alarm.hook';
 
 interface AlarmItemProps {
@@ -7,7 +8,7 @@ interface AlarmItemProps {
 }
 
 export default function AlarmItem({ alarm }: AlarmItemProps) {
-	const {alarmClicked} = useAlarm();
+	const { alarmClicked } = useAlarm();
 	return (
 		<AlarmItemButton onClick={alarmClicked}>
 			<AlarmItemTitle>

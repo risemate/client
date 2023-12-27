@@ -2,8 +2,8 @@ import useClickOutside from '@hooks/common/useClickOutside';
 import React, { RefObject } from 'react';
 import styled from 'styled-components';
 
-import AlarmItem from './AlarmItem';
 import useAlarm from './Alarm.hook';
+import AlarmItem from './AlarmItem';
 
 interface AlarmProps {
 	closeAlarm: () => void;
@@ -11,7 +11,7 @@ interface AlarmProps {
 }
 
 export default function Alarm({ closeAlarm, btnAlarmRef }: AlarmProps) {
-	const {alarmRef, alarms, readAllAlarm} = useAlarm();
+	const { alarmRef, alarms, readAllAlarm } = useAlarm();
 	useClickOutside([alarmRef, btnAlarmRef], closeAlarm);
 
 	return (

@@ -1,9 +1,9 @@
-import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function useAlarm () {
-  const navigate = useNavigate();
-  const alarmRef = useRef<HTMLDivElement | null>(null);
+export default function useAlarm() {
+	const navigate = useNavigate();
+	const alarmRef = useRef<HTMLDivElement | null>(null);
 	const alarms = [
 		{
 			title: '이력서 첨삭 요청',
@@ -48,7 +48,7 @@ export default function useAlarm () {
 		});
 	};
 
-  const submitAlarmState = async () => {
+	const submitAlarmState = async () => {
 		console.info('서버에 읽음 처리 요청 하기');
 	};
 
@@ -57,10 +57,10 @@ export default function useAlarm () {
 		navigate('/알람내용페이지로 보내기');
 	};
 
-  return {
-    alarmRef,
-    alarms,
-    readAllAlarm,
-    alarmClicked,
-  };
+	return {
+		alarmRef,
+		alarms,
+		readAllAlarm,
+		alarmClicked,
+	};
 }
