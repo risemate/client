@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 import DefaultImage from '@common/DefaultImage';
 
-import StarRating from './StarRating';
 import useExpert from './Experts.hook';
+import StarRating from './StarRating';
 
 interface ExpertCardProps {
 	expert: string;

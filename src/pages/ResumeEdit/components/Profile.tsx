@@ -1,13 +1,13 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
+import { Profile as ProfileType } from 'types/Resume';
 
 import FileInput from '@components/input/FileInput';
 import Input from '@components/input/Input';
 import LinkInput from '@components/input/LinkInput';
 import TextArea from '@components/input/TextArea';
 import BaseSection from '@components/wrappers/EditBaseSection';
-import { Profile as ProfileType } from 'types/Resume';
 
 export default function Profile() {
 	const { register, watch } = useFormContext();
@@ -34,7 +34,11 @@ export default function Profile() {
 					/>
 				</JobInput>
 				<ContactWrapper className='contact-wrapper'>
-					<Input label='휴대폰 번호' type='text' {...register(inputName('phoneNumber'))} />
+					<Input
+						label='휴대폰 번호'
+						type='text'
+						{...register(inputName('phoneNumber'))}
+					/>
 					<Input label='이메일' type='email' {...register(inputName('email'))} />
 				</ContactWrapper>
 				<LinkInput links={watch('doc.links')} inputName='doc.links' />

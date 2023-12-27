@@ -55,7 +55,10 @@ export default function TechStack() {
 				/>
 				{isSearchOpen && (
 					<SuggestionWrapper>
-						<KeywordSuggestions keyword='doc.techStack.skills' suggestions={suggestions} />
+						<KeywordSuggestions
+							keyword='doc.techStack.skills'
+							suggestions={suggestions}
+						/>
 					</SuggestionWrapper>
 				)}
 			</div>
