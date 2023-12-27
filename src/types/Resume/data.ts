@@ -89,7 +89,7 @@ export const defaultResume: Career<Resume> = {
 };
 
 export const mockResume: Career<Resume> = {
-	_id: '',
+	_id: '1',
 	user: { nickname: '', picture: '', _id: '' },
 	docType: 'BASIC',
 	careerType: 'RESUME',
@@ -267,6 +267,6 @@ export const mockResume: Career<Resume> = {
 			},
 		],
 	},
-	createdAt: '',
-	updatedAt: '',
+	createdAt: 'Thu Dec 8 2011 20:14:56 GMT-0600 (CST)',
+	updatedAt: 'Thu Dec 8 2011 20:14:56 GMT-0600 (CST)',
 };

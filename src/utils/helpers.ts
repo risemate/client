@@ -48,3 +48,14 @@ export const maskString = (str: string, start: number, mask: string) => {
 	const maskedPart = str.slice(start).replace(/./g, mask);
 	return str.slice(0, start) + maskedPart;
 };
+
+export const formatDate = (date: string) => {
+	const formatDate = new Date(date);
+	const year = formatDate.getFullYear().toString();
+	const month = (formatDate.getMonth() + 1).toString().padStart(2, '0');
+	const day = formatDate.getDate().toString().padStart(2, '0');
+	return {
+		period: `${year}.${month}.${day}`,
+		dash: `${year}-${month}-${day}`,
+	};
+};
