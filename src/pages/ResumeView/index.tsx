@@ -4,13 +4,13 @@ import { Feedback } from 'types/Resume';
 import { mockResume } from 'types/Resume/data';
 
 import ResumeNav from '@common/ResumeNav';
-import ResumeTemplate from '@components/resume/ResumeTemplate';
+import ResumeTemplate from '@components/resume/ViewTemplate';
 
 export default function ResumeView() {
 	const { id } = useParams();
 	const navigate = useNavigate();
 	const resumeNavItems = [
-		{ name: '이력서 수정', onClick: () => navigate(`resume/edit/${id}`) },
+		{ name: '이력서 수정', onClick: () => navigate(`${id}/edit`) },
 		{ name: 'AI 첨삭 받기', onClick: () => alert('hi') },
 		{ name: '전문가 찾아보기', onClick: () => alert('hi') },
 	];

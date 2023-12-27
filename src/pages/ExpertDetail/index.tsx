@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { convertToProfile, mockProduct } from 'types/Product/data';
 
 import Tab from '@common/Tab';
-import Profile from '@components/resume/ResumeTemplate/Profile';
+import Profile from '@components/resume/ViewTemplate/Profile';
 
 import ExpertInfo from './components/ExpertInfo';
 import Inquiry from './components/Inquiry/Inquiry';
