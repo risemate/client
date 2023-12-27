@@ -83,7 +83,11 @@ export const router = createBrowserRouter([
 						element: <ResumeView />,
 					},
 					{
-						path: 'edit/:id',
+						path: ':id/history',
+						element: <Resume />,
+					},
+					{
+						path: ':id/edit',
 						element: <ResumeEdit />,
 					},
 				],

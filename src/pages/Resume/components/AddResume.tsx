@@ -6,7 +6,7 @@ import styled from 'styled-components';
 export default function AddResume() {
 	const navigate = useNavigate();
 	return (
-		<ResumeAddResume type='button' onClick={() => navigate('edit/new')}>
+		<ResumeAddResume type='button' onClick={() => navigate('new/edit')}>
 			<IconAdd />
 			<p>새 이력서 추가</p>
 		</ResumeAddResume>
@@ -15,7 +15,7 @@ export default function AddResume() {
 
 const ResumeAddResume = styled.button`
 	width: 330px;
-	height: 255px;
+	min-height: 215px;
 	flex-shrink: 0;
 	border: 1px solid ${({ theme }) => theme.colors.grey};
 	border-radius: 10px;
