@@ -5,7 +5,8 @@ import styled, { css } from 'styled-components';
 import { mockResume } from 'types/Resume/data';
 
 import Empty from '@common/Empty';
-import ResumeCard from '@components/resume/ResumeCard';
+import ResumeCard from '@components/resume/Card/ResumeCard';
+import ResumeEditCard from '@components/resume/Card/ResumeEditCard';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
 export default function Resume() {
@@ -19,17 +20,18 @@ export default function Resume() {
 					<h3>이력서</h3>
 					<ResumeList>
 						<AddResume />
-						<ResumeCard />
-						<ResumeCard />
-						<ResumeCard />
+						{resumes.map(resume => (
+							<ResumeCard key={resume._id} resume={resume} />
+						))}
 					</ResumeList>
 				</section>
 				<section>
 					<h3>자기소개서</h3>
 					<ResumeList>
 						<AddResume />
-						<ResumeCard />
-						<ResumeCard />
+						{resumes.map(resume => (
+							<ResumeEditCard key={resume._id} resume={resume} />
+						))}
 					</ResumeList>
 				</section>
 			</WhiteBoxWrapper>

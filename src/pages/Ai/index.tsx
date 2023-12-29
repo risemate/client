@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 import Banner from '@common/Banner';
 import Button from '@common/Button';
 import Modal from '@components/modal/Modal';
-import ResumeCard from '@components/resume/ResumeCard';
+import ResumeCard from '@components/resume/Card/ResumeCard';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
 export default function Ai() {
@@ -35,7 +35,7 @@ export default function Ai() {
 									onClick={() => selectResume(index)}
 									$selected={selectedResumeId === index}
 								>
-									<ResumeCard ai />
+									{/* <ResumeCard ai /> */}
 								</SelectedButton>
 							</li>
 						))}
@@ -50,7 +50,7 @@ export default function Ai() {
 									onClick={() => selectResume(index + resumeList.length)}
 									$selected={selectedResumeId === index + resumeList.length}
 								>
-									<ResumeCard ai />
+									{/* <ResumeCard ai /> */}
 								</SelectedButton>
 							</li>
 						))}
