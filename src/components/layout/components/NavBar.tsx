@@ -31,7 +31,7 @@ export default function NavBar() {
 
 	const first = async () => {
 		// eslint-disable-next-line
-		await axios('http://localhost:8080/auth').then(res => console.log(res.data));
+		await axios('auth').then(res => console.log(res.data));
 	};
 	return (
 		<StyledHeader>
@@ -157,3 +157,4 @@ const MyPageWrapper = styled.div`
 		right: 0;
 	}
 `;
+
