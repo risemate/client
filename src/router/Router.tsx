@@ -3,19 +3,19 @@ import axios from 'axios';
 import Ai from 'pages/Ai';
 import CoachInfo from 'pages/CoachInfo';
 import CoachManagement from 'pages/CoachManagement';
+import { ResumeView, ReviseResumeView } from 'pages/DocView';
 import ExpertDetail from 'pages/ExpertDetail';
 import Experts from 'pages/Experts';
 import Home from 'pages/Home';
 import MyInfoPage from 'pages/MyInfo';
+import ReviseList from 'pages/MyInfo/components/ReviseList';
 import Network from 'pages/Network';
 import NotFound from 'pages/NotFound';
 import Resume from 'pages/Resume';
 import ResumeEdit from 'pages/ResumeEdit';
-import ResumeView from 'pages/ResumeView';
 import { createBrowserRouter } from 'react-router-dom';
 
 import RootLayout from '@components/layout/RootLayout';
-import UserLayout from '@components/layout/UserLayout';
 
 import { signLoader } from './loader';
 
@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
 						element: <Network />,
 					},
 					{
-						path: 'resumes/:id',
+						path: 'docs/:id',
 						element: <ResumeView />,
 					},
 				],
@@ -65,14 +65,14 @@ export const router = createBrowserRouter([
 
 	{
 		path: 'my-info',
-		element: <UserLayout />,
+		element: <RootLayout />,
 		children: [
 			{
 				index: true,
 				element: <MyInfoPage />,
 			},
 			{
-				path: 'resumes',
+				path: 'docs',
 				children: [
 					{
 						index: true,
@@ -83,8 +83,12 @@ export const router = createBrowserRouter([
 						element: <ResumeView />,
 					},
 					{
-						path: ':id/history',
-						element: <Resume />,
+						path: ':parentId/revise-docs',
+						element: <ReviseList />,
+					},
+					{
+						path: ':parentId/revise-docs/:childrenId',
+						element: <ReviseResumeView />,
 					},
 					{
 						path: ':id/edit',
@@ -102,7 +106,7 @@ export const router = createBrowserRouter([
 	},
 	{
 		path: 'coach-info',
-		element: <UserLayout backgroundColor={theme.colors.grey} />,
+		element: <RootLayout backgroundColor={theme.colors.grey} />,
 		children: [
 			{
 				index: true,

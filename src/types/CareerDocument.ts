@@ -6,7 +6,9 @@ export const CareerTypeList: CareerType[] = ['RESUME', 'COVERLETTER'];
 export type DocType = 'BASIC' | 'AI' | 'COACHING';
 export const DocTypeList: DocType[] = ['BASIC', 'AI', 'COACHING'];
 
-export type Career<T> = {
+export type Career<T = any> = {
+	feedback?: string;
+	contactPublic: boolean;
 	public: boolean;
 	user: BaseUser;
 	docTitle: string;
@@ -18,4 +20,5 @@ export type Career<T> = {
 	createdAt: string;
 	updatedAt: string;
 	coverImage: string;
+	childrenDocCount: number;
 };

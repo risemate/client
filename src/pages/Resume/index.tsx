@@ -1,12 +1,10 @@
 import { isEmpty } from '@utils/helpers';
 import AddResume from 'pages/Resume/components/AddResume';
-import React from 'react';
 import styled, { css } from 'styled-components';
 import { mockResume } from 'types/Resume/data';
 
 import Empty from '@common/Empty';
-import ResumeCard from '@components/resume/Card/ResumeCard';
-import ResumeEditCard from '@components/resume/Card/ResumeEditCard';
+import CareerBasicCard from '@components/resume/Card/CareerBasicCard';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
 export default function Resume() {
@@ -21,7 +19,7 @@ export default function Resume() {
 					<ResumeList>
 						<AddResume />
 						{resumes.map(resume => (
-							<ResumeCard key={resume._id} resume={resume} />
+							<CareerBasicCard key={resume._id} career={resume} />
 						))}
 					</ResumeList>
 				</section>
@@ -30,7 +28,7 @@ export default function Resume() {
 					<ResumeList>
 						<AddResume />
 						{resumes.map(resume => (
-							<ResumeEditCard key={resume._id} resume={resume} />
+							<CareerBasicCard key={resume._id} career={resume} />
 						))}
 					</ResumeList>
 				</section>
@@ -62,5 +60,5 @@ const ResumeList = styled.ul`
 	display: flex;
 	gap: 20px;
 	justify-content: start;
-	overflow-x: scroll;
+	overflow-x: hidden;
 `;

@@ -18,11 +18,11 @@ export default function UserLayout({ backgroundColor }: { backgroundColor?: stri
 	);
 }
 
-const StyledLayout = styled.main`
+const StyledLayout = styled.div`
 	width: 100%;
 	${({ theme }) => theme.common.flexCenterColumn};
 	min-height: calc(100vh - 150px);
 	background: ${({ theme }) => theme.colors.lightGrey};
 	padding: 150px 32px 60px;
-	gap: 10px;
+	gap: 20px;
 `;

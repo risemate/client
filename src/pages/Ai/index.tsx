@@ -1,17 +1,18 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled, { css } from 'styled-components';
+import { mockResume } from 'types/Resume/data';
 
 import Banner from '@common/Banner';
 import Button from '@common/Button';
 import Modal from '@components/modal/Modal';
-import ResumeCard from '@components/resume/Card/ResumeCard';
+import ResumeAiCard from '@components/resume/Card/ResumeAiCard';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
 export default function Ai() {
 	const { openModal, isModal } = useModal();
 	const [selectedResumeId, setSelectedResumeId] = useState<number | null>(null);
-	const resumeList = [1, 2, 3, 4];
+	const resumes = [mockResume, mockResume, mockResume];
 	const selectResume = (index: number) => {
 		if (selectedResumeId === index) {
 			setSelectedResumeId(null);
@@ -29,13 +30,13 @@ export default function Ai() {
 				<AiSection>
 					<h3>이력서</h3>
 					<ul>
-						{resumeList.map((resume, index) => (
+						{resumes.map((resume, index) => (
 							<li key={index}>
 								<SelectedButton
 									onClick={() => selectResume(index)}
 									$selected={selectedResumeId === index}
 								>
-									{/* <ResumeCard ai /> */}
+									<ResumeAiCard career={resume} />
 								</SelectedButton>
 							</li>
 						))}
@@ -44,11 +45,11 @@ export default function Ai() {
 				<AiSection>
 					<h3>자기소개서</h3>
 					<ul>
-						{resumeList.map((resume, index) => (
+						{resumes.map((resume, index) => (
 							<li key={index}>
 								<SelectedButton
-									onClick={() => selectResume(index + resumeList.length)}
-									$selected={selectedResumeId === index + resumeList.length}
+									onClick={() => selectResume(index + resumes.length)}
+									$selected={selectedResumeId === index + resumes.length}
 								>
 									{/* <ResumeCard ai /> */}
 								</SelectedButton>
@@ -97,7 +98,7 @@ const AiSection = styled.section`
 		display: flex;
 		gap: 20px;
 		justify-content: start;
-		overflow-x: scroll;
+		overflow-x: hidden;
 		padding: 10px;
 	}
 	&:not(:last-child) {

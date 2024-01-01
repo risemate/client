@@ -1,5 +1,5 @@
 import useTab from '@hooks/common/useTab';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
@@ -22,7 +22,7 @@ export default function Banner({ variant, children }: BannerProps) {
 			{variant === 'home' && (
 				<div>
 					{children}
-					<Button variant='navy' size='small' onClick={() => navigate('/ai')}>
+					<Button variant='navy' size='small' onClick={() => navigate('/my-info/ai')}>
 						AI 무료 코칭
 					</Button>
 					<Button variant='navy' size='small' onClick={() => navigate('/experts')}>

@@ -41,7 +41,7 @@ export default function MyInfoDetail() {
 							]}
 							buttonEvent={{
 								name: '첨삭 페이지 이동',
-								onClick: () => navigate('/resumes'),
+								onClick: () => navigate('/docs'),
 							}}
 						/>
 					</div>

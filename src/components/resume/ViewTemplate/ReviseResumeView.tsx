@@ -1,6 +1,5 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
-import { Feedback as FeedbackType, Resume as ResumeType } from 'types/Resume';
+import { ReviseResume } from 'types/Resume';
 
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
@@ -10,33 +9,32 @@ import Profile from './Profile';
 import Project from './Project';
 import WorkExperience from './WorkExperience';
 
-interface ResumeViewProps {
-	resume: ResumeType;
-	feedback?: FeedbackType;
+interface ReviseResumeViewProps {
+	career: ReviseResume;
 }
 
-export default function ResumeTemplate({ resume, feedback }: ResumeViewProps) {
+export function ReviseResumeTemplate({ career }: ReviseResumeViewProps) {
 	return (
 		<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
-			{feedback && (
+			{career.feedback && (
 				<FeedbackWrapper>
-					<div>{feedback.notice}</div>
+					{/* <div>{feedback.notice}</div> */}
 					<h3>전체적인 피드백</h3>
-					<p>{feedback.total}</p>
+					<p>{career.feedback}</p>
 				</FeedbackWrapper>
 			)}
 			<Profile
-				profile={resume.profile}
-				techStack={resume.techStack}
-				feedback={feedback?.coverLetter}
+				profile={career.profile}
+				techStack={career.techStack}
+				feedback={career?.feed_coverLetter}
 			/>
 			<WorkExperience
-				workExperiences={resume.workExperiences}
-				feedback={feedback?.workExperience}
+				workExperiences={career.workExperiences}
+				feedback={career?.feed_workExperience}
 			/>
-			<Project projects={resume.projects} feedback={feedback?.project} />
-			<Education educations={resume.educations} feedback={feedback?.education} />
-			<Activity activities={resume.activities} feedback={feedback?.activity} />
+			<Project projects={career.projects} feedback={career?.feed_project} />
+			<Education educations={career.educations} feedback={career?.feed_education} />
+			<Activity activities={career.activities} feedback={career?.feed_activity} />
 		</WhiteBoxWrapper>
 	);
 }

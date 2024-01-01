@@ -13,7 +13,7 @@ import AuthModal from '../../auth/AuthModal';
 export default function NavBar() {
 	const navigate = useNavigate();
 	const navItems = [
-		{ name: '내 이력서', route: '/my-info/resumes' },
+		{ name: '내 이력서', route: '/my-info/docs' },
 		{ name: 'AI 코치', route: '/my-info/ai' },
 		{ name: '코치 찾기', route: '/experts' },
 		{ name: '네트워킹', route: '/networks' },
@@ -157,4 +157,3 @@ const MyPageWrapper = styled.div`
 		right: 0;
 	}
 `;
-

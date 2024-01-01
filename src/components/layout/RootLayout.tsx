@@ -6,11 +6,11 @@ import NavBar from '@components/layout/components/NavBar';
 
 import 'normalize.css';
 
-function RootLayout() {
+export default function RootLayout({ backgroundColor }: { backgroundColor?: string }) {
 	return (
 		<>
 			<NavBar />
-			<StyledLayout>
+			<StyledLayout style={{ backgroundColor }}>
 				<Outlet />
 			</StyledLayout>
 			<Footer />
@@ -19,9 +19,8 @@ function RootLayout() {
 }
 
 const StyledLayout = styled.main`
-	& > div {
-		${({ theme }) => theme.common.minmaxWidth}
-	}
+	width: 100%;
+	${({ theme }) => theme.common.flexCenterColumn};
+	min-height: calc(100vh - 150px);
+	background: ${({ theme }) => theme.colors.lightGrey};
 `;
-
-export default RootLayout;

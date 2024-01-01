@@ -4,6 +4,32 @@ export const CareerTypeList: CareerType[] = ['RESUME', 'COVERLETTER'];
 export type DocType = 'BASIC' | 'AI' | 'COACHING';
 export const DocTypeList: DocType[] = ['BASIC', 'AI', 'COACHING'];
 
+export type ReviseResume = {
+	feedback: string;
+	coverImage?: string;
+	coverLetter?: string;
+	feed_coverLetter: string;
+	public: boolean;
+	docTitle: string;
+	profile: Profile;
+	feed_profile: string;
+	techStack: {
+		skills: string[];
+	};
+	feed_techStack: string;
+	workExperiences: WorkExperience[];
+	feed_workExperience: string;
+	projects: Project[];
+	feed_project: string;
+	educations: Education[];
+	feed_education: string;
+	activities: Activity[];
+	feed_activity: string;
+	links: Link[];
+	careerYears: number;
+	lookingForJob: boolean;
+};
+
 export type Resume = {
 	coverImage?: string;
 	coverLetter?: string;

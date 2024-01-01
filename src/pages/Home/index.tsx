@@ -22,7 +22,7 @@ function Home() {
 			<HomeSection>
 				<h3>다양한 이력서를 구경해보세요!</h3>
 				<NetworkCardList networks={networks.slice(0, 4)} home />
-				<Button variant='navy' size='small' onClick={() => navigate('/network')}>
+				<Button variant='navy' size='small' onClick={() => navigate('/networks')}>
 					이력서 더보기
 				</Button>
 			</HomeSection>

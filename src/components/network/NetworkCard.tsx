@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -13,7 +12,7 @@ export default function NetworkCard({ network }: NetworkCardProps) {
 	const image = true;
 
 	return (
-		<CardItemLink to={'/networks/resumes/1'}>
+		<CardItemLink to={'/networks/docs/1'}>
 			{image ? (
 				<DefaultImage variant='blue' shape='rectangle' />
 			) : (

@@ -1,21 +1,38 @@
 import { ButtonHTMLAttributes, ForwardedRef, ReactNode, forwardRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { Variant, Size } from 'types/Button';
+import { Size, Variant } from 'types/Button';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	variant: Variant;
 	size?: Size;
 	children: ReactNode;
+	to?: string;
 }
 
 const Button = forwardRef(function Button(
-	{ variant, size, children, ...ButtonProps }: ButtonProps,
+	{ variant, size, children, to, ...ButtonProps }: ButtonProps,
 	ref: ForwardedRef<HTMLButtonElement>,
 ) {
+	const navigate = useNavigate();
 	return (
-		<StyledButton $variant={variant} $size={size} ref={ref} {...ButtonProps}>
-			{children}
-		</StyledButton>
+		<>
+			{to ? (
+				<StyledButton
+					$variant={variant}
+					$size={size}
+					ref={ref}
+					{...ButtonProps}
+					onClick={() => navigate(to)}
+				>
+					{children}
+				</StyledButton>
+			) : (
+				<StyledButton $variant={variant} $size={size} ref={ref} {...ButtonProps}>
+					{children}
+				</StyledButton>
+			)}
+		</>
 	);
 });
 
