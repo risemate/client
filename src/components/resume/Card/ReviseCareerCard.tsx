@@ -17,11 +17,11 @@ export default function ReviseCareerCard({ career }: ReviseCareerCardProps) {
 		<CardWrapper>
 			<Tag $color={tagInfo[career.docType].color}>{tagInfo[career.docType].name}</Tag>
 			<CardWrapper.Info>{career.docTitle}</CardWrapper.Info>
-			<FeedBackSummary>
+			<SummaryText>
 				안녕하세요 00님! 기다려주셔서 감사합니다. 요청주신 이력서 첨삭이 끝났습니다. 각
 				섹션에 관해 피드백과 그 피드백을 토대로 변경된 이력서 내용입니다. 변경된 내용을
 				확인하고 수정한 다음 해당 내용으로 교체할 수 있습니다
-			</FeedBackSummary>
+			</SummaryText>
 
 			<Button variant={tagInfo[career.docType].color} size='full' to={`${career._id}`}>
 				보기
@@ -67,8 +67,9 @@ const tagInfo: TagInfoType = {
 	COACHING: { name: '전문가', color: 'blue' },
 };
 
-const FeedBackSummary = styled.p`
+export const SummaryText = styled.p`
 	padding: 5px 0;
+	width: 100%;
 	height: 40px;
 	font-size: 14px;
 	color: ${theme.colors.grey};

@@ -62,6 +62,7 @@ export const defaultActivity: Activity = {
 
 export const defaultResume: Career<Resume> = {
 	careerType: 'RESUME',
+	coverLetter: '안녕하세유',
 	contactPublic: true,
 	childrenDocCount: 3,
 	user: { nickname: '', picture: '', _id: '' },
@@ -95,7 +96,7 @@ export const mockResume: Career<Resume> = {
 	_id: '1',
 	contactPublic: true,
 	childrenDocCount: 3,
-
+	coverLetter: '안녕하슈',
 	user: { nickname: '', picture: '', _id: '' },
 	docType: 'BASIC',
 	careerType: 'RESUME',
@@ -280,6 +281,8 @@ export const mockResume: Career<Resume> = {
 
 export const mockResumeAi: Career<ReviseResume> = {
 	_id: '1',
+	coverLetter: '안녕하슈',
+
 	contactPublic: true,
 	childrenDocCount: 3,
 
@@ -485,7 +488,7 @@ export const mockResumeCoaching: Career<ReviseResume> = {
 	_id: '1',
 	contactPublic: true,
 	childrenDocCount: 3,
-
+	coverLetter: '안녕하슈',
 	user: { nickname: '', picture: '', _id: '' },
 	docType: 'COACHING',
 	careerType: 'RESUME',

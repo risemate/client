@@ -11,7 +11,7 @@ export default function ReviseList() {
 	const resumes: Career[] = [mockResumeAi, mockResumeCoaching];
 	return (
 		<>
-			<h2 className='a11y-hidden2'>첨삭 이력서 목록</h2>
+			<h2 className='a11y-hidden'>첨삭 이력서 목록</h2>
 			<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
 				{isEmpty(resumes) && <Empty name='이력서가' moveToLink={() => alert('hello')} />}
 

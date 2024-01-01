@@ -5,6 +5,8 @@ import { Resume as ResumeType } from 'types/Resume';
 import Button from '@common/Button';
 import CardWrapper from '@components/wrappers/ResumeCardWrapper';
 
+import { SummaryText } from './ReviseCareerCard';
+
 interface ResumeCardProps {
 	career: Career<ResumeType>;
 }
@@ -15,6 +17,7 @@ export default function ResumeAiCard({ career }: ResumeCardProps) {
 			<CardWrapper.Info time={formatDate(career.createdAt).period}>
 				{career.docTitle}
 			</CardWrapper.Info>
+			<SummaryText>{career.coverLetter}</SummaryText>
 			<Button variant='border' size='full' to={`/my-info/docs/${career._id}`}>
 				보기
 			</Button>

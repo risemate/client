@@ -7,6 +7,7 @@ export type DocType = 'BASIC' | 'AI' | 'COACHING';
 export const DocTypeList: DocType[] = ['BASIC', 'AI', 'COACHING'];
 
 export type Career<T = any> = {
+	coverLetter: string;
 	feedback?: string;
 	contactPublic: boolean;
 	public: boolean;
