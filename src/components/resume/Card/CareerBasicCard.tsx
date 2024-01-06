@@ -35,7 +35,12 @@ export default function CareerBasicCard({ career }: ResumeCardProps) {
 					보기
 				</Button>
 			</ButtonGorup>
-			<Button variant='blue' size='full' to={`${career._id}/revise-docs`}>
+			<Button
+				variant='blue'
+				size='full'
+				to={`${career._id}/revise-docs`}
+				disabled={career.childrenDocCount === 0}
+			>
 				첨삭 중 문서 ({career.childrenDocCount})
 			</Button>
 

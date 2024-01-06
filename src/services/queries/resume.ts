@@ -4,7 +4,7 @@ import { Career } from 'types/CareerDocument';
 import { CareersQueryProps } from 'types/Query/ResumeQuery';
 import { Resume } from 'types/Resume';
 
-import { fetchCareers, fetchResumeDetail } from '../api/resume';
+import { fetchCareers, fetchResumeDetail, fetchReviseCareers } from '../api/resume';
 import { resumeKeys } from '../queries/queryKeys';
 
 // Personal Resumes
@@ -19,9 +19,16 @@ export const careersQuery = (
 	});
 };
 
-// export const fetchEditingCareers = async (id: string) => {
-//     return await axios.get(RESUME_PATH.EDITING(id));
-// }
+export const reviseCareersQuery = (
+	id: string,
+	options?: UseQueryOptions<Career<Resume>[]>,
+): UseQueryResult<Career<Resume>[]> => {
+	return useQuery({
+		queryKey: resumeKeys.id(id),
+		queryFn: () => fetchReviseCareers(id),
+		...options,
+	});
+};
 
 export const resumeDetailQuery = (
 	id: string,
