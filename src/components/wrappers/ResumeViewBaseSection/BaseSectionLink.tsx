@@ -9,13 +9,14 @@ interface LinkProps {
 export default function BaseSectionLink({ links }: LinkProps) {
 	return (
 		<LinkList>
-			{links.map((link, linkIndex) => (
-				<li key={linkIndex}>
-					<a href={link.linkUrl} target='_black'>
-						🔗 {link.linkTitle}
-					</a>
-				</li>
-			))}
+			{links &&
+				links.map((link, linkIndex) => (
+					<li key={linkIndex}>
+						<a href={link.linkUrl} target='_black'>
+							🔗 {link.linkTitle}
+						</a>
+					</li>
+				))}
 		</LinkList>
 	);
 }
