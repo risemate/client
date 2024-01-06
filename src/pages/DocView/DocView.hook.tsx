@@ -1,6 +1,6 @@
 import { isEmpty } from '@utils/helpers';
 
-import { resumeDetailQuery } from '../../services/queries/resume';
+import { resumeDetailQuery } from '@queries/resume';
 import { useNavigate } from 'react-router-dom';
 
 export default function useDocView(resumeId: string) {

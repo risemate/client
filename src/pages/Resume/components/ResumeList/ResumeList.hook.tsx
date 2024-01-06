@@ -1,7 +1,7 @@
 //TODO: path is working, need to change later
 import { useNavigate } from 'react-router-dom';
 
-import { careersQuery } from '../../../../services/queries/resume';
+import { careersQuery } from '@queries/resume';
 
 export default function useResumeList() {
 	const resumes = careersQuery({ docType: 'BASIC', careerType: 'RESUME' });

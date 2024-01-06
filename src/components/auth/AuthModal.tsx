@@ -2,7 +2,7 @@ import { useModal } from '@hooks/atoms/useModalAtom';
 import { IconGoogle, IconNaver } from '@icons';
 import logoIcon from '@images/logo-icon.svg';
 import axios from 'axios';
-import { useAuth } from 'services/queries/hooks/useAuth';
+import { useAuth } from '@queries/hooks/useAuth';
 import styled from 'styled-components';
 
 import ModalBase from '../modal/ModalBase';
