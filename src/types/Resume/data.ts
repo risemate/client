@@ -33,7 +33,7 @@ export const defaultWorkExperience: WorkExperience = {
 
 export const defaultProject: Project = {
 	projectName: '',
-	summaryIntro: '',
+	summaryintro: '',
 	projectStartedAt: '',
 	projectEndedAt: '',
 	projectDescription: '',
@@ -168,7 +168,7 @@ export const mockResume: Career<Resume> = {
 		projects: [
 			{
 				projectName: '개발자 이력서 첨삭 프로젝트',
-				summaryIntro: '개발자 이력서 첨삭 프로젝트',
+				summaryintro: '개발자 이력서 첨삭 프로젝트',
 				projectStartedAt: '2023-08',
 				projectEndedAt: '2023-10',
 				projectDescription:
@@ -188,7 +188,7 @@ export const mockResume: Career<Resume> = {
 			},
 			{
 				projectName: '정적 페이지 생성과 캐싱을 활용한 렌더링 성능 개선',
-				summaryIntro: '개발자 이력서 첨삭 프로젝트',
+				summaryintro: '개발자 이력서 첨삭 프로젝트',
 				projectStartedAt: '2023-08',
 				projectEndedAt: '2023-10',
 				projectDescription:
@@ -366,7 +366,7 @@ export const mockResumeAi: Career<ReviseResume> = {
 		projects: [
 			{
 				projectName: '개발자 이력서 첨삭 프로젝트',
-				summaryIntro: '개발자 이력서 첨삭 프로젝트',
+				summaryintro: '개발자 이력서 첨삭 프로젝트',
 				projectStartedAt: '2023-08',
 				projectEndedAt: '2023-10',
 				projectDescription:
@@ -386,7 +386,7 @@ export const mockResumeAi: Career<ReviseResume> = {
 			},
 			{
 				projectName: '정적 페이지 생성과 캐싱을 활용한 렌더링 성능 개선',
-				summaryIntro: '개발자 이력서 첨삭 프로젝트',
+				summaryintro: '개발자 이력서 첨삭 프로젝트',
 				projectStartedAt: '2023-08',
 				projectEndedAt: '2023-10',
 				projectDescription:
@@ -569,7 +569,7 @@ export const mockResumeCoaching: Career<ReviseResume> = {
 		projects: [
 			{
 				projectName: '개발자 이력서 첨삭 프로젝트',
-				summaryIntro: '개발자 이력서 첨삭 프로젝트',
+				summaryintro: '개발자 이력서 첨삭 프로젝트',
 				projectStartedAt: '2023-08',
 				projectEndedAt: '2023-10',
 				projectDescription:
@@ -589,7 +589,7 @@ export const mockResumeCoaching: Career<ReviseResume> = {
 			},
 			{
 				projectName: '정적 페이지 생성과 캐싱을 활용한 렌더링 성능 개선',
-				summaryIntro: '개발자 이력서 첨삭 프로젝트',
+				summaryintro: '개발자 이력서 첨삭 프로젝트',
 				projectStartedAt: '2023-08',
 				projectEndedAt: '2023-10',
 				projectDescription:

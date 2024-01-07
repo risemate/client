@@ -137,7 +137,7 @@ export const mockProduct: ProductType = {
 	projects: [
 		{
 			projectName: '개발자 이력서 첨삭 프로젝트',
-			summaryIntro: '개발자 이력서 첨삭 프로젝트',
+			summaryintro: '개발자 이력서 첨삭 프로젝트',
 			projectStartedAt: '2023-08',
 			projectEndedAt: '2023-10',
 			projectDescription:
@@ -153,7 +153,7 @@ export const mockProduct: ProductType = {
 		},
 		{
 			projectName: '정적 페이지 생성과 캐싱을 활용한 렌더링 성능 개선',
-			summaryIntro: '개발자 이력서 첨삭 프로젝트',
+			summaryintro: '개발자 이력서 첨삭 프로젝트',
 			projectStartedAt: '2023-08',
 			projectEndedAt: '2023-10',
 			projectDescription:
