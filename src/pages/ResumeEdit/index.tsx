@@ -11,6 +11,9 @@ import ErrorBoundaryComponent from '@components/errors/ErrorBoundaryComponent';
 
 import Activity from './components/Activity';
 import Education from './components/Education';
+import CreateModal from './components/modal/CreateModal';
+import DeleteModal from './components/modal/DeleteModal';
+import UpdateModal from './components/modal/UpdateModal';
 import Profile from './components/Profile';
 import Project from './components/Project';
 import TechStack from './components/TechStack';
@@ -20,9 +23,8 @@ import useResumeEdit from './ResumeEdit.hook';
 export default function ResumeEdit() {
 	const { id } = useParams();
 	const { reset } = useQueryErrorResetBoundary();
-	const { resumeEditNavItems, resumeEditMethods, submitResume, getValue } = useResumeEdit(
-		id || '',
-	);
+	const { formId, resumeEditNavItems, resumeEditMethods, submitResume, getValue } =
+		useResumeEdit(id || '');
 
 	return (
 		<FormProvider {...resumeEditMethods}>
@@ -32,7 +34,7 @@ export default function ResumeEdit() {
 				onReset={reset}
 			>
 				<Suspense fallback={<Loader />}>
-					<form onSubmit={submitResume()}>
+					<form id={formId} onSubmit={submitResume()}>
 						<h2 className='a11y-hidden'>
 							{isEmpty(getValue('docTitle')) ? '새로운 이력서' : getValue('docTitle')};
 						</h2>
@@ -46,6 +48,9 @@ export default function ResumeEdit() {
 					</form>
 				</Suspense>
 			</ErrorBoundary>
+			<CreateModal />
+			<UpdateModal />
+			<DeleteModal />
 		</FormProvider>
 	);
 }

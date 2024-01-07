@@ -1,3 +1,4 @@
+import { useModal } from '@hooks/atoms/useModalAtom';
 import {
 	resumeCreateMutation,
 	resumeDeleteMutation,
@@ -23,6 +24,10 @@ export default function useResumeEdit(resumeId: string) {
 		values: resume,
 	});
 
+	const { isModal: isUpdateModal, openModal: openUpdateModal } = useModal();
+	const { isModal: isCreateModal, openModal: openCreateModal } = useModal();
+	const { isModal: isDeleteModal, openModal: openDeleteModal } = useModal();
+
 	const updateResumeMutation = resumeUpdateMutation();
 	const createResumeMutation = resumeCreateMutation();
 	const deleteResumeMutation = resumeDeleteMutation();
@@ -47,11 +52,11 @@ export default function useResumeEdit(resumeId: string) {
 	};
 
 	const resumeEditNavItems = isNewResume
-		? [{ name: '섹션 추가' }, { name: '저장하기' }]
+		? [{ name: '섹션 추가' }, { name: '저장하기', onClick: openCreateModal }]
 		: [
 				{ name: '섹션 추가' },
-				{ name: '삭제하기', onClick: deleteResume },
-				{ name: '저장하기' },
+				{ name: '삭제하기', onClick: openDeleteModal },
+				{ name: '저장하기', onClick: openUpdateModal },
 		  ];
 
 	return {
@@ -60,5 +65,16 @@ export default function useResumeEdit(resumeId: string) {
 		resumeEditMethods,
 		submitResume,
 		getValue,
+		formId: 'resume-edit-form',
+		createModal: {
+			isModal: isCreateModal,
+		},
+		updateModal: {
+			isModal: isUpdateModal,
+		},
+		deleteModal: {
+			isModal: isDeleteModal,
+			deleteResume,
+		},
 	};
 }

@@ -10,10 +10,18 @@ interface ModalProps {
 	children: ReactNode;
 	confirm?: string;
 	onClick?: () => void;
+	buttonFormId?: string;
 }
 
-export default function Modal({ title, children, confirm, onClick }: ModalProps) {
+export default function Modal({
+	title,
+	children,
+	confirm,
+	onClick,
+	buttonFormId,
+}: ModalProps) {
 	const { closeModal } = useModal();
+
 	return (
 		<ModalBase>
 			<ModalWrapper>
@@ -26,10 +34,16 @@ export default function Modal({ title, children, confirm, onClick }: ModalProps)
 					<Button
 						variant='navy'
 						size='full'
-						onClick={() => {
-							onClick && onClick();
-							closeModal();
-						}}
+						form={buttonFormId}
+						onClick={
+							buttonFormId
+								? undefined
+								: () => {
+										// onClick가 존재하지 않는 경우에만 전달
+										onClick && onClick();
+										closeModal();
+								  }
+						}
 					>
 						{confirm ? confirm : '확인'}
 					</Button>
