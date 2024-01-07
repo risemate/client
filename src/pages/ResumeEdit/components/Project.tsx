@@ -58,7 +58,7 @@ export default function Project() {
 								/>
 							</BaseSection.Item>
 							<BaseSection.Item gridColumn='2/4'>
-								<Input label='한 줄 소개' {...register(inputName('summaryintro'))} />
+								<Input label='한 줄 소개' {...register(inputName('summaryIntro'))} />
 							</BaseSection.Item>
 							<BaseSection.Item gridColumn='1/4'>
 								<TextArea

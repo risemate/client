@@ -14,6 +14,7 @@ import { ResumeList, ReviseList } from 'pages/Resume';
 import ResumeEdit from 'pages/ResumeEdit';
 import { createBrowserRouter } from 'react-router-dom';
 
+import AuthModal from '@components/auth/AuthModal';
 import RootLayout from '@components/layout/RootLayout';
 
 import { signLoader } from './loader';

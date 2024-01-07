@@ -91,7 +91,7 @@ export const ProjectStatus: ProjectStatus[] = [
 ];
 export type Project = {
 	projectName: string;
-	summaryintro: string; // 오타 수정: summaryintro -> projectSummaryIntro
+	summaryIntro: string; // 오타 수정: summaryIntro -> projectsummaryIntro
 	projectStartedAt: string; // 날짜 형식으로 변경 필요
 	projectEndedAt: string; // 날짜 형식으로 변경 필요
 	projectDescription: string;
