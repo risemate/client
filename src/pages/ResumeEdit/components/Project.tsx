@@ -22,54 +22,60 @@ export default function Project() {
 	return (
 		<BaseSection>
 			<BaseSection.Title title='프로젝트' addData={() => prepend(defaultProject)} />
-			{fields.map((project, index) => {
-				const inputName = (name: string) => `${FIELD}.${index}.${name}`;
-				const edit = { index, remove: () => remove(index), swap, length: fields.length };
-				return (
-					<BaseSection.Content
-						key={project.id}
-						title='프로젝트'
-						gridColumn='3'
-						editButton={edit}
-					>
-						<BaseSection.Item>
-							<Input label='프로젝트명' {...register(inputName('projectName'))} />
-						</BaseSection.Item>
-						<BaseSection.Item>
-							<Select
-								label='프로젝트 상태'
-								options={ProjectStatus}
-								{...register(inputName('projectStatus'))}
-							/>
-						</BaseSection.Item>
-						<BaseSection.Item>
-							<DateInput label='프로젝트 기간' inputName={inputName('project')} />
-						</BaseSection.Item>
-						<BaseSection.Item>
-							<Input
-								label='Organization'
-								{...register(inputName('projectOrganization'))}
-							/>
-						</BaseSection.Item>
-						<BaseSection.Item gridColumn='2/4'>
-							<Input label='한 줄 소개' {...register(inputName('summaryIntro'))} />
-						</BaseSection.Item>
-						<BaseSection.Item gridColumn='1/4'>
-							<TextArea
-								label='프로젝트 설명'
-								help
-								{...register(inputName('projectDescription'))}
-							/>
-						</BaseSection.Item>
-						<BaseSection.Item gridColumn='1/4'>
-							<LinkInput
-								links={watch(FIELD)[index].links}
-								inputName={inputName('links')}
-							/>
-						</BaseSection.Item>
-					</BaseSection.Content>
-				);
-			})}
+			{fields &&
+				fields.map((project, index) => {
+					const inputName = (name: string) => `${FIELD}.${index}.${name}`;
+					const edit = {
+						index,
+						remove: () => remove(index),
+						swap,
+						length: fields.length,
+					};
+					return (
+						<BaseSection.Content
+							key={project.id}
+							title='프로젝트'
+							gridColumn='3'
+							editButton={edit}
+						>
+							<BaseSection.Item>
+								<Input label='프로젝트명' {...register(inputName('projectName'))} />
+							</BaseSection.Item>
+							<BaseSection.Item>
+								<Select
+									label='프로젝트 상태'
+									options={ProjectStatus}
+									{...register(inputName('projectStatus'))}
+								/>
+							</BaseSection.Item>
+							<BaseSection.Item>
+								<DateInput label='프로젝트 기간' inputName={inputName('project')} />
+							</BaseSection.Item>
+							<BaseSection.Item>
+								<Input
+									label='Organization'
+									{...register(inputName('projectOrganization'))}
+								/>
+							</BaseSection.Item>
+							<BaseSection.Item gridColumn='2/4'>
+								<Input label='한 줄 소개' {...register(inputName('summaryintro'))} />
+							</BaseSection.Item>
+							<BaseSection.Item gridColumn='1/4'>
+								<TextArea
+									label='프로젝트 설명'
+									help
+									{...register(inputName('projectDescription'))}
+								/>
+							</BaseSection.Item>
+							<BaseSection.Item gridColumn='1/4'>
+								<LinkInput
+									links={watch(FIELD)[index].links}
+									inputName={inputName('links')}
+								/>
+							</BaseSection.Item>
+						</BaseSection.Content>
+					);
+				})}
 		</BaseSection>
 	);
 }
