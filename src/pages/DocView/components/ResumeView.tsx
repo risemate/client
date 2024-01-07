@@ -25,7 +25,7 @@ export default function ResumeView() {
 				{/* TODO: 해결 */}
 				{resumeDetail && <ResumeTemplate career={resumeDetail.doc} />}
 			</Suspense>
-			<ResumeNav resumeNavItems={ resumeViewNavItems } />
+			<ResumeNav resumeNavItems={resumeViewNavItems} />
 		</ErrorBoundary>
 	);
 }

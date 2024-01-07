@@ -1,8 +1,8 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
 import { IconGoogle, IconNaver } from '@icons';
 import logoIcon from '@images/logo-icon.svg';
-import axios from 'axios';
 import { useAuth } from '@queries/hooks/useAuth';
+import axios from 'axios';
 import styled from 'styled-components';
 
 import ModalBase from '../modal/ModalBase';
