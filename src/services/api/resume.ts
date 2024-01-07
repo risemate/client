@@ -9,6 +9,8 @@ const RESUME_PATH = {
 	DETAIL: (id: string) => `${RESUME_PATH.DEFAULT}/${id}`,
 	PUBLIC: (id?: string) =>
 		id ? `${RESUME_PATH.DEFAULT}/p-resumes/${id}` : `${RESUME_PATH.DEFAULT}/p-resumes`,
+	UPDATE: (id?: string) =>
+		id ? `${RESUME_PATH.DEFAULT}/resumes/${id}` : `${RESUME_PATH.DEFAULT}/resumes`,
 };
 
 // Personal Resumes
@@ -41,17 +43,34 @@ export const fetchResumeDetail = async (id: string): Promise<Career<Resume>> => 
 	}
 };
 
-// export const fetchCreateResume = async () => {
-//     return await axios.post(RESUME_PATH.DETAIL());
-// }
+export const fetchCreateResume = async (body: Resume): Promise<Career<Resume>> => {
+	try {
+		const response = await axios.post<Career<Resume>>(RESUME_PATH.UPDATE(), body);
+		return response.data;
+	} catch (error) {
+		throw new Error((error as Error).message);
+	}
+};
 
-// export const fetchUpdateResume = async (id: string) => {
-//     return await axios.patch(RESUME_PATH.DETAIL(id));
-// }
+export const fetchUpdateResume = async (
+	id: string,
+	body: Resume,
+): Promise<Career<Resume>> => {
+	try {
+		const response = await axios.patch<Career<Resume>>(RESUME_PATH.UPDATE(id), body);
+		return response.data;
+	} catch (error) {
+		throw new Error((error as Error).message);
+	}
+};
 
-// export const fetchDeleteResume = async (id: string) => {
-//     return await axios.delete(RESUME_PATH.DETAIL(id));
-// }
+export const fetchDeleteResume = async (id: string): Promise<void> => {
+	try {
+		await axios.delete<void>(RESUME_PATH.DETAIL(id));
+	} catch (error) {
+		throw new Error((error as Error).message);
+	}
+};
 
 // // Public Resumes
 // export const fetchPublicCareers = async (params: PublicCareersQueryProps) => {
