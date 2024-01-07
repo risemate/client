@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Career } from 'types/CareerDocument';
-import { CareersQueryProps, PublicCareersQueryProps } from 'types/Query/ResumeQuery';
+import { CareersQueryProps } from 'types/Query/ResumeQuery';
 import { Resume } from 'types/Resume';
 
 const RESUME_PATH = {

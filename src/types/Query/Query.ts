@@ -1,9 +1,4 @@
-import {
-	MutationObserverOptions,
-	QueryKey,
-	UseMutationOptions,
-	UseQueryOptions,
-} from '@tanstack/react-query';
+import { QueryKey, UseMutationOptions, UseQueryOptions } from '@tanstack/react-query';
 import { AxiosError, AxiosResponse } from 'axios';
 
 export type UseQueryOptionsType<T> = UseQueryOptions<

@@ -2,7 +2,7 @@ import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { isEmpty } from '@utils/helpers';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 
 import Empty from '@common/Empty';
 import ErrorBoundaryComponent from '@components/errors/ErrorBoundaryComponent';
@@ -40,12 +40,4 @@ export default function ReviseList() {
 const resumeWrapperStyle = css`
 	min-height: 500px;
 	padding: 50px;
-`;
-
-const ResumeList = styled.ul`
-	width: 100%;
-	display: flex;
-	gap: 20px;
-	justify-content: start;
-	flex-wrap: wrap;
 `;
