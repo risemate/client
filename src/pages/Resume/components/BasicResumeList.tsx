@@ -9,17 +9,17 @@ import ReviseCareerCard from '@components/resume/Card/ReviseCareerCard';
 
 import AddResume from './AddResume';
 
-interface CommonResumeListProps {
+interface BasicResumeListProps {
 	title: string;
 	resumes: Career<Resume>[];
 	isRevise?: boolean;
 }
 
-export default function CommonResumeList({
+export default function BasicResumeList({
 	title,
 	resumes,
 	isRevise,
-}: CommonResumeListProps) {
+}: BasicResumeListProps) {
 	return (
 		<section>
 			<h3>{title}</h3>

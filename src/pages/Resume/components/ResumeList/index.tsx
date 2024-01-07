@@ -7,7 +7,7 @@ import Empty from '@common/Empty';
 import ErrorBoundaryComponent from '@components/errors/ErrorBoundaryComponent';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
-import CommonResumeList from '../CommonResumeList';
+import BasicResumeList from '../BasicResumeList';
 import useResumeList from './ResumeList.hook';
 
 export default function Resume() {
@@ -26,8 +26,8 @@ export default function Resume() {
 						onError={() => console.error('error!!!')}
 						onReset={reset}
 					>
-						<CommonResumeList title='이력서' resumes={resumes} />
-						<CommonResumeList title='자기소개서' resumes={coverLetters} />
+						<BasicResumeList title='이력서' resumes={resumes} />
+						<BasicResumeList title='자기소개서' resumes={coverLetters} />
 					</ErrorBoundary>
 				)}
 			</WhiteBoxWrapper>

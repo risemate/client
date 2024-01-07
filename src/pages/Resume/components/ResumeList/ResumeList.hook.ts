@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 export default function useResumeList() {
 	const resumes = careersQuery({ docType: 'BASIC', careerType: 'RESUME' });
 	const coverLetters = careersQuery({ docType: 'BASIC', careerType: 'COVERLETTER' });
-	// const reviseResumes = reviseCareersQuery()
 	const navigate = useNavigate();
 	const moveToNewResume = () => navigate('/my-info/docs/new/edit');
 	const moveToRevise = () => navigate('/my-info/ai');

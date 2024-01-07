@@ -8,7 +8,7 @@ import Empty from '@common/Empty';
 import ErrorBoundaryComponent from '@components/errors/ErrorBoundaryComponent';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
-import CommonResumeList from '../CommonResumeList';
+import BasicResumeList from '../BasicResumeList';
 import useResume from '../ResumeList/ResumeList.hook';
 import useReviseList from './ReviseList.hook';
 
@@ -29,7 +29,7 @@ export default function ReviseList() {
 						onError={() => console.error('error!!!')}
 						onReset={reset}
 					>
-						<CommonResumeList title='첨삭 이력서' resumes={reviseResumes} isRevise />
+						<BasicResumeList title='첨삭 이력서' resumes={reviseResumes} isRevise />
 					</ErrorBoundary>
 				)}
 			</WhiteBoxWrapper>

@@ -1,6 +1,5 @@
 import { reviseCareersQuery } from '@queries/resume';
 import { isEmpty } from '@utils/helpers';
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function useReviseList(parentId: string) {
