@@ -50,5 +50,6 @@ const StyledResumeList = styled.ul`
 	display: flex;
 	gap: 20px;
 	justify-content: start;
-	overflow-x: hidden;
+	// overflow-x: hidden;
+	overflow-y: scroll;'
 `;
