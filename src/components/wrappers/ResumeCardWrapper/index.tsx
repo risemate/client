@@ -17,6 +17,7 @@ const ResumeCardWrapper = Object.assign(CardWrapper, {
 
 const StyledCardWrapper = styled.div`
 	width: 330px;
+	height: 100%;
 	flex-shrink: 0;
 	border: 1px solid ${({ theme }) => theme.colors.grey};
 	border-radius: 10px;

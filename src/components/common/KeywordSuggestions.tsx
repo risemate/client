@@ -41,6 +41,7 @@ export default function KeywordSuggestions({
 }
 
 const SuggestonsWrapper = styled.div`
+	width: 100%;
 	background: white;
 	border: 0.5px solid ${({ theme }) => theme.colors.grey};
 	border-radius: 10px;
