@@ -1,6 +1,8 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
+import Loader from '@common/Loader';
 import Footer from '@components/layout/components/Footer';
 import NavBar from '@components/layout/components/NavBar';
 
@@ -11,7 +13,9 @@ export default function UserLayout({ backgroundColor }: { backgroundColor?: stri
 		<>
 			<NavBar />
 			<StyledLayout style={{ backgroundColor }}>
-				<Outlet />
+				<Suspense fallback={<Loader />}>
+					<Outlet />
+				</Suspense>
 			</StyledLayout>
 			<Footer />
 		</>

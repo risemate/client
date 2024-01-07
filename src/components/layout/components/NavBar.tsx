@@ -1,10 +1,10 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
 import { IconBell, IconCircleUser } from '@icons';
 import logoMain from '@images/logo-main.svg';
+import { useAuth } from '@queries/hooks/useAuth';
 import axios from 'axios';
 import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '@queries/hooks/useAuth';
 import styled from 'styled-components';
 
 import Alarm from '../../alarm/Alarm';
