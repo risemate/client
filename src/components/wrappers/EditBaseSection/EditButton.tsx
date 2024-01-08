@@ -1,5 +1,5 @@
 import { IconArrowDown, IconArrowUp, IconTrash } from '@icons';
-import React, { MouseEvent } from 'react';
+import { MouseEvent } from 'react';
 import { UseFieldArraySwap } from 'react-hook-form';
 import styled from 'styled-components';
 
@@ -82,11 +82,11 @@ export default function EditButton({ index, remove, swap, length }: EditButtonPr
 					<IconArrowUp />
 				</button>
 			</EditButtonWrapper>
-			{/* {isModal && (
+			{/* 
 				<Modal title='목록 삭제' onClick={() => {deleteItem(index)}}>
 					해당 목록을 삭제하시겠습니까? 다시 복구할 수 없습니다.
 				</Modal>
-			)} */}
+			 */}
 		</>
 	);
 }

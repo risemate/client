@@ -24,9 +24,12 @@ export default function useResumeEdit(resumeId: string) {
 		values: resume,
 	});
 
-	const { isModal: isUpdateModal, openModal: openUpdateModal } = useModal();
-	const { isModal: isCreateModal, openModal: openCreateModal } = useModal();
-	const { isModal: isDeleteModal, openModal: openDeleteModal } = useModal();
+	const { isModal: isUpdateModal, openModal: openUpdateModal } =
+		useModal('update-resume');
+	const { isModal: isCreateModal, openModal: openCreateModal } =
+		useModal('create-resume');
+	const { isModal: isDeleteModal, openModal: openDeleteModal } =
+		useModal('delete-resume');
 
 	const updateResumeMutation = resumeUpdateMutation();
 	const createResumeMutation = resumeCreateMutation();

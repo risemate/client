@@ -11,6 +11,7 @@ interface ModalProps {
 	confirm?: string;
 	onClick?: () => void;
 	buttonFormId?: string;
+	queryKey: string;
 }
 
 export default function Modal({
@@ -19,16 +20,17 @@ export default function Modal({
 	confirm,
 	onClick,
 	buttonFormId,
+	queryKey,
 }: ModalProps) {
-	const { closeModal } = useModal();
+	const { closeModal } = useModal(queryKey);
 
 	return (
-		<ModalBase>
+		<ModalBase queryKey={queryKey}>
 			<ModalWrapper>
 				<h1>{title}</h1>
 				<p>{children}</p>
 				<div>
-					<Button variant='border' size='full' onClick={() => closeModal()}>
+					<Button variant='border' size='full' onClick={closeModal}>
 						취소
 					</Button>
 					<Button

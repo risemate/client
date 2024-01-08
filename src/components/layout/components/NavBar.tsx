@@ -8,7 +8,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Alarm from '../../alarm/Alarm';
-import AuthModal from '../../auth/AuthModal';
 
 export default function NavBar() {
 	const navigate = useNavigate();
@@ -19,7 +18,7 @@ export default function NavBar() {
 		{ name: '네트워킹', route: '/networks' },
 	];
 
-	const { isModal, openModal } = useModal();
+	const { openModal } = useModal('login');
 	const { auth } = useAuth();
 	const isExpert = true;
 
@@ -70,10 +69,9 @@ export default function NavBar() {
 						</>
 					) : (
 						<>
-							<button type='button' onClick={() => openModal()}>
+							<button type='button' onClick={openModal}>
 								로그인 | 회원가입
 							</button>
-							{isModal && <AuthModal />}
 						</>
 					)}
 				</MyPageWrapper>

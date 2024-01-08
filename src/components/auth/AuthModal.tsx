@@ -9,7 +9,7 @@ import ModalBase from '../modal/ModalBase';
 import { popupLogin } from './popupLogin';
 
 export default function AuthModal() {
-	const { closeModal } = useModal();
+	const { isModal, closeModal } = useModal('login');
 	// eslint-disable-next-line
 	const { auth, refetch } = useAuth();
 	const login = async (provider?: string) => {
@@ -32,7 +32,7 @@ export default function AuthModal() {
 	};
 
 	return (
-		<ModalBase>
+		<ModalBase queryKey={'login'}>
 			<ModalTitle>
 				<img src={logoIcon} alt='라이즈메이트 로고' />
 				<br />

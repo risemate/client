@@ -26,7 +26,7 @@ export default function UserProfile() {
 			</UserWrapper>
 			<ButtonWrappper>
 				{isExpert ? (
-					<Button variant='navy' size='full' onClick={() => navigate('/coach-info')}>
+					<Button variant='navy' size='full' to='/coach-info'>
 						전문가로 변환하기
 					</Button>
 				) : (

@@ -7,10 +7,11 @@ import ModalPortal from './ModalPortal';
 
 interface ModalBaseProps {
 	children: ReactNode;
+	queryKey: string;
 }
 
-export default function ModalBase({ children }: ModalBaseProps) {
-	const { closeModal } = useModal();
+export default function ModalBase({ children, queryKey }: ModalBaseProps) {
+	const { isModal, closeModal } = useModal(queryKey);
 	const modalRef = useRef<HTMLDivElement | null>(null);
 	const modalOutSideClick = (event: MouseEvent<HTMLDivElement>) => {
 		if (modalRef.current === event.target) {
@@ -19,14 +20,16 @@ export default function ModalBase({ children }: ModalBaseProps) {
 	};
 	return (
 		<ModalPortal>
-			<ModalBaseWrapper ref={modalRef} onClick={event => modalOutSideClick(event)}>
-				<article>
-					{children}
-					<CloseButton className='btn-close' onClick={() => closeModal()}>
-						<IconCloseSharp />
-					</CloseButton>
-				</article>
-			</ModalBaseWrapper>
+			{isModal && (
+				<ModalBaseWrapper ref={modalRef} onClick={event => modalOutSideClick(event)}>
+					<article>
+						{children}
+						<CloseButton className='btn-close' onClick={closeModal}>
+							<IconCloseSharp />
+						</CloseButton>
+					</article>
+				</ModalBaseWrapper>
+			)}
 		</ModalPortal>
 	);
 }
