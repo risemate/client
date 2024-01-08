@@ -6,14 +6,15 @@ import styled from 'styled-components';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-interface DateInputProps {
+interface MonthInputProps {
 	label: string;
 	inputName: string;
-	mode: 'year' | 'month' | 'date';
 }
 
-export default function DateInput({ label, inputName, mode }: DateInputProps) {
+export default function MonthInput({ label, inputName }: MonthInputProps) {
 	const { watch, setValue } = useFormContext();
+	const startInputName = `${inputName}StartedAt`;
+	const endInputName = `${inputName}EndedAt`;
 	const stringToDate = (dateString: string) => {
 		if (isEmpty(dateString)) {
 			return new Date();
@@ -25,29 +26,30 @@ export default function DateInput({ label, inputName, mode }: DateInputProps) {
 		const month = (date.getMonth() + 1).toString().padStart(2, '0');
 		return `${year}-${month}`;
 	};
-	const dateFormat = () => {
-		if (mode === 'year') return 'yyyy';
-		else if (mode === 'month') return 'yyyy-MM';
-		else return 'yyyy-MM-dd';
-	};
 	return (
-		<DateInputWrapper>
+		<MonthInputWrapper>
 			<span>{label}</span>
 			<div>
 				<DatePicker
-					selected={stringToDate(watch(inputName))}
-					onChange={(date: Date) => setValue(inputName, dateToString(date))}
-					dateFormat={dateFormat()}
-					showMonthYearPicker={mode === 'month'}
-					showYearPicker={mode === 'year'}
+					selected={stringToDate(watch(startInputName))}
+					onChange={(date: Date) => setValue(startInputName, dateToString(date))}
+					dateFormat={'yyyy-MM'}
+					showMonthYearPicker
+					showIcon
+				/>
+				<DatePicker
+					selected={stringToDate(watch(endInputName))}
+					onChange={(date: Date) => setValue(endInputName, dateToString(date))}
+					dateFormat={'yyyy-MM'}
+					showMonthYearPicker
 					showIcon
 				/>
 			</div>
-		</DateInputWrapper>
+		</MonthInputWrapper>
 	);
 }
 
-const DateInputWrapper = styled.div`
+const MonthInputWrapper = styled.div`
 	font-size: ${({ theme }) => theme.fontSizes.small};
 	color: ${({ theme }) => theme.colors.darkGrey};
 	& > div {

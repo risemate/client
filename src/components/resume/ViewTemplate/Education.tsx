@@ -19,24 +19,23 @@ export default function Education({ educations, feedback }: EducationProps) {
 					<p>{feedback}</p>
 				</BaseSection.Feedback>
 			)}
-			{educations &&
-				educations.map((education, index) => (
-					<article key={index}>
-						<BaseSection.Title>{education.schoolName}</BaseSection.Title>
-						<BaseSection.BasicInfo>
-							<li>
-								{education.major} | {education.graduationStatus}
-							</li>
-							<li>
-								{education.enrollmentStartedAt} ~ {education.enrollmentEndedAt}
-							</li>
-						</BaseSection.BasicInfo>
-						{!isEmpty(education.educationDescription) && (
-							<BaseSection.Task tasks={education.educationDescription} />
-						)}
-						<BaseSection.Link links={education.links} />
-					</article>
-				))}
+			{educations.map((education, index) => (
+				<article key={index}>
+					<BaseSection.Title>{education.schoolName}</BaseSection.Title>
+					<BaseSection.BasicInfo>
+						<li>
+							{education.major} | {education.graduationStatus}
+						</li>
+						<li>
+							{education.enrollmentStartedAt} ~ {education.enrollmentEndedAt}
+						</li>
+					</BaseSection.BasicInfo>
+					{!isEmpty(education.educationDescription) && (
+						<BaseSection.Task tasks={education.educationDescription} />
+					)}
+					<BaseSection.Link links={education.links} />
+				</article>
+			))}
 		</BaseSection>
 	);
 }

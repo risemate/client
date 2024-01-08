@@ -10,6 +10,7 @@ import ResumeNav from '@common/ResumeNav';
 import ErrorBoundaryComponent from '@components/errors/ErrorBoundaryComponent';
 
 import Activity from './components/Activity';
+import Certificates from './components/Certificate';
 import Education from './components/Education';
 import CreateModal from './components/modal/CreateModal';
 import DeleteModal from './components/modal/DeleteModal';
@@ -44,6 +45,7 @@ export default function ResumeEdit() {
 						<Project />
 						<Education />
 						<Activity />
+						<Certificates />
 						<ResumeNav resumeNavItems={resumeEditNavItems} />
 					</form>
 				</Suspense>

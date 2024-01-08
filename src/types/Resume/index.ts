@@ -43,6 +43,7 @@ export type Resume = {
 	projects: Project[];
 	educations: Education[];
 	activities: Activity[];
+	certificates: Certificate[];
 	links: Link[];
 	careerYears: number;
 	lookingForJob: boolean;
@@ -123,6 +124,14 @@ export type Activity = {
 	activityYear: number | undefined;
 	activityDescription: string;
 	activityOrganization: string;
+	links: Link[];
+};
+
+export type Certificate = {
+	certificateName: string;
+	certificateOrganization: string;
+	certificatedAt: string;
+	certificateGrade: string;
 	links: Link[];
 };
 

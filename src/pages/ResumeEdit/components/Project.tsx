@@ -1,11 +1,11 @@
 import React from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
-import { ProjectStatus } from 'types/Resume';
+import { Project as ProjectType, ProjectStatus } from 'types/Resume';
 import { defaultProject } from 'types/Resume/data';
 
-import DateInput from '@components/input/DateInput';
 import Input from '@components/input/Input';
 import LinkInput from '@components/input/LinkInput';
+import MonthInput from '@components/input/MonthInput';
 import Select from '@components/input/Select';
 import TextArea from '@components/input/TextArea';
 
@@ -24,7 +24,8 @@ export default function Project() {
 			<BaseSection.Title title='프로젝트' addData={() => prepend(defaultProject)} />
 			{fields &&
 				fields.map((project, index) => {
-					const inputName = (name: string) => `${FIELD}.${index}.${name}`;
+					const inputName = (name: keyof ProjectType | 'project') =>
+						`${FIELD}.${index}.${name}`;
 					const edit = {
 						index,
 						remove: () => remove(index),
@@ -49,7 +50,7 @@ export default function Project() {
 								/>
 							</BaseSection.Item>
 							<BaseSection.Item>
-								<DateInput label='프로젝트 기간' inputName={inputName('project')} />
+								<MonthInput label='프로젝트 기간' inputName={inputName('project')} />
 							</BaseSection.Item>
 							<BaseSection.Item>
 								<Input

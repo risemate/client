@@ -1,11 +1,15 @@
 import React from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
-import { EmploymentStatus, JobType } from 'types/Resume';
+import {
+	EmploymentStatus,
+	JobType,
+	WorkExperience as WorkExperienceType,
+} from 'types/Resume';
 import { defaultWorkExperience } from 'types/Resume/data';
 
-import DateInput from '@components/input/DateInput';
 import Input from '@components/input/Input';
 import LinkInput from '@components/input/LinkInput';
+import MonthInput from '@components/input/MonthInput';
 import Select from '@components/input/Select';
 import TextArea from '@components/input/TextArea';
 
@@ -24,7 +28,8 @@ export default function WorkExperience() {
 			<BaseSection.Title title='경력' addData={() => prepend(defaultWorkExperience)} />
 			{fields &&
 				fields.map((work, index) => {
-					const inputName = (name: string) => `${FIELD}.${index}.${name}`;
+					const inputName = (name: keyof WorkExperienceType | 'work') =>
+						`${FIELD}.${index}.${name}`;
 					const edit = {
 						index,
 						remove: () => remove(index),
@@ -70,7 +75,7 @@ export default function WorkExperience() {
 								/>
 							</BaseSection.Item>
 							<BaseSection.Item>
-								<DateInput label='재직 기간' inputName={inputName('work')} />
+								<MonthInput label='재직 기간' inputName={inputName('work')} />
 							</BaseSection.Item>
 							<BaseSection.Item gridColumn='1/4'>
 								<TextArea

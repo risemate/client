@@ -1,28 +1,26 @@
 import React from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
-import { Activity as ActivityType } from 'types/Resume';
-import { defaultActivity } from 'types/Resume/data';
+import { Certificate } from 'types/Resume';
+import { defaultCertificate } from 'types/Resume/data';
 
 import DateInput from '@components/input/DateInput';
 import Input from '@components/input/Input';
 import LinkInput from '@components/input/LinkInput';
-import TextArea from '@components/input/TextArea';
 import BaseSection from '@components/wrappers/EditBaseSection';
 
-export default function Activity() {
-	const FIELD = 'doc.activities';
+export default function Certificates() {
+	const FIELD = 'doc.certificates';
 	const { register, control, watch } = useFormContext();
 	const { fields, prepend, remove, swap } = useFieldArray({
 		control,
 		name: FIELD,
 	});
-
 	return (
 		<BaseSection>
-			<BaseSection.Title title='대외활동' addData={() => prepend(defaultActivity)} />
+			<BaseSection.Title title='자격증' addData={() => prepend(defaultCertificate)} />
 			{fields &&
-				fields.map((activity, index) => {
-					const inputName = (name: keyof ActivityType) => `${FIELD}.${index}.${name}`;
+				fields.map((certificate, index) => {
+					const inputName = (name: keyof Certificate) => `${FIELD}.${index}.${name}`;
 					const edit = {
 						index,
 						remove: () => remove(index),
@@ -31,40 +29,36 @@ export default function Activity() {
 					};
 					return (
 						<BaseSection.Content
-							key={activity.id}
-							title='대외활동'
-							gridColumn='3'
+							key={certificate.id}
+							title='자격증'
+							gridColumn='2'
 							editButton={edit}
 						>
 							<BaseSection.Item>
 								<Input
-									label='대외활동명'
+									label='자격증 이름'
 									type='text'
-									{...register(inputName('activityName'))}
-								/>
-							</BaseSection.Item>
-							<BaseSection.Item>
-								<DateInput
-									label='활동년도'
-									inputName={inputName('activityYear')}
-									mode='year'
+									{...register(inputName('certificateName'))}
 								/>
 							</BaseSection.Item>
 							<BaseSection.Item>
 								<Input
 									label='주관사'
 									type='text'
-									{...register(inputName('activityOrganization'))}
+									{...register(inputName('certificateOrganization'))}
 								/>
 							</BaseSection.Item>
-							<BaseSection.Item gridColumn='1/4'>
-								<TextArea
-									label='활동 설명'
-									help
-									{...register(inputName('activityDescription'))}
+							<BaseSection.Item>
+								<DateInput label='획득 날짜' inputName='certificateAt' mode='date' />
+							</BaseSection.Item>
+							<BaseSection.Item>
+								<Input
+									label='성적'
+									type='text'
+									{...register(inputName('certificateGrade'))}
 								/>
 							</BaseSection.Item>
-							<BaseSection.Item gridColumn='1/4'>
+							<BaseSection.Item gridColumn='1/3'>
 								<LinkInput
 									links={watch(FIELD)[index].links}
 									inputName={inputName('links')}
