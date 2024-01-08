@@ -1,10 +1,13 @@
-import { atom, useAtom } from 'jotai';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
-const modal = atom(false);
+export const useModal = (key: string) => {
+	const queryClient = useQueryClient();
 
-export const useModal = () => {
-	const [isModal, setIsModal] = useAtom(modal);
-	const openModal = () => setIsModal(true);
-	const closeModal = () => setIsModal(false);
+	const { data: isModal } = useQuery([key], {
+		initialData: false,
+		staleTime: Infinity,
+	});
+	const openModal = () => queryClient.setQueryData([key], true);
+	const closeModal = () => queryClient.setQueryData([key], false);
 	return { isModal, openModal, closeModal };
 };

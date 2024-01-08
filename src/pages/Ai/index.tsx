@@ -8,7 +8,7 @@ import ResumeAiCard from '@components/resume/Card/ResumeAiCard';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
 export default function Ai() {
-	const { openModal, isModal } = useModal();
+	const { openModal } = useModal('ai-revise');
 	const resumes = [mockResume, mockResume, mockResume];
 
 	return (
@@ -37,11 +37,10 @@ export default function Ai() {
 					</ul>
 				</AiSection>
 			</WhiteBoxWrapper>
-			{isModal && (
-				<Modal title='AI 첨삭'>
-					AI을 첨삭을 받으시겠습니까? <br /> 시간은 약 15~30분 정도 소요됩니다.
-				</Modal>
-			)}
+
+			<Modal title='AI 첨삭' queryKey='ai-revise'>
+				AI을 첨삭을 받으시겠습니까? <br /> 시간은 약 15~30분 정도 소요됩니다.
+			</Modal>
 		</Wrap>
 	);
 }
