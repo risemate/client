@@ -14,7 +14,6 @@ import { ResumeList, ReviseList } from 'pages/Resume';
 import ResumeEdit from 'pages/ResumeEdit';
 import { createBrowserRouter } from 'react-router-dom';
 
-import AuthModal from '@components/auth/AuthModal';
 import RootLayout from '@components/layout/RootLayout';
 
 import { signLoader } from './loader';
@@ -65,7 +64,7 @@ export const router = createBrowserRouter([
 
 	{
 		path: 'my-info',
-		element: <RootLayout />,
+		element: <RootLayout backgroundColor='lightGrey' />,
 		children: [
 			{
 				index: true,
@@ -106,7 +105,7 @@ export const router = createBrowserRouter([
 	},
 	{
 		path: 'coach-info',
-		element: <RootLayout backgroundColor={theme.colors.grey} />,
+		element: <RootLayout backgroundColor='lightGrey' />,
 		children: [
 			{
 				index: true,

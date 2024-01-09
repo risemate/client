@@ -4,6 +4,7 @@ import React, { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { FormProvider } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
 
 import Loader from '@common/Loader';
 import ResumeNav from '@common/ResumeNav';
@@ -35,7 +36,7 @@ export default function ResumeEdit() {
 				onReset={reset}
 			>
 				<Suspense fallback={<Loader />}>
-					<form id={formId} onSubmit={submitResume()}>
+					<StyledForm id={formId} onSubmit={submitResume()}>
 						<h2 className='a11y-hidden'>
 							{isEmpty(getValue('docTitle')) ? '새로운 이력서' : getValue('docTitle')};
 						</h2>
@@ -47,7 +48,7 @@ export default function ResumeEdit() {
 						<Activity />
 						<Certificates />
 						<ResumeNav resumeNavItems={resumeEditNavItems} />
-					</form>
+					</StyledForm>
 				</Suspense>
 			</ErrorBoundary>
 			<CreateModal />
@@ -56,3 +57,7 @@ export default function ResumeEdit() {
 		</FormProvider>
 	);
 }
+
+const StyledForm = styled.form`
+	margin: 50px 0 30px;
+`;

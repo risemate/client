@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Loader from '@common/Loader';
 import Footer from '@components/layout/components/Footer';
@@ -8,11 +8,17 @@ import NavBar from '@components/layout/components/NavBar';
 
 import 'normalize.css';
 
-export default function RootLayout({ backgroundColor }: { backgroundColor?: string }) {
+type ColorType = 'white' | 'lightGrey';
+
+interface RootLayoutProps {
+	backgroundColor?: ColorType;
+}
+
+export default function RootLayout({ backgroundColor = 'white' }: RootLayoutProps) {
 	return (
 		<>
 			<NavBar />
-			<StyledLayout style={{ backgroundColor }}>
+			<StyledLayout $backgroundColor={backgroundColor}>
 				<Suspense fallback={<Loader />}>
 					<Outlet />
 				</Suspense>
@@ -22,9 +28,28 @@ export default function RootLayout({ backgroundColor }: { backgroundColor?: stri
 	);
 }
 
-const StyledLayout = styled.main`
+interface StyledLayoutProps {
+	$backgroundColor?: ColorType;
+}
+
+const backgroundStyle = css<StyledLayoutProps>`
+	${({ $backgroundColor, theme: { colors } }) => {
+		switch ($backgroundColor) {
+			case 'white':
+				return css`
+					background-color: white;
+				`;
+			case 'lightGrey':
+				return css`
+					background-color: ${colors.lightGrey};
+				`;
+		}
+	}}
+`;
+
+const StyledLayout = styled.main<StyledLayoutProps>`
 	width: 100%;
-	${({ theme }) => theme.common.flexCenterColumn};
 	min-height: calc(100vh - 150px);
-	background: ${({ theme }) => theme.colors.lightGrey};
+	${({ theme }) => theme.common.flexCenterColumn};
+	${backgroundStyle}
 `;
