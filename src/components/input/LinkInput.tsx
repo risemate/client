@@ -74,14 +74,15 @@ export default function LinkInput({ links, inputName }: LinkInputProps) {
 				</Button>
 			</div>
 			<LinkList>
-				{links.map((link, index) => (
-					<li key={index}>
-						{linkToString(link)}
-						<button type='button' onClick={() => deleteLink(index)}>
-							<IconCloseSharp />
-						</button>
-					</li>
-				))}
+				{links &&
+					links.map((link, index) => (
+						<li key={index}>
+							{linkToString(link)}
+							<button type='button' onClick={() => deleteLink(index)}>
+								<IconCloseSharp />
+							</button>
+						</li>
+					))}
 			</LinkList>
 		</LinkInputWrapper>
 	);

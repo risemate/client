@@ -46,7 +46,7 @@ export default function TechStack() {
 					);
 				})}
 			</StackList>
-			<div ref={searchRef}>
+			<InputWrapper ref={searchRef}>
 				<Input
 					value={searchText}
 					onChange={inputChange}
@@ -61,7 +61,7 @@ export default function TechStack() {
 						/>
 					</SuggestionWrapper>
 				)}
-			</div>
+			</InputWrapper>
 		</BaseSection>
 	);
 }
@@ -88,9 +88,13 @@ const StackList = styled.div`
 	}
 `;
 
+const InputWrapper = styled.div`
+	position: relative;
+`;
+
 const SuggestionWrapper = styled.div`
-	position: absolute;
 	width: 100%;
+	position: absolute;
 	margin-top: 20px;
 	z-index: 1;
 `;

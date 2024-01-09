@@ -1,5 +1,4 @@
 import { formatDate } from '@utils/helpers';
-import { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
 import { Career } from 'types/CareerDocument';
 
@@ -7,20 +6,15 @@ import Button from '@common/Button';
 import Toggle from '@components/input/Toggle';
 import CardWrapper from '@components/wrappers/ResumeCardWrapper';
 
+import useCareerBasicCard from './CareerBasicCard.hook';
+
 interface ResumeCardProps {
 	career: Career;
 }
 
 export default function CareerBasicCard({ career }: ResumeCardProps) {
-	// 공개 여부 업데이트
-	const [isPublic, setIsPublic] = useState(career.public);
-	const [isContact, setIsContact] = useState(career.contactPublic);
-	const updateIsPublic = (event: ChangeEvent<HTMLInputElement>) => {
-		setIsPublic(event.target.checked);
-	};
-	const updateIsContact = (event: ChangeEvent<HTMLInputElement>) => {
-		setIsContact(event.target.checked);
-	};
+	const { isPublic, isContact, updateIsPublic, updateIsContact } =
+		useCareerBasicCard(career);
 
 	return (
 		<CardWrapper>
@@ -35,7 +29,12 @@ export default function CareerBasicCard({ career }: ResumeCardProps) {
 					보기
 				</Button>
 			</ButtonGorup>
-			<Button variant='blue' size='full' to={`${career._id}/revise-docs`}>
+			<Button
+				variant='blue'
+				size='full'
+				to={`${career._id}/revise-docs`}
+				disabled={career.childrenDocCount === 0}
+			>
 				첨삭 중 문서 ({career.childrenDocCount})
 			</Button>
 

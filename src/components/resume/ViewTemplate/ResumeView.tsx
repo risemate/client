@@ -4,6 +4,7 @@ import { Resume as ResumeType } from 'types/Resume';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
 import Activity from './Activity';
+import Certificate from './Certificate';
 import Education from './Education';
 import Profile from './Profile';
 import Project from './Project';
@@ -17,10 +18,13 @@ export default function ResumeTemplate({ career }: ResumeViewProps) {
 	return (
 		<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
 			<Profile profile={career.profile} techStack={career.techStack} />
-			<WorkExperience workExperiences={career.workExperiences} />
-			<Project projects={career.projects} />
-			<Education educations={career.educations} />
-			<Activity activities={career.activities} />
+			{career.workExperiences && (
+				<WorkExperience workExperiences={career.workExperiences} />
+			)}
+			{career.projects && <Project projects={career.projects} />}
+			{career.educations && <Education educations={career.educations} />}
+			{career.activities && <Activity activities={career.activities} />}
+			{career.certificates && <Certificate certificates={career.certificates} />}
 		</WhiteBoxWrapper>
 	);
 }

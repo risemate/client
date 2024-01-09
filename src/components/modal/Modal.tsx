@@ -10,26 +10,42 @@ interface ModalProps {
 	children: ReactNode;
 	confirm?: string;
 	onClick?: () => void;
+	buttonFormId?: string;
+	queryKey: string;
 }
 
-export default function Modal({ title, children, confirm, onClick }: ModalProps) {
-	const { closeModal } = useModal();
+export default function Modal({
+	title,
+	children,
+	confirm,
+	onClick,
+	buttonFormId,
+	queryKey,
+}: ModalProps) {
+	const { closeModal } = useModal(queryKey);
+
 	return (
-		<ModalBase>
+		<ModalBase queryKey={queryKey}>
 			<ModalWrapper>
 				<h1>{title}</h1>
 				<p>{children}</p>
 				<div>
-					<Button variant='border' size='full' onClick={() => closeModal()}>
+					<Button variant='border' size='full' onClick={closeModal}>
 						취소
 					</Button>
 					<Button
 						variant='navy'
 						size='full'
-						onClick={() => {
-							onClick && onClick();
-							closeModal();
-						}}
+						form={buttonFormId}
+						onClick={
+							buttonFormId
+								? undefined
+								: () => {
+										// onClick가 존재하지 않는 경우에만 전달
+										onClick && onClick();
+										closeModal();
+								  }
+						}
 					>
 						{confirm ? confirm : '확인'}
 					</Button>

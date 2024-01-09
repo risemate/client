@@ -1,53 +1,58 @@
+import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { isEmpty } from '@utils/helpers';
-import React from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
+import React, { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import { FormProvider } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
-import { Resume as ResumeType } from 'types/Resume';
-import { defaultResume, mockResume } from 'types/Resume/data';
 
+import Loader from '@common/Loader';
 import ResumeNav from '@common/ResumeNav';
+import ErrorBoundaryComponent from '@components/errors/ErrorBoundaryComponent';
 
 import Activity from './components/Activity';
+import Certificates from './components/Certificate';
 import Education from './components/Education';
+import CreateModal from './components/modal/CreateModal';
+import DeleteModal from './components/modal/DeleteModal';
+import UpdateModal from './components/modal/UpdateModal';
 import Profile from './components/Profile';
 import Project from './components/Project';
 import TechStack from './components/TechStack';
 import WorkExperience from './components/WorkExperience';
+import useResumeEdit from './ResumeEdit.hook';
 
 export default function ResumeEdit() {
 	const { id } = useParams();
-	const resume = id === 'new' ? defaultResume : mockResume;
-	const resumeNavItems = [
-		{ name: '섹션 추가', onClick: () => alert('hi') },
-		{ name: '저장하기' },
-	];
-
-	const methods = useForm<ResumeType>({
-		mode: 'onSubmit',
-		defaultValues: resume,
-	});
-
-	const { handleSubmit, getValues } = methods;
-
-	const submitResume = (data: ResumeType) => {
-		// eslint-disable-next-line
-		console.log(data);
-	};
+	const { reset } = useQueryErrorResetBoundary();
+	const { formId, resumeEditNavItems, resumeEditMethods, submitResume, getValue } =
+		useResumeEdit(id || '');
 
 	return (
-		<FormProvider {...methods}>
-			<form onSubmit={handleSubmit(submitResume)}>
-				<h2 className='a11y-hidden'>
-					{isEmpty(getValues('docTitle')) ? '새로운 이력서' : getValues('docTitle')};
-				</h2>
-				<Profile />
-				<TechStack />
-				<WorkExperience />
-				<Project />
-				<Education />
-				<Activity />
-				<ResumeNav resumeNavItems={resumeNavItems} />
-			</form>
+		<FormProvider {...resumeEditMethods}>
+			<ErrorBoundary
+				FallbackComponent={ErrorBoundaryComponent}
+				onError={() => console.error('error!!!')}
+				onReset={reset}
+			>
+				<Suspense fallback={<Loader />}>
+					<form id={formId} onSubmit={submitResume()}>
+						<h2 className='a11y-hidden'>
+							{isEmpty(getValue('docTitle')) ? '새로운 이력서' : getValue('docTitle')};
+						</h2>
+						<Profile />
+						<TechStack />
+						<WorkExperience />
+						<Project />
+						<Education />
+						<Activity />
+						<Certificates />
+						<ResumeNav resumeNavItems={resumeEditNavItems} />
+					</form>
+				</Suspense>
+			</ErrorBoundary>
+			<CreateModal />
+			<UpdateModal />
+			<DeleteModal />
 		</FormProvider>
 	);
 }

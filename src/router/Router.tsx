@@ -8,13 +8,13 @@ import ExpertDetail from 'pages/ExpertDetail';
 import Experts from 'pages/Experts';
 import Home from 'pages/Home';
 import MyInfoPage from 'pages/MyInfo';
-import ReviseList from 'pages/MyInfo/components/ReviseList';
 import Network from 'pages/Network';
 import NotFound from 'pages/NotFound';
-import Resume from 'pages/Resume';
+import { ResumeList, ReviseList } from 'pages/Resume';
 import ResumeEdit from 'pages/ResumeEdit';
 import { createBrowserRouter } from 'react-router-dom';
 
+import AuthModal from '@components/auth/AuthModal';
 import RootLayout from '@components/layout/RootLayout';
 
 import { signLoader } from './loader';
@@ -76,7 +76,7 @@ export const router = createBrowserRouter([
 				children: [
 					{
 						index: true,
-						element: <Resume />,
+						element: <ResumeList />,
 					},
 					{
 						path: ':id',

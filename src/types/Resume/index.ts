@@ -43,6 +43,7 @@ export type Resume = {
 	projects: Project[];
 	educations: Education[];
 	activities: Activity[];
+	certificates: Certificate[];
 	links: Link[];
 	careerYears: number;
 	lookingForJob: boolean;
@@ -91,7 +92,7 @@ export const ProjectStatus: ProjectStatus[] = [
 ];
 export type Project = {
 	projectName: string;
-	summaryIntro: string; // 오타 수정: summaryintro -> projectSummaryIntro
+	summaryIntro: string; // 오타 수정: summaryIntro -> projectsummaryIntro
 	projectStartedAt: string; // 날짜 형식으로 변경 필요
 	projectEndedAt: string; // 날짜 형식으로 변경 필요
 	projectDescription: string;
@@ -123,6 +124,14 @@ export type Activity = {
 	activityYear: number | undefined;
 	activityDescription: string;
 	activityOrganization: string;
+	links: Link[];
+};
+
+export type Certificate = {
+	certificateName: string;
+	certificateOrganization: string;
+	certificatedAt: string;
+	certificateGrade: string;
 	links: Link[];
 };
 

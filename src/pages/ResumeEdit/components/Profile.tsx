@@ -17,7 +17,11 @@ export default function Profile() {
 			<BaseSection.Title title='기본 정보'>
 				<ResumeTitleInput>
 					<span className='a11y-hidden'>이력서 이름 입력</span>
-					<input type='text' placeholder='이력서 이름 입력' {...register('docTitle')} />
+					<input
+						type='text'
+						placeholder='이력서 이름 입력'
+						{...register('doc.docTitle')}
+					/>
 				</ResumeTitleInput>
 				<WarningText>* 내용이 없을 시 이력서에 표기되지 않습니다.</WarningText>
 			</BaseSection.Title>

@@ -1,6 +1,7 @@
 import { Career } from 'types/CareerDocument';
 import {
 	Activity,
+	Certificate,
 	Education,
 	Profile,
 	Project,
@@ -60,6 +61,14 @@ export const defaultActivity: Activity = {
 	links: [],
 };
 
+export const defaultCertificate: Certificate = {
+	certificateName: '',
+	certificateOrganization: '',
+	certificatedAt: '',
+	certificateGrade: '',
+	links: [],
+};
+
 export const defaultResume: Career<Resume> = {
 	careerType: 'RESUME',
 	coverLetter: '안녕하세유',
@@ -83,6 +92,7 @@ export const defaultResume: Career<Resume> = {
 		projects: [defaultProject],
 		educations: [defaultEducation],
 		activities: [defaultActivity],
+		certificates: [defaultCertificate],
 		links: [],
 		careerYears: 1,
 		lookingForJob: true,
@@ -274,6 +284,7 @@ export const mockResume: Career<Resume> = {
 				],
 			},
 		],
+		certificates: [],
 	},
 	createdAt: 'Thu Dec 8 2011 20:14:56 GMT-0600 (CST)',
 	updatedAt: 'Thu Dec 8 2011 20:14:56 GMT-0600 (CST)',
