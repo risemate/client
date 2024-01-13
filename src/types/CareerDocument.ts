@@ -7,7 +7,7 @@ export type DocType = 'BASIC' | 'AI' | 'COACHING';
 export const DocTypeList: DocType[] = ['BASIC', 'AI', 'COACHING'];
 
 export type Career<T = any> = {
-	coverLetter: string;
+	description: string;
 	feedback?: string;
 	contactPublic: boolean;
 	public: boolean;
@@ -22,4 +22,5 @@ export type Career<T = any> = {
 	updatedAt: string;
 	coverImage: string;
 	childrenDocCount: number;
+	coaching?: object; //수정필요
 };

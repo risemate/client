@@ -7,6 +7,8 @@ export const DocTypeList: DocType[] = ['BASIC', 'AI', 'COACHING'];
 export type ReviseResume = {
 	feedback: string;
 	coverImage?: string;
+	description?: string;
+	feed_description: string;
 	coverLetter?: string;
 	feed_coverLetter: string;
 	public: boolean;
@@ -33,6 +35,7 @@ export type ReviseResume = {
 export type Resume = {
 	coverImage?: string;
 	coverLetter?: string;
+	description?: string;
 	public: boolean;
 	docTitle: string;
 	profile: Profile;
@@ -52,11 +55,12 @@ export type Resume = {
 export type Profile = {
 	name: string;
 	email: string;
+	birthday?: string;
 	phoneNumber: string;
 	profileImage: string;
 	position: string;
-	description: string;
 	job: string;
+	links?: Link[];
 };
 
 export type Link = {
@@ -76,9 +80,9 @@ export type WorkExperience = {
 	role: string;
 	jobType: JobType;
 	employmentStatus: EmploymentStatus;
-	workStartedAt: string; // 날짜 형식으로 변경 필요
-	workEndedAt: string; // 날짜 형식으로 변경 필요
-	assignedTask: string;
+	startedAt: string;
+	endedAt: string;
+	description: string;
 	links: Link[];
 };
 
@@ -93,9 +97,9 @@ export const ProjectStatus: ProjectStatus[] = [
 export type Project = {
 	projectName: string;
 	summaryIntro: string; // 오타 수정: summaryIntro -> projectsummaryIntro
-	projectStartedAt: string; // 날짜 형식으로 변경 필요
-	projectEndedAt: string; // 날짜 형식으로 변경 필요
-	projectDescription: string;
+	startedAt: string;
+	endedAt: string;
+	description: string;
 	projectStatus: ProjectStatus;
 	projectOrganization: string; // 또는 다른 유형 추가
 	links: Link[];
@@ -113,16 +117,18 @@ export type Education = {
 	schoolName: string;
 	major: string;
 	graduationStatus: GraduationStatus;
-	enrollmentStartedAt: string; // 날짜 형식으로 변경 필요
-	enrollmentEndedAt: string; // 날짜 형식으로 변경 필요
-	educationDescription: string;
+	educationalInstitution?: string; //교육기관 추가.
+	startedAt: string;
+	endedAt: string;
+	description: string;
 	links: Link[];
 };
 
 export type Activity = {
 	activityName: string;
-	activityYear: number | undefined;
-	activityDescription: string;
+	startedAt: string;
+	endedAt: string;
+	description: string;
 	activityOrganization: string;
 	links: Link[];
 };
