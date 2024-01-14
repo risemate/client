@@ -1,4 +1,3 @@
-import React from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
 import { Education as EducationType, GraduationStatus } from 'types/Resume';
 import { defaultEducation } from 'types/Resume/data';
@@ -62,7 +61,7 @@ export default function Education() {
 								<TextArea
 									label='교육 설명'
 									help
-									{...register(inputName('educationDescription'))}
+									{...register(inputName('description'))}
 								/>
 							</BaseSection.Item>
 							<BaseSection.Item gridColumn='1/3'>

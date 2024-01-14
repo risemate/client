@@ -1,4 +1,3 @@
-import React from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
 import {
 	EmploymentStatus,
@@ -81,7 +80,7 @@ export default function WorkExperience() {
 								<TextArea
 									label='담당 업무'
 									help
-									{...register(inputName('assignedTask'))}
+									{...register(inputName('description'))}
 								/>
 							</BaseSection.Item>
 							<BaseSection.Item gridColumn='1/4'>

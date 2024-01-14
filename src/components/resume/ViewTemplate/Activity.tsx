@@ -1,4 +1,3 @@
-import React from 'react';
 import { Activity as ActivityType } from 'types/Resume';
 
 import BaseSection from '@components/wrappers/ResumeViewBaseSection';
@@ -22,10 +21,12 @@ export default function Activity({ activities, feedback }: ActivityProps) {
 				<article key={index}>
 					<BaseSection.Title>{activity.activityName}</BaseSection.Title>
 					<BaseSection.BasicInfo>
-						<li>{activity.activityYear}</li>
+						<li>
+							{activity.startedAt} ~ {activity.endedAt}
+						</li>
 						<li>{activity.activityOrganization}</li>
 					</BaseSection.BasicInfo>
-					<BaseSection.Task tasks={activity.activityDescription} />
+					<BaseSection.Task tasks={activity.description} />
 					<BaseSection.Link links={activity.links} />
 				</article>
 			))}
