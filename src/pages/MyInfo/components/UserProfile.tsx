@@ -1,5 +1,4 @@
 import { useSearchParam } from '@hooks/common/useSearchParam';
-import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import Button from '@common/Button';
@@ -7,8 +6,10 @@ import DefaultImage from '@common/DefaultImage';
 
 export default function UserProfile() {
 	const { changeParam } = useSearchParam('mode');
-	const navigate = useNavigate();
 	const isExpert = true;
+	const logout = () => {
+		localStorage.removeItem('rm-checkpoint');
+	};
 	return (
 		<UserInfoSection>
 			<UserWrapper>
@@ -34,7 +35,7 @@ export default function UserProfile() {
 						전문가 신청하기
 					</Button>
 				)}
-				<Button variant='border' size='full'>
+				<Button variant='border' size='full' onClick={logout}>
 					로그아웃
 				</Button>
 			</ButtonWrappper>

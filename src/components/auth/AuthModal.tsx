@@ -9,9 +9,9 @@ import ModalBase from '../modal/ModalBase';
 import { popupLogin } from './popupLogin';
 
 export default function AuthModal() {
-	const { isModal, closeModal } = useModal('login');
+	const { closeModal } = useModal('login');
 	// eslint-disable-next-line
-	const { auth, refetch } = useAuth();
+	const { data: auth } = useAuth();
 	const login = async (provider?: string) => {
 		await popupLogin(provider).then(result => {
 			if (result.accessToken) {
