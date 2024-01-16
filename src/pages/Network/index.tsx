@@ -4,8 +4,10 @@ import styled from 'styled-components';
 import Banner from '@common/Banner';
 import NetworkCardList from '@components/network/NetworkCardList';
 
+import useNetwork from './Network.hook';
+
 export default function Network() {
-	const networks = Array(10).fill('hello');
+	const { networks } = useNetwork();
 	return (
 		<>
 			<Banner variant='tab'>

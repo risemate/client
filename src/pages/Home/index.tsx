@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import styled, { CSSProp } from 'styled-components';
 
 import Banner from '@common/Banner';
@@ -6,12 +5,12 @@ import Button from '@common/Button';
 import ExpertCardList from '@components/experts/ExpertCardList';
 import NetworkCardList from '@components/network/NetworkCardList';
 
+import useHome from './Home.hook';
 import 'normalize.css';
 
 function Home() {
-	const navigate = useNavigate();
 	const experts = Array(5).fill('hello');
-	const networks = Array(5).fill('h');
+	const { networks } = useHome();
 	return (
 		<>
 			<Banner variant='home'>
