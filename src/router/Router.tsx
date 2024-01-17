@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
 
 	{
 		path: 'my-info',
-		element: <RootLayout backgroundColor='lightGrey' />,
+		element: <RootLayout backgroundColor='lightGrey' center defaultPadding />,
 		children: [
 			{
 				index: true,
@@ -104,7 +104,7 @@ export const router = createBrowserRouter([
 	},
 	{
 		path: 'coach-info',
-		element: <RootLayout backgroundColor='lightGrey' />,
+		element: <RootLayout backgroundColor='lightGrey' center defaultPadding />,
 		children: [
 			{
 				index: true,

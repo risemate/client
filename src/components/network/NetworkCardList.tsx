@@ -26,10 +26,9 @@ const StyledCardList = styled.ul<{ $home?: boolean }>`
 	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(4, minmax(200px, 1fr));
-
 	gap: 30px 40px;
 	@media screen and (max-width: 990px) {
 		grid-template-columns: ${({ $home }) =>
-			$home ? 'repeat(4, minmax(200px, 1fr))' : 'repeat(3, 1fr)'};
+			$home ? 'repeat(4, minmax(200px, 1fr))' : 'repeat(3, minmax(200px, 1fr))'};
 	}
 `;

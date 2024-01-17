@@ -87,7 +87,8 @@ const StyledHeader = styled.header`
 	z-index: 1;
 	background: white;
 	nav {
-		${({ theme }) => theme.common.minmaxWidth};
+		max-width: ${({ theme }) => theme.widths.maxWidth};
+		min-width: ${({ theme }) => theme.widths.minWidth};
 		padding: 0 32px;
 		height: 75px;
 		display: flex;

@@ -12,13 +12,23 @@ type ColorType = 'white' | 'lightGrey';
 
 interface RootLayoutProps {
 	backgroundColor?: ColorType;
+	center?: boolean;
+	defaultPadding?: boolean;
 }
 
-export default function RootLayout({ backgroundColor = 'white' }: RootLayoutProps) {
+export default function RootLayout({
+	backgroundColor = 'white',
+	center = false,
+	defaultPadding = false,
+}: RootLayoutProps) {
 	return (
 		<>
 			<NavBar />
-			<StyledLayout $backgroundColor={backgroundColor}>
+			<StyledLayout
+				$backgroundColor={backgroundColor}
+				$center={center}
+				$defaultPadding={defaultPadding}
+			>
 				<Suspense fallback={<Loader />}>
 					<Outlet />
 				</Suspense>
@@ -30,6 +40,8 @@ export default function RootLayout({ backgroundColor = 'white' }: RootLayoutProp
 
 interface StyledLayoutProps {
 	$backgroundColor?: ColorType;
+	$center?: boolean;
+	$defaultPadding?: boolean;
 }
 
 const backgroundStyle = css<StyledLayoutProps>`
@@ -50,6 +62,7 @@ const backgroundStyle = css<StyledLayoutProps>`
 const StyledLayout = styled.main<StyledLayoutProps>`
 	width: 100%;
 	min-height: calc(100vh - 150px);
-	${({ theme }) => theme.common.flexCenterColumn};
+	${({ theme, $center }) => $center && theme.common.flexCenterColumn};
+	${({ $defaultPadding }) => $defaultPadding && 'padding: 80px 32px 0'};
 	${backgroundStyle}
 `;

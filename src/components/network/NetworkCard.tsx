@@ -25,13 +25,12 @@ export default function NetworkCard({ network }: NetworkCardProps) {
 }
 
 const CardItemLink = styled(Link)`
-	// max-width: 250px;
-	// min-width: 200px;
+	max-width: 250px;
 	text-align: start;
 	transition: all 0.2s ease;
 	&:hover {
 		transform: translateY(-5px);
-		filter: brightness(0.96);
+		filter: brightness(0.8);
 	}
 	h4 {
 		font-weight: bold;

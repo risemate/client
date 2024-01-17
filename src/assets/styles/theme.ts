@@ -20,7 +20,7 @@ const colors = {
 };
 
 const widths = {
-	minWidth: '768px',
+	minWidth: '850px',
 	maxWidth: '1200px',
 };
 

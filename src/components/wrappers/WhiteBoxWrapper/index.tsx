@@ -34,9 +34,6 @@ const commonStyle = css<StyledBoxProps>`
 	background: white;
 	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
 	${({ $customCss }) => $customCss && $customCss}
-	&:not(:last-child) {
-		margin-bottom: 30px;
-	}
 	&.border {
 		border: 1px solid ${({ theme }) => theme.colors.navy};
 	}
@@ -49,4 +46,7 @@ const WhiteBoxDiv = styled.div<StyledBoxProps>`
 const WhiteBoxSection = styled.section<StyledBoxProps>`
 	${commonStyle}
 	min-width: 800px;
+	&:not(:last-child) {
+		margin-bottom: 30px;
+	}
 `;

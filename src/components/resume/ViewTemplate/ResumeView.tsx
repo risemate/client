@@ -17,7 +17,7 @@ interface ResumeViewProps {
 export default function ResumeTemplate({ career }: ResumeViewProps) {
 	return (
 		<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
-			<Profile
+			<Profile 
 				profile={career.profile}
 				techStack={career.techStack}
 				description={career.description}
@@ -36,7 +36,7 @@ export default function ResumeTemplate({ career }: ResumeViewProps) {
 const resumeWrapperStyle = css`
 	min-height: 500px;
 	padding: 50px;
-	margin-top: 70px;
+	margin: 70px auto;
 	& > section {
 		padding-bottom: 30px;
 		&:not(:last-child) {
