@@ -1,4 +1,3 @@
-import React from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
 import { Activity as ActivityType } from 'types/Resume';
 import { defaultActivity } from 'types/Resume/data';
@@ -46,7 +45,7 @@ export default function Activity() {
 							<BaseSection.Item>
 								<DateInput
 									label='활동년도'
-									inputName={inputName('activityYear')}
+									inputName={inputName('startedAt')}
 									mode='year'
 								/>
 							</BaseSection.Item>
@@ -61,7 +60,7 @@ export default function Activity() {
 								<TextArea
 									label='활동 설명'
 									help
-									{...register(inputName('activityDescription'))}
+									{...register(inputName('description'))}
 								/>
 							</BaseSection.Item>
 							<BaseSection.Item gridColumn='1/4'>
