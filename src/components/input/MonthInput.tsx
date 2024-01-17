@@ -8,13 +8,10 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 interface MonthInputProps {
 	label: string;
-	inputName: string;
 }
 
-export default function MonthInput({ label, inputName }: MonthInputProps) {
+export default function MonthInput({ label }: MonthInputProps) {
 	const { watch, setValue } = useFormContext();
-	const startInputName = `${inputName}StartedAt`;
-	const endInputName = `${inputName}EndedAt`;
 	const stringToDate = (dateString: string) => {
 		if (isEmpty(dateString)) {
 			return new Date();
@@ -31,15 +28,15 @@ export default function MonthInput({ label, inputName }: MonthInputProps) {
 			<span>{label}</span>
 			<div>
 				<DatePicker
-					selected={stringToDate(watch(startInputName))}
-					onChange={(date: Date) => setValue(startInputName, dateToString(date))}
+					selected={stringToDate(watch('startedAt'))}
+					onChange={(date: Date) => setValue('startedAt', dateToString(date))}
 					dateFormat={'yyyy-MM'}
 					showMonthYearPicker
 					showIcon
 				/>
 				<DatePicker
-					selected={stringToDate(watch(endInputName))}
-					onChange={(date: Date) => setValue(endInputName, dateToString(date))}
+					selected={stringToDate(watch('endedAt'))}
+					onChange={(date: Date) => setValue('endedAt', dateToString(date))}
 					dateFormat={'yyyy-MM'}
 					showMonthYearPicker
 					showIcon

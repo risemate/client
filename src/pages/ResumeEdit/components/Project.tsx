@@ -50,7 +50,7 @@ export default function Project() {
 								/>
 							</BaseSection.Item>
 							<BaseSection.Item>
-								<MonthInput label='프로젝트 기간' inputName={inputName('project')} />
+								<MonthInput label='프로젝트 기간' />
 							</BaseSection.Item>
 							<BaseSection.Item>
 								<Input
@@ -65,7 +65,7 @@ export default function Project() {
 								<TextArea
 									label='프로젝트 설명'
 									help
-									{...register(inputName('projectDescription'))}
+									{...register(inputName('description'))}
 								/>
 							</BaseSection.Item>
 							<BaseSection.Item gridColumn='1/4'>

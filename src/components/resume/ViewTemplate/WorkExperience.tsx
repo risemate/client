@@ -32,10 +32,10 @@ export default function WorkExperience({
 							{work.jobType} | {work.employmentStatus}
 						</li>
 						<li>
-							{work.workStartedAt} ~ {work.workEndedAt}
+							{work.startedAt} ~ {work.endedAt}
 						</li>
 					</BaseSection.BasicInfo>
-					<BaseSection.Task tasks={work.assignedTask} />
+					<BaseSection.Task tasks={work.description} />
 					<BaseSection.Link links={work.links} />
 				</article>
 			))}

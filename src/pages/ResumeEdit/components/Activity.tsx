@@ -8,6 +8,7 @@ import Input from '@components/input/Input';
 import LinkInput from '@components/input/LinkInput';
 import TextArea from '@components/input/TextArea';
 import BaseSection from '@components/wrappers/EditBaseSection';
+import MonthInput from '@components/input/MonthInput';
 
 export default function Activity() {
 	const FIELD = 'doc.activities';
@@ -44,11 +45,7 @@ export default function Activity() {
 								/>
 							</BaseSection.Item>
 							<BaseSection.Item>
-								<DateInput
-									label='활동년도'
-									inputName={inputName('activityYear')}
-									mode='year'
-								/>
+								<MonthInput label='활동년도'/>
 							</BaseSection.Item>
 							<BaseSection.Item>
 								<Input
@@ -61,7 +58,7 @@ export default function Activity() {
 								<TextArea
 									label='활동 설명'
 									help
-									{...register(inputName('activityDescription'))}
+									{...register(inputName('description'))}
 								/>
 							</BaseSection.Item>
 							<BaseSection.Item gridColumn='1/4'>

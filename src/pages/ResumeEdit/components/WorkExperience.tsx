@@ -75,13 +75,13 @@ export default function WorkExperience() {
 								/>
 							</BaseSection.Item>
 							<BaseSection.Item>
-								<MonthInput label='재직 기간' inputName={inputName('work')} />
+								<MonthInput label='재직 기간' />
 							</BaseSection.Item>
 							<BaseSection.Item gridColumn='1/4'>
 								<TextArea
 									label='담당 업무'
 									help
-									{...register(inputName('assignedTask'))}
+									{...register(inputName('description'))}
 								/>
 							</BaseSection.Item>
 							<BaseSection.Item gridColumn='1/4'>

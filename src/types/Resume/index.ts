@@ -57,6 +57,8 @@ export type Profile = {
 	position: string;
 	description: string;
 	job: string;
+	birthday: string;
+	links: Link[];
 };
 
 export type Link = {
@@ -64,11 +66,11 @@ export type Link = {
 	linkUrl: string;
 };
 
-type JobType = '정규직' | '계약직' | '인턴' | '선택';
-export const JobType: JobType[] = ['선택', '정규직', '계약직', '인턴'];
+export const JobType = ['선택', '정규직', '계약직', '인턴'];
+type JobType = typeof JobType[number];
 
-type EmploymentStatus = '재직 중' | '퇴직' | '선택';
-export const EmploymentStatus: EmploymentStatus[] = ['선택', '재직 중', '퇴직'];
+export const EmploymentStatus = ['선택', '재직 중', '퇴직'];
+type EmploymentStatus = typeof EmploymentStatus[number];
 
 export type WorkExperience = {
 	companyName: string;
@@ -76,53 +78,55 @@ export type WorkExperience = {
 	role: string;
 	jobType: JobType;
 	employmentStatus: EmploymentStatus;
-	workStartedAt: string; // 날짜 형식으로 변경 필요
-	workEndedAt: string; // 날짜 형식으로 변경 필요
-	assignedTask: string;
+	startedAt: string; // 날짜 형식으로 변경 필요
+	endedAt: string; // 날짜 형식으로 변경 필요
+	description: string;
 	links: Link[];
 };
 
-type ProjectStatus = '완료' | '진행 중' | '리팩토링 중' | '완료되지 않음' | '선택';
-export const ProjectStatus: ProjectStatus[] = [
+export const ProjectStatus = [
 	'선택',
 	'완료',
 	'진행 중',
 	'리팩토링 중',
 	'완료되지 않음',
 ];
+type ProjectStatus = typeof ProjectStatus[number];
 export type Project = {
 	projectName: string;
 	summaryIntro: string; // 오타 수정: summaryIntro -> projectsummaryIntro
-	projectStartedAt: string; // 날짜 형식으로 변경 필요
-	projectEndedAt: string; // 날짜 형식으로 변경 필요
-	projectDescription: string;
+	startedAt: string; // 날짜 형식으로 변경 필요
+	endedAt: string; // 날짜 형식으로 변경 필요
+	description: string;
 	projectStatus: ProjectStatus;
 	projectOrganization: string; // 또는 다른 유형 추가
 	links: Link[];
 };
 
-type GraduationStatus = '학기 중' | '졸업' | '편입' | '중도 퇴학' | '선택';
-export const GraduationStatus: GraduationStatus[] = [
+export const GraduationStatus = [
 	'선택',
 	'학기 중',
 	'졸업',
 	'편입',
 	'중도 퇴학',
 ];
+type GraduationStatus = typeof GraduationStatus[number];
 export type Education = {
 	schoolName: string;
 	major: string;
 	graduationStatus: GraduationStatus;
-	enrollmentStartedAt: string; // 날짜 형식으로 변경 필요
-	enrollmentEndedAt: string; // 날짜 형식으로 변경 필요
-	educationDescription: string;
+	startedAt: string; // 날짜 형식으로 변경 필요
+	endedAt: string; // 날짜 형식으로 변경 필요
+	description: string;
+	educationalInstitution: string;
 	links: Link[];
 };
 
 export type Activity = {
 	activityName: string;
-	activityYear: number | undefined;
-	activityDescription: string;
+	startedAt: string;
+	endedAt: string;
+	description: string;
 	activityOrganization: string;
 	links: Link[];
 };

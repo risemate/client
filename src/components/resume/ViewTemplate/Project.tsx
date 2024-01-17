@@ -24,7 +24,7 @@ export default function Project({ projects, feedback }: ProjectProps) {
 					<BaseSection.BasicInfo>
 						<li>{project.projectStatus}</li>
 						<li>
-							{project.projectStartedAt} ~ {project.projectEndedAt}
+							{project.startedAt} ~ {project.endedAt}
 						</li>
 						<li>
 							<a href={project.projectOrganization} target='_blank' rel='noreferrer'>
@@ -32,7 +32,7 @@ export default function Project({ projects, feedback }: ProjectProps) {
 							</a>
 						</li>
 					</BaseSection.BasicInfo>
-					<BaseSection.Task tasks={project.projectDescription} />
+					<BaseSection.Task tasks={project.description} />
 					<BaseSection.Link links={project.links} />
 				</article>
 			))}

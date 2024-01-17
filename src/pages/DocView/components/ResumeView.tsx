@@ -14,7 +14,6 @@ export default function ResumeView() {
 	const { id } = useParams();
 	const { reset } = useQueryErrorResetBoundary();
 	const { resumeDetail, resumeViewNavItems } = useDocView(id || '');
-
 	return (
 		<ErrorBoundary
 			FallbackComponent={ErrorBoundaryComponent}

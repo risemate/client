@@ -18,6 +18,8 @@ export const defaultProfile: Profile = {
 	position: '',
 	description: '',
 	job: '',
+	birthday: '',
+	links: [],
 };
 
 export const defaultWorkExperience: WorkExperience = {
@@ -26,18 +28,18 @@ export const defaultWorkExperience: WorkExperience = {
 	role: '',
 	jobType: '선택',
 	employmentStatus: '선택',
-	workStartedAt: '',
-	workEndedAt: '',
-	assignedTask: '',
+	startedAt: '',
+	endedAt: '',
+	description: '',
 	links: [],
 };
 
 export const defaultProject: Project = {
 	projectName: '',
 	summaryIntro: '',
-	projectStartedAt: '',
-	projectEndedAt: '',
-	projectDescription: '',
+	startedAt: '',
+	endedAt: '',
+	description: '',
 	projectStatus: '선택',
 	projectOrganization: '',
 	links: [],
@@ -47,16 +49,18 @@ export const defaultEducation: Education = {
 	schoolName: '',
 	major: '',
 	graduationStatus: '선택',
-	enrollmentStartedAt: '',
-	enrollmentEndedAt: '',
-	educationDescription: '',
+	educationalInstitution: '',
+	startedAt: '',
+	endedAt: '',
+	description: '',
 	links: [],
 };
 
 export const defaultActivity: Activity = {
 	activityName: '',
-	activityYear: undefined,
-	activityDescription: '',
+	startedAt: '',
+	endedAt: '',
+	description: '',
 	activityOrganization: '',
 	links: [],
 };
@@ -129,6 +133,8 @@ export const mockResume: Career<Resume> = {
 			position: '프론트엔드',
 			description: '프론트엔드 개발자입니다.',
 			job: '백수',
+			birthday: '1999-05-25',
+			links: [],
 		},
 		techStack: {
 			skills: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Jest'],
@@ -140,9 +146,9 @@ export const mockResume: Career<Resume> = {
 				role: '프론트엔드 개발자',
 				jobType: '정규직',
 				employmentStatus: '재직 중',
-				workStartedAt: '2018-10',
-				workEndedAt: '2020-10',
-				assignedTask: `- 이력서 작성 등록 기능 개발\n- 알림 확인 여부 기능 개발\n- 결제 기능 개발`,
+				startedAt: '2018-10',
+				endedAt: '2020-10',
+				description: `- 이력서 작성 등록 기능 개발\n- 알림 확인 여부 기능 개발\n- 결제 기능 개발`,
 				links: [
 					{
 						linkTitle: '라메 기술 블로그',
@@ -160,9 +166,9 @@ export const mockResume: Career<Resume> = {
 				role: '프론트엔드 개발자',
 				jobType: '정규직',
 				employmentStatus: '퇴직',
-				workStartedAt: '2018-10',
-				workEndedAt: '2020-10',
-				assignedTask: `- 이력서 작성 등록 기능 개발\n- 알림 확인 여부 기능 개발\n- 결제 기능 개발`,
+				startedAt: '2018-10',
+				endedAt: '2020-10',
+				description: `- 이력서 작성 등록 기능 개발\n- 알림 확인 여부 기능 개발\n- 결제 기능 개발`,
 				links: [
 					{
 						linkTitle: '라메 기술 블로그',
@@ -179,9 +185,9 @@ export const mockResume: Career<Resume> = {
 			{
 				projectName: '개발자 이력서 첨삭 프로젝트',
 				summaryIntro: '개발자 이력서 첨삭 프로젝트',
-				projectStartedAt: '2023-08',
-				projectEndedAt: '2023-10',
-				projectDescription:
+				startedAt: '2023-08',
+				endedAt: '2023-10',
+				description:
 					'- 기존에 Server Side Rendering으로 생성하던 페이지에 Static Site Generation을 적용하여 서버 자원 절약 및 응답 속도 개선',
 				projectStatus: '완료',
 				projectOrganization: 'https://github.com/risemate/client',
@@ -199,9 +205,9 @@ export const mockResume: Career<Resume> = {
 			{
 				projectName: '정적 페이지 생성과 캐싱을 활용한 렌더링 성능 개선',
 				summaryIntro: '개발자 이력서 첨삭 프로젝트',
-				projectStartedAt: '2023-08',
-				projectEndedAt: '2023-10',
-				projectDescription:
+				startedAt: '2023-08',
+				endedAt: '2023-10',
+				description:
 					'- 기존에 Server Side Rendering으로 생성하던 페이지에 Static Site Generation을 적용하여 서버 자원 절약 및 응답 속도 개선',
 				projectStatus: '완료',
 				projectOrganization: '',
@@ -232,9 +238,10 @@ export const mockResume: Career<Resume> = {
 				schoolName: 'NHN NEXT',
 				major: 'WEB UI',
 				graduationStatus: '학기 중',
-				enrollmentStartedAt: '1914-03',
-				enrollmentEndedAt: '1914-12',
-				educationDescription: '',
+				startedAt: '1914-03',
+				endedAt: '1914-12',
+				description: '',
+				educationalInstitution: '',
 				links: [
 					{
 						linkTitle: '라메 기술 블로그',
@@ -250,9 +257,10 @@ export const mockResume: Career<Resume> = {
 				schoolName: '경희대학교',
 				major: '기계공학과',
 				graduationStatus: '졸업',
-				enrollmentStartedAt: '1914-02',
-				enrollmentEndedAt: '1910-03',
-				educationDescription: '',
+				startedAt: '1914-02',
+				endedAt: '1910-03',
+				description: '',
+				educationalInstitution: '',
 				links: [
 					{
 						linkTitle: '라메 기술 블로그',
@@ -269,8 +277,9 @@ export const mockResume: Career<Resume> = {
 		activities: [
 			{
 				activityName: 'Samsung Software Developer Conference',
-				activityYear: 2023,
-				activityDescription: 'Samsung Software Developer Conference',
+				startedAt: '0000-00-00',
+				endedAt: '0000-00-00',
+				description: 'Samsung Software Developer Conference',
 				activityOrganization: 'Samsung', //주관사
 				links: [
 					{
@@ -322,6 +331,8 @@ export const mockResumeAi: Career<ReviseResume> = {
 			position: '프론트엔드',
 			description: '프론트엔드 개발자입니다.',
 			job: '백수',
+			birthday: '1999-05-25',
+			links: [],
 		},
 		feed_profile:
 			'해당 이력서의 자기소개에 대한 피드백입니다. 해당 이력서의 자기소개에 대한 피드백입니다. 해당 이력서의 자기소개에 대한 피드백입니다. 해당 이력서의 자기소개에 대한 피드백입니다. 해당 이력서의 자기소개에 대한 피드백입니다.',
@@ -337,9 +348,9 @@ export const mockResumeAi: Career<ReviseResume> = {
 				role: '프론트엔드 개발자',
 				jobType: '정규직',
 				employmentStatus: '재직 중',
-				workStartedAt: '2018-10',
-				workEndedAt: '2020-10',
-				assignedTask: `- 이력서 작성 등록 기능 개발\n- 알림 확인 여부 기능 개발\n- 결제 기능 개발`,
+				startedAt: '2018-10',
+				endedAt: '2020-10',
+				description: `- 이력서 작성 등록 기능 개발\n- 알림 확인 여부 기능 개발\n- 결제 기능 개발`,
 				links: [
 					{
 						linkTitle: '라메 기술 블로그',
@@ -357,9 +368,9 @@ export const mockResumeAi: Career<ReviseResume> = {
 				role: '프론트엔드 개발자',
 				jobType: '정규직',
 				employmentStatus: '퇴직',
-				workStartedAt: '2018-10',
-				workEndedAt: '2020-10',
-				assignedTask: `- 이력서 작성 등록 기능 개발\n- 알림 확인 여부 기능 개발\n- 결제 기능 개발`,
+				startedAt: '2018-10',
+				endedAt: '2020-10',
+				description: `- 이력서 작성 등록 기능 개발\n- 알림 확인 여부 기능 개발\n- 결제 기능 개발`,
 				links: [
 					{
 						linkTitle: '라메 기술 블로그',
@@ -378,9 +389,9 @@ export const mockResumeAi: Career<ReviseResume> = {
 			{
 				projectName: '개발자 이력서 첨삭 프로젝트',
 				summaryIntro: '개발자 이력서 첨삭 프로젝트',
-				projectStartedAt: '2023-08',
-				projectEndedAt: '2023-10',
-				projectDescription:
+				startedAt: '2023-08',
+				endedAt: '2023-10',
+				description:
 					'- 기존에 Server Side Rendering으로 생성하던 페이지에 Static Site Generation을 적용하여 서버 자원 절약 및 응답 속도 개선',
 				projectStatus: '완료',
 				projectOrganization: 'https://github.com/risemate/client',
@@ -398,9 +409,9 @@ export const mockResumeAi: Career<ReviseResume> = {
 			{
 				projectName: '정적 페이지 생성과 캐싱을 활용한 렌더링 성능 개선',
 				summaryIntro: '개발자 이력서 첨삭 프로젝트',
-				projectStartedAt: '2023-08',
-				projectEndedAt: '2023-10',
-				projectDescription:
+				startedAt: '2023-08',
+				endedAt: '2023-10',
+				description:
 					'- 기존에 Server Side Rendering으로 생성하던 페이지에 Static Site Generation을 적용하여 서버 자원 절약 및 응답 속도 개선',
 				projectStatus: '완료',
 				projectOrganization: '',
@@ -434,9 +445,10 @@ export const mockResumeAi: Career<ReviseResume> = {
 				schoolName: 'NHN NEXT',
 				major: 'WEB UI',
 				graduationStatus: '학기 중',
-				enrollmentStartedAt: '1914-03',
-				enrollmentEndedAt: '1914-12',
-				educationDescription: '',
+				startedAt: '1914-03',
+				endedAt: '1914-12',
+				description: '',
+				educationalInstitution: '',
 				links: [
 					{
 						linkTitle: '라메 기술 블로그',
@@ -452,9 +464,10 @@ export const mockResumeAi: Career<ReviseResume> = {
 				schoolName: '경희대학교',
 				major: '기계공학과',
 				graduationStatus: '졸업',
-				enrollmentStartedAt: '1914-02',
-				enrollmentEndedAt: '1910-03',
-				educationDescription: '',
+				startedAt: '1914-02',
+				endedAt: '1910-03',
+				description: '',
+				educationalInstitution: '',
 				links: [
 					{
 						linkTitle: '라메 기술 블로그',
@@ -474,8 +487,9 @@ export const mockResumeAi: Career<ReviseResume> = {
 		activities: [
 			{
 				activityName: 'Samsung Software Developer Conference',
-				activityYear: 2023,
-				activityDescription: 'Samsung Software Developer Conference',
+				startedAt: '1914-03',
+				endedAt: '1914-12',
+				description: 'Samsung Software Developer Conference',
 				activityOrganization: 'Samsung', //주관사
 				links: [
 					{
@@ -525,6 +539,8 @@ export const mockResumeCoaching: Career<ReviseResume> = {
 			position: '프론트엔드',
 			description: '프론트엔드 개발자입니다.',
 			job: '백수',
+			birthday: '1999-05-25',
+			links: [],
 		},
 		feed_profile:
 			'해당 이력서의 자기소개에 대한 피드백입니다. 해당 이력서의 자기소개에 대한 피드백입니다. 해당 이력서의 자기소개에 대한 피드백입니다. 해당 이력서의 자기소개에 대한 피드백입니다. 해당 이력서의 자기소개에 대한 피드백입니다.',
@@ -540,9 +556,9 @@ export const mockResumeCoaching: Career<ReviseResume> = {
 				role: '프론트엔드 개발자',
 				jobType: '정규직',
 				employmentStatus: '재직 중',
-				workStartedAt: '2018-10',
-				workEndedAt: '2020-10',
-				assignedTask: `- 이력서 작성 등록 기능 개발\n- 알림 확인 여부 기능 개발\n- 결제 기능 개발`,
+				startedAt: '2018-10',
+				endedAt: '2020-10',
+				description: `- 이력서 작성 등록 기능 개발\n- 알림 확인 여부 기능 개발\n- 결제 기능 개발`,
 				links: [
 					{
 						linkTitle: '라메 기술 블로그',
@@ -560,9 +576,9 @@ export const mockResumeCoaching: Career<ReviseResume> = {
 				role: '프론트엔드 개발자',
 				jobType: '정규직',
 				employmentStatus: '퇴직',
-				workStartedAt: '2018-10',
-				workEndedAt: '2020-10',
-				assignedTask: `- 이력서 작성 등록 기능 개발\n- 알림 확인 여부 기능 개발\n- 결제 기능 개발`,
+				startedAt: '2018-10',
+				endedAt: '2020-10',
+				description: `- 이력서 작성 등록 기능 개발\n- 알림 확인 여부 기능 개발\n- 결제 기능 개발`,
 				links: [
 					{
 						linkTitle: '라메 기술 블로그',
@@ -581,9 +597,9 @@ export const mockResumeCoaching: Career<ReviseResume> = {
 			{
 				projectName: '개발자 이력서 첨삭 프로젝트',
 				summaryIntro: '개발자 이력서 첨삭 프로젝트',
-				projectStartedAt: '2023-08',
-				projectEndedAt: '2023-10',
-				projectDescription:
+				startedAt: '2023-08',
+				endedAt: '2023-10',
+				description:
 					'- 기존에 Server Side Rendering으로 생성하던 페이지에 Static Site Generation을 적용하여 서버 자원 절약 및 응답 속도 개선',
 				projectStatus: '완료',
 				projectOrganization: 'https://github.com/risemate/client',
@@ -601,9 +617,9 @@ export const mockResumeCoaching: Career<ReviseResume> = {
 			{
 				projectName: '정적 페이지 생성과 캐싱을 활용한 렌더링 성능 개선',
 				summaryIntro: '개발자 이력서 첨삭 프로젝트',
-				projectStartedAt: '2023-08',
-				projectEndedAt: '2023-10',
-				projectDescription:
+				startedAt: '2023-08',
+				endedAt: '2023-10',
+				description:
 					'- 기존에 Server Side Rendering으로 생성하던 페이지에 Static Site Generation을 적용하여 서버 자원 절약 및 응답 속도 개선',
 				projectStatus: '완료',
 				projectOrganization: '',
@@ -637,9 +653,10 @@ export const mockResumeCoaching: Career<ReviseResume> = {
 				schoolName: 'NHN NEXT',
 				major: 'WEB UI',
 				graduationStatus: '학기 중',
-				enrollmentStartedAt: '1914-03',
-				enrollmentEndedAt: '1914-12',
-				educationDescription: '',
+				startedAt: '1914-03',
+				endedAt: '1914-12',
+				description: '',
+				educationalInstitution: '',
 				links: [
 					{
 						linkTitle: '라메 기술 블로그',
@@ -655,9 +672,10 @@ export const mockResumeCoaching: Career<ReviseResume> = {
 				schoolName: '경희대학교',
 				major: '기계공학과',
 				graduationStatus: '졸업',
-				enrollmentStartedAt: '1914-02',
-				enrollmentEndedAt: '1910-03',
-				educationDescription: '',
+				startedAt: '1914-02',
+				endedAt: '1910-03',
+				description: '',
+				educationalInstitution: '',
 				links: [
 					{
 						linkTitle: '라메 기술 블로그',
@@ -677,8 +695,9 @@ export const mockResumeCoaching: Career<ReviseResume> = {
 		activities: [
 			{
 				activityName: 'Samsung Software Developer Conference',
-				activityYear: 2023,
-				activityDescription: 'Samsung Software Developer Conference',
+				startedAt: '1914-02',
+				endedAt: '1910-03',
+				description: 'Samsung Software Developer Conference',
 				activityOrganization: 'Samsung', //주관사
 				links: [
 					{

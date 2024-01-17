@@ -27,11 +27,11 @@ export default function Education({ educations, feedback }: EducationProps) {
 							{education.major} | {education.graduationStatus}
 						</li>
 						<li>
-							{education.enrollmentStartedAt} ~ {education.enrollmentEndedAt}
+							{education.startedAt} ~ {education.endedAt}
 						</li>
 					</BaseSection.BasicInfo>
-					{!isEmpty(education.educationDescription) && (
-						<BaseSection.Task tasks={education.educationDescription} />
+					{!isEmpty(education.description) && (
+						<BaseSection.Task tasks={education.description} />
 					)}
 					<BaseSection.Link links={education.links} />
 				</article>

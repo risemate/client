@@ -56,13 +56,13 @@ export default function Education() {
 								/>
 							</BaseSection.Item>
 							<BaseSection.Item>
-								<MonthInput label='교육 기간' inputName={inputName('enrollment')} />
+								<MonthInput label='교육 기간' />
 							</BaseSection.Item>
 							<BaseSection.Item gridColumn='1/3'>
 								<TextArea
 									label='교육 설명'
 									help
-									{...register(inputName('educationDescription'))}
+									{...register(inputName('description'))}
 								/>
 							</BaseSection.Item>
 							<BaseSection.Item gridColumn='1/3'>

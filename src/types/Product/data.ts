@@ -27,6 +27,8 @@ export const convertToProfile = ({
 		position: subTitle || '',
 		description: '',
 		job: '',
+		birthday: '',
+		links: [],
 	};
 };
 
@@ -122,9 +124,9 @@ export const mockProduct: ProductType = {
 			role: '프론트엔드 개발자',
 			jobType: '정규직',
 			employmentStatus: '재직 중',
-			workStartedAt: '2018-10',
-			workEndedAt: '2020-10',
-			assignedTask:
+			startedAt: '2018-10',
+			endedAt: '2020-10',
+			description:
 				'- 이력서 작성 등록 기능 개발 -알림 확인 여부 기능 개발  -결제 기능 개발',
 			links: [
 				{
@@ -138,9 +140,9 @@ export const mockProduct: ProductType = {
 		{
 			projectName: '개발자 이력서 첨삭 프로젝트',
 			summaryIntro: '개발자 이력서 첨삭 프로젝트',
-			projectStartedAt: '2023-08',
-			projectEndedAt: '2023-10',
-			projectDescription:
+			startedAt: '2023-08',
+			endedAt: '2023-10',
+			description:
 				'- 기존에 Server Side Rendering으로 생성하던 페이지에 Static Site Generation을 적용하여 서버 자원 절약 및 응답 속도 개선',
 			projectStatus: '완료',
 			projectOrganization: 'https://github.com/risemate/client',
@@ -154,9 +156,9 @@ export const mockProduct: ProductType = {
 		{
 			projectName: '정적 페이지 생성과 캐싱을 활용한 렌더링 성능 개선',
 			summaryIntro: '개발자 이력서 첨삭 프로젝트',
-			projectStartedAt: '2023-08',
-			projectEndedAt: '2023-10',
-			projectDescription:
+			startedAt: '2023-08',
+			endedAt: '2023-10',
+			description:
 				'- 기존에 Server Side Rendering으로 생성하던 페이지에 Static Site Generation을 적용하여 서버 자원 절약 및 응답 속도 개선',
 			projectStatus: '진행 중',
 			projectOrganization: '',
