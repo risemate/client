@@ -15,6 +15,20 @@ export type UseMutationOptionsType<T> = UseMutationOptions<
 	unknown
 >;
 
+export type PagingQueryProps = {
+	page?: number;
+	pageSize?: number;
+};
+
+export type PagingQueryResponse<T> = {
+	data: T[];
+	totalDocs: number;
+	limit: number;
+	totalPages: number;
+	page: number;
+	pagingCounter: number;
+};
+
 // export interface UseMutationOptions<TData = unknown, TError = unknown, TVariables = void, TContext = unknown>
 // extends Omit<MutationObserverOptions<TData, TError, TVariables, TContext>, '_defaulted' | 'variables'> {
 // }

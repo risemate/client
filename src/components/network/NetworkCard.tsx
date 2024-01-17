@@ -1,35 +1,32 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Career } from 'types/CareerDocument';
 
 import DefaultImage from '@common/DefaultImage';
 
 interface NetworkCardProps {
-	network: string;
+	network: Career;
 }
 
-// eslint-disable-next-line
 export default function NetworkCard({ network }: NetworkCardProps) {
 	const image = true;
 
 	return (
-		<CardItemLink to={'/networks/docs/1'}>
+		<CardItemLink to={`/networks/docs/${network._id}`}>
 			{image ? (
 				<DefaultImage variant='blue' shape='rectangle' />
 			) : (
 				<img src={''} alt='' />
 			)}
-			<h4>홍길동 | 성장하는 프론트엔드 개발자</h4>
-			<p>
-				안녕하세요, TypeScript, React.js 기반의 2년 프론트엔드 개발자 000이라고
-				합니다.잘부탁드립니다.
-			</p>
+			<h4>{network.docTitle}</h4>
+			<p>{network.description}</p>
 		</CardItemLink>
 	);
 }
 
 const CardItemLink = styled(Link)`
-	max-width: 250px;
-	min-width: 200px;
+	// max-width: 250px;
+	// min-width: 200px;
 	text-align: start;
 	transition: all 0.2s ease;
 	&:hover {

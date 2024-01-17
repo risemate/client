@@ -13,7 +13,6 @@ const RESUME_PATH = {
 		id ? `${RESUME_PATH.DEFAULT}/resumes/${id}` : `${RESUME_PATH.DEFAULT}/resumes`,
 };
 
-// Personal Resumes
 export const fetchCareers = async (
 	params?: CareersQueryProps,
 ): Promise<Career<Resume>[]> => {
@@ -71,12 +70,3 @@ export const fetchDeleteResume = async (id: string): Promise<void> => {
 		throw new Error((error as Error).message);
 	}
 };
-
-// // Public Resumes
-// export const fetchPublicCareers = async (params: PublicCareersQueryProps) => {
-//     return await axios.get(RESUME_PATH.PUBLIC(), {params});
-// }
-
-// export const fetchPublicResumeDetail = async (id: string) => {
-//     return await axios.get(RESUME_PATH.PUBLIC(id))
-// }

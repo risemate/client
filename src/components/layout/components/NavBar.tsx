@@ -19,7 +19,7 @@ export default function NavBar() {
 	];
 
 	const { openModal } = useModal('login');
-	const { auth } = useAuth();
+	const { data: auth } = useAuth();
 	const isExpert = true;
 
 	const hasNewAlarm = true;
@@ -51,7 +51,7 @@ export default function NavBar() {
 					})}
 				</NavBarList>
 				<MyPageWrapper>
-					{!auth ? (
+					{auth ? (
 						<>
 							{isExpert && <Link to='/coach-info'>코칭 관리</Link>}
 							<button

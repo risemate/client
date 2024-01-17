@@ -1,4 +1,3 @@
-import theme from '@styles/theme';
 import axios from 'axios';
 import Ai from 'pages/Ai';
 import CoachInfo from 'pages/CoachInfo';
