@@ -25,7 +25,6 @@ export const convertToProfile = ({
 		phoneNumber: '',
 		profileImage: coverImage || '',
 		position: subTitle || '',
-		description: '',
 		job: '',
 		birthday: '',
 		links: [],

@@ -1,4 +1,3 @@
-import React from 'react';
 import { WorkExperience as WorkExperienceType } from 'types/Resume';
 
 import BaseSection from '@components/wrappers/ResumeViewBaseSection';

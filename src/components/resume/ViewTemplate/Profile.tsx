@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { Profile as ProfileType } from 'types/Resume';
 
@@ -7,12 +6,18 @@ import BaseSectionFeedback from '@components/wrappers/ResumeViewBaseSection/Base
 
 interface ProfileProps {
 	profile: ProfileType;
+	description?: string;
 	techStack?: { skills: string[] };
 	feedback?: string;
 }
 
 // eslint-disable-next-line
-export default function Profile({ profile, techStack, feedback }: ProfileProps) {
+export default function Profile({
+	profile,
+	techStack,
+	feedback,
+	description,
+}: ProfileProps) {
 	return (
 		<ProfileSection>
 			<DefaultImage variant='navy' size='large' image={profile.profileImage} />
@@ -33,7 +38,7 @@ export default function Profile({ profile, techStack, feedback }: ProfileProps) 
 					</li>
 				)}
 			</ContactList>
-			{profile.description && <p>{profile.description}</p>}
+			{description && <p>{description}</p>}
 			{feedback && (
 				<BaseSectionFeedback>
 					<h4>자기소개에 대한 피드백</h4>

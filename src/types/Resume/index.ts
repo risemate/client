@@ -7,6 +7,8 @@ export const DocTypeList: DocType[] = ['BASIC', 'AI', 'COACHING'];
 export type ReviseResume = {
 	feedback: string;
 	coverImage?: string;
+	description?: string;
+	feed_description: string;
 	coverLetter?: string;
 	feed_coverLetter: string;
 	public: boolean;
@@ -33,6 +35,7 @@ export type ReviseResume = {
 export type Resume = {
 	coverImage?: string;
 	coverLetter?: string;
+	description?: string;
 	public: boolean;
 	docTitle: string;
 	profile: Profile;
@@ -52,12 +55,11 @@ export type Resume = {
 export type Profile = {
 	name: string;
 	email: string;
+	birthday?: string;
 	phoneNumber: string;
 	profileImage: string;
 	position: string;
-	description: string;
 	job: string;
-	birthday: string;
 	links: Link[];
 };
 
@@ -67,10 +69,10 @@ export type Link = {
 };
 
 export const JobType = ['선택', '정규직', '계약직', '인턴'];
-type JobType = typeof JobType[number];
+type JobType = (typeof JobType)[number];
 
 export const EmploymentStatus = ['선택', '재직 중', '퇴직'];
-type EmploymentStatus = typeof EmploymentStatus[number];
+type EmploymentStatus = (typeof EmploymentStatus)[number];
 
 export type WorkExperience = {
 	companyName: string;
@@ -84,14 +86,8 @@ export type WorkExperience = {
 	links: Link[];
 };
 
-export const ProjectStatus = [
-	'선택',
-	'완료',
-	'진행 중',
-	'리팩토링 중',
-	'완료되지 않음',
-];
-type ProjectStatus = typeof ProjectStatus[number];
+export const ProjectStatus = ['선택', '완료', '진행 중', '리팩토링 중', '완료되지 않음'];
+type ProjectStatus = (typeof ProjectStatus)[number];
 export type Project = {
 	projectName: string;
 	summaryIntro: string; // 오타 수정: summaryIntro -> projectsummaryIntro
@@ -103,14 +99,8 @@ export type Project = {
 	links: Link[];
 };
 
-export const GraduationStatus = [
-	'선택',
-	'학기 중',
-	'졸업',
-	'편입',
-	'중도 퇴학',
-];
-type GraduationStatus = typeof GraduationStatus[number];
+export const GraduationStatus = ['선택', '학기 중', '졸업', '편입', '중도 퇴학'];
+type GraduationStatus = (typeof GraduationStatus)[number];
 export type Education = {
 	schoolName: string;
 	major: string;

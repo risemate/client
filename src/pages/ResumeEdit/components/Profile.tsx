@@ -1,4 +1,3 @@
-import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
 import { Profile as ProfileType } from 'types/Resume';
@@ -46,7 +45,7 @@ export default function Profile() {
 					<Input label='이메일' type='email' {...register(inputName('email'))} />
 				</ContactWrapper>
 				<LinkInput links={watch('doc.links')} inputName='doc.links' />
-				<TextArea label='자기소개' help {...register(inputName('description'))} />
+				<TextArea label='자기소개' help {...register('doc.description')} />
 			</InputWrapper>
 		</BaseSection>
 	);

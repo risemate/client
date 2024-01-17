@@ -17,7 +17,11 @@ interface ResumeViewProps {
 export default function ResumeTemplate({ career }: ResumeViewProps) {
 	return (
 		<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
-			<Profile profile={career.profile} techStack={career.techStack} />
+			<Profile
+				profile={career.profile}
+				techStack={career.techStack}
+				description={career.description}
+			/>
 			{career.workExperiences && (
 				<WorkExperience workExperiences={career.workExperiences} />
 			)}

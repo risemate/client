@@ -1,4 +1,3 @@
-import React from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
 import { Education as EducationType, GraduationStatus } from 'types/Resume';
 import { defaultEducation } from 'types/Resume/data';

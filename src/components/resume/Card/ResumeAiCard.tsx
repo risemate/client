@@ -17,7 +17,7 @@ export default function ResumeAiCard({ career }: ResumeCardProps) {
 			<CardWrapper.Info time={formatDate(career.createdAt).period}>
 				{career.docTitle}
 			</CardWrapper.Info>
-			<SummaryText>{career.coverLetter}</SummaryText>
+			<SummaryText>{career.description}</SummaryText>
 			<Button variant='border' size='full' to={`/my-info/docs/${career._id}`}>
 				보기
 			</Button>

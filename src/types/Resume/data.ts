@@ -16,7 +16,6 @@ export const defaultProfile: Profile = {
 	phoneNumber: '',
 	profileImage: '',
 	position: '',
-	description: '',
 	job: '',
 	birthday: '',
 	links: [],
@@ -37,8 +36,8 @@ export const defaultWorkExperience: WorkExperience = {
 export const defaultProject: Project = {
 	projectName: '',
 	summaryIntro: '',
-	startedAt: '',
-	endedAt: '',
+	startedAt: '2023-08',
+	endedAt: '2023-10',
 	description: '',
 	projectStatus: '선택',
 	projectOrganization: '',
@@ -47,9 +46,9 @@ export const defaultProject: Project = {
 
 export const defaultEducation: Education = {
 	schoolName: '',
+	educationalInstitution: '',
 	major: '',
 	graduationStatus: '선택',
-	educationalInstitution: '',
 	startedAt: '',
 	endedAt: '',
 	description: '',
@@ -75,7 +74,7 @@ export const defaultCertificate: Certificate = {
 
 export const defaultResume: Career<Resume> = {
 	careerType: 'RESUME',
-	coverLetter: '안녕하세유',
+	description: '',
 	contactPublic: true,
 	childrenDocCount: 3,
 	user: { nickname: '', picture: '', _id: '' },
@@ -110,7 +109,7 @@ export const mockResume: Career<Resume> = {
 	_id: '1',
 	contactPublic: true,
 	childrenDocCount: 3,
-	coverLetter: '안녕하슈',
+	description: '안녕하슈',
 	user: { nickname: '', picture: '', _id: '' },
 	docType: 'BASIC',
 	careerType: 'RESUME',
@@ -125,13 +124,13 @@ export const mockResume: Career<Resume> = {
 		careerYears: 2, // 신입이면 경력이 0
 		lookingForJob: true, //구직 유무
 		public: true,
+		description: '프론트엔드 개발자입니다.',
 		profile: {
 			name: '김서방',
 			email: 'gildong@risemate.com',
 			phoneNumber: '010-1111-2222',
 			profileImage: '',
 			position: '프론트엔드',
-			description: '프론트엔드 개발자입니다.',
 			job: '백수',
 			birthday: '1999-05-25',
 			links: [],
@@ -301,7 +300,7 @@ export const mockResume: Career<Resume> = {
 
 export const mockResumeAi: Career<ReviseResume> = {
 	_id: '1',
-	coverLetter: '안녕하슈',
+	description: '안녕하슈',
 
 	contactPublic: true,
 	childrenDocCount: 3,
@@ -315,6 +314,8 @@ export const mockResumeAi: Career<ReviseResume> = {
 	coverImage: 'string url, default: null',
 	doc: {
 		feedback: '',
+		description: '프론트엔드 개발자입니다.',
+		feed_description: '프론트엔드 개발자입니다.',
 		coverImage: 'string',
 		docTitle: '저...세상으로 가는 개발자',
 		careerYears: 2, // 신입이면 경력이 0
@@ -326,12 +327,11 @@ export const mockResumeAi: Career<ReviseResume> = {
 		profile: {
 			name: '김서방',
 			email: 'gildong@risemate.com',
+			birthday: '2011-12-12',
 			phoneNumber: '010-1111-2222',
 			profileImage: '',
 			position: '프론트엔드',
-			description: '프론트엔드 개발자입니다.',
 			job: '백수',
-			birthday: '1999-05-25',
 			links: [],
 		},
 		feed_profile:
@@ -513,7 +513,7 @@ export const mockResumeCoaching: Career<ReviseResume> = {
 	_id: '1',
 	contactPublic: true,
 	childrenDocCount: 3,
-	coverLetter: '안녕하슈',
+	description: '안녕하슈',
 	user: { nickname: '', picture: '', _id: '' },
 	docType: 'COACHING',
 	careerType: 'RESUME',
@@ -522,12 +522,14 @@ export const mockResumeCoaching: Career<ReviseResume> = {
 	public: true,
 	coverImage: 'string url, default: null',
 	doc: {
+		feed_description: '',
 		feedback: '',
 		coverImage: 'string',
 		docTitle: '저...세상으로 가는 개발자',
 		careerYears: 2, // 신입이면 경력이 0
 		lookingForJob: true, //구직 유무
-		coverLetter: '간단소개 내용 \n 간단소개',
+		coverLetter: '자기소개서 ',
+		description: '프론트엔드 개발자입니다. -aws 배포경험 보유.',
 		feed_coverLetter:
 			'해당 이력서의 자기소개에 대한 피드백입니다. 해당 이력서의 자기소개에 대한 피드백입니다. 해당 이력서의 자기소개에 대한 피드백입니다. 해당 이력서의 자기소개에 대한 피드백입니다. 해당 이력서의 자기소개에 대한 피드백입니다.',
 		public: true,
@@ -537,7 +539,6 @@ export const mockResumeCoaching: Career<ReviseResume> = {
 			phoneNumber: '010-1111-2222',
 			profileImage: '',
 			position: '프론트엔드',
-			description: '프론트엔드 개발자입니다.',
 			job: '백수',
 			birthday: '1999-05-25',
 			links: [],

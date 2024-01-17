@@ -1,4 +1,3 @@
-import React from 'react';
 import { Project as ProjectType } from 'types/Resume';
 
 import BaseSection from '@components/wrappers/ResumeViewBaseSection';

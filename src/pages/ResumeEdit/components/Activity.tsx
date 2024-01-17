@@ -1,14 +1,12 @@
-import React from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
 import { Activity as ActivityType } from 'types/Resume';
 import { defaultActivity } from 'types/Resume/data';
 
-import DateInput from '@components/input/DateInput';
 import Input from '@components/input/Input';
 import LinkInput from '@components/input/LinkInput';
+import MonthInput from '@components/input/MonthInput';
 import TextArea from '@components/input/TextArea';
 import BaseSection from '@components/wrappers/EditBaseSection';
-import MonthInput from '@components/input/MonthInput';
 
 export default function Activity() {
 	const FIELD = 'doc.activities';
@@ -45,7 +43,7 @@ export default function Activity() {
 								/>
 							</BaseSection.Item>
 							<BaseSection.Item>
-								<MonthInput label='활동년도'/>
+								<MonthInput label='활동년도' />
 							</BaseSection.Item>
 							<BaseSection.Item>
 								<Input

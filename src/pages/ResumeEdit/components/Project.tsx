@@ -1,6 +1,5 @@
-import React from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
-import { Project as ProjectType, ProjectStatus } from 'types/Resume';
+import { ProjectStatus, Project as ProjectType } from 'types/Resume';
 import { defaultProject } from 'types/Resume/data';
 
 import Input from '@components/input/Input';

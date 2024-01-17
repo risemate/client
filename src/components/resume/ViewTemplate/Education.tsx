@@ -1,5 +1,4 @@
 import { isEmpty } from '@utils/helpers';
-import React from 'react';
 import { Education as EducationType } from 'types/Resume';
 
 import BaseSection from '@components/wrappers/ResumeViewBaseSection';
