@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Profile as ProfileType } from 'types/Resume';
 
 import DefaultImage from '@common/DefaultImage';
+import Markdown from '@common/Markdown';
 import BaseSectionFeedback from '@components/wrappers/ResumeViewBaseSection/BaseSectionFeedback';
 
 interface ProfileProps {
@@ -38,7 +39,7 @@ export default function Profile({
 					</li>
 				)}
 			</ContactList>
-			{description && <p>{description}</p>}
+			{description && <Markdown>{description}</Markdown>}
 			{feedback && (
 				<BaseSectionFeedback>
 					<h4>자기소개에 대한 피드백</h4>
@@ -65,7 +66,7 @@ const ProfileSection = styled.section`
 		grid-column: 1 / 2;
 		grid-row: 1 / 3;
 	}
-	p {
+	.md-view {
 		grid-column: 1 / 3;
 		line-height: 28px;
 	}
