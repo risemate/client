@@ -26,7 +26,7 @@ export default function Activity({ activities, feedback }: ActivityProps) {
 						</li>
 						<li>{activity.activityOrganization}</li>
 					</BaseSection.BasicInfo>
-					<BaseSection.Task tasks={activity.description} />
+					<BaseSection.description description={activity.description} />
 					<BaseSection.Link links={activity.links} />
 				</article>
 			))}

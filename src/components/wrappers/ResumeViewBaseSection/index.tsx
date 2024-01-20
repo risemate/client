@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import BaseSectionBasicInfo from './BaseSectionBasicInfo';
@@ -20,7 +20,7 @@ const ResumeViewBaseSection = Object.assign(BaseSection, {
 	MainTitle: BaseSectionMainTitle,
 	Title: BaseSectionTitle,
 	BasicInfo: BaseSectionBasicInfo,
-	Task: BaseSectionTask,
+	description: BaseSectionTask,
 	Link: BaseSectionLink,
 	Feedback: BaseSectionFeedback,
 });

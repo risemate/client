@@ -31,7 +31,7 @@ export default function Project({ projects, feedback }: ProjectProps) {
 							</a>
 						</li>
 					</BaseSection.BasicInfo>
-					<BaseSection.Task tasks={project.description} />
+					<BaseSection.description description={project.description} />
 					<BaseSection.Link links={project.links} />
 				</article>
 			))}
