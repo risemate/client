@@ -8,12 +8,13 @@ import ResumeAiCard from '@components/resume/Card/ResumeAiCard';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
 export default function Ai() {
+	// eslint-disable-next-line
 	const { openModal } = useModal('ai-revise');
 	const resumes = [mockResume, mockResume, mockResume];
 
 	return (
 		<Wrap>
-			<Banner variant='default'>
+			<Banner variant='navy'>
 				AI 코치를 통해 빠르게 무료로 <br />
 				이력서/자기소개서를 첨삭 받아보세요!
 			</Banner>

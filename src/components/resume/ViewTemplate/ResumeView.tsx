@@ -17,7 +17,7 @@ interface ResumeViewProps {
 export default function ResumeTemplate({ career }: ResumeViewProps) {
 	return (
 		<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
-			<Profile 
+			<Profile
 				profile={career.profile}
 				techStack={career.techStack}
 				description={career.description}

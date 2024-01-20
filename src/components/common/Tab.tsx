@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
+type Variant = 'lightGrey' | 'darkGrey';
+
 interface TabProps {
 	items: string[];
 	center?: boolean;
 	underline?: boolean;
+	variant?: Variant;
 	changeTab: (item: string) => void;
 	isCurrentTab: (item: string) => boolean;
 }
@@ -12,6 +15,7 @@ export default function Tab({
 	items,
 	center,
 	underline,
+	variant = 'darkGrey',
 	changeTab,
 	isCurrentTab,
 }: TabProps) {
@@ -21,6 +25,7 @@ export default function Tab({
 				return (
 					<li key={item}>
 						<TabItemButton
+							$variant={variant}
 							className={isCurrentTab(item) ? 'active' : undefined}
 							onClick={() => changeTab(item)}
 						>
@@ -40,9 +45,16 @@ const TabList = styled.ul<{ $underline?: boolean; $center?: boolean }>`
 	justify-content: ${({ $center }) => ($center ? 'center' : 'flex-start')};
 `;
 
-const TabItemButton = styled.button`
+interface TabButtonProps {
+	$variant?: Variant;
+}
+
+const TabItemButton = styled.button<TabButtonProps>`
 	font-weight: bold;
-	color: ${({ theme }) => theme.colors.darkGrey};
+	color: ${({ theme, $variant }) => {
+		if ($variant === 'lightGrey') return theme.colors.lightGrey;
+		return theme.colors.darkGrey;
+	}};
 	padding: 5px 20px;
 	margin-bottom: -2px;
 	&.active,

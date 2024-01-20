@@ -14,7 +14,7 @@ export default function NetworkCard({ network }: NetworkCardProps) {
 	return (
 		<CardItemLink to={`/networks/docs/${network._id}`}>
 			{image ? (
-				<DefaultImage variant='blue' shape='rectangle' />
+				<DefaultImage variant='mint' shape='rectangle' />
 			) : (
 				<img src={''} alt='' />
 			)}

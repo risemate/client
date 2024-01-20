@@ -61,8 +61,8 @@ const backgroundStyle = css<StyledLayoutProps>`
 
 const StyledLayout = styled.main<StyledLayoutProps>`
 	width: 100%;
-	min-height: calc(100vh - 150px);
+	min-height: calc(100vh - 160px);
 	${({ theme, $center }) => $center && theme.common.flexCenterColumn};
-	${({ $defaultPadding }) => $defaultPadding && 'padding: 80px 32px 0'};
+	${({ $defaultPadding }) => $defaultPadding && 'padding: 75px 32px 0'};
 	${backgroundStyle}
 `;

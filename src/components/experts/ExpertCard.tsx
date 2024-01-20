@@ -16,7 +16,7 @@ export default function ExpertCard({ expert }: ExpertCardProps) {
 	return (
 		<CardItemButton onClick={moveToDetail}>
 			<Tag>FRONTEND</Tag>
-			<DefaultImage variant='navy' />
+			<DefaultImage variant='blue' />
 			<h4>성장하는 프론트엔드 개발자</h4>
 			<p>
 				커리어 | 2년차, 3개 회사 근무 <br /> 최근 소속 | 라이즈메이트

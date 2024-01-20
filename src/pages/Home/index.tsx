@@ -14,9 +14,7 @@ function Home() {
 	return (
 		<>
 			<Banner variant='home'>
-				<h2>
-					라메에서 이력서를 <span className='highlight mint'>코칭</span>받아보세요!
-				</h2>
+				라메에서 이력서를 <span className='highlight mint'>코칭</span>받아보세요!
 			</Banner>
 			<HomeSection>
 				<h3>다양한 이력서를 구경해보세요!</h3>

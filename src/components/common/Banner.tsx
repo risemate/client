@@ -1,25 +1,28 @@
-import useTab from '@hooks/common/useTab';
 import { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
 import Button from './Button';
 import Tab from './Tab';
 
-type Variant = 'home' | 'tab' | 'default';
+type Variant = 'home' | 'navy' | 'blue' | 'mint';
 
 interface BannerProps {
 	variant: Variant;
 	children: ReactNode;
+	tab?: {
+		tabItems: string[];
+		changeTab: (item: string) => void;
+		isCurrentTab: (item: string) => boolean;
+	};
 }
 
-export default function Banner({ variant, children }: BannerProps) {
-	const tabItems = ['전체', '이력서', '자기소개서', '입시자소서'];
-	const { changeTab, isCurrentTab } = useTab(tabItems);
+export default function Banner({ variant, children, tab }: BannerProps) {
+	const tabVariant = variant === 'blue' || variant === 'mint' ? 'lightGrey' : 'darkGrey';
 	return (
-		<BannerSection $variant={variant}>
+		<BannerSection $variant={variant} $tab={!!tab}>
 			{variant === 'home' && (
 				<div>
-					{children}
+					<h2>{children}</h2>
 					<Button variant='navy' size='small' to='/my-info/ai'>
 						AI 무료 코칭
 					</Button>
@@ -30,12 +33,13 @@ export default function Banner({ variant, children }: BannerProps) {
 			)}
 			{variant !== 'home' && (
 				<>
-					{children}
-					{variant === 'tab' && (
+					<h2>{children}</h2>
+					{tab && (
 						<Tab
-							items={tabItems}
-							changeTab={changeTab}
-							isCurrentTab={isCurrentTab}
+							items={tab.tabItems}
+							changeTab={tab.changeTab}
+							isCurrentTab={tab.isCurrentTab}
+							variant={tabVariant}
 							center
 						/>
 					)}
@@ -47,6 +51,7 @@ export default function Banner({ variant, children }: BannerProps) {
 
 interface BannerSectionProps {
 	$variant?: Variant;
+	$tab: boolean;
 }
 
 const homeStyle = css`
@@ -69,13 +74,6 @@ const homeStyle = css`
 `;
 
 const tabStyle = css`
-	${({ theme }) => theme.common.flexCenterColumn};
-	background: linear-gradient(
-		91deg,
-		rgba(103, 224, 178, 0.5) -0.94%,
-		rgba(87, 110, 231, 0.5) 80.11%,
-		rgba(49, 57, 100, 0.5) 106.39%
-	);
 	h2 {
 		line-height: 40px;
 	}
@@ -95,21 +93,37 @@ const variantStyle = css<BannerSectionProps>`
 					& > div {
 						${homeStyle}
 					}
+					h2 {
+						color: ${({ theme }) => theme.colors.navy};
+					}
 				`;
-			case 'tab':
+			case 'navy':
 				return css`
-					${tabStyle}
+					background: ${theme.colors.navy};
+					h2 {
+						color: white;
+					}
 				`;
-			case 'default':
+			case 'blue':
 				return css`
-					${tabStyle}
+					background: ${theme.colors.blue};
+					h2 {
+						color: white;
+					}
+				`;
+			case 'mint':
+				return css`
+					background: ${theme.colors.mint};
+					h2 {
+						color: ${theme.colors.navy};
+					}
 				`;
 		}
 	}}
 `;
 
 const BannerSection = styled.section<BannerSectionProps>`
-	width: 100%;
+	width: calc(100% + 64px);
 	min-width: ${({ theme }) => theme.widths.minWidth};
 	height: 250px;
 	padding: 0 32px;
@@ -118,7 +132,7 @@ const BannerSection = styled.section<BannerSectionProps>`
 	h2 {
 		font-size: ${({ theme }) => theme.fontSizes.large};
 		font-weight: bold;
-		color: ${({ theme }) => theme.colors.navy};
+		line-height: 50px;
 	}
 	.highlight {
 		&.mint {
@@ -128,5 +142,7 @@ const BannerSection = styled.section<BannerSectionProps>`
 			text-decoration: 5px underline ${({ theme }) => theme.colors.navy};
 		}
 	}
-	${variantStyle}
+	${variantStyle};
+	${({ $tab }) => $tab && tabStyle};
+	${({ theme }) => theme.common.flexCenterColumn};
 `;
