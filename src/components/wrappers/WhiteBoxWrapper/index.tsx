@@ -32,7 +32,6 @@ const commonStyle = css<StyledBoxProps>`
 	min-width: calc(${({ theme }) => theme.widths.minWidth} - 64px);
 	border-radius: 40px;
 	background: white;
-	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
 	${({ $customCss }) => $customCss && $customCss}
 	&.border {
 		border: 1px solid ${({ theme }) => theme.colors.navy};

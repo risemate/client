@@ -20,6 +20,7 @@ const myinfoStyle = css`
 	padding: 50px;
 	display: flex;
 	border: 2px solid ${({ theme }) => theme.colors.navy};
+	margin: 75px 0;
 	section:nth-child(2) {
 		width: calc(100% - 250px);
 		margin-left: 50px;
