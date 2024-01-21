@@ -108,12 +108,3 @@ export const resumeDeleteMutation = (
 		...options,
 	});
 };
-
-// // Public Resumes
-// export const fetchPublicCareers = async (params: {page?: number, pageSize?: number}) => {
-//     return await axios.get(RESUME_PATH.PUBLIC(), {params});
-// }
-
-// export const fetchPublicResumeDetail = async (id: string) => {
-//     return await axios.get(RESUME_PATH.PUBLIC(id))
-// }

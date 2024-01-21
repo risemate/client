@@ -6,7 +6,7 @@ export const CareerTypeList: CareerType[] = ['RESUME', 'COVERLETTER'];
 export type DocType = 'BASIC' | 'AI' | 'COACHING';
 export const DocTypeList: DocType[] = ['BASIC', 'AI', 'COACHING'];
 
-export type Career<T = any> = {
+export type Career<T = unknown> = {
 	description: string;
 	feedback?: string;
 	contactPublic: boolean;

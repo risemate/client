@@ -1,10 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import Button from '@common/Button';
 
 export default function CoachProfile() {
-	const navigate = useNavigate();
 	const hasPost = true;
 	return (
 		<InfoSection>
