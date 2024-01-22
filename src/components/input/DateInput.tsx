@@ -9,16 +9,21 @@ import 'react-datepicker/dist/react-datepicker.css';
 interface DateInputProps {
 	label: string;
 	inputName: string;
-	mode: 'year' | 'month' | 'date';
+	mode?: 'year' | 'month' | 'date';
 }
 
-export default function DateInput({ label, inputName, mode }: DateInputProps) {
+export default function DateInput({ label, inputName, mode = 'date' }: DateInputProps) {
 	const { watch, setValue } = useFormContext();
 	const stringToDate = (dateString: string) => {
 		if (isEmpty(dateString)) {
 			return new Date();
 		}
-		return new Date(dateString + '-01');
+		if (mode === 'year') {
+			return new Date(dateString + '-01-01');
+		} else if (mode === 'month') {
+			return new Date(dateString + '-01');
+		}
+		return new Date(dateString);
 	};
 	const dateToString = (date: Date) => {
 		const year = date.getFullYear();
