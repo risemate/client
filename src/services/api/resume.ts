@@ -53,7 +53,7 @@ export const fetchCreateResume = async (body: Resume): Promise<Career<Resume>> =
 
 export const fetchUpdateResume = async (
 	id: string,
-	body: Resume,
+	body: Partial<Resume>,
 ): Promise<Career<Resume>> => {
 	try {
 		const response = await axios.patch<Career<Resume>>(RESUME_PATH.UPDATE(id), body);

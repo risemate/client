@@ -74,7 +74,7 @@ export const resumeCreateMutation = (
 
 interface ResumeUpdateProps {
 	id: string;
-	body: Resume;
+	body: Partial<Resume>;
 }
 
 export const resumeUpdateMutation = (
