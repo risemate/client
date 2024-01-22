@@ -14,7 +14,7 @@ export default function BaseSectionTask({ description }: TaskProps) {
 	);
 }
 
-const DescriptionStyle = styled.ul`
+const DescriptionStyle = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 8px;

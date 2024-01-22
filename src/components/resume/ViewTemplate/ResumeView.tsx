@@ -5,6 +5,7 @@ import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
 import Activity from './Activity';
 import Certificate from './Certificate';
+import CoverLetter from './CoverLetter';
 import Education from './Education';
 import Profile from './Profile';
 import Project from './Project';
@@ -22,6 +23,7 @@ export default function ResumeTemplate({ career }: ResumeViewProps) {
 				techStack={career.techStack}
 				description={career.description}
 			/>
+			{career.coverLetter && <CoverLetter coverLetter={career.coverLetter} />}
 			{career.workExperiences && (
 				<WorkExperience workExperiences={career.workExperiences} />
 			)}
