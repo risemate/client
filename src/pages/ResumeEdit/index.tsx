@@ -12,6 +12,7 @@ import ErrorBoundaryComponent from '@components/errors/ErrorBoundaryComponent';
 
 import Activity from './components/Activity';
 import Certificates from './components/Certificate';
+import CoverLetter from './components/CoverLetter';
 import Education from './components/Education';
 import CreateModal from './components/modal/CreateModal';
 import DeleteModal from './components/modal/DeleteModal';
@@ -41,6 +42,7 @@ export default function ResumeEdit() {
 							{isEmpty(getValue('docTitle')) ? '새로운 이력서' : getValue('docTitle')};
 						</h2>
 						<Profile />
+						<CoverLetter />
 						<TechStack />
 						<WorkExperience />
 						<Project />
