@@ -2,10 +2,11 @@ import { useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
 import { Profile as ProfileType } from 'types/Resume';
 
+import DateInput from '@components/input/DateInput';
 import FileInput from '@components/input/FileInput';
 import Input from '@components/input/Input';
 import LinkInput from '@components/input/LinkInput';
-import TextArea from '@components/input/TextArea';
+// import TextArea from '@components/input/TextArea';
 import BaseSection from '@components/wrappers/EditBaseSection';
 
 export default function Profile() {
@@ -36,16 +37,21 @@ export default function Profile() {
 						{...register(inputName('position'))}
 					/>
 				</JobInput>
-				<ContactWrapper className='contact-wrapper'>
+				<ContactWrapper>
 					<Input
 						label='휴대폰 번호'
 						type='text'
 						{...register(inputName('phoneNumber'))}
 					/>
 					<Input label='이메일' type='email' {...register(inputName('email'))} />
+					<DateInput
+						label='생일'
+						inputName={inputName('birthday')}
+						{...register(inputName('birthday'))}
+					/>
 				</ContactWrapper>
-				<LinkInput links={watch('doc.links')} inputName='doc.links' />
-				<TextArea label='자기소개' help {...register('doc.description')} />
+				<LinkInput links={watch(inputName('links'))} inputName='doc.links' />
+				{/* <TextArea label='자기소개' help {...register('doc.description')} /> */}
 			</InputWrapper>
 		</BaseSection>
 	);
@@ -99,12 +105,17 @@ const JobInput = styled.label`
 
 const ContactWrapper = styled.div`
 	grid-column: 3 / 5;
-	grid-row: 1 / 2;
+	// grid-row: 1 / 2;
 	display: flex;
+	flex-wrap: wrap;
 	gap: 30px;
 	margin-top: 20px;
 	label {
-		width: 100%;
+		width: 47%;
+		flex-shrink: 0;
+	}
+	& > div {
+		width: 47%;
 	}
 `;
 
@@ -118,13 +129,13 @@ const InputWrapper = styled.div`
 		grid-row: 1 / 3;
 	}
 	& > div:last-of-type {
-		grid-column: 3 / 5;
-		grid-row: 2 / 3;
-		margin-top: 20px;
-	}
-	& > label:last-of-type {
 		grid-column: 1 / 5;
 		grid-row: 3 / 4;
 		margin-top: 20px;
 	}
+	// & > label:last-of-type {
+	// 	grid-column: 1 / 5;
+	// 	grid-row: 3 / 4;
+	// 	margin-top: 20px;
+	// }
 `;
