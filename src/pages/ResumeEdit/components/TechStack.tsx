@@ -27,7 +27,7 @@ export default function TechStack() {
 	const removeSelectedItem = (index: number) => {
 		const newTechStack = [...techStack.skills];
 		newTechStack.splice(index, 1);
-		setValue('techStack.skills', newTechStack);
+		setValue('doc.techStack.skills', newTechStack);
 	};
 
 	useClickOutside([searchRef], closeSearchList);
