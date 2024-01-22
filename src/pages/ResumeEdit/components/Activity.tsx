@@ -61,7 +61,7 @@ export default function Activity() {
 							</BaseSection.Item>
 							<BaseSection.Item gridColumn='1/4'>
 								<LinkInput
-									links={watch(FIELD)[index].links}
+									links={watch(inputName('links'))}
 									inputName={inputName('links')}
 								/>
 							</BaseSection.Item>

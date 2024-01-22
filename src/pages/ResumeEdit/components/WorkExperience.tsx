@@ -27,7 +27,7 @@ export default function WorkExperience() {
 			<BaseSection.Title title='경력' addData={() => prepend(defaultWorkExperience)} />
 			{fields &&
 				fields.map((work, index) => {
-					const inputName = (name: keyof WorkExperienceType | 'work') =>
+					const inputName = (name: keyof WorkExperienceType) =>
 						`${FIELD}.${index}.${name}`;
 					const edit = {
 						index,
@@ -85,7 +85,7 @@ export default function WorkExperience() {
 							</BaseSection.Item>
 							<BaseSection.Item gridColumn='1/4'>
 								<LinkInput
-									links={watch(FIELD)[index].links}
+									links={watch(inputName('links'))}
 									inputName={inputName('links')}
 								/>
 							</BaseSection.Item>

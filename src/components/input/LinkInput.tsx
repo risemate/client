@@ -36,7 +36,7 @@ export default function LinkInput({ links, inputName }: LinkInputProps) {
 	};
 
 	const addLink = () => {
-		const newLinks = [...links, stringToLink(link)];
+		const newLinks = [...(links || []), stringToLink(link)];
 		newLinks.sort((a, b) => {
 			if (a.linkTitle < b.linkTitle) {
 				return -1;
@@ -69,7 +69,7 @@ export default function LinkInput({ links, inputName }: LinkInputProps) {
 					onChange={changeLink}
 					onKeyUp={event => handleEnter(event, link, addLink)}
 				/>
-				<Button variant='navy' size='small' type='button' onClick={() => addLink()}>
+				<Button variant='navy' size='small' type='button' onClick={addLink}>
 					추가
 				</Button>
 			</div>

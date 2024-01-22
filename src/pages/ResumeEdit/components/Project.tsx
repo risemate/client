@@ -23,8 +23,7 @@ export default function Project() {
 			<BaseSection.Title title='프로젝트' addData={() => prepend(defaultProject)} />
 			{fields &&
 				fields.map((project, index) => {
-					const inputName = (name: keyof ProjectType | 'project') =>
-						`${FIELD}.${index}.${name}`;
+					const inputName = (name: keyof ProjectType) => `${FIELD}.${index}.${name}`;
 					const edit = {
 						index,
 						remove: () => remove(index),
@@ -69,7 +68,7 @@ export default function Project() {
 							</BaseSection.Item>
 							<BaseSection.Item gridColumn='1/4'>
 								<LinkInput
-									links={watch(FIELD)[index].links}
+									links={watch(inputName('links'))}
 									inputName={inputName('links')}
 								/>
 							</BaseSection.Item>

@@ -22,8 +22,7 @@ export default function Education() {
 			<BaseSection.Title title='교육' addData={() => prepend(defaultEducation)} />
 			{fields &&
 				fields.map((education, index) => {
-					const inputName = (name: keyof EducationType | 'enrollment') =>
-						`${FIELD}.${index}.${name}`;
+					const inputName = (name: keyof EducationType) => `${FIELD}.${index}.${name}`;
 					const edit = {
 						index,
 						remove: () => remove(index),
@@ -66,7 +65,7 @@ export default function Education() {
 							</BaseSection.Item>
 							<BaseSection.Item gridColumn='1/3'>
 								<LinkInput
-									links={watch(FIELD)[index].links}
+									links={watch(inputName('links'))}
 									inputName={inputName('links')}
 								/>
 							</BaseSection.Item>

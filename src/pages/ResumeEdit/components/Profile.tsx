@@ -50,7 +50,7 @@ export default function Profile() {
 						{...register(inputName('birthday'))}
 					/>
 				</ContactWrapper>
-				<LinkInput links={watch(inputName('links'))} inputName='doc.links' />
+				<LinkInput links={watch(inputName('links'))} inputName={inputName('links')} />
 				{/* <TextArea label='자기소개' help {...register('doc.description')} /> */}
 			</InputWrapper>
 		</BaseSection>

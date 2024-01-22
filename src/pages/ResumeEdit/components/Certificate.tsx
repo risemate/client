@@ -60,7 +60,7 @@ export default function Certificates() {
 							</BaseSection.Item>
 							<BaseSection.Item gridColumn='1/3'>
 								<LinkInput
-									links={watch(FIELD)[index].links}
+									links={watch(inputName('links'))}
 									inputName={inputName('links')}
 								/>
 							</BaseSection.Item>
