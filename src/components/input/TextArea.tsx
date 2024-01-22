@@ -20,15 +20,12 @@ const TextArea = forwardRef(function TextArea(
 					{help && (
 						<p className='help'>
 							<IconQuestion />
-							<span>
-								해당 목록을 리스트 형태로 정리하려면 아래와 같이 &#34;-&#34; 기호를
-								사용하여 불릿 포인트 목록을 만들 수 있습니다.
-							</span>
+							<span>해당 목록은 마크다운으로 작성할 수 있습니다.</span>
 						</p>
 					)}
 				</HelperWrapper>
 			)}
-			<textarea rows={6} ref={ref} {...TextAreaProps}></textarea>
+			<StyledTextArea rows={6} ref={ref} {...TextAreaProps} />
 			{warning && <span className='warning'>{warning}</span>}
 		</TextAreaLabel>
 	);
@@ -40,17 +37,28 @@ const TextAreaLabel = styled.label`
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
-	textarea {
-		border-radius: 10px;
-		border: 0.5px solid ${({ theme }) => theme.colors.grey};
-		padding: 15px;
-	}
 	.warning {
 		color: red;
 		padding-left: 10px;
 	}
 	span:last-child {
 		word-break: break-all;
+	}
+`;
+
+const StyledTextArea = styled.textarea`
+	border-radius: 10px;
+	border: 0.5px solid ${({ theme }) => theme.colors.grey};
+	padding: 15px;
+	line-height: 20px;
+	resize: vertical;
+	&::-webkit-scrollbar {
+		background-color: white;
+	}
+	&::-webkit-scrollbar-thumb {
+		background-color: ${({ theme }) => theme.colors.grey};
+		border-radius: 10px;
+		border: 4px solid white;
 	}
 `;
 
@@ -62,12 +70,12 @@ const HelperWrapper = styled.div`
 		position: relative;
 		span {
 			display: none;
-			width: 310px;
-			position: absolute;
+			width: 250px;
 			background: ${({ theme }) => theme.colors.darkGrey};
 			color: white;
 			padding: 10px;
 			border-radius: 10px;
+			position: absolute;
 			line-height: 20px;
 			top: -40px;
 			left: 20px;
