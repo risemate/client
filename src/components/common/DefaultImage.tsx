@@ -1,6 +1,6 @@
 import logoIconMono from '@images/logo-icon-mono.svg';
 import { isEmpty } from '@utils/helpers';
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 
 type Variant = 'navy' | 'mint' | 'blue' | 'grey';
@@ -15,15 +15,23 @@ interface DefaultImageProps {
 }
 
 export default function DefaultImage({ variant, size, shape, image }: DefaultImageProps) {
+	const [isError, setIsError] = useState(false);
+	const handleError = () => setIsError(true);
+	const selectImage = () => {
+		if (isEmpty(image) || isError) {
+			return logoIconMono;
+		}
+		return image;
+	};
 	return (
 		<DefaultImageWrapper
 			$variant={variant}
 			$size={size}
 			$shape={shape}
-			$hasImage={!isEmpty(image)}
+			$hasImage={!isEmpty(image) && !isError}
 			className='img'
 		>
-			<img src={isEmpty(image) ? logoIconMono : image} alt='' />
+			<img src={selectImage()} alt='' onError={handleError} />
 		</DefaultImageWrapper>
 	);
 }

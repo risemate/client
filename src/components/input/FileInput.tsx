@@ -40,7 +40,7 @@ export default function FileInput({ label, inputName, size }: FileInputProps) {
 			<span>
 				- 가로 600px, 세로 600px / 5MB이하 <br /> - 등록 가능 확장자: jpg, png , jpeg
 			</span>
-			<ResetButton type='button' onClick={() => resetImage()} $size={size}>
+			<ResetButton type='button' onClick={resetImage} $size={size}>
 				<IconCloseSharp />
 			</ResetButton>
 		</FileInputWrapper>
