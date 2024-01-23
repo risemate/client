@@ -14,3 +14,8 @@ export const networkKeys = {
 	base: ['networks'] as const,
 	id: (id: string) => [...networkKeys.base, { id }] as const,
 };
+
+export const alarmKeys = {
+	base: ['alams'] as const,
+	id: (id: string) => [...alarmKeys.base, { id }] as const,
+};

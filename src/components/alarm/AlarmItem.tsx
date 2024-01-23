@@ -1,16 +1,16 @@
-import React from 'react';
 import styled from 'styled-components';
+import { Alarm } from 'types/Alarm';
 
 import useAlarm from './Alarm.hook';
 
 interface AlarmItemProps {
-	alarm: { title: string; content: string; time: string; isRead: boolean };
+	alarm: Alarm;
 }
 
 export default function AlarmItem({ alarm }: AlarmItemProps) {
 	const { alarmClicked } = useAlarm();
 	return (
-		<AlarmItemButton onClick={alarmClicked}>
+		<AlarmItemButton onClick={() => alarmClicked(alarm)}>
 			<AlarmItemTitle>
 				{!alarm.isRead && <span />}
 				{alarm.title}
@@ -18,7 +18,7 @@ export default function AlarmItem({ alarm }: AlarmItemProps) {
 			<div className='contents'>
 				<span>{alarm.content}</span>
 				<br />
-				<time>{alarm.time}</time>
+				<time>{alarm.createdAt}</time>
 			</div>
 		</AlarmItemButton>
 	);

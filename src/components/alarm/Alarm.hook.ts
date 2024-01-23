@@ -1,60 +1,47 @@
-import { useRef } from 'react';
+import { fetchReadAlarm, fetchReadAlarms } from '@api/alarms';
+import { useAlarmQuery } from '@queries/useAlarms';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Alarm } from 'types/Alarm';
 
 export default function useAlarm() {
 	const navigate = useNavigate();
 	const alarmRef = useRef<HTMLDivElement | null>(null);
-	const alarms = [
-		{
-			title: '이력서 첨삭 요청',
-			content:
-				'@000 님에게 이력서 첨삭 요청이 왔습니다. 2일 이상 미응답시 자동 거절 처리됩니다. ',
-			time: '2023.09.22 (금)',
-			isRead: true,
-		},
-		{
-			title: '이력서 첨삭 요청',
-			content:
-				'@000 님에게 이력서 첨삭 요청이 왔습니다. 2일 이상 미응답시 자동 거절 처리됩니다. ',
-			time: '2023.09.22 (금)',
-			isRead: false,
-		},
-		{
-			title: '이력서 첨삭 요청',
-			content:
-				'@000 님에게 이력서 첨삭 요청이 왔습니다. 2일 이상 미응답시 자동 거절 처리됩니다. ',
-			time: '2023.09.22 (금)',
-			isRead: true,
-		},
-		{
-			title: '이력서 첨삭 요청',
-			content:
-				'@000 님에게 이력서 첨삭 요청이 왔습니다. 2일 이상 미응답시 자동 거절 처리됩니다. ',
-			time: '2023.09.22 (금)',
-			isRead: false,
-		},
-		{
-			title: '이력서 첨삭 요청',
-			content:
-				'@000 님에게 이력서 첨삭 요청이 왔습니다. 2일 이상 미응답시 자동 거절 처리됩니다. ',
-			time: '2023.09.22 (금)',
-			isRead: false,
-		},
-	];
+	const { data, fetchNextPage, hasNextPage, isLoading, isFetched } = useAlarmQuery({
+		pageSize: 2,
+	});
+	const [alarms, setAlarms] = useState<Alarm[]>([]);
 
-	const readAllAlarm = () => {
-		alarms.forEach(alarm => {
-			alarm.isRead = true;
+	useEffect(() => {
+		if (!isLoading && isFetched) {
+			const newData = [] as Alarm[];
+			data?.pages.map(page => {
+				newData.push(...page.data);
+			});
+			setAlarms(newData);
+		}
+	}, [data, isLoading, isFetched]);
+
+	const readAllAlarm = async () => {
+		setAlarms(pre => {
+			return pre.map(alarm => ({ ...alarm, isRead: true }));
 		});
+
+		await fetchReadAlarms();
 	};
 
-	const submitAlarmState = async () => {
-		console.info('서버에 읽음 처리 요청 하기');
-	};
-
-	const alarmClicked = async () => {
-		await submitAlarmState();
-		navigate('/알람내용페이지로 보내기');
+	const alarmClicked = async (alarm: Alarm) => {
+		//: 여기 업데이트 잘 안됨
+		setAlarms(prevAlarms => {
+			return prevAlarms.map(pre => {
+				if (pre._id === alarm._id) {
+					return { ...pre, isRead: true, p: '' };
+				}
+				return pre;
+			});
+		});
+		!alarm.isRead && (await fetchReadAlarm(alarm._id));
+		alarm.url && navigate(alarm.url);
 	};
 
 	return {
@@ -62,5 +49,8 @@ export default function useAlarm() {
 		alarms,
 		readAllAlarm,
 		alarmClicked,
+		isLoading,
+		hasNextPage,
+		fetchNextPage,
 	};
 }
