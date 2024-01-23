@@ -1,6 +1,7 @@
 import useTab from '@hooks/common/useTab';
 import React from 'react';
 import styled from 'styled-components';
+import { TabItem } from 'types/Tab';
 
 import Banner from '@common/Banner';
 import NetworkCardList from '@components/network/NetworkCardList';
@@ -8,10 +9,14 @@ import NetworkCardList from '@components/network/NetworkCardList';
 import useNetwork from './Network.hook';
 
 export default function Network() {
-	const { networks } = useNetwork();
-	const tabItems = ['전체', '이력서', '자기소개서', '입시자소서'];
-	const { changeTab, isCurrentTab } = useTab(tabItems);
+	const tabItems: TabItem[] = [
+		{ label: '전체', value: '' },
+		{ label: '이력서', value: 'RESUME' },
+		{ label: '자기소개서', value: 'COVERLETTER' },
+	];
+	const { currentTab, changeTab, isCurrentTab } = useTab(tabItems);
 	const tab = { tabItems, changeTab, isCurrentTab };
+	const { networks } = useNetwork(currentTab.value);
 	return (
 		<>
 			<Banner variant='mint' tab={tab}>

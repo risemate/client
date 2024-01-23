@@ -6,6 +6,7 @@ import {
 	Progress as ProgressType,
 	Complete as CompleteType,
 } from 'types/Coach';
+import { TabItem } from 'types/Tab';
 
 import Tab from '@common/Tab';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
@@ -15,7 +16,11 @@ import Pending from './components/Pending';
 import Progress from './components/Progress';
 
 export default function CoachManagement() {
-	const tabItems = ['대기', '진행 중', '완료'];
+	const tabItems: TabItem[] = [
+		{ label: '대기', value: '대기' },
+		{ label: '진행 중', value: '진행 중' },
+		{ label: '완료', value: '완료' },
+	];
 	const { currentTab, changeTab, isCurrentTab } = useTab(tabItems);
 	const pendingList: PendingType[] = [{ temp: 1 }, { temp: 1 }, { temp: 1 }];
 	const progressList: ProgressType[] = [{ temp: 1 }, { temp: 1 }, { temp: 1 }];
@@ -24,7 +29,7 @@ export default function CoachManagement() {
 		<WhiteBoxWrapper type='div' customCss={managementWrapperStyle}>
 			<ManagementTitle>코칭 관리</ManagementTitle>
 			<Tab items={tabItems} changeTab={changeTab} isCurrentTab={isCurrentTab} underline />
-			{currentTab === '대기' && (
+			{currentTab.value === '대기' && (
 				<ManagementTabWrapper>
 					<h3>응답 대기</h3>
 					<p>
@@ -40,7 +45,7 @@ export default function CoachManagement() {
 					</ManagementList>
 				</ManagementTabWrapper>
 			)}
-			{currentTab === '진행 중' && (
+			{currentTab.value === '진행 중' && (
 				<ManagementTabWrapper>
 					<h3>진행 중인 첨삭 코칭</h3>
 					<ManagementList>
@@ -52,7 +57,7 @@ export default function CoachManagement() {
 					</ManagementList>
 				</ManagementTabWrapper>
 			)}
-			{currentTab === '완료' && (
+			{currentTab.value === '완료' && (
 				<ManagementTabWrapper>
 					<h3>완료한 첨삭 코칭</h3>
 					<ManagementList>

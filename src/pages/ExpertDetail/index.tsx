@@ -2,6 +2,7 @@ import useTab from '@hooks/common/useTab';
 import React from 'react';
 import styled from 'styled-components';
 import { convertToProfile, mockProduct } from 'types/Product/data';
+import { TabItem } from 'types/Tab';
 
 import Tab from '@common/Tab';
 import Profile from '@components/resume/ViewTemplate/Profile';
@@ -13,7 +14,12 @@ import Review from './components/Review/Review';
 import Service from './components/Service';
 
 export default function ExpertDetail() {
-	const tabItems = ['서비스 설명', '전문가 정보', '후기', '문의'];
+	const tabItems: TabItem[] = [
+		{ label: '서비스 설명', value: 'a' },
+		{ label: '전문가 정보', value: 'b' },
+		{ label: '후기', value: 'c' },
+		{ label: '문의', value: 'd' },
+	];
 	const { currentTab, changeTab, isCurrentTab } = useTab(tabItems);
 	const product = mockProduct;
 	const { productTitle, subTitle, coverImage } = product;

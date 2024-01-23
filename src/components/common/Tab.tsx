@@ -1,14 +1,15 @@
 import styled from 'styled-components';
+import { TabItem } from 'types/Tab';
 
 type Variant = 'lightGrey' | 'darkGrey';
 
 interface TabProps {
-	items: string[];
+	items: TabItem[];
 	center?: boolean;
 	underline?: boolean;
 	variant?: Variant;
-	changeTab: (item: string) => void;
-	isCurrentTab: (item: string) => boolean;
+	changeTab: (item: TabItem) => void;
+	isCurrentTab: (item: TabItem) => boolean;
 }
 
 export default function Tab({
@@ -23,13 +24,13 @@ export default function Tab({
 		<TabList $center={center} $underline={underline}>
 			{items.map(item => {
 				return (
-					<li key={item}>
+					<li key={item.value}>
 						<TabItemButton
 							$variant={variant}
 							className={isCurrentTab(item) ? 'active' : undefined}
 							onClick={() => changeTab(item)}
 						>
-							{item}
+							{item.label}
 						</TabItemButton>
 					</li>
 				);

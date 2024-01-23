@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
+import { TabItem } from 'types/Tab';
 
 import Button from './Button';
 import Tab from './Tab';
@@ -10,9 +11,9 @@ interface BannerProps {
 	variant: Variant;
 	children: ReactNode;
 	tab?: {
-		tabItems: string[];
-		changeTab: (item: string) => void;
-		isCurrentTab: (item: string) => boolean;
+		tabItems: TabItem[];
+		changeTab: (item: TabItem) => void;
+		isCurrentTab: (item: TabItem) => boolean;
 	};
 }
 

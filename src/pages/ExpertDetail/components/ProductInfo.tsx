@@ -20,7 +20,12 @@ export default function ProductInfo({
 	avgReviewScore,
 }: ProductInfoProps) {
 	const filteredPackages = removeNullValues<PackageType>(packages);
-	const tabItems = Object.keys(filteredPackages);
+	const tabItems = Object.keys(filteredPackages).map(item => {
+		return {
+			label: item,
+			value: item,
+		};
+	});
 	const { currentTab, changeTab, isCurrentTab } = useTab(tabItems);
 	return (
 		<article>
@@ -35,7 +40,7 @@ export default function ProductInfo({
 				<h3>포함 서비스 목록</h3>
 				{Object.entries(filteredPackages).map(
 					([key, pack]) =>
-						currentTab === key && (
+						currentTab.label === key && (
 							<div key={key}>
 								<ul>
 									<li>{pack?.description}</li>

@@ -1,13 +1,18 @@
 import useTab from '@hooks/common/useTab';
 import React from 'react';
 import styled from 'styled-components';
+import { TabItem } from 'types/Tab';
 
 import Banner from '@common/Banner';
 import ExpertCardList from '@components/experts/ExpertCardList';
 
 export default function Experts() {
 	const experts = Array(6).fill('hello');
-	const tabItems = ['전체', '이력서', '자기소개서', '입시자소서'];
+	const tabItems: TabItem[] = [
+		{ label: '전체', value: '' },
+		{ label: '이력서', value: 'RESUME' },
+		{ label: '자기소개서', value: 'COVERLETTER' },
+	];
 	const { changeTab, isCurrentTab } = useTab(tabItems);
 	const tab = { tabItems, changeTab, isCurrentTab };
 	return (
