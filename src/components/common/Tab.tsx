@@ -3,28 +3,28 @@ import { TabItem } from 'types/Tab';
 
 type Variant = 'lightGrey' | 'darkGrey';
 
-interface TabProps {
-	items: TabItem[];
+interface TabProps<T> {
+	items: TabItem<T>[];
 	center?: boolean;
 	underline?: boolean;
 	variant?: Variant;
-	changeTab: (item: TabItem) => void;
-	isCurrentTab: (item: TabItem) => boolean;
+	changeTab: (item: TabItem<T>) => void;
+	isCurrentTab: (item: TabItem<T>) => boolean;
 }
 
-export default function Tab({
+export default function Tab<T = string | number | undefined>({
 	items,
 	center,
 	underline,
 	variant = 'darkGrey',
 	changeTab,
 	isCurrentTab,
-}: TabProps) {
+}: TabProps<T>) {
 	return (
 		<TabList $center={center} $underline={underline}>
 			{items.map(item => {
 				return (
-					<li key={item.value}>
+					<li key={item.label}>
 						<TabItemButton
 							$variant={variant}
 							className={isCurrentTab(item) ? 'active' : undefined}

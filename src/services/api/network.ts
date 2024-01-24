@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Career } from 'types/CareerDocument';
-import { PagingQueryProps, PagingQueryResponse } from 'types/Query/Query';
+import { NetworkPagingQuery, PagingQueryResponse } from 'types/Query/Query';
 import { Resume } from 'types/Resume';
 
 const NETWORK_PATH = {
@@ -9,11 +9,14 @@ const NETWORK_PATH = {
 };
 
 export const fetchPublicCareers = async (
-	params?: PagingQueryProps,
+	params?: NetworkPagingQuery,
 ): Promise<PagingQueryResponse<Career>> => {
 	try {
+		const queryParams = {
+			...(params?.careerType !== undefined && { careerType: params?.careerType }),
+		};
 		const response = await axios.get<PagingQueryResponse<Career>>(NETWORK_PATH.DEFAULT, {
-			params,
+			params: queryParams,
 		});
 		return response.data;
 	} catch (error) {

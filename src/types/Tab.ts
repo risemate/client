@@ -1,1 +1,1 @@
-export type TabItem = { label: string; value: string | number };
+export type TabItem<T = string | number | undefined> = { label: string; value: T };

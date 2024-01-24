@@ -7,17 +7,21 @@ import Tab from './Tab';
 
 type Variant = 'home' | 'navy' | 'blue' | 'mint';
 
-interface BannerProps {
+interface BannerProps<T> {
 	variant: Variant;
 	children: ReactNode;
 	tab?: {
-		tabItems: TabItem[];
-		changeTab: (item: TabItem) => void;
-		isCurrentTab: (item: TabItem) => boolean;
+		tabItems: TabItem<T>[];
+		changeTab: (item: TabItem<T>) => void;
+		isCurrentTab: (item: TabItem<T>) => boolean;
 	};
 }
 
-export default function Banner({ variant, children, tab }: BannerProps) {
+export default function Banner<T = string | number | undefined>({
+	variant,
+	children,
+	tab,
+}: BannerProps<T>) {
 	const tabVariant = variant === 'blue' || variant === 'mint' ? 'lightGrey' : 'darkGrey';
 	return (
 		<BannerSection $variant={variant} $tab={!!tab}>

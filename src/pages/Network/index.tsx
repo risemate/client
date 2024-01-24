@@ -1,6 +1,7 @@
 import useTab from '@hooks/common/useTab';
 import React from 'react';
 import styled from 'styled-components';
+import { CareerType } from 'types/CareerDocument';
 import { TabItem } from 'types/Tab';
 
 import Banner from '@common/Banner';
@@ -9,8 +10,8 @@ import NetworkCardList from '@components/network/NetworkCardList';
 import useNetwork from './Network.hook';
 
 export default function Network() {
-	const tabItems: TabItem[] = [
-		{ label: '전체', value: '' },
+	const tabItems: TabItem<CareerType | undefined>[] = [
+		{ label: '전체', value: undefined },
 		{ label: '이력서', value: 'RESUME' },
 		{ label: '자기소개서', value: 'COVERLETTER' },
 	];
@@ -19,7 +20,7 @@ export default function Network() {
 	const { networks } = useNetwork(currentTab.value);
 	return (
 		<>
-			<Banner variant='mint' tab={tab}>
+			<Banner<CareerType | undefined> variant='mint' tab={tab}>
 				다른 사람들의 이력서와 자기소개서를 <br /> 구경해보세요!
 			</Banner>
 			<NetworkSection>

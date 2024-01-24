@@ -2,15 +2,15 @@ import { fetchPublicCareers, fetchPublicResumeDetail } from '@api/network';
 import { networkKeys } from '@queries/queryKeys';
 import { UseQueryOptions, UseQueryResult, useQuery } from '@tanstack/react-query';
 import { Career } from 'types/CareerDocument';
-import { PagingQueryProps, PagingQueryResponse } from 'types/Query/Query';
+import { NetworkPagingQuery, PagingQueryResponse } from 'types/Query/Query';
 import { Resume } from 'types/Resume';
 
 export const networkQuery = (
-	params?: PagingQueryProps,
+	params?: NetworkPagingQuery,
 	options?: UseQueryOptions<PagingQueryResponse<Career>>,
 ): UseQueryResult<PagingQueryResponse<Career>> => {
 	return useQuery({
-		queryKey: networkKeys.base,
+		queryKey: networkKeys.career(params),
 		queryFn: () => fetchPublicCareers(params),
 		...options,
 	});

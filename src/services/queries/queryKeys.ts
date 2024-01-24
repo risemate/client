@@ -1,3 +1,4 @@
+import { NetworkPagingQuery } from 'types/Query/Query';
 import { CareersQueryProps } from 'types/Query/ResumeQuery';
 
 export const authKeys = {
@@ -13,4 +14,6 @@ export const resumeKeys = {
 export const networkKeys = {
 	base: ['networks'] as const,
 	id: (id: string) => [...networkKeys.base, { id }] as const,
+	career: (params: NetworkPagingQuery | undefined) =>
+		[...networkKeys.base, params] as const,
 };

@@ -1,5 +1,6 @@
 import { QueryKey, UseMutationOptions, UseQueryOptions } from '@tanstack/react-query';
 import { AxiosError, AxiosResponse } from 'axios';
+import { CareerType } from 'types/CareerDocument';
 
 export type UseQueryOptionsType<T> = UseQueryOptions<
 	AxiosResponse<T>,
@@ -28,6 +29,10 @@ export type PagingQueryResponse<T> = {
 	page: number;
 	pagingCounter: number;
 };
+
+export interface NetworkPagingQuery extends PagingQueryProps {
+	careerType?: CareerType;
+}
 
 // export interface UseMutationOptions<TData = unknown, TError = unknown, TVariables = void, TContext = unknown>
 // extends Omit<MutationObserverOptions<TData, TError, TVariables, TContext>, '_defaulted' | 'variables'> {
