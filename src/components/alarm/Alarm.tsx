@@ -1,5 +1,5 @@
 import useClickOutside from '@hooks/common/useClickOutside';
-import React, { RefObject } from 'react';
+import { RefObject } from 'react';
 import styled from 'styled-components';
 
 import useAlarm from './Alarm.hook';
@@ -11,7 +11,7 @@ interface AlarmProps {
 }
 
 export default function Alarm({ closeAlarm, btnAlarmRef }: AlarmProps) {
-	const { alarmRef, alarms, readAllAlarm } = useAlarm();
+	const { alarmRef, alarms, readAllAlarm, fetchNextPage, hasNextPage } = useAlarm();
 	useClickOutside([alarmRef, btnAlarmRef], closeAlarm);
 
 	return (
@@ -22,14 +22,15 @@ export default function Alarm({ closeAlarm, btnAlarmRef }: AlarmProps) {
 				전체 읽음 처리
 			</ReadAllInput>
 			<ul>
-				{alarms.map((alarm, index) => {
+				{alarms.map(alarm => {
 					return (
-						<li key={index}>
+						<li key={alarm._id}>
 							<AlarmItem alarm={alarm} />
 						</li>
 					);
 				})}
 			</ul>
+			{hasNextPage && <button onClick={() => fetchNextPage()}>로드</button>}
 		</AlarmArticle>
 	);
 }

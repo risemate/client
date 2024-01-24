@@ -17,3 +17,8 @@ export const networkKeys = {
 	career: (params: NetworkPagingQuery | undefined) =>
 		[...networkKeys.base, params] as const,
 };
+
+export const alarmKeys = {
+	base: ['alams'] as const,
+	id: (id: string) => [...alarmKeys.base, { id }] as const,
+};
