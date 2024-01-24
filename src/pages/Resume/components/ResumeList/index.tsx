@@ -38,6 +38,7 @@ export default function Resume() {
 const resumeWrapperStyle = css`
 	min-height: 500px;
 	padding: 50px;
+	margin: 75px 0;
 	section {
 		display: flex;
 		flex-direction: column;
@@ -45,7 +46,6 @@ const resumeWrapperStyle = css`
 			color: ${({ theme }) => theme.colors.navy};
 			font-weight: bold;
 			font-size: ${({ theme }) => theme.fontSizes.medium};
-			margin-bottom: 30px;
 		}
 		&:not(:last-child) {
 			margin-bottom: 70px;
