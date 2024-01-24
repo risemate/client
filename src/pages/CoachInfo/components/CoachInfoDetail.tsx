@@ -21,7 +21,11 @@ export default function CoachInfoDetail() {
 	const navigate = useNavigate();
 	return (
 		<>
-			{!hasPost && <Empty name='게시물이' moveToLink={() => navigate('/edit')} />}
+			{!hasPost && (
+				<Empty btnText='게시글 작성하기' onClick={() => navigate('/edit')}>
+					아직 작성하신 게시글이 없습니다
+				</Empty>
+			)}
 			{hasPost && !queryParam && (
 				<InfoDetailSection>
 					<div>

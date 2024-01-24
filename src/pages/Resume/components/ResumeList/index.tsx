@@ -1,9 +1,11 @@
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { isEmpty } from '@utils/helpers';
+import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { css } from 'styled-components';
 
 import Empty from '@common/Empty';
+import Loader from '@common/Loader';
 import ErrorBoundaryComponent from '@components/errors/ErrorBoundaryComponent';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
@@ -11,34 +13,41 @@ import BasicResumeList from '../BasicResumeList';
 import useResumeList from './ResumeList.hook';
 
 export default function Resume() {
-	// const {showBoundary} = useErrorBoundary();
 	const { reset } = useQueryErrorResetBoundary();
 	const { resumes, coverLetters, moveToNewResume } = useResumeList();
 	return (
 		<>
 			<h2 className='a11y-hidden'>나의 이력서</h2>
 			<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
-				{isEmpty(resumes) ? (
-					<Empty name='이력서가' moveToLink={moveToNewResume} />
-				) : (
-					<ErrorBoundary
-						FallbackComponent={ErrorBoundaryComponent}
-						onError={() => console.error('error!!!')}
-						onReset={reset}
-					>
-						<BasicResumeList title='이력서' resumes={resumes} />
-						<BasicResumeList title='자기소개서' resumes={coverLetters} />
-					</ErrorBoundary>
-				)}
+				<ErrorBoundary
+					FallbackComponent={ErrorBoundaryComponent}
+					onError={() => console.error('error!!!')}
+					onReset={reset}
+				>
+					<Suspense fallback={<Loader />}>
+						{isEmpty(resumes) && isEmpty(coverLetters) ? (
+							<Empty btnText='새 이력서 작성하기' onClick={moveToNewResume}>
+								아직 작성하신 이력서/자기소개서가 없습니다
+							</Empty>
+						) : (
+							<>
+								<BasicResumeList title='이력서' resumes={resumes} />
+								<BasicResumeList title='자기소개서' resumes={coverLetters} />
+							</>
+						)}
+					</Suspense>
+				</ErrorBoundary>
 			</WhiteBoxWrapper>
 		</>
 	);
 }
 
 const resumeWrapperStyle = css`
-	min-height: 500px;
+	min-height: 775px;
 	padding: 50px;
 	margin: 75px 0;
+	display: flex;
+	flex-direction: column;
 	section {
 		display: flex;
 		flex-direction: column;

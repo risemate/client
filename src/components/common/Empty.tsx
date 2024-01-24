@@ -1,36 +1,39 @@
-import React from 'react';
+import { IconFileOff } from '@icons';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import Button from './Button';
 
 interface EmptyProps {
-	name: string;
-	moveToLink: () => void;
+	children: ReactNode;
+	btnText?: string;
+	onClick?: (() => void) | undefined;
 }
 
-export default function Empty({ name, moveToLink }: EmptyProps) {
+export default function Empty({ children, btnText, onClick = undefined }: EmptyProps) {
 	return (
-		<EmptySection>
-			<span />
-			<h3>아직 작성하신 {name} 없어요!</h3>
-			<Button variant='blue' onClick={() => moveToLink()}>
-				{name.slice(0, -1)} 작성하기 ➔
-			</Button>
-		</EmptySection>
+		<EmptyWrapper>
+			<IconFileOff />
+			<p>{children}</p>
+			{btnText && (
+				<Button variant='blue' onClick={onClick}>
+					{btnText}
+				</Button>
+			)}
+		</EmptyWrapper>
 	);
 }
 
-const EmptySection = styled.section`
+const EmptyWrapper = styled.div`
 	${({ theme }) => theme.common.flexCenterColumn};
 	gap: 20px;
-	span {
-		display: inline-block;
-		outline: 5px dashed ${({ theme }) => theme.colors.navy};
-		border-radius: 10px;
+	flex: 1;
+	svg {
 		width: 50px;
 		height: 50px;
+		color: ${({ theme }) => theme.colors.navy};
 	}
-	h3 {
+	p {
 		font-size: ${({ theme }) => theme.fontSizes.medium};
 		color: ${({ theme }) => theme.colors.navy};
 		font-weight: bold;

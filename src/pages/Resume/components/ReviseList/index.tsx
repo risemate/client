@@ -22,7 +22,9 @@ export default function ReviseList() {
 			<h2 className='a11y-hidden'>첨삭 이력서 목록</h2>
 			<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
 				{isEmpty(reviseResumes) ? (
-					<Empty name='이력서가' moveToLink={moveToRevise} />
+					<Empty btnText='AI 첨삭받기' onClick={moveToRevise}>
+						아직 첨삭받은 이력서가 없습니다
+					</Empty>
 				) : (
 					<ErrorBoundary
 						FallbackComponent={ErrorBoundaryComponent}

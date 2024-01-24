@@ -46,19 +46,22 @@ export default function BasicResumeList({
 		<BasicResumeSection>
 			<div>
 				<h3>{title}</h3>
-				<Button variant='navy' size='small' to='new/edit'>
-					새 파일 추가 +
-				</Button>
+				{isRevise || (
+					<Button variant='navy' size='small' to='new/edit'>
+						새 {title} +
+					</Button>
+				)}
 			</div>
 			{/* <StyledResumeList> */}
-			<Swiper {...setting}>
-				<Suspense fallback={<Loader />}>
+			{isEmpty(resumes) ? (
+				<Empty>아직 작성하신 {title}가 없습니다</Empty>
+			) : (
+				<Swiper {...setting}>
 					{/* {isRevise || (
 						<SwiperSlide key={'helo'}>
 							<AddResume />
 						</SwiperSlide>
 					)} */}
-					{isEmpty(resumes) && <Empty name={title + '가'} moveToLink={() => 'hello'} />}
 					{resumes.map(resume => (
 						<SwiperSlide key={resume._id}>
 							{isRevise ? (
@@ -68,8 +71,8 @@ export default function BasicResumeList({
 							)}
 						</SwiperSlide>
 					))}
-				</Suspense>
-			</Swiper>
+				</Swiper>
+			)}
 			{/* </StyledResumeList> */}
 		</BasicResumeSection>
 	);
@@ -83,6 +86,7 @@ export default function BasicResumeList({
 // `;
 
 const BasicResumeSection = styled.section`
+	min-height: 300px;
 	& > div:first-child {
 		display: flex;
 		align-items: center;
