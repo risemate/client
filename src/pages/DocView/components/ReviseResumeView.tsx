@@ -5,6 +5,7 @@ import ResumeNav from '@common/ResumeNav';
 import { ReviseResumeTemplate } from '@components/resume/ViewTemplate/ReviseResumeView';
 
 export default function ReviseResumeView() {
+	// eslint-disable-next-line
 	const { id } = useParams();
 	const resumeNavItems = [
 		{ name: '비교하기', onClick: () => alert('비교하기') },

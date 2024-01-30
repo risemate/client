@@ -17,7 +17,7 @@ export default function Profile({
 	profile,
 	techStack,
 	feedback,
-	description,
+	// description,
 }: ProfileProps) {
 	return (
 		<ProfileSection>

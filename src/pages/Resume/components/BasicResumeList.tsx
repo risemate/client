@@ -1,4 +1,5 @@
 import { isEmpty } from '@utils/helpers';
+// eslint-disable-next-line
 import React, { Suspense } from 'react';
 import styled from 'styled-components';
 import { Navigation, Pagination } from 'swiper/modules';
@@ -8,6 +9,7 @@ import { Resume } from 'types/Resume';
 
 import Button from '@common/Button';
 import Empty from '@common/Empty';
+// eslint-disable-next-line
 import Loader from '@common/Loader';
 import CareerBasicCard from '@components/resume/Card/CareerBasicCard';
 import ReviseCareerCard from '@components/resume/Card/ReviseCareerCard';
