@@ -15,7 +15,6 @@ import Certificates from './components/Certificate';
 import CoverLetter from './components/CoverLetter';
 import Education from './components/Education';
 import CreateModal from './components/modal/CreateModal';
-import DeleteModal from './components/modal/DeleteModal';
 import UpdateModal from './components/modal/UpdateModal';
 import Profile from './components/Profile';
 import Project from './components/Project';
@@ -55,7 +54,6 @@ export default function ResumeEdit() {
 			</ErrorBoundary>
 			<CreateModal />
 			<UpdateModal />
-			<DeleteModal />
 		</FormProvider>
 	);
 }

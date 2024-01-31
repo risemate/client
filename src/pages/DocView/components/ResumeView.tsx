@@ -9,6 +9,7 @@ import ErrorBoundaryComponent from '@components/errors/ErrorBoundaryComponent';
 import ResumeTemplate from '@components/resume/ViewTemplate/ResumeView';
 
 import useDocView from '../DocView.hook';
+import DeleteModal from './DeleteModal';
 
 export default function ResumeView() {
 	const { id } = useParams();
@@ -16,16 +17,19 @@ export default function ResumeView() {
 	const { reset } = useQueryErrorResetBoundary();
 	const { resumeDetail, resumeViewNavItems, isNetwork } = useDocView(id || '', pathname);
 	return (
-		<ErrorBoundary
-			FallbackComponent={ErrorBoundaryComponent}
-			onError={() => console.error('error!!!')}
-			onReset={reset}
-		>
-			<Suspense fallback={<Loader />}>
-				{/* TODO: 해결 */}
-				{resumeDetail && <ResumeTemplate career={resumeDetail.doc} />}
-			</Suspense>
-			{isNetwork || <ResumeNav resumeNavItems={resumeViewNavItems} />}
-		</ErrorBoundary>
+		<>
+			<ErrorBoundary
+				FallbackComponent={ErrorBoundaryComponent}
+				onError={() => console.error('error!!!')}
+				onReset={reset}
+			>
+				<Suspense fallback={<Loader />}>
+					{/* TODO: 해결 */}
+					{resumeDetail && <ResumeTemplate career={resumeDetail.doc} />}
+				</Suspense>
+				{isNetwork || <ResumeNav resumeNavItems={resumeViewNavItems} />}
+			</ErrorBoundary>
+			<DeleteModal />
+		</>
 	);
 }

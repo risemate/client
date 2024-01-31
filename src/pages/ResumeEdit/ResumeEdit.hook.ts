@@ -1,7 +1,6 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
 import {
 	resumeCreateMutation,
-	resumeDeleteMutation,
 	resumeDetailQuery,
 	resumeUpdateMutation,
 } from '@queries/resume';
@@ -28,19 +27,13 @@ export default function useResumeEdit(resumeId: string) {
 		useModal('update-resume');
 	const { isModal: isCreateModal, openModal: openCreateModal } =
 		useModal('create-resume');
-	const { isModal: isDeleteModal, openModal: openDeleteModal } =
-		useModal('delete-resume');
 
 	const updateResumeMutation = resumeUpdateMutation();
 	const createResumeMutation = resumeCreateMutation();
-	const deleteResumeMutation = resumeDeleteMutation();
 
 	const { handleSubmit, watch } = resumeEditMethods;
 	const getValue = (field: keyof Career<ResumeType>) => watch(field)?.toString();
-	const deleteResume = () => {
-		deleteResumeMutation.mutate(resumeId);
-		navigate(`/my-info/docs`);
-	};
+
 	const submitResume = () => {
 		return handleSubmit(data => {
 			if (isNewResume) {
@@ -54,13 +47,10 @@ export default function useResumeEdit(resumeId: string) {
 		});
 	};
 
-	const resumeEditNavItems = isNewResume
-		? [{ name: '섹션 추가' }, { name: '저장하기', onClick: openCreateModal }]
-		: [
-				{ name: '섹션 추가' },
-				{ name: '삭제하기', onClick: openDeleteModal },
-				{ name: '저장하기', onClick: openUpdateModal },
-		  ];
+	const resumeEditNavItems = [
+		{ name: '미리보기' },
+		{ name: '저장하기', onClick: isNewResume ? openCreateModal : openUpdateModal },
+	];
 
 	return {
 		resumeDetail,
@@ -74,10 +64,6 @@ export default function useResumeEdit(resumeId: string) {
 		},
 		updateModal: {
 			isModal: isUpdateModal,
-		},
-		deleteModal: {
-			isModal: isDeleteModal,
-			deleteResume,
 		},
 	};
 }

@@ -1,13 +1,15 @@
-import useResumeEdit from 'pages/ResumeEdit/ResumeEdit.hook';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 import Modal from '@components/modal/Modal';
 
+import useDocView from '../DocView.hook';
+
 export default function DeleteModal() {
 	const { id } = useParams();
+	const { pathname } = useLocation();
 	const {
 		deleteModal: { deleteResume },
-	} = useResumeEdit(id || '');
+	} = useDocView(id || '', pathname);
 	return (
 		<Modal
 			title='이력서 삭제'
