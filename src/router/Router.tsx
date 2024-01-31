@@ -19,7 +19,7 @@ import { signLoader } from './loader';
 
 const token = localStorage.getItem('rm-checkpoint');
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
-axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+axios.defaults.headers.common.Authorization = token ? `Bearer ${token}` : '';
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 export const router = createBrowserRouter([
