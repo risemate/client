@@ -25,4 +25,4 @@ export {
 	BsStarHalf as IconStarHalf,
 	BsStar as IconStarEmpty,
 } from 'react-icons/bs';
-export { TbFileOff as IconFileOff } from "react-icons/tb";
+export { TbFileOff as IconFileOff } from 'react-icons/tb';
