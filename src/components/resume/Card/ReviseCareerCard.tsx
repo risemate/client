@@ -51,7 +51,7 @@ const Tag = styled.span<StyledTagProps>`
 	border-radius: 0px 10px;
 	color: white;
 	font-size: ${({ theme }) => theme.fontSizes.small};
-	background: ${({ theme, $color }) => theme.colors[$color]};
+	background: ${({ theme, $color }) => theme.colors[$color as keyof typeof theme.colors]};
 `;
 
 type TagInfoType = {

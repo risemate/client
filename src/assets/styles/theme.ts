@@ -7,8 +7,10 @@ const fontSizes = {
 	medium: pixelToRem(24),
 	large: pixelToRem(32),
 };
+export type ThemeFontSize = typeof fontSizes;
 
 const colors = {
+	white: '#ffffff',
 	navy: '#313964',
 	blue: '#576EE7',
 	mint: '#67E0B2',
@@ -18,11 +20,13 @@ const colors = {
 	darkGrey: '#767676',
 	darkerGrey: '#4B4B4B',
 };
+export type ThemeColor = typeof colors;
 
 const widths = {
 	minWidth: '850px',
 	maxWidth: '1200px',
 };
+export type ThemeMediaWidth = typeof widths;
 
 const common = {
 	flexCenter: `
@@ -54,12 +58,20 @@ const common = {
 	-webkit-box-orient: vertical;
   `,
 };
+export type ThemeCommonStyle = typeof common;
+
+export type Theme = {
+	fontSizes: ThemeFontSize;
+	colors: ThemeColor;
+	widths: ThemeMediaWidth;
+	common: ThemeCommonStyle;
+};
 
 const theme = {
 	fontSizes,
 	colors,
 	widths,
 	common,
-};
+} as Theme;
 
 export default theme;
