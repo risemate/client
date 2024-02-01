@@ -4,11 +4,12 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Alarm } from 'types/Alarm';
 
-export default function useAlarm() {
+type AlarmProp = { pageSize?: number };
+export default function useAlarm(pageSize = 10) {
 	const navigate = useNavigate();
 	const alarmRef = useRef<HTMLDivElement | null>(null);
 	const { data, fetchNextPage, hasNextPage, isLoading, isFetched } = useAlarmQuery({
-		pageSize: 2,
+		pageSize,
 	});
 	const [alarms, setAlarms] = useState<Alarm[]>([]);
 

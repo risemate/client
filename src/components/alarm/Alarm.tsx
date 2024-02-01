@@ -1,4 +1,5 @@
 import useClickOutside from '@hooks/common/useClickOutside';
+import { useIntersectionObserver } from '@hooks/useIntersectionObserver ';
 import { RefObject } from 'react';
 import styled from 'styled-components';
 
@@ -11,8 +12,14 @@ interface AlarmProps {
 }
 
 export default function Alarm({ closeAlarm, btnAlarmRef }: AlarmProps) {
-	const { alarmRef, alarms, readAllAlarm, fetchNextPage, hasNextPage } = useAlarm();
+	const { alarmRef, alarms, readAllAlarm, fetchNextPage, hasNextPage, isLoading } =
+		useAlarm();
 	useClickOutside([alarmRef, btnAlarmRef], closeAlarm);
+
+	const { setTarget } = useIntersectionObserver({
+		hasNextPage,
+		fetchNextPage,
+	});
 
 	return (
 		<AlarmArticle ref={alarmRef}>
@@ -30,7 +37,9 @@ export default function Alarm({ closeAlarm, btnAlarmRef }: AlarmProps) {
 					);
 				})}
 			</ul>
-			{hasNextPage && <button onClick={() => fetchNextPage()}>로드</button>}
+			{isLoading && <p className='loading'>Loading...</p>}
+			{!isLoading && <div ref={setTarget} />}
+			{/* //: 로딩애니메이션 추가하기 */}
 		</AlarmArticle>
 	);
 }
@@ -40,14 +49,13 @@ const AlarmArticle = styled.article`
 	overflow-y: scroll;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
-	color: white;
 	&::-webkit-scrollbar {
 		display: none;
 	}
 	top: 85px;
 	right: 0;
 	width: 375px;
-	max-height: 500px;
+	height: 500px;
 	padding: 15px 30px;
 	flex-shrink: 0;
 	border-radius: 10px;
@@ -59,6 +67,11 @@ const AlarmArticle = styled.article`
 		&:not(:last-child) {
 			border-bottom: 0.5px solid ${({ theme }) => theme.colors.grey};
 		}
+	}
+	.loading {
+		padding: 20px 0;
+		text-align: center;
+		color: ${({ theme }) => theme.colors.darkerGrey};
 	}
 `;
 
