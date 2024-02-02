@@ -13,10 +13,10 @@ export default function AuthModal() {
 	// eslint-disable-next-line
 	const { data: auth } = useAuth();
 	const login = async (provider?: string) => {
-		await popupLogin(provider).then(result => {
+		closeModal();
+		popupLogin(provider).then(result => {
 			if (result.accessToken) {
 				// eslint-disable-next-line
-				console.log(result.accessToken);
 
 				//: 유저정보 받아오기 refetch()
 				//: alert(auth?.nickname + '님 완영합니다.');
@@ -26,7 +26,6 @@ export default function AuthModal() {
 				axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 				axios.defaults.headers.common.Authorization = `Bearer ${result.accessToken}`;
 				axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-				closeModal();
 			}
 		});
 	};
