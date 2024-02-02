@@ -1,5 +1,6 @@
 import { css } from 'styled-components';
 
+import Container from '@components/layout/Container';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
 import MyInfoDetail from './components/MyInfoDetail';
@@ -7,10 +8,12 @@ import UserProfile from './components/UserProfile';
 
 export default function MyInfoPage() {
 	return (
-		<WhiteBoxWrapper type='div' customCss={myinfoStyle}>
-			<UserProfile />
-			<MyInfoDetail />
-		</WhiteBoxWrapper>
+		<Container backgroundColor='lightGrey'>
+			<WhiteBoxWrapper type='div' customCss={myinfoStyle}>
+				<UserProfile />
+				<MyInfoDetail />
+			</WhiteBoxWrapper>
+		</Container>
 	);
 }
 

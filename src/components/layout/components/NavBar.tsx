@@ -84,6 +84,7 @@ const StyledHeader = styled.header`
 	width: 100%;
 	border-bottom: 0.5px solid ${({ theme }) => theme.colors.lightGrey};
 	position: fixed;
+	top: 0;
 	z-index: 9999;
 	background: white;
 	nav {

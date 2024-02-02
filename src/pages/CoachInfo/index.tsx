@@ -1,5 +1,6 @@
 import { css } from 'styled-components';
 
+import Container from '@components/layout/Container';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
 import CoachInfoDetail from './components/CoachInfoDetail';
@@ -7,10 +8,12 @@ import CoachProfile from './components/CoachProfile';
 
 export default function CoachInfo() {
 	return (
-		<WhiteBoxWrapper type='div' customCss={coachInfoWrapperStyle}>
-			<CoachProfile />
-			<CoachInfoDetail />
-		</WhiteBoxWrapper>
+		<Container backgroundColor='lightGrey'>
+			<WhiteBoxWrapper type='div' customCss={coachInfoWrapperStyle}>
+				<CoachProfile />
+				<CoachInfoDetail />
+			</WhiteBoxWrapper>
+		</Container>
 	);
 }
 
@@ -20,6 +23,7 @@ const coachInfoWrapperStyle = css`
 	padding: 50px;
 	display: flex;
 	border: 2px solid ${({ theme }) => theme.colors.navy};
+	margin: 75px 0;
 	section:nth-child(2) {
 		width: calc(100% - 250px);
 		margin-left: 50px;

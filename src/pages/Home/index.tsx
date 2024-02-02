@@ -3,6 +3,7 @@ import styled, { CSSProp } from 'styled-components';
 import Banner from '@common/Banner';
 import Button from '@common/Button';
 import ExpertCardList from '@components/experts/ExpertCardList';
+import Container from '@components/layout/Container';
 import NetworkCardList from '@components/network/NetworkCardList';
 
 import useHome from './Home.hook';
@@ -12,7 +13,7 @@ function Home() {
 	const experts = Array(5).fill('hello');
 	const { networks } = useHome();
 	return (
-		<>
+		<Container>
 			<Banner variant='home'>
 				라메에서 이력서를 <span className='highlight mint'>코칭</span>받아보세요!
 			</Banner>
@@ -30,7 +31,7 @@ function Home() {
 					전문가 더보기
 				</Button>
 			</HomeSection>
-		</>
+		</Container>
 	);
 }
 

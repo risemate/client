@@ -7,6 +7,7 @@ import { css } from 'styled-components';
 import Empty from '@common/Empty';
 import Loader from '@common/Loader';
 import ErrorBoundaryComponent from '@components/errors/ErrorBoundaryComponent';
+import Container from '@components/layout/Container';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
 import BasicResumeList from '../BasicResumeList';
@@ -16,7 +17,7 @@ export default function Resume() {
 	const { reset } = useQueryErrorResetBoundary();
 	const { resumes, coverLetters, moveToNewResume } = useResumeList();
 	return (
-		<>
+		<Container backgroundColor='lightGrey'>
 			<h2 className='a11y-hidden'>나의 이력서</h2>
 			<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
 				<ErrorBoundary
@@ -38,7 +39,7 @@ export default function Resume() {
 					</Suspense>
 				</ErrorBoundary>
 			</WhiteBoxWrapper>
-		</>
+		</Container>
 	);
 }
 

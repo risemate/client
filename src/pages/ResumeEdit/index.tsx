@@ -1,6 +1,6 @@
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { isEmpty } from '@utils/helpers';
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { FormProvider } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import Loader from '@common/Loader';
 import ResumeNav from '@common/ResumeNav';
 import ErrorBoundaryComponent from '@components/errors/ErrorBoundaryComponent';
+import Container from '@components/layout/Container';
 
 import Activity from './components/Activity';
 import Certificates from './components/Certificate';
@@ -29,32 +30,34 @@ export default function ResumeEdit() {
 		useResumeEdit(id || '');
 
 	return (
-		<FormProvider {...resumeEditMethods}>
-			<ErrorBoundary
-				FallbackComponent={ErrorBoundaryComponent}
-				onError={() => console.error('error!!!')}
-				onReset={reset}
-			>
-				<Suspense fallback={<Loader />}>
-					<StyledForm id={formId} onSubmit={submitResume()}>
-						<h2 className='a11y-hidden'>
-							{isEmpty(getValue('docTitle')) ? '새로운 이력서' : getValue('docTitle')};
-						</h2>
-						<Profile />
-						<CoverLetter />
-						<TechStack />
-						<WorkExperience />
-						<Project />
-						<Education />
-						<Activity />
-						<Certificates />
-						<ResumeNav resumeNavItems={resumeEditNavItems} />
-					</StyledForm>
-				</Suspense>
-			</ErrorBoundary>
-			<CreateModal />
-			<UpdateModal />
-		</FormProvider>
+		<Container backgroundColor='lightGrey'>
+			<FormProvider {...resumeEditMethods}>
+				<ErrorBoundary
+					FallbackComponent={ErrorBoundaryComponent}
+					onError={() => console.error('error!!!')}
+					onReset={reset}
+				>
+					<Suspense fallback={<Loader />}>
+						<StyledForm id={formId} onSubmit={submitResume()}>
+							<h2 className='a11y-hidden'>
+								{isEmpty(getValue('docTitle')) ? '새로운 이력서' : getValue('docTitle')};
+							</h2>
+							<Profile />
+							<CoverLetter />
+							<TechStack />
+							<WorkExperience />
+							<Project />
+							<Education />
+							<Activity />
+							<Certificates />
+							<ResumeNav resumeNavItems={resumeEditNavItems} />
+						</StyledForm>
+					</Suspense>
+				</ErrorBoundary>
+				<CreateModal />
+				<UpdateModal />
+			</FormProvider>
+		</Container>
 	);
 }
 

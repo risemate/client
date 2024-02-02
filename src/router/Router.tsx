@@ -57,66 +57,64 @@ export const router = createBrowserRouter([
 					},
 				],
 			},
-		],
-		errorElement: <NotFound />,
-	},
 
-	{
-		path: 'my-info',
-		element: <RootLayout backgroundColor='lightGrey' center defaultPadding />,
-		children: [
 			{
-				index: true,
-				element: <MyInfoPage />,
-			},
-			{
-				path: 'docs',
+				path: 'my-info',
 				children: [
 					{
 						index: true,
-						element: <ResumeList />,
+						element: <MyInfoPage />,
 					},
 					{
-						path: ':id',
-						element: <ResumeView />,
+						path: 'docs',
+						children: [
+							{
+								index: true,
+								element: <ResumeList />,
+							},
+							{
+								path: ':id',
+								element: <ResumeView />,
+							},
+							{
+								path: ':parentId/revise-docs',
+								element: <ReviseList />,
+							},
+							{
+								path: ':parentId/revise-docs/:childrenId',
+								element: <ReviseResumeView />,
+							},
+							{
+								path: ':id/edit',
+								element: <ResumeEdit />,
+							},
+						],
 					},
 					{
-						path: ':parentId/revise-docs',
-						element: <ReviseList />,
-					},
-					{
-						path: ':parentId/revise-docs/:childrenId',
-						element: <ReviseResumeView />,
-					},
-					{
-						path: ':id/edit',
-						element: <ResumeEdit />,
+						path: 'ai',
+						element: <Ai />,
 					},
 				],
+				loader: signLoader,
+				errorElement: <NotFound />,
 			},
 			{
-				path: 'ai',
-				element: <Ai />,
-			},
-		],
-		loader: signLoader,
-		errorElement: <NotFound />,
-	},
-	{
-		path: 'coach-info',
-		element: <RootLayout backgroundColor='lightGrey' center defaultPadding />,
-		children: [
-			{
-				index: true,
-				element: <CoachInfo />,
-			},
+				path: 'coach-info',
+				children: [
+					{
+						index: true,
+						element: <CoachInfo />,
+					},
 
-			{
-				path: 'management',
-				element: <CoachManagement />,
+					{
+						path: 'management',
+						element: <CoachManagement />,
+					},
+				],
+				loader: signLoader,
+				errorElement: <NotFound />,
 			},
 		],
-		loader: signLoader,
 		errorElement: <NotFound />,
 	},
 ]);

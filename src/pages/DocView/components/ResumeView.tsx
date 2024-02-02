@@ -6,6 +6,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import Loader from '@common/Loader';
 import ResumeNav from '@common/ResumeNav';
 import ErrorBoundaryComponent from '@components/errors/ErrorBoundaryComponent';
+import Container from '@components/layout/Container';
 import ResumeTemplate from '@components/resume/ViewTemplate/ResumeView';
 
 import useDocView from '../DocView.hook';
@@ -17,7 +18,7 @@ export default function ResumeView() {
 	const { reset } = useQueryErrorResetBoundary();
 	const { resumeDetail, resumeViewNavItems, isNetwork } = useDocView(id || '', pathname);
 	return (
-		<>
+		<Container backgroundColor='lightGrey'>
 			<ErrorBoundary
 				FallbackComponent={ErrorBoundaryComponent}
 				onError={() => console.error('error!!!')}
@@ -30,6 +31,6 @@ export default function ResumeView() {
 				{isNetwork || <ResumeNav resumeNavItems={resumeViewNavItems} />}
 			</ErrorBoundary>
 			<DeleteModal />
-		</>
+		</Container>
 	);
 }

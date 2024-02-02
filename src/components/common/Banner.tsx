@@ -128,10 +128,8 @@ const variantStyle = css<BannerSectionProps>`
 `;
 
 const BannerSection = styled.section<BannerSectionProps>`
-	width: calc(100% + 64px);
-	min-width: ${({ theme }) => theme.widths.minWidth};
-	height: 250px;
-	padding: 0 32px;
+	padding: 30px 32px;
+	min-height: 250px;
 	text-align: center;
 	position: relative;
 	h2 {

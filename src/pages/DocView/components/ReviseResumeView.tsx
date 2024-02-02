@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { mockResumeCoaching } from 'types/Resume/data';
 
 import ResumeNav from '@common/ResumeNav';
+import Container from '@components/layout/Container';
 import { ReviseResumeTemplate } from '@components/resume/ViewTemplate/ReviseResumeView';
 
 export default function ReviseResumeView() {
@@ -13,9 +14,9 @@ export default function ReviseResumeView() {
 	];
 
 	return (
-		<>
+		<Container backgroundColor='lightGrey'>
 			<ReviseResumeTemplate career={mockResumeCoaching.doc} />
 			<ResumeNav resumeNavItems={resumeNavItems} />
-		</>
+		</Container>
 	);
 }

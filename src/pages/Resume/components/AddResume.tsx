@@ -1,15 +1,18 @@
 import { IconAdd } from '@icons';
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+
+import Container from '@components/layout/Container';
 
 export default function AddResume() {
 	const navigate = useNavigate();
 	return (
-		<ResumeAddResume type='button' onClick={() => navigate('new/edit')}>
-			<IconAdd />
-			<p>새 이력서 추가</p>
-		</ResumeAddResume>
+		<Container>
+			<ResumeAddResume type='button' onClick={() => navigate('new/edit')}>
+				<IconAdd />
+				<p>새 이력서 추가</p>
+			</ResumeAddResume>
+		</Container>
 	);
 }
 

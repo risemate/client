@@ -23,7 +23,7 @@
 		"no-multiple-empty-lines": "error",
 		"no-console": ["warn", { "allow": ["warn", "error", "info"] }],
 		"eqeqeq": "error",
-		"dot-location": "error",
+		"dot-location": "off",
 		"no-unused-vars": "off",
 		"@typescript-eslint/no-unused-vars": "warn",
 		"@typescript-eslint/no-var-requires": "off"

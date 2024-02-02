@@ -1,14 +1,14 @@
 import useTab from '@hooks/common/useTab';
-import React from 'react';
 import styled, { css } from 'styled-components';
 import {
+	Complete as CompleteType,
 	Pending as PendingType,
 	Progress as ProgressType,
-	Complete as CompleteType,
 } from 'types/Coach';
 import { TabItem } from 'types/Tab';
 
 import Tab from '@common/Tab';
+import Container from '@components/layout/Container';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
 import Complete from './components/Complete';
@@ -26,50 +26,57 @@ export default function CoachManagement() {
 	const progressList: ProgressType[] = [{ temp: 1 }, { temp: 1 }, { temp: 1 }];
 	const completeList: CompleteType[] = [{ temp: 1 }, { temp: 1 }, { temp: 1 }];
 	return (
-		<WhiteBoxWrapper type='div' customCss={managementWrapperStyle}>
-			<ManagementTitle>코칭 관리</ManagementTitle>
-			<Tab items={tabItems} changeTab={changeTab} isCurrentTab={isCurrentTab} underline />
-			{currentTab.value === '대기' && (
-				<ManagementTabWrapper>
-					<h3>응답 대기</h3>
-					<p>
-						미확인 첨삭요청이 있습니다. <br />
-						<span>2일 이상 미응답시 자동 거절처리 됩니다.</span>
-					</p>
-					<ManagementList>
-						{pendingList.map((pending, index) => (
-							<li key={index}>
-								<Pending pending={pending} />
-							</li>
-						))}
-					</ManagementList>
-				</ManagementTabWrapper>
-			)}
-			{currentTab.value === '진행 중' && (
-				<ManagementTabWrapper>
-					<h3>진행 중인 첨삭 코칭</h3>
-					<ManagementList>
-						{progressList.map((progress, index) => (
-							<li key={index}>
-								<Progress progress={progress} />
-							</li>
-						))}
-					</ManagementList>
-				</ManagementTabWrapper>
-			)}
-			{currentTab.value === '완료' && (
-				<ManagementTabWrapper>
-					<h3>완료한 첨삭 코칭</h3>
-					<ManagementList>
-						{completeList.map((complete, index) => (
-							<li key={index}>
-								<Complete complete={complete} />
-							</li>
-						))}
-					</ManagementList>
-				</ManagementTabWrapper>
-			)}
-		</WhiteBoxWrapper>
+		<Container>
+			<WhiteBoxWrapper type='div' customCss={managementWrapperStyle}>
+				<ManagementTitle>코칭 관리</ManagementTitle>
+				<Tab
+					items={tabItems}
+					changeTab={changeTab}
+					isCurrentTab={isCurrentTab}
+					underline
+				/>
+				{currentTab.value === '대기' && (
+					<ManagementTabWrapper>
+						<h3>응답 대기</h3>
+						<p>
+							미확인 첨삭요청이 있습니다. <br />
+							<span>2일 이상 미응답시 자동 거절처리 됩니다.</span>
+						</p>
+						<ManagementList>
+							{pendingList.map((pending, index) => (
+								<li key={index}>
+									<Pending pending={pending} />
+								</li>
+							))}
+						</ManagementList>
+					</ManagementTabWrapper>
+				)}
+				{currentTab.value === '진행 중' && (
+					<ManagementTabWrapper>
+						<h3>진행 중인 첨삭 코칭</h3>
+						<ManagementList>
+							{progressList.map((progress, index) => (
+								<li key={index}>
+									<Progress progress={progress} />
+								</li>
+							))}
+						</ManagementList>
+					</ManagementTabWrapper>
+				)}
+				{currentTab.value === '완료' && (
+					<ManagementTabWrapper>
+						<h3>완료한 첨삭 코칭</h3>
+						<ManagementList>
+							{completeList.map((complete, index) => (
+								<li key={index}>
+									<Complete complete={complete} />
+								</li>
+							))}
+						</ManagementList>
+					</ManagementTabWrapper>
+				)}
+			</WhiteBoxWrapper>
+		</Container>
 	);
 }
 
