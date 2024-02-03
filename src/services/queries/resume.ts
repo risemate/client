@@ -1,4 +1,12 @@
-//TODO: path is working, need to change later
+import {
+	fetchCareers,
+	fetchCreateResume,
+	fetchDeleteResume,
+	fetchResumeDetail,
+	fetchReviseCareers,
+	fetchUpdateResume,
+} from '@api/resume';
+import { resumeKeys } from '@queries/queryKeys';
 import {
 	UseMutationOptions,
 	UseMutationResult,
@@ -9,20 +17,9 @@ import {
 	useQueryClient,
 } from '@tanstack/react-query';
 import { Career } from 'types/CareerDocument';
-import { CareersQueryProps } from 'types/Query/ResumeQuery';
+import { CareersQueryProps, ResumeUpdateProps } from 'types/Query/ResumeQuery';
 import { Resume } from 'types/Resume';
 
-import {
-	fetchCareers,
-	fetchCreateResume,
-	fetchDeleteResume,
-	fetchResumeDetail,
-	fetchReviseCareers,
-	fetchUpdateResume,
-} from '../api/resume';
-import { resumeKeys } from '../queries/queryKeys';
-
-// Personal Resumes
 export const careersQuery = (
 	params: CareersQueryProps,
 	options?: UseQueryOptions<Career<Resume>[]>,
@@ -71,11 +68,6 @@ export const resumeCreateMutation = (
 		...options,
 	});
 };
-
-interface ResumeUpdateProps {
-	id: string;
-	body: Partial<Resume>;
-}
 
 export const resumeUpdateMutation = (
 	options?: UseMutationOptions<Career<Resume>, unknown, ResumeUpdateProps, unknown>,
