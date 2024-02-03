@@ -3,12 +3,15 @@ import styled, { css } from 'styled-components';
 
 import Button from '@common/Button';
 import DefaultImage from '@common/DefaultImage';
+import { useNavigate } from 'react-router-dom';
 
 export default function UserProfile() {
 	const { changeParam } = useSearchParam('mode');
+	const navigate = useNavigate();
 	const isExpert = true;
 	const logout = () => {
 		localStorage.removeItem('rm-checkpoint');
+		navigate("/");
 	};
 	return (
 		<UserInfoSection>
