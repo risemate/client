@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'types/Resume';
 
 interface LinkProps {
-	links: Link[];
+	links: Link[] | null;
 }
 
 export default function BaseSectionLink({ links }: LinkProps) {

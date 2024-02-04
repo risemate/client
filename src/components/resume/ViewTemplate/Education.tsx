@@ -30,7 +30,7 @@ export default function Education({ educations, feedback }: EducationProps) {
 						</li>
 					</BaseSection.BasicInfo>
 					{!isEmpty(education.description) && (
-						<BaseSection.description description={education.description} />
+						<BaseSection.Description description={education.description} />
 					)}
 					<BaseSection.Link links={education.links} />
 				</article>

@@ -5,7 +5,7 @@ import BaseSectionBasicInfo from './BaseSectionBasicInfo';
 import BaseSectionFeedback from './BaseSectionFeedback';
 import BaseSectionLink from './BaseSectionLink';
 import BaseSectionMainTitle from './BaseSectionMainTitle';
-import BaseSectionTask from './BaseSectionTask';
+import BaseSectionDescription from './BaseSectionDescription';
 import BaseSectionTitle from './BaseSectionTitle';
 
 interface BaseSectionProps {
@@ -20,7 +20,7 @@ const ResumeViewBaseSection = Object.assign(BaseSection, {
 	MainTitle: BaseSectionMainTitle,
 	Title: BaseSectionTitle,
 	BasicInfo: BaseSectionBasicInfo,
-	description: BaseSectionTask,
+	Description: BaseSectionDescription,
 	Link: BaseSectionLink,
 	Feedback: BaseSectionFeedback,
 });

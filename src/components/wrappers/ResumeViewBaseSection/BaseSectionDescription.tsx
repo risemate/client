@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import Markdown from '@common/Markdown';
 
 interface TaskProps {
-	description: string;
+	description: string | null;
 }
 
-export default function BaseSectionTask({ description }: TaskProps) {
+export default function BaseSectionDescription({ description }: TaskProps) {
 	return (
 		<DescriptionStyle>
-			<Markdown>{description}</Markdown>
+			{description && <Markdown>{description}</Markdown>}
 		</DescriptionStyle>
 	);
 }

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 	label: string;
-	options: string[];
+	options: readonly string[];
 }
 
 const Select = forwardRef(function Select(

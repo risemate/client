@@ -26,12 +26,12 @@ export default function Project({ projects, feedback }: ProjectProps) {
 							{project.startedAt} ~ {project.endedAt}
 						</li>
 						<li>
-							<a href={project.projectOrganization} target='_blank' rel='noreferrer'>
+							<a href={project.projectOrganization || undefined} target='_blank' rel='noreferrer'>
 								{project.projectOrganization}
 							</a>
 						</li>
 					</BaseSection.BasicInfo>
-					<BaseSection.description description={project.description} />
+					<BaseSection.Description description={project.description} />
 					<BaseSection.Link links={project.links} />
 				</article>
 			))}

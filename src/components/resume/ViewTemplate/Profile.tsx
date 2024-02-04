@@ -7,8 +7,8 @@ import BaseSectionFeedback from '@components/wrappers/ResumeViewBaseSection/Base
 
 interface ProfileProps {
 	profile: ProfileType;
-	description?: string;
-	techStack?: { skills: string[] };
+	description?: string | null;
+	techStack?: { skills: string[] | null };
 	feedback?: string;
 }
 
@@ -48,7 +48,7 @@ export default function Profile({
 			)}
 			{techStack && (
 				<SkillList>
-					{techStack.skills.map((stack, index) => (
+					{techStack.skills && techStack.skills.map((stack, index) => (
 						<li key={index}>{stack}</li>
 					))}
 				</SkillList>

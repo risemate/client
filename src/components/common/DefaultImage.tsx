@@ -11,17 +11,17 @@ interface DefaultImageProps {
 	variant?: Variant;
 	size?: Size;
 	shape?: Shape;
-	image?: string;
+	image?: string | null;
 }
 
 export default function DefaultImage({ variant, size, shape, image }: DefaultImageProps) {
 	const [isError, setIsError] = useState(false);
 	const handleError = () => setIsError(true);
 	const selectImage = () => {
-		if (isEmpty(image) || isError) {
+		if (isEmpty(image) ||  isError) {
 			return logoIconMono;
 		}
-		return image;
+		return image || logoIconMono;
 	};
 	return (
 		<DefaultImageWrapper

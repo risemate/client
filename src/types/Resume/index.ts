@@ -1,8 +1,8 @@
-export type CareerType = 'RESUME' | 'COVERLETTER';
-export const CareerTypeList: CareerType[] = ['RESUME', 'COVERLETTER'];
+export const CareerType = ['RESUME', 'COVERLETTER'] as const;
+export type CareerType = (typeof CareerType)[number]
 
-export type DocType = 'BASIC' | 'AI' | 'COACHING';
-export const DocTypeList: DocType[] = ['BASIC', 'AI', 'COACHING'];
+export const DocType = ['BASIC', 'AI', 'COACHING'] as const;
+export type DocType = (typeof DocType)[number]
 
 export type ReviseResume = {
 	feedback: string;
@@ -33,21 +33,21 @@ export type ReviseResume = {
 };
 
 export type Resume = {
-	coverImage?: string;
-	coverLetter?: string;
-	description?: string;
+	coverImage: string | null;
+	coverLetter: string | null;
+	description: string | null;
 	public: boolean;
 	docTitle: string;
 	profile: Profile;
 	techStack: {
-		skills: string[];
+		skills: string[] | null;
 	};
-	workExperiences: WorkExperience[];
-	projects: Project[];
-	educations: Education[];
-	activities: Activity[];
-	certificates: Certificate[];
-	links: Link[];
+	workExperiences: WorkExperience[] | null;
+	projects: Project[] | null;
+	educations: Education[] | null;
+	activities: Activity[] | null;
+	certificates: Certificate[] | null;
+	links: Link[] | null;
 	careerYears: number;
 	lookingForJob: boolean;
 };
@@ -55,12 +55,12 @@ export type Resume = {
 export type Profile = {
 	name: string;
 	email: string;
-	birthday?: string;
-	phoneNumber: string;
-	profileImage: string;
-	position: string;
-	job: string;
-	links: Link[];
+	birthday: string | null;
+	phoneNumber: string | null;
+	profileImage: string | null;
+	position: string | null;
+	job: string | null;
+	links: Link[] | null;
 };
 
 export type Link = {
@@ -68,65 +68,65 @@ export type Link = {
 	linkUrl: string;
 };
 
-export const JobType = ['선택', '정규직', '계약직', '인턴'];
-type JobType = (typeof JobType)[number];
+export const JobType = ['선택', '정규직', '계약직', '인턴'] as const;
+export type JobType = (typeof JobType)[number];
 
-export const EmploymentStatus = ['선택', '재직 중', '퇴직'];
-type EmploymentStatus = (typeof EmploymentStatus)[number];
+export const EmploymentStatus = ['선택', '재직 중', '퇴직'] as const;
+export type EmploymentStatus = (typeof EmploymentStatus)[number];
 
 export type WorkExperience = {
-	companyName: string;
-	departmentName: string;
-	role: string;
+	companyName: string | null;
+	departmentName: string | null;
+	role: string | null;
 	jobType: JobType;
 	employmentStatus: EmploymentStatus;
-	startedAt: string; // 날짜 형식으로 변경 필요
-	endedAt: string; // 날짜 형식으로 변경 필요
-	description: string;
-	links: Link[];
+	startedAt: string | null;
+	endedAt: string | null;
+	description: string | null;
+	links: Link[] | null;
 };
 
-export const ProjectStatus = ['선택', '완료', '진행 중', '리팩토링 중', '완료되지 않음'];
-type ProjectStatus = (typeof ProjectStatus)[number];
+export const ProjectStatus = ['선택', '완료', '진행 중', '리팩토링 중', '완료되지 않음'] as const;
+export type ProjectStatus = (typeof ProjectStatus)[number];
 export type Project = {
-	projectName: string;
-	summaryIntro: string; // 오타 수정: summaryIntro -> projectsummaryIntro
-	startedAt: string; // 날짜 형식으로 변경 필요
-	endedAt: string; // 날짜 형식으로 변경 필요
-	description: string;
+	projectName: string | null;
+	summaryIntro: string | null;
+	startedAt: string | null; // 날짜 형식으로 변경 필요
+	endedAt: string | null;
+	description: string | null;
 	projectStatus: ProjectStatus;
-	projectOrganization: string; // 또는 다른 유형 추가
-	links: Link[];
+	projectOrganization: string | null;
+	links: Link[] | null;
 };
 
-export const GraduationStatus = ['선택', '학기 중', '졸업', '편입', '중도 퇴학'];
-type GraduationStatus = (typeof GraduationStatus)[number];
+export const GraduationStatus = ['선택', '학기 중', '졸업', '편입', '중도 퇴학'] as const;
+export type GraduationStatus = (typeof GraduationStatus)[number];
 export type Education = {
-	schoolName: string;
-	major: string;
+	schoolName: string | null;
+	major: string | null;
 	graduationStatus: GraduationStatus;
-	startedAt: string; // 날짜 형식으로 변경 필요
-	endedAt: string; // 날짜 형식으로 변경 필요
-	description: string;
-	educationalInstitution: string;
-	links: Link[];
+	startedAt: string | null;
+	endedAt: string | null;
+	description: string | null;
+	educationalInstitution: string | null;
+	links: Link[] | null;
 };
 
 export type Activity = {
-	activityName: string;
-	startedAt: string;
-	endedAt: string;
-	description: string;
-	activityOrganization: string;
-	links: Link[];
+	activityName: string | null;
+	startedAt: string | null;
+	endedAt: string | null;
+	description: string | null;
+	activityOrganization: string | null;
+	links: Link[] | null;
 };
 
 export type Certificate = {
-	certificateName: string;
-	certificateOrganization: string;
-	certificatedAt: string;
-	certificateGrade: string;
-	links: Link[];
+	certificateName: string | null;
+	certificateOrganization: string | null;
+	certificatedAt: string | null;
+	certificateGrade: string | null;
+	links: Link[] | null;
 };
 
 export type Feedback = {

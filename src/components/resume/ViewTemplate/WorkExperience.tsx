@@ -34,7 +34,7 @@ export default function WorkExperience({
 							{work.startedAt} ~ {work.endedAt}
 						</li>
 					</BaseSection.BasicInfo>
-					<BaseSection.description description={work.description} />
+					<BaseSection.Description description={work.description} />
 					<BaseSection.Link links={work.links} />
 				</article>
 			))}
