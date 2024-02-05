@@ -8,12 +8,13 @@ type ColorType = 'white' | 'lightGrey';
 type Props = {
 	children: ReactNode;
 	css?: CSSProp;
+	center?: boolean;
 	backgroundColor?: ColorType;
 };
 
-function Container({ children, css, backgroundColor = 'white' }: Props) {
+function Container({ children, css, center = false, backgroundColor = 'white' }: Props) {
 	return (
-		<ContainerStyled css={css} $backgroundColor={backgroundColor}>
+		<ContainerStyled css={css} $backgroundColor={backgroundColor} $center={center}>
 			{children}
 		</ContainerStyled>
 	);
@@ -23,6 +24,7 @@ export default Container;
 
 interface StyledLayoutProps {
 	$backgroundColor: ColorType;
+	$center: boolean;
 	css: CSSProp;
 }
 
@@ -49,5 +51,6 @@ const ContainerStyled = styled.main<StyledLayoutProps>`
 	flex-direction: column;
 	align-items: center;
 	${backgroundStyle}
+	${({ $center, theme }) => $center && theme.common.flexCenterColumn};
 	${({ css }) => css};
 `;

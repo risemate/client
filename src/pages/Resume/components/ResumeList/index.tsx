@@ -17,7 +17,7 @@ export default function Resume() {
 	const { reset } = useQueryErrorResetBoundary();
 	const { resumes, coverLetters, moveToNewResume } = useResumeList();
 	return (
-		<Container backgroundColor='lightGrey'>
+		<Container backgroundColor='lightGrey' center>
 			<h2 className='a11y-hidden'>나의 이력서</h2>
 			<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
 				<ErrorBoundary
