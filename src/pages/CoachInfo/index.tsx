@@ -8,7 +8,7 @@ import CoachProfile from './components/CoachProfile';
 
 export default function CoachInfo() {
 	return (
-		<Container backgroundColor='lightGrey' center>
+		<Container backgroundColor='lightGrey' center padding>
 			<WhiteBoxWrapper type='div' customCss={coachInfoWrapperStyle}>
 				<CoachProfile />
 				<CoachInfoDetail />

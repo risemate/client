@@ -30,7 +30,7 @@ export default function ResumeEdit() {
 		useResumeEdit(id || '');
 
 	return (
-		<Container backgroundColor='lightGrey'>
+		<Container backgroundColor='lightGrey' padding>
 			<FormProvider {...resumeEditMethods}>
 				<ErrorBoundary
 					FallbackComponent={ErrorBoundaryComponent}

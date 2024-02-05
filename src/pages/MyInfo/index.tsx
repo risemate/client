@@ -8,7 +8,7 @@ import UserProfile from './components/UserProfile';
 
 export default function MyInfoPage() {
 	return (
-		<Container backgroundColor='lightGrey' center>
+		<Container backgroundColor='lightGrey' center padding>
 			<WhiteBoxWrapper type='div' customCss={myinfoStyle}>
 				<UserProfile />
 				<MyInfoDetail />

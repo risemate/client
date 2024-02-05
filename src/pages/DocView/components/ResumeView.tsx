@@ -18,7 +18,7 @@ export default function ResumeView() {
 	const { reset } = useQueryErrorResetBoundary();
 	const { resumeDetail, resumeViewNavItems, isNetwork } = useDocView(id || '', pathname);
 	return (
-		<Container backgroundColor='lightGrey'>
+		<Container backgroundColor='lightGrey' padding>
 			<ErrorBoundary
 				FallbackComponent={ErrorBoundaryComponent}
 				onError={() => console.error('error!!!')}

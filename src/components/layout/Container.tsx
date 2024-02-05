@@ -9,12 +9,24 @@ type Props = {
 	children: ReactNode;
 	css?: CSSProp;
 	center?: boolean;
+	padding?: boolean;
 	backgroundColor?: ColorType;
 };
 
-function Container({ children, css, center = false, backgroundColor = 'white' }: Props) {
+function Container({
+	children,
+	css,
+	center = false,
+	padding = false,
+	backgroundColor = 'white',
+}: Props) {
 	return (
-		<ContainerStyled css={css} $backgroundColor={backgroundColor} $center={center}>
+		<ContainerStyled
+			css={css}
+			$backgroundColor={backgroundColor}
+			$center={center}
+			$padding={padding}
+		>
 			{children}
 		</ContainerStyled>
 	);
@@ -25,6 +37,7 @@ export default Container;
 interface StyledLayoutProps {
 	$backgroundColor: ColorType;
 	$center: boolean;
+	$padding: boolean;
 	css: CSSProp;
 }
 
@@ -52,5 +65,6 @@ const ContainerStyled = styled.main<StyledLayoutProps>`
 	align-items: center;
 	${backgroundStyle}
 	${({ $center, theme }) => $center && theme.common.flexCenterColumn};
+	${({ $padding }) => $padding && 'padding: 0 32px;'}
 	${({ css }) => css};
 `;
