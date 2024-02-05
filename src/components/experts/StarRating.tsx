@@ -22,13 +22,13 @@ export default function StarRating({
 						<button key={index} type='button' onClick={() => onClick(item)}>
 							{item <= rating ? <IconStar /> : <IconStarEmpty />}
 						</button>
-					))
+				  ))
 				: ratingList.map((item, index) => {
 						if (item <= rating) return <IconStar key={index} />;
 						else if (item - rating > 0 && item - rating <= 0.5)
 							return <IconStarHalf key={index} />;
 						else return <IconStarEmpty key={index} />;
-					})}
+				  })}
 			{numReview && <span>({numReview})</span>}
 		</StarRatingWrapper>
 	);

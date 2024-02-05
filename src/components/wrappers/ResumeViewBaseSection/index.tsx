@@ -2,10 +2,10 @@ import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import BaseSectionBasicInfo from './BaseSectionBasicInfo';
+import BaseSectionDescription from './BaseSectionDescription';
 import BaseSectionFeedback from './BaseSectionFeedback';
 import BaseSectionLink from './BaseSectionLink';
 import BaseSectionMainTitle from './BaseSectionMainTitle';
-import BaseSectionDescription from './BaseSectionDescription';
 import BaseSectionTitle from './BaseSectionTitle';
 
 interface BaseSectionProps {

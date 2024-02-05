@@ -17,8 +17,8 @@ export default function Profile({
 	profile,
 	techStack,
 	feedback,
-	// description,
-}: ProfileProps) {
+} // description,
+: ProfileProps) {
 	return (
 		<ProfileSection>
 			<DefaultImage variant='navy' size='large' image={profile.profileImage} />
@@ -48,9 +48,8 @@ export default function Profile({
 			)}
 			{techStack && (
 				<SkillList>
-					{techStack.skills && techStack.skills.map((stack, index) => (
-						<li key={index}>{stack}</li>
-					))}
+					{techStack.skills &&
+						techStack.skills.map((stack, index) => <li key={index}>{stack}</li>)}
 				</SkillList>
 			)}
 		</ProfileSection>

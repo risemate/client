@@ -26,7 +26,11 @@ export default function Project({ projects, feedback }: ProjectProps) {
 							{project.startedAt} ~ {project.endedAt}
 						</li>
 						<li>
-							<a href={project.projectOrganization || undefined} target='_blank' rel='noreferrer'>
+							<a
+								href={project.projectOrganization || undefined}
+								target='_blank'
+								rel='noreferrer'
+							>
 								{project.projectOrganization}
 							</a>
 						</li>

@@ -44,7 +44,7 @@ export default function Modal({
 										// onClick가 존재하지 않는 경우에만 전달
 										onClick && onClick();
 										closeModal();
-									}
+								  }
 						}
 					>
 						{confirm ? confirm : '확인'}

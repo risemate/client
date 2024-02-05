@@ -18,7 +18,7 @@ export default function DefaultImage({ variant, size, shape, image }: DefaultIma
 	const [isError, setIsError] = useState(false);
 	const handleError = () => setIsError(true);
 	const selectImage = () => {
-		if (isEmpty(image) ||  isError) {
+		if (isEmpty(image) || isError) {
 			return logoIconMono;
 		}
 		return image || logoIconMono;

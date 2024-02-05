@@ -1,8 +1,8 @@
 export const CareerType = ['RESUME', 'COVERLETTER'] as const;
-export type CareerType = (typeof CareerType)[number]
+export type CareerType = (typeof CareerType)[number];
 
 export const DocType = ['BASIC', 'AI', 'COACHING'] as const;
-export type DocType = (typeof DocType)[number]
+export type DocType = (typeof DocType)[number];
 
 export type ReviseResume = {
 	feedback: string;
@@ -86,7 +86,13 @@ export type WorkExperience = {
 	links: Link[] | null;
 };
 
-export const ProjectStatus = ['선택', '완료', '진행 중', '리팩토링 중', '완료되지 않음'] as const;
+export const ProjectStatus = [
+	'선택',
+	'완료',
+	'진행 중',
+	'리팩토링 중',
+	'완료되지 않음',
+] as const;
 export type ProjectStatus = (typeof ProjectStatus)[number];
 export type Project = {
 	projectName: string | null;

@@ -1,9 +1,9 @@
 import { useSearchParam } from '@hooks/common/useSearchParam';
+import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import Button from '@common/Button';
 import DefaultImage from '@common/DefaultImage';
-import { useNavigate } from 'react-router-dom';
 
 export default function UserProfile() {
 	const { changeParam } = useSearchParam('mode');
@@ -11,7 +11,7 @@ export default function UserProfile() {
 	const isExpert = true;
 	const logout = () => {
 		localStorage.removeItem('rm-checkpoint');
-		navigate("/");
+		navigate('/');
 	};
 	return (
 		<UserInfoSection>
