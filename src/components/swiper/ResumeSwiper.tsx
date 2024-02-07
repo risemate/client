@@ -1,8 +1,6 @@
-import React from 'react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Career } from 'types/CareerDocument';
-import { Resume } from 'types/Resume';
 
 import CareerBasicCard from '@components/resume/Card/CareerBasicCard';
 import ReviseCareerCard from '@components/resume/Card/ReviseCareerCard';
@@ -10,8 +8,8 @@ import ReviseCareerCard from '@components/resume/Card/ReviseCareerCard';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-interface ResumeSwiperProps {
-	resumes: Career<Resume>[];
+interface ResumeSwiperProps<T = any> {
+	resumes: Career<T>[];
 	isRevise?: boolean;
 }
 

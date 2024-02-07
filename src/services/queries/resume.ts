@@ -5,7 +5,7 @@ import {
 	fetchResumeDetail,
 	fetchReviseCareers,
 	fetchUpdateResume,
-} from '@api/resume';
+} from '@api/resumes';
 import { resumeKeys } from '@queries/queryKeys';
 import {
 	UseMutationOptions,
@@ -18,7 +18,7 @@ import {
 } from '@tanstack/react-query';
 import { Career } from 'types/CareerDocument';
 import { CareersQueryProps, ResumeUpdateProps } from 'types/Query/ResumeQuery';
-import { Resume } from 'types/Resume';
+import { Resume, ReviseResume } from 'types/Resume';
 
 export const careersQuery = (
 	params: CareersQueryProps,
@@ -31,13 +31,24 @@ export const careersQuery = (
 	});
 };
 
-export const reviseCareersQuery = (
+export const reviseResumeQuery = (
 	id: string,
-	options?: UseQueryOptions<Career<Resume>[]>,
-): UseQueryResult<Career<Resume>[]> => {
+	options?: UseQueryOptions<Career<ReviseResume>[]>,
+): UseQueryResult<Career<ReviseResume>[]> => {
+	return useQuery({
+		queryKey: resumeKeys.reviseDocs(id),
+		queryFn: () => fetchReviseCareers(id),
+		...options,
+	});
+};
+
+export const reviseResumeDetailQuery = (
+	id: string,
+	options?: UseQueryOptions<Career<ReviseResume>>,
+): UseQueryResult<Career<ReviseResume>> => {
 	return useQuery({
 		queryKey: resumeKeys.id(id),
-		queryFn: () => fetchReviseCareers(id),
+		queryFn: () => fetchResumeDetail<ReviseResume>(id),
 		...options,
 	});
 };

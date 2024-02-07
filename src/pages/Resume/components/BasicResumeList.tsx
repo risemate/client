@@ -1,16 +1,13 @@
 import { isEmpty } from '@utils/helpers';
 // eslint-disable-next-line
-import React, { Suspense } from 'react';
 import styled from 'styled-components';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Career } from 'types/CareerDocument';
-import { Resume } from 'types/Resume';
 
 import Button from '@common/Button';
 import Empty from '@common/Empty';
 // eslint-disable-next-line
-import Loader from '@common/Loader';
 import CareerBasicCard from '@components/resume/Card/CareerBasicCard';
 import ReviseCareerCard from '@components/resume/Card/ReviseCareerCard';
 
@@ -19,9 +16,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-interface BasicResumeListProps {
+interface BasicResumeListProps<T = any> {
 	title: string;
-	resumes: Career<Resume>[];
+	resumes: Career<T>[];
 	isRevise?: boolean;
 }
 

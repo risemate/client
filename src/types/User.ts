@@ -1,4 +1,8 @@
-type Roles = 'general' | 'expert' | 'admin';
+export enum Roles {
+	'GENERAL',
+	'EXPERT',
+	'ADMIN',
+}
 export type Auth = {
 	_id: string;
 	createdAt: string;

@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { Roles } from 'types/User';
 
 import Alarm from '../../alarm/Alarm';
 
@@ -20,7 +21,6 @@ export default function NavBar() {
 
 	const { openModal } = useModal('login');
 	const { data: auth } = useAuth();
-	const isExpert = true;
 
 	const hasNewAlarm = true;
 	const [isAlarmOpen, setIsAlarmOpen] = useState(false);
@@ -53,7 +53,7 @@ export default function NavBar() {
 				<MyPageWrapper>
 					{auth ? (
 						<>
-							{isExpert && <Link to='/coach-info'>코칭 관리</Link>}
+							{auth?.role === Roles.EXPERT && <Link to='/coach-info'>코칭 관리</Link>}
 							<button
 								type='button'
 								className={hasNewAlarm ? 'alert' : undefined}
