@@ -16,9 +16,8 @@ interface ProfileProps {
 export default function Profile({
 	profile,
 	techStack,
-	feedback,
-} // description,
-: ProfileProps) {
+	feedback, // description,
+}: ProfileProps) {
 	return (
 		<ProfileSection>
 			<DefaultImage variant='navy' size='large' image={profile.profileImage} />
