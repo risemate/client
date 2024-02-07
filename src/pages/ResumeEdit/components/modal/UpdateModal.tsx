@@ -1,7 +1,7 @@
 import useResumeEdit from 'pages/ResumeEdit/ResumeEdit.hook';
 import { useParams } from 'react-router-dom';
 
-import Modal from '@components/modal/Modal';
+import Modal from '@components/modal/base/Modal';
 
 export default function UpdateModal() {
 	const { id } = useParams();
