@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useBlocker } from 'react-router';
 
 import { useModal } from './atoms/useModalAtom';
