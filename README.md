@@ -1,5 +1,3 @@
-
-
 ## Getting Started
 
 ### install
@@ -66,4 +64,3 @@ The pre-set ESLint format is as follows. You can change Eslint format as you wan
 	}
 }
 ```
-

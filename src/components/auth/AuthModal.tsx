@@ -7,7 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import styled from 'styled-components';
 
-import ModalBase from '../modal/ModalBase';
+import ModalBase from '../modal/base/ModalBase';
 import { popupLogin } from './popupLogin';
 
 export default function AuthModal() {

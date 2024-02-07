@@ -1,3 +1,4 @@
+import usePreventLeave from '@hooks/usePreventLeave';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { isEmpty } from '@utils/helpers';
 import { Suspense } from 'react';
@@ -10,6 +11,7 @@ import Loader from '@common/Loader';
 import ResumeNav from '@common/ResumeNav';
 import ErrorBoundaryComponent from '@components/errors/ErrorBoundaryComponent';
 import Container from '@components/layout/Container';
+import UnsavedChangesModal from '@components/modal/UnsavedChangesModal';
 
 import Activity from './components/Activity';
 import Certificates from './components/Certificate';
@@ -28,6 +30,7 @@ export default function ResumeEdit() {
 	const { reset } = useQueryErrorResetBoundary();
 	const { formId, resumeEditNavItems, resumeEditMethods, submitResume, getValue } =
 		useResumeEdit(id || '');
+	const { blocker } = usePreventLeave({ isModal: true });
 
 	return (
 		<Container backgroundColor='lightGrey' padding>
@@ -56,6 +59,7 @@ export default function ResumeEdit() {
 				</ErrorBoundary>
 				<CreateModal />
 				<UpdateModal />
+				<UnsavedChangesModal blocker={blocker} />
 			</FormProvider>
 		</Container>
 	);

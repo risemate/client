@@ -35,16 +35,17 @@ export default function TechStack() {
 		<BaseSection>
 			<BaseSection.Title title='기술 스택' />
 			<StackList>
-				{techStack.skills.map((stack: string, index: number) => {
-					return (
-						<span key={index}>
-							{stack}
-							<button type='button' onClick={() => removeSelectedItem(index)}>
-								<IconCloseSharp />
-							</button>
-						</span>
-					);
-				})}
+				{techStack?.skills &&
+					techStack.skills.map((stack: string, index: number) => {
+						return (
+							<span key={index}>
+								{stack}
+								<button type='button' onClick={() => removeSelectedItem(index)}>
+									<IconCloseSharp />
+								</button>
+							</span>
+						);
+					})}
 			</StackList>
 			<InputWrapper ref={searchRef}>
 				<Input

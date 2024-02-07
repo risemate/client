@@ -86,6 +86,7 @@ export const defaultResume: Career<Resume> = {
 	doc: {
 		description: '',
 		coverImage: '',
+		coverLetter: '',
 		public: true,
 		docTitle: '',
 		profile: defaultProfile,
@@ -100,7 +101,6 @@ export const defaultResume: Career<Resume> = {
 		links: [],
 		careerYears: 1,
 		lookingForJob: true,
-		coverLetter: '',
 	},
 	createdAt: '',
 	updatedAt: '',
