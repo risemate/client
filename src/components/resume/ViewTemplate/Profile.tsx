@@ -47,7 +47,7 @@ export default function Profile({
 			)}
 			{techStack && (
 				<SkillList>
-					{techStack.skills &&
+					{techStack?.skills &&
 						techStack.skills.map((stack, index) => <li key={index}>{stack}</li>)}
 				</SkillList>
 			)}
