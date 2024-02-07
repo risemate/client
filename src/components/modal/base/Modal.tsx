@@ -2,7 +2,7 @@ import { useModal } from '@hooks/atoms/useModalAtom';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
-import Button from '../common/Button';
+import Button from '../../common/Button';
 import ModalBase from './ModalBase';
 
 interface ModalProps {
@@ -10,6 +10,7 @@ interface ModalProps {
 	children: ReactNode;
 	confirm?: string;
 	onClick?: () => void;
+	onCancel?: () => void;
 	buttonFormId?: string;
 	queryKey: string;
 }
@@ -19,6 +20,7 @@ export default function Modal({
 	children,
 	confirm,
 	onClick,
+	onCancel,
 	buttonFormId,
 	queryKey,
 }: ModalProps) {
@@ -30,7 +32,14 @@ export default function Modal({
 				<h1>{title}</h1>
 				<p>{children}</p>
 				<div>
-					<Button variant='border' size='full' onClick={closeModal}>
+					<Button
+						variant='border'
+						size='full'
+						onClick={() => {
+							onCancel && onCancel();
+							closeModal();
+						}}
+					>
 						취소
 					</Button>
 					<Button
