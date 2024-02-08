@@ -18,7 +18,7 @@ export const networkQuery = (
 
 export const networkDetailQuery = (
 	id: string,
-	options?: UseQueryOptions<Career<Resume>>,
+	options?: Omit<UseQueryOptions<Career<Resume>>, 'queryKey' | 'queryFn'>,
 ): UseQueryResult<Career<Resume>> => {
 	return useQuery({
 		queryKey: networkKeys.id(id),

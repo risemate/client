@@ -2,6 +2,7 @@ import { queryClient } from '@queries/defaultQueryClient';
 import { GlobalStyle } from '@styles/GlobalStyle';
 import theme from '@styles/theme';
 import { QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Provider } from 'jotai';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
@@ -20,5 +21,6 @@ root.render(
 				<RouterProvider router={router} />
 			</ThemeProvider>
 		</Provider>
+		<ReactQueryDevtools initialIsOpen={false} />
 	</QueryClientProvider>,
 );

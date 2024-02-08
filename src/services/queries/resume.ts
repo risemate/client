@@ -33,7 +33,7 @@ export const careersQuery = (
 
 export const reviseResumeQuery = (
 	id: string,
-	options?: UseQueryOptions<Career<ReviseResume>[]>,
+	options?: Omit<UseQueryOptions<Career<ReviseResume>[]>, 'queryKey' | 'queryFn'>,
 ): UseQueryResult<Career<ReviseResume>[]> => {
 	return useQuery({
 		queryKey: resumeKeys.reviseDocs(id),
@@ -55,7 +55,7 @@ export const reviseResumeDetailQuery = (
 
 export const resumeDetailQuery = (
 	id: string,
-	options?: UseQueryOptions<Career<Resume>>,
+	options?: Omit<UseQueryOptions<Career<Resume>>, 'queryKey' | 'queryFn'>,
 ): UseQueryResult<Career<Resume>> => {
 	return useQuery({
 		queryKey: resumeKeys.id(id),

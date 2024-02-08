@@ -26,5 +26,5 @@ export type BaseUser = {
 
 export type LoginResponse = {
 	accessToken: string;
-	user: BaseUser;
+	user: Auth;
 };
