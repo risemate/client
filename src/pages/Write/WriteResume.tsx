@@ -4,7 +4,6 @@ import { isEmpty } from '@utils/helpers';
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { FormProvider } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Loader from '@common/Loader';
@@ -23,13 +22,12 @@ import Profile from './components/Profile';
 import Project from './components/Project';
 import TechStack from './components/TechStack';
 import WorkExperience from './components/WorkExperience';
-import useResumeEdit from './ResumeEdit.hook';
+import useResumeWrite from './ResumeWirte.hook';
 
-export default function ResumeEdit() {
-	const { id } = useParams();
+export default function WriteResume() {
 	const { reset } = useQueryErrorResetBoundary();
 	const { formId, resumeEditNavItems, resumeEditMethods, submitResume, getValue } =
-		useResumeEdit(id || '');
+		useResumeWrite();
 	const { blocker } = usePreventLeave({ isModal: true });
 
 	return (

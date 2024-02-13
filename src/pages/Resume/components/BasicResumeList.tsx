@@ -46,7 +46,7 @@ export default function BasicResumeList({
 			<div>
 				<h3>{title}</h3>
 				{isRevise || (
-					<Button variant='navy' size='small' to='new/edit'>
+					<Button variant='navy' size='small' to='/write?redirect=re'>
 						새 {title} +
 					</Button>
 				)}

@@ -1,11 +1,9 @@
-import useResumeEdit from 'pages/ResumeEdit/ResumeEdit.hook';
-import { useParams } from 'react-router-dom';
+import useResumeWrite from 'pages/Write/ResumeWirte.hook';
 
 import Modal from '@components/modal/base/Modal';
 
 export default function UpdateModal() {
-	const { id } = useParams();
-	const { formId } = useResumeEdit(id || '');
+	const { formId } = useResumeWrite();
 	return (
 		<Modal
 			title='이력서 수정'

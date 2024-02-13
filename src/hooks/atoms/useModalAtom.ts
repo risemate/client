@@ -8,7 +8,7 @@ export const useModal = (key: string) => {
 		initialData: false,
 		staleTime: Infinity,
 	});
-	const openModal = () => queryClient.setQueryData([key], true);
-	const closeModal = () => queryClient.setQueryData([key], false);
+	const openModal = () => queryClient.setQueryData(['modal', key], true);
+	const closeModal = () => queryClient.setQueryData(['modal', key], false);
 	return { isModal, openModal, closeModal };
 };

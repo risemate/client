@@ -17,7 +17,7 @@ export default function useDocView(resumeId: string, pathname: string) {
 		useModal('delete-resume');
 	const deleteResumeMutation = resumeDeleteMutation();
 	const resumeViewNavItems = [
-		{ name: '이력서 수정', onClick: () => navigate(`edit`) },
+		{ name: '이력서 수정', onClick: () => navigate(`/write?redirect=re&id=${resumeId}`) },
 		{ name: '이력서 삭제', onClick: openDeleteModal },
 		{ name: 'pdf로 저장' },
 	];

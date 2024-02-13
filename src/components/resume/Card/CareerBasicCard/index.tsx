@@ -22,7 +22,7 @@ export default function CareerBasicCard({ career }: ResumeCardProps) {
 				{career.docTitle}
 			</CardWrapper.Info>
 			<ButtonGorup>
-				<Button variant='border' size='full' to={`${career._id}/edit`}>
+				<Button variant='border' size='full' to={`/write?redirect=re&id=${career._id}`}>
 					수정
 				</Button>
 				<Button variant='border' size='full' to={`${career._id}`}>

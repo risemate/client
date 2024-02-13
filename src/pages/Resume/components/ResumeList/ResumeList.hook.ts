@@ -6,12 +6,10 @@ export default function useResumeList() {
 	const resumes = careersQuery({ docType: 'BASIC', careerType: 'RESUME' });
 	const coverLetters = careersQuery({ docType: 'BASIC', careerType: 'COVERLETTER' });
 	const navigate = useNavigate();
-	const moveToNewResume = () => navigate('/my-info/docs/new/edit');
-	const moveToRevise = () => navigate('/my-info/ai');
+	const to = (to: string) => navigate(to);
 	return {
 		resumes: resumes.data || [],
 		coverLetters: coverLetters.data || [],
-		moveToNewResume,
-		moveToRevise,
+		to,
 	};
 }

@@ -15,10 +15,12 @@ import useResumeList from './ResumeList.hook';
 
 export default function Resume() {
 	const { reset } = useQueryErrorResetBoundary();
-	const { resumes, coverLetters, moveToNewResume } = useResumeList();
+	const { resumes, coverLetters, to } = useResumeList();
 	return (
 		<Container backgroundColor='lightGrey' center padding>
-			<h2 className='a11y-hidden'>나의 이력서</h2>
+			<h2 className='a11y-hidden1' style={{ width: '100%', padding: '0 20px' }}>
+				이력서
+			</h2>
 			<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
 				<ErrorBoundary
 					FallbackComponent={ErrorBoundaryComponent}
@@ -26,15 +28,36 @@ export default function Resume() {
 					onReset={reset}
 				>
 					<Suspense fallback={<Loader />}>
-						{isEmpty(resumes) && isEmpty(coverLetters) ? (
-							<Empty btnText='새 이력서 작성하기' onClick={moveToNewResume}>
-								아직 작성하신 이력서/자기소개서가 없습니다
+						{isEmpty(resumes) ? (
+							<Empty
+								btnText='새 이력서 작성하기'
+								onClick={() => to('/write?redirect=re')}
+							>
+								아직 작성하신 이력서가 없습니다
 							</Empty>
 						) : (
-							<>
-								<BasicResumeList title='이력서' resumes={resumes} />
-								<BasicResumeList title='자기소개서' resumes={coverLetters} />
-							</>
+							<BasicResumeList title='이력서' resumes={resumes} />
+						)}
+					</Suspense>
+				</ErrorBoundary>
+			</WhiteBoxWrapper>
+			<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
+				<ErrorBoundary
+					FallbackComponent={ErrorBoundaryComponent}
+					onError={() => console.error('error!!!')}
+					onReset={reset}
+				>
+					<Suspense fallback={<Loader />}>
+						{isEmpty(coverLetters) ? (
+							<Empty
+								btnText='새 자기소개서 작성하기'
+								onClick={() => to('/write?redirect=co')}
+							>
+								아직 작성하신 자기소개서가 없습니다
+							</Empty>
+						) : (
+							<BasicResumeList title='자기소개서' resumes={coverLetters} />
+							//:BasicCoverletter 만들기
 						)}
 					</Suspense>
 				</ErrorBoundary>
@@ -44,9 +67,9 @@ export default function Resume() {
 }
 
 const resumeWrapperStyle = css`
-	min-height: 775px;
+	min-height: 300px;
 	padding: 50px;
-	margin: 75px 0;
+	margin: 10px 0 40px;
 	display: flex;
 	flex-direction: column;
 	section {
