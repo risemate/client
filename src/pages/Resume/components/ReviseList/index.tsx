@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { css } from 'styled-components';
 
 import Empty from '@common/Empty';
-import ErrorBoundaryComponent from '@components/errors/ErrorBoundaryComponent';
+import ErrorBoundaryComponent from '@components/async-wrapper/ErrorBoundaryComponent';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
 import BasicResumeList from '../BasicResumeList';

@@ -7,6 +7,8 @@ import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
+import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
+
 import Alarm from '../../alarm/Alarm';
 
 export default function NavBar() {
@@ -34,48 +36,52 @@ export default function NavBar() {
 	};
 	return (
 		<StyledHeader>
-			<nav>
-				<h1>
-					<Link to='/'>
-						<img src={logoMain} alt='라이즈 메이트' />
-					</Link>
-				</h1>
-				<NavBarList>
-					<button onClick={first}>Auth</button>
-					{navItems.map((item, index) => {
-						return (
-							<li key={index}>
-								<Link to={item.route}>{item.name}</Link>
-							</li>
-						);
-					})}
-				</NavBarList>
-				<MyPageWrapper>
-					{auth ? (
-						<>
-							{isExpert && <Link to='/coach-info'>코칭 관리</Link>}
-							<button
-								type='button'
-								className={hasNewAlarm ? 'alert' : undefined}
-								onClick={toggleAlarm}
-								ref={btnAlarmRef}
-							>
-								<IconBell />
-							</button>
-							{isAlarmOpen && <Alarm closeAlarm={closeAlarm} btnAlarmRef={btnAlarmRef} />}
-							<button type='button' onClick={() => navigate('/my-info')}>
-								<IconCircleUser />
-							</button>
-						</>
-					) : (
-						<>
-							<button type='button' onClick={openModal}>
-								로그인 | 회원가입
-							</button>
-						</>
-					)}
-				</MyPageWrapper>
-			</nav>
+			<SingleAsyncWrapper>
+				<nav>
+					<h1>
+						<Link to='/'>
+							<img src={logoMain} alt='라이즈 메이트' />
+						</Link>
+					</h1>
+					<NavBarList>
+						<button onClick={first}>Auth</button>
+						{navItems.map((item, index) => {
+							return (
+								<li key={index}>
+									<Link to={item.route}>{item.name}</Link>
+								</li>
+							);
+						})}
+					</NavBarList>
+					<MyPageWrapper>
+						{auth ? (
+							<>
+								{isExpert && <Link to='/coach-info'>코칭 관리</Link>}
+								<button
+									type='button'
+									className={hasNewAlarm ? 'alert' : undefined}
+									onClick={toggleAlarm}
+									ref={btnAlarmRef}
+								>
+									<IconBell />
+								</button>
+								{isAlarmOpen && (
+									<Alarm closeAlarm={closeAlarm} btnAlarmRef={btnAlarmRef} />
+								)}
+								<button type='button' onClick={() => navigate('/my-info')}>
+									<IconCircleUser />
+								</button>
+							</>
+						) : (
+							<>
+								<button type='button' onClick={openModal}>
+									로그인 | 회원가입
+								</button>
+							</>
+						)}
+					</MyPageWrapper>
+				</nav>
+			</SingleAsyncWrapper>
 		</StyledHeader>
 	);
 }
