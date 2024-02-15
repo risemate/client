@@ -8,6 +8,7 @@ export const authKeys = {
 export const resumeKeys = {
 	base: ['careers'] as const,
 	id: (id: string) => [...resumeKeys.base, { id }] as const,
+	reviseDocs: (id: string) => [...resumeKeys.base, { id }, 'revise-docs'] as const,
 	career: (params: CareersQueryProps) => [...resumeKeys.base, params] as const,
 };
 

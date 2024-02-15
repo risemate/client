@@ -1,11 +1,12 @@
+import usePreventLeave from '@hooks/usePreventLeave';
 import { isEmpty } from '@utils/helpers';
 import { FormProvider } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import ResumeNav from '@common/ResumeNav';
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
+import UnsavedChangesModal from '@components/modal/UnsavedChangesModal';
 
 import Activity from './components/Activity';
 import Certificates from './components/Certificate';
@@ -17,12 +18,12 @@ import Profile from './components/Profile';
 import Project from './components/Project';
 import TechStack from './components/TechStack';
 import WorkExperience from './components/WorkExperience';
-import useResumeEdit from './ResumeEdit.hook';
+import useResumeWrite from './ResumeWirte.hook';
 
-export default function ResumeEdit() {
-	const { id } = useParams();
+export default function WriteResume() {
 	const { formId, resumeEditNavItems, resumeEditMethods, submitResume, getValue } =
-		useResumeEdit(id || '');
+		useResumeWrite();
+	const { blocker } = usePreventLeave({ isModal: true });
 
 	return (
 		<Container backgroundColor='lightGrey' padding>
@@ -45,6 +46,7 @@ export default function ResumeEdit() {
 				</SingleAsyncWrapper>
 				<CreateModal />
 				<UpdateModal />
+				<UnsavedChangesModal blocker={blocker} />
 			</FormProvider>
 		</Container>
 	);

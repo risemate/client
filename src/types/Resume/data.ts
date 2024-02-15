@@ -84,9 +84,9 @@ export const defaultResume: Career<Resume> = {
 	parentId: null,
 	coverImage: '',
 	doc: {
+		description: '',
 		coverImage: '',
 		coverLetter: '',
-		description: null,
 		public: true,
 		docTitle: '',
 		profile: defaultProfile,

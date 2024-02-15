@@ -1,4 +1,5 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
+import { useSearchParam } from '@hooks/common/useSearchParam';
 import {
 	resumeCreateMutation,
 	resumeDetailQuery,
@@ -11,11 +12,13 @@ import { Career } from 'types/CareerDocument';
 import { Resume as ResumeType } from 'types/Resume';
 import { defaultResume } from 'types/Resume/data';
 
-export default function useResumeEdit(resumeId: string) {
+export default function useResumeWrite() {
+	const { queryParam: resumeId } = useSearchParam<string>('id');
 	const navigate = useNavigate();
-	const isNewResume = resumeId === 'new';
-	const resumeDetail = resumeDetailQuery(resumeId, {
-		enabled: !isEmpty(resumeId) && resumeId !== 'new',
+	const isNewResume = isEmpty(resumeId);
+
+	const resumeDetail = resumeDetailQuery(resumeId || '', {
+		enabled: !isEmpty(resumeId),
 	});
 	const resume = isNewResume ? defaultResume : resumeDetail.data;
 	const resumeEditMethods = useForm<Career<ResumeType>>({

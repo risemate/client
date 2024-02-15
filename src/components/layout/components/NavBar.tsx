@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { Roles } from 'types/User';
 
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 
@@ -22,7 +23,6 @@ export default function NavBar() {
 
 	const { openModal } = useModal('login');
 	const { data: auth } = useAuth();
-	const isExpert = true;
 
 	const hasNewAlarm = true;
 	const [isAlarmOpen, setIsAlarmOpen] = useState(false);
@@ -36,27 +36,27 @@ export default function NavBar() {
 	};
 	return (
 		<StyledHeader>
-			<SingleAsyncWrapper>
-				<nav>
-					<h1>
-						<Link to='/'>
-							<img src={logoMain} alt='라이즈 메이트' />
-						</Link>
-					</h1>
-					<NavBarList>
-						<button onClick={first}>Auth</button>
-						{navItems.map((item, index) => {
-							return (
-								<li key={index}>
-									<Link to={item.route}>{item.name}</Link>
-								</li>
-							);
-						})}
-					</NavBarList>
+			<nav>
+				<h1>
+					<Link to='/'>
+						<img src={logoMain} alt='라이즈 메이트' />
+					</Link>
+				</h1>
+				<NavBarList>
+					<button onClick={first}>Auth</button>
+					{navItems.map((item, index) => {
+						return (
+							<li key={index}>
+								<Link to={item.route}>{item.name}</Link>
+							</li>
+						);
+					})}
+				</NavBarList>
+				<SingleAsyncWrapper>
 					<MyPageWrapper>
 						{auth ? (
 							<>
-								{isExpert && <Link to='/coach-info'>코칭 관리</Link>}
+								{auth?.role === Roles.EXPERT && <Link to='/coach-info'>코칭 관리</Link>}
 								<button
 									type='button'
 									className={hasNewAlarm ? 'alert' : undefined}
@@ -80,8 +80,8 @@ export default function NavBar() {
 							</>
 						)}
 					</MyPageWrapper>
-				</nav>
-			</SingleAsyncWrapper>
+				</SingleAsyncWrapper>
+			</nav>
 		</StyledHeader>
 	);
 }

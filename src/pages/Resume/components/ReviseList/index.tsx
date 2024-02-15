@@ -1,11 +1,9 @@
-import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { isEmpty } from '@utils/helpers';
-import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router-dom';
 import { css } from 'styled-components';
 
 import Empty from '@common/Empty';
-import ErrorBoundaryComponent from '@components/async-wrapper/ErrorBoundaryComponent';
+import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
 import BasicResumeList from '../BasicResumeList';
@@ -15,25 +13,21 @@ import useReviseList from './ReviseList.hook';
 export default function ReviseList() {
 	const { parentId } = useParams();
 	const { reviseResumes } = useReviseList(parentId || '');
-	const { reset } = useQueryErrorResetBoundary();
-	const { moveToRevise } = useResume();
+	const { to } = useResume();
 	return (
 		<>
 			<h2 className='a11y-hidden'>첨삭 이력서 목록</h2>
 			<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
-				{isEmpty(reviseResumes) ? (
-					<Empty btnText='AI 첨삭받기' onClick={moveToRevise}>
-						아직 첨삭받은 이력서가 없습니다
-					</Empty>
-				) : (
-					<ErrorBoundary
-						FallbackComponent={ErrorBoundaryComponent}
-						onError={() => console.error('error!!!')}
-						onReset={reset}
-					>
+				<SingleAsyncWrapper>
+					{isEmpty(reviseResumes) ? (
+						<Empty btnText='AI 첨삭받기' onClick={() => to('ai')}>
+							아직 첨삭받은 이력서가 없습니다
+						</Empty>
+					) : (
 						<BasicResumeList title='첨삭 이력서' resumes={reviseResumes} isRevise />
-					</ErrorBoundary>
-				)}
+					)}
+				</SingleAsyncWrapper>
+				`
 			</WhiteBoxWrapper>
 		</>
 	);

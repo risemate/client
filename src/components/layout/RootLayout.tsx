@@ -1,8 +1,8 @@
-import { Suspense } from 'react';
+// import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Loader from '@common/Loader';
+// import Loader from '@common/Loader';
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Footer from '@components/layout/components/Footer';
 import NavBar from '@components/layout/components/NavBar';

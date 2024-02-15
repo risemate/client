@@ -10,7 +10,7 @@ import MyInfoPage from 'pages/MyInfo';
 import Network from 'pages/Network';
 import NotFound from 'pages/NotFound';
 import { ResumeList, ReviseList } from 'pages/Resume';
-import ResumeEdit from 'pages/ResumeEdit';
+import WritePage from 'pages/Write';
 import { createBrowserRouter } from 'react-router-dom';
 
 import RootLayout from '@components/layout/RootLayout';
@@ -84,10 +84,6 @@ export const router = createBrowserRouter([
 								path: ':parentId/revise-docs/:childrenId',
 								element: <ReviseResumeView />,
 							},
-							{
-								path: ':id/edit',
-								element: <ResumeEdit />,
-							},
 						],
 					},
 					{
@@ -97,6 +93,10 @@ export const router = createBrowserRouter([
 				],
 				loader: signLoader,
 				errorElement: <NotFound />,
+			},
+			{
+				path: 'write',
+				element: <WritePage />,
 			},
 			{
 				path: 'coach-info',

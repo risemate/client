@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { mockResume } from 'types/Resume/data';
 
 import Banner from '@common/Banner';
-import Modal from '@components/modal/Modal';
+import Modal from '@components/modal/base/Modal';
 import ResumeAiCard from '@components/resume/Card/ResumeAiCard';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 

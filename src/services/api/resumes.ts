@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Career } from 'types/CareerDocument';
 import { CareersQueryProps } from 'types/Query/ResumeQuery';
-import { Resume } from 'types/Resume';
+import { Resume, ReviseResume } from 'types/Resume';
 
 const RESUME_PATH = {
 	DEFAULT: '/careers',
@@ -24,18 +24,18 @@ export const fetchCareers = async (
 	}
 };
 
-export const fetchReviseCareers = async (id: string): Promise<Career<Resume>[]> => {
+export const fetchReviseCareers = async (id: string): Promise<Career<ReviseResume>[]> => {
 	try {
-		const response = await axios.get<Career<Resume>[]>(RESUME_PATH.REVISE(id));
+		const response = await axios.get<Career<ReviseResume>[]>(RESUME_PATH.REVISE(id));
 		return response.data;
 	} catch (error) {
 		throw new Error((error as Error).message);
 	}
 };
 
-export const fetchResumeDetail = async (id: string): Promise<Career<Resume>> => {
+export const fetchResumeDetail = async <T = Resume>(id: string): Promise<Career<T>> => {
 	try {
-		const response = await axios.get<Career<Resume>>(RESUME_PATH.DETAIL(id));
+		const response = await axios.get<Career<T>>(RESUME_PATH.DETAIL(id));
 		return response.data;
 	} catch (error) {
 		throw new Error((error as Error).message);

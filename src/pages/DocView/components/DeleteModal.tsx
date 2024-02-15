@@ -1,6 +1,6 @@
 import { useLocation, useParams } from 'react-router-dom';
 
-import Modal from '@components/modal/Modal';
+import Modal from '@components/modal/base/Modal';
 
 import useDocView from '../DocView.hook';
 

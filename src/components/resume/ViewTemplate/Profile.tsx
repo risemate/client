@@ -3,6 +3,7 @@ import { Profile as ProfileType } from 'types/Resume';
 
 import DefaultImage from '@common/DefaultImage';
 // import Markdown from '@common/Markdown';
+import Markdown from '@common/Markdown';
 import BaseSectionFeedback from '@components/wrappers/ResumeViewBaseSection/BaseSectionFeedback';
 
 interface ProfileProps {
@@ -17,8 +18,8 @@ export default function Profile({
 	profile,
 	techStack,
 	feedback,
-} // description,
-: ProfileProps) {
+	description,
+}: ProfileProps) {
 	return (
 		<ProfileSection>
 			<DefaultImage variant='navy' size='large' image={profile.profileImage} />
@@ -39,7 +40,7 @@ export default function Profile({
 					</li>
 				)}
 			</ContactList>
-			{/* {description && <Markdown>{description}</Markdown>} */}
+			{description && <Markdown>{description}</Markdown>}
 			{feedback && (
 				<BaseSectionFeedback>
 					<h4>자기소개에 대한 피드백</h4>
@@ -48,7 +49,7 @@ export default function Profile({
 			)}
 			{techStack && (
 				<SkillList>
-					{techStack.skills &&
+					{techStack?.skills &&
 						techStack.skills.map((stack, index) => <li key={index}>{stack}</li>)}
 				</SkillList>
 			)}

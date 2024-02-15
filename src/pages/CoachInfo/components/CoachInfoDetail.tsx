@@ -22,7 +22,8 @@ export default function CoachInfoDetail() {
 	return (
 		<>
 			{!hasPost && (
-				<Empty btnText='게시글 작성하기' onClick={() => navigate('/edit')}>
+				<Empty btnText='게시글 작성하기' onClick={() => navigate('/write')}>
+					{/* //: 여기 수정 */}
 					아직 작성하신 게시글이 없습니다
 				</Empty>
 			)}

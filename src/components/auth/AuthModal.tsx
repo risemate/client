@@ -2,16 +2,22 @@ import { useModal } from '@hooks/atoms/useModalAtom';
 import { IconGoogle, IconNaver } from '@icons';
 import logoIcon from '@images/logo-icon.svg';
 import { useAuth } from '@queries/hooks/useAuth';
+import { authKeys } from '@queries/queryKeys';
+import { useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { Auth } from 'types/User';
 
-import ModalBase from '../modal/ModalBase';
+import ModalBase from '../modal/base/ModalBase';
 import { popupLogin } from './popupLogin';
 
 export default function AuthModal() {
 	const { closeModal } = useModal('login');
 	// eslint-disable-next-line
 	const { data: auth } = useAuth();
+	const [userData, setUserData] = useState<Auth>();
+	const queryClient = useQueryClient();
 	const login = async (provider?: string) => {
 		closeModal();
 		popupLogin(provider).then(result => {
@@ -19,9 +25,8 @@ export default function AuthModal() {
 				// eslint-disable-next-line
 
 				//: 유저정보 받아오기 refetch()
-				//: alert(auth?.nickname + '님 완영합니다.');
-				alert('로그인 완료');
-				// setlocal(result.accessToken);
+				alert('로그인 완료'); //:react-toastify로 바꾸기
+				setUserData(result.user);
 				localStorage.setItem('rm-checkpoint', result.accessToken);
 				axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 				axios.defaults.headers.common.Authorization = `Bearer ${result.accessToken}`;
@@ -29,6 +34,12 @@ export default function AuthModal() {
 			}
 		});
 	};
+
+	useEffect(() => {
+		if (userData) {
+			queryClient.setQueryData(authKeys.base, userData);
+		}
+	}, [userData]);
 
 	return (
 		<ModalBase queryKey={'login'}>

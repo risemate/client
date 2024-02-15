@@ -3,13 +3,13 @@ import { formatDate } from '@utils/helpers';
 import styled from 'styled-components';
 import { Variant } from 'types/Button';
 import { Career, DocType } from 'types/CareerDocument';
-import { Resume as ResumeType } from 'types/Resume';
+import { ReviseResume } from 'types/Resume';
 
 import Button from '@common/Button';
 import CardWrapper from '@components/wrappers/ResumeCardWrapper';
 
 interface ReviseCareerCardProps {
-	career: Career<ResumeType>;
+	career: Career<ReviseResume>;
 }
 
 export default function ReviseCareerCard({ career }: ReviseCareerCardProps) {

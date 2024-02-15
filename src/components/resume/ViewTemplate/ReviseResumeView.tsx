@@ -3,10 +3,7 @@ import { ReviseResume } from 'types/Resume';
 
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
-import Activity from './Activity';
-import Education from './Education';
 import Profile from './Profile';
-import Project from './Project';
 import WorkExperience from './WorkExperience';
 
 interface ReviseResumeViewProps {
@@ -27,14 +24,15 @@ export function ReviseResumeTemplate({ career }: ReviseResumeViewProps) {
 				profile={career.profile}
 				techStack={career.techStack}
 				feedback={career?.feed_coverLetter}
+				description={career.description || null}
 			/>
 			<WorkExperience
 				workExperiences={career.workExperiences}
 				feedback={career?.feed_workExperience}
 			/>
-			<Project projects={career.projects} feedback={career?.feed_project} />
+			{/* <Project projects={career.projects} feedback={career?.feed_project} />
 			<Education educations={career.educations} feedback={career?.feed_education} />
-			<Activity activities={career.activities} feedback={career?.feed_activity} />
+			<Activity activities={career.activities} feedback={career?.feed_activity} /> */}
 		</WhiteBoxWrapper>
 	);
 }

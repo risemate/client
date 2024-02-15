@@ -8,7 +8,7 @@ export default function AddResume() {
 	const navigate = useNavigate();
 	return (
 		<Container>
-			<ResumeAddResume type='button' onClick={() => navigate('new/edit')}>
+			<ResumeAddResume type='button' onClick={() => navigate('/write?redirect=re')}>
 				<IconAdd />
 				<p>새 이력서 추가</p>
 			</ResumeAddResume>
