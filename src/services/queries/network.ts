@@ -7,7 +7,7 @@ import { Resume } from 'types/Resume';
 
 export const networkQuery = (
 	params?: NetworkPagingQuery,
-	options?: UseQueryOptions<PagingQueryResponse<Career>>,
+	options?: Omit<UseQueryOptions<PagingQueryResponse<Career>>, 'queryKey' | 'queryFn'>,
 ): UseQueryResult<PagingQueryResponse<Career>> => {
 	return useQuery({
 		queryKey: networkKeys.career(params),
