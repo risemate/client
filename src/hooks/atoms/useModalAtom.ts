@@ -4,7 +4,7 @@ export const useModal = (key: string) => {
 	const queryClient = useQueryClient();
 
 	const { data: isModal } = useQuery({
-		queryKey: [key],
+		queryKey: ['modal', key],
 		initialData: false,
 		staleTime: Infinity,
 	});

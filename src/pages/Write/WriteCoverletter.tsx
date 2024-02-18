@@ -24,7 +24,7 @@ import TechStack from './components/TechStack';
 import WorkExperience from './components/WorkExperience';
 import useResumeWrite from './WirteResume.hook';
 
-export default function WriteResume() {
+export default function WriteCoverletter() {
 	const { reset } = useQueryErrorResetBoundary();
 	const { formId, resumeEditNavItems, resumeEditMethods, submitResume, getValue } =
 		useResumeWrite();
@@ -45,12 +45,7 @@ export default function WriteResume() {
 							</h2>
 							<Profile />
 							<CoverLetter />
-							<TechStack />
-							<WorkExperience />
-							<Project />
-							<Education />
-							<Activity />
-							<Certificates />
+							
 							<ResumeNav resumeNavItems={resumeEditNavItems} />
 						</StyledForm>
 					</Suspense>
