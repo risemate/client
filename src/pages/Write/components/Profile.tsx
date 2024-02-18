@@ -6,7 +6,7 @@ import DateInput from '@components/input/DateInput';
 import FileInput from '@components/input/FileInput';
 import Input from '@components/input/Input';
 import LinkInput from '@components/input/LinkInput';
-// import TextArea from '@components/input/TextArea';
+import TextArea from '@components/input/TextArea';
 import BaseSection from '@components/wrappers/EditBaseSection';
 
 export default function Profile() {
@@ -29,14 +29,12 @@ export default function Profile() {
 				<FileInput inputName={inputName('profileImage')} size='medium' />
 				<NameInput>
 					<input type='text' placeholder='이름 입력' {...register(inputName('name'))} />
-				</NameInput>
-				<JobInput>
 					<input
 						type='text'
 						placeholder='포지션 입력'
 						{...register(inputName('position'))}
 					/>
-				</JobInput>
+				</NameInput>
 				<ContactWrapper>
 					<Input
 						label='휴대폰 번호'
@@ -50,8 +48,8 @@ export default function Profile() {
 						{...register(inputName('birthday'))}
 					/>
 				</ContactWrapper>
+				<TextArea label='자기소개' help {...register('doc.description')} />
 				<LinkInput links={watch(inputName('links'))} inputName={inputName('links')} />
-				{/* <TextArea label='자기소개' help {...register('doc.description')} /> */}
 			</InputWrapper>
 		</BaseSection>
 	);
@@ -78,7 +76,6 @@ const WarningText = styled.p`
 `;
 
 const NameInput = styled.label`
-	font-size: ${({ theme }) => theme.fontSizes.large};
 	font-weight: bold;
 	grid-column: 2 / 3;
 	grid-row: 1 / 2;
@@ -89,23 +86,17 @@ const NameInput = styled.label`
 		font-weight: bold;
 		color: ${({ theme }) => theme.colors.darkGrey};
 	}
-`;
-
-const JobInput = styled.label`
-	grid-column: 2 / 3;
-	grid-row: 2 / 3;
-	margin-left: 5px;
-	input {
-		width: 100%;
-		padding: 5px;
-		font-weight: bold;
+	input:first-child {
+		font-size: ${({ theme }) => theme.fontSizes.large};
+	}
+	input:nth-child(2) {
+		margin-top: 10px;
 		color: ${({ theme }) => theme.colors.darkGrey};
 	}
 `;
 
 const ContactWrapper = styled.div`
 	grid-column: 3 / 5;
-	// grid-row: 1 / 2;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 30px;
@@ -122,7 +113,6 @@ const ContactWrapper = styled.div`
 const InputWrapper = styled.div`
 	display: grid;
 	grid-template-columns: 160px 0.8fr 1fr 1fr;
-	grid-template-rows: 70px auto 150px;
 	gap: 5px 20px;
 	& > div:nth-child(1) {
 		grid-column: 1 / 2;
@@ -130,12 +120,12 @@ const InputWrapper = styled.div`
 	}
 	& > div:last-of-type {
 		grid-column: 1 / 5;
+		grid-row: 4 / 5;
+		margin-top: 20px;
+	}
+	& > label:last-of-type {
+		grid-column: 1 / 5;
 		grid-row: 3 / 4;
 		margin-top: 20px;
 	}
-	// & > label:last-of-type {
-	// 	grid-column: 1 / 5;
-	// 	grid-row: 3 / 4;
-	// 	margin-top: 20px;
-	// }
 `;
