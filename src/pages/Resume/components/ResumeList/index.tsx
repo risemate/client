@@ -1,12 +1,8 @@
-import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { isEmpty } from '@utils/helpers';
-import { Suspense } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
 import { css } from 'styled-components';
 
 import Empty from '@common/Empty';
-import Loader from '@common/Loader';
-import ErrorBoundaryComponent from '@components/errors/ErrorBoundaryComponent';
+import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
@@ -14,7 +10,6 @@ import BasicResumeList from '../BasicResumeList';
 import useResumeList from './ResumeList.hook';
 
 export default function Resume() {
-	const { reset } = useQueryErrorResetBoundary();
 	const { resumes, coverLetters, to } = useResumeList();
 	return (
 		<Container backgroundColor='lightGrey' center padding>
@@ -22,45 +17,18 @@ export default function Resume() {
 				이력서
 			</h2>
 			<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
-				<ErrorBoundary
-					FallbackComponent={ErrorBoundaryComponent}
-					onError={() => console.error('error!!!')}
-					onReset={reset}
-				>
-					<Suspense fallback={<Loader />}>
-						{isEmpty(resumes) ? (
-							<Empty
-								btnText='새 이력서 작성하기'
-								onClick={() => to('/write?redirect=re')}
-							>
-								아직 작성하신 이력서가 없습니다
-							</Empty>
-						) : (
+				<SingleAsyncWrapper>
+					{isEmpty(resumes) && isEmpty(coverLetters) ? (
+						<Empty btnText='새 이력서 작성하기' onClick={() => to('/write?redirect=re')}>
+							아직 작성하신 이력서/자기소개서가 없습니다
+						</Empty>
+					) : (
+						<>
 							<BasicResumeList title='이력서' resumes={resumes} />
-						)}
-					</Suspense>
-				</ErrorBoundary>
-			</WhiteBoxWrapper>
-			<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
-				<ErrorBoundary
-					FallbackComponent={ErrorBoundaryComponent}
-					onError={() => console.error('error!!!')}
-					onReset={reset}
-				>
-					<Suspense fallback={<Loader />}>
-						{isEmpty(coverLetters) ? (
-							<Empty
-								btnText='새 자기소개서 작성하기'
-								onClick={() => to('/write?redirect=co')}
-							>
-								아직 작성하신 자기소개서가 없습니다
-							</Empty>
-						) : (
 							<BasicResumeList title='자기소개서' resumes={coverLetters} />
-							//:BasicCoverletter 만들기
-						)}
-					</Suspense>
-				</ErrorBoundary>
+						</>
+					)}
+				</SingleAsyncWrapper>
 			</WhiteBoxWrapper>
 		</Container>
 	);

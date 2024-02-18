@@ -8,6 +8,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Roles } from 'types/User';
 
+import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
+
 import Alarm from '../../alarm/Alarm';
 
 export default function NavBar() {
@@ -50,31 +52,36 @@ export default function NavBar() {
 						);
 					})}
 				</NavBarList>
-				<MyPageWrapper>
-					{auth ? (
-						<>
-							{auth?.role === Roles.EXPERT && <Link to='/coach-info'>코칭 관리</Link>}
-							<button
-								type='button'
-								className={hasNewAlarm ? 'alert' : undefined}
-								onClick={toggleAlarm}
-								ref={btnAlarmRef}
-							>
-								<IconBell />
-							</button>
-							{isAlarmOpen && <Alarm closeAlarm={closeAlarm} btnAlarmRef={btnAlarmRef} />}
-							<button type='button' onClick={() => navigate('/my-info')}>
-								<IconCircleUser />
-							</button>
-						</>
-					) : (
-						<>
-							<button type='button' onClick={openModal}>
-								로그인 | 회원가입
-							</button>
-						</>
-					)}
-				</MyPageWrapper>
+
+				<SingleAsyncWrapper>
+					<MyPageWrapper>
+						{auth ? (
+							<>
+								{auth?.role === Roles.EXPERT && <Link to='/coach-info'>코칭 관리</Link>}
+								<button
+									type='button'
+									className={hasNewAlarm ? 'alert' : undefined}
+									onClick={toggleAlarm}
+									ref={btnAlarmRef}
+								>
+									<IconBell />
+								</button>
+								{isAlarmOpen && (
+									<Alarm closeAlarm={closeAlarm} btnAlarmRef={btnAlarmRef} />
+								)}
+								<button type='button' onClick={() => navigate('/my-info')}>
+									<IconCircleUser />
+								</button>
+							</>
+						) : (
+							<>
+								<button type='button' onClick={openModal}>
+									로그인 | 회원가입
+								</button>
+							</>
+						)}
+					</MyPageWrapper>
+				</SingleAsyncWrapper>
 			</nav>
 		</StyledHeader>
 	);
