@@ -23,7 +23,7 @@ import useResumeWrite from './ResumeWirte.hook';
 export default function WriteResume() {
 	const { formId, resumeEditNavItems, resumeEditMethods, submitResume, getValue } =
 		useResumeWrite();
-	const { blocker } = usePreventLeave({ isModal: true });
+	// const { blocker } = usePreventLeave();
 
 	return (
 		<Container backgroundColor='lightGrey' padding>
@@ -46,7 +46,7 @@ export default function WriteResume() {
 				</SingleAsyncWrapper>
 				<CreateModal />
 				<UpdateModal />
-				<UnsavedChangesModal blocker={blocker} />
+				{/* <UnsavedChangesModal blocker={blocker} /> */}
 			</FormProvider>
 		</Container>
 	);
