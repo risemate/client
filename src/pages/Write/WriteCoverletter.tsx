@@ -1,10 +1,14 @@
 import usePreventLeave from '@hooks/usePreventLeave';
+import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { isEmpty } from '@utils/helpers';
+import { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { FormProvider } from 'react-hook-form';
 import styled from 'styled-components';
 
+import Loader from '@common/Loader';
 import ResumeNav from '@common/ResumeNav';
-import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
+import ErrorBoundaryComponent from '@components/errors/ErrorBoundaryComponent';
 import Container from '@components/layout/Container';
 import UnsavedChangesModal from '@components/modal/UnsavedChangesModal';
 
@@ -20,7 +24,8 @@ import TechStack from './components/TechStack';
 import WorkExperience from './components/WorkExperience';
 import useResumeWrite from './WirteResume.hook';
 
-export default function WriteResume() {
+export default function WriteCoverletter() {
+	const { reset } = useQueryErrorResetBoundary();
 	const { formId, resumeEditNavItems, resumeEditMethods, submitResume, getValue } =
 		useResumeWrite();
 	const { blocker } = usePreventLeave({ isModal: true });
@@ -28,22 +33,23 @@ export default function WriteResume() {
 	return (
 		<Container backgroundColor='lightGrey' padding>
 			<FormProvider {...resumeEditMethods}>
-				<SingleAsyncWrapper>
-					<StyledForm id={formId} onSubmit={submitResume()}>
-						<h2 className='a11y-hidden'>
-							{isEmpty(getValue('docTitle')) ? '새로운 이력서' : getValue('docTitle')};
-						</h2>
-						<Profile />
-						<CoverLetter />
-						<TechStack />
-						<WorkExperience />
-						<Project />
-						<Education />
-						<Activity />
-						<Certificates />
-						<ResumeNav resumeNavItems={resumeEditNavItems} />
-					</StyledForm>
-				</SingleAsyncWrapper>
+				<ErrorBoundary
+					FallbackComponent={ErrorBoundaryComponent}
+					onError={() => console.error('error!!!')}
+					onReset={reset}
+				>
+					<Suspense fallback={<Loader />}>
+						<StyledForm id={formId} onSubmit={submitResume()}>
+							<h2 className='a11y-hidden'>
+								{isEmpty(getValue('docTitle')) ? '새로운 이력서' : getValue('docTitle')};
+							</h2>
+							<Profile />
+							<CoverLetter />
+							
+							<ResumeNav resumeNavItems={resumeEditNavItems} />
+						</StyledForm>
+					</Suspense>
+				</ErrorBoundary>
 				<CreateModal />
 				<UpdateModal />
 				<UnsavedChangesModal blocker={blocker} />
