@@ -22,7 +22,7 @@ import { Resume, ReviseResume } from 'types/Resume';
 
 export const careersQuery = (
 	params: CareersQueryProps,
-	options?: UseQueryOptions<Career<Resume>[]>,
+	options?: Omit<UseQueryOptions<Career<Resume>[]>, 'queryKey' | 'queryFn'>,
 ): UseQueryResult<Career<Resume>[]> => {
 	return useQuery({
 		queryKey: resumeKeys.career(params),
@@ -44,7 +44,7 @@ export const reviseResumeQuery = (
 
 export const reviseResumeDetailQuery = (
 	id: string,
-	options?: UseQueryOptions<Career<ReviseResume>>,
+	options?: Omit<UseQueryOptions<Career<ReviseResume>>, 'queryKey' | 'queryFn'>,
 ): UseQueryResult<Career<ReviseResume>> => {
 	return useQuery({
 		queryKey: resumeKeys.id(id),
@@ -65,7 +65,10 @@ export const resumeDetailQuery = (
 };
 
 export const resumeCreateMutation = (
-	options?: UseMutationOptions<Career<Resume>, unknown, Resume, unknown>,
+	options?: Omit<
+		UseMutationOptions<Career<Resume>, unknown, Resume, unknown>,
+		'mutationFn' | 'onSuccess'
+	>,
 ): UseMutationResult<Career<Resume>, unknown, Resume, unknown> => {
 	const queryClient = useQueryClient();
 	return useMutation({
@@ -81,7 +84,10 @@ export const resumeCreateMutation = (
 };
 
 export const resumeUpdateMutation = (
-	options?: UseMutationOptions<Career<Resume>, unknown, ResumeUpdateProps, unknown>,
+	options?: Omit<
+		UseMutationOptions<Career<Resume>, unknown, ResumeUpdateProps, unknown>,
+		'mutationFn' | 'onSuccess'
+	>,
 ): UseMutationResult<Career<Resume>, unknown, ResumeUpdateProps, unknown> => {
 	const queryClient = useQueryClient();
 	return useMutation({
@@ -97,7 +103,10 @@ export const resumeUpdateMutation = (
 };
 
 export const resumeDeleteMutation = (
-	options?: UseMutationOptions<void, unknown, string, unknown>,
+	options?: Omit<
+		UseMutationOptions<void, unknown, string, unknown>,
+		'mutationFn' | 'onSuccess'
+	>,
 ): UseMutationResult<void, unknown, string, unknown> => {
 	const queryClient = useQueryClient();
 	return useMutation({

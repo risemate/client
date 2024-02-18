@@ -11,7 +11,7 @@ interface PreventLeaveProps {
 
 const usePreventLeave = ({
 	isTrigger = true,
-	isModal = false,
+	isModal = true,
 	preventEvent,
 }: PreventLeaveProps = {}) => {
 	const { openModal } = useModal('unsavedChanges');

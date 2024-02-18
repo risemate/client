@@ -13,7 +13,7 @@ export default function Resume() {
 	const { resumes, coverLetters, to } = useResumeList();
 	return (
 		<Container backgroundColor='lightGrey' center padding>
-			<h2 className='a11y-hidden1' style={{ width: '100%', padding: '0 20px' }}>
+			<h2 className='a11y-hidden' style={{ width: '100%', padding: '0 20px' }}>
 				이력서
 			</h2>
 			<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
