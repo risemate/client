@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Ai from 'pages/Ai';
+import { ResumeList, ReviseList } from 'pages/Careers';
 import CoachInfo from 'pages/CoachInfo';
 import CoachManagement from 'pages/CoachManagement';
 import { ResumeView, ReviseResumeView } from 'pages/DocView';
@@ -9,7 +10,6 @@ import Home from 'pages/Home';
 import MyInfoPage from 'pages/MyInfo';
 import Network from 'pages/Network';
 import NotFound from 'pages/NotFound';
-import { ResumeList, ReviseList } from 'pages/Resume';
 import WritePage from 'pages/Write';
 import { createBrowserRouter } from 'react-router-dom';
 

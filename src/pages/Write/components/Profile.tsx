@@ -16,12 +16,8 @@ export default function Profile() {
 		<BaseSection>
 			<BaseSection.Title title='기본 정보'>
 				<ResumeTitleInput>
-					<span className='a11y-hidden'>이력서 이름 입력</span>
-					<input
-						type='text'
-						placeholder='이력서 이름 입력'
-						{...register('doc.docTitle')}
-					/>
+					<span className='a11y-hidden'>문서 제목 입력</span>
+					<input type='text' placeholder='문서 제목 입력' {...register('doc.docTitle')} />
 				</ResumeTitleInput>
 				<WarningText>* 내용이 없을 시 이력서에 표기되지 않습니다.</WarningText>
 			</BaseSection.Title>
@@ -48,7 +44,7 @@ export default function Profile() {
 						{...register(inputName('birthday'))}
 					/>
 				</ContactWrapper>
-				<TextArea label='자기소개' help {...register('doc.description')} />
+				<TextArea label='5줄 표현' help {...register('doc.description')} />
 				<LinkInput links={watch(inputName('links'))} inputName={inputName('links')} />
 			</InputWrapper>
 		</BaseSection>

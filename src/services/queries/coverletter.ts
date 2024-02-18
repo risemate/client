@@ -1,68 +1,43 @@
-import { fetchCreateResume, fetchDeleteResume, fetchUpdateResume } from '@api/resumes';
-import { resumeKeys } from '@queries/queryKeys';
+import {
+	fetchCoverletterDetail,
+	fetchCreateCoverletter,
+	fetchDeleteCoverletter,
+	fetchUpdateCoverletter,
+} from '@api/coverletter';
+import { coverletterKeys } from '@queries/queryKeys';
 import {
 	UseMutationOptions,
 	UseMutationResult,
+	UseQueryOptions,
+	UseQueryResult,
 	useMutation,
+	useQuery,
 	useQueryClient,
 } from '@tanstack/react-query';
 import { Career } from 'types/CareerDocument';
-import { ResumeUpdateProps } from 'types/Query/ResumeQuery';
-import { Resume } from 'types/Resume';
+import { Coverletter } from 'types/Coverletter';
+import { CoverletterUpdateProps } from 'types/Query/CoverletterQuery';
 
-// export const careersQuery = (
-// 	params: CareersQueryProps,
-// 	options?: UseQueryOptions<Career<Resume>[]>,
-// ): UseQueryResult<Career<Resume>[]> => {
-// 	return useQuery({
-// 		queryKey: resumeKeys.career(params),
-// 		queryFn: () => fetchCareers(params),
-// 		...options,
-// 	});
-// };
+export const coverletterDetailQuery = (
+	id: string,
+	options?: Omit<UseQueryOptions<Career<Coverletter>>, 'queryKey' | 'queryFn'>,
+): UseQueryResult<Career<Coverletter>> => {
+	return useQuery({
+		queryKey: coverletterKeys.id(id),
+		queryFn: () => fetchCoverletterDetail(id),
+		...options,
+	});
+};
 
-// export const reviseResumeQuery = (
-// 	id: string,
-// 	options?: Omit<UseQueryOptions<Career<ReviseResume>[]>, 'queryKey' | 'queryFn'>,
-// ): UseQueryResult<Career<ReviseResume>[]> => {
-// 	return useQuery({
-// 		queryKey: resumeKeys.reviseDocs(id),
-// 		queryFn: () => fetchReviseCareers(id),
-// 		...options,
-// 	});
-// };
-
-// export const reviseResumeDetailQuery = (
-// 	id: string,
-// 	options?: UseQueryOptions<Career<ReviseResume>>,
-// ): UseQueryResult<Career<ReviseResume>> => {
-// 	return useQuery({
-// 		queryKey: resumeKeys.id(id),
-// 		queryFn: () => fetchResumeDetail<ReviseResume>(id),
-// 		...options,
-// 	});
-// };
-
-// export const resumeDetailQuery = (
-// 	id: string,
-// 	options?: Omit<UseQueryOptions<Career<Resume>>, 'queryKey' | 'queryFn'>,
-// ): UseQueryResult<Career<Resume>> => {
-// 	return useQuery({
-// 		queryKey: resumeKeys.id(id),
-// 		queryFn: () => fetchResumeDetail(id),
-// 		...options,
-// 	});
-// };
-
-export const resumeCreateMutation = (
-	options?: UseMutationOptions<Career<Resume>, unknown, Resume, unknown>,
-): UseMutationResult<Career<Resume>, unknown, Resume, unknown> => {
+export const coverletterCreateMutation = (
+	options?: UseMutationOptions<Career<Coverletter>, unknown, Coverletter, unknown>,
+): UseMutationResult<Career<Coverletter>, unknown, Coverletter, unknown> => {
 	const queryClient = useQueryClient();
 	return useMutation({
-		mutationFn: (body: Resume) => fetchCreateResume(body),
+		mutationFn: (body: Coverletter) => fetchCreateCoverletter(body),
 		onSuccess(data) {
 			queryClient.invalidateQueries({
-				queryKey: resumeKeys.id(data._id),
+				queryKey: coverletterKeys.id(data._id),
 				refetchType: 'active',
 			});
 		},
@@ -70,15 +45,21 @@ export const resumeCreateMutation = (
 	});
 };
 
-export const resumeUpdateMutation = (
-	options?: UseMutationOptions<Career<Resume>, unknown, ResumeUpdateProps, unknown>,
-): UseMutationResult<Career<Resume>, unknown, ResumeUpdateProps, unknown> => {
+export const coverletterUpdateMutation = (
+	options?: UseMutationOptions<
+		Career<Coverletter>,
+		unknown,
+		CoverletterUpdateProps,
+		unknown
+	>,
+): UseMutationResult<Career<Coverletter>, unknown, CoverletterUpdateProps, unknown> => {
 	const queryClient = useQueryClient();
 	return useMutation({
-		mutationFn: ({ id, body }: ResumeUpdateProps) => fetchUpdateResume(id, body),
+		mutationFn: ({ id, body }: CoverletterUpdateProps) =>
+			fetchUpdateCoverletter(id, body),
 		onSuccess(data) {
 			queryClient.invalidateQueries({
-				queryKey: resumeKeys.id(data._id),
+				queryKey: coverletterKeys.id(data._id),
 				refetchType: 'active',
 			});
 		},
@@ -86,15 +67,15 @@ export const resumeUpdateMutation = (
 	});
 };
 
-export const resumeDeleteMutation = (
+export const coverletterDeleteMutation = (
 	options?: UseMutationOptions<void, unknown, string, unknown>,
 ): UseMutationResult<void, unknown, string, unknown> => {
 	const queryClient = useQueryClient();
 	return useMutation({
-		mutationFn: (id: string) => fetchDeleteResume(id),
+		mutationFn: (id: string) => fetchDeleteCoverletter(id),
 		onSuccess: () => {
 			queryClient.invalidateQueries({
-				queryKey: resumeKeys.base,
+				queryKey: coverletterKeys.base,
 				refetchType: 'active',
 			});
 		},

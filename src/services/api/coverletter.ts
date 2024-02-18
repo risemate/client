@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Career } from 'types/CareerDocument';
-import { Resume } from 'types/Resume';
+import { Coverletter } from 'types/Coverletter';
 
 const RESUME_PATH = {
 	DEFAULT: '/careers',
@@ -10,28 +10,41 @@ const RESUME_PATH = {
 		id ? `${RESUME_PATH.DEFAULT}/cl/${id}` : `${RESUME_PATH.DEFAULT}/cl`,
 };
 
-export const fetchCreateResume = async (body: Resume): Promise<Career<Resume>> => {
-	try {
-		const response = await axios.post<Career<Resume>>(RESUME_PATH.UPDATE(), body);
-		return response.data;
-	} catch (error) {
-		throw new Error((error as Error).message);
-	}
-};
-
-export const fetchUpdateResume = async (
+export const fetchCoverletterDetail = async <T = Coverletter>(
 	id: string,
-	body: Partial<Resume>,
-): Promise<Career<Resume>> => {
+): Promise<Career<T>> => {
 	try {
-		const response = await axios.patch<Career<Resume>>(RESUME_PATH.UPDATE(id), body);
+		const response = await axios.get<Career<T>>(RESUME_PATH.DETAIL(id));
 		return response.data;
 	} catch (error) {
 		throw new Error((error as Error).message);
 	}
 };
 
-export const fetchDeleteResume = async (id: string): Promise<void> => {
+export const fetchCreateCoverletter = async (
+	body: Coverletter,
+): Promise<Career<Coverletter>> => {
+	try {
+		const response = await axios.post<Career<Coverletter>>(RESUME_PATH.UPDATE(), body);
+		return response.data;
+	} catch (error) {
+		throw new Error((error as Error).message);
+	}
+};
+
+export const fetchUpdateCoverletter = async (
+	id: string,
+	body: Partial<Coverletter>,
+): Promise<Career<Coverletter>> => {
+	try {
+		const response = await axios.patch<Career<Coverletter>>(RESUME_PATH.UPDATE(id), body);
+		return response.data;
+	} catch (error) {
+		throw new Error((error as Error).message);
+	}
+};
+
+export const fetchDeleteCoverletter = async (id: string): Promise<void> => {
 	try {
 		await axios.delete<void>(RESUME_PATH.DETAIL(id));
 	} catch (error) {

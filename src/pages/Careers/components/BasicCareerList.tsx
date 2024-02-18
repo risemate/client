@@ -20,12 +20,14 @@ interface BasicResumeListProps<T = any> {
 	title: string;
 	resumes: Career<T>[];
 	isRevise?: boolean;
+	createTo?: 'co' | 're';
 }
 
-export default function BasicResumeList({
+export default function BasicCareerList({
 	title,
 	resumes,
 	isRevise,
+	createTo,
 }: BasicResumeListProps) {
 	const setting = {
 		modules: [Navigation, Pagination],
@@ -46,7 +48,7 @@ export default function BasicResumeList({
 			<div>
 				<h3>{title}</h3>
 				{isRevise || (
-					<Button variant='navy' size='small' to='/write?redirect=re'>
+					<Button variant='navy' size='small' to={`/write?redirect=${createTo}`}>
 						새 {title} +
 					</Button>
 				)}

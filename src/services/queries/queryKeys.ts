@@ -23,3 +23,9 @@ export const alarmKeys = {
 	base: ['alams'] as const,
 	id: (id: string) => [...alarmKeys.base, { id }] as const,
 };
+export const coverletterKeys = {
+	base: ['careers/coverletter'] as const,
+	id: (id: string) => [...resumeKeys.base, { id }] as const,
+	reviseDocs: (id: string) => [...resumeKeys.base, { id }, 'revise-docs'] as const,
+	career: (params: CareersQueryProps) => [...resumeKeys.base, params] as const,
+};

@@ -6,8 +6,8 @@ import Empty from '@common/Empty';
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
-import BasicResumeList from '../BasicResumeList';
-import useResume from '../ResumeList/ResumeList.hook';
+import BasicCareerList from '../BasicCareerList';
+import useResume from '../ResumeList/CareerList.hook';
 import useReviseList from './ReviseList.hook';
 
 export default function ReviseList() {
@@ -24,7 +24,7 @@ export default function ReviseList() {
 							아직 첨삭받은 이력서가 없습니다
 						</Empty>
 					) : (
-						<BasicResumeList title='첨삭 이력서' resumes={reviseResumes} isRevise />
+						<BasicCareerList title='첨삭 이력서' resumes={reviseResumes} isRevise />
 					)}
 				</SingleAsyncWrapper>
 				`

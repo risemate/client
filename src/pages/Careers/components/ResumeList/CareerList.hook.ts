@@ -2,7 +2,7 @@
 import { careersQuery } from '@queries/resume';
 import { useNavigate } from 'react-router-dom';
 
-export default function useResumeList() {
+export default function useCareerList() {
 	const resumes = careersQuery({ docType: 'BASIC', careerType: 'RESUME' });
 	const coverLetters = careersQuery({ docType: 'BASIC', careerType: 'COVERLETTER' });
 	const navigate = useNavigate();

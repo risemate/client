@@ -1,16 +1,14 @@
-import { isEmpty } from '@utils/helpers';
 import { css } from 'styled-components';
 
-import Empty from '@common/Empty';
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
-import BasicResumeList from '../BasicResumeList';
-import useResumeList from './ResumeList.hook';
+import BasicCareerList from '../BasicCareerList';
+import useCareerList from './CareerList.hook';
 
 export default function Resume() {
-	const { resumes, coverLetters, to } = useResumeList();
+	const { resumes, coverLetters, to } = useCareerList();
 	return (
 		<Container backgroundColor='lightGrey' center padding>
 			<h2 className='a11y-hidden' style={{ width: '100%', padding: '0 20px' }}>
@@ -18,16 +16,16 @@ export default function Resume() {
 			</h2>
 			<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
 				<SingleAsyncWrapper>
-					{isEmpty(resumes) && isEmpty(coverLetters) ? (
-						<Empty btnText='새 이력서 작성하기' onClick={() => to('/write?redirect=re')}>
-							아직 작성하신 이력서/자기소개서가 없습니다
-						</Empty>
-					) : (
-						<>
-							<BasicResumeList title='이력서' resumes={resumes} />
-							<BasicResumeList title='자기소개서' resumes={coverLetters} />
-						</>
-					)}
+					<>
+						<BasicCareerList title='이력서' resumes={resumes} createTo='re' />
+					</>
+				</SingleAsyncWrapper>
+			</WhiteBoxWrapper>
+			<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
+				<SingleAsyncWrapper>
+					<>
+						<BasicCareerList title='자기소개서' resumes={coverLetters} createTo='co' />
+					</>
 				</SingleAsyncWrapper>
 			</WhiteBoxWrapper>
 		</Container>
