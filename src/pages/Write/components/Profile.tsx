@@ -10,7 +10,11 @@ import TextArea from '@components/input/TextArea';
 import BaseSection from '@components/wrappers/EditBaseSection';
 
 export default function Profile() {
-	const { register, watch } = useFormContext();
+	const {
+		register,
+		watch,
+		formState: { errors },
+	} = useFormContext();
 	const inputName = (field: keyof ProfileType) => `doc.profile.${field}`;
 	return (
 		<BaseSection>

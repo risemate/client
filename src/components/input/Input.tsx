@@ -1,3 +1,4 @@
+import { isEmpty } from '@utils/helpers';
 import React, { ForwardedRef, InputHTMLAttributes, forwardRef } from 'react';
 import styled from 'styled-components';
 
@@ -12,7 +13,7 @@ const Input = forwardRef(function Input(
 	ref: ForwardedRef<HTMLInputElement>,
 ) {
 	return (
-		<InputLabel>
+		<InputLabel $warning={!isEmpty(warning)}>
 			{label && <span>{label}</span>}
 			<input ref={ref} {...InputProps} />
 			{warning && <span className='warning'>{warning}</span>}
@@ -21,7 +22,11 @@ const Input = forwardRef(function Input(
 	);
 });
 
-const InputLabel = styled.label`
+interface StyledInputProps {
+	$warning?: boolean;
+}
+
+const InputLabel = styled.label<StyledInputProps>`
 	font-size: ${({ theme }) => theme.fontSizes.small};
 	color: ${({ theme }) => theme.colors.darkGrey};
 	display: flex;
@@ -29,7 +34,7 @@ const InputLabel = styled.label`
 	gap: 10px;
 	input {
 		border-radius: 10px;
-		border: 0.5px solid ${({ theme }) => theme.colors.grey};
+		border: 0.5px solid ${({ $warning, theme }) => ($warning ? 'red' : theme.colors.grey)};
 		padding: 10px;
 	}
 	.warning {
