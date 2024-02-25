@@ -12,7 +12,7 @@ import MonthInput from '@components/input/MonthInput';
 import Select from '@components/input/Select';
 import TextArea from '@components/input/TextArea';
 
-import BaseSection from '../../../components/wrappers/EditBaseSection';
+import BaseSection from '../../../../components/wrappers/EditBaseSection';
 
 export default function WorkExperience() {
 	const FIELD = 'doc.workExperiences';

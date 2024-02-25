@@ -6,10 +6,10 @@ import ResumeNav from '@common/ResumeNav';
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
 
-import CoverLetter from './components/CoverLetter';
-import CreateModal from './components/modal/CreateModal';
-import UpdateModal from './components/modal/UpdateModal';
-import Profile from './components/Profile';
+import CoverLetter from '../edit-base/CoverLetter';
+import Profile from '../edit-base/Profile';
+import CreateModal from '../modal/CreateModal';
+import UpdateModal from '../modal/UpdateModal';
 import useCoverletterWrite from './WirteCoverletter.hook';
 
 export default function WriteCoverletter() {

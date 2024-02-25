@@ -1,4 +1,4 @@
-import useResumeWrite from 'pages/Write/WirteResume.hook';
+import useResumeWrite from 'pages/Write/components/WriteResume/WirteResume.hook';
 
 import Modal from '@components/modal/base/Modal';
 

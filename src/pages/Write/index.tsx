@@ -1,7 +1,7 @@
-import WriteResume from 'pages/Write/WriteResume';
+import WriteResume from 'pages/Write/components/WriteResume/WriteResume';
 import { useSearchParams } from 'react-router-dom';
 
-import WriteCoverletter from './WriteCoverletter';
+import WriteCoverletter from './components/WriteCoverletter/WriteCoverletter';
 
 export default function WritePage() {
 	const [params] = useSearchParams();
