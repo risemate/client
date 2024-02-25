@@ -144,3 +144,10 @@ export type Feedback = {
 	education: string;
 	activity: string;
 };
+
+export type ResumeOrderType = {
+	id: number;
+	name: string;
+	label: string;
+	isVisible: boolean;
+};

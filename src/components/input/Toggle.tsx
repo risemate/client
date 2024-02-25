@@ -2,7 +2,7 @@ import React, { ChangeEvent } from 'react';
 import styled from 'styled-components';
 
 interface ToggleProps {
-	name: string;
+	name?: string;
 	checked: boolean;
 	onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
@@ -10,7 +10,7 @@ interface ToggleProps {
 export default function Toggle({ name, checked, onChange }: ToggleProps) {
 	return (
 		<ToggleLabel>
-			<span>{name}</span>
+			{name && <span>{name}</span>}
 			<input role='switch' type='checkbox' checked={checked} onChange={onChange} />
 		</ToggleLabel>
 	);
