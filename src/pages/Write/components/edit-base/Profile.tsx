@@ -10,11 +10,7 @@ import TextArea from '@components/input/TextArea';
 import BaseSection from '@components/wrappers/EditBaseSection';
 
 export default function Profile() {
-	const {
-		register,
-		watch,
-		formState: { errors },
-	} = useFormContext();
+	const { register, watch } = useFormContext();
 	const inputName = (field: keyof ProfileType) => `doc.profile.${field}`;
 	return (
 		<BaseSection>
@@ -98,21 +94,14 @@ const NameInput = styled.label`
 const ContactWrapper = styled.div`
 	grid-column: 3 / 5;
 	display: flex;
-	flex-wrap: wrap;
-	gap: 30px;
+	flex-direction: column;
+	gap: 20px;
 	margin-top: 20px;
-	label {
-		width: 47%;
-		flex-shrink: 0;
-	}
-	& > div {
-		width: 47%;
-	}
 `;
 
 const InputWrapper = styled.div`
 	display: grid;
-	grid-template-columns: 160px 0.8fr 1fr 1fr;
+	grid-template-columns: 160px 0.8fr 1fr;
 	gap: 5px 20px;
 	& > div:nth-child(1) {
 		grid-column: 1 / 2;
