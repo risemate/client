@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import styled, { CSSProp, css } from 'styled-components';
 
 interface WhiteBoxWrapperProps {
-	type: 'div' | 'section';
+	type: 'div' | 'section' | 'article';
 	children: ReactNode;
 	customCss?: CSSProp;
 }
@@ -17,6 +17,9 @@ export default function WhiteBoxWrapper({
 			{type === 'div' && <WhiteBoxDiv $customCss={customCss}>{children}</WhiteBoxDiv>}
 			{type === 'section' && (
 				<WhiteBoxSection $customCss={customCss}>{children}</WhiteBoxSection>
+			)}
+			{type === 'article' && (
+				<WhiteBoxArticle $customCss={customCss}>{children}</WhiteBoxArticle>
 			)}
 		</>
 	);
@@ -48,4 +51,8 @@ const WhiteBoxSection = styled.section<StyledBoxProps>`
 	&:not(:last-child) {
 		margin-bottom: 30px;
 	}
+`;
+
+const WhiteBoxArticle = styled.article<StyledBoxProps>`
+	${commonStyle}
 `;
