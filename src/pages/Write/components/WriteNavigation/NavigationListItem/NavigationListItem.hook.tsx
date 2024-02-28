@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { useDrag, useDrop, DropTargetMonitor, DragSourceMonitor } from 'react-dnd';
+import { useFormContext } from 'react-hook-form';
 
 export default function useNavigationListItem(
 	id: number,
@@ -11,6 +12,7 @@ export default function useNavigationListItem(
 		id: number;
 		index: number;
 	};
+	const { watch, setValue } = useFormContext();
 	const [{ handlerId }, drop] = useDrop({
 		accept: 'resume',
 		collect(monitor) {
@@ -47,5 +49,17 @@ export default function useNavigationListItem(
 	});
 
 	const opacity = isDragging ? 0 : 1;
-	return { ref, handlerId, opacity, drag, drop };
+	return {
+		dnd: {
+			ref,
+			handlerId,
+			opacity,
+			drag,
+			drop,
+		},
+		isVisible: {
+			value: watch(`doc.order.${index}.isVisible`),
+			update: (value: boolean) => setValue(`doc.order.${index}.isVisible`, value),
+		},
+	};
 }

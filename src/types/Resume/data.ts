@@ -6,6 +6,7 @@ import {
 	Profile,
 	Project,
 	Resume,
+	OrderType,
 	ReviseResume,
 	WorkExperience,
 } from 'types/Resume';
@@ -72,6 +73,51 @@ export const defaultCertificate: Certificate = {
 	links: [],
 };
 
+export const defaultOrder: OrderType[] = [
+	{
+		id: 1,
+		name: 'coverLetter',
+		label: '자기소개',
+		isVisible: true,
+	},
+	{
+		id: 2,
+		name: 'techStacks',
+		label: '기술 스택',
+		isVisible: true,
+	},
+	{
+		id: 3,
+		name: 'workExperiences',
+		label: '경력',
+		isVisible: true,
+	},
+	{
+		id: 4,
+		name: 'projects',
+		label: '프로젝트',
+		isVisible: true,
+	},
+	{
+		id: 5,
+		name: 'educations',
+		label: '교육',
+		isVisible: true,
+	},
+	{
+		id: 6,
+		name: 'activities',
+		label: '대외활동',
+		isVisible: true,
+	},
+	{
+		id: 7,
+		name: 'certificates',
+		label: '자격증',
+		isVisible: true,
+	},
+];
+
 export const defaultResume: Career<Resume> = {
 	careerType: 'RESUME',
 	description: '',
@@ -101,6 +147,7 @@ export const defaultResume: Career<Resume> = {
 		links: [],
 		careerYears: 1,
 		lookingForJob: true,
+		order: defaultOrder,
 	},
 	createdAt: '',
 	updatedAt: '',

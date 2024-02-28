@@ -50,6 +50,7 @@ export type Resume = {
 	links: Link[] | null;
 	careerYears: number;
 	lookingForJob: boolean;
+	order?: OrderType[];
 };
 
 export type Profile = {
@@ -145,7 +146,7 @@ export type Feedback = {
 	activity: string;
 };
 
-export type ResumeOrderType = {
+export type OrderType = {
 	id: number;
 	name: string;
 	label: string;

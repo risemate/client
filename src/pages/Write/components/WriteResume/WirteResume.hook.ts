@@ -1,4 +1,3 @@
-import { useModal } from '@hooks/atoms/useModalAtom';
 import { useSearchParam } from '@hooks/common/useSearchParam';
 import {
 	resumeCreateMutation,
@@ -26,11 +25,6 @@ export default function useResumeWrite() {
 		values: resume,
 	});
 
-	const { isModal: isUpdateModal, openModal: openUpdateModal } =
-		useModal('update-resume');
-	const { isModal: isCreateModal, openModal: openCreateModal } =
-		useModal('create-resume');
-
 	const updateResumeMutation = resumeUpdateMutation();
 	const createResumeMutation = resumeCreateMutation();
 
@@ -50,23 +44,12 @@ export default function useResumeWrite() {
 		});
 	};
 
-	const resumeEditNavItems = [
-		{ name: '미리보기' },
-		{ name: '저장하기', onClick: isNewResume ? openCreateModal : openUpdateModal },
-	];
-
 	return {
 		resumeDetail,
-		resumeEditNavItems,
 		resumeEditMethods,
+		resumeOrder: watch('doc.order')?.filter(order => order.isVisible) || [],
 		submitResume,
 		getValue,
 		formId: 'resume-edit-form',
-		createModal: {
-			isModal: isCreateModal,
-		},
-		updateModal: {
-			isModal: isUpdateModal,
-		},
 	};
 }

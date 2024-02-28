@@ -9,14 +9,15 @@ import NavigationListItem from './NavigationListItem/NavigationListItem';
 import useWriteNavigation from './WriteNavigation.hook';
 
 export default function WriteNavigation() {
-	const { resumeOrder, moveItem } = useWriteNavigation();
+	const { resumeOrder, moveItem, openSaveModal } = useWriteNavigation();
 	return (
 		<NavigationWrapper>
 			<TitleWrapper>
 				<h2>항목 편집</h2>
 				<span>
-					토글을 사용하여 해당 섹션을 표시하거나 숨기고, 드래그 앤 드롭을 통해 섹션의
-					순서를 변경할 수 있습니다.
+					토글을 사용하여 해당 섹션을 표시하거나
+					<br /> 숨기고, 드래그 앤 드롭을 통해 섹션의 순서를
+					<br /> 변경할 수 있습니다.
 				</span>
 			</TitleWrapper>
 			<DndProvider backend={HTML5Backend}>
@@ -33,7 +34,7 @@ export default function WriteNavigation() {
 				</ResumeOrderList>
 			</DndProvider>
 			<ButtonWrapper>
-				<Button variant='navy' size='full'>
+				<Button variant='navy' size='full' type='button' onClick={openSaveModal}>
 					저장하기
 				</Button>
 				<Button variant='border' type='button' size='full'>

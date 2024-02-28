@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ResumeOrderType } from 'types/Resume';
+import { OrderType } from 'types/Resume';
 
 import Toggle from '@components/input/Toggle';
 
 import useNavigationListItem from './NavigationListItem.hook';
 
 interface NavigationListItemProps {
-	orderItem: ResumeOrderType;
+	orderItem: OrderType;
 	index: number;
 	moveItem: (dragIndex: number, hoverIndex: number) => void;
 }
@@ -17,17 +17,19 @@ export default function NavigationListItem({
 	index,
 	moveItem,
 }: NavigationListItemProps) {
-	const { ref, handlerId, opacity, drag, drop } = useNavigationListItem(
-		orderItem.id,
-		index,
-		moveItem,
-	);
+	const {
+		dnd: { ref, handlerId, opacity, drag, drop },
+		isVisible,
+	} = useNavigationListItem(orderItem.id, index, moveItem);
 	drag(drop(ref));
 
 	return (
 		<NavListItem ref={ref} data-handler-id={handlerId} $opacity={opacity}>
 			<span>{orderItem.label}</span>
-			<Toggle checked={orderItem.isVisible} onChange={() => console.log('he')} />
+			<Toggle
+				checked={isVisible.value}
+				onChange={e => isVisible.update(e.target.checked)}
+			/>
 		</NavListItem>
 	);
 }

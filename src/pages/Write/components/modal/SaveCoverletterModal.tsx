@@ -2,16 +2,16 @@ import useResumeWrite from 'pages/Write/components/WriteResume/WirteResume.hook'
 
 import Modal from '@components/modal/base/Modal';
 
-export default function UpdateModal() {
+export default function SaveCoverletterModal() {
 	const { formId } = useResumeWrite();
 	return (
 		<Modal
-			title='이력서 수정'
+			title='자기소개서 저장'
 			confirm='저장'
 			buttonFormId={formId}
-			queryKey='update-resume'
+			queryKey='save-coverletter'
 		>
-			해당 이력서를 현재 상태로 저장하시겠습니까?
+			자기소개서를 해당 내용으로 저장하시겠습니까?
 		</Modal>
 	);
 }

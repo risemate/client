@@ -8,8 +8,7 @@ import Container from '@components/layout/Container';
 
 import CoverLetter from '../edit-base/CoverLetter';
 import Profile from '../edit-base/Profile';
-import CreateModal from '../modal/CreateModal';
-import UpdateModal from '../modal/UpdateModal';
+import SaveCoverletterModal from '../modal/SaveCoverletterModal';
 import useCoverletterWrite from './WirteCoverletter.hook';
 
 export default function WriteCoverletter() {
@@ -33,8 +32,7 @@ export default function WriteCoverletter() {
 						<ResumeNav resumeNavItems={coverletterEditNavItems} />
 					</StyledForm>
 				</SingleAsyncWrapper>
-				<CreateModal />
-				<UpdateModal />
+				<SaveCoverletterModal />
 				{/* <UnsavedChangesModal blocker={blocker} /> */}
 			</FormProvider>
 		</Container>

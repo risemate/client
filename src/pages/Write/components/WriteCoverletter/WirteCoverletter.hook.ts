@@ -26,10 +26,7 @@ export default function useCoverletterWrite() {
 		values: coverletter,
 	});
 
-	const { isModal: isUpdateModal, openModal: openUpdateModal } =
-		useModal('update-coverletter');
-	const { isModal: isCreateModal, openModal: openCreateModal } =
-		useModal('create-coverletter');
+	const { openModal: openSaveModal } = useModal('save-coverletter');
 
 	const updateCoverletterMutation = coverletterUpdateMutation();
 	const createCoverletterMutation = coverletterCreateMutation();
@@ -52,7 +49,7 @@ export default function useCoverletterWrite() {
 
 	const coverletterEditNavItems = [
 		{ name: '미리보기' },
-		{ name: '저장하기', onClick: isNewCoverletter ? openCreateModal : openUpdateModal },
+		{ name: '저장하기', onClick: openSaveModal },
 	];
 
 	return {
@@ -62,11 +59,5 @@ export default function useCoverletterWrite() {
 		submitCoverletter,
 		getValue,
 		formId: 'coverletter-edit-form',
-		createModal: {
-			isModal: isCreateModal,
-		},
-		updateModal: {
-			isModal: isUpdateModal,
-		},
 	};
 }
