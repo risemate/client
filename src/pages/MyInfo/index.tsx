@@ -3,8 +3,8 @@ import { css } from 'styled-components';
 import Container from '@components/layout/Container';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
-import MyInfoDetail from './components/MyInfoDetail';
-import UserProfile from './components/UserProfile';
+import MyInfoDetail from './components/MyInfoDetail/MyInfoDetail';
+import UserProfile from './components/UserProfile/UserProfile';
 
 export default function MyInfoPage() {
 	return (

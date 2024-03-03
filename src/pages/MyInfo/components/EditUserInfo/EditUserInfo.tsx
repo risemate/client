@@ -1,57 +1,35 @@
 import React from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
+import { FormProvider } from 'react-hook-form';
 import styled from 'styled-components';
-import { Auth } from 'types/User';
 
 import Button from '@common/Button';
 import FileInput from '@components/input/FileInput';
 import Input from '@components/input/Input';
 
+import useEditUserInfo from './EditUserInfo.hook';
+
 export default function EditUserInfo() {
-	const userInfo = {
-		name: '홍길동',
-		password: 'hello',
-		nickaname: '길동이시오다',
-		picture: '',
-		email: 'gildong@gmail.com',
-	};
-	const methods = useForm<Auth>({
-		mode: 'onSubmit',
-		defaultValues: userInfo,
-	});
-
-	const { getValues, register, handleSubmit } = methods;
-
-	const changeUserInfo = (data: Auth) => {
-		// eslint-disable-next-line
-		console.log(data);
-	};
+	const { methods, registerAuth, submitEditUserInfo } = useEditUserInfo();
 
 	return (
 		<FormProvider {...methods}>
 			<UserInfoSection>
 				<h3>사용자 정보 수정</h3>
-				<form onSubmit={handleSubmit(changeUserInfo)}>
+				<form onSubmit={submitEditUserInfo()}>
 					<FileInput label='이미지' inputName='picture' size='small' />
-					<Input
-						label='본명'
-						warning='변경할 수 없습니다.'
-						type='text'
-						value={getValues('name')}
-						readOnly
-					/>
+					<Input label='이름' type='text' {...registerAuth.name} />
 					<Input
 						label='이메일'
 						warning='변경할 수 없습니다.'
 						type='text'
-						value={getValues('email')}
 						readOnly
+						{...registerAuth.email}
 					/>
 					<Input
 						label='닉네임'
 						type='text'
 						placeholder='닉네임을 입력해주세요.'
-						{...register('nickname')}
+						{...registerAuth.nickname}
 					/>
 					<Button variant='navy' size='medium' type='submit'>
 						정보 수정

@@ -1,55 +1,65 @@
-import { useSearchParam } from '@hooks/common/useSearchParam';
 import { IconCheck, IconCoin, IconComment, IconProceeding, IconWaiting } from '@icons';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import PageItem from '../../../components/user-page/PageItem';
-import EditUserInfo from './EditUserInfo';
-import Payment from './Payment';
-import Review from './Review';
+import PageItem from '../../../../components/user-page/PageItem';
+import EditUserInfo from '../EditUserInfo/EditUserInfo';
+import Payment from '../Payment';
+import Review from '../Review';
+import useMyInfoDetail from './MyInfoDetail.hook';
 
 export default function MyInfoDetail() {
-	const { queryParam, changeParam } = useSearchParam('mode');
-	const navigate = useNavigate();
+	const { displayedAuth, changeParam, queryParam, navigateToDocs } = useMyInfoDetail();
 
 	return (
 		<>
-			{!queryParam && (
+			{queryParam.detail && (
 				<PageDetailSection>
 					<div>
 						<PageItem
-							items={[{ name: '보유 코인', icon: <IconCoin />, state: '220p' }]}
+							items={[
+								{ name: '보유 코인', icon: <IconCoin />, state: displayedAuth.coin },
+							]}
 							buttonEvent={{
 								name: '결제 내역 보기',
-								onClick: () => changeParam('payment'),
+								onClick: changeParam.toPayment,
 							}}
 						/>
 						<PageItem
-							items={[{ name: '내 후기', icon: <IconComment />, state: '1개' }]}
+							items={[
+								{ name: '내 후기', icon: <IconComment />, state: displayedAuth.review },
+							]}
 							buttonEvent={{
 								name: '후기 관리하기',
-								onClick: () => changeParam('review'),
+								onClick: changeParam.toReview,
 							}}
 						/>
 					</div>
 					<div>
 						<PageItem
 							items={[
-								{ name: '응답 대기', icon: <IconWaiting />, state: '10개' },
-								{ name: '진행 중', icon: <IconProceeding />, state: '0개' },
-								{ name: '완료', icon: <IconCheck />, state: '1개' },
+								{
+									name: '응답 대기',
+									icon: <IconWaiting />,
+									state: displayedAuth.waiting,
+								},
+								{
+									name: '진행 중',
+									icon: <IconProceeding />,
+									state: displayedAuth.progress,
+								},
+								{ name: '완료', icon: <IconCheck />, state: displayedAuth.complete },
 							]}
 							buttonEvent={{
 								name: '첨삭 페이지 이동',
-								onClick: () => navigate('/docs'),
+								onClick: navigateToDocs,
 							}}
 						/>
 					</div>
 				</PageDetailSection>
 			)}
-			{queryParam === 'edit' && <EditUserInfo />}
-			{queryParam === 'payment' && <Payment />}
-			{queryParam === 'review' && <Review />}
+			{queryParam.edit && <EditUserInfo />}
+			{queryParam.payment && <Payment />}
+			{queryParam.review && <Review />}
 		</>
 	);
 }

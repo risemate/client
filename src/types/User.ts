@@ -5,13 +5,28 @@ export enum Roles {
 }
 export type Auth = {
 	_id: string;
+	cash: number;
+	coin: number;
+	completedCoaching: unknown;
+	completedCoachingCount: number;
+	coverletterCount: number;
 	createdAt: string;
-	updatedAt: string;
+	csCount: number;
 	email: string;
+	inProgressCoaching: unknown;
+	inProgressCoachingCount: number;
 	name?: string;
 	nickname: string;
 	picture: string; //avatar url
+	provider: string;
+	refreshToken: string;
+	responseWaitingCoaching: unknown;
+	responseWaitngCoachingCount: number;
+	resumeCount: number;
+	reviewCount: number;
 	role: Roles;
+	updatedAt: string;
+	waitingPaymentCoachingCount: number;
 };
 
 export interface Career {
