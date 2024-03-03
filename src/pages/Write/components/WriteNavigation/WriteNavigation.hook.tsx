@@ -7,10 +7,10 @@ export default function useWriteNavigation() {
 	const { watch, control } = useFormContext();
 	const { swap } = useFieldArray({
 		control,
-		name: 'doc.order',
+		name: 'doc.orderType',
 		keyName: 'key',
 	});
-	const resumeOrder = watch('doc.order') as OrderType[];
+	const resumeOrder = watch('doc.orderType') as OrderType[];
 
 	const moveItem = useCallback(
 		(dragIndex: number, hoverIndex: number) => swap(dragIndex, hoverIndex),

@@ -23,10 +23,10 @@ export default function WriteNavigation() {
 			<DndProvider backend={HTML5Backend}>
 				<ResumeOrderList>
 					<li>기본 정보</li>
-					{resumeOrder.map((order, index) => (
+					{resumeOrder.map((orderType, index) => (
 						<NavigationListItem
-							key={order.id}
-							orderItem={order}
+							key={orderType.id}
+							orderItem={orderType}
 							index={index}
 							moveItem={moveItem}
 						/>

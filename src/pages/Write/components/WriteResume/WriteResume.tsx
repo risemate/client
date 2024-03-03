@@ -42,7 +42,7 @@ export default function WriteResume() {
 								{isEmpty(getValue('docTitle')) ? '새로운 이력서' : getValue('docTitle')};
 							</h2>
 							<Profile />
-							{resumeOrder.map(order => writeResumeComponentMap[order.name])}
+							{resumeOrder.map(orderType => writeResumeComponentMap[orderType.name])}
 						</div>
 						<WriteNavigation />
 					</StyledForm>

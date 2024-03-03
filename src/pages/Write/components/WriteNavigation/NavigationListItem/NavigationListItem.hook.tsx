@@ -58,8 +58,8 @@ export default function useNavigationListItem(
 			drop,
 		},
 		isVisible: {
-			value: watch(`doc.order.${index}.isVisible`),
-			update: (value: boolean) => setValue(`doc.order.${index}.isVisible`, value),
+			value: watch(`doc.orderType.${index}.isVisible`),
+			update: (value: boolean) => setValue(`doc.orderType.${index}.isVisible`, value),
 		},
 	};
 }

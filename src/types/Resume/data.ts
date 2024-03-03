@@ -147,7 +147,7 @@ export const defaultResume: Career<Resume> = {
 		links: [],
 		careerYears: 1,
 		lookingForJob: true,
-		order: defaultOrder,
+		orderType: defaultOrder,
 	},
 	createdAt: '',
 	updatedAt: '',
