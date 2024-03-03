@@ -72,7 +72,7 @@ const UserInfoSection = styled.section`
 const UpperWrapper = styled.div`
 	& > div {
 		display: flex;
-		gap: 10px;
+		flex-wrap: wrap;
 	}
 
 	& > button {
@@ -85,7 +85,8 @@ const UpperWrapper = styled.div`
 const UserWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-
+	margin-left: 10px;
+	margin-top: 10px;
 	h2 {
 		color: ${({ theme }) => theme.colors.navy};
 		font-size: ${({ theme }) => theme.fontSizes.medium};
