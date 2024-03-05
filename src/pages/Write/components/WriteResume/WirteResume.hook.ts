@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { Career } from 'types/CareerDocument';
 import { Resume as ResumeType } from 'types/Resume';
-import { defaultResume } from 'types/Resume/data';
+import { defaultOrder, defaultResume } from 'types/Resume/data';
 
 export default function useResumeWrite() {
 	const { queryParam: resumeId } = useSearchParam<string>('id');
@@ -47,7 +47,7 @@ export default function useResumeWrite() {
 	return {
 		resumeDetail,
 		resumeEditMethods,
-		resumeOrder: watch('doc.orderType')?.filter(orderType => orderType.isVisible) || [],
+		resumeOrder: watch('doc.orderType')?.filter(orderType => orderType.isVisible) || defaultOrder,
 		submitResume,
 		getValue,
 		formId: 'resume-edit-form',

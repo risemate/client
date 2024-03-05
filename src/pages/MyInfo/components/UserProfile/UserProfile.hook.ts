@@ -16,7 +16,7 @@ export default function useUserProfile() {
 			nickname: auth?.nickname || '000',
 			email: auth?.email || '-',
 			picture: auth?.picture || '',
-			isExpert: auth?.role === 2,
+			isExpert: auth?.role === 1,
 		},
 		logout,
 		changeParamToEdit: () => changeParam('edit'),
