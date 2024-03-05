@@ -147,8 +147,8 @@ export type Feedback = {
 };
 
 export type OrderType = {
-	id: number;
 	name: string;
 	label: string;
 	isVisible: boolean;
+	_id: number;
 };

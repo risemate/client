@@ -1,4 +1,3 @@
-import React from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import styled from 'styled-components';
@@ -25,7 +24,7 @@ export default function WriteNavigation() {
 					<li>기본 정보</li>
 					{resumeOrder.map((orderType, index) => (
 						<NavigationListItem
-							key={orderType.id}
+							key={orderType._id}
 							orderItem={orderType}
 							index={index}
 							moveItem={moveItem}

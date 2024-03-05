@@ -1,9 +1,9 @@
 import { useRef } from 'react';
-import { useDrag, useDrop, DropTargetMonitor, DragSourceMonitor } from 'react-dnd';
+import { DragSourceMonitor, DropTargetMonitor, useDrag, useDrop } from 'react-dnd';
 import { useFormContext } from 'react-hook-form';
 
 export default function useNavigationListItem(
-	id: number,
+	id: number | string,
 	index: number,
 	moveItem: (dragIndex: number, hoverIndex: number) => void,
 ) {
