@@ -38,11 +38,7 @@ export default function Profile() {
 						{...register(inputName('phoneNumber'))}
 					/>
 					<Input label='이메일' type='email' {...register(inputName('email'))} />
-					<DateInput
-						label='생일'
-						inputName={inputName('birthday')}
-						{...register(inputName('birthday'))}
-					/>
+					<DateInput label='생일' inputName={inputName('birthday')} />
 				</ContactWrapper>
 				<TextArea label='5줄 표현' help {...register('doc.description')} />
 				<LinkInput links={watch(inputName('links'))} inputName={inputName('links')} />
