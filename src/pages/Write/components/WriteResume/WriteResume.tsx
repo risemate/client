@@ -23,17 +23,6 @@ export default function WriteResume() {
 	const { formId, resumeEditMethods, resumeOrder, submitResume, getValue } =
 		useResumeWrite();
 	// const { blocker } = usePreventLeave();
-	const writeResumeComponentMap = (key: number | string): Record<string, JSX.Element> => {
-		return {
-			coverLetter: <CoverLetter key={key} />,
-			techStacks: <TechStack key={key} />,
-			workExperiences: <WorkExperience key={key} />,
-			projects: <Project key={key} />,
-			educations: <Education key={key} />,
-			activities: <Activity key={key} />,
-			certificates: <Certificates key={key} />,
-		};
-	};
 	return (
 		<Container backgroundColor='lightGrey' padding>
 			<FormProvider {...resumeEditMethods}>
@@ -44,9 +33,25 @@ export default function WriteResume() {
 								{isEmpty(getValue('docTitle')) ? '새로운 이력서' : getValue('docTitle')};
 							</h2>
 							<Profile />
-							{resumeOrder.map(
-								(orderType, index) => writeResumeComponentMap(index)[orderType.name],
-							)}
+							<TechStack />
+							{resumeOrder.map(item => {
+								switch (item.name) {
+									case 'coverLetter':
+										return <CoverLetter key={item._id} />;
+									case 'workExperiences':
+										return <WorkExperience key={item._id} />;
+									case 'projects':
+										return <Project key={item._id} />;
+									case 'educations':
+										return <Education key={item._id} />;
+									case 'activities':
+										return <Activity key={item._id} />;
+									case 'certificates':
+										return <Certificates key={item._id} />;
+									default:
+										return null;
+								}
+							})}
 						</div>
 						<WriteNavigation />
 					</StyledForm>

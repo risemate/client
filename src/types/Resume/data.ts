@@ -81,40 +81,34 @@ export const defaultOrder: OrderType[] = [
 		isVisible: true,
 	},
 	{
-		name: 'techStacks',
-		label: '기술 스택',
-		isVisible: true,
 		_id: 2,
-	},
-	{
 		name: 'workExperiences',
 		label: '경력',
 		isVisible: true,
-		_id: 3,
 	},
 	{
+		_id: 3,
 		name: 'projects',
 		label: '프로젝트',
 		isVisible: true,
-		_id: 4,
 	},
 	{
+		_id: 4,
 		name: 'educations',
 		label: '교육',
 		isVisible: true,
-		_id: 5,
 	},
 	{
+		_id: 5,
 		name: 'activities',
 		label: '대외활동',
 		isVisible: true,
-		_id: 6,
 	},
 	{
+		_id: 6,
 		name: 'certificates',
 		label: '자격증',
 		isVisible: true,
-		_id: 7,
 	},
 ];
 
