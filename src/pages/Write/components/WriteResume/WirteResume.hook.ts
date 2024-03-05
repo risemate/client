@@ -47,7 +47,8 @@ export default function useResumeWrite() {
 	return {
 		resumeDetail,
 		resumeEditMethods,
-		resumeOrder: watch('doc.orderType')?.filter(orderType => orderType.isVisible) || defaultOrder,
+		resumeOrder:
+			watch('doc.orderType')?.filter(orderType => orderType.isVisible) || defaultOrder,
 		submitResume,
 		getValue,
 		formId: 'resume-edit-form',

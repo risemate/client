@@ -23,14 +23,16 @@ export default function WriteResume() {
 	const { formId, resumeEditMethods, resumeOrder, submitResume, getValue } =
 		useResumeWrite();
 	// const { blocker } = usePreventLeave();
-	const writeResumeComponentMap: Record<string, JSX.Element> = {
-		coverLetter: <CoverLetter />,
-		techStacks: <TechStack />,
-		workExperiences: <WorkExperience />,
-		projects: <Project />,
-		educations: <Education />,
-		activities: <Activity />,
-		certificates: <Certificates />,
+	const writeResumeComponentMap = (key: number | string): Record<string, JSX.Element> => {
+		return {
+			coverLetter: <CoverLetter key={key} />,
+			techStacks: <TechStack key={key} />,
+			workExperiences: <WorkExperience key={key} />,
+			projects: <Project key={key} />,
+			educations: <Education key={key} />,
+			activities: <Activity key={key} />,
+			certificates: <Certificates key={key} />,
+		};
 	};
 	return (
 		<Container backgroundColor='lightGrey' padding>
@@ -42,7 +44,9 @@ export default function WriteResume() {
 								{isEmpty(getValue('docTitle')) ? '새로운 이력서' : getValue('docTitle')};
 							</h2>
 							<Profile />
-							{resumeOrder.map(orderType => writeResumeComponentMap[orderType.name])}
+							{resumeOrder.map(
+								(orderType, index) => writeResumeComponentMap(index)[orderType.name],
+							)}
 						</div>
 						<WriteNavigation />
 					</StyledForm>
