@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { OrderType } from 'types/Resume';
 
@@ -20,7 +19,7 @@ export default function NavigationListItem({
 	const {
 		dnd: { ref, handlerId, opacity, drag, drop },
 		isVisible,
-	} = useNavigationListItem(orderItem.id, index, moveItem);
+	} = useNavigationListItem(orderItem.name, index, moveItem);
 	drag(drop(ref));
 
 	return (

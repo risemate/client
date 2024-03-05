@@ -1,5 +1,4 @@
 import { Career } from 'types/CareerDocument';
-import { defaultProfile } from 'types/Resume/data';
 
 import { Coverletter } from '.';
 
@@ -15,22 +14,19 @@ export const defaultCoverletter: Career<Coverletter> = {
 	parentId: null,
 	coverImage: '',
 	doc: {
-		profile: defaultProfile,
-
 		public: false,
 
 		docTitle: '',
 
 		description: '',
 
-		position: '',
-
-		coverLetter: '',
+		contents: [],
 
 		coverImage: '',
 
 		links: [],
 
+		orderType: [],
 		lookingForJob: false,
 	},
 	createdAt: '',

@@ -3,10 +3,10 @@ import {
 	Activity,
 	Certificate,
 	Education,
+	OrderType,
 	Profile,
 	Project,
 	Resume,
-	OrderType,
 	ReviseResume,
 	WorkExperience,
 } from 'types/Resume';
@@ -75,46 +75,46 @@ export const defaultCertificate: Certificate = {
 
 export const defaultOrder: OrderType[] = [
 	{
-		id: 1,
+		_id: 1,
 		name: 'coverLetter',
 		label: '자기소개',
 		isVisible: true,
 	},
 	{
-		id: 2,
 		name: 'techStacks',
 		label: '기술 스택',
 		isVisible: true,
+		_id: 2,
 	},
 	{
-		id: 3,
 		name: 'workExperiences',
 		label: '경력',
 		isVisible: true,
+		_id: 3,
 	},
 	{
-		id: 4,
 		name: 'projects',
 		label: '프로젝트',
 		isVisible: true,
+		_id: 4,
 	},
 	{
-		id: 5,
 		name: 'educations',
 		label: '교육',
 		isVisible: true,
+		_id: 5,
 	},
 	{
-		id: 6,
 		name: 'activities',
 		label: '대외활동',
 		isVisible: true,
+		_id: 6,
 	},
 	{
-		id: 7,
 		name: 'certificates',
 		label: '자격증',
 		isVisible: true,
+		_id: 7,
 	},
 ];
 
