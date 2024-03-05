@@ -28,7 +28,8 @@ export default function DateInput({ label, inputName, mode = 'date' }: DateInput
 	const dateToString = (date: Date) => {
 		const year = date.getFullYear();
 		const month = (date.getMonth() + 1).toString().padStart(2, '0');
-		return `${year}-${month}`;
+		const day = date.getDate().toString();
+		return `${year}-${month}-${day}`;
 	};
 	const dateFormat = () => {
 		if (mode === 'year') return 'yyyy';
