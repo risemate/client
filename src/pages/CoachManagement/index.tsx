@@ -17,11 +17,11 @@ import Progress from './components/Progress';
 
 export default function CoachManagement() {
 	const tabItems: TabItem[] = [
-		{ label: '대기', value: '대기' },
-		{ label: '진행 중', value: '진행 중' },
-		{ label: '완료', value: '완료' },
+		{ label: '대기', value: 'WAITING' },
+		{ label: '진행 중', value: 'INPROGRESS' },
+		{ label: '완료', value: 'COMPLETE' },
 	];
-	const { currentTab, changeTab, isCurrentTab } = useTab(tabItems);
+	const { currentTab, changeTab, isCurrentTab } = useTab(tabItems, true);
 	const pendingList: PendingType[] = [{ temp: 1 }, { temp: 1 }, { temp: 1 }];
 	const progressList: ProgressType[] = [{ temp: 1 }, { temp: 1 }, { temp: 1 }];
 	const completeList: CompleteType[] = [{ temp: 1 }, { temp: 1 }, { temp: 1 }];
@@ -35,7 +35,7 @@ export default function CoachManagement() {
 					isCurrentTab={isCurrentTab}
 					underline
 				/>
-				{currentTab.value === '대기' && (
+				{currentTab.value === 'WAITING' && (
 					<ManagementTabWrapper>
 						<h3>응답 대기</h3>
 						<p>
@@ -51,7 +51,7 @@ export default function CoachManagement() {
 						</ManagementList>
 					</ManagementTabWrapper>
 				)}
-				{currentTab.value === '진행 중' && (
+				{currentTab.value === 'INPROGRESS' && (
 					<ManagementTabWrapper>
 						<h3>진행 중인 첨삭 코칭</h3>
 						<ManagementList>
@@ -63,7 +63,7 @@ export default function CoachManagement() {
 						</ManagementList>
 					</ManagementTabWrapper>
 				)}
-				{currentTab.value === '완료' && (
+				{currentTab.value === 'COMPLETE' && (
 					<ManagementTabWrapper>
 						<h3>완료한 첨삭 코칭</h3>
 						<ManagementList>

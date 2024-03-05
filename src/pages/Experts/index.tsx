@@ -13,7 +13,7 @@ export default function Experts() {
 		{ label: '이력서', value: 'RESUME' },
 		{ label: '자기소개서', value: 'COVERLETTER' },
 	];
-	const { changeTab, isCurrentTab } = useTab(tabItems);
+	const { changeTab, isCurrentTab } = useTab(tabItems, true);
 	const tab = { tabItems, changeTab, isCurrentTab };
 	return (
 		<Container>

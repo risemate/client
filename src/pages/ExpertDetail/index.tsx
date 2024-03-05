@@ -15,10 +15,10 @@ import Service from './components/Service';
 
 export default function ExpertDetail() {
 	const tabItems: TabItem[] = [
-		{ label: '서비스 설명', value: 'a' },
-		{ label: '전문가 정보', value: 'b' },
-		{ label: '후기', value: 'c' },
-		{ label: '문의', value: 'd' },
+		{ label: '서비스 설명', value: 'SERVICE' },
+		{ label: '전문가 정보', value: 'INFO' },
+		{ label: '후기', value: 'REVIEW' },
+		{ label: '문의', value: 'INQUIRY' },
 	];
 	const { currentTab, changeTab, isCurrentTab } = useTab(tabItems);
 	const product = mockProduct;

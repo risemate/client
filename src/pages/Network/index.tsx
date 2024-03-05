@@ -15,7 +15,7 @@ export default function Network() {
 		{ label: '이력서', value: 'RESUME' },
 		{ label: '자기소개서', value: 'COVERLETTER' },
 	];
-	const { currentTab, changeTab, isCurrentTab } = useTab(tabItems);
+	const { currentTab, changeTab, isCurrentTab } = useTab(tabItems, true);
 	const tab = { tabItems, changeTab, isCurrentTab };
 	const { networks } = useNetwork(currentTab.value);
 	return (
