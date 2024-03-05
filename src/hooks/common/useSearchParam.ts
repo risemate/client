@@ -4,7 +4,9 @@ export function useSearchParam<T>(key: string) {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const queryParam = searchParams.get(key) as T;
 	const changeParam = (newMode: string) => {
-		setSearchParams({ mode: newMode });
+		const paramsToUpdate: { [key: string]: string } = {};
+		paramsToUpdate[key] = newMode;
+		setSearchParams(paramsToUpdate);
 	};
 	return { queryParam, changeParam };
 }
