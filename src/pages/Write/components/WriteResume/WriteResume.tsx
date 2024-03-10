@@ -1,15 +1,13 @@
-import usePreventLeave from '@hooks/usePreventLeave';
 import { isEmpty } from '@utils/helpers';
 import { FormProvider } from 'react-hook-form';
 import styled from 'styled-components';
 
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
-import UnsavedChangesModal from '@components/modal/UnsavedChangesModal';
 
 import Activity from '../edit-base/Activity';
 import Certificates from '../edit-base/Certificate';
-import CoverLetter from '../edit-base/CoverLetter';
+import CoverLetterContents from '../edit-base/CoverLetterContents';
 import Education from '../edit-base/Education';
 import Profile from '../edit-base/Profile';
 import Project from '../edit-base/Project';
@@ -37,7 +35,7 @@ export default function WriteResume() {
 							{resumeOrder.map(item => {
 								switch (item.name) {
 									case 'coverLetter':
-										return <CoverLetter key={item._id} />;
+										return <CoverLetterContents key={item._id} />;
 									case 'workExperiences':
 										return <WorkExperience key={item._id} />;
 									case 'projects':

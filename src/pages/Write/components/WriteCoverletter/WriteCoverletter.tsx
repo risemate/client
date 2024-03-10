@@ -6,30 +6,30 @@ import ResumeNav from '@common/ResumeNav';
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
 
-import CoverLetter from '../edit-base/CoverLetter';
-import Profile from '../edit-base/Profile';
+import CoverLetterContents from '../edit-base/CoverLetterContents';
+import CoverLetterOptionSection from '../edit-base/CoverLetterOptionSection';
 import SaveCoverletterModal from '../modal/SaveCoverletterModal';
 import useCoverletterWrite from './WirteCoverletter.hook';
 
 export default function WriteCoverletter() {
 	const {
 		formId,
-		coverletterEditNavItems,
-		coverletterEditMethods,
+		coverLetterEditNavItems,
+		coverLetterEditMethods,
 		submitCoverletter,
 		getValue,
 	} = useCoverletterWrite();
 	return (
 		<Container backgroundColor='lightGrey' padding>
-			<FormProvider {...coverletterEditMethods}>
+			<FormProvider {...coverLetterEditMethods}>
 				<SingleAsyncWrapper>
 					<StyledForm id={formId} onSubmit={submitCoverletter()}>
 						<h2 className='a11y-hidden'>
 							{isEmpty(getValue('docTitle')) ? '새로운 이력서' : getValue('docTitle')};
 						</h2>
-						<Profile />
-						<CoverLetter />
-						<ResumeNav resumeNavItems={coverletterEditNavItems} />
+						<CoverLetterOptionSection />
+						<CoverLetterContents />
+						<ResumeNav resumeNavItems={coverLetterEditNavItems} />
 					</StyledForm>
 				</SingleAsyncWrapper>
 				<SaveCoverletterModal />

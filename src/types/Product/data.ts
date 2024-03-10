@@ -37,7 +37,7 @@ export type Profile = {
 	phoneNumber: string;
 	profileImage: string;
 	position: string;
-	coverLetter: string;
+	description: string;
 };
 
 export const mockProduct: ProductType = {

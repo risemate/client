@@ -1,9 +1,9 @@
-import useResumeWrite from 'pages/Write/components/WriteResume/WirteResume.hook';
-
 import Modal from '@components/modal/base/Modal';
 
+import useCoverletterWrite from '../WriteCoverletter/WirteCoverletter.hook';
+
 export default function SaveCoverletterModal() {
-	const { formId } = useResumeWrite();
+	const { formId } = useCoverletterWrite();
 	return (
 		<Modal
 			title='자기소개서 저장'

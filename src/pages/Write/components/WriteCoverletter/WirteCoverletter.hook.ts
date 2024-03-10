@@ -10,20 +10,20 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { Career } from 'types/CareerDocument';
 import { Coverletter as CoverletterType } from 'types/Coverletter';
-import { defaultCoverletter } from 'types/Coverletter/data';
+import { defaultCoverLetter } from 'types/Coverletter/data';
 
 export default function useCoverletterWrite() {
 	const { queryParam: coverletterId } = useSearchParam<string>('id');
 	const navigate = useNavigate();
 	const isNewCoverletter = isEmpty(coverletterId);
 
-	const coverletterDetail = coverletterDetailQuery(coverletterId || '', {
+	const coverLetterDetail = coverletterDetailQuery(coverletterId || '', {
 		enabled: !isEmpty(coverletterId),
 	});
-	const coverletter = isNewCoverletter ? defaultCoverletter : coverletterDetail.data;
-	const coverletterEditMethods = useForm<Career<CoverletterType>>({
+	const coverLetter = isNewCoverletter ? defaultCoverLetter : coverLetterDetail.data;
+	const coverLetterEditMethods = useForm<Career<CoverletterType>>({
 		mode: 'onSubmit',
-		values: coverletter,
+		values: coverLetter,
 	});
 
 	const { openModal: openSaveModal } = useModal('save-coverletter');
@@ -31,7 +31,7 @@ export default function useCoverletterWrite() {
 	const updateCoverletterMutation = coverletterUpdateMutation();
 	const createCoverletterMutation = coverletterCreateMutation();
 
-	const { handleSubmit, watch } = coverletterEditMethods;
+	const { handleSubmit, watch } = coverLetterEditMethods;
 	const getValue = (field: keyof Career<CoverletterType>) => watch(field)?.toString();
 
 	const submitCoverletter = () => {
@@ -47,15 +47,15 @@ export default function useCoverletterWrite() {
 		});
 	};
 
-	const coverletterEditNavItems = [
+	const coverLetterEditNavItems = [
 		{ name: '미리보기' },
 		{ name: '저장하기', onClick: openSaveModal },
 	];
 
 	return {
-		coverletterDetail,
-		coverletterEditNavItems,
-		coverletterEditMethods,
+		coverLetterDetail,
+		coverLetterEditNavItems,
+		coverLetterEditMethods,
 		submitCoverletter,
 		getValue,
 		formId: 'coverletter-edit-form',

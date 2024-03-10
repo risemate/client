@@ -13,7 +13,7 @@ export type ReviseCoverletter = {
 
 	feedback: string;
 
-	coverLetter: string;
+	coverLetter: CoverLetterContent;
 	feed_coverLetter: string;
 
 	coverImage: string;
@@ -30,7 +30,7 @@ export type Coverletter = {
 
 	description: string;
 
-	contents: CoverLetterSection[];
+	contents: CoverLetterContent[];
 
 	coverImage: string;
 
@@ -41,4 +41,4 @@ export type Coverletter = {
 	orderType: OrderType[];
 };
 
-type CoverLetterSection = { title: string; content: string };
+export type CoverLetterContent = { title: string; content: string };

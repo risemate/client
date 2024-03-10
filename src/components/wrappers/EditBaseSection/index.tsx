@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { css } from 'styled-components';
 
 import WhiteBoxWrapper from '../WhiteBoxWrapper';
@@ -27,10 +27,16 @@ const EditBaseSection = Object.assign(BaseSection, {
 const resumeEditWrapperStyle = css`
 	padding: 40px;
 	margin: 0 auto;
-	& > article:not(:last-child) {
+
+	& > article {
 		margin-bottom: 30px;
 		padding-bottom: 30px;
 		border-bottom: 2px solid ${({ theme }) => theme.colors.grey};
+	}
+
+	/* 마지막 article 요소에는 border-bottom 스타일을 적용하지 않습니다. */
+	& > article:last-of-type {
+		border-bottom: none;
 	}
 `;
 

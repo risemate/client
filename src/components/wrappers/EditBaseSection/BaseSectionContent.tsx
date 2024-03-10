@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { UseFieldArraySwap } from 'react-hook-form';
 import styled from 'styled-components';
 
@@ -7,7 +7,7 @@ import EditButton from '@components/wrappers/EditBaseSection/EditButton';
 interface ContentProps {
 	title?: string;
 	children: ReactNode;
-	gridColumn?: '2' | '3';
+	gridColumn?: '1' | '2' | '3';
 	editButton?: {
 		index: number;
 		remove: () => void;
@@ -48,7 +48,7 @@ const ContentArticle = styled.article`
 `;
 
 interface StyledListProps {
-	$gridColumn?: '2' | '3';
+	$gridColumn?: '1' | '2' | '3';
 }
 
 const ContentList = styled.ul<StyledListProps>`

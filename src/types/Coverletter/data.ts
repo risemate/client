@@ -2,8 +2,9 @@ import { Career } from 'types/CareerDocument';
 
 import { Coverletter } from '.';
 
-export const defaultCoverletter: Career<Coverletter> = {
-	careerType: 'RESUME',
+export const defaultCoverLetterContent = { title: '', content: '' };
+export const defaultCoverLetter: Career<Coverletter> = {
+	careerType: 'COVERLETTER',
 	description: '',
 	contactPublic: true,
 	childrenDocCount: 3,
@@ -20,7 +21,7 @@ export const defaultCoverletter: Career<Coverletter> = {
 
 		description: '',
 
-		contents: [],
+		contents: [defaultCoverLetterContent],
 
 		coverImage: '',
 

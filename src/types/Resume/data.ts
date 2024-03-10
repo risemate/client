@@ -1,4 +1,5 @@
 import { Career } from 'types/CareerDocument';
+import { defaultCoverLetterContent } from 'types/Coverletter/data';
 import {
 	Activity,
 	Certificate,
@@ -126,7 +127,7 @@ export const defaultResume: Career<Resume> = {
 	doc: {
 		description: '',
 		coverImage: '',
-		coverLetter: '',
+		coverLetter: [defaultCoverLetterContent],
 		public: true,
 		docTitle: '',
 		profile: defaultProfile,
@@ -161,8 +162,8 @@ export const mockResume: Career<Resume> = {
 	public: true,
 	coverImage: 'string url, default: null',
 	doc: {
-		coverImage: 'string',
-		coverLetter: '간단한 소개내용',
+		coverImage: '',
+		coverLetter: [defaultCoverLetterContent],
 		docTitle: '저...세상으로 가는 개발자',
 		careerYears: 2, // 신입이면 경력이 0
 		lookingForJob: true, //구직 유무

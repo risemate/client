@@ -1,6 +1,6 @@
 import useKeyboard from '@hooks/common/useKeyboard';
 import { IconCloseSharp } from '@icons';
-import React, { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
 import { Link as LinkType } from 'types/Resume';
@@ -11,9 +11,10 @@ import Input from '@components/input/Input';
 interface LinkInputProps {
 	links: LinkType[];
 	inputName: string;
+	label?: string;
 }
 
-export default function LinkInput({ links, inputName }: LinkInputProps) {
+export default function LinkInput({ links, inputName, label }: LinkInputProps) {
 	const [link, setLink] = useState('[linkTitle](linkUrl)');
 	const { setValue } = useFormContext();
 	const linkToString = (link: LinkType) => {
@@ -62,7 +63,7 @@ export default function LinkInput({ links, inputName }: LinkInputProps) {
 		<LinkInputWrapper>
 			<div>
 				<Input
-					label='Link'
+					label={label || 'Link'}
 					type='text'
 					explanation='예시) [Github](https://www.github.com)'
 					value={link}

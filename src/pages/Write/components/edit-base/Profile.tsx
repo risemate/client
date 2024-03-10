@@ -15,10 +15,10 @@ export default function Profile() {
 	return (
 		<BaseSection>
 			<BaseSection.Title title='기본 정보'>
-				<ResumeTitleInput>
+				<DocTitleInput>
 					<span className='a11y-hidden'>문서 제목 입력</span>
 					<input type='text' placeholder='문서 제목 입력' {...register('doc.docTitle')} />
-				</ResumeTitleInput>
+				</DocTitleInput>
 				<WarningText>* 내용이 없을 시 이력서에 표기되지 않습니다.</WarningText>
 			</BaseSection.Title>
 			<InputWrapper>
@@ -47,7 +47,7 @@ export default function Profile() {
 	);
 }
 
-const ResumeTitleInput = styled.label`
+export const DocTitleInput = styled.label`
 	input {
 		width: 300px;
 		padding: 3px;
@@ -60,7 +60,7 @@ const ResumeTitleInput = styled.label`
 	}
 `;
 
-const WarningText = styled.p`
+export const WarningText = styled.p`
 	color: red;
 	font-weight: 200;
 	margin-left: auto;
@@ -95,7 +95,7 @@ const ContactWrapper = styled.div`
 	margin-top: 20px;
 `;
 
-const InputWrapper = styled.div`
+export const InputWrapper = styled.div`
 	display: grid;
 	grid-template-columns: 160px 0.8fr 1fr;
 	gap: 5px 20px;
