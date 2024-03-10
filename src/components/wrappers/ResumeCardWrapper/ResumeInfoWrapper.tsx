@@ -7,21 +7,21 @@ interface InfoWrapperProps {
 	time?: string;
 }
 
-export default function ResumeInfoWrapper({ children, time }: InfoWrapperProps) {
+export default function ResumeTitleWrapper({ children, time }: InfoWrapperProps) {
 	return (
-		<StyledInfoWrapper>
+		<StyledTitleWrapper>
 			<h4>{children}</h4>
 			{time && <time dateTime={formatDate(time).dash}>{time}</time>}
-		</StyledInfoWrapper>
+		</StyledTitleWrapper>
 	);
 }
 
-const StyledInfoWrapper = styled.div`
+const StyledTitleWrapper = styled.div`
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	/* margin-bottom: 10px; */
+	margin-bottom: 10px;
 	h4 {
 		${({ theme }) => theme.common.ellipsisOneLine};
 		span {

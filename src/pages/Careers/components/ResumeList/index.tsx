@@ -1,10 +1,10 @@
+import CareerBasicCard from 'pages/Careers/components/ResumeList/CareerBasicCard';
 import { css } from 'styled-components';
 
-import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
-import BasicCareerList from '../BasicCareerList';
+import BasicCareerList from '../../../../components/resume/BasicCareerList';
 import useCareerList from './CareerList.hook';
 
 export default function Resume() {
@@ -15,18 +15,22 @@ export default function Resume() {
 				이력서
 			</h2>
 			<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
-				<SingleAsyncWrapper>
-					<>
-						<BasicCareerList title='이력서' resumes={resumes} createTo='re' />
-					</>
-				</SingleAsyncWrapper>
+				<BasicCareerList
+					title='이력서'
+					resumes={resumes}
+					createTo='re'
+					CardComponent={CareerBasicCard}
+					addNew
+				/>
 			</WhiteBoxWrapper>
 			<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
-				<SingleAsyncWrapper>
-					<>
-						<BasicCareerList title='자기소개서' resumes={coverLetters} createTo='co' />
-					</>
-				</SingleAsyncWrapper>
+				<BasicCareerList
+					title='자기소개서'
+					resumes={coverLetters}
+					createTo='co'
+					CardComponent={CareerBasicCard}
+					addNew
+				/>
 			</WhiteBoxWrapper>
 		</Container>
 	);

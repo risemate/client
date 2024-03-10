@@ -1,4 +1,5 @@
 import { isEmpty } from '@utils/helpers';
+import ReviseCareerCard from 'pages/Careers/components/ReviseList/ReviseCareerCard';
 import { useParams } from 'react-router-dom';
 import { css } from 'styled-components';
 
@@ -6,7 +7,7 @@ import Empty from '@common/Empty';
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
-import BasicCareerList from '../BasicCareerList';
+import BasicCareerList from '../../../../components/resume/BasicCareerList';
 import useResume from '../ResumeList/CareerList.hook';
 import useReviseList from './ReviseList.hook';
 
@@ -24,7 +25,11 @@ export default function ReviseList() {
 							아직 첨삭받은 이력서가 없습니다
 						</Empty>
 					) : (
-						<BasicCareerList title='첨삭 이력서' resumes={reviseResumes} isRevise />
+						<BasicCareerList
+							title='첨삭 이력서'
+							resumes={reviseResumes}
+							CardComponent={ReviseCareerCard}
+						/>
 					)}
 				</SingleAsyncWrapper>
 				`

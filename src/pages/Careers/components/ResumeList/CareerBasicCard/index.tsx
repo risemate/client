@@ -18,9 +18,9 @@ export default function CareerBasicCard({ career }: ResumeCardProps) {
 
 	return (
 		<CardWrapper>
-			<CardWrapper.Info time={formatDate(career.createdAt).period}>
+			<CardWrapper.Title time={formatDate(career.createdAt).period}>
 				{career.docTitle}
-			</CardWrapper.Info>
+			</CardWrapper.Title>
 			<ButtonGorup>
 				<Button variant='border' size='full' to={`/write?redirect=re&id=${career._id}`}>
 					수정

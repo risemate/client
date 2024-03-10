@@ -1,17 +1,14 @@
 import { isEmpty } from '@utils/helpers';
-// eslint-disable-next-line
-import styled from 'styled-components';
+import { ElementType } from 'react';
+import styled, { css } from 'styled-components';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Career } from 'types/CareerDocument';
 
 import Button from '@common/Button';
 import Empty from '@common/Empty';
-// eslint-disable-next-line
-import CareerBasicCard from '@components/resume/Card/CareerBasicCard';
-import ReviseCareerCard from '@components/resume/Card/ReviseCareerCard';
+import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 
-// import AddResume from './AddResume';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -19,14 +16,16 @@ import 'swiper/css/pagination';
 interface BasicResumeListProps<T = any> {
 	title: string;
 	resumes: Career<T>[];
-	isRevise?: boolean;
+	CardComponent: ElementType<{ career: Career<T> }>;
+	addNew?: boolean;
 	createTo?: 'co' | 're';
 }
 
 export default function BasicCareerList({
 	title,
 	resumes,
-	isRevise,
+	addNew,
+	CardComponent,
 	createTo,
 }: BasicResumeListProps) {
 	const setting = {
@@ -47,53 +46,30 @@ export default function BasicCareerList({
 		<BasicResumeSection>
 			<div>
 				<h3>{title}</h3>
-				{isRevise || (
+				{addNew && (
 					<Button variant='navy' size='small' to={`/write?redirect=${createTo}`}>
 						새 {title} +
 					</Button>
 				)}
 			</div>
-			{/* <StyledResumeList> */}
-			{isEmpty(resumes) ? (
-				<Empty>아직 작성하신 {title}가 없습니다</Empty>
-			) : (
-				<Swiper {...setting}>
-					{/* {isRevise || (
-						<SwiperSlide key={'helo'}>
-							<AddResume />
-						</SwiperSlide>
-					)} */}
-					{resumes.map(resume => (
-						<SwiperSlide key={resume._id}>
-							{isRevise ? (
-								<ReviseCareerCard career={resume} />
-							) : (
-								<CareerBasicCard career={resume} />
-							)}
-						</SwiperSlide>
-					))}
-				</Swiper>
-			)}
-			{/* </StyledResumeList> */}
+			<SingleAsyncWrapper>
+				{isEmpty(resumes) ? (
+					<Empty>아직 작성하신 {title}가 없습니다</Empty>
+				) : (
+					<Swiper {...setting}>
+						{resumes.map(resume => (
+							<SwiperSlide key={resume._id}>
+								<CardComponent career={resume} />
+							</SwiperSlide>
+						))}
+					</Swiper>
+				)}
+			</SingleAsyncWrapper>
 		</BasicResumeSection>
 	);
 }
 
-// const StyledResumeList = styled.ul`
-// 	width: 100%;
-// 	display: flex;
-// 	gap: 20px;
-// 	justify-content: start;
-// `;
-
-const BasicResumeSection = styled.section`
-	min-height: 300px;
-	& > div:first-child {
-		display: flex;
-		align-items: center;
-		gap: 30px;
-		margin-bottom: 30px;
-	}
+const swiperStyle = css`
 	.swiper {
 		width: 100%;
 		padding-bottom: 50px;
@@ -131,4 +107,20 @@ const BasicResumeSection = styled.section`
 		font-size: 25px;
 		color: ${({ theme }) => theme.colors.navy};
 	}
+`;
+
+const BasicResumeSection = styled.section`
+	min-height: 300px;
+	h3 {
+		color: ${({ theme }) => theme.colors.navy};
+		font-weight: bold;
+		font-size: ${({ theme }) => theme.fontSizes.medium};
+	}
+	& > div:first-child {
+		display: flex;
+		align-items: center;
+		gap: 30px;
+		margin-bottom: 30px;
+	}
+	${swiperStyle}
 `;
