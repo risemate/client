@@ -6,7 +6,7 @@ import { Career, DocType } from 'types/CareerDocument';
 import { ReviseResume } from 'types/Resume';
 
 import Button from '@common/Button';
-import CardWrapper from '@components/wrappers/ResumeCardWrapper';
+import CardWrapper from '@components/resume-view/ResumeCardWrapper';
 
 interface ReviseCareerCardProps {
 	career: Career<ReviseResume>;
@@ -16,7 +16,7 @@ export default function ReviseCareerCard({ career }: ReviseCareerCardProps) {
 	return (
 		<CardWrapper>
 			<Tag $color={tagInfo[career.docType].color}>{tagInfo[career.docType].name}</Tag>
-			<CardWrapper.Info>{career.docTitle}</CardWrapper.Info>
+			<CardWrapper.Title>{career.docTitle}</CardWrapper.Title>
 			<SummaryText>
 				안녕하세요 00님! 기다려주셔서 감사합니다. 요청주신 이력서 첨삭이 끝났습니다. 각
 				섹션에 관해 피드백과 그 피드백을 토대로 변경된 이력서 내용입니다. 변경된 내용을
@@ -32,9 +32,9 @@ export default function ReviseCareerCard({ career }: ReviseCareerCardProps) {
 				</Button>
 			)}
 
-			<CardWrapper.Info time={formatDate(career.updatedAt).period}>
+			<CardWrapper.Title time={formatDate(career.updatedAt).period}>
 				최근 업데이트
-			</CardWrapper.Info>
+			</CardWrapper.Title>
 		</CardWrapper>
 	);
 }

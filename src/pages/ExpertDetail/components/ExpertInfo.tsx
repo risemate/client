@@ -4,8 +4,8 @@ import {
 	WorkExperience as WorkExperienceType,
 } from 'types/Resume';
 
-import Project from '@components/resume/ViewTemplate/Project';
-import WorkExperience from '@components/resume/ViewTemplate/WorkExperience';
+import Project from '@components/resume-view/ViewTemplate/Project';
+import WorkExperience from '@components/resume-view/ViewTemplate/WorkExperience';
 
 import BaseSection from './BaseSection';
 

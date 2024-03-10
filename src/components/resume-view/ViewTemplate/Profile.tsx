@@ -4,7 +4,7 @@ import { Profile as ProfileType } from 'types/Resume';
 import DefaultImage from '@common/DefaultImage';
 // import Markdown from '@common/Markdown';
 import Markdown from '@common/Markdown';
-import BaseSectionFeedback from '@components/wrappers/ResumeViewBaseSection/BaseSectionFeedback';
+import BaseSectionFeedback from '@components/resume-view/ResumeViewBaseSection/BaseSectionFeedback';
 
 interface ProfileProps {
 	profile: ProfileType;

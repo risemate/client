@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { CoverLetterContent } from 'types/Coverletter';
 
-import BaseSection from '@components/wrappers/ResumeViewBaseSection';
+import BaseSection from '@components/resume-view/ResumeViewBaseSection';
 
 interface CoverLetterProps {
 	coverLetter: CoverLetterContent[];

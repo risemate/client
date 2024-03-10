@@ -8,7 +8,7 @@ import styled from 'styled-components';
 
 import KeywordSuggestions from '@common/KeywordSuggestions';
 import Input from '@components/input/Input';
-import BaseSection from '@components/wrappers/EditBaseSection';
+import BaseSection from '@components/resume-edit/EditBaseSection';
 
 export default function TechStack() {
 	const { watch, setValue } = useFormContext();

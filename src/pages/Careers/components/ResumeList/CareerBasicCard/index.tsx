@@ -4,7 +4,7 @@ import { Career } from 'types/CareerDocument';
 
 import Button from '@common/Button';
 import Toggle from '@components/input/Toggle';
-import CardWrapper from '@components/wrappers/ResumeCardWrapper';
+import CardWrapper from '@components/resume-view/ResumeCardWrapper';
 
 import useCareerBasicCard from './CareerBasicCard.hook';
 
@@ -18,9 +18,9 @@ export default function CareerBasicCard({ career }: ResumeCardProps) {
 
 	return (
 		<CardWrapper>
-			<CardWrapper.Info time={formatDate(career.createdAt).period}>
+			<CardWrapper.Title time={formatDate(career.createdAt).period}>
 				{career.docTitle}
-			</CardWrapper.Info>
+			</CardWrapper.Title>
 			<ButtonGorup>
 				<Button variant='border' size='full' to={`/write?redirect=re&id=${career._id}`}>
 					수정

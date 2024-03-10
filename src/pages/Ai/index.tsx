@@ -1,52 +1,34 @@
-import { useModal } from '@hooks/atoms/useModalAtom';
+import ResumeAiCard from 'pages/Ai/components/ResumeAiCard/ResumeAiCard';
 import styled, { css } from 'styled-components';
-import { mockResume } from 'types/Resume/data';
 
 import Banner from '@common/Banner';
-import Modal from '@components/modal/base/Modal';
-import ResumeAiCard from '@components/resume/Card/ResumeAiCard';
-import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
+import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
+import BasicCareerList from '@components/resume-view/BasicCareerList';
+
+import useAi from './index.hook';
 
 export default function Ai() {
-	// eslint-disable-next-line
-	const { openModal } = useModal('ai-revise');
-	const resumes = [mockResume, mockResume, mockResume];
+	const { resumes, coverLetters } = useAi();
 
 	return (
-		<Wrap>
+		<AiWrapper>
 			<Banner variant='navy'>
 				AI 코치를 통해 빠르게 무료로 <br />
 				이력서/자기소개서를 첨삭 받아보세요!
 			</Banner>
 			<WhiteBoxWrapper type='div' customCss={aiWrapperStyle}>
-				<AiSection>
-					<h3>이력서</h3>
-					<ul>
-						{resumes.map((resume, index) => (
-							<li key={index}>
-								<ResumeAiCard career={resume} />
-							</li>
-						))}
-					</ul>
-				</AiSection>
-				<AiSection>
-					<h3>자기소개서</h3>
-					<ul>
-						{resumes.map((resume, index) => (
-							<li key={index}>{/* <ResumeCard ai /> */}</li>
-						))}
-					</ul>
-				</AiSection>
+				<BasicCareerList title='이력서' resumes={resumes} CardComponent={ResumeAiCard} />
+				<BasicCareerList
+					title='자기소개서'
+					resumes={coverLetters}
+					CardComponent={ResumeAiCard}
+				/>
 			</WhiteBoxWrapper>
-
-			<Modal title='AI 첨삭' queryKey='ai-revise'>
-				AI을 첨삭을 받으시겠습니까? <br /> 시간은 약 15~30분 정도 소요됩니다.
-			</Modal>
-		</Wrap>
+		</AiWrapper>
 	);
 }
 
-const Wrap = styled.div`
+const AiWrapper = styled.div`
 	min-height: 90vh;
 	display: flex;
 	flex-direction: column;
@@ -61,26 +43,5 @@ const aiWrapperStyle = css`
 	justify-content: space-between;
 	& > button {
 		align-self: center;
-	}
-`;
-
-const AiSection = styled.section`
-	min-height: 250px;
-	h3 {
-		color: ${({ theme }) => theme.colors.navy};
-		font-weight: bold;
-		font-size: ${({ theme }) => theme.fontSizes.medium};
-		margin-bottom: 30px;
-	}
-	ul {
-		width: 100%;
-		display: flex;
-		gap: 20px;
-		justify-content: start;
-		overflow-x: hidden;
-		padding: 10px;
-	}
-	&:not(:last-child) {
-		margin-bottom: 70px;
 	}
 `;

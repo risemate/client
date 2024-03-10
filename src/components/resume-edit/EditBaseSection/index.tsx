@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { css } from 'styled-components';
 
-import WhiteBoxWrapper from '../WhiteBoxWrapper';
+import WhiteBoxWrapper from '../../base-wrappers/WhiteBoxWrapper';
 import BaseSectionContent from './BaseSectionContent';
 import BaseSectionContentItem from './BaseSectionContentItem';
 import BaseSectionTitle from './BaseSectionTitle';

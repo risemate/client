@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { UseFieldArraySwap } from 'react-hook-form';
 import styled from 'styled-components';
 
-import EditButton from '@components/wrappers/EditBaseSection/EditButton';
+import EditButton from '@components/resume-edit/EditBaseSection/EditButton';
 
 interface ContentProps {
 	title?: string;

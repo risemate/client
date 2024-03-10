@@ -6,7 +6,7 @@ import { defaultCertificate } from 'types/Resume/data';
 import DateInput from '@components/input/DateInput';
 import Input from '@components/input/Input';
 import LinkInput from '@components/input/LinkInput';
-import BaseSection from '@components/wrappers/EditBaseSection';
+import BaseSection from '@components/resume-edit/EditBaseSection';
 
 export default function Certificates() {
 	const FIELD = 'doc.certificates';

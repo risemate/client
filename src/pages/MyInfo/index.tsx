@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
+import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 import Container from '@components/layout/Container';
-import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
 import MyInfoDetail from './components/MyInfoDetail/MyInfoDetail';
 import UserProfile from './components/UserProfile/UserProfile';
