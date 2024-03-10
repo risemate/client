@@ -8,8 +8,8 @@ import {
 import { TabItem } from 'types/Tab';
 
 import Tab from '@common/Tab';
+import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 import Container from '@components/layout/Container';
-import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
 import Complete from './components/Complete';
 import Pending from './components/Pending';

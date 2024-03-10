@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { ReviseResume } from 'types/Resume';
 
-import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
+import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 
 import Profile from './Profile';
 import WorkExperience from './WorkExperience';

@@ -5,7 +5,7 @@ import { Resume as ResumeType } from 'types/Resume';
 
 import Button from '@common/Button';
 import Modal from '@components/modal/base/Modal';
-import CardWrapper from '@components/wrappers/ResumeCardWrapper';
+import CardWrapper from '@components/resume-view/ResumeCardWrapper';
 
 import useResumeAiCard from './ResumeAiCard.hook';
 

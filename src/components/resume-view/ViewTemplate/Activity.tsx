@@ -1,6 +1,6 @@
 import { Activity as ActivityType } from 'types/Resume';
 
-import BaseSection from '@components/wrappers/ResumeViewBaseSection';
+import BaseSection from '@components/resume-view/ResumeViewBaseSection';
 
 interface ActivityProps {
 	activities: ActivityType[];

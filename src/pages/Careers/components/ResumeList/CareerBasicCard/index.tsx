@@ -4,7 +4,7 @@ import { Career } from 'types/CareerDocument';
 
 import Button from '@common/Button';
 import Toggle from '@components/input/Toggle';
-import CardWrapper from '@components/wrappers/ResumeCardWrapper';
+import CardWrapper from '@components/resume-view/ResumeCardWrapper';
 
 import useCareerBasicCard from './CareerBasicCard.hook';
 

@@ -6,7 +6,7 @@ import Input from '@components/input/Input';
 import LinkInput from '@components/input/LinkInput';
 import MonthInput from '@components/input/MonthInput';
 import TextArea from '@components/input/TextArea';
-import BaseSection from '@components/wrappers/EditBaseSection';
+import BaseSection from '@components/resume-edit/EditBaseSection';
 
 export default function Activity() {
 	const FIELD = 'doc.activities';

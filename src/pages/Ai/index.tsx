@@ -2,8 +2,8 @@ import ResumeAiCard from 'pages/Ai/components/ResumeAiCard/ResumeAiCard';
 import styled, { css } from 'styled-components';
 
 import Banner from '@common/Banner';
-import BasicCareerList from '@components/resume/BasicCareerList';
-import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
+import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
+import BasicCareerList from '@components/resume-view/BasicCareerList';
 
 import useAi from './index.hook';
 

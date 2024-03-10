@@ -5,7 +5,7 @@ import { TabItem } from 'types/Tab';
 
 import Tab from '@common/Tab';
 import Container from '@components/layout/Container';
-import Profile from '@components/resume/ViewTemplate/Profile';
+import Profile from '@components/resume-view/ViewTemplate/Profile';
 
 import ExpertInfo from './components/ExpertInfo';
 import Inquiry from './components/Inquiry/Inquiry';

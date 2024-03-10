@@ -1,10 +1,10 @@
 import CareerBasicCard from 'pages/Careers/components/ResumeList/CareerBasicCard';
 import { css } from 'styled-components';
 
+import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 import Container from '@components/layout/Container';
-import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
-import BasicCareerList from '../../../../components/resume/BasicCareerList';
+import BasicCareerList from '../../../../components/resume-view/BasicCareerList';
 import useCareerList from './CareerList.hook';
 
 export default function Resume() {

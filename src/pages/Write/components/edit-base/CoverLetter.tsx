@@ -2,7 +2,7 @@ import React from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import TextArea from '@components/input/TextArea';
-import EditBaseSection from '@components/wrappers/EditBaseSection';
+import EditBaseSection from '@components/resume-edit/EditBaseSection';
 
 export default function CoverLetter() {
 	const FIELD = 'doc.coverLetter';

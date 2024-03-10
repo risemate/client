@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
+import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 import Container from '@components/layout/Container';
-import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
 
 import CoachInfoDetail from './components/CoachInfoDetail';
 import CoachProfile from './components/CoachProfile';

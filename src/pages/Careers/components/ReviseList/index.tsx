@@ -5,9 +5,9 @@ import { css } from 'styled-components';
 
 import Empty from '@common/Empty';
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
-import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
+import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 
-import BasicCareerList from '../../../../components/resume/BasicCareerList';
+import BasicCareerList from '../../../../components/resume-view/BasicCareerList';
 import useResume from '../ResumeList/CareerList.hook';
 import useReviseList from './ReviseList.hook';
 

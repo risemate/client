@@ -1,6 +1,6 @@
 import { WorkExperience as WorkExperienceType } from 'types/Resume';
 
-import BaseSection from '@components/wrappers/ResumeViewBaseSection';
+import BaseSection from '@components/resume-view/ResumeViewBaseSection';
 
 interface WorkExperiencesProps {
 	workExperiences: WorkExperienceType[];

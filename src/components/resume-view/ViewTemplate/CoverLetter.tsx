@@ -2,7 +2,7 @@ import React from 'react';
 import Markdown from 'react-markdown';
 import styled from 'styled-components';
 
-import BaseSection from '@components/wrappers/ResumeViewBaseSection';
+import BaseSection from '@components/resume-view/ResumeViewBaseSection';
 
 interface CoverLetterProps {
 	coverLetter: string;

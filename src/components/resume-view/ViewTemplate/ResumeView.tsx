@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import { Resume as ResumeType } from 'types/Resume';
 
-import WhiteBoxWrapper from '@components/wrappers/WhiteBoxWrapper';
+import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 
 import Activity from './Activity';
 import Certificate from './Certificate';

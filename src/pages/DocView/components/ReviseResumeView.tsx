@@ -2,7 +2,7 @@ import { reviseResumeDetailQuery } from '@queries/resume';
 import { useParams } from 'react-router-dom';
 
 import Container from '@components/layout/Container';
-import { ReviseResumeTemplate } from '@components/resume/ViewTemplate/ReviseResumeView';
+import { ReviseResumeTemplate } from '@components/resume-view/ViewTemplate/ReviseResumeView';
 
 export default function ReviseResumeView() {
 	// eslint-disable-next-line

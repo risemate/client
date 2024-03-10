@@ -3,7 +3,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import ResumeNav from '@common/ResumeNav';
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
-import ResumeTemplate from '@components/resume/ViewTemplate/ResumeView';
+import ResumeTemplate from '@components/resume-view/ViewTemplate/ResumeView';
 
 import useDocView from '../DocView.hook';
 import DeleteModal from './DeleteModal';
