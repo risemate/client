@@ -5,7 +5,7 @@ import { defaultCoverLetterContent } from 'types/Coverletter/data';
 
 import Input from '@components/input/Input';
 import TextArea from '@components/input/TextArea';
-import BaseSection from '@components/wrappers/EditBaseSection';
+import BaseSection from '@components/resume-edit/EditBaseSection';
 
 export default function CoverLetterContents() {
 	const { queryParam: careerType } = useSearchParam('redirect');

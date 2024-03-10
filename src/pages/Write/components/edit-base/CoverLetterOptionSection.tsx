@@ -3,7 +3,7 @@ import { useFormContext } from 'react-hook-form';
 
 import LinkInput from '@components/input/LinkInput';
 import TextArea from '@components/input/TextArea';
-import BaseSection from '@components/wrappers/EditBaseSection';
+import BaseSection from '@components/resume-edit/EditBaseSection';
 
 import { DocTitleInput, InputWrapper, WarningText } from './Profile';
 
