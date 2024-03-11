@@ -5,6 +5,7 @@ import CoachInfo from 'pages/CoachInfo';
 import CoachManagement from 'pages/CoachManagement';
 import { ResumeView, ReviseResumeView } from 'pages/DocView';
 import ExpertDetail from 'pages/ExpertDetail';
+import ExpertForm from 'pages/ExpertForm';
 import Experts from 'pages/Experts';
 import Home from 'pages/Home';
 import MyInfoPage from 'pages/MyInfo';
@@ -13,6 +14,7 @@ import NotFound from 'pages/NotFound';
 import WritePage from 'pages/Write';
 import { createBrowserRouter } from 'react-router-dom';
 
+import FormLayout from '@components/layout/FormLayout';
 import RootLayout from '@components/layout/RootLayout';
 
 import { signLoader } from './loader';
@@ -116,5 +118,29 @@ export const router = createBrowserRouter([
 			},
 		],
 		errorElement: <NotFound />,
+	},
+	{
+		path: '/form',
+		element: <FormLayout />,
+		children: [
+			{
+				path: 'expert',
+				children: [
+					{
+						index: true,
+						element: <ExpertForm />,
+					},
+				],
+			},
+			{
+				path: 'revise',
+				children: [
+					{
+						index: true,
+						element: <Network />,
+					},
+				],
+			},
+		],
 	},
 ]);

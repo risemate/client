@@ -1,6 +1,5 @@
 // import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import styled from 'styled-components';
 
 // import Loader from '@common/Loader';
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
@@ -25,12 +24,3 @@ export default function RootLayout() {
 		</>
 	);
 }
-
-const StyledLayout = styled.main`
-	width: 100%;
-	height: 100%;
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-`;
