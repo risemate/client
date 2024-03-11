@@ -17,10 +17,9 @@ export default function UserProfile() {
 						<DefaultImage variant='mint' size='small' image={displayAuth.picture} />
 						<UserWrapper>
 							<h2>
-								{displayAuth.name}
-								<span className='a11y-hidden'>의 마이페이지</span>
+								{displayAuth.name} 님<span className='a11y-hidden'>의 마이페이지</span>
 							</h2>
-							<span className='nickname'>{displayAuth.nickname}</span>
+							<span className='nickname'>{displayAuth.nickname} </span>
 							<span>{displayAuth.email}</span>
 						</UserWrapper>
 					</div>

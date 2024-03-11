@@ -5,17 +5,19 @@ import styled from 'styled-components';
 import Button from '@common/Button';
 import FileInput from '@components/input/FileInput';
 import Input from '@components/input/Input';
+import Modal from '@components/modal/base/Modal';
 
 import useEditUserInfo from './EditUserInfo.hook';
 
 export default function EditUserInfo() {
-	const { methods, registerAuth, submitEditUserInfo } = useEditUserInfo();
+	const { methods, registerAuth, openModal, submitEditUserInfo, disableSubmit } =
+		useEditUserInfo();
 
 	return (
 		<FormProvider {...methods}>
 			<UserInfoSection>
 				<h3>사용자 정보 수정</h3>
-				<form onSubmit={submitEditUserInfo()}>
+				<form onSubmit={submitEditUserInfo()} id='user-info-form'>
 					<FileInput label='이미지' inputName='picture' size='small' />
 					<Input label='이름' type='text' {...registerAuth.name} />
 					<Input
@@ -31,11 +33,24 @@ export default function EditUserInfo() {
 						placeholder='닉네임을 입력해주세요.'
 						{...registerAuth.nickname}
 					/>
-					<Button variant='navy' size='medium' type='submit'>
+					<Button
+						variant='navy'
+						size='medium'
+						disabled={disableSubmit}
+						onClick={openModal}
+						type='button'
+					>
 						정보 수정
 					</Button>
 				</form>
 			</UserInfoSection>
+			<Modal
+				title='유저 정보 변경'
+				queryKey='user-info-update'
+				buttonFormId='user-info-form'
+			>
+				유저 정보를 변경하시겠습니까?
+			</Modal>
 		</FormProvider>
 	);
 }

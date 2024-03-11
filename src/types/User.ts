@@ -43,3 +43,10 @@ export type LoginResponse = {
 	accessToken: string;
 	user: Auth;
 };
+
+export type UserInfoRequestProps = {
+	name: string | null;
+	nickname: string | null;
+	email: string | null;
+	picture: string | null;
+};

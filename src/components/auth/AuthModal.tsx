@@ -1,8 +1,8 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
 import { IconGoogle, IconNaver } from '@icons';
 import logoIcon from '@images/logo-icon.svg';
-import { useAuth } from '@queries/hooks/useAuth';
 import { authKeys } from '@queries/queryKeys';
+import { useAuth } from '@queries/user';
 import { useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { useEffect, useState } from 'react';

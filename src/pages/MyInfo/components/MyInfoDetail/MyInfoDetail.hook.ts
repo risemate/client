@@ -1,5 +1,5 @@
 import { useSearchParam } from '@hooks/common/useSearchParam';
-import { useAuth } from '@queries/hooks/useAuth';
+import { useAuth } from '@queries/user';
 import { useNavigate } from 'react-router-dom';
 
 export default function useMyInfoDetail() {
