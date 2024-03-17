@@ -1,7 +1,9 @@
-import { Link, OrderType, Profile } from 'types/career/resume';
+import { Link, OrderType } from 'types/career/resume';
 
 export type CoverLetterContent = { title: string; content: string; _id: string };
-
+export type ReviseCoverLetterContent = CoverLetterContent & {
+	feedback: string;
+};
 export type Coverletter = {
 	public: boolean;
 	docTitle: string;
@@ -14,7 +16,5 @@ export type Coverletter = {
 };
 
 export type ReviseCoverletter = Coverletter & {
-	profile: Profile;
-	feedback: string;
-	feed_coverLetter: string;
+	contents: ReviseCoverLetterContent[];
 };
