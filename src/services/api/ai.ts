@@ -8,20 +8,18 @@ const AI_PATH = {
 	AGAIN: '/careerId/ai',
 };
 
-export const fetchReviseAi = async (params: AiQueryProps): Promise<Career<Resume>> => {
+export const fetchReviseAi = async (body: AiQueryProps): Promise<Career<Resume>> => {
 	try {
-		const response = await axios.get<Career<Resume>>(AI_PATH.DEFAULT, { params });
+		const response = await axios.post<Career<Resume>>(AI_PATH.DEFAULT, body);
 		return response.data;
 	} catch (error) {
 		throw new Error((error as Error).message);
 	}
 };
 
-export const fetchReviseAiAgain = async (
-	params: AiQueryProps,
-): Promise<Career<Resume>> => {
+export const fetchReviseAiAgain = async (body: AiQueryProps): Promise<Career<Resume>> => {
 	try {
-		const response = await axios.get<Career<Resume>>(AI_PATH.AGAIN, { params });
+		const response = await axios.put<Career<Resume>>(AI_PATH.AGAIN, body);
 		return response.data;
 	} catch (error) {
 		throw new Error((error as Error).message);

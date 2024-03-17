@@ -7,7 +7,7 @@ import { AiQueryProps } from 'types/Query/QueryProps';
 
 import { aiKeys } from './queryKeys';
 
-export const reviseAiQuery = (
+export const aiRevisionMutation = (
 	options?: UseMutationOptionsType<Career<Resume>, AiQueryProps, 'onSuccess'>,
 ): UseMutationResultType<Career<Resume>, AiQueryProps> => {
 	const queryClient = useQueryClient();
@@ -23,7 +23,7 @@ export const reviseAiQuery = (
 	});
 };
 
-export const reviseAiAgainQuery = (
+export const aiRevisionAgainMutation = (
 	options?: UseMutationOptionsType<Career<Resume>, AiQueryProps, 'onSuccess'>,
 ): UseMutationResultType<Career<Resume>, AiQueryProps> => {
 	const queryClient = useQueryClient();
