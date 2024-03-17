@@ -1,37 +1,42 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
-import { networkDetailQuery } from '@queries/network';
-import { resumeDeleteMutation, resumeDetailQuery } from '@queries/resume';
+import { careerDetailQuery } from '@queries/common';
+import { resumeDeleteMutation } from '@queries/resume';
 import { isEmpty } from '@utils/helpers';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Resume } from 'types/Resume';
 
-export default function useDocView(resumeId: string, pathname: string) {
+export default function useDocView<T = Resume>() {
+	const { id = '' } = useParams();
+	const { pathname } = useLocation();
 	const navigate = useNavigate();
 	const isNetwork = pathname.includes('network');
-	const resumeDetail = resumeDetailQuery(resumeId, {
-		enabled: !isEmpty(resumeId) && !isNetwork,
+	const { data, isLoading } = careerDetailQuery<T>(id, isNetwork, {
+		enabled: !isEmpty(id),
 	});
-	const networkDetail = networkDetailQuery(resumeId, {
-		enabled: !isEmpty(resumeId) && isNetwork,
-	});
+
 	const { isModal: isDeleteModal, openModal: openDeleteModal } =
 		useModal('delete-resume');
-	const deleteResumeMutation = resumeDeleteMutation();
+
 	const resumeViewNavItems = [
-		{ name: '이력서 수정', onClick: () => navigate(`/write?redirect=re&id=${resumeId}`) },
+		{ name: '이력서 수정', onClick: () => navigate(`/write?redirect=re&id=${id}`) },
 		{ name: '이력서 삭제', onClick: openDeleteModal },
-		{ name: 'pdf로 저장' },
+		{ name: 'PDF 저장' },
 	];
-	const deleteResume = () => {
-		deleteResumeMutation.mutate(resumeId);
+
+	const deleteResume = resumeDeleteMutation();
+	const del = () => {
+		deleteResume.mutate(id);
 		navigate(`/my-info/docs`);
 	};
+
 	return {
-		resumeDetail: isNetwork ? networkDetail.data : resumeDetail.data,
+		isLoading,
+		data,
 		resumeViewNavItems,
 		isNetwork,
 		deleteModal: {
 			isModal: isDeleteModal,
-			deleteResume,
+			del,
 		},
 	};
 }

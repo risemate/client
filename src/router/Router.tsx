@@ -3,7 +3,7 @@ import Ai from 'pages/Ai';
 import { ResumeList, ReviseList } from 'pages/Careers';
 import CoachInfo from 'pages/CoachInfo';
 import CoachManagement from 'pages/CoachManagement';
-import { ResumeView, ReviseResumeView } from 'pages/DocView';
+import CareerViewer, { ReviseResumeView } from 'pages/DocView';
 import ExpertDetail from 'pages/ExpertDetail';
 import ExpertForm from 'pages/ExpertForm';
 import Experts from 'pages/Experts';
@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: 'docs/:id',
-						element: <ResumeView />,
+						element: <CareerViewer />,
 					},
 				],
 			},
@@ -76,7 +76,7 @@ export const router = createBrowserRouter([
 							},
 							{
 								path: ':id',
-								element: <ResumeView />,
+								element: <CareerViewer />,
 							},
 							{
 								path: ':parentId/revise-docs',

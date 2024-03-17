@@ -41,4 +41,4 @@ export type Coverletter = {
 	orderType: OrderType[];
 };
 
-export type CoverLetterContent = { title: string; content: string };
+export type CoverLetterContent = { title: string; content: string; _id: string };

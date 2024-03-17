@@ -8,7 +8,7 @@ const RESUME_PATH = {
 	REVISE: (id: string) => `${RESUME_PATH.DEFAULT}/${id}/revise-docs`,
 	DETAIL: (id: string) => `${RESUME_PATH.DEFAULT}/${id}`,
 	PUBLIC: (id?: string) =>
-		id ? `${RESUME_PATH.DEFAULT}/p-resumes/${id}` : `${RESUME_PATH.DEFAULT}/p-resumes`,
+		id ? `${RESUME_PATH.DEFAULT}/p/${id}` : `${RESUME_PATH.DEFAULT}/p`,
 	UPDATE: (id?: string) =>
 		id ? `${RESUME_PATH.DEFAULT}/resumes/${id}` : `${RESUME_PATH.DEFAULT}/resumes`,
 };

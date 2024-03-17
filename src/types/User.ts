@@ -29,10 +29,6 @@ export type Auth = {
 	waitingPaymentCoachingCount: number;
 };
 
-export interface Career {
-	_id: string;
-}
-
 export type BaseUser = {
 	nickname: string;
 	picture: string;
