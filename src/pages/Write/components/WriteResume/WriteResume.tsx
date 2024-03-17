@@ -1,5 +1,6 @@
 // import usePreventLeave from '@hooks/usePreventLeave';
 import { isEmpty } from '@utils/helpers';
+import { useEffect } from 'react';
 import { FormProvider } from 'react-hook-form';
 import styled from 'styled-components';
 
@@ -20,14 +21,25 @@ import WriteNavigation from '../WriteNavigation/WriteNavigation';
 import useResumeWrite from './WirteResume.hook';
 
 export default function WriteResume() {
-	const { formId, resumeEditMethods, resumeOrder, submitResume, getValue } =
-		useResumeWrite();
+	const {
+		formId,
+		resumeEditMethods,
+		resumeOrder,
+		submitResume,
+		getValue,
+		invalidateResume,
+		isSubmitting,
+	} = useResumeWrite();
 	// const { blocker } = usePreventLeave();
+
+	useEffect(() => {
+		invalidateResume();
+	}, [isSubmitting]);
 	return (
 		<Container backgroundColor='lightGrey' padding>
 			<FormProvider {...resumeEditMethods}>
 				<SingleAsyncWrapper>
-					<StyledForm id={formId} onSubmit={submitResume()}>
+					<StyledForm id={formId} onSubmit={submitResume}>
 						<div>
 							<h2 className='a11y-hidden'>
 								{isEmpty(getValue('docTitle')) ? '새로운 이력서' : getValue('docTitle')};

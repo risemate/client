@@ -1,4 +1,4 @@
-import { isEmpty } from '@utils/helpers';
+import { dateToString, isEmpty } from '@utils/helpers';
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import { useFormContext } from 'react-hook-form';
@@ -24,12 +24,6 @@ export default function DateInput({ label, inputName, mode = 'date' }: DateInput
 			return new Date(dateString + '-01');
 		}
 		return new Date(dateString);
-	};
-	const dateToString = (date: Date) => {
-		const year = date.getFullYear();
-		const month = (date.getMonth() + 1).toString().padStart(2, '0');
-		const day = date.getDate().toString();
-		return `${year}-${month}-${day}`;
 	};
 	const dateFormat = () => {
 		if (mode === 'year') return 'yyyy';

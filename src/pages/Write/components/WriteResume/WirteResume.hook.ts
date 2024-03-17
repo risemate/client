@@ -1,3 +1,4 @@
+import { useModal } from '@hooks/atoms/useModalAtom';
 import { useSearchParam } from '@hooks/common/useSearchParam';
 import {
 	resumeCreateMutation,
@@ -28,20 +29,30 @@ export default function useResumeWrite() {
 	const updateResumeMutation = resumeUpdateMutation();
 	const createResumeMutation = resumeCreateMutation();
 
-	const { handleSubmit, watch } = resumeEditMethods;
+	const {
+		handleSubmit,
+		watch,
+		formState: { errors, isSubmitting },
+	} = resumeEditMethods;
 	const getValue = (field: keyof Career<ResumeType>) => watch(field)?.toString();
 
-	const submitResume = () => {
-		return handleSubmit(data => {
-			if (isNewResume) {
-				createResumeMutation
-					.mutateAsync(data.doc)
-					.then(({ _id }) => navigate(`/my-info/docs/${_id}`));
-			} else {
-				updateResumeMutation.mutate({ id: resumeId, body: data.doc });
-				navigate(`/my-info/docs/${resumeId}`);
-			}
-		});
+	const { closeModal } = useModal('save-resume');
+
+	const submitResume = handleSubmit(data => {
+		if (isNewResume) {
+			createResumeMutation
+				.mutateAsync(data.doc)
+				.then(({ _id }) => navigate(`/my-info/docs/${_id}`));
+		} else {
+			updateResumeMutation.mutate({ id: resumeId, body: data.doc });
+			navigate(`/my-info/docs/${resumeId}`);
+		}
+	});
+
+	const invalidateResume = () => {
+		if (!isEmpty(errors)) {
+			closeModal();
+		}
 	};
 
 	return {
@@ -52,5 +63,7 @@ export default function useResumeWrite() {
 		submitResume,
 		getValue,
 		formId: 'resume-edit-form',
+		invalidateResume,
+		isSubmitting,
 	};
 }

@@ -4,9 +4,13 @@ import {
 	Activity,
 	Certificate,
 	Education,
+	EmploymentStatus,
+	GraduationStatus,
+	JobType,
 	OrderType,
 	Profile,
 	Project,
+	ProjectStatus,
 	Resume,
 	ReviseResume,
 	WorkExperience,
@@ -15,11 +19,11 @@ import {
 export const defaultProfile: Profile = {
 	name: '',
 	email: '',
-	phoneNumber: '',
+	phoneNumber: null,
 	profileImage: '',
 	position: '',
 	job: '',
-	birthday: '',
+	birthday: null,
 	links: [],
 };
 
@@ -27,10 +31,10 @@ export const defaultWorkExperience: WorkExperience = {
 	companyName: '',
 	departmentName: '',
 	role: '',
-	jobType: '선택',
-	employmentStatus: '선택',
-	startedAt: '',
-	endedAt: '',
+	jobType: JobType[0],
+	employmentStatus: EmploymentStatus[0],
+	startedAt: null,
+	endedAt: null,
 	description: '',
 	links: [],
 };
@@ -38,10 +42,10 @@ export const defaultWorkExperience: WorkExperience = {
 export const defaultProject: Project = {
 	projectName: '',
 	summaryIntro: '',
-	startedAt: '2023-08',
-	endedAt: '2023-10',
+	startedAt: null,
+	endedAt: null,
 	description: '',
-	projectStatus: '선택',
+	projectStatus: ProjectStatus[0],
 	projectOrganization: '',
 	links: [],
 };
@@ -50,17 +54,17 @@ export const defaultEducation: Education = {
 	schoolName: '',
 	educationalInstitution: '',
 	major: '',
-	graduationStatus: '선택',
-	startedAt: '',
-	endedAt: '',
+	graduationStatus: GraduationStatus[0],
+	startedAt: null,
+	endedAt: null,
 	description: '',
 	links: [],
 };
 
 export const defaultActivity: Activity = {
 	activityName: '',
-	startedAt: '',
-	endedAt: '',
+	startedAt: null,
+	endedAt: null,
 	description: '',
 	activityOrganization: '',
 	links: [],
@@ -69,7 +73,7 @@ export const defaultActivity: Activity = {
 export const defaultCertificate: Certificate = {
 	certificateName: '',
 	certificateOrganization: '',
-	certificatedAt: '',
+	certificatedAt: null,
 	certificateGrade: '',
 	links: [],
 };

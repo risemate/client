@@ -55,10 +55,10 @@ export type Link = {
 	linkUrl: string;
 };
 
-export const JobType = ['선택', '정규직', '계약직', '인턴'] as const;
+export const JobType = ['정규직', '계약직', '인턴'] as const;
 export type JobType = (typeof JobType)[number];
 
-export const EmploymentStatus = ['선택', '재직 중', '퇴직'] as const;
+export const EmploymentStatus = ['재직 중', '퇴직'] as const;
 export type EmploymentStatus = (typeof EmploymentStatus)[number];
 
 export type WorkExperience = {
@@ -73,13 +73,7 @@ export type WorkExperience = {
 	links: Link[] | null;
 };
 
-export const ProjectStatus = [
-	'선택',
-	'완료',
-	'진행 중',
-	'리팩토링 중',
-	'완료되지 않음',
-] as const;
+export const ProjectStatus = ['완료', '진행 중', '리팩토링 중', '완료되지 않음'] as const;
 export type ProjectStatus = (typeof ProjectStatus)[number];
 export type Project = {
 	projectName: string | null;
@@ -92,7 +86,7 @@ export type Project = {
 	links: Link[] | null;
 };
 
-export const GraduationStatus = ['선택', '학기 중', '졸업', '편입', '중도 퇴학'] as const;
+export const GraduationStatus = ['학기 중', '졸업', '편입', '중도 퇴학'] as const;
 export type GraduationStatus = (typeof GraduationStatus)[number];
 export type Education = {
 	schoolName: string | null;
