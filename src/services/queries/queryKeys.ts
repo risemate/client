@@ -1,5 +1,5 @@
-import { NetworkPagingQuery } from 'types/Query/Query';
-import { CareersQueryProps } from 'types/Query/QueryProps';
+import { NetworkPagingQuery } from 'types/query/query';
+import { CareersQueryProps } from 'types/query/queryProps';
 
 export const authKeys = {
 	base: ['auth'] as const,

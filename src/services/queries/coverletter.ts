@@ -13,8 +13,8 @@ import {
 	UseMutationResultType,
 	UseQueryOptionsType,
 	UseQueryResultType,
-} from 'types/Query/Query';
-import { CoverletterUpdateProps } from 'types/Query/QueryProps';
+} from 'types/query/query';
+import { CoverletterUpdateProps } from 'types/query/queryProps';
 
 export const coverletterDetailQuery = (
 	id: string,

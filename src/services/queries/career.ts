@@ -15,8 +15,8 @@ import {
 	UseMutationResultType,
 	UseQueryOptionsType,
 	UseQueryResultType,
-} from 'types/Query/Query';
-import { CareersQueryProps, ResumeUpdateProps } from 'types/Query/QueryProps';
+} from 'types/query/query';
+import { CareersQueryProps, ResumeUpdateProps } from 'types/query/queryProps';
 
 export const careersQuery = (
 	params: CareersQueryProps,

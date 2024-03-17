@@ -8,7 +8,7 @@ import {
 	PagingQueryResponse,
 	UseQueryOptionsType,
 	UseQueryResultType,
-} from 'types/Query/Query';
+} from 'types/query/query';
 
 export const networkQuery = (
 	params?: NetworkPagingQuery,

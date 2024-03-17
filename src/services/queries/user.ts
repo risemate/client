@@ -7,7 +7,7 @@ import {
 	UseMutationResultType,
 	UseQueryOptionsType,
 	UseQueryResultType,
-} from 'types/Query/Query';
+} from 'types/query/query';
 
 // export function authQuery(): { auth: Auth | undefined; refetch: () => void } {
 // 	const { data: auth, refetch } = useQuery(['auth'], fetchAuth, {

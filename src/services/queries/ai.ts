@@ -2,8 +2,8 @@ import { fetchReviseAi, fetchReviseAiAgain } from '@api/ai';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Career } from 'types/career/careerDocument';
 import { Resume } from 'types/career/resume';
-import { UseMutationOptionsType, UseMutationResultType } from 'types/Query/Query';
-import { AiQueryProps } from 'types/Query/QueryProps';
+import { UseMutationOptionsType, UseMutationResultType } from 'types/query/query';
+import { AiQueryProps } from 'types/query/queryProps';
 
 import { aiKeys } from './queryKeys';
 

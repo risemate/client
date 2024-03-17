@@ -1,7 +1,7 @@
 import { fetchAlarms } from '@api/alarms';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { AlamPaginationResponse, Alarm } from 'types/Alarm';
-import { UseInfiniteQueryOptionsType } from 'types/Query/Query';
+import { AlamPaginationResponse, Alarm } from 'types/alarm';
+import { UseInfiniteQueryOptionsType } from 'types/query/query';
 
 import { alarmKeys } from './queryKeys';
 

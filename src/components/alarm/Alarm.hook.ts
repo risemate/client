@@ -2,7 +2,7 @@ import { fetchReadAlarm, fetchReadAlarms } from '@api/alarms';
 import { alarmQuery } from '@queries/alarm';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Alarm } from 'types/Alarm';
+import { Alarm } from 'types/alarm';
 
 type AlarmProp = { pageSize?: number };
 export default function useAlarm(pageSize = 10) {

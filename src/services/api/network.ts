@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Career } from 'types/career/careerDocument';
 import { Resume } from 'types/career/resume';
-import { NetworkPagingQuery, PagingQueryResponse } from 'types/Query/Query';
+import { NetworkPagingQuery, PagingQueryResponse } from 'types/query/query';
 
 const NETWORK_PATH = {
 	DEFAULT: '/careers/p',

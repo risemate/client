@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Career } from 'types/career/careerDocument';
 import { Resume } from 'types/career/resume';
-import { AiQueryProps } from 'types/Query/QueryProps';
+import { AiQueryProps } from 'types/query/queryProps';
 
 const AI_PATH = {
 	DEFAULT: '/ai',
