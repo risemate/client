@@ -1,4 +1,4 @@
-import { reviseResumeDetailQuery } from '@queries/resume';
+import { reviseResumeDetailQuery } from '@queries/career';
 import { useParams } from 'react-router-dom';
 
 import Container from '@components/layout/Container';

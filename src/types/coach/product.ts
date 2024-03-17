@@ -1,5 +1,5 @@
-import { Project, WorkExperience } from '../Resume';
-import { BaseUser } from '../User';
+import { BaseUser } from 'types/auth';
+import { Project, WorkExperience } from 'types/career/resume';
 
 export type Product = {
 	user: BaseUser;

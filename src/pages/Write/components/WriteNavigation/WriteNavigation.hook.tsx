@@ -1,7 +1,7 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
 import { useCallback } from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
-import { OrderType } from 'types/Resume';
+import { OrderType } from 'types/career/resume';
 
 export default function useWriteNavigation() {
 	const { watch, control } = useFormContext();

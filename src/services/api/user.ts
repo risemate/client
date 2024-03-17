@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Auth, UserInfoRequestProps } from 'types/User';
+import { Auth, UserInfoRequestProps } from 'types/auth';
 
 export const fetchAuth = async (): Promise<Auth> => {
 	try {

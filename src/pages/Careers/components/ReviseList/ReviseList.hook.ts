@@ -1,4 +1,4 @@
-import { reviseResumeQuery } from '@queries/resume';
+import { reviseResumeQuery } from '@queries/career';
 import { isEmpty } from '@utils/helpers';
 import { useNavigate } from 'react-router-dom';
 

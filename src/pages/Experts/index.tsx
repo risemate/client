@@ -1,6 +1,6 @@
 import useTab from '@hooks/common/useTab';
 import styled from 'styled-components';
-import { TabItem } from 'types/Tab';
+import { TabItem } from 'types/common/tab';
 
 import Banner from '@common/Banner';
 import ExpertCardList from '@components/experts/ExpertCardList';

@@ -1,6 +1,6 @@
-import { resumeUpdateMutation } from '@queries/resume';
+import { resumeUpdateMutation } from '@queries/career';
 import { ChangeEvent, useState } from 'react';
-import { Career } from 'types/CareerDocument';
+import { Career } from 'types/career/careerDocument';
 
 export default function useCareerBasicCard(career: Career) {
 	const updateResumeMutation = resumeUpdateMutation();

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Progress as ProgressType } from 'types/Coach';
+import { Progress as ProgressType } from 'types/coach/coach';
 
 import Button from '@common/Button';
 

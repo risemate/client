@@ -2,12 +2,12 @@ import { useModal } from '@hooks/atoms/useModalAtom';
 import { IconGoogle, IconNaver } from '@icons';
 import logoIcon from '@images/logo-icon.svg';
 import { authKeys } from '@queries/queryKeys';
-import { useAuth } from '@queries/user';
+import { authQuery } from '@queries/user';
 import { useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Auth } from 'types/User';
+import { Auth } from 'types/auth';
 
 import ModalBase from '../modal/base/ModalBase';
 import { popupLogin } from './popupLogin';
@@ -15,7 +15,7 @@ import { popupLogin } from './popupLogin';
 export default function AuthModal() {
 	const { closeModal } = useModal('login');
 	// eslint-disable-next-line
-	const { data: auth } = useAuth();
+	const { data: auth } = authQuery();
 	const [userData, setUserData] = useState<Auth>();
 	const queryClient = useQueryClient();
 	const login = async (provider?: string) => {

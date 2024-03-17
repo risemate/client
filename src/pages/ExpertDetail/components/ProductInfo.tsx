@@ -3,7 +3,7 @@ import { IconCheck, IconClock } from '@icons';
 import { numberWithCommas, removeNullValues } from '@utils/helpers';
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { Package as PackageType } from 'types/Product';
+import { Package as PackageType } from 'types/coach/product';
 
 import Button from '@common/Button';
 import Tab from '@common/Tab';

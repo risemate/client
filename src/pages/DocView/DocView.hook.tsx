@@ -1,9 +1,9 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
+import { resumeDeleteMutation } from '@queries/career';
 import { careerDetailQuery } from '@queries/common';
-import { resumeDeleteMutation } from '@queries/resume';
 import { isEmpty } from '@utils/helpers';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { Resume } from 'types/Resume';
+import { Resume } from 'types/career/resume';
 
 export default function useDocView<T = Resume>() {
 	const { id = '' } = useParams();

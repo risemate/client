@@ -1,5 +1,5 @@
 import React from 'react';
-import { Column } from 'types/Column';
+import { Column } from 'types/common/column';
 
 import Table from '@common/Table';
 

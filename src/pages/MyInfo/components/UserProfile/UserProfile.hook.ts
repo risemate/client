@@ -1,9 +1,9 @@
 import { useSearchParam } from '@hooks/common/useSearchParam';
-import { useAuth } from '@queries/user';
+import { authQuery } from '@queries/user';
 import { useNavigate } from 'react-router-dom';
 
 export default function useUserProfile() {
-	const { data: auth } = useAuth();
+	const { data: auth } = authQuery();
 	const navigate = useNavigate();
 	const { changeParam } = useSearchParam('mode');
 	const logout = () => {
@@ -16,7 +16,7 @@ export default function useUserProfile() {
 			nickname: auth?.nickname || '000',
 			email: auth?.email || '-',
 			picture: auth?.picture || '',
-			isExpert: auth?.role === 1,
+			isExpert: auth?.role === 'EXPERT',
 		},
 		logout,
 		changeParamToEdit: () => changeParam('edit'),

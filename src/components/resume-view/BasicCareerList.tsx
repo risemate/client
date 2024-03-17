@@ -3,7 +3,7 @@ import { ElementType } from 'react';
 import styled, { css } from 'styled-components';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Career } from 'types/CareerDocument';
+import { Career } from 'types/career/careerDocument';
 
 import Button from '@common/Button';
 import Empty from '@common/Empty';

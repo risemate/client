@@ -1,7 +1,7 @@
 import { CAREER_PATH, fetchCareerDetail } from '@api/common';
 import { UseQueryOptions, UseQueryResult, useQuery } from '@tanstack/react-query';
-import { Career } from 'types/CareerDocument';
-import { Resume } from 'types/Resume';
+import { Career } from 'types/career/careerDocument';
+import { Resume } from 'types/career/resume';
 
 import { resumeKeys } from './queryKeys';
 

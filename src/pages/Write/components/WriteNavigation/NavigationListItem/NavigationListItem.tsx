@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { OrderType } from 'types/Resume';
+import { OrderType } from 'types/career/resume';
 
 import Toggle from '@components/input/Toggle';
 

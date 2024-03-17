@@ -1,9 +1,9 @@
 import { useSearchParam } from '@hooks/common/useSearchParam';
-import { useAuth } from '@queries/user';
+import { authQuery } from '@queries/user';
 import { useNavigate } from 'react-router-dom';
 
 export default function useMyInfoDetail() {
-	const { data: auth } = useAuth();
+	const { data: auth } = authQuery();
 	const { queryParam, changeParam } = useSearchParam('mode');
 	const navigate = useNavigate();
 	return {

@@ -1,5 +1,5 @@
-import { Career } from 'types/CareerDocument';
-import { Coverletter } from 'types/Coverletter';
+import { Career } from 'types/career/careerDocument';
+import { Coverletter } from 'types/career/coverletter';
 
 type Props = {
 	career: Career<Coverletter>;

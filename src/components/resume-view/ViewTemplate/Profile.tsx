@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Profile as ProfileType } from 'types/Resume';
+import { Profile as ProfileType } from 'types/career/resume';
 
 import DefaultImage from '@common/DefaultImage';
 // import Markdown from '@common/Markdown';

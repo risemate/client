@@ -1,4 +1,4 @@
-import { careersQuery } from '@queries/resume';
+import { careersQuery } from '@queries/career';
 
 export default function useAi() {
 	const resumes = careersQuery({ docType: 'BASIC', careerType: 'RESUME' });

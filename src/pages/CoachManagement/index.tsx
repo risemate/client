@@ -4,8 +4,8 @@ import {
 	Complete as CompleteType,
 	Pending as PendingType,
 	Progress as ProgressType,
-} from 'types/Coach';
-import { TabItem } from 'types/Tab';
+} from 'types/coach/coach';
+import { TabItem } from 'types/common/tab';
 
 import Tab from '@common/Tab';
 import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Complete as CompleteType } from 'types/Coach';
+import { Complete as CompleteType } from 'types/coach/coach';
 
 import Button from '@common/Button';
 

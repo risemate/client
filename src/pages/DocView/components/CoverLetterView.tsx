@@ -1,4 +1,4 @@
-import { Coverletter } from 'types/Coverletter';
+import { Coverletter } from 'types/career/coverletter';
 
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';

@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { Career } from 'types/CareerDocument';
-import { Resume } from 'types/Resume';
+import { Career } from 'types/career/careerDocument';
+import { Resume } from 'types/career/resume';
 
 export const CAREER_PATH = {
 	DEFAULT: '/careers',

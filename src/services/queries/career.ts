@@ -5,25 +5,23 @@ import {
 	fetchResumeDetail,
 	fetchReviseCareers,
 	fetchUpdateResume,
-} from '@api/resumes';
+} from '@api/career';
 import { resumeKeys } from '@queries/queryKeys';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { Career } from 'types/career/careerDocument';
+import { Resume, ReviseResume } from 'types/career/resume';
 import {
-	UseMutationOptions,
-	UseMutationResult,
-	UseQueryOptions,
-	UseQueryResult,
-	useMutation,
-	useQuery,
-	useQueryClient,
-} from '@tanstack/react-query';
-import { Career } from 'types/CareerDocument';
-import { CareersQueryProps, ResumeUpdateProps } from 'types/Query/ResumeQuery';
-import { Resume, ReviseResume } from 'types/Resume';
+	UseMutationOptionsType,
+	UseMutationResultType,
+	UseQueryOptionsType,
+	UseQueryResultType,
+} from 'types/Query/Query';
+import { CareersQueryProps, ResumeUpdateProps } from 'types/Query/QueryProps';
 
 export const careersQuery = (
 	params: CareersQueryProps,
-	options?: Omit<UseQueryOptions<Career<Resume>[]>, 'queryKey' | 'queryFn'>,
-): UseQueryResult<Career<Resume>[]> => {
+	options?: UseQueryOptionsType<Career<Resume>[]>,
+): UseQueryResultType<Career<Resume>[]> => {
 	return useQuery({
 		queryKey: resumeKeys.career(params),
 		queryFn: () => fetchCareers(params),
@@ -33,8 +31,8 @@ export const careersQuery = (
 
 export const reviseResumeQuery = (
 	id: string,
-	options?: Omit<UseQueryOptions<Career<ReviseResume>[]>, 'queryKey' | 'queryFn'>,
-): UseQueryResult<Career<ReviseResume>[]> => {
+	options?: UseQueryOptionsType<Career<ReviseResume>[]>,
+): UseQueryResultType<Career<ReviseResume>[]> => {
 	return useQuery({
 		queryKey: resumeKeys.reviseDocs(id),
 		queryFn: () => fetchReviseCareers(id),
@@ -44,8 +42,8 @@ export const reviseResumeQuery = (
 
 export const reviseResumeDetailQuery = (
 	id: string,
-	options?: Omit<UseQueryOptions<Career<ReviseResume>>, 'queryKey' | 'queryFn'>,
-): UseQueryResult<Career<ReviseResume>> => {
+	options?: UseQueryOptionsType<Career<ReviseResume>>,
+): UseQueryResultType<Career<ReviseResume>> => {
 	return useQuery({
 		queryKey: resumeKeys.id(id),
 		queryFn: () => fetchResumeDetail<ReviseResume>(id),
@@ -55,8 +53,8 @@ export const reviseResumeDetailQuery = (
 
 export const resumeDetailQuery = (
 	id: string,
-	options?: Omit<UseQueryOptions<Career<Resume>>, 'queryKey' | 'queryFn'>,
-): UseQueryResult<Career<Resume>> => {
+	options?: UseQueryOptionsType<Career<Resume>>,
+): UseQueryResultType<Career<Resume>> => {
 	return useQuery({
 		queryKey: resumeKeys.id(id),
 		queryFn: () => fetchResumeDetail(id),
@@ -65,11 +63,8 @@ export const resumeDetailQuery = (
 };
 
 export const resumeCreateMutation = (
-	options?: Omit<
-		UseMutationOptions<Career<Resume>, unknown, Resume, unknown>,
-		'mutationFn' | 'onSuccess'
-	>,
-): UseMutationResult<Career<Resume>, unknown, Resume, unknown> => {
+	options?: UseMutationOptionsType<Career<Resume>, Resume, 'onSuccess'>,
+): UseMutationResultType<Career<Resume>, Resume> => {
 	const queryClient = useQueryClient();
 	return useMutation({
 		mutationFn: (body: Resume) => fetchCreateResume(body),
@@ -84,11 +79,8 @@ export const resumeCreateMutation = (
 };
 
 export const resumeUpdateMutation = (
-	options?: Omit<
-		UseMutationOptions<Career<Resume>, unknown, ResumeUpdateProps, unknown>,
-		'mutationFn' | 'onSuccess'
-	>,
-): UseMutationResult<Career<Resume>, unknown, ResumeUpdateProps, unknown> => {
+	options?: UseMutationOptionsType<Career<Resume>, ResumeUpdateProps, 'onSuccess'>,
+): UseMutationResultType<Career<Resume>, ResumeUpdateProps> => {
 	const queryClient = useQueryClient();
 	return useMutation({
 		mutationFn: ({ id, body }: ResumeUpdateProps) => fetchUpdateResume(id, body),
@@ -103,11 +95,8 @@ export const resumeUpdateMutation = (
 };
 
 export const resumeDeleteMutation = (
-	options?: Omit<
-		UseMutationOptions<void, unknown, string, unknown>,
-		'mutationFn' | 'onSuccess'
-	>,
-): UseMutationResult<void, unknown, string, unknown> => {
+	options?: UseMutationOptionsType<void, string, 'onSuccess'>,
+): UseMutationResultType<void, string> => {
 	const queryClient = useQueryClient();
 	return useMutation({
 		mutationFn: (id: string) => fetchDeleteResume(id),

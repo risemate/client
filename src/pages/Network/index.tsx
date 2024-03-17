@@ -1,7 +1,7 @@
 import useTab from '@hooks/common/useTab';
 import styled from 'styled-components';
-import { CareerType } from 'types/CareerDocument';
-import { TabItem } from 'types/Tab';
+import { CareerType } from 'types/career/careerDocument';
+import { TabItem } from 'types/common/tab';
 
 import Banner from '@common/Banner';
 import Container from '@components/layout/Container';

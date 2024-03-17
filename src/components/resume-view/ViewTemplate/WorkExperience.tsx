@@ -1,4 +1,4 @@
-import { WorkExperience as WorkExperienceType } from 'types/Resume';
+import { WorkExperience as WorkExperienceType } from 'types/career/resume';
 
 import BaseSection from '@components/resume-view/ResumeViewBaseSection';
 

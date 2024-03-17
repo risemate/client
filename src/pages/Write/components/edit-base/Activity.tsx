@@ -1,6 +1,6 @@
 import { useFieldArray, useFormContext } from 'react-hook-form';
-import { Activity as ActivityType } from 'types/Resume';
-import { defaultActivity } from 'types/Resume/data';
+import { Activity as ActivityType } from 'types/career/resume';
+import { defaultActivity } from 'types/career/resumeData';
 
 import Input from '@components/input/Input';
 import LinkInput from '@components/input/LinkInput';

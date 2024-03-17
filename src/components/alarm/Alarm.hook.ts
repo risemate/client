@@ -1,5 +1,5 @@
 import { fetchReadAlarm, fetchReadAlarms } from '@api/alarms';
-import { useAlarmQuery } from '@queries/useAlarms';
+import { alarmQuery } from '@queries/alarm';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Alarm } from 'types/Alarm';
@@ -8,7 +8,7 @@ type AlarmProp = { pageSize?: number };
 export default function useAlarm(pageSize = 10) {
 	const navigate = useNavigate();
 	const alarmRef = useRef<HTMLDivElement | null>(null);
-	const { data, fetchNextPage, hasNextPage, isLoading, isFetched } = useAlarmQuery({
+	const { data, fetchNextPage, hasNextPage, isLoading, isFetched } = alarmQuery({
 		pageSize,
 	});
 	const [alarms, setAlarms] = useState<Alarm[]>([]);

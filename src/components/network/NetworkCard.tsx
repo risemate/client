@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Career } from 'types/CareerDocument';
+import { Career } from 'types/career/careerDocument';
 
 import DefaultImage from '@common/DefaultImage';
 

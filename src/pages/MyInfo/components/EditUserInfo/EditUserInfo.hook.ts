@@ -1,11 +1,11 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
-import { useAuth, userInfoUpdateMutation } from '@queries/user';
+import { authQuery, userInfoUpdateMutation } from '@queries/user';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { UserInfoRequestProps } from 'types/User';
+import { UserInfoRequestProps } from 'types/auth';
 
 export default function useEditUserInfo() {
-	const { data: auth } = useAuth();
+	const { data: auth } = authQuery();
 	const updateUserInfoMutation = userInfoUpdateMutation();
 	const { openModal, closeModal } = useModal('user-info-update');
 	const navigate = useNavigate();

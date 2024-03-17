@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
-import { Certificate } from 'types/Resume';
-import { defaultCertificate } from 'types/Resume/data';
+import { Certificate } from 'types/career/resume';
+import { defaultCertificate } from 'types/career/resumeData';
 
 import DateInput from '@components/input/DateInput';
 import Input from '@components/input/Input';

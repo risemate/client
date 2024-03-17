@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { CoverLetterContent } from 'types/Coverletter';
+import { CoverLetterContent } from 'types/career/coverletter';
 
 import BaseSection from '@components/resume-view/ResumeViewBaseSection';
 

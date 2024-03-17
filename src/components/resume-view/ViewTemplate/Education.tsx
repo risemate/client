@@ -1,5 +1,5 @@
 import { isEmpty } from '@utils/helpers';
-import { Education as EducationType } from 'types/Resume';
+import { Education as EducationType } from 'types/career/resume';
 
 import BaseSection from '@components/resume-view/ResumeViewBaseSection';
 

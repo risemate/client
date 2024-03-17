@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { TabItem } from 'types/Tab';
+import { TabItem } from 'types/common/tab';
 
 type Variant = 'lightGrey' | 'darkGrey';
 

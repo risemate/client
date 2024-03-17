@@ -1,5 +1,5 @@
 //TODO: path is working, need to change later
-import { careersQuery } from '@queries/resume';
+import { careersQuery } from '@queries/career';
 import { useNavigate } from 'react-router-dom';
 
 export default function useCareerList() {

@@ -1,11 +1,16 @@
 import { fetchAlarms } from '@api/alarms';
-import { QueryKey, UseQueryOptions, useInfiniteQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { AlamPaginationResponse, Alarm } from 'types/Alarm';
+import { UseInfiniteQueryOptionsType } from 'types/Query/Query';
 
 import { alarmKeys } from './queryKeys';
 
-export const useAlarmQuery = (
+export const alarmQuery = (
 	params?: { page?: number; pageSize?: number; isRead?: boolean },
-	options?: UseQueryOptions<unknown, unknown, unknown, QueryKey> | undefined,
+	options?: UseInfiniteQueryOptionsType<
+		AlamPaginationResponse<Alarm>,
+		'initialPageParam' | 'getNextPageParam'
+	>,
 ) => {
 	return useInfiniteQuery({
 		queryKey: alarmKeys.base,

@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, ForwardedRef, ReactNode, forwardRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { Size, Variant } from 'types/Button';
+import { Size, Variant } from 'types/common/button';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	variant: Variant;

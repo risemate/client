@@ -1,4 +1,4 @@
-import { Activity as ActivityType } from 'types/Resume';
+import { Activity as ActivityType } from 'types/career/resume';
 
 import BaseSection from '@components/resume-view/ResumeViewBaseSection';
 
