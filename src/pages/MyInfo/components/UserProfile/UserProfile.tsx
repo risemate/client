@@ -33,7 +33,7 @@ export default function UserProfile() {
 							전문가로 변환하기
 						</Button>
 					) : (
-						<Button variant='navy' size='full'>
+						<Button variant='navy' size='full' to='/form/expert'>
 							전문가 신청하기
 						</Button>
 					)}

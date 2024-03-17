@@ -15,6 +15,6 @@ export default function FormLayout() {
 const FormLayoutWrapper = styled.div`
 	width: 100%;
 	height: 100vh;
-	background-color: ${({ theme }) => theme.colors.grey};
+	background-color: ${({ theme }) => theme.colors.lightGrey};
 	${({ theme }) => theme.common.flexCenter};
 `;
