@@ -44,6 +44,8 @@ export default function ReviseList() {
 const resumeWrapperStyle = css`
 	min-height: 500px;
 	padding: 50px;
+	display: flex;
+	flex-direction: column;
 	h3 {
 		color: ${({ theme }) => theme.colors.navy};
 		font-weight: bold;
