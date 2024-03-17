@@ -1,7 +1,7 @@
 import { formatDate } from '@utils/helpers';
 import styled from 'styled-components';
-import { Career } from 'types/CareerDocument';
-import { Resume as ResumeType } from 'types/Resume';
+import { Career } from 'types/career/careerDocument';
+import { Resume as ResumeType } from 'types/career/resume';
 
 import Button from '@common/Button';
 import Modal from '@components/modal/base/Modal';

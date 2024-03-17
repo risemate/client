@@ -1,6 +1,6 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
+import { resumeDeleteMutation, resumeDetailQuery } from '@queries/career';
 import { networkDetailQuery } from '@queries/network';
-import { resumeDeleteMutation, resumeDetailQuery } from '@queries/resume';
 import { isEmpty } from '@utils/helpers';
 import { useNavigate } from 'react-router-dom';
 

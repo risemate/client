@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Alarm } from 'types/Alarm';
+import { Alarm } from 'types/alarm';
 
 import useAlarm from './Alarm.hook';
 

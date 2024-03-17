@@ -1,4 +1,4 @@
-import { Project as ProjectType } from 'types/Resume';
+import { Project as ProjectType } from 'types/career/resume';
 
 import BaseSection from '@components/resume-view/ResumeViewBaseSection';
 

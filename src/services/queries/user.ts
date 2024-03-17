@@ -1,17 +1,15 @@
 import { authKeys } from '@queries/queryKeys';
-import {
-	UseMutationOptions,
-	UseMutationResult,
-	UseQueryOptions,
-	UseQueryResult,
-	useMutation,
-	useQuery,
-	useQueryClient,
-} from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { fetchAuth, fetchUpdateUserInfo } from 'services/api/user';
-import { Auth, UserInfoRequestProps } from 'types/User';
+import {
+	UseMutationOptionsType,
+	UseMutationResultType,
+	UseQueryOptionsType,
+	UseQueryResultType,
+} from 'types/query/Query';
+import { Auth, UserInfoRequestProps } from 'types/user';
 
-// export function useAuth(): { auth: Auth | undefined; refetch: () => void } {
+// export function authQuery(): { auth: Auth | undefined; refetch: () => void } {
 // 	const { data: auth, refetch } = useQuery(['auth'], fetchAuth, {
 // 		// refetchOnMount: true,
 // 		staleTime: Infinity,
@@ -19,7 +17,9 @@ import { Auth, UserInfoRequestProps } from 'types/User';
 // 	return { auth, refetch };
 // }
 
-export const useAuth = (options?: UseQueryOptions<Auth>): UseQueryResult<Auth> => {
+export const authQuery = (
+	options?: UseQueryOptionsType<Auth>,
+): UseQueryResultType<Auth> => {
 	const token = localStorage.getItem('rm-checkpoint');
 	return useQuery({
 		queryKey: authKeys.base,
@@ -31,11 +31,8 @@ export const useAuth = (options?: UseQueryOptions<Auth>): UseQueryResult<Auth> =
 };
 
 export const userInfoUpdateMutation = (
-	options?: Omit<
-		UseMutationOptions<Auth, unknown, UserInfoRequestProps, unknown>,
-		'mutationFn' | 'onSuccess'
-	>,
-): UseMutationResult<Auth, unknown, UserInfoRequestProps, unknown> => {
+	options?: UseMutationOptionsType<Auth, UserInfoRequestProps, 'onSuccess'>,
+): UseMutationResultType<Auth, UserInfoRequestProps> => {
 	const queryClient = useQueryClient();
 	return useMutation({
 		mutationFn: (body: UserInfoRequestProps) => fetchUpdateUserInfo(body),

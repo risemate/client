@@ -1,7 +1,7 @@
 import { useSearchParam } from '@hooks/common/useSearchParam';
 import { useFieldArray, useFormContext } from 'react-hook-form';
-import { CoverLetterContent } from 'types/Coverletter';
-import { defaultCoverLetterContent } from 'types/Coverletter/data';
+import { CoverLetterContent } from 'types/career/coverletter';
+import { defaultCoverLetterContent } from 'types/career/coverletterData';
 
 import Input from '@components/input/Input';
 import TextArea from '@components/input/TextArea';

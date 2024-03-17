@@ -1,6 +1,6 @@
 import { formatDate } from '@utils/helpers';
 import styled from 'styled-components';
-import { Career } from 'types/CareerDocument';
+import { Career } from 'types/career/careerDocument';
 
 import Button from '@common/Button';
 import Toggle from '@components/input/Toggle';

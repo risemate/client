@@ -1,7 +1,7 @@
 import useTab from '@hooks/common/useTab';
 import styled from 'styled-components';
-import { convertToProfile, mockProduct } from 'types/Product/data';
-import { TabItem } from 'types/Tab';
+import { convertToProfile, mockProduct } from 'types/coach/productData';
+import { TabItem } from 'types/common/tab';
 
 import Tab from '@common/Tab';
 import Container from '@components/layout/Container';

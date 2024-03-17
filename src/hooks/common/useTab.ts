@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TabItem } from 'types/Tab';
+import { TabItem } from 'types/common/tab';
 
 import { useSearchParam } from './useSearchParam';
 

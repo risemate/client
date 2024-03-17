@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { mockInquiry } from 'types/Product/data';
+import { mockInquiry } from 'types/coach/productData';
 
 import BaseSection from '../BaseSection';
 import InquiryForm from './InquiryForm';

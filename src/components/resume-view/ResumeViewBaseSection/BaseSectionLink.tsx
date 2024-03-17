@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'types/Resume';
+import { Link } from 'types/career/resume';
 
 interface LinkProps {
 	links: Link[] | null;

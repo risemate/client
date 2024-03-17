@@ -1,12 +1,11 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
 import { IconBell, IconCircleUser } from '@icons';
 import logoMain from '@images/logo-main.svg';
-import { useAuth } from '@queries/user';
+import { authQuery } from '@queries/user';
 import axios from 'axios';
 import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { Roles } from 'types/User';
 
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 
@@ -22,7 +21,7 @@ export default function NavBar() {
 	];
 
 	const { openModal } = useModal('login');
-	const { data: auth } = useAuth();
+	const { data: auth } = authQuery();
 
 	const hasNewAlarm = true;
 	const [isAlarmOpen, setIsAlarmOpen] = useState(false);
@@ -57,7 +56,7 @@ export default function NavBar() {
 					<MyPageWrapper>
 						{auth ? (
 							<>
-								{auth?.role === Roles.EXPERT && <Link to='/coach-info'>코칭 관리</Link>}
+								{auth?.role === 'EXPERT' && <Link to='/coach-info'>코칭 관리</Link>}
 								<button
 									type='button'
 									className={hasNewAlarm ? 'alert' : undefined}

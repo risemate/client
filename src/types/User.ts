@@ -1,8 +1,6 @@
-export enum Roles {
-	'GENERAL',
-	'EXPERT',
-	'ADMIN',
-}
+export const RolesType = ['GENERAL', 'EXPERT', 'ADMIN'] as const;
+export type RolesType = (typeof RolesType)[number];
+
 export type Auth = {
 	_id: string;
 	cash: number;
@@ -24,7 +22,7 @@ export type Auth = {
 	responseWaitngCoachingCount: number;
 	resumeCount: number;
 	reviewCount: number;
-	role: Roles;
+	role: RolesType;
 	updatedAt: string;
 	waitingPaymentCoachingCount: number;
 };

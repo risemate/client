@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Variant } from 'types/Button';
+import { Variant } from 'types/common/button';
 
 import Button from './Button';
 

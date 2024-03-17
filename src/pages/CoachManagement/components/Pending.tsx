@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Pending as PendingType } from 'types/Coach';
+import { Pending as PendingType } from 'types/coach/coach';
 
 import Button from '@common/Button';
 import Input from '@components/input/Input';

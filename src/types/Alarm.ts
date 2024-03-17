@@ -1,4 +1,4 @@
-import { PagingQueryResponse } from './Query/Query';
+import { PagingQueryResponse } from './query/Query';
 
 export type NotiType = 'CAREER' | 'PRODUCT' | 'PAYMENT' | 'ANY';
 export interface Alarm {

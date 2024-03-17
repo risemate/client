@@ -3,8 +3,8 @@ import {
 	EmploymentStatus,
 	JobType,
 	WorkExperience as WorkExperienceType,
-} from 'types/Resume';
-import { defaultWorkExperience } from 'types/Resume/data';
+} from 'types/career/resume';
+import { defaultWorkExperience } from 'types/career/resumeData';
 
 import Input from '@components/input/Input';
 import LinkInput from '@components/input/LinkInput';

@@ -1,6 +1,6 @@
-import { Career } from 'types/CareerDocument';
+import { Career } from 'types/career/careerDocument';
 
-import { Coverletter } from '.';
+import { Coverletter } from './coverletter';
 
 export const defaultCoverLetterContent = { title: '', content: '' };
 export const defaultCoverLetter: Career<Coverletter> = {
@@ -16,17 +16,11 @@ export const defaultCoverLetter: Career<Coverletter> = {
 	coverImage: '',
 	doc: {
 		public: false,
-
 		docTitle: '',
-
 		description: '',
-
 		contents: [defaultCoverLetterContent],
-
 		coverImage: '',
-
 		links: [],
-
 		orderType: [],
 		lookingForJob: false,
 	},

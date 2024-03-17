@@ -3,13 +3,13 @@ import {
 	resumeCreateMutation,
 	resumeDetailQuery,
 	resumeUpdateMutation,
-} from '@queries/resume';
+} from '@queries/career';
 import { isEmpty } from '@utils/helpers';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { Career } from 'types/CareerDocument';
-import { Resume as ResumeType } from 'types/Resume';
-import { defaultOrder, defaultResume } from 'types/Resume/data';
+import { Career } from 'types/career/careerDocument';
+import { Resume as ResumeType } from 'types/career/resume';
+import { defaultOrder, defaultResume } from 'types/career/resumeData';
 
 export default function useResumeWrite() {
 	const { queryParam: resumeId } = useSearchParam<string>('id');

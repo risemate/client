@@ -2,7 +2,7 @@ import React from 'react';
 import {
 	Project as ProjectType,
 	WorkExperience as WorkExperienceType,
-} from 'types/Resume';
+} from 'types/career/resume';
 
 import Project from '@components/resume-view/ViewTemplate/Project';
 import WorkExperience from '@components/resume-view/ViewTemplate/WorkExperience';

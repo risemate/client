@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { AlamPaginationResponse, Alarm } from 'types/Alarm';
-import { PagingQueryProps } from 'types/Query/Query';
+import { AlamPaginationResponse, Alarm } from 'types/alarm';
+import { PagingQueryProps } from 'types/query/Query';
 
 const ALARM_PATH = {
 	DEFAULT: '/user-notis/a',

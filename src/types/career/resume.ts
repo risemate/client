@@ -1,38 +1,10 @@
-import { CoverLetterContent } from 'types/Coverletter';
+import { CoverLetterContent } from 'types/career/coverletter';
 
 export const CareerType = ['RESUME', 'COVERLETTER'] as const;
 export type CareerType = (typeof CareerType)[number];
 
 export const DocType = ['BASIC', 'AI', 'COACHING'] as const;
 export type DocType = (typeof DocType)[number];
-
-export type ReviseResume = {
-	feedback: string;
-	coverImage?: string;
-	description?: string;
-	feed_description: string;
-	coverLetter?: string;
-	feed_coverLetter: string;
-	public: boolean;
-	docTitle: string;
-	profile: Profile;
-	feed_profile: string;
-	techStack: {
-		skills: string[];
-	};
-	feed_techStack: string;
-	workExperiences: WorkExperience[];
-	feed_workExperience: string;
-	projects: Project[];
-	feed_project: string;
-	educations: Education[];
-	feed_education: string;
-	activities: Activity[];
-	feed_activity: string;
-	links: Link[];
-	careerYears: number;
-	lookingForJob: boolean;
-};
 
 export type Resume = {
 	coverImage: string | null;
@@ -53,6 +25,18 @@ export type Resume = {
 	careerYears: number;
 	lookingForJob: boolean;
 	orderType?: OrderType[];
+};
+
+export type ReviseResume = Resume & {
+	feedback: string;
+	feed_description: string;
+	feed_coverLetter: string;
+	feed_profile: string;
+	feed_techStack: string;
+	feed_workExperience: string;
+	feed_project: string;
+	feed_education: string;
+	feed_activity: string;
 };
 
 export type Profile = {

@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
-import { Profile as ProfileType } from 'types/Resume';
+import { Profile as ProfileType } from 'types/career/resume';
 
 import DateInput from '@components/input/DateInput';
 import FileInput from '@components/input/FileInput';

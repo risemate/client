@@ -1,18 +1,39 @@
-import { QueryKey, UseMutationOptions, UseQueryOptions } from '@tanstack/react-query';
-import { AxiosError, AxiosResponse } from 'axios';
-import { CareerType } from 'types/CareerDocument';
+import {
+	UseInfiniteQueryOptions,
+	UseInfiniteQueryResult,
+	UseMutationOptions,
+	UseMutationResult,
+	UseQueryOptions,
+	UseQueryResult,
+} from '@tanstack/react-query';
+import { CareerType } from 'types/career/careerDocument';
 
-export type UseQueryOptionsType<T> = UseQueryOptions<
-	AxiosResponse<T>,
-	AxiosError,
-	T,
-	QueryKey[]
+export type UseQueryOptionsType<
+	ReturnType,
+	OmitType extends keyof UseQueryOptions = never,
+> = Omit<UseQueryOptions<ReturnType>, 'queryFn' | 'queryKey' | OmitType>;
+export type UseQueryResultType<ReturnType> = UseQueryResult<ReturnType>;
+
+export type UseInfiniteQueryOptionsType<
+	ReturnType,
+	OmitType extends keyof UseInfiniteQueryOptions,
+> = Omit<UseInfiniteQueryOptions<ReturnType>, 'queryFn' | 'queryKey' | OmitType>;
+export type UseInfiniteQueryResultType<ReturnType> = UseInfiniteQueryResult<
+	PagingQueryResponse<ReturnType>
 >;
 
-export type UseMutationOptionsType<T> = UseMutationOptions<
-	AxiosResponse<T>,
-	AxiosError,
-	T,
+export type UseMutationOptionsType<
+	ReturnType,
+	PropType,
+	OmitType extends keyof UseMutationOptions = never,
+> = Omit<
+	UseMutationOptions<ReturnType, unknown, PropType, unknown>,
+	'mutationFn' | OmitType
+>;
+export type UseMutationResultType<ReturnType, PropType> = UseMutationResult<
+	ReturnType,
+	unknown,
+	PropType,
 	unknown
 >;
 
@@ -33,11 +54,3 @@ export type PagingQueryResponse<T> = {
 export interface NetworkPagingQuery extends PagingQueryProps {
 	careerType?: CareerType;
 }
-
-// export interface UseMutationOptions<TData = unknown, TError = unknown, TVariables = void, TContext = unknown>
-// extends Omit<MutationObserverOptions<TData, TError, TVariables, TContext>, '_defaulted' | 'variables'> {
-// }
-
-// useQueryOption type 지정, general hook 찾기
-// suspense, errorBoundary 사용하는 법 w/ react-query
-//

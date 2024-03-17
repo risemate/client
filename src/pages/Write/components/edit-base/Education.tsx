@@ -1,6 +1,6 @@
 import { useFieldArray, useFormContext } from 'react-hook-form';
-import { Education as EducationType, GraduationStatus } from 'types/Resume';
-import { defaultEducation } from 'types/Resume/data';
+import { Education as EducationType, GraduationStatus } from 'types/career/resume';
+import { defaultEducation } from 'types/career/resumeData';
 
 import Input from '@components/input/Input';
 import LinkInput from '@components/input/LinkInput';

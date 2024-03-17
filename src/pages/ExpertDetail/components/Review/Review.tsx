@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { mockReview } from 'types/Product/data';
+import { mockReview } from 'types/coach/productData';
 
 import StarRating from '../../../../components/experts/StarRating';
 import BaseSection from '../BaseSection';

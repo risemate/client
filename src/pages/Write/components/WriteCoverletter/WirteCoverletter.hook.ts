@@ -8,9 +8,9 @@ import {
 import { isEmpty } from '@utils/helpers';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { Career } from 'types/CareerDocument';
-import { Coverletter as CoverletterType } from 'types/Coverletter';
-import { defaultCoverLetter } from 'types/Coverletter/data';
+import { Career } from 'types/career/careerDocument';
+import { Coverletter as CoverletterType } from 'types/career/coverletter';
+import { defaultCoverLetter } from 'types/career/coverletterData';
 
 export default function useCoverletterWrite() {
 	const { queryParam: coverletterId } = useSearchParam<string>('id');

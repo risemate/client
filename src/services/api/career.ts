@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { Career } from 'types/CareerDocument';
-import { CareersQueryProps } from 'types/Query/ResumeQuery';
-import { Resume, ReviseResume } from 'types/Resume';
+import { Career } from 'types/career/careerDocument';
+import { Resume, ReviseResume } from 'types/career/resume';
+import { CareersQueryProps } from 'types/query/QueryProps';
 
 const RESUME_PATH = {
 	DEFAULT: '/careers',

@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { Career } from 'types/CareerDocument';
-import { Coverletter } from 'types/Coverletter';
+import { Career } from 'types/career/careerDocument';
+import { Coverletter } from 'types/career/coverletter';
 
 const COVERLETTER_PATH = {
 	DEFAULT: '/careers',

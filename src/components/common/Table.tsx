@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Column } from 'types/Column';
+import { Column } from 'types/common/column';
 
 interface TableProps<T> {
 	columns: Column<T>[];

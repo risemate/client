@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-import { Column } from 'types/Column';
+import { Column } from 'types/common/column';
 
 import Table from '@common/Table';
 

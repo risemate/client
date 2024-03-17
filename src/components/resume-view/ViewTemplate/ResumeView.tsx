@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { Resume as ResumeType } from 'types/Resume';
+import { Resume as ResumeType } from 'types/career/resume';
 
 import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { ReviseResume } from 'types/Resume';
+import { ReviseResume } from 'types/career/resume';
 
 import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 
@@ -26,10 +26,12 @@ export function ReviseResumeTemplate({ career }: ReviseResumeViewProps) {
 				feedback={career?.feed_coverLetter}
 				description={career.description || null}
 			/>
-			<WorkExperience
-				workExperiences={career.workExperiences}
-				feedback={career?.feed_workExperience}
-			/>
+			{career.workExperiences && (
+				<WorkExperience
+					workExperiences={career.workExperiences}
+					feedback={career?.feed_workExperience}
+				/>
+			)}
 			{/* <Project projects={career.projects} feedback={career?.feed_project} />
 			<Education educations={career.educations} feedback={career?.feed_education} />
 			<Activity activities={career.activities} feedback={career?.feed_activity} /> */}

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
-import { TabItem } from 'types/Tab';
+import { TabItem } from 'types/common/tab';
 
 import Button from './Button';
 import Tab from './Tab';

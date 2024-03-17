@@ -3,7 +3,7 @@ import { IconCloseSharp } from '@icons';
 import { ChangeEvent, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
-import { Link as LinkType } from 'types/Resume';
+import { Link as LinkType } from 'types/career/resume';
 
 import Button from '@common/Button';
 import Input from '@components/input/Input';

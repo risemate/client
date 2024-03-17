@@ -5,23 +5,21 @@ import {
 	fetchUpdateCoverletter,
 } from '@api/coverletter';
 import { coverletterKeys } from '@queries/queryKeys';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { Career } from 'types/career/careerDocument';
+import { Coverletter } from 'types/career/coverletter';
 import {
-	UseMutationOptions,
-	UseMutationResult,
-	UseQueryOptions,
-	UseQueryResult,
-	useMutation,
-	useQuery,
-	useQueryClient,
-} from '@tanstack/react-query';
-import { Career } from 'types/CareerDocument';
-import { Coverletter } from 'types/Coverletter';
-import { CoverletterUpdateProps } from 'types/Query/CoverletterQuery';
+	UseMutationOptionsType,
+	UseMutationResultType,
+	UseQueryOptionsType,
+	UseQueryResultType,
+} from 'types/query/Query';
+import { CoverletterUpdateProps } from 'types/query/QueryProps';
 
 export const coverletterDetailQuery = (
 	id: string,
-	options?: Omit<UseQueryOptions<Career<Coverletter>>, 'queryKey' | 'queryFn'>,
-): UseQueryResult<Career<Coverletter>> => {
+	options?: UseQueryOptionsType<Career<Coverletter>>,
+): UseQueryResultType<Career<Coverletter>> => {
 	return useQuery({
 		queryKey: coverletterKeys.id(id),
 		queryFn: () => fetchCoverletterDetail(id),
@@ -30,8 +28,8 @@ export const coverletterDetailQuery = (
 };
 
 export const coverletterCreateMutation = (
-	options?: UseMutationOptions<Career<Coverletter>, unknown, Coverletter, unknown>,
-): UseMutationResult<Career<Coverletter>, unknown, Coverletter, unknown> => {
+	options?: UseMutationOptionsType<Career<Coverletter>, Coverletter, 'onSuccess'>,
+): UseMutationResultType<Career<Coverletter>, Coverletter> => {
 	const queryClient = useQueryClient();
 	return useMutation({
 		mutationFn: (body: Coverletter) => fetchCreateCoverletter(body),
@@ -46,13 +44,8 @@ export const coverletterCreateMutation = (
 };
 
 export const coverletterUpdateMutation = (
-	options?: UseMutationOptions<
-		Career<Coverletter>,
-		unknown,
-		CoverletterUpdateProps,
-		unknown
-	>,
-): UseMutationResult<Career<Coverletter>, unknown, CoverletterUpdateProps, unknown> => {
+	options?: UseMutationOptionsType<Career<Coverletter>, CoverletterUpdateProps>,
+): UseMutationResultType<Career<Coverletter>, CoverletterUpdateProps> => {
 	const queryClient = useQueryClient();
 	return useMutation({
 		mutationFn: ({ id, body }: CoverletterUpdateProps) =>
@@ -68,8 +61,8 @@ export const coverletterUpdateMutation = (
 };
 
 export const coverletterDeleteMutation = (
-	options?: UseMutationOptions<void, unknown, string, unknown>,
-): UseMutationResult<void, unknown, string, unknown> => {
+	options?: UseMutationOptionsType<void, string, 'onSuccess'>,
+): UseMutationResultType<void, string> => {
 	const queryClient = useQueryClient();
 	return useMutation({
 		mutationFn: (id: string) => fetchDeleteCoverletter(id),

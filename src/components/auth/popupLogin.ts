@@ -1,4 +1,4 @@
-import { LoginResponse } from 'types/User';
+import { LoginResponse } from 'types/user';
 
 export async function popupLogin(provider = 'google'): Promise<LoginResponse> {
 	return new Promise((resolve, _) => {

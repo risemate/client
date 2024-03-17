@@ -1,10 +1,10 @@
+import { Profile as ProfileType } from 'types/career/resume';
 import {
 	Inquriy as InquiryType,
 	PackageDetail,
 	Product as ProductType,
 	Review as ReviewType,
-} from 'types/Product';
-import { Profile as ProfileType } from 'types/Resume';
+} from 'types/coach/coach';
 
 export const defaultPackage: PackageDetail = {
 	price: null,
