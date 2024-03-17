@@ -33,5 +33,5 @@ export const coverletterKeys = {
 
 export const aiKeys = {
 	base: ['ai'] as const,
-	id: (id: string) => [...aiKeys.base, { id }] as const,
+	id: (id: string) => [...aiKeys.base, ...resumeKeys.id(id)] as const,
 };

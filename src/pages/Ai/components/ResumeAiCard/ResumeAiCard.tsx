@@ -14,19 +14,26 @@ interface ResumeCardProps {
 }
 
 export default function ResumeAiCard({ career }: ResumeCardProps) {
-	const { openModal, hasRevise, isRevising, modalContent, proceedAiRevise } =
-		useResumeAiCard();
+	const {
+		openModal,
+		hasRevise,
+		isRevising,
+		modalContent,
+		proceedAiRevise,
+		toDoc,
+		toRevision,
+	} = useResumeAiCard(career);
 	return (
 		<CardWrapper>
 			<CardWrapper.Title time={formatDate(career.createdAt).period}>
 				{career.docTitle}
 			</CardWrapper.Title>
 			<ViewButtonWrapper>
-				<Button variant='border' size='full' to={`/my-info/docs/${career._id}`}>
+				<Button variant='border' size='full' to={toDoc}>
 					원문 보기
 				</Button>
 				{hasRevise && (
-					<Button variant='border' size='full' to={`/my-info/docs/${career._id}`}>
+					<Button variant='border' size='full' to={toRevision}>
 						AI 첨삭 보기
 					</Button>
 				)}
@@ -37,11 +44,7 @@ export default function ResumeAiCard({ career }: ResumeCardProps) {
 			{isRevising && (
 				<NoticeText>첨삭이 진행 중입니다. 완료되면 알림이 전송됩니다.</NoticeText>
 			)}
-			<Modal
-				title='AI 첨삭'
-				queryKey='ai-revise'
-				onClick={() => proceedAiRevise(career._id)}
-			>
+			<Modal title='AI 첨삭' queryKey='ai-revise' onClick={proceedAiRevise}>
 				{modalContent}
 			</Modal>
 		</CardWrapper>
