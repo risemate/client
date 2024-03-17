@@ -1,13 +1,13 @@
 import { authKeys } from '@queries/queryKeys';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { fetchAuth, fetchUpdateUserInfo } from 'services/api/user';
+import { Auth, UserInfoRequestProps } from 'types/auth';
 import {
 	UseMutationOptionsType,
 	UseMutationResultType,
 	UseQueryOptionsType,
 	UseQueryResultType,
 } from 'types/query/Query';
-import { Auth, UserInfoRequestProps } from 'types/user';
 
 // export function authQuery(): { auth: Auth | undefined; refetch: () => void } {
 // 	const { data: auth, refetch } = useQuery(['auth'], fetchAuth, {

@@ -1,4 +1,4 @@
-import { BaseUser } from '../user';
+import { BaseUser } from 'types/auth';
 
 export type CareerType = 'RESUME' | 'COVERLETTER';
 export const CareerTypeList: CareerType[] = ['RESUME', 'COVERLETTER'];

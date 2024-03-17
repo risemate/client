@@ -1,6 +1,6 @@
 import React from 'react';
 // import { BaseSectionMain } from './BaseSection';
-import { Package as PackageType } from 'types/coach/coach';
+import { Package as PackageType } from 'types/coach/product';
 
 import BaseSection from './BaseSection';
 

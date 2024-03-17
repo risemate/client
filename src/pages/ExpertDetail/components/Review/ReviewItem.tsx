@@ -1,7 +1,7 @@
 import { isEmpty, maskString } from '@utils/helpers';
 import React from 'react';
 import styled from 'styled-components';
-import { Review as ReviewType } from 'types/coach/coach';
+import { Review as ReviewType } from 'types/coach/product';
 
 import Button from '@common/Button';
 import DefaultImage from '@common/DefaultImage';

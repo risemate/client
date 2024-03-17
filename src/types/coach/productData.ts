@@ -4,7 +4,7 @@ import {
 	PackageDetail,
 	Product as ProductType,
 	Review as ReviewType,
-} from 'types/coach/coach';
+} from 'types/coach/product';
 
 export const defaultPackage: PackageDetail = {
 	price: null,

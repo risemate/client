@@ -7,7 +7,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Auth } from 'types/user';
+import { Auth } from 'types/auth';
 
 import ModalBase from '../modal/base/ModalBase';
 import { popupLogin } from './popupLogin';
