@@ -18,6 +18,38 @@ export default function ModalBase({ children, queryKey }: ModalBaseProps) {
 			closeModal();
 		}
 	};
+
+	// const setParam = (key: string, value: string) => {
+	// 	const params = new URLSearchParams(window.location.search);
+	// 	params.set(key, value);
+	// 	const newUrl = `${window.location.pathname}?${params.toString()}`;
+	// 	window.location.replace(newUrl);
+	// };
+
+	// const delParam = (key: string) => {
+	// 	const params = new URLSearchParams(window.location.search);
+	// 	params.delete(key);
+	// 	const newUrl = `${window.location.pathname}?${params.toString()}`;
+	// 	window.history.replaceState({}, '', newUrl);
+	// };
+
+	// const getParam = (key: string) => {
+	// 	const params = new URLSearchParams(window.location.search);
+	// 	return params.get(key);
+	// };
+
+	// const overView = getParam('overView');
+
+	// useEffect(() => {
+	// 	if (isModal) {
+	// 		setParam('overView', 'ok');
+	// 		return;
+	// 	}
+	// 	if (isModal && !overView) {
+	// 		// delParam('overView');
+	// 		closeModal();
+	// 	}
+	// }, [isModal, overView]);
 	return (
 		<ModalPortal>
 			{isModal && (

@@ -8,5 +8,14 @@ export function useSearchParam<T>(key: string) {
 		paramsToUpdate[key] = newMode;
 		setSearchParams(paramsToUpdate);
 	};
-	return { queryParam, changeParam };
+
+	const setParam = (value: string) => {
+		searchParams.set(key, value);
+		setSearchParams(searchParams);
+	};
+	const delParam = (key: string) => {
+		searchParams.delete(key);
+		setSearchParams(searchParams);
+	};
+	return { queryParam, changeParam, setParam, delParam };
 }
