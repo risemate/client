@@ -1,5 +1,4 @@
 import { isEmpty } from '@utils/helpers';
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 
@@ -30,8 +29,6 @@ export default function InquiryForm({ isMyProduct }: InquiryInputProps) {
 	const updateIsSecret = (isSecret: boolean) => setValue('isSecret', isSecret);
 
 	const addInquiry = (data: AddInquiryType) => {
-		// eslint-disable-next-line
-		console.log(data);
 		reset();
 	};
 

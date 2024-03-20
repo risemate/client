@@ -29,10 +29,8 @@ export const useIntersectionObserver = ({
 			threshold,
 		});
 
-		// 타겟 관찰 시작
 		observer.observe(target);
 
-		// 관찰 멈춤
 		return () => observer.unobserve(target);
 	}, [observerCallback, threshold, target]);
 

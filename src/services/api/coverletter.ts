@@ -24,7 +24,6 @@ export const fetchCoverletterDetail = async <T = Coverletter>(
 export const fetchCreateCoverletter = async (
 	body: Coverletter,
 ): Promise<Career<Coverletter>> => {
-	console.log('data: ', body);
 	try {
 		const response = await axios.post<Career<Coverletter>>(
 			COVERLETTER_PATH.UPDATE(),

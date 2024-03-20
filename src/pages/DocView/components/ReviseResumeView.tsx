@@ -12,7 +12,6 @@ export default function ReviseResumeView() {
 		{ name: '전체교체', onClick: () => alert('전체 교체') },
 	];
 	const { data, isLoading } = reviseResumeDetailQuery(childrenId || '');
-	console.log('data: ', childrenId, data);
 	//:로딩애니메이션 추가하기
 	return (
 		<Container backgroundColor='lightGrey'>
