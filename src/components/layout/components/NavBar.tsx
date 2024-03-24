@@ -14,7 +14,7 @@ import Alarm from '../../alarm/Alarm';
 export default function NavBar() {
 	const navigate = useNavigate();
 	const navItems = [
-		{ name: '내 이력서', route: '/my-info/docs' },
+		{ name: '내 커리어', route: '/my-info/docs' },
 		{ name: 'AI 코치', route: '/my-info/ai' },
 		{ name: '코치 찾기', route: '/experts' },
 		{ name: '네트워킹', route: '/networks' },
@@ -42,7 +42,6 @@ export default function NavBar() {
 					</Link>
 				</h1>
 				<NavBarList>
-					<button onClick={first}>Auth</button>
 					{navItems.map((item, index) => {
 						return (
 							<li key={index}>
