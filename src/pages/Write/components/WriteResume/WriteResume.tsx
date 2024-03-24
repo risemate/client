@@ -31,7 +31,6 @@ export default function WriteResume() {
 		isSubmitting,
 	} = useResumeWrite();
 	// const { blocker } = usePreventLeave();
-
 	useEffect(() => {
 		invalidateResume();
 	}, [isSubmitting]);

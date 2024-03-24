@@ -1,5 +1,5 @@
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
-import React, { Suspense, ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 
 import Loader from '@common/Loader';
@@ -15,7 +15,7 @@ export default function SingleAsyncWrapper({ children }: SingleAsyncWrapperProps
 	return (
 		<ErrorBoundary
 			FallbackComponent={ErrorBoundaryComponent}
-			onError={() => console.error('error!!!')}
+			onError={e => console.error('error!!!', e)}
 			onReset={reset}
 		>
 			<Suspense fallback={<Loader />}>{children}</Suspense>

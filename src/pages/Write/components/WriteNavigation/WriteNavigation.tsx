@@ -21,9 +21,9 @@ export default function WriteNavigation() {
 			</TitleWrapper>
 			<DndProvider backend={HTML5Backend}>
 				<ResumeOrderList>
-					<li>기본 정보</li>
+					<li>프로필 정보</li>
 					<li>기술 스택</li>
-					{resumeOrder.map((orderType, index) => (
+					{resumeOrder?.map((orderType, index) => (
 						<NavigationListItem
 							key={orderType._id}
 							orderItem={orderType}
