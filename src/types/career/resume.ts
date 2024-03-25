@@ -1,5 +1,3 @@
-import { CoverLetterContent } from 'types/career/coverletter';
-
 export const CareerType = ['RESUME', 'COVERLETTER'] as const;
 export type CareerType = (typeof CareerType)[number];
 
@@ -8,7 +6,6 @@ export type DocType = (typeof DocType)[number];
 
 export type Resume = {
 	coverImage: string | null;
-	coverLetter: [CoverLetterContent];
 	description: string | null;
 	public: boolean;
 	docTitle: string;
@@ -30,7 +27,6 @@ export type Resume = {
 export type ReviseResume = Resume & {
 	feedback: string;
 	feed_description: string;
-	feed_coverLetter: string;
 	feed_profile: string;
 	feed_techStack: string;
 	feed_workExperience: string;
@@ -119,7 +115,6 @@ export type Certificate = {
 export type Feedback = {
 	notice: string;
 	total: string;
-	coverLetter: string;
 	workExperience: string;
 	project: string;
 	education: string;

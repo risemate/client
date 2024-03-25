@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { Profile as ProfileType } from 'types/career/resume';
 
 import DefaultImage from '@common/DefaultImage';
-// import Markdown from '@common/Markdown';
 import Markdown from '@common/Markdown';
 import BaseSectionFeedback from '@components/resume-view/ResumeViewBaseSection/BaseSectionFeedback';
 
@@ -13,7 +12,6 @@ interface ProfileProps {
 	feedback?: string;
 }
 
-// eslint-disable-next-line
 export default function Profile({
 	profile,
 	techStack,

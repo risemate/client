@@ -15,7 +15,6 @@ export function ReviseResumeTemplate({ career }: ReviseResumeViewProps) {
 		<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
 			{career.feedback && (
 				<FeedbackWrapper>
-					{/* <div>{feedback.notice}</div> */}
 					<h3>전체적인 피드백</h3>
 					<p>{career.feedback}</p>
 				</FeedbackWrapper>
@@ -23,7 +22,7 @@ export function ReviseResumeTemplate({ career }: ReviseResumeViewProps) {
 			<Profile
 				profile={career.profile}
 				techStack={career.techStack}
-				feedback={career?.feed_coverLetter}
+				feedback={career?.feed_description}
 				description={career.description || null}
 			/>
 			{career.workExperiences && (

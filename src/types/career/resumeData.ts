@@ -1,5 +1,4 @@
 import { Career } from 'types/career/careerDocument';
-import { defaultCoverLetterContent } from 'types/career/coverletterData';
 import {
 	Activity,
 	Certificate,
@@ -81,36 +80,30 @@ export const defaultCertificate: Certificate = {
 export const defaultOrder: OrderType[] = [
 	{
 		_id: 1,
-		name: 'coverLetter',
-		label: '자기소개',
-		isVisible: true,
-	},
-	{
-		_id: 2,
 		name: 'workExperiences',
 		label: '경력',
 		isVisible: true,
 	},
 	{
-		_id: 3,
+		_id: 2,
 		name: 'projects',
 		label: '프로젝트',
 		isVisible: true,
 	},
 	{
-		_id: 4,
+		_id: 3,
 		name: 'educations',
 		label: '교육',
 		isVisible: true,
 	},
 	{
-		_id: 5,
+		_id: 4,
 		name: 'activities',
 		label: '대외활동',
 		isVisible: true,
 	},
 	{
-		_id: 6,
+		_id: 5,
 		name: 'certificates',
 		label: '자격증',
 		isVisible: true,
@@ -131,7 +124,6 @@ export const defaultResume: Career<Resume> = {
 	doc: {
 		description: '',
 		coverImage: '',
-		coverLetter: [defaultCoverLetterContent],
 		public: true,
 		docTitle: '',
 		profile: defaultProfile,
@@ -167,7 +159,6 @@ export const mockResume: Career<Resume> = {
 	coverImage: 'string url, default: null',
 	doc: {
 		coverImage: '',
-		coverLetter: [defaultCoverLetterContent],
 		docTitle: '저...세상으로 가는 개발자',
 		careerYears: 2, // 신입이면 경력이 0
 		lookingForJob: true, //구직 유무

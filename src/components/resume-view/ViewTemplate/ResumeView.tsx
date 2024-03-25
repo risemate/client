@@ -5,7 +5,6 @@ import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 
 import Activity from './Activity';
 import Certificate from './Certificate';
-import CoverLetter from './CoverLetter';
 import Education from './Education';
 import Profile from './Profile';
 import Project from './Project';
@@ -23,23 +22,8 @@ export default function ResumeTemplate({ career }: ResumeViewProps) {
 				techStack={career.techStack}
 				description={career.description}
 			/>
-			{/* {career.coverLetter && <CoverLetter coverLetter={career.coverLetter} />}
-			{career.workExperiences && (
-				<WorkExperience workExperiences={career.workExperiences} />
-			)}
-			{career.projects && <Project projects={career.projects} />}
-			{career.educations && <Education educations={career.educations} />}
-			{career.activities && <Activity activities={career.activities} />}
-			{career.certificates && <Certificate certificates={career.certificates} />} */}
 			{career.orderType?.map(item => {
 				switch (item.name) {
-					case 'coverLetter':
-						return (
-							item.isVisible &&
-							career.coverLetter && (
-								<CoverLetter key={item._id} coverLetter={career.coverLetter} />
-							)
-						);
 					case 'workExperiences':
 						return (
 							item.isVisible &&
