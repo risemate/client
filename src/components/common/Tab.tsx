@@ -22,19 +22,17 @@ export default function Tab<T = string | number | undefined>({
 }: TabProps<T>) {
 	return (
 		<TabList $center={center} $underline={underline}>
-			{items.map(item => {
-				return (
-					<li key={item.label}>
-						<TabItemButton
-							$variant={variant}
-							className={isCurrentTab(item) ? 'active' : undefined}
-							onClick={() => changeTab(item)}
-						>
-							{item.label}
-						</TabItemButton>
-					</li>
-				);
-			})}
+			{items.map(item => (
+				<li key={item.label}>
+					<TabItemButton
+						$variant={variant}
+						className={isCurrentTab(item) ? 'active' : undefined}
+						onClick={() => changeTab(item)}
+					>
+						{item.label}
+					</TabItemButton>
+				</li>
+			))}
 		</TabList>
 	);
 }

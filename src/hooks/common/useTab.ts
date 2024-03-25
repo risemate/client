@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TabItem } from 'types/common/tab';
 
 import { useSearchParam } from './useSearchParam';
@@ -7,8 +7,18 @@ export default function useTab<T = string | number | undefined>(
 	items: TabItem<T>[],
 	isParam?: boolean,
 ) {
-	const [currentTab, setCurrentTab] = useState<TabItem<T>>(items[0]);
 	const { queryParam, changeParam } = useSearchParam<T>('tab');
+	const [currentTab, setCurrentTab] = useState<TabItem<T>>(items[0]);
+
+	useEffect(() => {
+		const initializeTab = (): TabItem<T> => {
+			if (queryParam) {
+				return items.find(item => item.value === queryParam) || items[0];
+			}
+			return items[0];
+		};
+		setCurrentTab(initializeTab());
+	}, [queryParam]);
 
 	const changeTab = (item: TabItem<T>) => {
 		setCurrentTab(item);
