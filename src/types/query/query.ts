@@ -5,6 +5,8 @@ import {
 	UseMutationResult,
 	UseQueryOptions,
 	UseQueryResult,
+	UseSuspenseQueryOptions,
+	UseSuspenseQueryResult,
 } from '@tanstack/react-query';
 import { CareerType } from 'types/career/careerDocument';
 
@@ -21,6 +23,12 @@ export type UseInfiniteQueryOptionsType<
 export type UseInfiniteQueryResultType<ReturnType> = UseInfiniteQueryResult<
 	PagingQueryResponse<ReturnType>
 >;
+
+export type UseSuspenseQueryOptionsType<
+	ReturnType,
+	OmitType extends keyof UseSuspenseQueryOptions = never,
+> = Omit<UseSuspenseQueryOptions<ReturnType>, 'queryFn' | 'queryKey' | OmitType>;
+export type UseSuspenseQueryResultType<ReturnType> = UseSuspenseQueryResult<ReturnType>;
 
 export type UseMutationOptionsType<
 	ReturnType,
