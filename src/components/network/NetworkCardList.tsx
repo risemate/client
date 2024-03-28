@@ -11,13 +11,11 @@ interface NetworkCardListProps {
 export default function NetworkCardList({ networks, home }: NetworkCardListProps) {
 	return (
 		<StyledCardList $home={home}>
-			{networks.map((network, index) => {
-				return (
-					<li key={index}>
-						<NetworkCard network={network} />
-					</li>
-				);
-			})}
+			{networks.map(network => (
+				<li key={network._id}>
+					<NetworkCard network={network} />
+				</li>
+			))}
 		</StyledCardList>
 	);
 }

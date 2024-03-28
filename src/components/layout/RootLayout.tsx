@@ -12,7 +12,7 @@ export default function RootLayout() {
 	return (
 		<>
 			<NavBar />
-			<div className='nav-area' />
+			{/* <div className='nav-area' /> */}
 
 			{/* <Suspense fallback={<Loader />}> */}
 			<SingleAsyncWrapper>

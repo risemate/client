@@ -9,17 +9,20 @@ interface NetworkCardProps {
 }
 
 export default function NetworkCard({ network }: NetworkCardProps) {
-	const image = true;
-
+	const hasImage = !!network.coverImage;
+	const careerType = network.careerType === 'RESUME' ? '이력서' : '자기소개서';
+	const docType = network.docType === 'BASIC' ? null : network.docType;
 	return (
 		<CardItemLink to={`/networks/docs/${network._id}`}>
-			{image ? (
-				<DefaultImage variant='mint' shape='rectangle' />
-			) : (
+			{hasImage ? (
 				<img src={''} alt='' />
+			) : (
+				<DefaultImage variant='mint' shape='rectangle' />
 			)}
 			<h4>{network.docTitle}</h4>
 			<p>{network.description}</p>
+			<CareerChip>{careerType}</CareerChip>
+			{docType && <DocTypeChip>{docType}</DocTypeChip>}
 		</CardItemLink>
 	);
 }
@@ -28,6 +31,7 @@ const CardItemLink = styled(Link)`
 	max-width: 250px;
 	text-align: start;
 	transition: all 0.2s ease;
+	position: relative;
 	&:hover {
 		transform: translateY(-5px);
 		filter: brightness(0.8);
@@ -46,4 +50,25 @@ const CardItemLink = styled(Link)`
 		padding-left: 10px;
 		line-height: 15px;
 	}
+`;
+
+const CareerChip = styled.span`
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	background: rgba(0, 0, 0, 0.5);
+	padding: 5px;
+	border-radius: 5px;
+	color: white;
+	font-size: ${({ theme }) => theme.fontSizes.small};
+`;
+
+const DocTypeChip = styled.span`
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: rgba(255, 255, 255, 0.7);
+	padding: 5px;
+	border-radius: 5px;
+	font-size: ${({ theme }) => theme.fontSizes.small};
 `;
