@@ -11,7 +11,12 @@ interface NetworkCardProps {
 export default function NetworkCard({ network }: NetworkCardProps) {
 	const hasImage = !!network.coverImage;
 	const careerType = network.careerType === 'RESUME' ? '이력서' : '자기소개서';
-	const docType = network.docType === 'BASIC' ? null : network.docType;
+	const docType =
+		network.docType === 'BASIC'
+			? null
+			: network.docType === 'AI'
+			  ? 'AI 첨삭'
+			  : '전문가 첨삭';
 	return (
 		<CardItemLink to={`/networks/docs/${network._id}`}>
 			{hasImage ? (
@@ -70,5 +75,6 @@ const DocTypeChip = styled.span`
 	background: rgba(255, 255, 255, 0.7);
 	padding: 5px;
 	border-radius: 5px;
+	color: ${({ theme }) => theme.colors.darkGrey};
 	font-size: ${({ theme }) => theme.fontSizes.small};
 `;
