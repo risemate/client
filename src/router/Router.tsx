@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Ai from 'pages/Ai';
 import { ResumeList, ReviseList } from 'pages/Careers';
+import CoachDocs from 'pages/CoachDocs';
 import CoachInfo from 'pages/CoachInfo';
 import CoachManagement from 'pages/CoachManagement';
 import CareerViewer, { ReviseResumeView } from 'pages/DocView';
@@ -117,6 +118,10 @@ export const router = createBrowserRouter([
 					{
 						path: 'management',
 						element: <CoachManagement />,
+					},
+					{
+						path: 'docs',
+						element: <CoachDocs />,
 					},
 				],
 				loader: signLoader,

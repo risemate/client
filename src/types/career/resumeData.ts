@@ -145,6 +145,13 @@ export const defaultResume: Career<Resume> = {
 	_id: '',
 };
 
+export const defaultCoachReumse: Partial<Resume> = {
+	workExperiences: [defaultWorkExperience],
+	projects: [defaultProject],
+	educations: [defaultEducation],
+	activities: [defaultActivity],
+};
+
 export const mockResume: Career<Resume> = {
 	_id: '1',
 	contactPublic: true,
