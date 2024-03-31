@@ -6,8 +6,8 @@ import ResumeNav from '@common/ResumeNav';
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
 
-import CoverLetterContents from '../edit-base/CoverLetterContents';
-import CoverLetterOptionSection from '../edit-base/CoverLetterOptionSection';
+import CoverLetterContents from '../../../../components/resume-edit/edit-base/CoverLetterContents';
+import CoverLetterOptionSection from '../../../../components/resume-edit/edit-base/CoverLetterOptionSection';
 import SaveCoverletterModal from '../modal/SaveCoverletterModal';
 import useCoverletterWrite from './WirteCoverletter.hook';
 

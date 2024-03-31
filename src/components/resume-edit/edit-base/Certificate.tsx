@@ -8,8 +8,12 @@ import Input from '@components/input/Input';
 import LinkInput from '@components/input/LinkInput';
 import BaseSection from '@components/resume-edit/EditBaseSection';
 
-export default function Certificates() {
-	const FIELD = 'doc.certificates';
+interface CertificateProps {
+	field?: string;
+}
+
+export default function Certificates({ field }: CertificateProps) {
+	const FIELD = field ? `${field}.certificates` : 'certificates';
 	const { register, control, watch } = useFormContext();
 	const { fields, prepend, remove, swap } = useFieldArray({
 		control,

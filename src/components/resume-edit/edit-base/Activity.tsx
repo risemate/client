@@ -8,8 +8,12 @@ import MonthInput from '@components/input/MonthInput';
 import TextArea from '@components/input/TextArea';
 import BaseSection from '@components/resume-edit/EditBaseSection';
 
-export default function Activity() {
-	const FIELD = 'doc.activities';
+interface ActivityProps {
+	field?: string;
+}
+
+export default function Activity({ field }: ActivityProps) {
+	const FIELD = field ? `${field}.activities` : 'activities';
 	const { register, control, watch } = useFormContext();
 	const { fields, prepend, remove, swap } = useFieldArray({
 		control,

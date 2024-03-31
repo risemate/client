@@ -12,10 +12,14 @@ import MonthInput from '@components/input/MonthInput';
 import Select from '@components/input/Select';
 import TextArea from '@components/input/TextArea';
 
-import BaseSection from '../../../../components/resume-edit/EditBaseSection';
+import BaseSection from '../EditBaseSection';
 
-export default function WorkExperience() {
-	const FIELD = 'doc.workExperiences';
+interface WorkExperienceProps {
+	field?: string;
+}
+
+export default function WorkExperience({ field }: WorkExperienceProps) {
+	const FIELD = field ? `${field}.workExperiences` : 'workExperiences';
 	const { register, control, watch } = useFormContext();
 	const { fields, prepend, remove, swap } = useFieldArray({
 		control,

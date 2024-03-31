@@ -9,8 +9,12 @@ import Select from '@components/input/Select';
 import TextArea from '@components/input/TextArea';
 import BaseSection from '@components/resume-edit/EditBaseSection';
 
-export default function Education() {
-	const FIELD = 'doc.educations';
+interface EducationProps {
+	field?: string;
+}
+
+export default function Education({ field }: EducationProps) {
+	const FIELD = field ? `${field}.educations` : 'educations';
 	const { register, control, watch } = useFormContext();
 	const { fields, prepend, remove, swap } = useFieldArray({
 		control,

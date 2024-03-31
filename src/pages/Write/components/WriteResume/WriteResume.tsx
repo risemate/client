@@ -8,14 +8,13 @@ import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
 
 // import UnsavedChangesModal from '@components/modal/UnsavedChangesModal';
-import Activity from '../edit-base/Activity';
-import Certificates from '../edit-base/Certificate';
-import CoverLetterContents from '../edit-base/CoverLetterContents';
-import Education from '../edit-base/Education';
-import Profile from '../edit-base/Profile';
-import Project from '../edit-base/Project';
-import TechStack from '../edit-base/TechStack';
-import WorkExperience from '../edit-base/WorkExperience';
+import Activity from '../../../../components/resume-edit/edit-base/Activity';
+import Certificates from '../../../../components/resume-edit/edit-base/Certificate';
+import Education from '../../../../components/resume-edit/edit-base/Education';
+import Profile from '../../../../components/resume-edit/edit-base/Profile';
+import Project from '../../../../components/resume-edit/edit-base/Project';
+import TechStack from '../../../../components/resume-edit/edit-base/TechStack';
+import WorkExperience from '../../../../components/resume-edit/edit-base/WorkExperience';
 import SaveResumeModal from '../modal/SaveResumeModal';
 import WriteNavigation from '../WriteNavigation/WriteNavigation';
 import useResumeWrite from './WirteResume.hook';
@@ -47,18 +46,16 @@ export default function WriteResume() {
 							<TechStack />
 							{resumeOrder.map(item => {
 								switch (item.name) {
-									case 'coverLetter':
-										return <CoverLetterContents key={item._id} />;
 									case 'workExperiences':
-										return <WorkExperience key={item._id} />;
+										return <WorkExperience key={item._id} field='doc' />;
 									case 'projects':
-										return <Project key={item._id} />;
+										return <Project key={item._id} field='doc' />;
 									case 'educations':
-										return <Education key={item._id} />;
+										return <Education key={item._id} field='doc' />;
 									case 'activities':
-										return <Activity key={item._id} />;
+										return <Activity key={item._id} field='doc' />;
 									case 'certificates':
-										return <Certificates key={item._id} />;
+										return <Certificates key={item._id} field='doc' />;
 									default:
 										return null;
 								}

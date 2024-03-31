@@ -8,10 +8,14 @@ import MonthInput from '@components/input/MonthInput';
 import Select from '@components/input/Select';
 import TextArea from '@components/input/TextArea';
 
-import BaseSection from '../../../../components/resume-edit/EditBaseSection';
+import BaseSection from '../EditBaseSection';
 
-export default function Project() {
-	const FIELD = 'doc.projects';
+interface ProjectProps {
+	field?: string;
+}
+
+export default function Project({ field }: ProjectProps) {
+	const FIELD = field ? `${field}.projects` : 'projects';
 	const { register, control, watch } = useFormContext();
 	const { fields, prepend, remove, swap } = useFieldArray({
 		control,
