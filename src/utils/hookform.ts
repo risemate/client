@@ -20,3 +20,19 @@ export const getDirtyValues = <
 
 	return dirtyValues;
 };
+
+export const removeEmptyObjectField = <T extends Record<string, any>>(obj: T): T => {
+	const newObj: Partial<T> = {};
+	for (const key in obj) {
+		const value = obj[key];
+		if (typeof value === 'object' && !Array.isArray(value)) {
+			const nonEmptyObj = removeEmptyObjectField(value);
+			if (Object.keys(nonEmptyObj).length > 0) {
+				newObj[key] = nonEmptyObj;
+			}
+		} else if (value !== undefined && value !== null && value !== '') {
+			newObj[key] = value;
+		}
+	}
+	return newObj as T;
+};

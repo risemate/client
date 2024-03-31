@@ -1,23 +1,26 @@
 import styled from 'styled-components';
+import { Product } from 'types/coach/product';
+
+import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 
 import ExpertCard from './ExpertCard';
 
 interface ExpertCardListProps {
-	experts: string[];
+	experts: Product[];
 	home?: boolean;
 }
 
 export default function ExpertCardList({ experts, home }: ExpertCardListProps) {
 	return (
-		<StyledCardList $home={home}>
-			{experts.map((expert, index) => {
-				return (
+		<SingleAsyncWrapper>
+			<StyledCardList $home={home}>
+				{experts.map((expert, index) => (
 					<li key={index}>
 						<ExpertCard expert={expert} />
 					</li>
-				);
-			})}
-		</StyledCardList>
+				))}
+			</StyledCardList>
+		</SingleAsyncWrapper>
 	);
 }
 

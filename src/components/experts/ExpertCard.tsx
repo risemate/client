@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Product } from 'types/coach/product';
 
 import DefaultImage from '@common/DefaultImage';
 
@@ -7,27 +8,22 @@ import useExpert from './Experts.hook';
 import StarRating from './StarRating';
 
 interface ExpertCardProps {
-	expert: string;
+	expert: Product;
 }
 
 // eslint-disable-next-line
 export default function ExpertCard({ expert }: ExpertCardProps) {
-	const { moveToDetail } = useExpert();
+	const { moveToDetail } = useExpert(expert._id);
 	return (
 		<CardItemButton onClick={moveToDetail}>
 			<Tag>FRONTEND</Tag>
-			<DefaultImage variant='blue' />
-			<h4>성장하는 프론트엔드 개발자</h4>
-			<p>
-				커리어 | 2년차, 3개 회사 근무 <br /> 최근 소속 | 라이즈메이트
-			</p>
-			<p>
-				안녕하세요, TypeScript, React.js 기반의 2년 프론트엔드 개발자 000이라고 합니다.
-				잘부탁드립니다.
-			</p>
+			<DefaultImage variant='blue' image={expert.coverImage} />
+			<h4>{expert.productTitle}</h4>
+			<p>{expert.subTitle}</p>
+			<p>{expert.description}</p>
 			<ProductInfoWrapper>
 				<span className='price'>20000원~</span>
-				<StarRating rating={4.5} numReview={10} />
+				<StarRating rating={expert.avgReviewScore} numReview={expert.reviewCount} />
 			</ProductInfoWrapper>
 		</CardItemButton>
 	);
@@ -36,6 +32,7 @@ export default function ExpertCard({ expert }: ExpertCardProps) {
 const CardItemButton = styled.button`
 	max-width: 250px;
 	min-width: 200px;
+	min-height: 405px;
 	border-radius: 10px;
 	border: 1px solid ${({ theme }) => theme.colors.grey};
 	background: white;

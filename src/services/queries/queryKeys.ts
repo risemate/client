@@ -35,3 +35,8 @@ export const aiKeys = {
 	base: ['ai'] as const,
 	id: (id: string) => [...aiKeys.base, ...resumeKeys.id(id)] as const,
 };
+
+export const productKeys = {
+	base: ['product'] as const,
+	id: (id: string) => [...productKeys.base, { id }] as const,
+};

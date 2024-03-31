@@ -1,20 +1,23 @@
 import useTab from '@hooks/common/useTab';
 import styled from 'styled-components';
+import { CareerType } from 'types/career/resume';
 import { TabItem } from 'types/common/tab';
 
 import Banner from '@common/Banner';
 import ExpertCardList from '@components/experts/ExpertCardList';
 import Container from '@components/layout/Container';
 
+import useExperts from './Experts.hook';
+
 export default function Experts() {
-	const experts = Array(6).fill('hello');
-	const tabItems: TabItem[] = [
-		{ label: '전체', value: '' },
+	const tabItems: TabItem<CareerType | undefined>[] = [
+		{ label: '전체', value: undefined },
 		{ label: '이력서', value: 'RESUME' },
 		{ label: '자기소개서', value: 'COVERLETTER' },
 	];
-	const { changeTab, isCurrentTab } = useTab(tabItems, true);
+	const { currentTab, changeTab, isCurrentTab } = useTab(tabItems, true);
 	const tab = { tabItems, changeTab, isCurrentTab };
+	const { experts } = useExperts(currentTab.value);
 	return (
 		<Container>
 			<Banner variant='blue' tab={tab}>

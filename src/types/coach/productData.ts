@@ -1,6 +1,6 @@
 import { Profile as ProfileType } from 'types/career/resume';
 import {
-	Inquriy as InquiryType,
+	CS as InquiryType,
 	PackageDetail,
 	Product as ProductType,
 	Review as ReviewType,

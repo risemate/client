@@ -68,7 +68,7 @@ export type Answer = {
 	updatedAt: string;
 };
 
-export type Inquriy = {
+export type CS = {
 	_id: string;
 	user: BaseUser;
 	product: {
@@ -102,4 +102,13 @@ export type Review = {
 	createdAt: string;
 	updatedAt: string;
 	__v: number;
+};
+
+export type RequestAnswer = {
+	content: string;
+};
+
+export type RequestReview = {
+	content: string;
+	score: number;
 };

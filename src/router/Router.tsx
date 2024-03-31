@@ -23,6 +23,12 @@ const token = localStorage.getItem('rm-checkpoint');
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.headers.common.Authorization = token ? `Bearer ${token}` : '';
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+axios.interceptors.response.use(
+	response => response,
+	error => {
+		throw new Error(error.response?.data?.message || error.message);
+	},
+);
 
 export const router = createBrowserRouter([
 	{
