@@ -10,8 +10,7 @@ import useHome from './Home.hook';
 import 'normalize.css';
 
 function Home() {
-	const experts = Array(5).fill('hello');
-	const { networks } = useHome();
+	const { networks, experts } = useHome();
 	return (
 		<Container>
 			<Banner variant='home'>
