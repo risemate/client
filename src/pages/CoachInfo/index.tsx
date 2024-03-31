@@ -24,10 +24,10 @@ const coachInfoWrapperStyle = css`
 	display: flex;
 	border: 2px solid ${({ theme }) => theme.colors.navy};
 	margin: 75px 0;
-	section:nth-child(2) {
+	/* section:nth-child(2) {
 		width: calc(100% - 250px);
 		margin-left: 50px;
-	}
+	} */
 	@media screen and (max-width: 990px) {
 		flex-direction: column;
 		height: initial;
