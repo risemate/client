@@ -12,4 +12,5 @@ export default function RequestFormAction({ children }: RequestFormActionProps) 
 const ActionWrapper = styled.div`
 	${({ theme }) => theme.common.flexCenter};
 	padding-top: 50px;
+	gap: 30px;
 `;

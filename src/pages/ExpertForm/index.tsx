@@ -8,7 +8,7 @@ import RequestFormWrapper from '@components/request-form/RequestFormWrapper';
 import useExpertForm from './ExpertForm.hook';
 
 export default function ExpertForm() {
-	const { resumeShare, message, disableSubmit, onSubmit } = useExpertForm();
+	const { resumeShare, message, disableSubmit, onSubmit, onCancel } = useExpertForm();
 	return (
 		<RequestFormWrapper title='전문가 신청폼' onSubmit={onSubmit}>
 			<RequestFormWrapper.Consent title='이력서 공유 동의'>
@@ -32,6 +32,9 @@ export default function ExpertForm() {
 			<RequestFormWrapper.Action>
 				<Button variant='blue' size='large' disabled={disableSubmit()}>
 					전문가 신청하기
+				</Button>
+				<Button variant='mint' size='large' onClick={onCancel} type='button'>
+					취소
 				</Button>
 			</RequestFormWrapper.Action>
 		</RequestFormWrapper>
