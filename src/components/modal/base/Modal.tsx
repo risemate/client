@@ -9,6 +9,7 @@ interface ModalProps {
 	title: string;
 	children: ReactNode;
 	confirm?: string;
+	cancel?: string;
 	onClick?: () => void;
 	onCancel?: () => void;
 	buttonFormId?: string;
@@ -18,7 +19,8 @@ interface ModalProps {
 export default function Modal({
 	title,
 	children,
-	confirm,
+	confirm = '확인',
+	cancel = '취소',
 	onClick,
 	onCancel,
 	buttonFormId,
@@ -40,7 +42,7 @@ export default function Modal({
 							closeModal();
 						}}
 					>
-						취소
+						{cancel}
 					</Button>
 					<Button
 						variant='navy'
@@ -55,7 +57,7 @@ export default function Modal({
 								  }
 						}
 					>
-						{confirm ? confirm : '확인'}
+						{confirm}
 					</Button>
 				</div>
 			</ModalWrapper>
