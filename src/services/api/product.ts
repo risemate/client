@@ -5,14 +5,14 @@ import { PagingQueryProps, PagingQueryResponse } from 'types/query/query';
 
 const PRODUCT_PATH = {
 	DEFAULT: '/products',
-	DETAIL: (id: string) => `${PRODUCT_PATH}/${id}`,
-	CS: (id: string) => `${PRODUCT_PATH}/${id}/cs`,
-	CS_ANSWER: (id: string) => `${PRODUCT_PATH}/cs/${id}/answer`,
-	CS_USER: () => `${PRODUCT_PATH}/cs/user`,
-	REVIEW: (id: string) => `${PRODUCT_PATH}/${id}/review`,
-	REVIEW_EDIT: (id: string) => `${PRODUCT_PATH}/reviews/${id}`,
-	REVIEW_ANSWER: (id: string) => `${PRODUCT_PATH}/reviews/${id}/answer`,
-	REVIEW_LIST: (id: string) => `${PRODUCT_PATH}/${id}/reviews`,
+	DETAIL: (id: string) => `${PRODUCT_PATH.DEFAULT}/${id}`,
+	CS: (id: string) => `${PRODUCT_PATH.DEFAULT}/${id}/cs`,
+	CS_ANSWER: (id: string) => `${PRODUCT_PATH.DEFAULT}/cs/${id}/answer`,
+	CS_USER: () => `${PRODUCT_PATH.DEFAULT}/cs/user`,
+	REVIEW: (id: string) => `${PRODUCT_PATH.DEFAULT}/${id}/review`,
+	REVIEW_EDIT: (id: string) => `${PRODUCT_PATH.DEFAULT}/reviews/${id}`,
+	REVIEW_ANSWER: (id: string) => `${PRODUCT_PATH.DEFAULT}/reviews/${id}/answer`,
+	REVIEW_LIST: (id: string) => `${PRODUCT_PATH.DEFAULT}/${id}/reviews`,
 	REVIEW_USER: () => `${PRODUCT_PATH}/reviews/user`,
 };
 

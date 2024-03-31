@@ -10,11 +10,14 @@ import WorkExperience from '@components/resume-view/ViewTemplate/WorkExperience'
 import BaseSection from './BaseSection';
 
 interface ExpertInfoProps {
-	workExperiences: WorkExperienceType[];
-	projects: ProjectType[];
+	workExperiences: WorkExperienceType[] | undefined;
+	projects: ProjectType[] | undefined;
 }
 
-export default function ExpertInfo({ workExperiences, projects }: ExpertInfoProps) {
+export default function ExpertInfo({
+	workExperiences = [],
+	projects = [],
+}: ExpertInfoProps) {
 	return (
 		<BaseSection>
 			<h3>전문가 정보</h3>

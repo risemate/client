@@ -28,6 +28,7 @@ export const productDetailQuery = (
 	return useQuery({
 		queryKey: productKeys.id(id),
 		queryFn: () => fetchProductDetail(id),
+		enabled: !!id,
 		...options,
 	});
 };

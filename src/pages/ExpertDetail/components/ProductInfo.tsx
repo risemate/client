@@ -9,15 +9,15 @@ import Button from '@common/Button';
 import Tab from '@common/Tab';
 
 interface ProductInfoProps {
-	packages: PackageType;
-	reviewCount: number;
-	avgReviewScore: number;
+	packages: PackageType | undefined;
+	reviewCount: number | undefined;
+	avgReviewScore: number | undefined;
 }
 
 export default function ProductInfo({
-	packages,
-	reviewCount,
-	avgReviewScore,
+	packages = {} as PackageType,
+	reviewCount = 0,
+	avgReviewScore = 0,
 }: ProductInfoProps) {
 	const filteredPackages = removeNullValues<PackageType>(packages);
 	const tabItems = Object.keys(filteredPackages).map(item => {
@@ -40,7 +40,7 @@ export default function ProductInfo({
 				<h3>포함 서비스 목록</h3>
 				{Object.entries(filteredPackages).map(
 					([key, pack]) =>
-						currentTab.label === key && (
+						currentTab.value === key && (
 							<div key={key}>
 								<ul>
 									<li>{pack?.description}</li>

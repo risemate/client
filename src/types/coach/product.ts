@@ -9,7 +9,7 @@ export type Product = {
 	coverImage: string;
 	category: Category;
 	images: Image[];
-	description: '';
+	description: string;
 	reviewCount: number;
 	avgReviewScore: number;
 	csCount: number;

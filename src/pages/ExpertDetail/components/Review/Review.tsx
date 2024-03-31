@@ -8,11 +8,11 @@ import ReviewForm from './ReviewForm';
 import ReviewItem from './ReviewItem';
 
 interface ReviewProps {
-	avgReviewScore: number;
-	reviewCount: number;
+	avgReviewScore: number | undefined;
+	reviewCount: number | undefined;
 }
 
-export default function Review({ avgReviewScore, reviewCount }: ReviewProps) {
+export default function Review({ avgReviewScore = 0, reviewCount = 0 }: ReviewProps) {
 	const [openReviewInputs, setOpenReviewInputs] = useState<boolean[]>(
 		Array(mockReview.length).fill(false),
 	);
