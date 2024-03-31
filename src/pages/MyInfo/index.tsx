@@ -24,10 +24,10 @@ const myinfoStyle = css`
 	display: flex;
 	border: 2px solid ${({ theme }) => theme.colors.navy};
 	margin: 75px 0;
-	section:nth-child(2) {
+	/* section:nth-child(2) {
 		width: calc(100% - 250px);
 		margin-left: 50px;
-	}
+	} */
 	section > h3 {
 		font-weight: bold;
 		color: ${({ theme }) => theme.colors.navy};
@@ -39,7 +39,7 @@ const myinfoStyle = css`
 		height: initial;
 		section:nth-child(2) {
 			width: 100%;
-			min-height: 300px;
+			/* min-height: 300px; */
 			margin: 0;
 		}
 		section > h3 {
