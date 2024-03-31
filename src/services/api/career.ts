@@ -3,21 +3,21 @@ import { Career } from 'types/career/careerDocument';
 import { Resume, ReviseResume } from 'types/career/resume';
 import { CareersQueryProps } from 'types/query/queryProps';
 
-const RESUME_PATH = {
+const CAREER_PATH = {
 	DEFAULT: '/careers',
-	REVISE: (id: string) => `${RESUME_PATH.DEFAULT}/${id}/revise-docs`,
-	DETAIL: (id: string) => `${RESUME_PATH.DEFAULT}/${id}`,
+	REVISE: (id: string) => `${CAREER_PATH.DEFAULT}/${id}/revise-docs`,
+	DETAIL: (id: string) => `${CAREER_PATH.DEFAULT}/${id}`,
 	PUBLIC: (id?: string) =>
-		id ? `${RESUME_PATH.DEFAULT}/p/${id}` : `${RESUME_PATH.DEFAULT}/p`,
+		id ? `${CAREER_PATH.DEFAULT}/p/${id}` : `${CAREER_PATH.DEFAULT}/p`,
 	UPDATE: (id?: string) =>
-		id ? `${RESUME_PATH.DEFAULT}/resumes/${id}` : `${RESUME_PATH.DEFAULT}/resumes`,
+		id ? `${CAREER_PATH.DEFAULT}/resumes/${id}` : `${CAREER_PATH.DEFAULT}/resumes`,
 };
 
 export const fetchCareers = async (
 	params?: CareersQueryProps,
 ): Promise<Career<Resume>[]> => {
 	try {
-		const response = await axios.get<Career<Resume>[]>(RESUME_PATH.DEFAULT, { params });
+		const response = await axios.get<Career<Resume>[]>(CAREER_PATH.DEFAULT, { params });
 		return response.data;
 	} catch (error) {
 		throw new Error((error as Error).message);
@@ -26,7 +26,7 @@ export const fetchCareers = async (
 
 export const fetchReviseCareers = async (id: string): Promise<Career<ReviseResume>[]> => {
 	try {
-		const response = await axios.get<Career<ReviseResume>[]>(RESUME_PATH.REVISE(id));
+		const response = await axios.get<Career<ReviseResume>[]>(CAREER_PATH.REVISE(id));
 		return response.data;
 	} catch (error) {
 		throw new Error((error as Error).message);
@@ -35,7 +35,7 @@ export const fetchReviseCareers = async (id: string): Promise<Career<ReviseResum
 
 export const fetchResumeDetail = async <T = Resume>(id: string): Promise<Career<T>> => {
 	try {
-		const response = await axios.get<Career<T>>(RESUME_PATH.DETAIL(id));
+		const response = await axios.get<Career<T>>(CAREER_PATH.DETAIL(id));
 		return response.data;
 	} catch (error) {
 		throw new Error((error as Error).message);
@@ -44,7 +44,7 @@ export const fetchResumeDetail = async <T = Resume>(id: string): Promise<Career<
 
 export const fetchCreateResume = async (body: Resume): Promise<Career<Resume>> => {
 	try {
-		const response = await axios.post<Career<Resume>>(RESUME_PATH.UPDATE(), body);
+		const response = await axios.post<Career<Resume>>(CAREER_PATH.UPDATE(), body);
 		return response.data;
 	} catch (error) {
 		throw new Error((error as Error).message);
@@ -56,7 +56,7 @@ export const fetchUpdateResume = async (
 	body: Partial<Resume>,
 ): Promise<Career<Resume>> => {
 	try {
-		const response = await axios.patch<Career<Resume>>(RESUME_PATH.UPDATE(id), body);
+		const response = await axios.patch<Career<Resume>>(CAREER_PATH.UPDATE(id), body);
 		return response.data;
 	} catch (error) {
 		throw new Error((error as Error).message);
@@ -65,7 +65,7 @@ export const fetchUpdateResume = async (
 
 export const fetchDeleteResume = async (id: string): Promise<void> => {
 	try {
-		await axios.delete<void>(RESUME_PATH.DETAIL(id));
+		await axios.delete<void>(CAREER_PATH.DETAIL(id));
 	} catch (error) {
 		throw new Error((error as Error).message);
 	}
