@@ -16,17 +16,19 @@ import 'swiper/css/pagination';
 interface BasicResumeListProps<T = any> {
 	title: string;
 	resumes: Career<T>[];
-	CardComponent: ElementType<{ career: Career<T> }>;
+	CardComponent: ElementType<{ career: Career<T>; selected?: boolean }>;
 	addNew?: boolean;
 	createTo?: 'co' | 're';
+	selectedId?: string | null;
 }
 
 export default function BasicCareerList({
 	title,
 	resumes,
-	addNew,
 	CardComponent,
+	addNew,
 	createTo,
+	selectedId = null,
 }: BasicResumeListProps) {
 	const setting = {
 		modules: [Navigation, Pagination],
@@ -59,7 +61,7 @@ export default function BasicCareerList({
 					<Swiper {...setting}>
 						{resumes.map(resume => (
 							<SwiperSlide key={resume._id}>
-								<CardComponent career={resume} />
+								<CardComponent career={resume} selected={resume._id === selectedId} />
 							</SwiperSlide>
 						))}
 					</Swiper>
@@ -110,7 +112,7 @@ const swiperStyle = css`
 `;
 
 const BasicResumeSection = styled.section`
-	min-height: 300px;
+	/* min-height: 300px; */
 	h3 {
 		color: ${({ theme }) => theme.colors.navy};
 		font-weight: bold;

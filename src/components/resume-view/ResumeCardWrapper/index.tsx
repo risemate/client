@@ -6,10 +6,11 @@ import ResumeTitleWrapper from './ResumeTitleWrapper';
 
 interface CardWrapperProps {
 	children: ReactNode;
+	selected?: boolean;
 }
 
-const CardWrapper = ({ children }: CardWrapperProps) => {
-	return <StyledCardWrapper>{children}</StyledCardWrapper>;
+const CardWrapper = ({ children, selected = false }: CardWrapperProps) => {
+	return <StyledCardWrapper $selected={selected}>{children}</StyledCardWrapper>;
 };
 
 const ResumeCardWrapper = Object.assign(CardWrapper, {
@@ -17,11 +18,13 @@ const ResumeCardWrapper = Object.assign(CardWrapper, {
 	ButtonWrapper: ResumeButtonWrapper,
 });
 
-const StyledCardWrapper = styled.div`
+const StyledCardWrapper = styled.div<{ $selected: boolean }>`
 	width: 330px;
 	height: 100%;
 	flex-shrink: 0;
 	border: 1px solid ${({ theme }) => theme.colors.grey};
+	${({ $selected, theme }) =>
+		$selected && `box-shadow: 0 0 0 2px inset ${theme.colors.navy}`};
 	border-radius: 10px;
 	background: white;
 	padding: 20px;

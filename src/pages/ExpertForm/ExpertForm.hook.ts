@@ -1,16 +1,20 @@
-import React, { ChangeEvent } from 'react';
+import { careersQuery } from '@queries/career';
+import { ChangeEvent } from 'react';
 import { useController, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 export default function useExpertForm() {
 	const navigate = useNavigate();
-	const { control, register, watch, handleSubmit } = useForm({
+	const resumes = careersQuery({ docType: 'BASIC', careerType: 'RESUME' });
+	const expertFormMethods = useForm({
 		mode: 'onSubmit',
 		defaultValues: {
 			resumeShare: false,
 			message: null,
+			resumeId: null,
 		},
 	});
+	const { control, register, watch, handleSubmit } = expertFormMethods;
 
 	const { field: resumeShareFields } = useController({
 		control,
@@ -18,7 +22,7 @@ export default function useExpertForm() {
 	});
 
 	const disableSubmit = () => {
-		if (watch('resumeShare')) return false;
+		if (watch('resumeShare') && watch('resumeId')) return false;
 		return true;
 	};
 
@@ -29,6 +33,7 @@ export default function useExpertForm() {
 	const onCancel = () => navigate(-1);
 
 	return {
+		expertFormMethods,
 		resumeShare: {
 			checked: resumeShareFields.value,
 			onChange: (e: ChangeEvent<HTMLInputElement>) =>
@@ -37,8 +42,10 @@ export default function useExpertForm() {
 			onBlur: resumeShareFields.onBlur,
 		},
 		message: register('message'),
+		resumeId: watch('resumeId'),
 		disableSubmit,
 		onSubmit,
 		onCancel,
+		resumes: resumes.data || [],
 	};
 }
