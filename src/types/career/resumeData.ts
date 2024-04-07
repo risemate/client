@@ -142,6 +142,8 @@ export const defaultResume: Career<Resume> = {
 	},
 	createdAt: '',
 	updatedAt: '',
+	aiStatus: null,
+	childAi: null,
 	_id: '',
 };
 
@@ -340,6 +342,8 @@ export const mockResume: Career<Resume> = {
 		],
 		certificates: [],
 	},
+	aiStatus: null,
+	childAi: null,
 	createdAt: 'Thu Dec 8 2011 20:14:56 GMT-0600 (CST)',
 	updatedAt: 'Thu Dec 8 2011 20:14:56 GMT-0600 (CST)',
 };

@@ -5,8 +5,8 @@ import { Resume } from 'types/career/resume';
 
 export default function useResumeAiCard(career: Career<Resume>) {
 	const { openModal } = useModal('ai-revise');
-	const hasRevise = career.childrenDocCount > 0;
-	const isRevising = false;
+	const hasRevise = career.childAi !== null;
+	const isRevising = career.aiStatus === 'IN_PROGRESS';
 	const reviseAiMutation = aiRevisionMutation();
 	const reviseAiAgainMutation = aiRevisionAgainMutation();
 	const modalContent = hasRevise ? (

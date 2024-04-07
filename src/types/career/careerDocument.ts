@@ -1,10 +1,13 @@
 import { BaseUser } from 'types/auth';
 
-export type CareerType = 'RESUME' | 'COVERLETTER';
-export const CareerTypeList: CareerType[] = ['RESUME', 'COVERLETTER'];
+export const CareerType = ['RESUME', 'COVERLETTER'] as const;
+export type CareerType = (typeof CareerType)[number];
 
-export type DocType = 'BASIC' | 'AI' | 'COACHING';
-export const DocTypeList: DocType[] = ['BASIC', 'AI', 'COACHING'];
+export const DocType = ['BASIC', 'AI', 'COACHING'] as const;
+export type DocType = (typeof DocType)[number];
+
+export const AiStatus = ['IN_PROGRESS', 'COMPLETED'] as const;
+export type AiStatus = (typeof AiStatus)[number];
 
 export type Career<T = unknown> = {
 	description: string;
@@ -23,4 +26,6 @@ export type Career<T = unknown> = {
 	coverImage: string;
 	childrenDocCount: number;
 	coaching?: object; //수정필요
+	childAi: string | null;
+	aiStatus: AiStatus | null;
 };

@@ -26,5 +26,7 @@ export const defaultCoverLetter: Career<Coverletter> = {
 	},
 	createdAt: '',
 	updatedAt: '',
+	aiStatus: null,
+	childAi: null,
 	_id: '',
 };
