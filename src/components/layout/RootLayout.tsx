@@ -1,5 +1,6 @@
 // import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import styled from 'styled-components';
 
 // import Loader from '@common/Loader';
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
@@ -12,7 +13,7 @@ export default function RootLayout() {
 	return (
 		<>
 			<NavBar />
-			{/* <div className='nav-area' /> */}
+			<NavSpace />
 
 			{/* <Suspense fallback={<Loader />}> */}
 			<SingleAsyncWrapper>
@@ -24,3 +25,8 @@ export default function RootLayout() {
 		</>
 	);
 }
+
+const NavSpace = styled.div`
+	width: 100%;
+	height: 76px;
+`;

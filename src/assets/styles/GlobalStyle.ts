@@ -55,8 +55,4 @@ export const GlobalStyle = createGlobalStyle`
     section {
         width: 100%;
     }
-    /* .nav-area {
-        width: 100%;
-        height: 76px;
-    } */
 `;
