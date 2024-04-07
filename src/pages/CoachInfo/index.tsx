@@ -3,8 +3,8 @@ import { css } from 'styled-components';
 import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 import Container from '@components/layout/Container';
 
-import CoachInfoDetail from './components/CoachInfoDetail';
-import CoachProfile from './components/CoachProfile';
+import CoachInfoDetail from './components/CoachInfoDetail/CoachInfoDetail';
+import CoachProfile from './components/CoachProfile/CoachProfile';
 
 export default function CoachInfo() {
 	return (

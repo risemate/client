@@ -3,28 +3,27 @@ import styled, { css } from 'styled-components';
 
 import Button from '@common/Button';
 
+import useCoachProfile from './CoachProfile.hook';
+
 export default function CoachProfile() {
-	const hasPost = true;
+	const { displayAuth } = useCoachProfile();
 	return (
 		<InfoSection>
 			<UserWrapper>
 				<h2>
-					전문가 홍길동<span className='a11y-hidden'>의 마이페이지</span>
+					전문가 {displayAuth.name}
+					<span className='a11y-hidden'>의 마이페이지</span>
 					<br />
 				</h2>
-				{hasPost && <Link to='link'>내 게시물 확인하러 가기 {'>'}</Link>}
+				{displayAuth.hasPost && <Link to='link'>내 게시물 확인하러 가기 {'>'}</Link>}
 			</UserWrapper>
 			<ButtonWrapper>
-				{hasPost && (
-					<>
-						<Button variant='blue' size='full' to='/coach-info/docs'>
-							전문가 이력서 수정
-						</Button>
-						<Button variant='blue' size='full'>
-							상품 등록
-						</Button>
-					</>
-				)}
+				<Button variant='blue' size='full' to='/coach-info/docs'>
+					전문가 이력서 수정
+				</Button>
+				<Button variant='blue' size='full'>
+					상품 등록
+				</Button>
 				<Button variant='navy' size='full' to='/my-info'>
 					일반 유저로 전환하기
 				</Button>
