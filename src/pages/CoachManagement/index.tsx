@@ -26,7 +26,7 @@ export default function CoachManagement() {
 	const progressList: ProgressType[] = [{ temp: 1 }, { temp: 1 }, { temp: 1 }];
 	const completeList: CompleteType[] = [{ temp: 1 }, { temp: 1 }, { temp: 1 }];
 	return (
-		<Container>
+		<Container backgroundColor='lightGrey' padding>
 			<WhiteBoxWrapper type='div' customCss={managementWrapperStyle}>
 				<ManagementTitle>코칭 관리</ManagementTitle>
 				<Tab

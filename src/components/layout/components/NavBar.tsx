@@ -55,7 +55,9 @@ export default function NavBar() {
 					<MyPageWrapper>
 						{auth ? (
 							<>
-								{auth?.role === 'EXPERT' && <Link to='/coach-info'>코칭 관리</Link>}
+								{auth?.role === 'EXPERT' && (
+									<Link to='/coach-info/management'>코칭 관리</Link>
+								)}
 								<button
 									type='button'
 									className={hasNewAlarm ? 'alert' : undefined}
