@@ -28,7 +28,7 @@ export default function ResumeAiCard({ career }: ResumeCardProps) {
 			<CardWrapper.Title time={formatDate(career.createdAt).period}>
 				{career.docTitle}
 			</CardWrapper.Title>
-			<ViewButtonWrapper>
+			<CardWrapper.ButtonWrapper>
 				<Button variant='border' size='full' to={toDoc}>
 					원문 보기
 				</Button>
@@ -37,7 +37,7 @@ export default function ResumeAiCard({ career }: ResumeCardProps) {
 						AI 첨삭 보기
 					</Button>
 				)}
-			</ViewButtonWrapper>
+			</CardWrapper.ButtonWrapper>
 			<Button variant='blue' size='full' onClick={openModal} disabled={isRevising}>
 				Ai 첨삭받기
 			</Button>
@@ -50,12 +50,6 @@ export default function ResumeAiCard({ career }: ResumeCardProps) {
 		</CardWrapper>
 	);
 }
-
-const ViewButtonWrapper = styled.div`
-	display: flex;
-	width: 100%;
-	gap: 10px;
-`;
 
 const NoticeText = styled.span`
 	color: ${({ theme }) => theme.colors.darkGrey};

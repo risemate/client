@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
-import ResumeTitleWrapper from './ResumeInfoWrapper';
+import ResumeButtonWrapper from './ResumeButtonWrapper';
+import ResumeTitleWrapper from './ResumeTitleWrapper';
 
 interface CardWrapperProps {
 	children: ReactNode;
@@ -13,6 +14,7 @@ const CardWrapper = ({ children }: CardWrapperProps) => {
 
 const ResumeCardWrapper = Object.assign(CardWrapper, {
 	Title: ResumeTitleWrapper,
+	ButtonWrapper: ResumeButtonWrapper,
 });
 
 const StyledCardWrapper = styled.div`

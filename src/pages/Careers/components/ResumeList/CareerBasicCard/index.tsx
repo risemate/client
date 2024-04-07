@@ -21,14 +21,14 @@ export default function CareerBasicCard({ career }: ResumeCardProps) {
 			<CardWrapper.Title time={formatDate(career.createdAt).period}>
 				{career.docTitle}
 			</CardWrapper.Title>
-			<ButtonGorup>
+			<CardWrapper.ButtonWrapper>
 				<Button variant='border' size='full' to={`/write?redirect=re&id=${career._id}`}>
 					수정
 				</Button>
 				<Button variant='border' size='full' to={`${career._id}`}>
 					보기
 				</Button>
-			</ButtonGorup>
+			</CardWrapper.ButtonWrapper>
 			<Button
 				variant='blue'
 				size='full'
@@ -52,10 +52,4 @@ const ToggleWrapper = styled.div`
 	border-radius: 10px;
 	padding: 5px 20px;
 	${({ theme }) => theme.common.flexCenter};
-`;
-
-const ButtonGorup = styled.div`
-	display: flex;
-	gap: 10px;
-	width: 100%;
 `;

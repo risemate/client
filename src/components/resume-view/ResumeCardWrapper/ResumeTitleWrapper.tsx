@@ -2,12 +2,12 @@ import { formatDate } from '@utils/helpers';
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
-interface InfoWrapperProps {
+interface TitleWrapperProps {
 	children: ReactNode;
 	time?: string;
 }
 
-export default function ResumeTitleWrapper({ children, time }: InfoWrapperProps) {
+export default function ResumeTitleWrapper({ children, time }: TitleWrapperProps) {
 	return (
 		<StyledTitleWrapper>
 			<h4>{children}</h4>
