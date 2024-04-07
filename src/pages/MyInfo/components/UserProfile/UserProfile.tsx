@@ -7,7 +7,7 @@ import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import useUserProfile from './UserProfile.hook';
 
 export default function UserProfile() {
-	const { displayAuth, logout, changeParamToEdit } = useUserProfile();
+	const { displayAuth, logout, changeParamToEdit, expertButton } = useUserProfile();
 
 	return (
 		<UserInfoSection>
@@ -28,15 +28,14 @@ export default function UserProfile() {
 					</button>
 				</UpperWrapper>
 				<ButtonWrappper>
-					{displayAuth.isExpert ? (
-						<Button variant='navy' size='full' to='/coach-info'>
-							전문가로 변환하기
-						</Button>
-					) : (
-						<Button variant='navy' size='full' to='/form/expert'>
-							전문가 신청하기
-						</Button>
-					)}
+					<Button
+						variant='navy'
+						size='full'
+						to={expertButton.to}
+						disabled={expertButton.disabled}
+					>
+						{expertButton.label()}
+					</Button>
 					<Button variant='border' size='full' onClick={logout}>
 						로그아웃
 					</Button>

@@ -1,4 +1,4 @@
-export const RolesType = ['GENERAL', 'EXPERT', 'ADMIN'] as const;
+export const RolesType = ['GENERAL', 'EXPERT', 'ADMIN', 'REVIEWING'] as const;
 export type RolesType = (typeof RolesType)[number];
 
 export type Auth = {
