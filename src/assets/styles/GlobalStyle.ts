@@ -11,19 +11,15 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        white-space: pre-line;
+        /* white-space: pre-line; */
     }
     body {
-        
         font-family: "Pretendard";
-
     }
     #root, html, body {
         width: 100%;
         min-height: 100% ;
     }
-
-
     a {
         vertical-align: baseline;
         text-decoration: none;
@@ -56,13 +52,11 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         position: absolute;
     }
-
     section {
         width: 100%;
     }
-
-    .nav-area {
+    /* .nav-area {
         width: 100%;
         height: 76px;
-    }
+    } */
 `;

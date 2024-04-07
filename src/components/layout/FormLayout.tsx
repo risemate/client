@@ -2,12 +2,16 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
+import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
+
 import 'normalize.css';
 
 export default function FormLayout() {
 	return (
 		<FormLayoutWrapper>
-			<Outlet />
+			<SingleAsyncWrapper>
+				<Outlet />
+			</SingleAsyncWrapper>
 		</FormLayoutWrapper>
 	);
 }
