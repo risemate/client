@@ -10,19 +10,19 @@ import Education from '@components/resume-edit/edit-base/Education';
 import Project from '@components/resume-edit/edit-base/Project';
 import WorkExperience from '@components/resume-edit/edit-base/WorkExperience';
 
-import useCoachDocs from './CoachDocs';
+import useCoachDocs from './CoachDocs.hook';
 
 export default function CoachDocs() {
-	const { resumeEditMethods, resumeNavItems } = useCoachDocs();
+	const { resumeEditMethods, resumeNavItems, submitResume } = useCoachDocs();
 	return (
 		<Container backgroundColor='lightGrey' padding>
 			<FormProvider {...resumeEditMethods}>
 				<SingleAsyncWrapper>
-					<StyledForm>
-						<WorkExperience />
-						<Project />
-						<Education />
-						<Activity />
+					<StyledForm onSubmit={submitResume}>
+						<WorkExperience field='doc' />
+						<Project field='doc' />
+						<Education field='doc' />
+						<Activity field='doc' />
 						<ResumeNav resumeNavItems={resumeNavItems} />
 					</StyledForm>
 				</SingleAsyncWrapper>

@@ -13,7 +13,7 @@ const PRODUCT_PATH = {
 	REVIEW_EDIT: (id: string) => `${PRODUCT_PATH.DEFAULT}/reviews/${id}`,
 	REVIEW_ANSWER: (id: string) => `${PRODUCT_PATH.DEFAULT}/reviews/${id}/answer`,
 	REVIEW_LIST: (id: string) => `${PRODUCT_PATH.DEFAULT}/${id}/reviews`,
-	REVIEW_USER: () => `${PRODUCT_PATH}/reviews/user`,
+	REVIEW_USER: () => `${PRODUCT_PATH.DEFAULT}/reviews/user`,
 };
 
 // 상품 관련

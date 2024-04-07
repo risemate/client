@@ -40,3 +40,7 @@ export const productKeys = {
 	base: ['product'] as const,
 	id: (id: string) => [...productKeys.base, { id }] as const,
 };
+
+export const expertKeys = {
+	base: ['expert'] as const,
+};

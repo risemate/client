@@ -14,6 +14,7 @@ import {
 	ReviseResume,
 	WorkExperience,
 } from 'types/career/resume';
+import { ExpertResumeType } from 'types/coach/expert';
 
 export const defaultProfile: Profile = {
 	name: '',
@@ -147,11 +148,28 @@ export const defaultResume: Career<Resume> = {
 	_id: '',
 };
 
-export const defaultCoachReumse: Partial<Resume> = {
-	workExperiences: [defaultWorkExperience],
-	projects: [defaultProject],
-	educations: [defaultEducation],
-	activities: [defaultActivity],
+export const defaultCoachReumse: Career<ExpertResumeType> = {
+	careerType: 'RESUME',
+	description: '',
+	contactPublic: true,
+	childrenDocCount: 3,
+	user: { nickname: '', picture: '', _id: '' },
+	docType: 'BASIC',
+	public: true,
+	docTitle: '',
+	parentId: null,
+	coverImage: '',
+	doc: {
+		workExperiences: [defaultWorkExperience],
+		projects: [defaultProject],
+		educations: [defaultEducation],
+		activities: [defaultActivity],
+	},
+	createdAt: '',
+	updatedAt: '',
+	aiStatus: null,
+	childAi: null,
+	_id: '',
 };
 
 export const mockResume: Career<Resume> = {
