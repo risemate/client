@@ -3,6 +3,7 @@ const pixelToRem = (size: number) => `${size / 16}rem`;
 const fontSizes = {
 	tiny: pixelToRem(10),
 	small: pixelToRem(12),
+	input: pixelToRem(13),
 	default: pixelToRem(16),
 	medium: pixelToRem(24),
 	large: pixelToRem(32),

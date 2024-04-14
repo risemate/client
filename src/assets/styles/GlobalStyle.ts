@@ -34,6 +34,9 @@ export const GlobalStyle = createGlobalStyle`
         vertical-align: middle;
         border: none;
     }
+    input, textarea {
+        font-size: ${({ theme }) => theme.fontSizes.input};
+    }
     button, input[type=button] {    
         background: none;
         border: none;
