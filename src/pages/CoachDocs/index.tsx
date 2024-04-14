@@ -2,7 +2,7 @@ import React from 'react';
 import { FormProvider } from 'react-hook-form';
 import styled from 'styled-components';
 
-import ResumeNav from '@common/ResumeNav';
+import Button from '@common/Button';
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
 import Activity from '@components/resume-edit/edit-base/Activity';
@@ -13,7 +13,7 @@ import WorkExperience from '@components/resume-edit/edit-base/WorkExperience';
 import useCoachDocs from './CoachDocs.hook';
 
 export default function CoachDocs() {
-	const { resumeEditMethods, resumeNavItems, submitResume } = useCoachDocs();
+	const { resumeEditMethods, submitResume } = useCoachDocs();
 	return (
 		<Container backgroundColor='lightGrey' padding>
 			<FormProvider {...resumeEditMethods}>
@@ -23,7 +23,9 @@ export default function CoachDocs() {
 						<Project field='doc' />
 						<Education field='doc' />
 						<Activity field='doc' />
-						<ResumeNav resumeNavItems={resumeNavItems} />
+						<Button variant='navy' size='large'>
+							이력서 저장
+						</Button>
 					</StyledForm>
 				</SingleAsyncWrapper>
 			</FormProvider>
@@ -33,4 +35,7 @@ export default function CoachDocs() {
 
 const StyledForm = styled.form`
 	margin: 50px 0 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 `;

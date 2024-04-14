@@ -19,9 +19,7 @@ export default function useCoachDocs() {
 	const updateResumeMutation = expertResumeUpdateutation();
 	const createResumeMutation = expertResumeCreateMutation();
 
-	const resumeNavItems = [{ name: '이력서 저장' }];
 	const { handleSubmit } = resumeEditMethods;
-
 	const submitResume = handleSubmit(data => {
 		if (expertResume) {
 			updateResumeMutation.mutate(data.doc);
@@ -30,5 +28,5 @@ export default function useCoachDocs() {
 		}
 	});
 
-	return { resumeEditMethods, resumeNavItems, submitResume };
+	return { resumeEditMethods, submitResume };
 }
