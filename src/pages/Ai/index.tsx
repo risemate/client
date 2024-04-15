@@ -8,7 +8,7 @@ import BasicCareerList from '@components/resume-view/BasicCareerList';
 import useAi from './index.hook';
 
 export default function Ai() {
-	const { resumes, coverLetters } = useAi();
+	const { resumes, coverLetters, selectedId } = useAi();
 
 	return (
 		<AiWrapper>
@@ -17,11 +17,19 @@ export default function Ai() {
 				이력서/자기소개서를 첨삭 받아보세요!
 			</Banner>
 			<WhiteBoxWrapper type='div' customCss={aiWrapperStyle}>
-				<BasicCareerList title='이력서' resumes={resumes} CardComponent={ResumeAiCard} />
+				<BasicCareerList
+					title='이력서'
+					resumes={resumes}
+					CardComponent={ResumeAiCard}
+					selectedId={selectedId.value}
+					updateSelectedId={selectedId.update}
+				/>
 				<BasicCareerList
 					title='자기소개서'
 					resumes={coverLetters}
 					CardComponent={ResumeAiCard}
+					selectedId={selectedId.value}
+					updateSelectedId={selectedId.update}
 				/>
 			</WhiteBoxWrapper>
 		</AiWrapper>

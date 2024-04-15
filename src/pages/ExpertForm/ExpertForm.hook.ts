@@ -21,6 +21,11 @@ export default function useExpertForm() {
 		name: 'resumeShare',
 	});
 
+	const { field: resumeIdFields } = useController({
+		control,
+		name: 'resumeId',
+	});
+
 	const disableSubmit = () => {
 		if (watch('resumeShare') && watch('resumeId')) return false;
 		return true;
@@ -33,7 +38,6 @@ export default function useExpertForm() {
 	const onCancel = () => navigate(-1);
 
 	return {
-		expertFormMethods,
 		resumeShare: {
 			checked: resumeShareFields.value,
 			onChange: (e: ChangeEvent<HTMLInputElement>) =>
@@ -42,7 +46,10 @@ export default function useExpertForm() {
 			onBlur: resumeShareFields.onBlur,
 		},
 		message: register('message'),
-		resumeId: watch('resumeId'),
+		resumeId: {
+			value: watch('resumeId'),
+			update: (id: string | null) => resumeIdFields.onChange(id),
+		},
 		disableSubmit,
 		onSubmit,
 		onCancel,

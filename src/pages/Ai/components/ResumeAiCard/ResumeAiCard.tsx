@@ -1,7 +1,6 @@
 import { formatDate } from '@utils/helpers';
 import styled from 'styled-components';
-import { Career } from 'types/career/careerDocument';
-import { Resume as ResumeType } from 'types/career/resume';
+import { CardComponentProps } from 'types/cardComponent';
 
 import Button from '@common/Button';
 import Modal from '@components/modal/base/Modal';
@@ -9,20 +8,20 @@ import CardWrapper from '@components/resume-view/ResumeCardWrapper';
 
 import useResumeAiCard from './ResumeAiCard.hook';
 
-interface ResumeCardProps {
-	career: Career<ResumeType>;
-}
-
-export default function ResumeAiCard({ career }: ResumeCardProps) {
+export default function ResumeAiCard({
+	career,
+	selectedId = null,
+	updateSelectedId,
+}: CardComponentProps) {
 	const {
-		openModal,
+		clickRevision,
 		hasRevise,
 		isRevising,
 		modalContent,
 		proceedAiRevise,
 		toDoc,
 		toRevision,
-	} = useResumeAiCard(career);
+	} = useResumeAiCard(career, selectedId, updateSelectedId);
 	return (
 		<CardWrapper>
 			<CardWrapper.Title time={formatDate(career.createdAt).period}>
@@ -38,7 +37,7 @@ export default function ResumeAiCard({ career }: ResumeCardProps) {
 					</Button>
 				)}
 			</CardWrapper.ButtonWrapper>
-			<Button variant='blue' size='full' onClick={openModal} disabled={isRevising}>
+			<Button variant='blue' size='full' onClick={clickRevision} disabled={isRevising}>
 				Ai 첨삭받기
 			</Button>
 			{isRevising && (

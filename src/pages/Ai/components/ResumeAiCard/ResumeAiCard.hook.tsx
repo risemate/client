@@ -3,7 +3,11 @@ import { aiRevisionAgainMutation, aiRevisionMutation } from '@queries/ai';
 import { Career } from 'types/career/careerDocument';
 import { Resume } from 'types/career/resume';
 
-export default function useResumeAiCard(career: Career<Resume>) {
+export default function useResumeAiCard(
+	career: Career<Resume>,
+	selectedId: string | null,
+	updateSelectedId?: (id: string | null) => void,
+) {
 	const { openModal } = useModal('ai-revise');
 	const hasRevise = career.childAi !== null;
 	const isRevising = career.aiStatus === 'IN_PROGRESS';
@@ -19,15 +23,24 @@ export default function useResumeAiCard(career: Career<Resume>) {
 			AI을 첨삭을 받으시겠습니까? <br /> 시간은 약 15~30분 정도 소요됩니다.
 		</span>
 	);
+	const handleButtonClick = () => {
+		if (updateSelectedId) {
+			updateSelectedId(career._id);
+		}
+	};
 	const proceedAiRevise = () => {
+		if (!selectedId) return;
 		if (hasRevise) {
-			reviseAiAgainMutation.mutate({ orgCareerId: career._id });
+			reviseAiAgainMutation.mutate({ orgCareerId: selectedId });
 		} else {
-			reviseAiMutation.mutate({ orgCareerId: career._id });
+			reviseAiMutation.mutate({ orgCareerId: selectedId });
 		}
 	};
 	return {
-		openModal,
+		clickRevision: () => {
+			openModal();
+			handleButtonClick();
+		},
 		hasRevise,
 		isRevising,
 		modalContent,

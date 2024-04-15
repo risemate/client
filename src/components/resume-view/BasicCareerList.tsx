@@ -3,6 +3,7 @@ import { ElementType } from 'react';
 import styled, { css } from 'styled-components';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { CardComponentProps } from 'types/cardComponent';
 import { Career } from 'types/career/careerDocument';
 
 import Button from '@common/Button';
@@ -16,9 +17,10 @@ import 'swiper/css/pagination';
 interface BasicResumeListProps<T = any> {
 	title: string;
 	resumes: Career<T>[];
-	CardComponent: ElementType<{ career: Career<T>; selected?: boolean }>;
+	CardComponent: ElementType<CardComponentProps>;
 	addNew?: boolean;
 	createTo?: 'co' | 're';
+	updateSelectedId?: (id: string | null) => void;
 	selectedId?: string | null;
 }
 
@@ -29,6 +31,7 @@ export default function BasicCareerList({
 	addNew,
 	createTo,
 	selectedId = null,
+	updateSelectedId,
 }: BasicResumeListProps) {
 	const setting = {
 		modules: [Navigation, Pagination],
@@ -61,7 +64,11 @@ export default function BasicCareerList({
 					<Swiper {...setting}>
 						{resumes.map(resume => (
 							<SwiperSlide key={resume._id}>
-								<CardComponent career={resume} selected={resume._id === selectedId} />
+								<CardComponent
+									career={resume}
+									selectedId={selectedId}
+									updateSelectedId={updateSelectedId}
+								/>
 							</SwiperSlide>
 						))}
 					</Swiper>
