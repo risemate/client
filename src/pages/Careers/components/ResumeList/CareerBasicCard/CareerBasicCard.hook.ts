@@ -1,8 +1,14 @@
-import { resumeUpdateMutation } from '@queries/career';
+import { useModal } from '@hooks/atoms/useModalAtom';
+import { resumeDeleteMutation, resumeUpdateMutation } from '@queries/career';
 import { ChangeEvent, useState } from 'react';
 import { Career } from 'types/career/careerDocument';
+import { Resume } from 'types/career/resume';
 
-export default function useCareerBasicCard(career: Career) {
+export default function useCareerBasicCard(
+	career: Career<Resume>,
+	selectedId?: string | null,
+	updateSelectedId?: (id: string | null) => void,
+) {
 	const updateResumeMutation = resumeUpdateMutation();
 	const [isPublic, setIsPublic] = useState(career.public);
 	const [isContact, setIsContact] = useState(career.contactPublic);
@@ -25,10 +31,30 @@ export default function useCareerBasicCard(career: Career) {
 		setIsContact(response.public);
 	};
 
+	const { isModal: isDeleteModal, openModal: openDeleteModal } =
+		useModal('delete-resume');
+	const deleteResumeMutation = resumeDeleteMutation();
+	const deleteResume = () => {
+		selectedId && deleteResumeMutation.mutate(selectedId);
+	};
+	const handleButtonClick = () => {
+		if (updateSelectedId) {
+			updateSelectedId(career._id);
+		}
+	};
+
 	return {
 		isPublic,
 		isContact,
 		updateIsPublic,
 		updateIsContact,
+		deleteModal: {
+			isModal: isDeleteModal,
+			open: () => {
+				openDeleteModal();
+				handleButtonClick();
+			},
+		},
+		deleteResume,
 	};
 }

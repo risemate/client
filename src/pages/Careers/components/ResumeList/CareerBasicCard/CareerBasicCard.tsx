@@ -1,20 +1,28 @@
+import { IconTrash } from '@icons';
 import { formatDate } from '@utils/helpers';
 import styled from 'styled-components';
-import { Career } from 'types/career/careerDocument';
+import { CardComponentProps } from 'types/cardComponent';
 
 import Button from '@common/Button';
 import Toggle from '@components/input/Toggle';
 import CardWrapper from '@components/resume-view/ResumeCardWrapper';
 
+import DeleteModal from '../../DeleteModal';
 import useCareerBasicCard from './CareerBasicCard.hook';
 
-interface ResumeCardProps {
-	career: Career;
-}
-
-export default function CareerBasicCard({ career }: ResumeCardProps) {
-	const { isPublic, isContact, updateIsPublic, updateIsContact } =
-		useCareerBasicCard(career);
+export default function CareerBasicCard({
+	career,
+	selectedId = null,
+	updateSelectedId,
+}: CardComponentProps) {
+	const {
+		isPublic,
+		isContact,
+		updateIsPublic,
+		updateIsContact,
+		deleteModal,
+		deleteResume,
+	} = useCareerBasicCard(career, selectedId, updateSelectedId);
 
 	return (
 		<CardWrapper>
@@ -42,9 +50,30 @@ export default function CareerBasicCard({ career }: ResumeCardProps) {
 				<Toggle name='게시물 공개' checked={isPublic} onChange={updateIsPublic} />
 				<Toggle name='연락처 공개' checked={isContact} onChange={updateIsContact} />
 			</ToggleWrapper>
+			<DeleteButton type='button' onClick={deleteModal.open}>
+				<span>삭제</span>
+				<IconTrash />
+			</DeleteButton>
+			<DeleteModal deleteResume={deleteResume} />
 		</CardWrapper>
 	);
 }
+
+const DeleteButton = styled.button`
+	align-self: end;
+	font-size: ${({ theme }) => theme.fontSizes.input};
+	color: ${({ theme }) => theme.colors.grey};
+	& > span {
+		padding-right: 5px;
+	}
+	svg {
+		width: 11px;
+		height: 11px;
+	}
+	&:hover {
+		color: ${({ theme }) => theme.colors.darkGrey};
+	}
+`;
 
 const ToggleWrapper = styled.div`
 	background: ${({ theme }) => theme.colors.lightGrey};

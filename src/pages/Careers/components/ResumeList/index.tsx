@@ -1,4 +1,4 @@
-import CareerBasicCard from 'pages/Careers/components/ResumeList/CareerBasicCard';
+import CareerBasicCard from 'pages/Careers/components/ResumeList/CareerBasicCard/CareerBasicCard';
 import { css } from 'styled-components';
 
 import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
@@ -8,18 +8,18 @@ import BasicCareerList from '../../../../components/resume-view/BasicCareerList'
 import useCareerList from './CareerList.hook';
 
 export default function Resume() {
-	const { resumes, coverLetters, to } = useCareerList();
+	const { resumes, coverLetters, to, selectedId } = useCareerList();
 	return (
 		<Container backgroundColor='lightGrey' center padding>
-			<h2 className='a11y-hidden' style={{ width: '100%', padding: '0 20px' }}>
-				이력서
-			</h2>
+			<h2 className='a11y-hidden'>이력서</h2>
 			<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
 				<BasicCareerList
 					title='이력서'
 					resumes={resumes}
 					createTo='re'
 					CardComponent={CareerBasicCard}
+					selectedId={selectedId.value}
+					updateSelectedId={selectedId.update}
 					addNew
 				/>
 			</WhiteBoxWrapper>
@@ -29,6 +29,8 @@ export default function Resume() {
 					resumes={coverLetters}
 					createTo='co'
 					CardComponent={CareerBasicCard}
+					selectedId={selectedId.value}
+					updateSelectedId={selectedId.update}
 					addNew
 				/>
 			</WhiteBoxWrapper>

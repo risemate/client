@@ -4,7 +4,6 @@ import Container from '@components/layout/Container';
 import ResumeTemplate from '@components/resume-view/ViewTemplate/ResumeView';
 
 import useDocView from '../DocView.hook';
-import DeleteModal from './DeleteModal';
 
 export default function ResumeView() {
 	const { data, resumeViewNavItems, isNetwork } = useDocView();
@@ -16,7 +15,6 @@ export default function ResumeView() {
 				{isNetwork || <ResumeNav resumeNavItems={resumeViewNavItems} />}
 				{/* ://본인 이력서나 자기소개서일경우 Nva 보여주기 */}
 			</SingleAsyncWrapper>
-			<DeleteModal />
 		</Container>
 	);
 }

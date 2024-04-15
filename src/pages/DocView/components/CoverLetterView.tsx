@@ -5,7 +5,6 @@ import Container from '@components/layout/Container';
 import CoverLetterTemplate from '@components/resume-view/ViewTemplate/CoverLetterView';
 
 import useDocView from '../DocView.hook';
-import DeleteModal from './DeleteModal';
 
 export default function CoverLetterView() {
 	const { data, resumeViewNavItems, isNetwork } = useDocView<Coverletter>();
@@ -16,7 +15,6 @@ export default function CoverLetterView() {
 				{/* {isNetwork || <ResumeNav resumeNavItems={resumeViewNavItems} />} */}
 				{/* :// 본인 이력서나 자기소개서일경우 Nva 보여주기 */}
 			</SingleAsyncWrapper>
-			<DeleteModal />
 		</Container>
 	);
 }
