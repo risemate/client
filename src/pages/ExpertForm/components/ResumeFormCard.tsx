@@ -21,10 +21,15 @@ export default function ResumeFormCard({
 				{career.docTitle}
 			</ResumeCardWrapper.Title>
 			<ResumeCardWrapper.ButtonWrapper>
-				<Button variant='border' size='full' to={`/my-info/docs/${career._id}`}>
+				<Button
+					variant='border'
+					size='full'
+					to={`/my-info/docs/${career._id}`}
+					type='button'
+				>
 					보기
 				</Button>
-				<Button variant='navy' size='full' onClick={handleButtonClick}>
+				<Button variant='navy' size='full' onClick={handleButtonClick} type='button'>
 					선택
 				</Button>
 			</ResumeCardWrapper.ButtonWrapper>
