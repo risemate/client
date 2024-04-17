@@ -33,12 +33,12 @@ export default function ResumeAiCard({
 				</Button>
 				{hasRevise && (
 					<Button variant='border' size='full' to={toRevision}>
-						AI 첨삭 보기
+						AI 첨삭보기
 					</Button>
 				)}
 			</CardWrapper.ButtonWrapper>
 			<Button variant='blue' size='full' onClick={clickRevision} disabled={isRevising}>
-				Ai 첨삭받기
+				{hasRevise ? 'AI 첨삭 다시 받기' : 'AI 첨삭받기'}
 			</Button>
 			{isRevising && (
 				<NoticeText>첨삭이 진행 중입니다. 완료되면 알림이 전송됩니다.</NoticeText>
