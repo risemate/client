@@ -1,8 +1,13 @@
 import { Activity, Education, Project, WorkExperience } from 'types/career/resume';
 
 export type ApplyExpertProps = {
+	message: string | null;
+	resumeId: string | null;
+};
+
+export type ApplyExpertResponse = {
 	message: string;
-	resumeId: string;
+	success: boolean;
 };
 
 export type ExpertResumeType = {

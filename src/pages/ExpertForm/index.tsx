@@ -22,7 +22,7 @@ export default function ExpertForm() {
 				</CheckBox>
 			</RequestFormWrapper.Consent>
 			<BasicCareerList
-				title='이력서 선택'
+				title='이력서'
 				resumes={resumes}
 				CardComponent={ResumeFormCard}
 				selectedId={resumeId.value}

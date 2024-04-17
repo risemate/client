@@ -6,7 +6,7 @@ import {
 } from '@api/expert';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Career } from 'types/career/careerDocument';
-import { ExpertResumeType } from 'types/coach/expert';
+import { ApplyExpertResponse, ExpertResumeType } from 'types/coach/expert';
 import { ApplyExpertProps } from 'types/coach/expert';
 import {
 	UseMutationOptionsType,
@@ -18,8 +18,8 @@ import {
 import { expertKeys } from './queryKeys';
 
 export const expertApplyMutation = (
-	options?: UseMutationOptionsType<unknown, ApplyExpertProps, 'onSuccess'>,
-): UseMutationResultType<unknown, ApplyExpertProps> => {
+	options?: UseMutationOptionsType<ApplyExpertResponse, ApplyExpertProps, 'onSuccess'>,
+): UseMutationResultType<ApplyExpertResponse, ApplyExpertProps> => {
 	const queryClient = useQueryClient();
 	return useMutation({
 		mutationFn: (body: ApplyExpertProps) => fetchApplyExpert(body),

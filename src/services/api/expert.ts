@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Career } from 'types/career/careerDocument';
-import { ExpertResumeType } from 'types/coach/expert';
+import { ApplyExpertResponse, ExpertResumeType } from 'types/coach/expert';
 import { ApplyExpertProps } from 'types/coach/expert';
 
 const EXPERT_PATH = {
@@ -10,7 +10,9 @@ const EXPERT_PATH = {
 };
 
 // 신청
-export const fetchApplyExpert = async (body: ApplyExpertProps): Promise<unknown> => {
+export const fetchApplyExpert = async (
+	body: ApplyExpertProps,
+): Promise<ApplyExpertResponse> => {
 	const response = await axios.post(EXPERT_PATH.APPLY(), body);
 	return response.data;
 };
