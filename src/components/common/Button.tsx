@@ -22,6 +22,7 @@ const Button = forwardRef(function Button(
 					$variant={variant}
 					$size={size}
 					ref={ref}
+					type='button'
 					{...ButtonProps}
 					onClick={() => navigate(to)}
 				>
