@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Admin from 'pages/Admin';
 import Ai from 'pages/Ai';
 import { ResumeList, ReviseList } from 'pages/Careers';
 import CoachDocs from 'pages/CoachDocs';
@@ -32,6 +33,7 @@ axios.interceptors.response.use(
 );
 
 export const router = createBrowserRouter([
+	{ path: 'admin', element: <Admin /> },
 	{
 		path: '/',
 		element: <RootLayout />,
@@ -130,6 +132,7 @@ export const router = createBrowserRouter([
 		],
 		errorElement: <NotFound />,
 	},
+
 	{
 		path: '/form',
 		element: <FormLayout />,
