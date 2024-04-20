@@ -16,9 +16,9 @@ export const GlobalStyle = createGlobalStyle`
     body {
         font-family: "Pretendard";
     }
-    #root, html, body {
+    html, body,#root {
         width: 100%;
-        min-height: 100% ;
+        height: 100% ;
     }
     a {
         vertical-align: baseline;
