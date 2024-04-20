@@ -22,9 +22,11 @@ export type Product = {
 	__v: number;
 };
 
+export const Category = ['이력서', '자기소개서', '이력서/자기소개서'] as const;
+
 export type Category = {
-	rootCategory: '이력서' | '자기소개서';
-	subCategory: string;
+	rootCategory: (typeof Category)[number];
+	subCategory: (typeof Category)[number] | '';
 	thirdCategory: string[];
 };
 

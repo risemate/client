@@ -6,6 +6,7 @@ import Button from '@common/Button';
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
 
+import Category from './components/Category/Category';
 import Profile from './components/Profile/Profile';
 import useWriteProduct from './WriteProduct.hook';
 
@@ -17,6 +18,7 @@ export default function WriteProduct() {
 				<FormProvider {...productEditMethods}>
 					<StyledForm onSubmit={submitProduct}>
 						<Profile />
+						<Category />
 						<Button variant='navy' size='large'>
 							상품 설명 저장
 						</Button>

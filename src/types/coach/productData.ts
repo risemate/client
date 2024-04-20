@@ -74,7 +74,7 @@ export const mockProduct: ProductType = {
 	category: {
 		rootCategory: '이력서',
 		subCategory: '',
-		thirdCategory: ['react', 'java', 'default null'],
+		thirdCategory: [],
 	},
 	images: [
 		{
