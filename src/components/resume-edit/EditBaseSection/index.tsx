@@ -5,6 +5,8 @@ import WhiteBoxWrapper from '../../base-wrappers/WhiteBoxWrapper';
 import BaseSectionContent from './BaseSectionContent';
 import BaseSectionContentItem from './BaseSectionContentItem';
 import BaseSectionTitle from './BaseSectionTitle';
+import SearchInput from './SearchInput';
+import SearchList from './SearchList';
 
 interface BaseSectionProps {
 	children: ReactNode;
@@ -22,6 +24,8 @@ const EditBaseSection = Object.assign(BaseSection, {
 	Title: BaseSectionTitle,
 	Content: BaseSectionContent,
 	Item: BaseSectionContentItem,
+	SearchList: SearchList,
+	SearchInput: SearchInput,
 });
 
 const resumeEditWrapperStyle = css`
