@@ -2,8 +2,8 @@ import { BaseUser } from 'types/auth';
 import { Project, WorkExperience } from 'types/career/resume';
 
 export type Product = {
-	user: BaseUser;
-	public: boolean;
+	user?: BaseUser;
+	public?: boolean;
 	productTitle: string;
 	subTitle: string;
 	coverImage: string;
@@ -36,10 +36,10 @@ export type Image = {
 
 export type Package = {
 	BASIC: PackageDetail | null;
-	STANDARD: PackageDetail | null;
-	ECONOMY: PackageDetail | null;
+	STANDARD?: PackageDetail | null;
+	ECONOMY?: PackageDetail | null;
 	ADVANCED: PackageDetail | null;
-	DELUXE: PackageDetail | null;
+	DELUXE?: PackageDetail | null;
 	PREMIUM: PackageDetail | null;
 };
 

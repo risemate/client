@@ -14,6 +14,7 @@ import MyInfoPage from 'pages/MyInfo';
 import Network from 'pages/Network';
 import NotFound from 'pages/NotFound';
 import WritePage from 'pages/Write';
+import WriteProduct from 'pages/WriteProduct';
 import { createBrowserRouter } from 'react-router-dom';
 
 import FormLayout from '@components/layout/FormLayout';
@@ -124,6 +125,10 @@ export const router = createBrowserRouter([
 					{
 						path: 'docs',
 						element: <CoachDocs />,
+					},
+					{
+						path: 'product-docs',
+						element: <WriteProduct />,
 					},
 				],
 				loader: signLoader,

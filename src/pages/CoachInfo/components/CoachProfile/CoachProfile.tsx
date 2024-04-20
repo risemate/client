@@ -21,7 +21,7 @@ export default function CoachProfile() {
 				<Button variant='blue' size='full' to='/coach-info/docs'>
 					전문가 이력서 수정
 				</Button>
-				<Button variant='blue' size='full'>
+				<Button variant='blue' size='full' to='/coach-info/product-docs'>
 					상품 등록
 				</Button>
 				<Button variant='navy' size='full' to='/my-info'>

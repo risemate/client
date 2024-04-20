@@ -40,6 +40,26 @@ export type Profile = {
 	description: string;
 };
 
+export const defaultProduct: Partial<ProductType> = {
+	productTitle: '',
+	subTitle: '',
+	coverImage: '',
+	images: [],
+	description: '',
+	searchKeyword: [],
+	category: {
+		rootCategory: '이력서',
+		subCategory: '',
+		thirdCategory: [],
+	},
+	packages: {
+		BASIC: defaultPackage,
+		ADVANCED: defaultPackage,
+		PREMIUM: defaultPackage,
+	},
+	// defaultPrice: null,
+};
+
 export const mockProduct: ProductType = {
 	user: {
 		nickname: 'bonobono',
