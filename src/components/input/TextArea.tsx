@@ -6,10 +6,11 @@ interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 	label?: string;
 	warning?: string;
 	help?: boolean;
+	height?: number;
 }
 
 const TextArea = forwardRef(function TextArea(
-	{ label, warning, help, ...TextAreaProps }: TextAreaProps,
+	{ label, warning, help, height = 150, ...TextAreaProps }: TextAreaProps,
 	ref: ForwardedRef<HTMLTextAreaElement>,
 ) {
 	return (
@@ -25,7 +26,7 @@ const TextArea = forwardRef(function TextArea(
 					)}
 				</HelperWrapper>
 			)}
-			<StyledTextArea rows={6} ref={ref} {...TextAreaProps} />
+			<StyledTextArea rows={6} ref={ref} $height={height} {...TextAreaProps} />
 			{warning && <span className='warning'>{warning}</span>}
 		</TextAreaLabel>
 	);
@@ -46,10 +47,13 @@ const TextAreaLabel = styled.label`
 	}
 `;
 
-const StyledTextArea = styled.textarea`
+const StyledTextArea = styled.textarea<{ $height: number }>`
 	border-radius: 10px;
 	border: 0.5px solid ${({ theme }) => theme.colors.grey};
 	padding: 15px;
+	min-height: 35px;
+	max-height: 500px;
+	height: ${({ $height }) => `${$height}px`};
 	line-height: 20px;
 	resize: vertical;
 	&::-webkit-scrollbar {
@@ -70,7 +74,7 @@ const HelperWrapper = styled.div`
 		position: relative;
 		span {
 			display: none;
-			width: 250px;
+			width: 240px;
 			background: ${({ theme }) => theme.colors.darkGrey};
 			color: white;
 			padding: 10px;
