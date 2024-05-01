@@ -2,6 +2,7 @@ import { Profile as ProfileType } from 'types/career/resume';
 import {
 	CS as InquiryType,
 	PackageDetail,
+	PackageProviderOption,
 	Product as ProductType,
 	Review as ReviewType,
 } from 'types/coach/product';
@@ -60,6 +61,11 @@ export const defaultProduct: Partial<ProductType> = {
 	// defaultPrice: null,
 };
 
+export const defaultProviderOptions: PackageProviderOption = {
+	name: '',
+	description: '',
+};
+
 export const mockProduct: ProductType = {
 	user: {
 		nickname: 'bonobono',
@@ -102,19 +108,16 @@ export const mockProduct: ProductType = {
 			providerOptions: [
 				{
 					name: '화상면접 및 피드백',
-					_id: '6562b04c461c70f74b259dd6',
+					description: '',
 				},
 				{
 					name: '이력서 수정본 제공',
-					_id: '6562b04c461c70f74b259dd7',
+					description: '',
 				},
 			],
 			_id: '6562b04c461c70f74b259dd5',
 		},
-		STANDARD: null,
-		ECONOMY: null,
 		ADVANCED: null,
-		DELUXE: null,
 		PREMIUM: {
 			price: 30000,
 			packageTitle: '기본적인 가성비 첨삭!',
@@ -122,15 +125,15 @@ export const mockProduct: ProductType = {
 			providerOptions: [
 				{
 					name: '화상면접 및 피드백',
-					_id: '6562b04c461c70f74b259dd6',
+					description: '',
 				},
 				{
 					name: '이력서 수정본 제공',
-					_id: '6562b04c461c70f74b259dd7',
+					description: '',
 				},
 				{
 					name: '이력서 수정본 제공',
-					_id: '6562b04c461c70f74b259dd7',
+					description: '',
 				},
 			],
 			_id: '6562b04c461c70f74b259dd5',

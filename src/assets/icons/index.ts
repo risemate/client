@@ -26,3 +26,4 @@ export {
 	BsStar as IconStarEmpty,
 } from 'react-icons/bs';
 export { TbFileOff as IconFileOff } from 'react-icons/tb';
+export { TiDelete as IconDelete } from 'react-icons/ti';

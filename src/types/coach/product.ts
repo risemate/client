@@ -36,12 +36,15 @@ export type Image = {
 	_id: string;
 };
 
+export const PackageCategory = ['BASIC', 'ADVANCED', 'PREMIUM'] as const;
+export type PackageCategory = (typeof PackageCategory)[number];
+
 export type Package = {
 	BASIC: PackageDetail | null;
-	STANDARD?: PackageDetail | null;
-	ECONOMY?: PackageDetail | null;
+	// STANDARD?: PackageDetail | null;
+	// ECONOMY?: PackageDetail | null;
 	ADVANCED: PackageDetail | null;
-	DELUXE?: PackageDetail | null;
+	// DELUXE?: PackageDetail | null;
 	PREMIUM: PackageDetail | null;
 };
 
@@ -49,11 +52,13 @@ export type PackageDetail = {
 	price: number | null;
 	packageTitle: string;
 	description: string;
-	providerOptions: {
-		name: string;
-		_id: string;
-	}[];
+	providerOptions: PackageProviderOption[];
 	_id: string;
+};
+
+export type PackageProviderOption = {
+	name: string;
+	description: string;
 };
 
 export type Expert = {
