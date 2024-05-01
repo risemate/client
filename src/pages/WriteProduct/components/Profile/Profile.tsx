@@ -20,7 +20,7 @@ export default function Profile() {
 						type='text'
 						placeholder='문서 제목 입력'
 						{...productTitleField}
-						error={!!productTitleError}
+						$error={!!productTitleError}
 					/>
 				</DocTitleInput>
 				<WarningText>* 내용이 없을 시 상품 설명에 표기되지 않습니다.</WarningText>
@@ -50,8 +50,8 @@ export const DocTitleInput = styled.label`
 	}
 `;
 
-const ErrorInput = styled.input<{ error: boolean }>`
-	${({ error }) => error && 'border: 0.5px solid red'};
+const ErrorInput = styled.input<{ $error: boolean }>`
+	${({ $error }) => $error && 'border: 0.5px solid red'};
 `;
 
 const InputWrapper = styled.div`
