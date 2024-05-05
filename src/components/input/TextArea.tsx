@@ -1,6 +1,7 @@
-import { IconQuestion } from '@icons';
 import React, { ForwardedRef, TextareaHTMLAttributes, forwardRef } from 'react';
 import styled from 'styled-components';
+
+import HelperText from '@common/HelperText';
 
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 	label?: string;
@@ -15,17 +16,10 @@ const TextArea = forwardRef(function TextArea(
 ) {
 	return (
 		<TextAreaLabel>
-			{label && help && (
-				<HelperWrapper>
-					{label && <span>{label}</span>}
-					{help && (
-						<p className='help'>
-							<IconQuestion />
-							<span>해당 목록은 마크다운으로 작성할 수 있습니다.</span>
-						</p>
-					)}
-				</HelperWrapper>
-			)}
+			<TitleWrapper>
+				{label && <span>{label}</span>}
+				{help && <HelperText text='해당 목록은 마크다운으로 작성할 수 있습니다.' />}
+			</TitleWrapper>
 			<StyledTextArea rows={6} ref={ref} $height={height} {...TextAreaProps} />
 			{warning && <span className='warning'>{warning}</span>}
 		</TextAreaLabel>
@@ -66,28 +60,10 @@ const StyledTextArea = styled.textarea<{ $height: number }>`
 	}
 `;
 
-const HelperWrapper = styled.div`
+const TitleWrapper = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 5px;
-	p {
-		position: relative;
-		span {
-			display: none;
-			width: 240px;
-			background: ${({ theme }) => theme.colors.darkGrey};
-			color: white;
-			padding: 10px;
-			border-radius: 10px;
-			position: absolute;
-			line-height: 20px;
-			top: -40px;
-			left: 20px;
-		}
-	}
-	p:hover span {
-		display: inline-block;
-	}
 `;
 
 export default TextArea;
