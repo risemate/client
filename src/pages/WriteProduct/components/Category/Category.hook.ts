@@ -1,5 +1,6 @@
 import techStackData from '@data/techstack.json';
 import useSearch from '@hooks/useSearch';
+import { KeyboardEvent } from 'react';
 import { useController, useFieldArray, useFormContext } from 'react-hook-form';
 import { Category } from 'types/coach/product';
 
@@ -21,11 +22,14 @@ export default function useCategory() {
 		control,
 		name: 'searchKeyword',
 	});
-	const { searchText, suggestions, inputChange } = useSearch(
+	const { searchText, suggestions, inputChange, handleEnterKeyword } = useSearch(
 		20,
 		techStackData.default,
 		techStackData.keyword,
 	);
+
+	const appendKeyword = () => searchKeywordFieldArray.append(searchText);
+
 	return {
 		rootCategory: {
 			options: Category,
@@ -47,6 +51,7 @@ export default function useCategory() {
 				keyword: 'searchKeyword',
 				suggestions,
 				placeholder: '검색 키워드를 추가하세요.',
+				handleEnter: (event: KeyboardEvent) => handleEnterKeyword(event, appendKeyword),
 			},
 		},
 	};

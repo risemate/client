@@ -1,5 +1,5 @@
 import useClickOutside from '@hooks/common/useClickOutside';
-import React, { ChangeEvent, useRef, useState } from 'react';
+import React, { ChangeEvent, KeyboardEventHandler, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import KeywordSuggestions from '@common/KeywordSuggestions';
@@ -11,6 +11,7 @@ interface SearchInputProps {
 	keyword: string;
 	suggestions: string[];
 	placeholder?: string;
+	handleEnter?: KeyboardEventHandler;
 }
 
 export default function SearchInput({
@@ -19,6 +20,7 @@ export default function SearchInput({
 	keyword,
 	suggestions,
 	placeholder = '검색하세요.',
+	handleEnter = undefined,
 }: SearchInputProps) {
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
 	const searchRef = useRef<HTMLDivElement | null>(null);
@@ -32,6 +34,7 @@ export default function SearchInput({
 				onChange={inputChange}
 				onFocus={openSearchList}
 				placeholder={placeholder}
+				onKeyDown={handleEnter}
 			/>
 			{isSearchOpen && (
 				<SuggestionWrapper>

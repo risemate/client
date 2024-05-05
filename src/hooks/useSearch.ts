@@ -1,5 +1,5 @@
 import { isKoreanSingleCharacter } from '@utils/helpers';
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, KeyboardEvent, useCallback, useState } from 'react';
 
 export default function useSearch(
 	searchLimit: number,
@@ -41,11 +41,19 @@ export default function useSearch(
 		setSuggestions(defaultValues);
 	};
 
+	const handleEnterKeyword = (event: KeyboardEvent, callback: () => void) => {
+		if (event.key === 'Enter') {
+			callback();
+			setSearchText('');
+		}
+	};
+
 	return {
 		searchText,
 		suggestions,
 		inputChange,
 		handleSuggestionClick,
 		resetSearchText,
+		handleEnterKeyword,
 	};
 }

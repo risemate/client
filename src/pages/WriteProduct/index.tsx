@@ -12,12 +12,12 @@ import Profile from './components/Profile/Profile';
 import useWriteProduct from './WriteProduct.hook';
 
 export default function WriteProduct() {
-	const { productEditMethods, submitProduct } = useWriteProduct();
+	const { productEditMethods, submitProduct, preventEnter } = useWriteProduct();
 	return (
 		<Container backgroundColor='lightGrey' padding>
 			<SingleAsyncWrapper>
 				<FormProvider {...productEditMethods}>
-					<StyledForm onSubmit={submitProduct}>
+					<StyledForm onSubmit={submitProduct} onKeyDown={preventEnter}>
 						<Profile />
 						<Category />
 						<Package />
