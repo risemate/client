@@ -32,7 +32,7 @@ const resumeEditWrapperStyle = css`
 	padding: 40px;
 	margin: 0 auto;
 
-	& > article {
+	& > article:not(:last-child) {
 		margin-bottom: 30px;
 		padding-bottom: 30px;
 		border-bottom: 2px solid ${({ theme }) => theme.colors.grey};
