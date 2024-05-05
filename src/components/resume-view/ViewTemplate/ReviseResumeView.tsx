@@ -41,7 +41,7 @@ export function ReviseResumeTemplate({ career }: ReviseResumeViewProps) {
 const resumeWrapperStyle = css`
 	min-height: 500px;
 	padding: 50px;
-	margin-top: 70px;
+	margin: 70px;
 	& > section {
 		padding-bottom: 30px;
 		&:not(:last-child) {

@@ -46,6 +46,6 @@ export default function useResumeAiCard(
 		modalContent,
 		proceedAiRevise,
 		toDoc: `/my-info/docs/${career._id}`,
-		toRevision: `/my-info/docs/${career._id}/revise-docs/${3}`,
+		toRevision: `/my-info/docs/${career._id}/revise-docs/${career.childAi}`,
 	};
 }

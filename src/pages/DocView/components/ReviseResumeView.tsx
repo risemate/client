@@ -14,7 +14,7 @@ export default function ReviseResumeView() {
 	const { data, isLoading } = reviseResumeDetailQuery(childrenId || '');
 	//:로딩애니메이션 추가하기
 	return (
-		<Container backgroundColor='lightGrey'>
+		<Container backgroundColor='lightGrey' padding>
 			{isLoading && '로딩 중...'}
 			{data?._id && (
 				<>
