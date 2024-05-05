@@ -67,7 +67,6 @@ export default function MyInfoDetail() {
 const PageDetailSection = styled.section`
 	${({ theme }) => theme.common.flexCenterColumn};
 	justify-content: space-between;
-	margin-left: 50px;
 	& > div:first-child {
 		border-bottom: 1px solid ${({ theme }) => theme.colors.grey};
 		padding: 30px 0 50px;
@@ -81,7 +80,6 @@ const PageDetailSection = styled.section`
 		${({ theme }) => theme.common.flexCenter};
 	}
 	@media screen and (max-width: 990px) {
-		margin: 0;
 		& > div:first-child {
 			padding: 50px 0;
 		}

@@ -64,6 +64,7 @@ const UserInfoSection = styled.section`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	margin-right: 50px;
 	${tabletSizeStyle}
 `;
 
