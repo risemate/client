@@ -7,7 +7,6 @@ import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
 
 import Category from './components/Category/Category';
-import Keyword from './components/Keyword/Keyword';
 import Package from './components/Package/Package';
 import Profile from './components/Profile/Profile';
 import useWriteProduct from './WriteProduct.hook';
@@ -21,7 +20,6 @@ export default function WriteProduct() {
 					<StyledForm onSubmit={submitProduct}>
 						<Profile />
 						<Category />
-						<Keyword />
 						<Package />
 						<Button variant='navy' size='large'>
 							상품 설명 저장

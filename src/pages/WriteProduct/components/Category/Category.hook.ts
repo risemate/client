@@ -13,13 +13,13 @@ export default function useCategory() {
 		control,
 		name: 'category.subCategory',
 	});
-	const thirdCategoryFieldArray = useFieldArray({
+	const searchKeywordFieldArray = useFieldArray({
 		control,
-		name: 'category.thirdCategory',
+		name: 'searchKeyword',
 	});
-	const { field: thirdCategoryField } = useController({
+	const { field: searchKeywordField } = useController({
 		control,
-		name: 'category.thirdCategory',
+		name: 'searchKeyword',
 	});
 	const { searchText, suggestions, inputChange } = useSearch(
 		20,
@@ -35,17 +35,18 @@ export default function useCategory() {
 			options: Category,
 			field: subCategoryField,
 		},
-		thirdCategory: {
+		searchKeyword: {
 			field: {
-				items: thirdCategoryField.value,
-				removeSelectedItem: (index: number) => thirdCategoryFieldArray.remove(index),
+				items: searchKeywordField.value,
+				removeSelectedItem: (index: number) => searchKeywordFieldArray.remove(index),
 			},
 			inputField: {
+				title: '검색 키워드',
 				searchText,
 				inputChange,
-				keyword: 'category.thirdCategory',
+				keyword: 'searchKeyword',
 				suggestions,
-				placeholder: '카테고리를 검색하세요.',
+				placeholder: '검색 키워드를 추가하세요.',
 			},
 		},
 	};
