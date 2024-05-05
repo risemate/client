@@ -1,4 +1,5 @@
 import { useSearchParam } from '@hooks/common/useSearchParam';
+import theme from '@styles/theme';
 import styled from 'styled-components';
 
 import Button from '@common/Button';
@@ -11,7 +12,7 @@ function Admin() {
 	return (
 		<AdminWrap>
 			<div>
-				<div>
+				<div className='nav'>
 					<header>관리자 {'>>'} 김탁구</header>
 					<ul>
 						<li>
@@ -53,7 +54,7 @@ function Admin() {
 					</ul>
 				</div>
 			</div>
-			<div>{queryParam === 'MEA' && <ManageExpertApplicate />}</div>
+			<div className='content'>{queryParam === 'MEA' && <ManageExpertApplicate />}</div>
 		</AdminWrap>
 	);
 }
@@ -64,17 +65,20 @@ const navWith = '300px';
 const AdminWrap = styled.div`
 	height: 100%;
 	display: flex;
-	& > div:first-child {
+	gap: 10px;
+
+	background-color: ${theme.colors.grey};
+	.nav {
 		// nav styling
-		background-color: #daf3ff;
+		background-color: #fff;
 		width: ${navWith} !important;
 		height: 100%;
-		border-right: solid 1px #b4e7ff;
+		/* border-right: solid 1px #b4e7ff; */
 		header {
 			padding: 20px 10px;
 			align-items: center;
 			margin-bottom: 15px;
-			background-color: #313964;
+			background-color: ${theme.colors.navy};
 			color: #ffffff;
 		}
 		ul {
@@ -85,12 +89,15 @@ const AdminWrap = styled.div`
 		}
 	}
 
-	div:nth-child(2) {
+	.content {
 		//contents styling
 		width: calc(100% - ${navWith});
 		background-color: #ffffff;
-		height: 100%;
+		border-radius: 10px;
+		margin: 15px;
+		height: calc(100% - 30px);
 		padding: 20px;
+		overflow-y: auto;
 	}
 `;
 
