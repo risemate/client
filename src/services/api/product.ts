@@ -17,7 +17,7 @@ const PRODUCT_PATH = {
 };
 
 // 상품 관련
-export const fetchCreateProduct = async (body: Product): Promise<Product> => {
+export const fetchCreateProduct = async (body: Partial<Product>): Promise<Product> => {
 	const response = await axios.post<Product>(PRODUCT_PATH.DEFAULT, body);
 	return response.data;
 };
