@@ -1,4 +1,10 @@
-import { fetchCreateProduct, fetchDeleteProduct, fetchProductDetail, fetchProducts, fetchUpdateProduct } from '@api/product';
+import {
+	fetchCreateProduct,
+	fetchDeleteProduct,
+	fetchProductDetail,
+	fetchProducts,
+	fetchUpdateProduct,
+} from '@api/product';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Product } from 'types/coach/product';
 import {
@@ -38,7 +44,7 @@ export const productDetailQuery = (
 
 // 상품 포스팅
 export const productCreateMutation = (
-	options?: UseMutationOptionsType<Product, Product, 'onSuccess'>
+	options?: UseMutationOptionsType<Product, Product, 'onSuccess'>,
 ): UseMutationResultType<Product, Product> => {
 	const queryClient = useQueryClient();
 	return useMutation({
@@ -47,14 +53,14 @@ export const productCreateMutation = (
 			queryClient.invalidateQueries({
 				queryKey: productKeys.base,
 				refetchType: 'active',
-			})
+			});
 		},
 		...options,
-	})
-}
+	});
+};
 
 export const productUpdateMutation = (
-	options?: UseMutationOptionsType<Product, Product, 'onSuccess'>
+	options?: UseMutationOptionsType<Product, Product, 'onSuccess'>,
 ): UseMutationResultType<Product, Product> => {
 	const queryClient = useQueryClient();
 	return useMutation({
@@ -63,24 +69,24 @@ export const productUpdateMutation = (
 			queryClient.invalidateQueries({
 				queryKey: productKeys.base,
 				refetchType: 'active',
-			})
+			});
 		},
 		...options,
-	})
-}
+	});
+};
 
 export const productDeleteMutation = (
-	options?: UseMutationOptionsType<Product, string, 'onSuccess'>
+	options?: UseMutationOptionsType<Product, string, 'onSuccess'>,
 ): UseMutationResultType<Product, string> => {
 	const queryClient = useQueryClient();
 	return useMutation({
 		mutationFn: (id: string) => fetchDeleteProduct(id),
-		onSuccess: (data) => {
+		onSuccess: data => {
 			queryClient.invalidateQueries({
 				queryKey: productKeys.id(data._id),
 				refetchType: 'active',
-			})
+			});
 		},
 		...options,
-	})
-}
+	});
+};

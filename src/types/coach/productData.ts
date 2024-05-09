@@ -7,11 +7,16 @@ import {
 	Review as ReviewType,
 } from 'types/coach/product';
 
+export const defaultProviderOptions: PackageProviderOption = {
+	name: '',
+	description: '',
+};
+
 export const defaultPackage: PackageDetail = {
 	price: null,
 	packageTitle: '',
 	description: '',
-	providerOptions: [],
+	providerOptions: [defaultProviderOptions, defaultProviderOptions],
 	_id: '6562b04c461c70f74b259dd5',
 };
 
@@ -59,11 +64,6 @@ export const defaultProduct: Partial<ProductType> = {
 		PREMIUM: defaultPackage,
 	},
 	// defaultPrice: null,
-};
-
-export const defaultProviderOptions: PackageProviderOption = {
-	name: '',
-	description: '',
 };
 
 export const mockProduct: ProductType = {
