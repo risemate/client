@@ -6,7 +6,7 @@ import { ReviseResume } from 'types/career/resume';
 import { Variant } from 'types/common/button';
 
 import Button from '@common/Button';
-import CardWrapper from '@components/resume-view/ResumeCardWrapper';
+import CardWrapper from '@components/resume-view/ResumeCardWrapper/ResumeCardWrapper';
 
 interface ReviseCareerCardProps {
 	career: Career<ReviseResume>;

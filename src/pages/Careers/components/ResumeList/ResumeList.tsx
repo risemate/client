@@ -5,9 +5,9 @@ import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 import Container from '@components/layout/Container';
 
 import BasicCareerList from '../../../../components/resume-view/BasicCareerList';
-import useCareerList from './CareerList.hook';
+import useCareerList from './ResumeList.hook';
 
-export default function Resume() {
+export default function ResumeList() {
 	const { resumes, coverLetters, to, selectedId } = useCareerList();
 	return (
 		<Container backgroundColor='lightGrey' center padding>

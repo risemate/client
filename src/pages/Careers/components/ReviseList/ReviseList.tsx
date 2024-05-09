@@ -8,7 +8,7 @@ import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 import Container from '@components/layout/Container';
 
-import useResume from '../ResumeList/CareerList.hook';
+import useResume from '../ResumeList/ResumeList.hook';
 import useReviseList from './ReviseList.hook';
 
 export default function ReviseList() {

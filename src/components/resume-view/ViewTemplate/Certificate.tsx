@@ -1,7 +1,7 @@
 import React from 'react';
 import { Certificate } from 'types/career/resume';
 
-import BaseSection from '@components/resume-view/ResumeViewBaseSection';
+import BaseSection from '@components/resume-view/ResumeViewBaseSection/ResumeViewBaseSection';
 
 interface CertificateProps {
 	certificates: Certificate[];

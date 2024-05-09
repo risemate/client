@@ -6,7 +6,7 @@ import { defaultCertificate } from 'types/career/resumeData';
 import DateInput from '@components/input/DateInput';
 import Input from '@components/input/Input';
 import LinkInput from '@components/input/LinkInput';
-import BaseSection from '@components/resume-edit/EditBaseSection';
+import BaseSection from '@components/resume-edit/EditBaseSection/EditBaseSection';
 
 interface CertificateProps {
 	field?: string;

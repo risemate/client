@@ -1,4 +1,4 @@
-import EditBaseSection from '@components/resume-edit/EditBaseSection';
+import EditBaseSection from '@components/resume-edit/EditBaseSection/EditBaseSection';
 
 import PackageItem from './PackageItem';
 

@@ -4,7 +4,7 @@ import { PackageCategory } from 'types/coach/product';
 
 import Input from '@components/input/Input';
 import TextArea from '@components/input/TextArea';
-import EditBaseSection from '@components/resume-edit/EditBaseSection';
+import EditBaseSection from '@components/resume-edit/EditBaseSection/EditBaseSection';
 
 import usePackageItem from './PackageItem.hook';
 

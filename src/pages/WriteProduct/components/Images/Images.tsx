@@ -1,6 +1,6 @@
 import React from 'react';
 
-import EditBaseSection from '@components/resume-edit/EditBaseSection';
+import EditBaseSection from '@components/resume-edit/EditBaseSection/EditBaseSection';
 
 export default function Images() {
 	return (

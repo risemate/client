@@ -9,7 +9,7 @@ import NetworkCardList from '@components/network/NetworkCardList';
 import useHome from './Home.hook';
 import 'normalize.css';
 
-function Home() {
+export default function Home() {
 	const { networks, experts } = useHome();
 	return (
 		<Container>
@@ -62,5 +62,3 @@ const HomeSection = styled.section<{ $css?: CSSProp }>`
 	}
 	${({ $css }) => $css};
 `;
-
-export default Home;

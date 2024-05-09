@@ -3,7 +3,7 @@ import React from 'react';
 import Button from '@common/Button';
 import CheckBox from '@components/input/CheckBox';
 import TextArea from '@components/input/TextArea';
-import RequestFormWrapper from '@components/request-form/RequestFormWrapper';
+import RequestFormWrapper from '@components/request-form/RequestFormWrapper/RequestFormWrapper';
 import BasicCareerList from '@components/resume-view/BasicCareerList';
 
 import ResumeFormCard from './components/ResumeFormCard';

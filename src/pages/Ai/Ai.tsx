@@ -5,7 +5,7 @@ import Banner from '@common/Banner';
 import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 import BasicCareerList from '@components/resume-view/BasicCareerList';
 
-import useAi from './index.hook';
+import useAi from './Ai.hook';
 
 export default function Ai() {
 	const { resumes, coverLetters, selectedId } = useAi();

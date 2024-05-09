@@ -3,7 +3,7 @@ import React from 'react';
 import { CardComponentProps } from 'types/cardComponent';
 
 import Button from '@common/Button';
-import ResumeCardWrapper from '@components/resume-view/ResumeCardWrapper';
+import ResumeCardWrapper from '@components/resume-view/ResumeCardWrapper/ResumeCardWrapper';
 
 export default function ResumeFormCard({
 	career,

@@ -2,7 +2,7 @@ import techStackData from '@data/techstack.json';
 import useSearch from '@hooks/useSearch';
 import { useFormContext } from 'react-hook-form';
 
-import BaseSection from '@components/resume-edit/EditBaseSection';
+import BaseSection from '@components/resume-edit/EditBaseSection/EditBaseSection';
 
 export default function TechStack() {
 	const { watch, setValue } = useFormContext();

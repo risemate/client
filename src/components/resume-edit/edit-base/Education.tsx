@@ -7,7 +7,7 @@ import LinkInput from '@components/input/LinkInput';
 import MonthInput from '@components/input/MonthInput';
 import Select from '@components/input/Select';
 import TextArea from '@components/input/TextArea';
-import BaseSection from '@components/resume-edit/EditBaseSection';
+import BaseSection from '@components/resume-edit/EditBaseSection/EditBaseSection';
 
 interface EducationProps {
 	field?: string;

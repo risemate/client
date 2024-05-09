@@ -4,16 +4,15 @@ import { Product } from 'types/coach/product';
 
 import DefaultImage from '@common/DefaultImage';
 
-import useExpert from './Experts.hook';
+import useExpertCard from './ExpertCard.hook';
 import StarRating from './StarRating';
 
 interface ExpertCardProps {
 	expert: Product;
 }
 
-// eslint-disable-next-line
 export default function ExpertCard({ expert }: ExpertCardProps) {
-	const { moveToDetail } = useExpert(expert._id);
+	const { moveToDetail } = useExpertCard(expert._id);
 	return (
 		<CardItemButton onClick={moveToDetail}>
 			<Tag>FRONTEND</Tag>

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import FileInput from '@components/input/FileInput';
 import Input from '@components/input/Input';
 import TextArea from '@components/input/TextArea';
-import BaseSection from '@components/resume-edit/EditBaseSection';
+import BaseSection from '@components/resume-edit/EditBaseSection/EditBaseSection';
 
 import useProfile from './Profile.hook';
 

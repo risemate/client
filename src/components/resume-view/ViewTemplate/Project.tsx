@@ -1,6 +1,6 @@
 import { Project as ProjectType } from 'types/career/resume';
 
-import BaseSection from '@components/resume-view/ResumeViewBaseSection';
+import BaseSection from '@components/resume-view/ResumeViewBaseSection/ResumeViewBaseSection';
 
 interface ProjectProps {
 	projects: ProjectType[];

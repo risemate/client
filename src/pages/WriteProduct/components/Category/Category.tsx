@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import HelperText from '@common/HelperText';
 import Select from '@components/input/Select';
-import BaseSection from '@components/resume-edit/EditBaseSection';
+import BaseSection from '@components/resume-edit/EditBaseSection/EditBaseSection';
 
 import useCategory from './Category.hook';
 

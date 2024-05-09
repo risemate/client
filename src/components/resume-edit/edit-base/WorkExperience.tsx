@@ -12,7 +12,7 @@ import MonthInput from '@components/input/MonthInput';
 import Select from '@components/input/Select';
 import TextArea from '@components/input/TextArea';
 
-import BaseSection from '../EditBaseSection';
+import BaseSection from '../EditBaseSection/EditBaseSection';
 
 interface WorkExperienceProps {
 	field?: string;

@@ -5,7 +5,7 @@ import { CardComponentProps } from 'types/cardComponent';
 
 import Button from '@common/Button';
 import Toggle from '@components/input/Toggle';
-import CardWrapper from '@components/resume-view/ResumeCardWrapper';
+import CardWrapper from '@components/resume-view/ResumeCardWrapper/ResumeCardWrapper';
 
 import DeleteModal from '../../DeleteModal';
 import useCareerBasicCard from './CareerBasicCard.hook';
