@@ -65,6 +65,7 @@ export default function BasicCareerList({
 						{resumes.map(resume => (
 							<SwiperSlide key={resume._id}>
 								<CardComponent
+									careerType={createTo === 're' ? 'RESUME' : 'COVERLETTER'}
 									career={resume}
 									selectedId={selectedId}
 									updateSelectedId={updateSelectedId}

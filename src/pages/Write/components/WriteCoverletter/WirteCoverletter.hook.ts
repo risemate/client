@@ -34,18 +34,16 @@ export default function useCoverletterWrite() {
 	const { handleSubmit, watch } = coverLetterEditMethods;
 	const getValue = (field: keyof Career<CoverletterType>) => watch(field)?.toString();
 
-	const submitCoverletter = () => {
-		return handleSubmit(data => {
-			if (isNewCoverletter) {
-				createCoverletterMutation
-					.mutateAsync(data.doc)
-					.then(({ _id }) => navigate(`/my-info/docs/${_id}`));
-			} else {
-				updateCoverletterMutation.mutate({ id: coverletterId, body: data.doc });
-				navigate(`/my-info/docs/${coverletterId}`);
-			}
-		});
-	};
+	const submitCoverletter = handleSubmit(data => {
+		if (isNewCoverletter) {
+			createCoverletterMutation
+				.mutateAsync(data.doc)
+				.then(({ _id }) => navigate(`/my-info/docs/${_id}`));
+		} else {
+			updateCoverletterMutation.mutate({ id: coverletterId, body: data.doc });
+			navigate(`/my-info/docs/${coverletterId}`);
+		}
+	});
 
 	const coverLetterEditNavItems = [
 		{ name: '미리보기' },

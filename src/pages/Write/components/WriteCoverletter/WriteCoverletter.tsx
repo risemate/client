@@ -23,7 +23,7 @@ export default function WriteCoverletter() {
 		<Container backgroundColor='lightGrey' padding>
 			<FormProvider {...coverLetterEditMethods}>
 				<SingleAsyncWrapper>
-					<StyledForm id={formId} onSubmit={submitCoverletter()}>
+					<StyledForm id={formId} onSubmit={submitCoverletter}>
 						<h2 className='a11y-hidden'>
 							{isEmpty(getValue('docTitle')) ? '새로운 이력서' : getValue('docTitle')};
 						</h2>
@@ -40,5 +40,6 @@ export default function WriteCoverletter() {
 }
 
 const StyledForm = styled.form`
+	width: 100%;
 	margin: 50px 0 30px;
 `;

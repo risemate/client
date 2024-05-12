@@ -13,6 +13,7 @@ import DeleteModal from '../../../../../components/modal/DeleteModal';
 import useCareerBasicCard from './CareerBasicCard.hook';
 
 export default function CareerBasicCard({
+	careerType = 'RESUME',
 	career,
 	selectedId = null,
 	updateSelectedId,
@@ -32,7 +33,11 @@ export default function CareerBasicCard({
 				{career.docTitle}
 			</CardWrapper.Title>
 			<CardWrapper.ButtonWrapper>
-				<Button variant='border' size='full' to={`/write?redirect=re&id=${career._id}`}>
+				<Button
+					variant='border'
+					size='full'
+					to={`/write?redirect=${careerType === 'RESUME' ? 're' : 'co'}&id=${career._id}`}
+				>
 					수정
 				</Button>
 				<Button variant='border' size='full' to={`${career._id}`}>
