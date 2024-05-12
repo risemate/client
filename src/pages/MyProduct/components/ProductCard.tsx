@@ -27,7 +27,7 @@ export default function ProductCard({
 				<Button variant='border' size='full' to={`/write?redirect=pr&id=${career._id}`}>
 					수정
 				</Button>
-				<Button variant='border' size='full' to={`${career._id}`}>
+				<Button variant='border' size='full' to={`/experts/${career._id}`}>
 					보기
 				</Button>
 			</CardWrapper.ButtonWrapper>
