@@ -1,5 +1,6 @@
 import { removeEmptyObjectField } from '@utils/hookform';
 import axios from 'axios';
+import { CareerType } from 'types/career/careerDocument';
 import { CS, Product, RequestAnswer, RequestReview, Review } from 'types/coach/product';
 import { PagingQueryProps, PagingQueryResponse } from 'types/query/query';
 
@@ -14,6 +15,7 @@ const PRODUCT_PATH = {
 	REVIEW_ANSWER: (id: string) => `${PRODUCT_PATH.DEFAULT}/reviews/${id}/answer`,
 	REVIEW_LIST: (id: string) => `${PRODUCT_PATH.DEFAULT}/${id}/reviews`,
 	REVIEW_USER: () => `${PRODUCT_PATH.DEFAULT}/reviews/user`,
+	MY: () => `${PRODUCT_PATH.DEFAULT}/my`,
 };
 
 // 상품 관련
@@ -42,6 +44,17 @@ export const fetchProducts = async (
 		params: removeEmptyObjectField<PagingQueryProps>(params || {}),
 	});
 	return response.data;
+};
+
+export const fetchMyProduct = async () // careerType?: CareerType
+: Promise<Product[]> => {
+	try {
+		// const response = await axios.get<Product[]>(PRODUCT_PATH.MY(), { params: { careerType } });
+		const response = await axios.get<Product[]>(PRODUCT_PATH.MY());
+		return response.data;
+	} catch (error) {
+		throw new Error((error as Error).message);
+	}
 };
 
 export const fetchProductDetail = async (id: string): Promise<Product> => {

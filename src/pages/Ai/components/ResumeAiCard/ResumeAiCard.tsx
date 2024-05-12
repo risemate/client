@@ -1,6 +1,8 @@
 import { formatDate } from '@utils/helpers';
 import styled from 'styled-components';
 import { CardComponentProps } from 'types/cardComponent';
+import { Career } from 'types/career/careerDocument';
+import { Resume } from 'types/career/resume';
 
 import Button from '@common/Button';
 import Modal from '@components/modal/base/Modal';
@@ -12,7 +14,7 @@ export default function ResumeAiCard({
 	career,
 	selectedId = null,
 	updateSelectedId,
-}: CardComponentProps) {
+}: CardComponentProps<Career<Resume>>) {
 	const {
 		clickRevision,
 		hasRevise,

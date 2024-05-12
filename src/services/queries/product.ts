@@ -1,6 +1,7 @@
 import {
 	fetchCreateProduct,
 	fetchDeleteProduct,
+	fetchMyProduct,
 	fetchProductDetail,
 	fetchProducts,
 	fetchUpdateProduct,
@@ -19,6 +20,17 @@ import {
 import { productKeys } from './queryKeys';
 
 // 상품 보기
+export const myProductQuery = (
+	// careerType?: CareerType,
+	options?: UseQueryOptionsType<Product[]>,
+): UseQueryResultType<Product[]> => {
+	return useQuery({
+		queryKey: productKeys.base,
+		queryFn: () => fetchMyProduct(),
+		...options,
+	});
+};
+
 export const productsQuery = (
 	params?: PagingQueryProps,
 	options?: UseQueryOptionsType<PagingQueryResponse<Product>>,

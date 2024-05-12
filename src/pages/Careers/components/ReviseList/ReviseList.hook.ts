@@ -6,9 +6,11 @@ export default function useReviseList(parentId: string) {
 	const reviseResumes = reviseResumeQuery(parentId, { enabled: !isEmpty(parentId) });
 	const navigate = useNavigate();
 	const moveToRevise = () => navigate('/my-info/ai');
+	const to = (to: string) => navigate(to);
 	return {
 		reviseResumes: reviseResumes.data || [],
 		moveToRevise,
+		to,
 		isLoading: reviseResumes.isLoading,
 	};
 }

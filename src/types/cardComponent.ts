@@ -1,8 +1,5 @@
-import { Career } from './career/careerDocument';
-import { Resume } from './career/resume';
-
-export interface CardComponentProps {
-	career: Career<Resume>;
+export interface CardComponentProps<T = unknown> {
+	career: T;
 	selectedId?: string | null;
 	updateSelectedId?: (id: string | null) => void;
 }

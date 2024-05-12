@@ -16,10 +16,10 @@ import 'swiper/css/pagination';
 
 interface BasicResumeListProps<T = any> {
 	title: string;
-	resumes: Career<T>[];
-	CardComponent: ElementType<CardComponentProps>;
+	resumes: T[];
+	CardComponent: ElementType<CardComponentProps<T>>;
 	addNew?: boolean;
-	createTo?: 'co' | 're';
+	createTo?: 'co' | 're' | 'pr';
 	updateSelectedId?: (id: string | null) => void;
 	selectedId?: string | null;
 }

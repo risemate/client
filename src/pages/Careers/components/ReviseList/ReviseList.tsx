@@ -8,13 +8,11 @@ import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 import Container from '@components/layout/Container';
 
-import useResume from '../ResumeList/ResumeList.hook';
 import useReviseList from './ReviseList.hook';
 
 export default function ReviseList() {
 	const { parentId } = useParams();
-	const { reviseResumes } = useReviseList(parentId || '');
-	const { to } = useResume();
+	const { reviseResumes, to } = useReviseList(parentId || '');
 	return (
 		<Container backgroundColor='lightGrey' center padding>
 			<h2 className='a11y-hidden'>첨삭 이력서 목록</h2>

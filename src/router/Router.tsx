@@ -11,10 +11,10 @@ import ExpertForm from 'pages/ExpertForm/ExpertForm';
 import Experts from 'pages/Experts/Experts';
 import Home from 'pages/Home/Home';
 import MyInfoPage from 'pages/MyInfo/MyInfo';
+import MyProduct from 'pages/MyProduct/MyProduct';
 import Network from 'pages/Network/Network';
 import NotFound from 'pages/NotFound';
 import WritePage from 'pages/Write/Write';
-import WriteProduct from 'pages/WriteProduct/WriteProduct';
 import { createBrowserRouter } from 'react-router-dom';
 
 import FormLayout from '@components/layout/FormLayout';
@@ -128,7 +128,7 @@ export const router = createBrowserRouter([
 					},
 					{
 						path: 'product-docs',
-						element: <WriteProduct />,
+						element: <MyProduct />,
 					},
 				],
 				loader: signLoader,

@@ -8,7 +8,7 @@ import BasicCareerList from '../../../../components/resume-view/BasicCareerList'
 import useCareerList from './ResumeList.hook';
 
 export default function ResumeList() {
-	const { resumes, coverLetters, to, selectedId } = useCareerList();
+	const { resumes, coverLetters, selectedId } = useCareerList();
 	return (
 		<Container backgroundColor='lightGrey' center padding>
 			<h2 className='a11y-hidden'>이력서</h2>

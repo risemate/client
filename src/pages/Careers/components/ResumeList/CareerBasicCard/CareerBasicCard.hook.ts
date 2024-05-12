@@ -31,8 +31,8 @@ export default function useCareerBasicCard(
 		setIsContact(response.public);
 	};
 
-	const { isModal: isDeleteModal, openModal: openDeleteModal } =
-		useModal('delete-resume');
+	const deleteQueryKey = 'delete-resume';
+	const { isModal: isDeleteModal, openModal: openDeleteModal } = useModal(deleteQueryKey);
 	const deleteResumeMutation = resumeDeleteMutation();
 	const deleteResume = () => {
 		selectedId && deleteResumeMutation.mutate(selectedId);
@@ -54,6 +54,7 @@ export default function useCareerBasicCard(
 				openDeleteModal();
 				handleButtonClick();
 			},
+			queryKey: deleteQueryKey,
 		},
 		deleteResume,
 	};

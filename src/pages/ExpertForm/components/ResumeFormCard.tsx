@@ -1,6 +1,8 @@
 import { formatDate } from '@utils/helpers';
 import React from 'react';
 import { CardComponentProps } from 'types/cardComponent';
+import { Career } from 'types/career/careerDocument';
+import { Resume } from 'types/career/resume';
 
 import Button from '@common/Button';
 import ResumeCardWrapper from '@components/resume-view/ResumeCardWrapper/ResumeCardWrapper';
@@ -9,7 +11,7 @@ export default function ResumeFormCard({
 	career,
 	selectedId = null,
 	updateSelectedId,
-}: CardComponentProps) {
+}: CardComponentProps<Career<Resume>>) {
 	const handleButtonClick = () => {
 		if (updateSelectedId) {
 			updateSelectedId(career._id);
