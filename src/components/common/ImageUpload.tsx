@@ -9,14 +9,16 @@ interface FileInfoType {
 }
 
 interface ImageUploadProps {
+	setUrl: React.Dispatch<React.SetStateAction<string[]>> | ((url: string[]) => void);
+	setPreview?: React.Dispatch<React.SetStateAction<string[]>> | ((url: string[]) => void);
 	multiple?: boolean;
-	setFiles?: React.Dispatch<React.SetStateAction<string[]>> | ((url: string[]) => void);
-	setFile?: React.Dispatch<React.SetStateAction<string>> | ((url: string) => void);
+	accept?: string;
 }
 export const ImageFileUpload = ({
 	multiple = false,
-	setFiles,
-	setFile,
+	setUrl,
+	setPreview,
+	accept = '.png, .jpeg, .jpg',
 }: ImageUploadProps) => {
 	AWS.config.update({
 		region: process.env.REACT_APP_S3REGION,
@@ -48,18 +50,46 @@ export const ImageFileUpload = ({
 	const onChangeFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (!e.target.files) return;
 
-		const fileList = Array.from(e.target.files);
+		const fileArr = Array.from(e.target.files);
 		const updatedFiles: string[] = [];
+		const getPrevew = async () => {
+			const fileUrl: string[] = [];
+			for (let i = 0; i < fileArr.length; i++) {
+				const fileRead = new FileReader();
 
-		for (const file of fileList) {
+				const promise = new Promise<string>((resolve, reject) => {
+					fileRead.onload = () => {
+						if (fileRead.result) {
+							resolve(fileRead.result as string);
+						} else {
+							reject(new Error('File reading failed'));
+						}
+					};
+				});
+
+				fileRead.readAsDataURL(fileArr[i]);
+				try {
+					const url = await promise;
+					fileUrl.push(url);
+				} catch (error) {
+					console.error('Error reading file:', error);
+				}
+			}
+
+			setPreview && setPreview(fileUrl);
+		};
+
+		setPreview && (await getPrevew());
+		for (const file of fileArr) {
 			// 파일 업로드
 			const location = await uploadFile(file);
 			location && updatedFiles.push(location);
 		}
 
-		multiple && setFiles && setFiles(updatedFiles);
-		!multiple && setFile && setFile(updatedFiles[0]);
+		setUrl && setUrl(updatedFiles);
 	};
 
-	return <input type='file' onChange={onChangeFile} multiple={multiple} />;
+	return (
+		<input type='file' onChange={onChangeFile} multiple={multiple} accept={accept} />
+	);
 };
