@@ -50,7 +50,7 @@ export default function MyInfoDetail() {
 								{ name: '완료', icon: <IconCheck />, state: displayedAuth.complete },
 							]}
 							buttonEvent={{
-								name: '첨삭 페이지 이동',
+								name: '첨삭 관리하기',
 								onClick: navigateToDocs,
 							}}
 						/>

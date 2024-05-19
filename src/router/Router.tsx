@@ -14,6 +14,7 @@ import MyInfoPage from 'pages/MyInfo/MyInfo';
 import MyProduct from 'pages/MyProduct/MyProduct';
 import Network from 'pages/Network/Network';
 import NotFound from 'pages/NotFound';
+import ReviseManagement from 'pages/ReviseManagement/ReviseManagement';
 import WritePage from 'pages/Write/Write';
 import { createBrowserRouter } from 'react-router-dom';
 
@@ -97,6 +98,10 @@ export const router = createBrowserRouter([
 								element: <ReviseResumeView />,
 							},
 						],
+					},
+					{
+						path: 'management',
+						element: <ReviseManagement />,
 					},
 					{
 						path: 'ai',
