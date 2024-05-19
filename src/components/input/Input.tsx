@@ -1,6 +1,6 @@
 import { isEmpty } from '@utils/helpers';
 import React, { ForwardedRef, InputHTMLAttributes, forwardRef } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	label?: string;
@@ -13,7 +13,7 @@ const Input = forwardRef(function Input(
 	ref: ForwardedRef<HTMLInputElement>,
 ) {
 	return (
-		<InputLabel $warning={!isEmpty(warning)}>
+		<InputLabel $warning={!isEmpty(warning)} $readOnly={InputProps?.readOnly}>
 			{label && <span>{label}</span>}
 			<input ref={ref} {...InputProps} />
 			{warning && <span className='warning'>{warning}</span>}
@@ -24,7 +24,16 @@ const Input = forwardRef(function Input(
 
 interface StyledInputProps {
 	$warning?: boolean;
+	$readOnly?: boolean;
 }
+
+const readOnlyStyle = css`
+	input {
+		border-radius: 0px;
+		border: none;
+		border-bottom: 0.5px solid ${({ theme }) => theme.colors.grey};
+	}
+`;
 
 const InputLabel = styled.label<StyledInputProps>`
 	font-size: ${({ theme }) => theme.fontSizes.small};
@@ -44,6 +53,7 @@ const InputLabel = styled.label<StyledInputProps>`
 	span:last-child {
 		word-break: break-all;
 	}
+	${({ $readOnly }) => $readOnly && readOnlyStyle}
 `;
 
 export default Input;

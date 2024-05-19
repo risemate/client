@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { mockReview } from 'types/coach/productData';
 
-import StarRating from '../../../../components/experts/StarRating';
+import StarRating from '@components/experts/StarRating';
+
 import BaseSection from '../BaseSection';
 import ReviewForm from './ReviewForm';
 import ReviewItem from './ReviewItem';

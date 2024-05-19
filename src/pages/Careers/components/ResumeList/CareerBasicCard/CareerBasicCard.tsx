@@ -7,9 +7,9 @@ import { Resume } from 'types/career/resume';
 
 import Button from '@common/Button';
 import Toggle from '@components/input/Toggle';
+import DeleteModal from '@components/modal/DeleteModal';
 import CardWrapper from '@components/resume-view/ResumeCardWrapper/ResumeCardWrapper';
 
-import DeleteModal from '../../../../../components/modal/DeleteModal';
 import useCareerBasicCard from './CareerBasicCard.hook';
 
 export default function CareerBasicCard({

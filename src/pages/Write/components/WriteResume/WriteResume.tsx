@@ -6,15 +6,15 @@ import styled from 'styled-components';
 
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
-
 // import UnsavedChangesModal from '@components/modal/UnsavedChangesModal';
-import Activity from '../../../../components/resume-edit/edit-base/Activity';
-import Certificates from '../../../../components/resume-edit/edit-base/Certificate';
-import Education from '../../../../components/resume-edit/edit-base/Education';
-import Profile from '../../../../components/resume-edit/edit-base/Profile';
-import Project from '../../../../components/resume-edit/edit-base/Project';
-import TechStack from '../../../../components/resume-edit/edit-base/TechStack';
-import WorkExperience from '../../../../components/resume-edit/edit-base/WorkExperience';
+import Activity from '@components/resume-edit/edit-base/Activity';
+import Certificates from '@components/resume-edit/edit-base/Certificate';
+import Education from '@components/resume-edit/edit-base/Education';
+import Profile from '@components/resume-edit/edit-base/Profile';
+import Project from '@components/resume-edit/edit-base/Project';
+import TechStack from '@components/resume-edit/edit-base/TechStack';
+import WorkExperience from '@components/resume-edit/edit-base/WorkExperience';
+
 import SaveResumeModal from '../modal/SaveResumeModal';
 import WriteNavigation from '../WriteNavigation/WriteNavigation';
 import useResumeWrite from './WirteResume.hook';

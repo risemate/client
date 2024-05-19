@@ -1,7 +1,8 @@
 import { IconCheck, IconCoin, IconComment, IconProceeding, IconWaiting } from '@icons';
 import styled from 'styled-components';
 
-import PageItem from '../../../../components/user-page/PageItem';
+import PageItem from '@components/user-page/PageItem';
+
 import EditUserInfo from '../EditUserInfo/EditUserInfo';
 import Payment from '../Payment';
 import Review from '../Review';
@@ -50,7 +51,7 @@ export default function MyInfoDetail() {
 								{ name: '완료', icon: <IconCheck />, state: displayedAuth.complete },
 							]}
 							buttonEvent={{
-								name: '첨삭 페이지 이동',
+								name: '첨삭 관리하기',
 								onClick: navigateToDocs,
 							}}
 						/>

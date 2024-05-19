@@ -2,7 +2,8 @@ import { useModal } from '@hooks/atoms/useModalAtom';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
-import Button from '../../common/Button';
+import Button from '@common/Button';
+
 import ModalBase from './ModalBase';
 
 interface ModalProps {

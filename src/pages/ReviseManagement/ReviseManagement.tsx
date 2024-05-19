@@ -1,5 +1,5 @@
 import Management from '@components/management/Management';
 
-export default function CoachManagement() {
+export default function ReviseManagement() {
 	return <Management />;
 }

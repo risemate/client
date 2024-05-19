@@ -4,9 +4,8 @@ import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 
 import Button from '@common/Button';
+import StarRating from '@components/experts/StarRating';
 import TextArea from '@components/input/TextArea';
-
-import StarRating from '../../../../components/experts/StarRating';
 
 interface ReviewFormProps {
 	isMyProduct: boolean;

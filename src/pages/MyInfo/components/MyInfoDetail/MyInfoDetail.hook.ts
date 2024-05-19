@@ -25,6 +25,6 @@ export default function useMyInfoDetail() {
 			payment: queryParam === 'payment',
 			review: queryParam === 'review',
 		},
-		navigateToDocs: () => navigate('/my-info/docs'),
+		navigateToDocs: () => navigate('/my-info/management'),
 	};
 }

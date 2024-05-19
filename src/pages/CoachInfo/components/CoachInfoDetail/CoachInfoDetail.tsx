@@ -9,8 +9,8 @@ import {
 import styled from 'styled-components';
 
 import Empty from '@common/Empty';
+import PageItem from '@components/user-page/PageItem';
 
-import PageItem from '../../../../components/user-page/PageItem';
 import Withdraw from '../Withdraw';
 import useCoachInfoDetail from './CoachInfoDetail.hook';
 
