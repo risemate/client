@@ -59,6 +59,6 @@ export type PagingQueryResponse<T> = {
 	pagingCounter: number;
 };
 
-export interface NetworkPagingQuery extends PagingQueryProps {
+export type NetworkPagingQuery = PagingQueryProps & {
 	careerType?: CareerType;
-}
+};
