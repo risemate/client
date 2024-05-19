@@ -5,7 +5,7 @@ import { useFormContext } from 'react-hook-form';
 import styled, { css } from 'styled-components';
 
 import DefaultImage, { Size } from '@common/DefaultImage';
-import { ImageFileUpload } from '@common/ImageUpload';
+import { FileInfoType, ImageFileUpload } from '@common/ImageUpload';
 
 interface FileInputProps {
 	label?: string;
@@ -16,11 +16,11 @@ interface FileInputProps {
 export default function FileInput({ label, inputName, size }: FileInputProps) {
 	const { watch, setValue } = useFormContext();
 
-	const [preview, setPreview] = useState<string[]>();
-	const [url, setUrl] = useState<string[]>();
+	const [preview, setPreview] = useState<FileInfoType[]>([]);
+	const [url, setUrl] = useState<FileInfoType[]>([]);
 
 	useEffect(() => {
-		url && url[0] && setValue(inputName, url[0]);
+		url && url[0] && setValue(inputName, url[0].url);
 	}, [url]);
 
 	const resetImage = () => {
@@ -34,7 +34,7 @@ export default function FileInput({ label, inputName, size }: FileInputProps) {
 				<DefaultImage
 					variant='grey'
 					size={size}
-					image={(preview && preview[0]) || watch(inputName)}
+					image={(preview[0] && preview[0].url) || watch(inputName)}
 				/>
 				{/* {<DefaultImage variant='grey' size={size} image={watch(inputName)} />} */}
 				{/* <input type='file' onChange={event => changeImage(event)} /> */}

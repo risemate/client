@@ -1,24 +1,28 @@
 import AWS from 'aws-sdk';
 import React from 'react';
 
-interface FileInfoType {
+export interface FileInfoType {
 	url: string;
-	image: boolean;
-	video: boolean;
-	file: File;
+	name: string; // 파일 이름을 저장하는 속성 추가
 }
 
-interface ImageUploadProps {
-	setUrl: React.Dispatch<React.SetStateAction<string[]>> | ((url: string[]) => void);
-	setPreview?: React.Dispatch<React.SetStateAction<string[]>> | ((url: string[]) => void);
+interface ImageUploadProps extends React.HTMLProps<HTMLInputElement> {
+	setUrl:
+		| React.Dispatch<React.SetStateAction<FileInfoType[]>>
+		| ((files: FileInfoType[]) => void);
+	setPreview?:
+		| React.Dispatch<React.SetStateAction<FileInfoType[]>>
+		| ((files: FileInfoType[]) => void);
 	multiple?: boolean;
 	accept?: string;
 }
+
 export const ImageFileUpload = ({
 	multiple = false,
 	setUrl,
 	setPreview,
 	accept = '.png, .jpeg, .jpg',
+	...props
 }: ImageUploadProps) => {
 	AWS.config.update({
 		region: process.env.REACT_APP_S3REGION,
@@ -26,8 +30,7 @@ export const ImageFileUpload = ({
 		secretAccessKey: process.env.REACT_APP_S3SECRET_ACCESS_KEY,
 	});
 	const s3 = new AWS.S3();
-
-	const uploadFile = async (file: File) => {
+	const uploadFileToS3 = async (file: File): Promise<FileInfoType | null> => {
 		const params = {
 			Bucket: 'risemate-bucket',
 			Key: `${Date.now()}.${file.name}`,
@@ -35,28 +38,24 @@ export const ImageFileUpload = ({
 			ACL: 'public-read',
 			ContentType: 'image/jpeg',
 		};
+
 		try {
 			const result = await s3.upload(params).promise();
-			return result.Location;
+			return { url: result.Location, name: file.name }; // 파일 이름과 URL을 반환하는 객체로 수정
 		} catch (error) {
-			console.error('Error uploading file:', error);
+			console.error('Error uploading file to S3:', error);
 			return null;
 		}
 	};
 
-	// const [files, setFiles] = useState<FileInfoType[]>([]);
-
-	// 파일 선택 이벤트 핸들러
 	const onChangeFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
-		if (!e.target.files) return;
-
+		if (e.target.files?.length === 0 || !e.target.files) return;
 		const fileArr = Array.from(e.target.files);
-		const updatedFiles: string[] = [];
-		const getPrevew = async () => {
-			const fileUrl: string[] = [];
-			for (let i = 0; i < fileArr.length; i++) {
+		const updatedFiles: FileInfoType[] = [];
+		const getPreview = async () => {
+			const fileInfos: FileInfoType[] = [];
+			for (const file of fileArr) {
 				const fileRead = new FileReader();
-
 				const promise = new Promise<string>((resolve, reject) => {
 					fileRead.onload = () => {
 						if (fileRead.result) {
@@ -67,29 +66,35 @@ export const ImageFileUpload = ({
 					};
 				});
 
-				fileRead.readAsDataURL(fileArr[i]);
+				fileRead.readAsDataURL(file);
 				try {
 					const url = await promise;
-					fileUrl.push(url);
+					fileInfos.push({ url, name: file.name }); // 파일 이름과 URL을 배열에 추가
 				} catch (error) {
 					console.error('Error reading file:', error);
 				}
 			}
 
-			setPreview && setPreview(fileUrl);
+			setPreview && setPreview(fileInfos);
 		};
 
-		setPreview && (await getPrevew());
+		setPreview && (await getPreview());
 		for (const file of fileArr) {
-			// 파일 업로드
-			const location = await uploadFile(file);
-			location && updatedFiles.push(location);
+			const fileInfo = await uploadFileToS3(file);
+			fileInfo && updatedFiles.push(fileInfo);
 		}
 
 		setUrl && setUrl(updatedFiles);
 	};
 
 	return (
-		<input type='file' onChange={onChangeFile} multiple={multiple} accept={accept} />
+		<input
+			type='file'
+			id='file'
+			multiple={multiple}
+			accept={accept}
+			onChange={onChangeFile}
+			{...props}
+		/>
 	);
 };
