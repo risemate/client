@@ -1,5 +1,5 @@
-import React from 'react';
+import Management from '@components/management/Management';
 
 export default function ReviseManagement() {
-	return <div>ReviseManagement</div>;
+	return <Management />;
 }
