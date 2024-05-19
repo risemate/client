@@ -9,6 +9,7 @@ import {
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Product } from 'types/coach/product';
 import {
+	NetworkPagingQuery,
 	PagingQueryProps,
 	PagingQueryResponse,
 	UseMutationOptionsType,
@@ -32,11 +33,11 @@ export const myProductQuery = (
 };
 
 export const productsQuery = (
-	params?: PagingQueryProps,
+	params?: NetworkPagingQuery,
 	options?: UseQueryOptionsType<PagingQueryResponse<Product>>,
 ): UseQueryResultType<PagingQueryResponse<Product>> => {
 	return useQuery({
-		queryKey: productKeys.base,
+		queryKey: productKeys.pagingParam(params),
 		queryFn: () => fetchProducts(params),
 		...options,
 	});
