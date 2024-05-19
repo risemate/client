@@ -1,7 +1,8 @@
 import { IconCheck, IconCoin, IconComment, IconProceeding, IconWaiting } from '@icons';
 import styled from 'styled-components';
 
-import PageItem from '../../../../components/user-page/PageItem';
+import PageItem from '@components/user-page/PageItem';
+
 import EditUserInfo from '../EditUserInfo/EditUserInfo';
 import Payment from '../Payment';
 import Review from '../Review';

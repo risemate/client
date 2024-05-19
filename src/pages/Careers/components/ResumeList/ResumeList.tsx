@@ -3,8 +3,8 @@ import { css } from 'styled-components';
 
 import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 import Container from '@components/layout/Container';
+import BasicCareerList from '@components/resume-view/BasicCareerList';
 
-import BasicCareerList from '../../../../components/resume-view/BasicCareerList';
 import useCareerList from './ResumeList.hook';
 
 export default function ResumeList() {
