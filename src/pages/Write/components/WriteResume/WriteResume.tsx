@@ -77,4 +77,7 @@ const StyledForm = styled.form`
 	display: grid;
 	grid-template-columns: auto 250px;
 	gap: 20px;
+	input {
+		width: 100%;
+	}
 `;
