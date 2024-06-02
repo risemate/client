@@ -4,14 +4,14 @@ import { useFieldArray, useFormContext } from 'react-hook-form';
 import { FileInfoType } from '@common/ImageUpload';
 
 export default function useImages() {
-	const { control, setValue, watch } = useFormContext();
+	const { control, watch } = useFormContext();
 
 	const { swap, append, remove } = useFieldArray({
 		control,
-		name: 'product.images',
+		name: 'images',
 	});
 
-	const images = watch('product.images') as FileInfoType[];
+	const images = watch('images') as FileInfoType[];
 
 	const setImages = async (files: FileInfoType[]) => {
 		append(files);
