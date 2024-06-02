@@ -25,7 +25,7 @@ export const isKoreanSingleCharacter = (query: string) => {
 	return pattern.test(lastCharacter);
 };
 
-export const removeNullValues = <T>(obj: T, removeId = false): Partial<T> => {
+export const removeNullValues = <T>(obj: T, removeId = false): T | Partial<T> => {
 	const newObj: Partial<T> = {};
 	for (const key in obj) {
 		if (obj[key] !== null && !(removeId && key === '_id')) {

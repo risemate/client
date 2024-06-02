@@ -2,7 +2,6 @@ import useTab from '@hooks/common/useTab';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { convertToProfile } from 'types/coach/productData';
-import { TabItem } from 'types/common/tab';
 
 import Tab from '@common/Tab';
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
@@ -18,14 +17,9 @@ import useExpertDetail from './ExpertDetail.hook';
 
 export default function ExpertDetail() {
 	const { id } = useParams();
-	const tabItems: TabItem[] = [
-		{ label: '서비스 설명', value: 'SERVICE' },
-		{ label: '전문가 정보', value: 'INFO' },
-		{ label: '후기', value: 'REVIEW' },
-		{ label: '문의', value: 'INQUIRY' },
-	];
+
+	const { product, isLoading, tabItems, compareTab } = useExpertDetail(id || '');
 	const { currentTab, changeTab, isCurrentTab } = useTab(tabItems, true);
-	const { product, isLoading } = useExpertDetail(id || '');
 	const { productTitle, subTitle, coverImage } = product;
 
 	return (
@@ -44,25 +38,25 @@ export default function ExpertDetail() {
 								underline
 							/>
 							<StyledSection>
-								{currentTab === tabItems[0] && (
+								{compareTab(currentTab, tabItems[0]) && (
 									<Service
 										description={product.description}
 										packages={product.packages}
 									/>
 								)}
-								{currentTab === tabItems[1] && (
+								{compareTab(currentTab, tabItems[1]) && (
 									<ExpertInfo
 										workExperiences={product.workExperiences}
 										projects={product.projects}
 									/>
 								)}
-								{currentTab === tabItems[2] && (
+								{compareTab(currentTab, tabItems[2]) && (
 									<Review
 										avgReviewScore={product.avgReviewScore}
 										reviewCount={product.reviewCount}
 									/>
 								)}
-								{currentTab === tabItems[3] && <Inquiry />}
+								{compareTab(currentTab, tabItems[3]) && <Inquiry />}
 							</StyledSection>
 						</div>
 						<ProductInfo

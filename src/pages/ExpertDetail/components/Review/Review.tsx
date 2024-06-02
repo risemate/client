@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { mockReview } from 'types/coach/productData';
 
@@ -29,7 +29,7 @@ export default function Review({ avgReviewScore = 0, reviewCount = 0 }: ReviewPr
 			<h3>서비스 후기</h3>
 			<StarRatingWrapper>
 				<StarRating rating={avgReviewScore} size='large' />
-				<span>{avgReviewScore}</span>
+				<span>{avgReviewScore.toFixed(2)}</span>
 				<span>| {reviewCount}건</span>
 			</StarRatingWrapper>
 			<ReviewWrapper>
