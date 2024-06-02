@@ -1,6 +1,7 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
 import { resumeDeleteMutation, resumeUpdateMutation } from '@queries/career';
 import { ChangeEvent, useState } from 'react';
+import { toast } from 'react-toastify';
 import { Career } from 'types/career/careerDocument';
 import { Resume } from 'types/career/resume';
 
@@ -35,7 +36,10 @@ export default function useCareerBasicCard(
 	const { isModal: isDeleteModal, openModal: openDeleteModal } = useModal(deleteQueryKey);
 	const deleteResumeMutation = resumeDeleteMutation();
 	const deleteResume = () => {
-		selectedId && deleteResumeMutation.mutate(selectedId);
+		selectedId &&
+			deleteResumeMutation
+				.mutateAsync(selectedId)
+				.then(() => toast('해당 이력서/자기소개서가 삭제되었습니다.'));
 	};
 	const handleButtonClick = () => {
 		if (updateSelectedId) {

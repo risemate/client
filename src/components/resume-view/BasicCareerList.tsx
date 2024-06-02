@@ -59,7 +59,7 @@ export default function BasicCareerList({
 			</div>
 			<SingleAsyncWrapper>
 				{isEmpty(resumes) ? (
-					<Empty>아직 작성하신 {title}가 없습니다</Empty>
+					<Empty>아직 작성하신 {title}가(이) 없습니다</Empty>
 				) : (
 					<Swiper {...setting}>
 						{resumes.map(resume => (

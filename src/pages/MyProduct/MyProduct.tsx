@@ -8,7 +8,7 @@ import ProductCard from './components/ProductCard';
 import useMyProduct from './MyProduct.hook';
 
 export default function MyProduct() {
-	const { myProducts } = useMyProduct();
+	const { myProducts, selectedId } = useMyProduct();
 	return (
 		<Container backgroundColor='lightGrey' center padding>
 			<h2 className='a11y-hidden'>나의 상품 목록</h2>
@@ -18,8 +18,8 @@ export default function MyProduct() {
 					resumes={myProducts}
 					createTo='pr'
 					CardComponent={ProductCard}
-					// selectedId={selectedId.value}
-					// updateSelectedId={selectedId.update}
+					selectedId={selectedId.value}
+					updateSelectedId={selectedId.update}
 					addNew
 				/>
 			</WhiteBoxWrapper>

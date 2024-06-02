@@ -1,12 +1,16 @@
 import { myProductQuery } from '@queries/product';
-import { Product } from 'types/coach/product';
-import { mockProduct } from 'types/coach/productData';
+import { useState } from 'react';
 
 export default function useMyProduct() {
 	const myProducts = myProductQuery();
+	const [selectedId, setSelectedId] = useState<string | null>(null);
+	const updateSelectedId = (id: string | null) => setSelectedId(id);
 
 	return {
-		// myProducts: myProducts.data || [],
-		myProducts: [mockProduct],
+		myProducts: myProducts.data || [],
+		selectedId: {
+			value: selectedId,
+			update: updateSelectedId,
+		},
 	};
 }
