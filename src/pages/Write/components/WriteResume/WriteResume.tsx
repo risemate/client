@@ -28,6 +28,7 @@ export default function WriteResume() {
 		getValue,
 		invalidateResume,
 		isSubmitting,
+		modalQueryKey,
 	} = useResumeWrite();
 	// const { blocker } = usePreventLeave();
 	useEffect(() => {
@@ -64,7 +65,7 @@ export default function WriteResume() {
 						<WriteNavigation />
 					</StyledForm>
 				</SingleAsyncWrapper>
-				<SaveModal buttonFormId={formId} queryKey='save-resume' title='이력서' />
+				<SaveModal title='이력서' queryKey={modalQueryKey} buttonFormId={formId} />
 				{/* <UnsavedChangesModal blocker={blocker} /> */}
 			</FormProvider>
 		</Container>

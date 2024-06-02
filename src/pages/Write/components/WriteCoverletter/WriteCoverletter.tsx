@@ -18,6 +18,7 @@ export default function WriteCoverletter() {
 		coverLetterEditMethods,
 		submitCoverletter,
 		getValue,
+		modalQueryKey,
 	} = useCoverletterWrite();
 	return (
 		<Container backgroundColor='lightGrey' padding>
@@ -32,7 +33,7 @@ export default function WriteCoverletter() {
 						<ResumeNav resumeNavItems={coverLetterEditNavItems} />
 					</StyledForm>
 				</SingleAsyncWrapper>
-				<SaveModal title='자기소개서' queryKey='save-coverletter' buttonFormId={formId} />
+				<SaveModal title='자기소개서' queryKey={modalQueryKey} buttonFormId={formId} />
 				{/* <UnsavedChangesModal blocker={blocker} /> */}
 			</FormProvider>
 		</Container>
