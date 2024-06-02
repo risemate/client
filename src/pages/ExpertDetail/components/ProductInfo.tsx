@@ -19,7 +19,7 @@ export default function ProductInfo({
 	reviewCount = 0,
 	avgReviewScore = 0,
 }: ProductInfoProps) {
-	const filteredPackages = removeNullValues<PackageType>(packages);
+	const filteredPackages = removeNullValues<PackageType>(packages, true);
 	const tabItems = Object.keys(filteredPackages).map(item => {
 		return {
 			label: item,
@@ -73,7 +73,7 @@ export default function ProductInfo({
 						{reviewCount}건<span>거래 수</span>
 					</li>
 					<li>
-						{avgReviewScore * 20}%<span>만족도</span>
+						{(avgReviewScore * 20).toFixed(2)}%<span>만족도</span>
 					</li>
 					<li>
 						{reviewCount}건<span>리뷰 수</span>
