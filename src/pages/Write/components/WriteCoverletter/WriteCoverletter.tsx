@@ -5,10 +5,10 @@ import styled from 'styled-components';
 import ResumeNav from '@common/ResumeNav';
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
+import SaveModal from '@components/modal/SaveModal';
 import CoverLetterContents from '@components/resume-edit/edit-base/CoverLetterContents';
 import CoverLetterOptionSection from '@components/resume-edit/edit-base/CoverLetterOptionSection';
 
-import SaveCoverletterModal from '../modal/SaveCoverletterModal';
 import useCoverletterWrite from './WirteCoverletter.hook';
 
 export default function WriteCoverletter() {
@@ -32,7 +32,7 @@ export default function WriteCoverletter() {
 						<ResumeNav resumeNavItems={coverLetterEditNavItems} />
 					</StyledForm>
 				</SingleAsyncWrapper>
-				<SaveCoverletterModal />
+				<SaveModal title='자기소개서' queryKey='save-coverletter' buttonFormId={formId} />
 				{/* <UnsavedChangesModal blocker={blocker} /> */}
 			</FormProvider>
 		</Container>
