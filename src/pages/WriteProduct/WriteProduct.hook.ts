@@ -1,20 +1,36 @@
-import { productCreateMutation, productUpdateMutation } from '@queries/product';
+import { useSearchParam } from '@hooks/common/useSearchParam';
+import {
+	productCreateMutation,
+	productDetailQuery,
+	productUpdateMutation,
+} from '@queries/product';
+import { isEmpty } from '@utils/helpers';
 import { KeyboardEvent } from 'react';
 import { useForm } from 'react-hook-form';
-import { Product } from 'types/coach/product';
+import { ProductRequest } from 'types/coach/product';
 import { defaultProduct } from 'types/coach/productData';
 
 export default function useWriteProduct() {
-	const createProductMutation = productCreateMutation();
-	const createUpdateMutation = productUpdateMutation();
-	const productInfo = defaultProduct;
-	const productEditMethods = useForm<Partial<Product>>({
+	const { queryParam: productId } = useSearchParam<string>('id');
+	const isNewProduct = isEmpty(productId);
+
+	const productDetail = productDetailQuery(productId);
+	const product = isNewProduct ? defaultProduct : productDetail.data;
+	const productEditMethods = useForm<ProductRequest>({
 		mode: 'onSubmit',
-		values: productInfo,
+		values: product,
 	});
+
+	const createProductMutation = productCreateMutation();
+	const updateProductMutation = productUpdateMutation();
+
 	const { handleSubmit } = productEditMethods;
 	const submitProduct = handleSubmit(data => {
-		// createProductMutation.mutate(data);
+		if (isNewProduct) {
+			createProductMutation.mutate(data);
+		} else {
+			updateProductMutation.mutate(data);
+		}
 	});
 	const preventEnter = (event: KeyboardEvent) => {
 		if (event.key === 'Enter') event.preventDefault();

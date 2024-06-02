@@ -3,6 +3,7 @@ import {
 	CS as InquiryType,
 	PackageDetail,
 	PackageProviderOption,
+	ProductRequest,
 	Product as ProductType,
 	Review as ReviewType,
 } from 'types/coach/product';
@@ -46,7 +47,8 @@ export type Profile = {
 	description: string;
 };
 
-export const defaultProduct: Partial<ProductType> = {
+export const defaultProduct: ProductRequest = {
+	_id: '',
 	productTitle: '',
 	subTitle: '',
 	coverImage: '',

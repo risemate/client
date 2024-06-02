@@ -1,7 +1,13 @@
 import { removeEmptyObjectField } from '@utils/hookform';
 import axios from 'axios';
-import { CareerType } from 'types/career/careerDocument';
-import { CS, Product, RequestAnswer, RequestReview, Review } from 'types/coach/product';
+import {
+	CS,
+	Product,
+	ProductRequest,
+	RequestAnswer,
+	RequestReview,
+	Review,
+} from 'types/coach/product';
 import { PagingQueryProps, PagingQueryResponse } from 'types/query/query';
 
 const PRODUCT_PATH = {
@@ -19,14 +25,16 @@ const PRODUCT_PATH = {
 };
 
 // 상품 관련
-export const fetchCreateProduct = async (body: Partial<Product>): Promise<Product> => {
+export const fetchCreateProduct = async (
+	body: Partial<ProductRequest>,
+): Promise<Product> => {
 	const response = await axios.post<Product>(PRODUCT_PATH.DEFAULT, body);
 	return response.data;
 };
 
 export const fetchUpdateProduct = async (
 	id: string,
-	body: Partial<Product>,
+	body: Partial<ProductRequest>,
 ): Promise<Product> => {
 	const response = await axios.patch<Product>(PRODUCT_PATH.DETAIL(id), body);
 	return response.data;

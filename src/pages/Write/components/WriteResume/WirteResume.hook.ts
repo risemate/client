@@ -17,9 +17,7 @@ export default function useResumeWrite() {
 	const navigate = useNavigate();
 	const isNewResume = isEmpty(resumeId);
 
-	const resumeDetail = resumeDetailQuery(resumeId || '', {
-		enabled: !isEmpty(resumeId),
-	});
+	const resumeDetail = resumeDetailQuery(resumeId);
 	const resume = isNewResume ? defaultResume : resumeDetail.data;
 	const resumeEditMethods = useForm<Career<ResumeType>>({
 		mode: 'onSubmit',
@@ -44,8 +42,9 @@ export default function useResumeWrite() {
 				.mutateAsync(data.doc)
 				.then(({ _id }) => navigate(`/my-info/docs/${_id}`));
 		} else {
-			updateResumeMutation.mutate({ id: resumeId, body: data.doc });
-			navigate(`/my-info/docs/${resumeId}`);
+			updateResumeMutation
+				.mutateAsync({ id: resumeId, body: data.doc })
+				.then(() => navigate(`/my-info/docs/${resumeId}`));
 		}
 	});
 
