@@ -8,18 +8,18 @@ import ProductCard from './components/ProductCard';
 import useMyProduct from './MyProduct.hook';
 
 export default function MyProduct() {
-	const { myProducts } = useMyProduct();
+	const { myProducts, selectedId } = useMyProduct();
 	return (
 		<Container backgroundColor='lightGrey' center padding>
 			<h2 className='a11y-hidden'>나의 상품 목록</h2>
 			<WhiteBoxWrapper type='div' customCss={productWrapperStyle}>
 				<BasicCareerList
-					title='상품 목록'
+					title='상품'
 					resumes={myProducts}
 					createTo='pr'
 					CardComponent={ProductCard}
-					// selectedId={selectedId.value}
-					// updateSelectedId={selectedId.update}
+					selectedId={selectedId.value}
+					updateSelectedId={selectedId.update}
 					addNew
 				/>
 			</WhiteBoxWrapper>
@@ -32,12 +32,6 @@ const productWrapperStyle = css`
 	padding: 50px;
 	display: flex;
 	flex-direction: column;
-	h3 {
-		color: ${({ theme }) => theme.colors.navy};
-		font-weight: bold;
-		font-size: ${({ theme }) => theme.fontSizes.medium};
-		margin-bottom: 30px;
-	}
 	ul {
 		display: flex;
 		gap: 23px;

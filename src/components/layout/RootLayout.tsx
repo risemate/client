@@ -2,6 +2,7 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
+import Toast from '@common/Toast';
 // import Loader from '@common/Loader';
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Footer from '@components/layout/components/Footer';
@@ -19,6 +20,7 @@ export default function RootLayout() {
 			<SingleAsyncWrapper>
 				<Outlet />
 			</SingleAsyncWrapper>
+			<Toast />
 			{/* </Suspense> */}
 
 			<Footer />

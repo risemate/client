@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
+import SaveModal from '@components/modal/SaveModal';
 // import UnsavedChangesModal from '@components/modal/UnsavedChangesModal';
 import Activity from '@components/resume-edit/edit-base/Activity';
 import Certificates from '@components/resume-edit/edit-base/Certificate';
@@ -15,7 +16,6 @@ import Project from '@components/resume-edit/edit-base/Project';
 import TechStack from '@components/resume-edit/edit-base/TechStack';
 import WorkExperience from '@components/resume-edit/edit-base/WorkExperience';
 
-import SaveResumeModal from '../modal/SaveResumeModal';
 import WriteNavigation from '../WriteNavigation/WriteNavigation';
 import useResumeWrite from './WirteResume.hook';
 
@@ -28,6 +28,7 @@ export default function WriteResume() {
 		getValue,
 		invalidateResume,
 		isSubmitting,
+		modalQueryKey,
 	} = useResumeWrite();
 	// const { blocker } = usePreventLeave();
 	useEffect(() => {
@@ -64,7 +65,7 @@ export default function WriteResume() {
 						<WriteNavigation />
 					</StyledForm>
 				</SingleAsyncWrapper>
-				<SaveResumeModal />
+				<SaveModal title='이력서' queryKey={modalQueryKey} buttonFormId={formId} />
 				{/* <UnsavedChangesModal blocker={blocker} /> */}
 			</FormProvider>
 		</Container>

@@ -1,7 +1,6 @@
 import useTab from '@hooks/common/useTab';
 import { IconCheck, IconClock } from '@icons';
-import { numberWithCommas, removeNullValues } from '@utils/helpers';
-import React from 'react';
+import { numberWithCommas } from '@utils/helpers';
 import styled, { css } from 'styled-components';
 import { Package as PackageType } from 'types/coach/product';
 
@@ -9,7 +8,7 @@ import Button from '@common/Button';
 import Tab from '@common/Tab';
 
 interface ProductInfoProps {
-	packages: PackageType | undefined;
+	packages: Partial<PackageType> | undefined;
 	reviewCount: number | undefined;
 	avgReviewScore: number | undefined;
 }
@@ -19,8 +18,7 @@ export default function ProductInfo({
 	reviewCount = 0,
 	avgReviewScore = 0,
 }: ProductInfoProps) {
-	const filteredPackages = removeNullValues<PackageType>(packages);
-	const tabItems = Object.keys(filteredPackages).map(item => {
+	const tabItems = Object.keys(packages).map(item => {
 		return {
 			label: item,
 			value: item,
@@ -38,7 +36,7 @@ export default function ProductInfo({
 					center
 				/>
 				<h3>포함 서비스 목록</h3>
-				{Object.entries(filteredPackages).map(
+				{Object.entries(packages).map(
 					([key, pack]) =>
 						currentTab.value === key && (
 							<div key={key}>
@@ -73,7 +71,7 @@ export default function ProductInfo({
 						{reviewCount}건<span>거래 수</span>
 					</li>
 					<li>
-						{avgReviewScore * 20}%<span>만족도</span>
+						{(avgReviewScore * 20).toFixed(2)}%<span>만족도</span>
 					</li>
 					<li>
 						{reviewCount}건<span>리뷰 수</span>

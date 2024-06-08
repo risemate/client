@@ -1,5 +1,7 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
+import { productDeleteMutation } from '@queries/product';
 import { ChangeEvent, useState } from 'react';
+import { toast } from 'react-toastify';
 import { Product } from 'types/coach/product';
 
 export default function useProductCard(
@@ -14,8 +16,12 @@ export default function useProductCard(
 
 	const deleteQueryKey = 'delete-product';
 	const { isModal: isDeleteModal, openModal: openDeleteModal } = useModal(deleteQueryKey);
+	const deleteProductMutation = productDeleteMutation();
 	const deleteProduct = () => {
-		selectedId && console.log('deleted!');
+		selectedId &&
+			deleteProductMutation
+				.mutateAsync(selectedId)
+				.then(() => toast('해당 상품이 삭제되었습니다.'));
 	};
 
 	const handleButtonClick = () => {

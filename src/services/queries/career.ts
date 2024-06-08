@@ -53,11 +53,12 @@ export const reviseResumeDetailQuery = (
 
 export const resumeDetailQuery = (
 	id: string,
-	options?: UseQueryOptionsType<Career<Resume>>,
+	options?: UseQueryOptionsType<Career<Resume>, 'enabled'>,
 ): UseQueryResultType<Career<Resume>> => {
 	return useQuery({
 		queryKey: resumeKeys.id(id),
 		queryFn: () => fetchResumeDetail(id),
+		enabled: !!id,
 		...options,
 	});
 };

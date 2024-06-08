@@ -8,6 +8,7 @@ import {
 import { isEmpty } from '@utils/helpers';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { Career } from 'types/career/careerDocument';
 import { Coverletter as CoverletterType } from 'types/career/coverletter';
 import { defaultCoverLetter } from 'types/career/coverletterData';
@@ -26,7 +27,8 @@ export default function useCoverletterWrite() {
 		values: coverLetter,
 	});
 
-	const { openModal: openSaveModal } = useModal('save-coverletter');
+	const modalQueryKey = 'save-coverletter';
+	const { openModal: openSaveModal } = useModal(modalQueryKey);
 
 	const updateCoverletterMutation = coverletterUpdateMutation();
 	const createCoverletterMutation = coverletterCreateMutation();
@@ -36,12 +38,17 @@ export default function useCoverletterWrite() {
 
 	const submitCoverletter = handleSubmit(data => {
 		if (isNewCoverletter) {
-			createCoverletterMutation
-				.mutateAsync(data.doc)
-				.then(({ _id }) => navigate(`/my-info/docs/${_id}`));
+			createCoverletterMutation.mutateAsync(data.doc).then(({ _id }) => {
+				toast('자기소개서가 저장되었습니다.');
+				navigate(`/my-info/docs/${_id}`);
+			});
 		} else {
-			updateCoverletterMutation.mutate({ id: coverletterId, body: data.doc });
-			navigate(`/my-info/docs/${coverletterId}`);
+			updateCoverletterMutation
+				.mutateAsync({ id: coverletterId, body: data.doc })
+				.then(() => {
+					toast('자기소개서가 저장되었습니다.');
+					navigate(`/my-info/docs/${coverletterId}`);
+				});
 		}
 	});
 
@@ -57,5 +64,6 @@ export default function useCoverletterWrite() {
 		submitCoverletter,
 		getValue,
 		formId: 'coverletter-edit-form',
+		modalQueryKey,
 	};
 }

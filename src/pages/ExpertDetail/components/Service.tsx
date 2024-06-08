@@ -5,7 +5,7 @@ import BaseSection from './BaseSection';
 
 interface ServiceProps {
 	description: string | undefined;
-	packages: PackageType | undefined;
+	packages: Partial<PackageType> | undefined;
 }
 
 export default function Service({ description = '', packages }: ServiceProps) {

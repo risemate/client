@@ -7,10 +7,9 @@ import {
 	fetchUpdateProduct,
 } from '@api/product';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Product } from 'types/coach/product';
+import { Product, ProductRequest } from 'types/coach/product';
 import {
 	NetworkPagingQuery,
-	PagingQueryProps,
 	PagingQueryResponse,
 	UseMutationOptionsType,
 	UseMutationResultType,
@@ -45,7 +44,7 @@ export const productsQuery = (
 
 export const productDetailQuery = (
 	id: string,
-	options?: UseQueryOptionsType<Product>,
+	options?: UseQueryOptionsType<Product, 'enabled'>,
 ): UseQueryResultType<Product> => {
 	return useQuery({
 		queryKey: productKeys.id(id),
@@ -57,11 +56,11 @@ export const productDetailQuery = (
 
 // 상품 포스팅
 export const productCreateMutation = (
-	options?: UseMutationOptionsType<Product, Product, 'onSuccess'>,
-): UseMutationResultType<Product, Product> => {
+	options?: UseMutationOptionsType<Product, ProductRequest, 'onSuccess'>,
+): UseMutationResultType<Product, ProductRequest> => {
 	const queryClient = useQueryClient();
 	return useMutation({
-		mutationFn: (body: Product) => fetchCreateProduct(body),
+		mutationFn: (body: ProductRequest) => fetchCreateProduct(body),
 		onSuccess: () => {
 			queryClient.invalidateQueries({
 				queryKey: productKeys.base,
@@ -73,11 +72,11 @@ export const productCreateMutation = (
 };
 
 export const productUpdateMutation = (
-	options?: UseMutationOptionsType<Product, Product, 'onSuccess'>,
-): UseMutationResultType<Product, Product> => {
+	options?: UseMutationOptionsType<Product, ProductRequest, 'onSuccess'>,
+): UseMutationResultType<Product, ProductRequest> => {
 	const queryClient = useQueryClient();
 	return useMutation({
-		mutationFn: (body: Product) => fetchUpdateProduct(body._id, body),
+		mutationFn: (body: ProductRequest) => fetchUpdateProduct(body._id, body),
 		onSuccess: () => {
 			queryClient.invalidateQueries({
 				queryKey: productKeys.base,
