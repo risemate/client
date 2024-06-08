@@ -58,7 +58,7 @@ const ImageItem = ({ file, index, moveItem, remove }: ImageItemProps) => {
 		<ImageWrap ref={ref} data-handler-id={handlerId}>
 			<img src={file.url} alt='image' />
 			<span className='hover-layer' />
-			<button className='del' onClick={remove}>
+			<button className='del' onClick={remove} type='button'>
 				☒
 			</button>
 		</ImageWrap>
