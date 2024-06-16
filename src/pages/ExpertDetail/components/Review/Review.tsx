@@ -11,9 +11,14 @@ import ReviewItem from './ReviewItem';
 interface ReviewProps {
 	avgReviewScore: number | undefined;
 	reviewCount: number | undefined;
+	sectionRef: React.RefObject<HTMLElement>;
 }
 
-export default function Review({ avgReviewScore = 0, reviewCount = 0 }: ReviewProps) {
+export default function Review({
+	avgReviewScore = 0,
+	reviewCount = 0,
+	sectionRef,
+}: ReviewProps) {
 	const [openReviewInputs, setOpenReviewInputs] = useState<boolean[]>(
 		Array(mockReview.length).fill(false),
 	);
@@ -25,7 +30,7 @@ export default function Review({ avgReviewScore = 0, reviewCount = 0 }: ReviewPr
 	};
 
 	return (
-		<BaseSection>
+		<BaseSection ref={sectionRef}>
 			<h3>서비스 후기</h3>
 			<StarRatingWrapper>
 				<StarRating rating={avgReviewScore} size='large' />

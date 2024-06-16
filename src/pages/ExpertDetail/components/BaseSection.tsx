@@ -1,13 +1,16 @@
-import { ReactNode } from 'react';
+import { ReactNode, forwardRef } from 'react';
 import styled from 'styled-components';
 
 interface BaseSectionProps {
 	children: ReactNode;
 }
 
-const BaseSection = ({ children }: BaseSectionProps) => {
-	return <StyledSection>{children}</StyledSection>;
-};
+const BaseSection = forwardRef(function BaseSection(
+	{ children }: BaseSectionProps,
+	ref: React.ForwardedRef<HTMLElement>,
+) {
+	return <StyledSection ref={ref}>{children}</StyledSection>;
+});
 
 const StyledSection = styled.section`
 	padding: 30px;

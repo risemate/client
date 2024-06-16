@@ -6,11 +6,16 @@ import BaseSection from './BaseSection';
 interface ServiceProps {
 	description: string | undefined;
 	packages: Partial<PackageType> | undefined;
+	sectionRef: React.RefObject<HTMLElement>;
 }
 
-export default function Service({ description = '', packages }: ServiceProps) {
+export default function Service({
+	description = '',
+	packages,
+	sectionRef,
+}: ServiceProps) {
 	return (
-		<BaseSection>
+		<BaseSection ref={sectionRef}>
 			<h3>서비스 설명</h3>
 			<p>{description}</p>
 			<ul>

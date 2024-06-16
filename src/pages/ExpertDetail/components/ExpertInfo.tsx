@@ -12,14 +12,16 @@ import BaseSection from './BaseSection';
 interface ExpertInfoProps {
 	workExperiences: WorkExperienceType[] | undefined;
 	projects: ProjectType[] | undefined;
+	sectionRef: React.RefObject<HTMLElement>;
 }
 
 export default function ExpertInfo({
 	workExperiences = [],
 	projects = [],
+	sectionRef,
 }: ExpertInfoProps) {
 	return (
-		<BaseSection>
+		<BaseSection ref={sectionRef}>
 			<h3>전문가 정보</h3>
 			<WorkExperience workExperiences={workExperiences} />
 			<Project projects={projects} />

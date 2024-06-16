@@ -6,7 +6,11 @@ import BaseSection from '../BaseSection';
 import InquiryForm from './InquiryForm';
 import InquiryItem from './InquiryItem';
 
-export default function Inquiry() {
+interface InquiryProps {
+	sectionRef: React.RefObject<HTMLElement>;
+}
+
+export default function Inquiry({ sectionRef }: InquiryProps) {
 	const [openInquiryInputs, setOpenInquiryInputs] = useState<boolean[]>(
 		Array(mockInquiry.length).fill(false),
 	);
@@ -17,7 +21,7 @@ export default function Inquiry() {
 	};
 
 	return (
-		<BaseSection>
+		<BaseSection ref={sectionRef}>
 			<h3>상품 문의</h3>
 			<InquiryWrapper>
 				{!isMyProduct && <InquiryForm isMyProduct={isMyProduct} />}

@@ -1,4 +1,4 @@
-import useTab from '@hooks/common/useTab';
+import useScrollToSection from '@hooks/useScrollToSection';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { convertToProfile } from 'types/coach/productData';
@@ -18,8 +18,10 @@ import useExpertDetail from './ExpertDetail.hook';
 export default function ExpertDetail() {
 	const { id } = useParams();
 
-	const { product, isLoading, tabItems, compareTab } = useExpertDetail(id || '');
-	const { currentTab, changeTab, isCurrentTab } = useTab(tabItems, true);
+	const { product, isLoading, tabItems } = useExpertDetail(id || '');
+
+	const { sectionRefs, activeSection, scrollToSection } = useScrollToSection(tabItems);
+
 	const { productTitle, subTitle, coverImage } = product;
 
 	return (
@@ -33,30 +35,28 @@ export default function ExpertDetail() {
 							/>
 							<Tab
 								items={tabItems}
-								changeTab={changeTab}
-								isCurrentTab={isCurrentTab}
+								changeTab={scrollToSection}
+								isCurrentTab={activeSection}
 								underline
+								sticky
 							/>
 							<StyledSection>
-								{compareTab(currentTab, tabItems[0]) && (
-									<Service
-										description={product.description}
-										packages={product.packages}
-									/>
-								)}
-								{compareTab(currentTab, tabItems[1]) && (
-									<ExpertInfo
-										workExperiences={product.workExperiences}
-										projects={product.projects}
-									/>
-								)}
-								{compareTab(currentTab, tabItems[2]) && (
-									<Review
-										avgReviewScore={product.avgReviewScore}
-										reviewCount={product.reviewCount}
-									/>
-								)}
-								{compareTab(currentTab, tabItems[3]) && <Inquiry />}
+								<Service
+									description={product.description}
+									packages={product.packages}
+									sectionRef={sectionRefs.current[tabItems[0]?.value ?? 0]}
+								/>
+								<ExpertInfo
+									workExperiences={product.workExperiences}
+									projects={product.projects}
+									sectionRef={sectionRefs.current[tabItems[1]?.value ?? 0]}
+								/>
+								<Review
+									avgReviewScore={product.avgReviewScore}
+									reviewCount={product.reviewCount}
+									sectionRef={sectionRefs.current[tabItems[2]?.value ?? 0]}
+								/>
+								<Inquiry sectionRef={sectionRefs.current[tabItems[3]?.value ?? 0]} />
 							</StyledSection>
 						</div>
 						<ProductInfo
@@ -80,10 +80,13 @@ const ExpertDetailWrapper = styled.div`
 	gap: 30px;
 	& > div {
 		width: 100%;
+		height: 100%;
 		& > section:first-child {
 			margin-bottom: 30px;
 		}
 	}
 `;
 
-const StyledSection = styled.section``;
+const StyledSection = styled.section`
+	width: 100%;
+`;

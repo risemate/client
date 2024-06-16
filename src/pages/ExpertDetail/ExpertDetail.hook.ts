@@ -1,6 +1,5 @@
 import { productDetailQuery } from '@queries/product';
 import { removeNullValues } from '@utils/helpers';
-import { FaL } from 'react-icons/fa6';
 import { Package } from 'types/coach/product';
 import { TabItem } from 'types/common/tab';
 
@@ -13,10 +12,6 @@ export default function useExpertDetail(id: string) {
 		{ label: '문의', value: 'INQUIRY' },
 	];
 
-	const compareTab = (currentTab: TabItem, tabItem: TabItem) => {
-		if (currentTab.value === tabItem.value) return true;
-		return false;
-	};
 	return {
 		product: {
 			...data,
@@ -24,6 +19,5 @@ export default function useExpertDetail(id: string) {
 		},
 		isLoading,
 		tabItems,
-		compareTab,
 	};
 }

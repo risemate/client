@@ -21,6 +21,7 @@ export default function useTab<T = string | number | undefined>(
 	}, [queryParam]);
 
 	const changeTab = (item: TabItem<T>) => {
+		console.log(item);
 		setCurrentTab(item);
 		if (isParam) {
 			changeParam((item.value as string) || 'ALL');

@@ -5,23 +5,25 @@ type Variant = 'lightGrey' | 'darkGrey';
 
 interface TabProps<T> {
 	items: TabItem<T>[];
+	changeTab: (item: TabItem<T>) => void;
+	isCurrentTab: (item: TabItem<T>) => boolean;
 	center?: boolean;
 	underline?: boolean;
 	variant?: Variant;
-	changeTab: (item: TabItem<T>) => void;
-	isCurrentTab: (item: TabItem<T>) => boolean;
+	sticky?: boolean;
 }
 
 export default function Tab<T = string | number | undefined>({
 	items,
-	center,
-	underline,
-	variant = 'darkGrey',
-	changeTab,
 	isCurrentTab,
+	changeTab,
+	center = false,
+	underline = false,
+	variant = 'darkGrey',
+	sticky = false,
 }: TabProps<T>) {
 	return (
-		<TabList $center={center} $underline={underline}>
+		<TabList $center={center} $underline={underline} $sticky={sticky}>
 			{items.map(item => (
 				<li key={item.label}>
 					<TabItemButton
@@ -37,11 +39,19 @@ export default function Tab<T = string | number | undefined>({
 	);
 }
 
-const TabList = styled.ul<{ $underline?: boolean; $center?: boolean }>`
+interface TabListProps {
+	$underline?: boolean;
+	$center?: boolean;
+	$sticky?: boolean;
+}
+
+const TabList = styled.ul<TabListProps>`
 	${({ $underline, theme }) =>
 		$underline && `border-bottom: 2px solid ${theme.colors.darkGrey}`};
 	display: flex;
 	justify-content: ${({ $center }) => ($center ? 'center' : 'flex-start')};
+	position: ${({ $sticky }) => ($sticky ? 'sticky' : 'static')};
+	top: ${({ $sticky }) => ($sticky ? '0' : 'auto')};
 `;
 
 interface TabButtonProps {
