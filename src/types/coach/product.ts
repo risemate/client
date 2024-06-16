@@ -115,10 +115,12 @@ export type Review = {
 };
 
 export type RequestAnswer = {
+	id: string;
 	content: string;
 };
 
 export type RequestReview = {
+	id: string;
 	content: string;
 	score: number;
 };
