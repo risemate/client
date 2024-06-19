@@ -40,7 +40,7 @@ export const fetchProducts = async (
 };
 
 export const fetchMyProduct = async () // careerType?: CareerType
-	: Promise<Product[]> => {
+: Promise<Product[]> => {
 	try {
 		// const response = await axios.get<Product[]>(PRODUCT_PATH.MY(), { params: { careerType } });
 		const response = await axios.get<Product[]>(PRODUCT_PATH.MY());
