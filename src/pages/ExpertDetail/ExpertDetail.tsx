@@ -40,7 +40,7 @@ export default function ExpertDetail() {
 								underline
 								sticky
 							/>
-							<StyledSection>
+							<SectionWrapper>
 								<Service
 									description={product.description}
 									packages={product.packages}
@@ -57,7 +57,7 @@ export default function ExpertDetail() {
 									sectionRef={sectionRefs.current[tabItems[2]?.value ?? 0]}
 								/>
 								<Inquiry sectionRef={sectionRefs.current[tabItems[3]?.value ?? 0]} />
-							</StyledSection>
+							</SectionWrapper>
 						</div>
 						<ProductInfo
 							packages={product.packages}
@@ -87,6 +87,9 @@ const ExpertDetailWrapper = styled.div`
 	}
 `;
 
-const StyledSection = styled.section`
+const SectionWrapper = styled.div`
 	width: 100%;
+	& > section:not(:last-child) {
+		border-bottom: 1px ${({ theme }) => theme.colors.grey} dashed;
+	}
 `;
