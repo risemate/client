@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 function ProfileMenu() {
 	const navigate = useNavigate();
-	const [menuVisible, setMenuVisible] = useState(true);
+	const [menuVisible, setMenuVisible] = useState(false);
 
 	const showMenu = () => setMenuVisible(true);
 	const hideMenu = () => setMenuVisible(false);
