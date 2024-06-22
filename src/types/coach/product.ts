@@ -1,4 +1,5 @@
 import { BaseUser } from 'types/auth';
+import { CareerType } from 'types/career/careerDocument';
 import { Project, WorkExperience } from 'types/career/resume';
 
 export type ProductRequest = {
@@ -6,9 +7,9 @@ export type ProductRequest = {
 	productTitle: string;
 	subTitle: string;
 	coverImage: string;
-	category: Category;
 	images: Image[];
 	description: string;
+	careerTypes: CareerType[];
 	searchKeyword: string[];
 	packages: Package;
 };
@@ -17,6 +18,7 @@ export type Product = ProductRequest & {
 	user?: BaseUser;
 	public?: boolean;
 	reviewCount: number;
+	category: Category;
 	avgReviewScore: number;
 	csCount: number;
 	noAnswerCsCount: number;

@@ -55,11 +55,7 @@ export const defaultProduct: ProductRequest = {
 	images: [],
 	description: '',
 	searchKeyword: [],
-	category: {
-		rootCategory: '이력서',
-		subCategory: '',
-		thirdCategory: [],
-	},
+	careerTypes: ['RESUME'],
 	packages: {
 		BASIC: defaultPackage,
 		ADVANCED: defaultPackage,
@@ -78,6 +74,7 @@ export const mockProduct: ProductType = {
 	public: false,
 	productTitle: '프론트엔드 개발자 이력서 첨삭해드립니다.',
 	subTitle: '취업 성공까지 책입지겠습니다.....',
+	careerTypes: ['RESUME'],
 	coverImage: '',
 	category: {
 		rootCategory: '이력서',
