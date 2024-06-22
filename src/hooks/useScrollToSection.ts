@@ -23,9 +23,6 @@ export default function useScrollToSection(tabItems: TabItem[]) {
 	const handleScroll = () => {
 		const sections = sectionRefs.current;
 
-		// 스크롤이 제일 위에 있을 때 첫 번째 섹션을 활성화
-		const isScrollAtTop = window.scrollY === 0;
-
 		// 기본적으로 첫 번째 탭을 활성화할 수 있도록 초기화
 		let activeTabItem = tabItems.length > 0 ? tabItems[0] : null;
 
@@ -34,16 +31,21 @@ export default function useScrollToSection(tabItems: TabItem[]) {
 				const ref = sections[item.value]?.current;
 				if (ref) {
 					const { top } = ref.getBoundingClientRect();
-					// 화면의 상단 중앙값
-					const middle = window.innerHeight / 2;
+					const middle = window.innerHeight / 2; // 화면의 상단 중앙값
 
-					// 스크롤이 맨 위에 있거나 첫 번째 섹션이 화면의 상단 중앙에 위치할 때
-					if (isScrollAtTop || (top <= middle && top >= 0)) {
+					// 섹션이 중앙에 위치할 때 activeTabItem을 설정
+					if (top <= middle && top >= 0) {
 						activeTabItem = item;
-						break; // 첫 번째 조건을 만족하면 더 이상 반복하지 않습니다.
+						break;
 					}
 				}
 			}
+		}
+
+		// 스크롤이 제일 위에 있을 때 첫 번째 섹션을 활성화
+		if (window.scrollY === 0) {
+			activeTabItem = tabItems.length > 0 ? tabItems[0] : null;
+			activeTabItem && changeTab(activeTabItem);
 		}
 
 		// activeTabItem이 변경되었을 때만 changeTab 호출
@@ -58,7 +60,9 @@ export default function useScrollToSection(tabItems: TabItem[]) {
 		}
 		const section = sectionRefs.current[newItem.value]?.current;
 		if (section) {
-			section.scrollIntoView({ behavior: 'smooth' });
+			const yOffset = -90; // 여기서 90px 만큼 더 내려갑니다.
+			const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+			window.scrollTo({ top: y, behavior: 'smooth' });
 			const tabItem = tabItems.find(item => item.value === newItem.value);
 			if (tabItem) changeTab(tabItem);
 		}
