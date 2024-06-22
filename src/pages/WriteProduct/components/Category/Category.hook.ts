@@ -33,14 +33,14 @@ export default function useCategory() {
 				...careerTypesField,
 				onChange: (e: ChangeEvent<HTMLSelectElement>) => {
 					const categoryMap: { [key: string]: string[] } = {
-						'이력서': ['RESUME'],
-						'자기소개서': ['COVERLETTER'],
+						이력서: ['RESUME'],
+						자기소개서: ['COVERLETTER'],
 						'이력서/자기소개서': ['RESUME', 'COVERLETTER'],
 					};
 
 					const newCategory = categoryMap[e.target.value] || [];
 					careerTypesField.onChange(newCategory);
-				}
+				},
 			},
 		},
 		searchKeyword: {

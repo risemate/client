@@ -1,8 +1,8 @@
 import { LoginResponse } from 'types/auth';
 
 export async function popupLogin(provider = 'google'): Promise<LoginResponse> {
-	return new Promise((resolve, _) => {
-		const handleMessage = (event: MessageEvent<any>) => {
+	return new Promise(resolve => {
+		const handleMessage = (event: MessageEvent<LoginResponse>) => {
 			const data = JSON.parse(JSON.stringify(event.data)) as LoginResponse;
 
 			if (data.accessToken) {

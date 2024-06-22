@@ -7,10 +7,6 @@ import { ReviseResumeTemplate } from '@components/resume-view/ViewTemplate/Revis
 export default function ReviseResumeView() {
 	// eslint-disable-next-line
 	const { childrenId } = useParams();
-	const resumeNavItems = [
-		{ name: '비교하기', onClick: () => alert('비교하기') },
-		{ name: '전체교체', onClick: () => alert('전체 교체') },
-	];
 	const { data, isLoading } = reviseResumeDetailQuery(childrenId || '');
 	//:로딩애니메이션 추가하기
 	return (

@@ -4,7 +4,6 @@ import styled, { css } from 'styled-components';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { CardComponentProps } from 'types/cardComponent';
-import { Career } from 'types/career/careerDocument';
 
 import Button from '@common/Button';
 import Empty from '@common/Empty';
@@ -14,6 +13,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+// eslint-disable-next-line
 interface BasicResumeListProps<T = any> {
 	title: string;
 	resumes: T[];

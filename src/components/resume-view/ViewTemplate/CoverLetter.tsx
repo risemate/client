@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { CoverLetterContent } from 'types/career/coverletter';
 
 import BaseSection from '@components/resume-view/ResumeViewBaseSection/ResumeViewBaseSection';
@@ -22,8 +21,3 @@ export default function CoverLetter({ coverLetter }: CoverLetterProps) {
 		</BaseSection>
 	);
 }
-
-const MarkdownWrapper = styled.div`
-	line-height: 30px;
-	work-break: keep-all;
-`;

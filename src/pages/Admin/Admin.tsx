@@ -7,7 +7,7 @@ import Button from '@common/Button';
 import ManageExpertApplicate from './components/ManageExpertApplicate';
 
 function Admin() {
-	const { queryParam, changeParam, delParam } = useSearchParam('menu');
+	const { queryParam } = useSearchParam('menu');
 
 	return (
 		<AdminWrap>

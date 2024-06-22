@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Alarm } from 'types/alarm';
 
-type AlarmProp = { pageSize?: number };
+// type AlarmProp = { pageSize?: number };
 export default function useAlarm(pageSize = 10) {
 	const navigate = useNavigate();
 	const alarmRef = useRef<HTMLDivElement | null>(null);

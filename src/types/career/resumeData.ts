@@ -11,7 +11,6 @@ import {
 	Project,
 	ProjectStatus,
 	Resume,
-	ReviseResume,
 	WorkExperience,
 } from 'types/career/resume';
 import { ExpertResumeType } from 'types/coach/expert';

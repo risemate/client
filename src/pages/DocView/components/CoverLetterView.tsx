@@ -7,7 +7,7 @@ import CoverLetterTemplate from '@components/resume-view/ViewTemplate/CoverLette
 import useDocView from '../DocView.hook';
 
 export default function CoverLetterView() {
-	const { data, resumeViewNavItems, isNetwork } = useDocView<Coverletter>();
+	const { data } = useDocView<Coverletter>();
 	return (
 		<Container backgroundColor='lightGrey' padding>
 			<SingleAsyncWrapper>

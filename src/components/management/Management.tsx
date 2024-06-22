@@ -20,6 +20,7 @@ interface ManagementProps {
 	management?: ManagementType;
 }
 
+// eslint-disable-next-line
 export default function Management({ management }: ManagementProps) {
 	const tabItems: TabItem[] = [
 		{ label: '대기', value: 'WAITING' },

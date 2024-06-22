@@ -28,6 +28,7 @@ export default function InquiryForm({ isMyProduct }: InquiryInputProps) {
 	// eslint-disable-next-line
 	const updateIsSecret = (isSecret: boolean) => setValue('isSecret', isSecret);
 
+	// eslint-disable-next-line
 	const addInquiry = (data: AddInquiryType) => {
 		reset();
 	};

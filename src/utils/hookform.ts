@@ -21,6 +21,7 @@ export const getDirtyValues = <
 	return dirtyValues;
 };
 
+// eslint-disable-next-line
 export const removeEmptyObjectField = <T extends Record<string, any>>(obj: T): T => {
 	const newObj: Partial<T> = {};
 	for (const key in obj) {
