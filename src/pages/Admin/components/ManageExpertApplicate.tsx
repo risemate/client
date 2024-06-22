@@ -47,7 +47,7 @@ function ManageExpertApplicate() {
 	);
 }
 
-function Item({ item }: { item: any }) {
+function Item({ item }: { item: ApplyExpert }) {
 	return (
 		<TableRow>
 			<TableCell>{item.createdAt}</TableCell>

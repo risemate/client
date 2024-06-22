@@ -51,7 +51,10 @@ const TabList = styled.ul<TabListProps>`
 	display: flex;
 	justify-content: ${({ $center }) => ($center ? 'center' : 'flex-start')};
 	position: ${({ $sticky }) => ($sticky ? 'sticky' : 'static')};
-	top: ${({ $sticky }) => ($sticky ? '0' : 'auto')};
+	top: ${({ $sticky }) => ($sticky ? '70px' : 'auto')};
+	z-index: ${({ $sticky }) => ($sticky ? '100' : 'auto')};
+	background: ${({ $sticky, theme }) => ($sticky ? theme.colors.white : 'none')};
+	padding-top: ${({ $sticky }) => ($sticky ? '10px' : '0')};
 `;
 
 interface TabButtonProps {

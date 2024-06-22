@@ -7,8 +7,7 @@ const CAREER_PATH = {
 	DEFAULT: '/careers',
 	REVISE: (id: string) => `${CAREER_PATH.DEFAULT}/${id}/revise-docs`,
 	DETAIL: (id: string) => `${CAREER_PATH.DEFAULT}/${id}`,
-	PUBLIC: (id?: string) =>
-		id ? `${CAREER_PATH.DEFAULT}/p/${id}` : `${CAREER_PATH.DEFAULT}/p`,
+	PUBLIC: () => `${CAREER_PATH.DEFAULT}/p`,
 	UPDATE: (id?: string) =>
 		id ? `${CAREER_PATH.DEFAULT}/resumes/${id}` : `${CAREER_PATH.DEFAULT}/resumes`,
 };

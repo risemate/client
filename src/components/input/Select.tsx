@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 	label: string;
-	options: readonly string[];
+	options: readonly (string | { label: string; value: string })[];
 }
 
 const Select = forwardRef(function Select(
@@ -14,9 +14,12 @@ const Select = forwardRef(function Select(
 		<SelectWrapper>
 			{label}
 			<select ref={ref} {...SelectProps}>
-				{options.map((option, index) => (
-					<option key={index} value={option}>
-						{option}
+				{options.map(option => (
+					<option
+						key={typeof option === 'string' ? option : option.value}
+						value={typeof option === 'string' ? option : option.label}
+					>
+						{typeof option === 'string' ? option : option.label}
 					</option>
 				))}
 			</select>

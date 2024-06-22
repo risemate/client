@@ -2,7 +2,7 @@ import { useModal } from '@hooks/atoms/useModalAtom';
 import { IconBell } from '@icons';
 import logoMain from '@images/logo-main.svg';
 import { authQuery } from '@queries/user';
-import axios from 'axios';
+// import axios from 'axios';
 import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -30,10 +30,9 @@ export default function NavBar() {
 	const closeAlarm = () => setIsAlarmOpen(false);
 	const btnAlarmRef = useRef<HTMLButtonElement | null>(null);
 
-	const first = async () => {
-		// eslint-disable-next-line
-		await axios('auth').then(res => console.log(res.data));
-	};
+	// const first = async () => {
+	// 	await axios('auth').then(res => console.log(res.data));
+	// };
 	return (
 		<StyledHeader>
 			<nav>

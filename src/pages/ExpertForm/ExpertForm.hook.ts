@@ -3,6 +3,7 @@ import { expertApplyMutation } from '@queries/expert';
 import { ChangeEvent } from 'react';
 import { useController, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { ApplyExpertProps } from 'types/coach/expert';
 
 interface FormMethodProps extends ApplyExpertProps {
@@ -49,11 +50,11 @@ export default function useExpertForm() {
 		};
 		const { success } = await applyExpertMutation.mutateAsync(requestBody);
 		if (success) {
-			console.log('toastify: success');
+			toast('전문가 신청이 성공적으로 제출되었습니다.');
 			navigate('/my-info');
 			reset();
 		} else {
-			console.log('toastify: fail');
+			toast('전문가 신청이 실패하였습니다.');
 		}
 	});
 

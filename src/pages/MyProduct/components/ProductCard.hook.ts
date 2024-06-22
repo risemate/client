@@ -11,7 +11,7 @@ export default function useProductCard(
 ) {
 	const [isPublic, setIsPublic] = useState(false);
 	const updateIsPublic = async (event: ChangeEvent<HTMLInputElement>) => {
-		setIsPublic(prev => !prev);
+		setIsPublic(event.target.checked);
 	};
 
 	const deleteQueryKey = 'delete-product';

@@ -4,7 +4,6 @@ import styled, { css } from 'styled-components';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { CardComponentProps } from 'types/cardComponent';
-import { Career } from 'types/career/careerDocument';
 
 import Button from '@common/Button';
 import Empty from '@common/Empty';
@@ -14,6 +13,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+// eslint-disable-next-line
 interface BasicResumeListProps<T = any> {
 	title: string;
 	resumes: T[];
@@ -59,7 +59,7 @@ export default function BasicCareerList({
 			</div>
 			<SingleAsyncWrapper>
 				{isEmpty(resumes) ? (
-					<Empty>아직 작성하신 {title}가(이) 없습니다</Empty>
+					<Empty>불러올 데이터가 없습니다</Empty>
 				) : (
 					<Swiper {...setting}>
 						{resumes.map(resume => (

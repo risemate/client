@@ -31,7 +31,6 @@ export default function useWriteProduct() {
 		formState: { errors, isSubmitting },
 	} = productEditMethods;
 	const submitProduct = handleSubmit(data => {
-		console.log(data);
 		if (isNewProduct) {
 			createProductMutation.mutateAsync(data).then(() => toast('상품이 저장되었습니다.'));
 		} else {

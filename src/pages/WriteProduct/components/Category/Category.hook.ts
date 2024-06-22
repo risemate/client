@@ -1,18 +1,14 @@
 import techStackData from '@data/techstack.json';
 import useSearch from '@hooks/useSearch';
-import { KeyboardEvent } from 'react';
+import { ChangeEvent, KeyboardEvent } from 'react';
 import { useController, useFieldArray, useFormContext } from 'react-hook-form';
 import { Category } from 'types/coach/product';
 
 export default function useCategory() {
 	const { control } = useFormContext();
-	const { field: rootCategoryField } = useController({
+	const { field: careerTypesField } = useController({
 		control,
-		name: 'category.rootCategory',
-	});
-	const { field: subCategoryField } = useController({
-		control,
-		name: 'category.subCategory',
+		name: 'careerTypes',
 	});
 	const searchKeywordFieldArray = useFieldArray({
 		control,
@@ -31,13 +27,21 @@ export default function useCategory() {
 	const appendKeyword = () => searchKeywordFieldArray.append(searchText);
 
 	return {
-		rootCategory: {
+		careerTypes: {
 			options: Category,
-			field: rootCategoryField,
-		},
-		subCategory: {
-			options: Category,
-			field: subCategoryField,
+			field: {
+				...careerTypesField,
+				onChange: (e: ChangeEvent<HTMLSelectElement>) => {
+					const categoryMap: { [key: string]: string[] } = {
+						이력서: ['RESUME'],
+						자기소개서: ['COVERLETTER'],
+						'이력서/자기소개서': ['RESUME', 'COVERLETTER'],
+					};
+
+					const newCategory = categoryMap[e.target.value] || [];
+					careerTypesField.onChange(newCategory);
+				},
+			},
 		},
 		searchKeyword: {
 			field: {

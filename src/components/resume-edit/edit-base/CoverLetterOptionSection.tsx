@@ -1,4 +1,3 @@
-import { useSearchParam } from '@hooks/common/useSearchParam';
 import { useFormContext } from 'react-hook-form';
 
 import LinkInput from '@components/input/LinkInput';
@@ -8,9 +7,9 @@ import BaseSection from '@components/resume-edit/EditBaseSection/EditBaseSection
 import { DocTitleInput, InputWrapper, WarningText } from './Profile';
 
 export default function CoverLetterOptionSection() {
-	const { queryParam: careerType } = useSearchParam('redirect');
+	// const { queryParam: careerType } = useSearchParam('redirect');
 
-	const { register, control, watch } = useFormContext();
+	const { register, watch } = useFormContext();
 	const inputName = (key: string) => `doc.${key}`;
 	return (
 		<BaseSection>
