@@ -8,7 +8,7 @@ export default function useDocView<T = Resume>() {
 	const { pathname } = useLocation();
 	const navigate = useNavigate();
 	const isNetwork = pathname.includes('network');
-	const { data, isLoading } = careerDetailQuery<T>(id, isNetwork, {
+	const { data, isLoading } = careerDetailQuery<T>(id, {
 		enabled: !isEmpty(id),
 	});
 

@@ -5,7 +5,7 @@ import { NetworkPagingQuery, PagingQueryResponse } from 'types/query/query';
 
 const NETWORK_PATH = {
 	DEFAULT: '/careers/p',
-	DETAIL: (id: string) => `/careers/p/${id}`,
+	DETAIL: (id: string) => `/careers/${id}`,
 };
 
 export const fetchPublicCareers = async (
