@@ -66,3 +66,7 @@ export const dateToString = (date: Date) => {
 	const day = date.getDate().toString();
 	return `${year}-${month}-${day}`;
 };
+
+export const sliceDate = (date: string) => {
+	return date.slice(2, 10).replaceAll('-', '.') + ' ' + date.slice(11, 16);
+};

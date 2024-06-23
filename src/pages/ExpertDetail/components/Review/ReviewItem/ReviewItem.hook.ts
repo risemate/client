@@ -6,10 +6,6 @@ export default function useReviewItem(authorId: string) {
 	const { data: authData } = authQuery();
 	const isMyReview = authorId === authData?._id;
 
-	const sliceDate = (date: string) => {
-		return date.slice(2, 10).replaceAll('-', '.') + ' ' + date.slice(11, 16);
-	};
-
 	const changeState = () => setEditState(prev => !prev);
-	return { isMyReview, sliceDate, editState: { value: editState, change: changeState } };
+	return { isMyReview, editState: { value: editState, change: changeState } };
 }

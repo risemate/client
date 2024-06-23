@@ -1,12 +1,12 @@
 import { IconEdit, IconTrash } from '@icons';
-import { isEmpty, maskString } from '@utils/helpers';
+import { maskString, sliceDate } from '@utils/helpers';
 import styled from 'styled-components';
 import { Review as ReviewType } from 'types/coach/product';
 
-import Button from '@common/Button';
 import DefaultImage from '@common/DefaultImage';
 import StarRating from '@components/experts/StarRating';
 
+import ReviewAnswer from '../ReviewAnswer/ReviewAnswer';
 import ReviewForm from '../ReviewForm/ReviewForm';
 import useReviewItem from './ReviewItem.hook';
 
@@ -23,7 +23,7 @@ export default function ReviewItem({
 	isOpenReviewInput,
 	onToggleReviewInput,
 }: ReviewItemProps) {
-	const { isMyReview, sliceDate, editState } = useReviewItem(review.user._id);
+	const { isMyReview, editState } = useReviewItem(review.user._id);
 
 	return (
 		<StyledItem>
@@ -58,29 +58,12 @@ export default function ReviewItem({
 			) : (
 				<p>{review.content}</p>
 			)}
-			{isMyProduct && isEmpty(review.answer) && (
-				<Button
-					variant='lightGrey'
-					size='small'
-					type='button'
-					onClick={onToggleReviewInput}
-				>
-					{isOpenReviewInput ? '취소' : '답글'}
-				</Button>
-			)}
-			{isEmpty(review.answer) && isMyProduct && isOpenReviewInput && (
-				<ReviewForm isMyProduct={isMyProduct} />
-			)}
-			{review.answer && (
-				<AnswerWrapper>
-					<p>
-						<span>{maskString(review.answer.expert.name, 2, '*')}</span>
-						<span>({maskString(review.answer.expert.nickname, 2, '*')})</span>
-						<span>| {sliceDate(review.answer.createdAt)}</span>
-					</p>
-					<p>{review.answer.content}</p>
-				</AnswerWrapper>
-			)}
+			<ReviewAnswer
+				isOpenReviewInput={isOpenReviewInput}
+				onToggleReviewInput={onToggleReviewInput}
+				isMyProduct={isMyProduct}
+				answer={review.answer}
+			/>
 		</StyledItem>
 	);
 }
@@ -134,30 +117,5 @@ const ButtonWrapper = styled.div`
 		&:hover {
 			color: ${({ theme }) => theme.colors.darkGrey};
 		}
-	}
-`;
-
-const AnswerWrapper = styled.div`
-	grid-column: 1 / 3;
-	background: ${({ theme }) => theme.colors.lighterGrey};
-	margin-top: 20px;
-	padding: 15px 20px 15px 30px;
-	border-radius: 5px;
-	& > p:nth-of-type(1) {
-		display: flex;
-		gap: 8px;
-		align-items: end;
-		margin-bottom: 10px;
-		& > span {
-			color: ${({ theme }) => theme.colors.darkerGrey};
-		}
-		& > span:nth-of-type(3) {
-			color: ${({ theme }) => theme.colors.darkGrey};
-			font-size: ${({ theme }) => theme.fontSizes.small};
-		}
-	}
-	& > p:nth-of-type(2) {
-		line-height: 25px;
-		color: ${({ theme }) => theme.colors.darkerGrey};
 	}
 `;

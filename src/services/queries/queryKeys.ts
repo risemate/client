@@ -48,10 +48,6 @@ export const productKeys = {
 		[...productKeys.base, { ...params }] as const,
 };
 
-export const reviewKeys = {
-	base: ['review'] as const,
-};
-
 export const expertKeys = {
 	base: ['expert'] as const,
 };
