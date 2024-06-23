@@ -1,5 +1,5 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
-import { IconBell, IconCircleUser } from '@icons';
+import { IconBell } from '@icons';
 import logoMain from '@images/logo-main.svg';
 import { authQuery } from '@queries/user';
 // import axios from 'axios';
@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 
 import Alarm from '../../alarm/Alarm';
+import ProfileMenu from './ProfileMenu';
 
 export default function NavBar() {
 	const navigate = useNavigate();
@@ -48,6 +49,12 @@ export default function NavBar() {
 							</li>
 						);
 					})}
+
+					{auth?.role === 'EXPERT' && (
+						<li className='on_expert'>
+							<Link to={'/coach-info/management'}>코칭관리</Link>
+						</li>
+					)}
 				</NavBarList>
 
 				<SingleAsyncWrapper>
@@ -68,9 +75,12 @@ export default function NavBar() {
 								{isAlarmOpen && (
 									<Alarm closeAlarm={closeAlarm} btnAlarmRef={btnAlarmRef} />
 								)}
-								<button type='button' onClick={() => navigate('/my-info')}>
-									<IconCircleUser />
-								</button>
+								{/* <div>
+									<button type='button' onClick={() => navigate('/my-info')}>
+										<IconCircleUser />
+									</button>
+								</div> */}
+								<ProfileMenu />
 							</>
 						) : (
 							<>
@@ -125,6 +135,11 @@ const NavBarList = styled.ul`
 		&:hover {
 			color: ${({ theme }) => theme.colors.navy};
 		}
+	}
+
+	.on_expert > a {
+		color: ${({ theme }) => theme.colors.blue};
+		font-weight: 800;
 	}
 `;
 

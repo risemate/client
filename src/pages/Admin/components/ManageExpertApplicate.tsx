@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Auth } from 'types/auth';
 
+import Button from '@common/Button';
+
 import { Table, TableCell, TableHeader, TableHeaderCell, TableRow } from './Table';
 
 interface ApplyExpert {
@@ -17,6 +19,7 @@ interface ApplyExpert {
 	approveStatus: 'REVIEWING' | 'FINISHED';
 	createdAt: string;
 	updatedAt: string;
+	approve: boolean | null;
 }
 function ManageExpertApplicate() {
 	const { data, isLoading } = useQuery({
@@ -39,6 +42,7 @@ function ManageExpertApplicate() {
 						<TableHeaderCell>메시지</TableHeaderCell>
 						<TableHeaderCell>이력서</TableHeaderCell>
 						<TableHeaderCell>관리</TableHeaderCell>
+						<TableHeaderCell>상태</TableHeaderCell>
 					</TableRow>
 				</TableHeader>
 				<tbody>{data?.map(item => <Item key={item._id} item={item} />)}</tbody>
@@ -52,14 +56,22 @@ function Item({ item }: { item: ApplyExpert }) {
 		<TableRow>
 			<TableCell>{item.createdAt}</TableCell>
 			<TableCell>
-				<button>보기</button>
+				<Button variant='mint' size='small'>
+					보기
+				</Button>
 			</TableCell>
 			<TableCell>{item.data.message}</TableCell>
 			<TableCell>
 				<Link to={`/my-info/docs/${item.data.resumeId}`}>보기</Link>
 			</TableCell>
 			<TableCell>
-				<button>승인</button>|<button>거절</button>
+				<button style={{ color: 'blue' }}>승인</button>|
+				<button style={{ color: 'red' }}>거절</button>
+			</TableCell>
+			<TableCell>
+				<span>
+					{(item.approve === null && '대기') || (item.approve ? '승인' : '거절')}
+				</span>
 			</TableCell>
 		</TableRow>
 	);
