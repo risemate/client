@@ -12,7 +12,7 @@ export default function useUserProfile() {
 	};
 
 	const expertButton = {
-		to: auth?.role !== 'EXPERT' ? '/coach-info' : '/form/expert',
+		to: auth?.role === 'EXPERT' ? '/coach-info' : '/form/expert',
 		label: () => {
 			if (auth?.role === 'EXPERT') return '전문가로 변환하기';
 			else if (auth?.role === 'REVIEWING') return '검토 중';
