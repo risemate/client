@@ -1,13 +1,14 @@
 import { isEmpty, maskString, sliceDate } from '@utils/helpers';
-import React from 'react';
 import styled from 'styled-components';
-import { Answer } from 'types/coach/product';
+import { Answer, Review } from 'types/coach/product';
 
 import Button from '@common/Button';
 
 import ReviewForm from '../ReviewForm/ReviewForm';
+import useReviewAsnwer from './ReviewAsnwer.hook';
 
 interface ReviewAsnwerProps {
+	reviewId: string;
 	isOpenReviewInput: boolean;
 	onToggleReviewInput: () => void;
 	isMyProduct: boolean;
@@ -15,11 +16,13 @@ interface ReviewAsnwerProps {
 }
 
 export default function ReviewAnswer({
+	reviewId,
 	isOpenReviewInput,
 	onToggleReviewInput,
 	isMyProduct,
 	answer,
 }: ReviewAsnwerProps) {
+	const { createReviewAnswer, updateReviewAnswer } = useReviewAsnwer(onToggleReviewInput);
 	return (
 		<>
 			{isMyProduct && isEmpty(answer) && (
@@ -33,7 +36,11 @@ export default function ReviewAnswer({
 				</Button>
 			)}
 			{isEmpty(answer) && isMyProduct && isOpenReviewInput && (
-				<ReviewForm isMyProduct={isMyProduct} />
+				<ReviewForm
+					isMyProduct={isMyProduct}
+					submitCallback={createReviewAnswer}
+					review={{ _id: reviewId } as Review}
+				/>
 			)}
 			{answer && (
 				<AnswerWrapper>
@@ -48,24 +55,6 @@ export default function ReviewAnswer({
 		</>
 	);
 }
-
-// const ReviewAnswerWrapper = styled.div`
-// 	& > p:nth-of-type(2) {
-// 		grid-column: 1 / 4;
-// 		margin-top: 20px;
-// 		line-height: 25px;
-// 		color: ${({ theme }) => theme.colors.darkerGrey};
-// 	}
-// 	& > form,
-// 	& > button {
-// 		grid-column: 1 / 4;
-// 		text-align: center;
-// 		margin-top: 15px;
-// 	}
-// 	& > button {
-// 		margin: 15px auto 0;
-// 	}
-// `;
 
 const AnswerWrapper = styled.div`
 	grid-column: 1 / 3;

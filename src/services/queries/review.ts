@@ -7,7 +7,7 @@ import {
 	fetchUserReview,
 } from '@api/review';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { RequestAnswer, RequestReview, Review } from 'types/coach/product';
+import { RequestReview, Review } from 'types/coach/product';
 import {
 	UseMutationOptionsType,
 	UseMutationResultType,
@@ -55,12 +55,12 @@ export const reviewUpdateMutation = (
 	});
 };
 
-export const reviewCreateReivewAnswer = (
-	options?: UseMutationOptionsType<Review, RequestAnswer, 'onSuccess'>,
-): UseMutationResultType<Review, RequestAnswer> => {
+export const reviewAnswerCreateMutation = (
+	options?: UseMutationOptionsType<Review, RequestReview, 'onSuccess'>,
+): UseMutationResultType<Review, RequestReview> => {
 	const queryClient = useQueryClient();
 	return useMutation({
-		mutationFn: (body: RequestAnswer) => fetchCreateReviewAnswer(body),
+		mutationFn: (body: RequestReview) => fetchCreateReviewAnswer(body),
 		onSuccess: data => {
 			queryClient.invalidateQueries({ queryKey: productKeys.review(null, data._id) });
 		},
@@ -68,12 +68,12 @@ export const reviewCreateReivewAnswer = (
 	});
 };
 
-export const reviewUpdateAnswerMutation = (
-	options?: UseMutationOptionsType<Review, RequestAnswer, 'onSuccess'>,
-): UseMutationResultType<Review, RequestAnswer> => {
+export const reviewAnswerUpdateMutation = (
+	options?: UseMutationOptionsType<Review, RequestReview, 'onSuccess'>,
+): UseMutationResultType<Review, RequestReview> => {
 	const queryClient = useQueryClient();
 	return useMutation({
-		mutationFn: (body: RequestAnswer) => fetchUpdateReviewAnswer(body),
+		mutationFn: (body: RequestReview) => fetchUpdateReviewAnswer(body),
 		onSuccess: data => {
 			queryClient.invalidateQueries({ queryKey: productKeys.review(null, data._id) });
 		},

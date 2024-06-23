@@ -23,7 +23,7 @@ export default function ReviewItem({
 	isOpenReviewInput,
 	onToggleReviewInput,
 }: ReviewItemProps) {
-	const { isMyReview, editState } = useReviewItem(review.user._id);
+	const { isMyReview, editState, updateReview } = useReviewItem(review.user._id);
 
 	return (
 		<StyledItem>
@@ -53,12 +53,13 @@ export default function ReviewItem({
 				<ReviewForm
 					isMyProduct={isMyProduct}
 					review={review}
-					updateCallback={editState.change}
+					submitCallback={updateReview}
 				/>
 			) : (
 				<p>{review.content}</p>
 			)}
 			<ReviewAnswer
+				reviewId={review._id}
 				isOpenReviewInput={isOpenReviewInput}
 				onToggleReviewInput={onToggleReviewInput}
 				isMyProduct={isMyProduct}

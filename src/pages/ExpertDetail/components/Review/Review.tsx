@@ -22,9 +22,13 @@ export default function Review({
 	sectionRef,
 }: ReviewProps) {
 	const { id } = useParams();
-	const { openReviewInputs, usedProduct, handleToggleReviewInput, reviews } = useReview(
-		id || '',
-	);
+	const {
+		openReviewInputs,
+		usedProduct,
+		handleToggleReviewInput,
+		reviews,
+		createReview,
+	} = useReview(id || '');
 
 	return (
 		<BaseSection ref={sectionRef}>
@@ -36,7 +40,9 @@ export default function Review({
 			</StarRatingWrapper>
 			<ReviewWrapper>
 				<span>전체 리뷰 {reviewCount}건</span>
-				{usedProduct && <ReviewForm isMyProduct={isMyProduct} />}
+				{usedProduct && (
+					<ReviewForm isMyProduct={isMyProduct} submitCallback={createReview} />
+				)}
 				<ul>
 					{reviews.map((review, index) => (
 						<ReviewItem

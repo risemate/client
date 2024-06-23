@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { Review } from 'types/coach/product';
+import { RequestReview, Review } from 'types/coach/product';
 
 import Button from '@common/Button';
 import StarRating from '@components/experts/StarRating';
@@ -11,24 +11,24 @@ import useReviewForm from './ReviewForm.hook';
 interface ReviewFormProps {
 	isMyProduct: boolean;
 	review?: Review;
-	updateCallback?: () => void;
+	submitCallback: (data: RequestReview) => void;
 }
 
 export default function ReviewForm({
 	isMyProduct,
 	review,
-	updateCallback,
+	submitCallback,
 }: ReviewFormProps) {
 	const { id } = useParams();
-	const { contentFields, scoreFields, checkEmpty, addReview } = useReviewForm(
+	const { contentFields, scoreFields, checkEmpty, submitForm } = useReviewForm(
 		id || '',
 		isMyProduct,
 		review,
-		updateCallback,
+		submitCallback,
 	);
 
 	return (
-		<StyledReviewForm onSubmit={addReview}>
+		<StyledReviewForm onSubmit={submitForm}>
 			<TextArea
 				placeholder={
 					isMyProduct
@@ -41,8 +41,7 @@ export default function ReviewForm({
 			<div>
 				{!isMyProduct && <StarRating {...scoreFields} />}
 				<Button variant='navy' size='small' type='submit' disabled={checkEmpty()}>
-					{review && '수정'}
-					{!review && (isMyProduct ? '답변 남기기' : '후기 남기기')}
+					{isMyProduct ? '답변 남기기' : '후기 남기기'}
 				</Button>
 			</div>
 		</StyledReviewForm>
