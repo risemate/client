@@ -1,6 +1,7 @@
 import {
 	fetchCreateReview,
 	fetchCreateReviewAnswer,
+	fetchReview,
 	fetchUpdateReview,
 	fetchUpdateReviewAnswer,
 	fetchUserReview,
@@ -15,6 +16,18 @@ import {
 } from 'types/query/query';
 
 import { authKeys, productKeys } from './queryKeys';
+
+export const reviewQuery = (
+	id: string,
+	options?: UseQueryOptionsType<Review[]>,
+): UseQueryResultType<Review[]> => {
+	return useQuery({
+		queryKey: productKeys.review(id),
+		queryFn: () => fetchReview(id),
+		enabled: !!id,
+		...options,
+	});
+};
 
 export const reviewCreateMutation = (
 	options?: UseMutationOptionsType<Review, RequestReview, 'onSuccess'>,

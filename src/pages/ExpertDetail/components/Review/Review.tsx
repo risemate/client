@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { mockReview } from 'types/coach/productData';
 
 import StarRating from '@components/experts/StarRating';
 
 import BaseSection from '../BaseSection';
+import useReview from './Review.hook';
 import ReviewForm from './ReviewForm';
 import ReviewItem from './ReviewItem';
 
@@ -19,15 +19,9 @@ export default function Review({
 	reviewCount = 0,
 	sectionRef,
 }: ReviewProps) {
-	const [openReviewInputs, setOpenReviewInputs] = useState<boolean[]>(
-		Array(mockReview.length).fill(false),
-	);
-	const isMyProduct = true;
-	const usedProduct = false;
-
-	const handleToggleReviewInput = (index: number) => {
-		setOpenReviewInputs(prev => prev.map((state, i) => (i === index ? !state : false)));
-	};
+	const { id } = useParams();
+	const { openReviewInputs, isMyProduct, usedProduct, handleToggleReviewInput, reviews } =
+		useReview(id || '');
 
 	return (
 		<BaseSection ref={sectionRef}>
@@ -41,7 +35,7 @@ export default function Review({
 				<span>전체 리뷰 {reviewCount}건</span>
 				{usedProduct && <ReviewForm isMyProduct={isMyProduct} />}
 				<ul>
-					{mockReview.map((review, index) => (
+					{reviews.map((review, index) => (
 						<ReviewItem
 							key={review._id}
 							review={review}

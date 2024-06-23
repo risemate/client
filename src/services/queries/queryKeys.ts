@@ -39,6 +39,7 @@ export const aiKeys = {
 export const productKeys = {
 	base: ['product'] as const,
 	id: (id: string) => [...productKeys.base, { id }] as const,
+	review: (id: string) => [...productKeys.base, 'review', { id }],
 	pagingParam: (params?: NetworkPagingQuery) =>
 		[...productKeys.base, { ...params }] as const,
 };

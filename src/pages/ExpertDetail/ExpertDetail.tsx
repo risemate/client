@@ -17,11 +17,8 @@ import useExpertDetail from './ExpertDetail.hook';
 
 export default function ExpertDetail() {
 	const { id } = useParams();
-
 	const { product, isLoading, tabItems } = useExpertDetail(id || '');
-
 	const { sectionRefs, activeSection, scrollToSection } = useScrollToSection(tabItems);
-
 	const { productTitle, subTitle, coverImage } = product;
 
 	return (

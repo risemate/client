@@ -10,6 +10,11 @@ const REVIEW_PATH = {
 	REVIEW_USER: () => `${REVIEW_PATH.DEFAULT}/reviews/user`,
 };
 
+export const fetchReview = async (id: string): Promise<Review[]> => {
+	const response = await axios.get<Review[]>(REVIEW_PATH.REVIEW_LIST(id));
+	return response.data;
+};
+
 export const fetchCreateReview = async (body: RequestReview): Promise<Review> => {
 	const response = await axios.post<Review>(REVIEW_PATH.REVIEW(body.id), body);
 	return response.data;

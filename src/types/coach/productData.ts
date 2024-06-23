@@ -201,7 +201,7 @@ export const mockProduct: ProductType = {
 
 export const mockInquiry: InquiryType[] = [
 	{
-		_id: '656d80faa277ee4836b8fc89',
+		_id: '656d80faa277ee4836b8fc8',
 		user: {
 			nickname: 'bonobono',
 			picture:
@@ -237,7 +237,7 @@ export const mockInquiry: InquiryType[] = [
 		updatedAt: '2023-12-05T02:56:42.996Z',
 	},
 	{
-		_id: '656d80faa277ee4836b8fc89',
+		_id: '656d80faa277ee4836b8fc',
 		user: {
 			nickname: 'bonobono',
 			picture:
@@ -303,7 +303,7 @@ export const mockReview: ReviewType[] = [
 		__v: 0,
 	},
 	{
-		_id: '656e8ec09f14054fcebd7c6a',
+		_id: '656e8ec09f14054fcebd7c6',
 		user: {
 			nickname: 'shin kim',
 			picture: '',
@@ -328,7 +328,7 @@ export const mockReview: ReviewType[] = [
 		__v: 0,
 	},
 	{
-		_id: '656e8ec09f14054fcebd7c6a',
+		_id: '656e8ec09f14054fcebd7c',
 		user: {
 			nickname: 'shin kim',
 			picture: '',
