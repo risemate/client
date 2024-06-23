@@ -2,9 +2,8 @@ import { useModal } from '@hooks/atoms/useModalAtom';
 import { IconBell } from '@icons';
 import logoMain from '@images/logo-main.svg';
 import { authQuery } from '@queries/user';
-// import axios from 'axios';
 import { useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
@@ -13,7 +12,6 @@ import Alarm from '../../alarm/Alarm';
 import ProfileMenu from './ProfileMenu';
 
 export default function NavBar() {
-	const navigate = useNavigate();
 	const navItems = [
 		{ name: '내 커리어', route: '/my-info/docs' },
 		{ name: 'AI 코치', route: '/my-info/ai' },
@@ -165,6 +163,7 @@ const MyPageWrapper = styled.div`
 	svg {
 		width: 25px;
 		height: 25px;
+		color: ${({ theme }) => theme.colors.navy};
 	}
 	.alert:after {
 		content: '';
