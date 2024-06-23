@@ -135,6 +135,10 @@ export const router = createBrowserRouter([
 						path: 'product-docs',
 						element: <MyProduct />,
 					},
+					{
+						path: 'product-docs/:id',
+						element: <ExpertDetail />,
+					},
 				],
 				loader: signLoader,
 				errorElement: <NotFound />,
