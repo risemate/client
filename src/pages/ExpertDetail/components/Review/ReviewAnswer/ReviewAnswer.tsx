@@ -1,3 +1,4 @@
+import { IconEdit } from '@icons';
 import { isEmpty, maskString, sliceDate } from '@utils/helpers';
 import styled from 'styled-components';
 import { Answer, Review } from 'types/coach/product';
@@ -22,7 +23,8 @@ export default function ReviewAnswer({
 	isMyProduct,
 	answer,
 }: ReviewAsnwerProps) {
-	const { createReviewAnswer, updateReviewAnswer } = useReviewAsnwer(onToggleReviewInput);
+	const { createReviewAnswer, updateReviewAnswer, editState } =
+		useReviewAsnwer(onToggleReviewInput);
 	return (
 		<>
 			{isMyProduct && isEmpty(answer) && (
@@ -48,8 +50,22 @@ export default function ReviewAnswer({
 						<span>{maskString(answer.expert.name, 2, '*')}</span>
 						<span>({maskString(answer.expert.nickname, 2, '*')})</span>
 						<span>| {sliceDate(answer.createdAt)}</span>
+						{isMyProduct && (
+							<button type='button' onClick={editState.change}>
+								<IconEdit />
+							</button>
+						)}
 					</p>
-					<p>{answer.content}</p>
+
+					{editState.value ? (
+						<ReviewForm
+							isMyProduct={isMyProduct}
+							submitCallback={updateReviewAnswer}
+							review={{ _id: reviewId, content: answer.content } as Review}
+						/>
+					) : (
+						<p>{answer.content}</p>
+					)}
 				</AnswerWrapper>
 			)}
 		</>
@@ -73,6 +89,15 @@ const AnswerWrapper = styled.div`
 		& > span:nth-of-type(3) {
 			color: ${({ theme }) => theme.colors.darkGrey};
 			font-size: ${({ theme }) => theme.fontSizes.small};
+		}
+		& > button {
+			margin-left: auto;
+		}
+		svg {
+			color: ${({ theme }) => theme.colors.darkGrey};
+			&:hover {
+				color: ${({ theme }) => theme.colors.darkerGrey};
+			}
 		}
 	}
 	& > p:nth-of-type(2) {

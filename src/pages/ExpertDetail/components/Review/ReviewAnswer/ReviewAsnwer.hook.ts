@@ -1,8 +1,10 @@
 import { reviewAnswerCreateMutation, reviewAnswerUpdateMutation } from '@queries/review';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { RequestReview } from 'types/coach/product';
 
 export default function useReviewAsnwer(onToggleReviewInput: () => void) {
+	const [editState, setEditState] = useState<boolean>(false);
 	const createReviewAnswerMutation = reviewAnswerCreateMutation();
 	const updateReviewAnswerMutation = reviewAnswerUpdateMutation();
 
@@ -17,5 +19,12 @@ export default function useReviewAsnwer(onToggleReviewInput: () => void) {
 		updateReviewAnswerMutation.mutate(data);
 		onToggleReviewInput();
 	};
-	return { createReviewAnswer, updateReviewAnswer };
+
+	const changeEditState = () => setEditState(prev => !prev);
+
+	return {
+		createReviewAnswer,
+		updateReviewAnswer,
+		editState: { value: editState, change: changeEditState },
+	};
 }
