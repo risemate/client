@@ -36,7 +36,7 @@ export const reviewCreateMutation = (
 	return useMutation({
 		mutationFn: (body: RequestReview) => fetchCreateReview(body),
 		onSuccess: data => {
-			queryClient.invalidateQueries({ queryKey: productKeys.id(data._id) });
+			queryClient.invalidateQueries({ queryKey: productKeys.review(data.product) });
 		},
 		...options,
 	});
@@ -49,7 +49,7 @@ export const reviewUpdateMutation = (
 	return useMutation({
 		mutationFn: (body: RequestReview) => fetchUpdateReview(body),
 		onSuccess: data => {
-			queryClient.invalidateQueries({ queryKey: productKeys.id(data._id) });
+			queryClient.invalidateQueries({ queryKey: productKeys.review(data.product) });
 		},
 		...options,
 	});
@@ -62,7 +62,7 @@ export const reviewCreateReivewAnswer = (
 	return useMutation({
 		mutationFn: (body: RequestAnswer) => fetchCreateReviewAnswer(body),
 		onSuccess: data => {
-			queryClient.invalidateQueries({ queryKey: productKeys.id(data._id) });
+			queryClient.invalidateQueries({ queryKey: productKeys.review(null, data._id) });
 		},
 		...options,
 	});
@@ -75,7 +75,7 @@ export const reviewUpdateAnswerMutation = (
 	return useMutation({
 		mutationFn: (body: RequestAnswer) => fetchUpdateReviewAnswer(body),
 		onSuccess: data => {
-			queryClient.invalidateQueries({ queryKey: productKeys.id(data._id) });
+			queryClient.invalidateQueries({ queryKey: productKeys.review(null, data._id) });
 		},
 		...options,
 	});

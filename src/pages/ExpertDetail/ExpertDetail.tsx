@@ -17,7 +17,7 @@ import useExpertDetail from './ExpertDetail.hook';
 
 export default function ExpertDetail() {
 	const { id } = useParams();
-	const { product, isLoading, tabItems } = useExpertDetail(id || '');
+	const { product, isLoading, tabItems, isMyProduct } = useExpertDetail(id || '');
 	const { sectionRefs, activeSection, scrollToSection } = useScrollToSection(tabItems);
 	const { productTitle, subTitle, coverImage } = product;
 
@@ -51,6 +51,7 @@ export default function ExpertDetail() {
 								<Review
 									avgReviewScore={product.avgReviewScore}
 									reviewCount={product.reviewCount}
+									isMyProduct={isMyProduct}
 									sectionRef={sectionRefs.current[tabItems[2]?.value ?? 0]}
 								/>
 								<Inquiry sectionRef={sectionRefs.current[tabItems[3]?.value ?? 0]} />

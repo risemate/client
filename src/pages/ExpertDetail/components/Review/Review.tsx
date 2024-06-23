@@ -5,23 +5,26 @@ import StarRating from '@components/experts/StarRating';
 
 import BaseSection from '../BaseSection';
 import useReview from './Review.hook';
-import ReviewForm from './ReviewForm';
-import ReviewItem from './ReviewItem';
+import ReviewForm from './ReviewForm/ReviewForm';
+import ReviewItem from './ReviewItem/ReviewItem';
 
 interface ReviewProps {
 	avgReviewScore: number | undefined;
 	reviewCount: number | undefined;
+	isMyProduct: boolean;
 	sectionRef: React.RefObject<HTMLElement>;
 }
 
 export default function Review({
 	avgReviewScore = 0,
 	reviewCount = 0,
+	isMyProduct,
 	sectionRef,
 }: ReviewProps) {
 	const { id } = useParams();
-	const { openReviewInputs, isMyProduct, usedProduct, handleToggleReviewInput, reviews } =
-		useReview(id || '');
+	const { openReviewInputs, usedProduct, handleToggleReviewInput, reviews } = useReview(
+		id || '',
+	);
 
 	return (
 		<BaseSection ref={sectionRef}>

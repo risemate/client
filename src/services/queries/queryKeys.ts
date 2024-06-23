@@ -39,9 +39,17 @@ export const aiKeys = {
 export const productKeys = {
 	base: ['product'] as const,
 	id: (id: string) => [...productKeys.base, { id }] as const,
-	review: (id: string) => [...productKeys.base, 'review', { id }],
+	review: (productId?: string | null, reviewId?: string) => [
+		...productKeys.base,
+		'review',
+		{ productId, reviewId },
+	],
 	pagingParam: (params?: NetworkPagingQuery) =>
 		[...productKeys.base, { ...params }] as const,
+};
+
+export const reviewKeys = {
+	base: ['review'] as const,
 };
 
 export const expertKeys = {

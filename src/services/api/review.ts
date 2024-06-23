@@ -16,22 +16,26 @@ export const fetchReview = async (id: string): Promise<Review[]> => {
 };
 
 export const fetchCreateReview = async (body: RequestReview): Promise<Review> => {
-	const response = await axios.post<Review>(REVIEW_PATH.REVIEW(body.id), body);
+	const { id, ...restBody } = body;
+	const response = await axios.post<Review>(REVIEW_PATH.REVIEW(id), restBody);
 	return response.data;
 };
 
 export const fetchUpdateReview = async (body: RequestReview): Promise<Review> => {
-	const response = await axios.patch<Review>(REVIEW_PATH.REVIEW_EDIT(body.id), body);
+	const { id, ...restBody } = body;
+	const response = await axios.patch<Review>(REVIEW_PATH.REVIEW_EDIT(id), restBody);
 	return response.data;
 };
 
 export const fetchCreateReviewAnswer = async (body: RequestAnswer): Promise<Review> => {
-	const response = await axios.post<Review>(REVIEW_PATH.REVIEW_ANSWER(body.id), body);
+	const { id, ...restBody } = body;
+	const response = await axios.post<Review>(REVIEW_PATH.REVIEW_ANSWER(id), restBody);
 	return response.data;
 };
 
 export const fetchUpdateReviewAnswer = async (body: RequestAnswer): Promise<Review> => {
-	const response = await axios.patch<Review>(REVIEW_PATH.REVIEW_ANSWER(body.id), body);
+	const { id, ...restBody } = body;
+	const response = await axios.patch<Review>(REVIEW_PATH.REVIEW_ANSWER(id), restBody);
 	return response.data;
 };
 

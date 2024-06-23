@@ -16,6 +16,7 @@ export type ProductRequest = {
 
 export type Product = ProductRequest & {
 	user?: BaseUser;
+	expert: string;
 	public?: boolean;
 	reviewCount: number;
 	category: Category;
@@ -101,13 +102,7 @@ export type CS = {
 export type Review = {
 	_id: string;
 	user: BaseUser;
-	product: {
-		productTitle: string;
-		subTitle: string;
-		coverImage: string;
-		expert: Expert;
-		_id: string;
-	};
+	product: string;
 	score: number;
 	content: string;
 	answer: Answer | null;

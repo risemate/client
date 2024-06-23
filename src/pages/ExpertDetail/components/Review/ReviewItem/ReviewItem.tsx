@@ -1,5 +1,5 @@
+import { IconEdit, IconTrash } from '@icons';
 import { isEmpty, maskString } from '@utils/helpers';
-import React from 'react';
 import styled from 'styled-components';
 import { Review as ReviewType } from 'types/coach/product';
 
@@ -7,7 +7,8 @@ import Button from '@common/Button';
 import DefaultImage from '@common/DefaultImage';
 import StarRating from '@components/experts/StarRating';
 
-import ReviewForm from './ReviewForm';
+import ReviewForm from '../ReviewForm/ReviewForm';
+import useReviewItem from './ReviewItem.hook';
 
 interface ReviewItemProps {
 	review: ReviewType;
@@ -22,9 +23,7 @@ export default function ReviewItem({
 	isOpenReviewInput,
 	onToggleReviewInput,
 }: ReviewItemProps) {
-	const sliceDate = (date: string) => {
-		return date.slice(2, 10).replaceAll('-', '.') + ' ' + date.slice(11, 16);
-	};
+	const { isMyReview, sliceDate, editState } = useReviewItem(review.user._id);
 
 	return (
 		<StyledItem>
@@ -40,13 +39,31 @@ export default function ReviewItem({
 				<span>{review.score}</span>
 				<span>| {sliceDate(review.createdAt)}</span>
 			</div>
-			<p>{review.content}</p>
+			{isMyReview && (
+				<ButtonWrapper>
+					<button type='button' onClick={editState.change}>
+						<IconEdit />
+					</button>
+					<button type='button'>
+						<IconTrash />
+					</button>
+				</ButtonWrapper>
+			)}
+			{editState.value ? (
+				<ReviewForm
+					isMyProduct={isMyProduct}
+					review={review}
+					updateCallback={editState.change}
+				/>
+			) : (
+				<p>{review.content}</p>
+			)}
 			{isMyProduct && isEmpty(review.answer) && (
 				<Button
 					variant='lightGrey'
 					size='small'
 					type='button'
-					onClick={() => onToggleReviewInput()}
+					onClick={onToggleReviewInput}
 				>
 					{isOpenReviewInput ? '취소' : '답글'}
 				</Button>
@@ -70,7 +87,7 @@ export default function ReviewItem({
 
 const StyledItem = styled.li`
 	display: grid;
-	grid-template-columns: 50px auto;
+	grid-template-columns: 50px auto 50px;
 	gap: 0 5px;
 	& > div:nth-of-type(1) {
 		grid-column: 1 / 2;
@@ -91,19 +108,32 @@ const StyledItem = styled.li`
 		}
 	}
 	& > p:nth-of-type(2) {
-		grid-column: 1 / 3;
+		grid-column: 1 / 4;
 		margin-top: 20px;
 		line-height: 25px;
 		color: ${({ theme }) => theme.colors.darkerGrey};
 	}
 	& > form,
 	& > button {
-		grid-column: 1 / 3;
+		grid-column: 1 / 4;
 		text-align: center;
 		margin-top: 15px;
 	}
 	& > button {
 		margin: 15px auto 0;
+	}
+`;
+
+const ButtonWrapper = styled.div`
+	display: flex;
+	gap: 10px;
+	svg {
+		color: ${({ theme }) => theme.colors.grey};
+		width: 18px;
+		height: 18px;
+		&:hover {
+			color: ${({ theme }) => theme.colors.darkGrey};
+		}
 	}
 `;
 

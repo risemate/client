@@ -27,3 +27,4 @@ export {
 } from 'react-icons/bs';
 export { TbFileOff as IconFileOff } from 'react-icons/tb';
 export { TiDelete as IconDelete } from 'react-icons/ti';
+export { MdEdit as IconEdit } from 'react-icons/md';
