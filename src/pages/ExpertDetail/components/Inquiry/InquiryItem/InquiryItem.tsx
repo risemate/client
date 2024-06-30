@@ -1,11 +1,11 @@
 import { IconEdit } from '@icons';
-import { isEmpty, maskString, sliceDate } from '@utils/helpers';
+import { maskString, sliceDate } from '@utils/helpers';
 import styled from 'styled-components';
 import { CS as InquiryType } from 'types/coach/product';
 
-import Button from '@common/Button';
 import DefaultImage from '@common/DefaultImage';
 
+import InquiryAnswer from '../InquiryAnswer/InquiryAnswer';
 import InquiryForm from '../InquiryForm/InquiryForm';
 import useInquiryitem from './InquiryItem.hook';
 
@@ -47,29 +47,13 @@ export default function InquiryItem({
 			) : (
 				<p>{inquiry.content}</p>
 			)}
-			{isMyProduct && isEmpty(inquiry.answer) && (
-				<Button
-					variant='lightGrey'
-					size='small'
-					type='button'
-					onClick={() => onToggleInquiryInput()}
-				>
-					{isOpenInquiryInput ? '취소' : '답글'}
-				</Button>
-			)}
-			{isEmpty(inquiry.answer) && isMyProduct && isOpenInquiryInput && (
-				<InquiryForm isMyProduct={isMyProduct} />
-			)}
-			{inquiry.answer && (
-				<StyledAnswer>
-					<p>
-						<span>{maskString(inquiry.answer.expert.name, 2, '*')}</span>
-						<span>({maskString(inquiry.answer.expert.nickname, 2, '*')})</span>
-						<span>| {sliceDate(inquiry.answer.createdAt)}</span>
-					</p>
-					<p>{inquiry.answer.content}</p>
-				</StyledAnswer>
-			)}
+			<InquiryAnswer
+				csId={inquiry._id}
+				isOpenInquiryInput={isOpenInquiryInput}
+				onToggleInquiryInput={onToggleInquiryInput}
+				isMyProduct={isMyProduct}
+				answer={inquiry.answer}
+			/>
 		</StyledItem>
 	);
 }
@@ -110,31 +94,6 @@ const StyledItem = styled.li`
 	}
 	& > button {
 		margin: 15px auto 0;
-	}
-`;
-
-const StyledAnswer = styled.div`
-	grid-column: 1 / 3;
-	background: ${({ theme }) => theme.colors.lighterGrey};
-	margin-top: 20px;
-	padding: 15px 20px 15px 30px;
-	border-radius: 5px;
-	& > p:nth-of-type(1) {
-		display: flex;
-		gap: 8px;
-		align-items: end;
-		margin-bottom: 10px;
-		& > span {
-			color: ${({ theme }) => theme.colors.darkerGrey};
-		}
-		& > span:nth-of-type(3) {
-			color: ${({ theme }) => theme.colors.darkGrey};
-			font-size: ${({ theme }) => theme.fontSizes.small};
-		}
-	}
-	& > p:nth-of-type(2) {
-		line-height: 25px;
-		color: ${({ theme }) => theme.colors.darkerGrey};
 	}
 `;
 
