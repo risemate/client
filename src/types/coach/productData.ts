@@ -61,6 +61,7 @@ export const defaultProduct: ProductRequest = {
 		ADVANCED: defaultPackage,
 		PREMIUM: defaultPackage,
 	},
+	public: false,
 	// defaultPrice: null,
 };
 

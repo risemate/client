@@ -12,12 +12,12 @@ export type ProductRequest = {
 	careerTypes: CareerType[];
 	searchKeyword: string[];
 	packages: Package;
+	public: boolean;
 };
 
 export type Product = ProductRequest & {
 	user?: BaseUser;
 	expert: string;
-	public?: boolean;
 	reviewCount: number;
 	category: Category;
 	avgReviewScore: number;

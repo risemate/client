@@ -1,5 +1,5 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
-import { productDeleteMutation } from '@queries/product';
+import { productDeleteMutation, productUpdateMutation } from '@queries/product';
 import { ChangeEvent, useState } from 'react';
 import { toast } from 'react-toastify';
 import { Product } from 'types/coach/product';
@@ -9,9 +9,14 @@ export default function useProductCard(
 	selectedId?: string | null,
 	updateSelectedId?: (id: string | null) => void,
 ) {
-	const [isPublic, setIsPublic] = useState(false);
+	const [isPublic, setIsPublic] = useState<boolean>(product.public);
+	const updateProductMutation = productUpdateMutation();
 	const updateIsPublic = async (event: ChangeEvent<HTMLInputElement>) => {
-		setIsPublic(event.target.checked);
+		const response = await updateProductMutation.mutateAsync({
+			...product,
+			public: event.target.checked,
+		});
+		setIsPublic(response.public);
 	};
 
 	const deleteQueryKey = 'delete-product';
