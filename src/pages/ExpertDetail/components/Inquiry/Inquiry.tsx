@@ -1,32 +1,31 @@
-import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { mockInquiry } from 'types/coach/productData';
 
 import BaseSection from '../BaseSection';
-import InquiryForm from './InquiryForm';
+import useInquiry from './Inquiry.hook';
+import InquiryForm from './InquiryForm/InquiryForm';
 import InquiryItem from './InquiryItem';
 
 interface InquiryProps {
 	sectionRef: React.RefObject<HTMLElement>;
+	isMyProduct: boolean;
 }
 
-export default function Inquiry({ sectionRef }: InquiryProps) {
-	const [openInquiryInputs, setOpenInquiryInputs] = useState<boolean[]>(
-		Array(mockInquiry.length).fill(false),
+export default function Inquiry({ sectionRef, isMyProduct }: InquiryProps) {
+	const { id } = useParams();
+	const { cs, openInquiryInputs, handleToggleInquiryInput, createCs } = useInquiry(
+		id || '',
 	);
-	const isMyProduct = true;
-
-	const handleToggleInquiryInput = (index: number) => {
-		setOpenInquiryInputs(prev => prev.map((state, i) => (i === index ? !state : false)));
-	};
 
 	return (
 		<BaseSection ref={sectionRef}>
 			<h3>상품 문의</h3>
 			<InquiryWrapper>
-				{!isMyProduct && <InquiryForm isMyProduct={isMyProduct} />}
+				{!isMyProduct && (
+					<InquiryForm isMyProduct={isMyProduct} submitCallback={createCs} />
+				)}
 				<ul>
-					{mockInquiry.map((inquiry, index) => (
+					{cs.map((inquiry, index) => (
 						<InquiryItem
 							key={inquiry._id}
 							inquiry={inquiry}

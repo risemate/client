@@ -68,5 +68,6 @@ export const dateToString = (date: Date) => {
 };
 
 export const sliceDate = (date: string) => {
+	if (!date) return '';
 	return date.slice(2, 10).replaceAll('-', '.') + ' ' + date.slice(11, 16);
 };

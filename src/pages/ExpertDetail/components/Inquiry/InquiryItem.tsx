@@ -1,12 +1,11 @@
-import { isEmpty, maskString } from '@utils/helpers';
-import React from 'react';
+import { isEmpty, maskString, sliceDate } from '@utils/helpers';
 import styled from 'styled-components';
 import { CS as InquiryType } from 'types/coach/product';
 
 import Button from '@common/Button';
 import DefaultImage from '@common/DefaultImage';
 
-import InquiryForm from './InquiryForm';
+import InquiryForm from './InquiryForm/InquiryForm';
 
 interface InquiryItemProps {
 	inquiry: InquiryType;
@@ -21,10 +20,6 @@ export default function InquiryItem({
 	isOpenInquiryInput,
 	onToggleInquiryInput,
 }: InquiryItemProps) {
-	const sliceDate = (date: string) => {
-		return date.slice(2, 10).replaceAll('-', '.') + ' ' + date.slice(11, 16);
-	};
-
 	return (
 		<StyledItem>
 			<DefaultImage

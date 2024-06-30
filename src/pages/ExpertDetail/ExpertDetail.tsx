@@ -54,7 +54,10 @@ export default function ExpertDetail() {
 									isMyProduct={isMyProduct}
 									sectionRef={sectionRefs.current[tabItems[2]?.value ?? 0]}
 								/>
-								<Inquiry sectionRef={sectionRefs.current[tabItems[3]?.value ?? 0]} />
+								<Inquiry
+									isMyProduct={isMyProduct}
+									sectionRef={sectionRefs.current[tabItems[3]?.value ?? 0]}
+								/>
 							</SectionWrapper>
 						</div>
 						<ProductInfo

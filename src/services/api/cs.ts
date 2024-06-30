@@ -9,22 +9,26 @@ const CS_PATH = {
 };
 
 export const fetchCreateCs = async (body: RequestAnswer): Promise<CS> => {
-	const response = await axios.post<CS>(CS_PATH.CS(body.id), body);
+	const { id, ...restBody } = body;
+	const response = await axios.post<CS>(CS_PATH.CS(id), restBody);
 	return response.data;
 };
 
 export const fetchUpdateCs = async (body: RequestAnswer): Promise<CS> => {
-	const response = await axios.patch<CS>(CS_PATH.CS(body.id), body);
+	const { id, ...restBody } = body;
+	const response = await axios.patch<CS>(CS_PATH.CS(id), restBody);
 	return response.data;
 };
 
 export const fetchCreateCsAsnwer = async (body: RequestAnswer): Promise<CS> => {
-	const response = await axios.post<CS>(CS_PATH.CS_ANSWER(body.id), body);
+	const { id, ...restBody } = body;
+	const response = await axios.post<CS>(CS_PATH.CS_ANSWER(id), restBody);
 	return response.data;
 };
 
 export const fetchUpdateCsAsnwer = async (body: RequestAnswer): Promise<CS> => {
-	const response = await axios.patch<CS>(CS_PATH.CS_ANSWER(body.id), body);
+	const { id, ...restBody } = body;
+	const response = await axios.patch<CS>(CS_PATH.CS_ANSWER(id), restBody);
 	return response.data;
 };
 
