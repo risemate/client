@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import BaseSection from '../BaseSection';
 import useInquiry from './Inquiry.hook';
 import InquiryForm from './InquiryForm/InquiryForm';
-import InquiryItem from './InquiryItem';
+import InquiryItem from './InquiryItem/InquiryItem';
 
 interface InquiryProps {
 	sectionRef: React.RefObject<HTMLElement>;
