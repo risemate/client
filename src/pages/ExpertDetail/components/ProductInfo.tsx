@@ -34,6 +34,7 @@ export default function ProductInfo({
 					isCurrentTab={isCurrentTab}
 					underline
 					center
+					padding={10}
 				/>
 				<h3>포함 서비스 목록</h3>
 				{Object.entries(packages).map(

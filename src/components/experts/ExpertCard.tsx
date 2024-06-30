@@ -30,6 +30,7 @@ export default function ExpertCard({ expert }: ExpertCardProps) {
 
 const CardItemButton = styled.button`
 	max-width: 250px;
+	width: 100%;
 	min-width: 200px;
 	min-height: 405px;
 	border-radius: 10px;

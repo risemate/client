@@ -11,6 +11,7 @@ interface TabProps<T> {
 	underline?: boolean;
 	variant?: Variant;
 	sticky?: boolean;
+	padding?: number;
 }
 
 export default function Tab<T = string | number | undefined>({
@@ -21,6 +22,7 @@ export default function Tab<T = string | number | undefined>({
 	underline = false,
 	variant = 'darkGrey',
 	sticky = false,
+	padding = 20,
 }: TabProps<T>) {
 	return (
 		<TabList $center={center} $underline={underline} $sticky={sticky}>
@@ -28,6 +30,7 @@ export default function Tab<T = string | number | undefined>({
 				<li key={item.label}>
 					<TabItemButton
 						$variant={variant}
+						$padding={padding}
 						className={isCurrentTab(item) ? 'active' : undefined}
 						onClick={() => changeTab(item)}
 					>
@@ -59,6 +62,7 @@ const TabList = styled.ul<TabListProps>`
 
 interface TabButtonProps {
 	$variant?: Variant;
+	$padding?: number;
 }
 
 const TabItemButton = styled.button<TabButtonProps>`
@@ -67,7 +71,7 @@ const TabItemButton = styled.button<TabButtonProps>`
 		if ($variant === 'lightGrey') return theme.colors.lightGrey;
 		return theme.colors.darkGrey;
 	}};
-	padding: 5px 20px;
+	padding: 5px ${({ $padding }) => `${$padding}px`};
 	margin-bottom: -2px;
 	&.active,
 	&:hover {
