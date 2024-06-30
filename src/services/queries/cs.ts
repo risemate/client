@@ -24,7 +24,7 @@ export const csCreateMutation = (
 	return useMutation({
 		mutationFn: (body: RequestAnswer) => fetchCreateCs(body),
 		onSuccess: data => {
-			queryClient.invalidateQueries({ queryKey: productKeys.id(data._id) });
+			queryClient.invalidateQueries({ queryKey: productKeys.cs(data.product) });
 		},
 		...options,
 	});
@@ -37,7 +37,7 @@ export const csUpdateMutation = (
 	return useMutation({
 		mutationFn: (body: RequestAnswer) => fetchUpdateCs(body),
 		onSuccess: data => {
-			queryClient.invalidateQueries({ queryKey: productKeys.id(data._id) });
+			queryClient.invalidateQueries({ queryKey: productKeys.cs(data.product) });
 		},
 		...options,
 	});
@@ -50,7 +50,7 @@ export const csAnswerCreateMutation = (
 	return useMutation({
 		mutationFn: (body: RequestAnswer) => fetchCreateCsAsnwer(body),
 		onSuccess: data => {
-			queryClient.invalidateQueries({ queryKey: productKeys.id(data._id) });
+			queryClient.invalidateQueries({ queryKey: productKeys.cs(null, data._id) });
 		},
 		...options,
 	});
@@ -63,7 +63,7 @@ export const csAnswerUpdateMutation = (
 	return useMutation({
 		mutationFn: (body: RequestAnswer) => fetchUpdateCsAsnwer(body),
 		onSuccess: data => {
-			queryClient.invalidateQueries({ queryKey: productKeys.id(data._id) });
+			queryClient.invalidateQueries({ queryKey: productKeys.cs(null, data._id) });
 		},
 		...options,
 	});
@@ -84,7 +84,7 @@ export const csListQuery = (
 	options?: UseQueryOptionsType<CS[]>,
 ): UseQueryResultType<CS[]> => {
 	return useQuery({
-		queryKey: productKeys.base,
+		queryKey: productKeys.cs(id),
 		queryFn: () => fetchCsList(id),
 		...options,
 	});

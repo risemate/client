@@ -84,13 +84,14 @@ export type Answer = {
 export type CS = {
 	_id: string;
 	user: BaseUser;
-	product: {
-		productTitle: string;
-		subTitle: string;
-		coverImage: string;
-		expert: Expert;
-		_id: string;
-	};
+	// product: {
+	// 	productTitle: string;
+	// 	subTitle: string;
+	// 	coverImage: string;
+	// 	expert: Expert;
+	// 	_id: string;
+	// };
+	product: string;
 	content: string;
 	completed: boolean;
 	answer: Answer | null;

@@ -44,6 +44,11 @@ export const productKeys = {
 		'review',
 		{ productId, reviewId },
 	],
+	cs: (productId?: string | null, csId?: string) => [
+		...productKeys.base,
+		'cs',
+		{ productId, csId },
+	],
 	pagingParam: (params?: NetworkPagingQuery) =>
 		[...productKeys.base, { ...params }] as const,
 };
