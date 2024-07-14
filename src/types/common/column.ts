@@ -5,3 +5,8 @@ export type Column<T> = {
 	title: string | ReactElement;
 	render?: (column: Column<T>, item: T) => ReactElement;
 };
+
+export type PropsWithId<T> = {
+	id: string;
+	body: T;
+};

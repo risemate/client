@@ -13,7 +13,7 @@ interface PendingProps {
 export default function Pending({ pending }: PendingProps) {
 	return (
 		<PedningWrapper>
-			<h4>@ 00님의 이력서 첨삭 요청이 있습니다.</h4>
+			<h4>@ 00님께 이력서 첨삭을 요청드린 상태이며, 답변을 기다리고 있습니다.</h4>
 			<div>
 				이력서 Link{' '}
 				<Button variant='blue' size='small'>
@@ -26,10 +26,7 @@ export default function Pending({ pending }: PendingProps) {
 			</p>
 			<div>
 				<Button variant='navy' size='medium'>
-					수락
-				</Button>
-				<Button variant='navy' size='medium'>
-					거절
+					취소
 				</Button>
 			</div>
 		</PedningWrapper>

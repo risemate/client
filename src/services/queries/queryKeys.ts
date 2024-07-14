@@ -1,3 +1,5 @@
+import { CoachingDecideRequest, CoachingRequest } from 'types/coach/coaching';
+import { PropsWithId } from 'types/common/column';
 import { NetworkPagingQuery } from 'types/query/query';
 import { CareersQueryProps } from 'types/query/queryProps';
 
@@ -55,4 +57,14 @@ export const productKeys = {
 
 export const expertKeys = {
 	base: ['expert'] as const,
+};
+
+export const coachingKeys = {
+	base: ['coaching'] as const,
+	id: (id: string) => [...coachingKeys.base, { id }],
+	coaching_request: (body: CoachingRequest) => [...coachingKeys.base, body],
+	coaching_decide: (variables: PropsWithId<CoachingDecideRequest>) => [
+		...coachingKeys.base,
+		{ id: variables.id, ...variables.body },
+	],
 };
