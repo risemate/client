@@ -1,4 +1,4 @@
-import { IconEdit, IconTrash } from '@icons';
+import { IconEdit } from '@icons';
 import { maskString, sliceDate } from '@utils/helpers';
 import styled from 'styled-components';
 import { Review as ReviewType } from 'types/coach/product';
@@ -43,9 +43,6 @@ export default function ReviewItem({
 				<ButtonWrapper>
 					<button type='button' onClick={editState.change}>
 						<IconEdit />
-					</button>
-					<button type='button'>
-						<IconTrash />
 					</button>
 				</ButtonWrapper>
 			)}
