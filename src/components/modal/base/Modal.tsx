@@ -8,7 +8,7 @@ import ModalBase from './ModalBase';
 
 interface ModalProps {
 	title: string;
-	children: ReactNode;
+	children: ReactNode | string;
 	confirm?: string;
 	cancel?: string;
 	onClick?: () => void;
@@ -28,12 +28,15 @@ export default function Modal({
 	queryKey,
 }: ModalProps) {
 	const { closeModal } = useModal(queryKey);
-
 	return (
 		<ModalBase queryKey={queryKey}>
 			<ModalWrapper>
 				<h1>{title}</h1>
-				<p>{children}</p>
+				{typeof children?.valueOf() === 'string' ? (
+					<p>{children}</p>
+				) : (
+					<div>{children}</div>
+				)}
 				<div>
 					<Button
 						variant='border'
@@ -78,7 +81,7 @@ const ModalWrapper = styled.div`
 		color: ${({ theme }) => theme.colors.darkGrey};
 		line-height: 25px;
 	}
-	div {
+	div:nth-child(3) {
 		display: flex;
 		gap: 30px;
 	}
