@@ -1,10 +1,13 @@
+import { useModal } from '@hooks/atoms/useModalAtom';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Auth } from 'types/auth';
 
 import Button from '@common/Button';
+import Modal from '@components/modal/base/Modal';
 
 import { Table, TableCell, TableHeader, TableHeaderCell, TableRow } from './Table';
 
@@ -21,13 +24,15 @@ interface ApplyExpert {
 	updatedAt: string;
 	approve: boolean | null;
 }
+const getAppliList = async () => {
+	const response = await axios.get('management/expert-applicate-list');
+	return response.data as ApplyExpert[];
+};
+
 function ManageExpertApplicate() {
-	const { data, isLoading } = useQuery({
+	const { data, isLoading, refetch } = useQuery({
 		queryKey: ['admin', 'expertApplications'],
-		queryFn: async () => {
-			const response = await axios.get('management/expert-applicate-list');
-			return response.data as ApplyExpert[];
-		},
+		queryFn: getAppliList,
 	});
 
 	return (
@@ -43,21 +48,44 @@ function ManageExpertApplicate() {
 						<TableHeaderCell>이력서</TableHeaderCell>
 						<TableHeaderCell>관리</TableHeaderCell>
 						<TableHeaderCell>상태</TableHeaderCell>
+						<TableHeaderCell>처리날짜</TableHeaderCell>
 					</TableRow>
 				</TableHeader>
-				<tbody>{data?.map(item => <Item key={item._id} item={item} />)}</tbody>
+				<tbody>
+					{data?.map(item => <Item key={item._id} item={item} refetch={refetch} />)}
+				</tbody>
 			</Table>
 		</Wrap>
 	);
 }
 
-function Item({ item }: { item: ApplyExpert }) {
+function Item({ item, refetch }: { item: ApplyExpert; refetch: () => void }) {
+	const { openModal: approveOpen } = useModal('expert-approve');
+	const { openModal: refuseOpen } = useModal('expert-refuse');
+	const [eu, setEu] = useState<string>('');
+	const onSubmit = useCallback(
+		async (approve: boolean) => {
+			await axios
+				.patch(`/management/expert-applicate/${item._id}`, {
+					message: eu,
+					approve: approve,
+				})
+				.then(res => {
+					if (res.data.success) {
+						refetch();
+						alert('처리 완');
+					}
+				});
+		},
+		[eu, item],
+	);
+
 	return (
 		<TableRow>
 			<TableCell>{item.createdAt}</TableCell>
 			<TableCell>
 				<Button variant='mint' size='small'>
-					보기
+					{item.user.name}
 				</Button>
 			</TableCell>
 			<TableCell>{item.data.message}</TableCell>
@@ -65,14 +93,44 @@ function Item({ item }: { item: ApplyExpert }) {
 				<Link to={`/my-info/docs/${item.data.resumeId}`}>보기</Link>
 			</TableCell>
 			<TableCell>
-				<button style={{ color: 'blue' }}>승인</button>|
-				<button style={{ color: 'red' }}>거절</button>
+				{item.approveStatus === 'REVIEWING' && (
+					<div>
+						<button style={{ color: 'blue' }} onClick={approveOpen}>
+							승인
+						</button>
+						|
+						<button style={{ color: 'red' }} onClick={refuseOpen}>
+							거절
+						</button>
+						<Modal
+							title='전문가 요청관리'
+							queryKey='expert-approve'
+							onClick={() => onSubmit(true)}
+						>
+							{item.user.name + '님을 전문가로 승인하시겠습니까?'}
+						</Modal>
+						<Modal
+							title='전문가 요청관리'
+							queryKey='expert-refuse'
+							onClick={() => onSubmit(false)}
+						>
+							<RefuWrap>
+								<h3>사유</h3>
+								<textarea
+									style={{ width: '100%' }}
+									onChange={e => setEu(e.target.value)}
+								/>
+							</RefuWrap>
+						</Modal>
+					</div>
+				)}
 			</TableCell>
 			<TableCell>
 				<span>
 					{(item.approve === null && '대기') || (item.approve ? '승인' : '거절')}
 				</span>
 			</TableCell>
+			<TableCell>{item.createdAt !== item.updatedAt && item.updatedAt}</TableCell>
 		</TableRow>
 	);
 }
@@ -84,5 +142,21 @@ const Wrap = styled.div`
 		font-size: 20px;
 		font-weight: 600;
 		margin-bottom: 20px;
+	}
+`;
+
+const RefuWrap = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	h3 {
+		font-weight: bold;
+		font-size: 19px;
+		text-align: center;
+	}
+	textarea {
+		width: 100%;
+		height: 100px;
+		padding: 10px;
 	}
 `;
