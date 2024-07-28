@@ -4,14 +4,14 @@ import styled, { css } from 'styled-components';
 import { Size, Variant } from 'types/common/button';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-	variant: Variant;
+	variant?: Variant;
 	size?: Size;
 	children: ReactNode;
 	to?: string;
 }
 
 const Button = forwardRef(function Button(
-	{ variant, size, children, to, ...ButtonProps }: ButtonProps,
+	{ variant = 'blue', size, children, to, ...ButtonProps }: ButtonProps,
 	ref: ForwardedRef<HTMLButtonElement>,
 ) {
 	const navigate = useNavigate();

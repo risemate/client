@@ -15,6 +15,7 @@ import MyProduct from 'pages/MyProduct/MyProduct';
 import Network from 'pages/Network/Network';
 import NotFound from 'pages/NotFound';
 import ReviseManagement from 'pages/ReviseManagement/ReviseManagement';
+import PaymentExampleCom from 'pages/TestPayment';
 import WritePage from 'pages/Write/Write';
 import { createBrowserRouter } from 'react-router-dom';
 
@@ -36,6 +37,7 @@ axios.interceptors.response.use(
 
 export const router = createBrowserRouter([
 	{ path: 'admin', element: <Admin /> },
+	{ path: 'test', element: <PaymentExampleCom /> },
 	{
 		path: '/',
 		element: <RootLayout />,
