@@ -1,7 +1,8 @@
-import { CareerType } from "types/career/careerDocument";
-import { PackageCategory } from "./product";
+import { CareerType } from 'types/career/careerDocument';
 
-export type ProgressStatus = 'PENDING' | 'IN_PROGRESS' | 'COMPLETED'
+import { PackageCategory } from './product';
+
+export type ProgressStatus = 'PENDING' | 'IN_PROGRESS' | 'COMPLETED';
 
 export type Pending = {
 	temp: number;
@@ -39,4 +40,4 @@ export type ManagementItemDTO = {
 	createdAt: string;
 	updatedAt: string;
 	__v: number;
-}
+};

@@ -1,8 +1,9 @@
 // import { Auth } from 'types/auth';
 // import { Career, CareerType } from 'types/career/careerDocument';
 import { CareerType } from 'types/career/careerDocument';
+
 // import { Expert, PackageCategory, Product } from './product';
-import { PackageCategory, } from './product';
+import { PackageCategory } from './product';
 
 export type CoachingRequest = {
 	productId: string;
