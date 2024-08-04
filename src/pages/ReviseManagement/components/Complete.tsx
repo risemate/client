@@ -1,30 +1,36 @@
-import React from 'react';
 import styled from 'styled-components';
-import { Complete as CompleteType } from 'types/coach/managment';
+import { CoachingResponse } from 'types/coach/coaching';
 
 import Button from '@common/Button';
+import Empty from '@common/Empty';
 
 interface CompleteProps {
-	complete: CompleteType;
+	completeList: CoachingResponse[];
 }
 
-// eslint-disable-next-line
-export default function Complete({ complete }: CompleteProps) {
+export default function Complete({ completeList }: CompleteProps) {
+	if (completeList.length === 0) {
+		return <Empty>완료된 첨삭이 없습니다.</Empty>;
+	}
 	return (
-		<CompleteWrapper>
-			<h4>@ 00님의 이력서 첨삭</h4>
-			<time>2023.08.31</time>
-			<Button variant='navy' size='medium'>
-				이력서 보기
-			</Button>
-			<Button variant='navy' size='medium'>
-				피드백 문서 보기
-			</Button>
-		</CompleteWrapper>
+		<>
+			{completeList.map(complete => (
+				<CompleteWrapper key={complete._id}>
+					<h4>@ 00님의 이력서 첨삭</h4>
+					<time>2023.08.31</time>
+					<Button variant='navy' size='medium'>
+						이력서 보기
+					</Button>
+					<Button variant='navy' size='medium'>
+						피드백 문서 보기
+					</Button>
+				</CompleteWrapper>
+			))}
+		</>
 	);
 }
 
-const CompleteWrapper = styled.div`
+const CompleteWrapper = styled.li`
 	h4 {
 		margin-bottom: 20px;
 	}

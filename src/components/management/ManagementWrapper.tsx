@@ -103,7 +103,7 @@ const ManagementList = styled.ul`
 	gap: 30px;
 	padding-top: 20px;
 	overflow-y: scroll;
-	li > div {
+	li {
 		position: relative;
 		padding: 30px;
 		border-radius: 10px;

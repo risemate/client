@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Progress as ProgressType } from 'types/coach/managment';
+import { CoachingResponse } from 'types/coach/coaching';
 
 import Button from '@common/Button';
+import Empty from '@common/Empty';
 
 interface ProgressProps {
-	progress: ProgressType;
+	progressList: CoachingResponse[];
 }
 
-// eslint-disable-next-line
-export default function Progress({ progress }: ProgressProps) {
+export default function Progress({ progressList }: ProgressProps) {
 	const level = 1;
 	const progressBarItems = [
 		'결제 완료',
@@ -17,43 +17,50 @@ export default function Progress({ progress }: ProgressProps) {
 		'피드백\n문서 완성\nand\n온/오프 미팅\n완료',
 		'첨삭 완료\n및 정산',
 	];
+	if (progressList.length === 0) {
+		return <Empty>현재 진행 중인 첨삭이 없습니다</Empty>;
+	}
 	return (
-		<ProgressWrapper>
-			<h4>@ 00님의 이력서 첨삭 코칭</h4>
-			<div>
-				이력서 Link{' '}
-				<Button variant='blue' size='small'>
-					바로 가기
-				</Button>
-			</div>
-			<ProgressBarWrapper>
-				{progressBarItems.map((item, index) =>
-					level >= index + 1 ? (
-						<ColoredProgressBar key={index}>
-							{item.split('\n').map((text, i) => (
-								<React.Fragment key={i}>
-									{i > 0 && <br />}
-									{text}
-								</React.Fragment>
-							))}
-						</ColoredProgressBar>
-					) : (
-						<NoColoredProgressBar key={index}>
-							{item.split('\n').map((text, i) => (
-								<React.Fragment key={i}>
-									{i > 0 && <br />}
-									{text}
-								</React.Fragment>
-							))}
-						</NoColoredProgressBar>
-					),
-				)}
-			</ProgressBarWrapper>
-		</ProgressWrapper>
+		<>
+			{progressList.map(progress => (
+				<ProgressWrapper key={progress._id}>
+					<h4>@ 00님의 이력서 첨삭 코칭</h4>
+					<div>
+						이력서 Link{' '}
+						<Button variant='blue' size='small'>
+							바로 가기
+						</Button>
+					</div>
+					<ProgressBarWrapper>
+						{progressBarItems.map((item, index) =>
+							level >= index + 1 ? (
+								<ColoredProgressBar key={index}>
+									{item.split('\n').map((text, i) => (
+										<React.Fragment key={i}>
+											{i > 0 && <br />}
+											{text}
+										</React.Fragment>
+									))}
+								</ColoredProgressBar>
+							) : (
+								<NoColoredProgressBar key={index}>
+									{item.split('\n').map((text, i) => (
+										<React.Fragment key={i}>
+											{i > 0 && <br />}
+											{text}
+										</React.Fragment>
+									))}
+								</NoColoredProgressBar>
+							),
+						)}
+					</ProgressBarWrapper>
+				</ProgressWrapper>
+			))}
+		</>
 	);
 }
 
-const ProgressWrapper = styled.div`
+const ProgressWrapper = styled.li`
 	/* overflow: hidden; */
 	& > div:nth-of-type(1) {
 		margin: 10px 0;
