@@ -62,3 +62,8 @@ export type CoachingResponse = {
 	// };
 	progressStatus: COACHING_STATUS;
 };
+
+export type CoachingExpertResponse = CoachingResponse & {
+	expertCompleted: string[];
+	userCompleted: string[];
+};

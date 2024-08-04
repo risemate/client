@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {
 	CoachingDecideRequest,
+	CoachingExpertResponse,
 	CoachingRequest,
 	CoachingResponse,
 } from 'types/coach/coaching';
@@ -45,26 +46,28 @@ export const fetchUserCoachingAction = async (id: string): Promise<CoachingRespo
 	return response.data;
 };
 
-export const fetchExpertCoachingList = async (): Promise<CoachingResponse[]> => {
+export const fetchExpertCoachingList = async (): Promise<CoachingExpertResponse[]> => {
 	const response = await axios.get(COACHING_PATH.EXPERT());
 	return response.data;
 };
 
 export const fetchExpertCoachingDetail = async (
 	id: string,
-): Promise<CoachingResponse> => {
+): Promise<CoachingExpertResponse> => {
 	const response = await axios.get(COACHING_PATH.EXPERTID(id));
 	return response.data;
 };
 
 export const fetchExpertCoachingAction = async (
 	id: string,
-): Promise<CoachingResponse> => {
+): Promise<CoachingExpertResponse> => {
 	const response = await axios.patch(COACHING_PATH.EXPERTID(id));
 	return response.data;
 };
 
-export const fetchCoachingCareer = async (id: string): Promise<CoachingResponse> => {
+export const fetchCoachingCareer = async (
+	id: string,
+): Promise<CoachingExpertResponse> => {
 	const response = await axios.patch(COACHING_PATH.COACHING(id));
 	return response.data;
 };
