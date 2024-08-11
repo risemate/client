@@ -3,7 +3,7 @@ import { CoachingExpertResponse } from 'types/coach/coaching';
 
 import Button from '@common/Button';
 import Input from '@components/input/Input';
-import Modal from '@components/modal/base/Modal';
+import InputModal from '@components/modal/InputModal';
 
 import usePendingItem from './PendingItem.hook';
 
@@ -12,7 +12,7 @@ interface PendingItemProps {
 }
 
 export default function PendingItem({ pending }: PendingItemProps) {
-	const { timeRemain, navigateToResume, acceptModal, refuseModal } =
+	const { timeRemain, navigateToResume, acceptModal, refuseModal, messageField } =
 		usePendingItem(pending);
 	return (
 		<PedningWrapper>
@@ -35,20 +35,24 @@ export default function PendingItem({ pending }: PendingItemProps) {
 					거절
 				</Button>
 			</div>
-			<Modal
+			<InputModal
 				title={`${pending.selectedPackage} 수락`}
 				confirm='수락'
 				queryKey={acceptModal.queryKey}
+				buttonFormId='accept-form'
+				{...messageField}
 			>
-				{pending.selectedPackage} 코칭을 수락하시겠습니까?
-			</Modal>
-			<Modal
+				@@님의 첨삭 요청을 수락하시겠습니까?
+			</InputModal>
+			<InputModal
 				title={`${pending.selectedPackage} 거절`}
 				confirm='거절'
 				queryKey={refuseModal.queryKey}
+				buttonFormId='refuse-form'
+				{...messageField}
 			>
-				{pending.selectedPackage} 코칭을 거절하시겠습니까?
-			</Modal>
+				@@님의 첨삭 요청을 거절하시겠습니까?
+			</InputModal>
 		</PedningWrapper>
 	);
 }

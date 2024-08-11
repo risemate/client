@@ -1,6 +1,6 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
 import { ReactNode } from 'react';
-import styled from 'styled-components';
+import styled, { CSSProp } from 'styled-components';
 
 import Button from '@common/Button';
 
@@ -13,8 +13,10 @@ interface ModalProps {
 	cancel?: string;
 	onClick?: () => void;
 	onCancel?: () => void;
+	disabledConfirmButton?: boolean;
 	buttonFormId?: string;
 	queryKey: string;
+	customCss?: CSSProp;
 }
 
 export default function Modal({
@@ -24,13 +26,15 @@ export default function Modal({
 	cancel = '취소',
 	onClick,
 	onCancel,
+	disabledConfirmButton = false,
 	buttonFormId,
 	queryKey,
+	customCss,
 }: ModalProps) {
 	const { closeModal } = useModal(queryKey);
 	return (
 		<ModalBase queryKey={queryKey}>
-			<ModalWrapper>
+			<ModalWrapper $customCss={customCss}>
 				<h1>{title}</h1>
 				{typeof children?.valueOf() === 'string' ? (
 					<p>{children}</p>
@@ -52,6 +56,7 @@ export default function Modal({
 						variant='navy'
 						size='full'
 						form={buttonFormId}
+						disabled={disabledConfirmButton}
 						onClick={
 							buttonFormId
 								? undefined
@@ -69,7 +74,7 @@ export default function Modal({
 	);
 }
 
-const ModalWrapper = styled.div`
+const ModalWrapper = styled.div<{ $customCss: CSSProp }>`
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
@@ -85,4 +90,5 @@ const ModalWrapper = styled.div`
 		display: flex;
 		gap: 30px;
 	}
+	${({ $customCss }) => $customCss && $customCss}
 `;
