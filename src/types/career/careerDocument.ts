@@ -2,6 +2,10 @@ import { BaseUser } from 'types/auth';
 
 export const CareerType = ['RESUME', 'COVERLETTER'] as const;
 export type CareerType = (typeof CareerType)[number];
+export const CareerTypeList: Record<CareerType, string> = {
+	RESUME: '이력서',
+	COVERLETTER: '자기소개서',
+};
 
 export const DocType = ['BASIC', 'AI', 'COACHING'] as const;
 export type DocType = (typeof DocType)[number];

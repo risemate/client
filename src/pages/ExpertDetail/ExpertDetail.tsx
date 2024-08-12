@@ -1,6 +1,8 @@
 import useScrollToSection from '@hooks/useScrollToSection';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { CoachingRequestState } from 'types/coach/coaching';
+import { PackageDetail } from 'types/coach/product';
 import { convertToProfile } from 'types/coach/productData';
 
 import Tab from '@common/Tab';
@@ -20,6 +22,12 @@ export default function ExpertDetail() {
 	const { product, isLoading, tabItems, isMyProduct } = useExpertDetail(id || '');
 	const { sectionRefs, activeSection, scrollToSection } = useScrollToSection(tabItems);
 	const { productTitle, subTitle, coverImage } = product;
+	const formState: CoachingRequestState = {
+		productId: id || '',
+		productTitle: productTitle || '',
+		careerTypes: product.careerTypes || [],
+		selectedPackage: {} as PackageDetail,
+	};
 
 	return (
 		<Container>
@@ -64,6 +72,7 @@ export default function ExpertDetail() {
 							packages={product.packages}
 							reviewCount={product.reviewCount}
 							avgReviewScore={product.avgReviewScore}
+							formState={formState}
 						/>
 					</ExpertDetailWrapper>
 				)}

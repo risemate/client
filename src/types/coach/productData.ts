@@ -14,6 +14,7 @@ export const defaultProviderOptions: PackageProviderOption = {
 };
 
 export const defaultPackage: PackageDetail = {
+	packageName: 'BASIC',
 	price: null,
 	packageTitle: '',
 	description: '',
@@ -103,6 +104,7 @@ export const mockProduct: ProductType = {
 	searchKeyword: ['frontend', 'naver', '당근', '면접'],
 	packages: {
 		BASIC: {
+			packageName: 'BASIC',
 			price: 10000,
 			packageTitle: '기본적인 가성비 첨삭!',
 			description: '이력서에 대한 첨삭본과 30분 간의 화상 면접 및 피드백을 제공합니다.',
@@ -120,6 +122,7 @@ export const mockProduct: ProductType = {
 		},
 		ADVANCED: null,
 		PREMIUM: {
+			packageName: 'BASIC',
 			price: 30000,
 			packageTitle: '기본적인 가성비 첨삭!',
 			description: '이력서에 대한 첨삭본과 30분 간의 화상 면접 및 피드백을 제공합니다.',
