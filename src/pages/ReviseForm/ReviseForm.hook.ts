@@ -1,35 +1,36 @@
 import { careersQuery } from '@queries/career';
+import { applyCoachingMutation } from '@queries/coaching';
 import { isEmpty } from '@utils/helpers';
 import { ChangeEvent } from 'react';
 import { useController, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { CareerTypeList } from 'types/career/careerDocument';
 import { CoachingRequest, CoachingRequestState } from 'types/coach/coaching';
 
 interface FormMethodProps extends CoachingRequest {
 	resumeShare: boolean;
+	message: string;
 }
 
 export default function useReviseForm(formState: CoachingRequestState) {
 	const navigate = useNavigate();
+	const coachingApplyMutation = applyCoachingMutation();
 	const reviseFormMethods = useForm<FormMethodProps>({
-		mode: 'onSubmit',
+		mode: 'onBlur',
 		defaultValues: {
 			productId: formState.productId,
-			selectedPackage: formState.selectedPackage.packageName,
+			selectedPackage: formState.selectedPackage,
 			careerType: formState.careerTypes[0],
 			originDocId: '',
 			impUid: '',
 			paidAt: 0,
 			resumeShare: false,
+			message: '',
+			merchantUid: '',
 		},
 	});
-	const {
-		control,
-		formState: { errors },
-		watch,
-		handleSubmit,
-	} = reviseFormMethods;
+	const { control, watch, handleSubmit } = reviseFormMethods;
 	const resumes = careersQuery({ docType: 'BASIC', careerType: watch('careerType') });
 
 	const { field: resumeShareFields } = useController({
@@ -41,13 +42,27 @@ export default function useReviseForm(formState: CoachingRequestState) {
 	const { field: originDocIdFields } = useController({
 		control,
 		name: 'originDocId',
-		// rules: { required: true },
+		rules: { required: true },
 	});
 
-	const disableSubmit = !isEmpty(errors);
+	const { field: messageFields } = useController({
+		control,
+		name: 'message',
+	});
+
+	const disableSubmit = isEmpty(watch('originDocId')) || !watch('resumeShare');
 
 	const onSubmit = handleSubmit(async data => {
-		console.log(data, errors);
+		const coachingRequestData = (({ resumeShare, message, ...rest }) => rest)(data); // eslint-disable-line no-unused-vars
+		try {
+			coachingApplyMutation.mutateAsync(coachingRequestData).then(() => {
+				toast('첨삭 신청이 완료되었습니다.');
+			});
+		} catch (error) {
+			toast('첨삭 신청을 실패하였습니다. 다시 시도해주세요.');
+		} finally {
+			navigate(`expert/${formState.productId}`);
+		}
 	});
 
 	const onCancel = () => navigate(-1);
@@ -69,6 +84,7 @@ export default function useReviseForm(formState: CoachingRequestState) {
 			value: originDocIdFields.value,
 			update: (id: string | null) => originDocIdFields.onChange(id),
 		},
+		message: messageFields,
 		resumes: resumes.data || [],
 		disableSubmit,
 		onSubmit,

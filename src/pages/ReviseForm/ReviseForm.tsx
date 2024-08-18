@@ -6,6 +6,7 @@ import { CoachingRequestState } from 'types/coach/coaching';
 import Button from '@common/Button';
 import CheckBox from '@components/input/CheckBox';
 import Select from '@components/input/Select';
+import TextArea from '@components/input/TextArea';
 import RequestFormWrapper from '@components/request-form/RequestFormWrapper/RequestFormWrapper';
 import BasicCareerList from '@components/resume-view/BasicCareerList';
 
@@ -17,6 +18,7 @@ export default function ReviseForm() {
 	const {
 		careerType,
 		resumeShare,
+		message,
 		disableSubmit,
 		onCancel,
 		onSubmit,
@@ -29,15 +31,12 @@ export default function ReviseForm() {
 				<ProductInfoList>
 					<li>{formState.productTitle}</li>
 					<li>
-						{formState.selectedPackage.packageName} -{' '}
-						{formState.selectedPackage.packageTitle}
+						{formState.selectedPackageInfo.packageName} -{' '}
+						{formState.selectedPackageInfo.packageTitle}
 					</li>
-					<li>{formState.selectedPackage.description}</li>
-					<li>{formState.selectedPackage.price}</li>
+					<li>{formState.selectedPackageInfo.description}</li>
+					<li>{formState.selectedPackageInfo.price}</li>
 				</ProductInfoList>
-			</RequestFormWrapper.Content>
-			<RequestFormWrapper.Content title='첨삭 타입 선택'>
-				<Select options={careerType.options} />
 			</RequestFormWrapper.Content>
 			<RequestFormWrapper.Consent title={`${careerType.selectedText} 공유 동의`}>
 				<CheckBox {...resumeShare}>
@@ -47,6 +46,9 @@ export default function ReviseForm() {
 					따라 첨삭을 진행할 예정입니다.
 				</CheckBox>
 			</RequestFormWrapper.Consent>
+			<RequestFormWrapper.Content title='첨삭 타입 선택'>
+				<Select options={careerType.options} />
+			</RequestFormWrapper.Content>
 			<BasicCareerList
 				title={careerType.selectedText}
 				resumes={resumes}
@@ -54,6 +56,9 @@ export default function ReviseForm() {
 				selectedId={originDocId.value}
 				updateSelectedId={originDocId.update}
 			/>
+			<RequestFormWrapper.Content title='메세지'>
+				<TextArea {...message} />
+			</RequestFormWrapper.Content>
 			<RequestFormWrapper.Action>
 				<Button variant='blue' size='large' disabled={disableSubmit}>
 					첨삭 신청하기

@@ -84,6 +84,9 @@ const swiperStyle = css`
 		width: 100%;
 		padding-bottom: 50px;
 	}
+	.swiper-wrapper {
+		padding: 5px;
+	}
 	.swiper-slide {
 		display: flex;
 		justify-content: center;
