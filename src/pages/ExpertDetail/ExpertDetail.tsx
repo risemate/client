@@ -26,8 +26,7 @@ export default function ExpertDetail() {
 		productId: id || '',
 		productTitle: productTitle || '',
 		careerTypes: product.careerTypes || [],
-		selectedPackage: 'BASIC',
-		selectedPackageInfo: {} as PackageDetail,
+		selectedPackage: {} as PackageDetail,
 	};
 
 	return (

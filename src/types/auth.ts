@@ -25,6 +25,7 @@ export type Auth = {
 	role: RolesType;
 	updatedAt: string;
 	waitingPaymentCoachingCount: number;
+	lastActiveAt: string;
 };
 
 export type BaseUser = {
@@ -44,3 +45,7 @@ export type UserInfoRequestProps = {
 	email: string | null;
 	picture: string | null;
 };
+
+export interface User extends Auth {
+	deletionStatus: { isDeleted: boolean; isDeleteCancelled: boolean; deletedAt: Date };
+}
