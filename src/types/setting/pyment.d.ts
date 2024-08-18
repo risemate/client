@@ -189,6 +189,7 @@ export interface RequestPayParams extends RequestPayAdditionalParams {
 	 * - JSON notation(string)으로 저장됩니다.
 	 * - 주문 건에 대해 부가정보를 저장할 공간이 필요할 때 사용합니다
 	 */
+	// eslint-disable-next-line
 	custom_data?: Record<any, any>;
 	/**
 	 * ### 면세금액

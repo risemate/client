@@ -13,6 +13,7 @@ import {
 } from '../common/Table';
 
 function UserList() {
+	// eslint-disable-next-line
 	const { data, isLoading, refetch } = useQuery<User[], any>({
 		queryKey: ['admin', 'users'],
 		queryFn: async () => {

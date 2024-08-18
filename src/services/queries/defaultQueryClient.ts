@@ -13,6 +13,7 @@ export const queryClient = () => {
 			},
 			mutations: {
 				throwOnError: false,
+				// eslint-disable-next-line
 				onError: (error: any) => {
 					const errorData = getErrorDataByCode(error);
 					toast.error(`[${errorData.code}] ${errorData.message}`);

@@ -53,7 +53,8 @@ export default function useReviseForm(formState: CoachingRequestState) {
 	const disableSubmit = isEmpty(watch('originDocId')) || !watch('resumeShare');
 
 	const onSubmit = handleSubmit(async data => {
-		const coachingRequestData = (({ resumeShare, message, ...rest }) => rest)(data); // eslint-disable-line no-unused-vars
+		// eslint-disable-next-line
+		const coachingRequestData = (({ resumeShare, message, ...rest }) => rest)(data);
 		try {
 			coachingApplyMutation.mutateAsync(coachingRequestData).then(() => {
 				toast('첨삭 신청이 완료되었습니다.');
