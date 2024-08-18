@@ -12,6 +12,7 @@
 		"@types/react-query": "^1.2.9",
 		"aws-sdk": "^2.1603.0",
 		"axios": "^1.6.2",
+		"dayjs": "^1.11.12",
 		"normalize.css": "^8.0.1",
 		"react": "^18.2.0",
 		"react-datepicker": "^4.23.0",

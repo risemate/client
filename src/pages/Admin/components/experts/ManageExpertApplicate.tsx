@@ -9,7 +9,13 @@ import { Auth } from 'types/auth';
 import Button from '@common/Button';
 import Modal from '@components/modal/base/Modal';
 
-import { Table, TableCell, TableHeader, TableHeaderCell, TableRow } from './Table';
+import {
+	Table,
+	TableCell,
+	TableHeader,
+	TableHeaderCell,
+	TableRow,
+} from '../common/Table';
 
 interface ApplyExpert {
 	_id: string;
@@ -38,7 +44,7 @@ function ManageExpertApplicate() {
 	return (
 		<Wrap>
 			<h1>전문가 신청내역</h1>
-			{isLoading && <div> Loading... </div>}
+
 			<Table>
 				<TableHeader>
 					<TableRow>
@@ -52,6 +58,7 @@ function ManageExpertApplicate() {
 					</TableRow>
 				</TableHeader>
 				<tbody>
+					{isLoading && <div> Loading... </div>}
 					{data?.map(item => <Item key={item._id} item={item} refetch={refetch} />)}
 				</tbody>
 			</Table>

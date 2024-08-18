@@ -4,7 +4,8 @@ import styled from 'styled-components';
 
 import Button from '@common/Button';
 
-import ManageExpertApplicate from './components/ManageExpertApplicate';
+import ManageExpertApplicate from './components/experts/ManageExpertApplicate';
+import UserList from './components/users/UserList';
 
 function Admin() {
 	const { queryParam } = useSearchParam('menu');
@@ -15,38 +16,38 @@ function Admin() {
 				<div className='nav'>
 					<header>관리자 {'>>'} 김탁구</header>
 					<ul>
-						<li>
-							<NavButton variant='blue' size='full' to='?menu=USER'>
+						<li className={queryParam === 'user' ? 'active' : ''}>
+							<NavButton variant='blue' size='full' to='?menu=user'>
 								유저관리
 							</NavButton>
 						</li>
-						<li>
-							<NavButton variant='blue' size='full' to='?menu=MEA'>
+						<li className={queryParam === 'mea' ? 'active' : ''}>
+							<NavButton variant='blue' size='full' to='?menu=mea'>
 								전문가신청관리
 							</NavButton>
 						</li>
-						<li>
-							<NavButton variant='blue' size='full' to='?menu=RESUME'>
+						<li className={queryParam === 'resume' ? 'active' : ''}>
+							<NavButton variant='blue' size='full' to='?menu=resume'>
 								이력서관리
 							</NavButton>
 						</li>
 
-						<li>
-							<NavButton variant='blue' size='full' to='?menu=PAY'>
+						<li className={queryParam === 'pay' ? 'active' : ''}>
+							<NavButton variant='blue' size='full' to='?menu=pay'>
 								결제 관리
 							</NavButton>
 						</li>
-						<li>
+						<li className={queryParam === 'any' ? 'active' : ''}>
 							<NavButton variant='blue' size='full' to='?menu=...'>
 								기타 ...
 							</NavButton>
 						</li>
-						<li>
+						<li className={queryParam === 'any' ? 'active' : ''}>
 							<NavButton variant='blue' size='full'>
 								기타 ...
 							</NavButton>
 						</li>
-						<li>
+						<li className={queryParam === 'any' ? 'active' : ''}>
 							<NavButton variant='blue' size='full'>
 								기타 ...
 							</NavButton>
@@ -54,7 +55,10 @@ function Admin() {
 					</ul>
 				</div>
 			</div>
-			<div className='content'>{queryParam === 'MEA' && <ManageExpertApplicate />}</div>
+			<div className='content'>
+				{queryParam === 'mea' && <ManageExpertApplicate />}
+				{queryParam === 'user' && <UserList />}
+			</div>
 		</AdminWrap>
 	);
 }
@@ -79,13 +83,17 @@ const AdminWrap = styled.div`
 			align-items: center;
 			margin-bottom: 15px;
 			background-color: ${theme.colors.navy};
-			color: #ffffff;
+			color: #fff;
 		}
 		ul {
 			padding: 2px !important;
 			li {
 				margin-bottom: 10px;
 			}
+		}
+		.active > button {
+			background-color: ${theme.colors.grey};
+			color: ${theme.colors.navy};
 		}
 	}
 
@@ -104,7 +112,7 @@ const AdminWrap = styled.div`
 const NavButton = styled(Button)`
 	border-radius: 0;
 	height: 50px;
-	color: #daf3ff;
+	color: #fff;
 	font-weight: bold;
 	letter-spacing: 2px;
 `;
