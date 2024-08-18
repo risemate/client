@@ -1,5 +1,4 @@
 import { IconStar, IconStarEmpty, IconStarHalf } from '@icons';
-import React from 'react';
 import styled, { css } from 'styled-components';
 
 interface StarRatingProps {
@@ -29,7 +28,7 @@ export default function StarRating({
 							return <IconStarHalf key={index} />;
 						else return <IconStarEmpty key={index} />;
 				  })}
-			{numReview && <span>({numReview})</span>}
+			<span>({numReview || 0})</span>
 		</StarRatingWrapper>
 	);
 }

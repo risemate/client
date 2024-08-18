@@ -17,9 +17,9 @@ export default function ExpertCard({ expert }: ExpertCardProps) {
 		<CardItemButton onClick={moveToDetail}>
 			<Tag>FRONTEND</Tag>
 			<DefaultImage variant='blue' image={expert.coverImage} />
-			<h4>{expert.productTitle}</h4>
-			<p>{expert.subTitle}</p>
-			<p>{expert.description}</p>
+			<h4>{expert.productTitle || ' '}</h4>
+			<p>{expert.subTitle || ' '}</p>
+			<p>{expert.description || ' '}</p>
 			<ProductInfoWrapper>
 				<span className='price'>20000원~</span>
 				<StarRating rating={expert.avgReviewScore} numReview={expert.reviewCount} />
@@ -31,23 +31,28 @@ export default function ExpertCard({ expert }: ExpertCardProps) {
 const CardItemButton = styled.button`
 	max-width: 250px;
 	width: 100%;
-	min-width: 200px;
 	min-height: 405px;
 	border-radius: 10px;
 	border: 1px solid ${({ theme }) => theme.colors.grey};
 	background: white;
-	padding: 45px 20px 50px;
+	padding: 60px 20px 50px;
 	position: relative;
 	text-align: start;
 	transition: all 0.2s ease;
+	display: flex;
+	flex-direction: column;
 	&:hover {
 		transform: translateY(-5px);
 		filter: brightness(0.96);
 	}
 	h4 {
+		width: 100%;
 		margin: 10px 0 5px;
 		font-weight: bold;
 		${({ theme }) => theme.common.ellipsisOneLine};
+	}
+	p {
+		width: 100%;
 	}
 	& > p:nth-of-type(1) {
 		font-size: ${({ theme }) => theme.fontSizes.small};
@@ -61,6 +66,7 @@ const CardItemButton = styled.button`
 		line-height: 15px;
 		${({ theme }) => theme.common.ellipsisTwoLine};
 	}
+	${({ theme }) => theme.common.ellipsisOneLine};
 `;
 
 const Tag = styled.span`

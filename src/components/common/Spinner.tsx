@@ -1,17 +1,15 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 
-export default function Loader() {
+export default function Spinner() {
 	return (
-		<LoaderWrapper>
-			<StyledLoader />
-		</LoaderWrapper>
+		<SpinnerWrapper>
+			<StyledSpinner />
+		</SpinnerWrapper>
 	);
 }
 
-const LoaderWrapper = styled.div`
+const SpinnerWrapper = styled.div`
 	width: 100%;
-	min-height: 300px;
 	height: 100%;
 	${({ theme }) => theme.common.flexCenter};
 `;
@@ -201,7 +199,7 @@ const loaderAnimation = css`
 	}
 `;
 
-const StyledLoader = styled.span`
+const StyledSpinner = styled.span`
 	${loaderAnimation}
 	font-size: 10px;
 	width: 1em;

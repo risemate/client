@@ -4,10 +4,9 @@ import { CareerType } from 'types/career/resume';
 import { TabItem } from 'types/common/tab';
 
 import Banner from '@common/Banner';
+import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import ExpertCardList from '@components/experts/ExpertCardList';
 import Container from '@components/layout/Container';
-
-import useExperts from './Experts.hook';
 
 export default function Experts() {
 	const tabItems: TabItem<CareerType | undefined>[] = [
@@ -17,7 +16,6 @@ export default function Experts() {
 	];
 	const { currentTab, changeTab, isCurrentTab } = useTab(tabItems, true);
 	const tab = { tabItems, changeTab, isCurrentTab };
-	const { experts } = useExperts(currentTab.value);
 	return (
 		<Container>
 			<Banner variant='blue' tab={tab}>
@@ -25,7 +23,9 @@ export default function Experts() {
 				전문가를 찾아보세요!
 			</Banner>
 			<ExpertSection>
-				<ExpertCardList experts={experts} />
+				<SingleAsyncWrapper>
+					<ExpertCardList expertQueryParams={{ careerType: currentTab.value }} />
+				</SingleAsyncWrapper>
 			</ExpertSection>
 		</Container>
 	);
@@ -33,5 +33,6 @@ export default function Experts() {
 
 const ExpertSection = styled.section`
 	${({ theme }) => theme.common.minmaxWidth};
+	height: calc(100vh - 300px);
 	padding: 100px 32px;
 `;

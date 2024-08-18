@@ -1,40 +1,43 @@
-import styled, { CSSProp } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Banner from '@common/Banner';
 import Button from '@common/Button';
+import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import ExpertCardList from '@components/experts/ExpertCardList';
 import Container from '@components/layout/Container';
 import NetworkCardList from '@components/network/NetworkCardList';
 
-import useHome from './Home.hook';
 import 'normalize.css';
 
 export default function Home() {
-	const { networks, experts } = useHome();
 	return (
 		<Container>
 			<Banner variant='home'>
 				라메에서 이력서를 <span className='highlight mint'>코칭</span>받아보세요!
 			</Banner>
-			<HomeSection>
+			<NetworkSection>
 				<h3>다양한 이력서를 구경해보세요!</h3>
-				<NetworkCardList networks={networks.slice(0, 4)} home />
+				<SingleAsyncWrapper>
+					<NetworkCardList home />
+				</SingleAsyncWrapper>
 				<Button variant='navy' size='small' to='/networks'>
 					이력서 더보기
 				</Button>
-			</HomeSection>
-			<HomeSection $css={{ marginBottom: '80px' }}>
+			</NetworkSection>
+			<ExpertSection>
 				<h3>이력서/자소서 전문가를 만나보세요!</h3>
-				<ExpertCardList experts={experts.slice(0, 4)} home />
-				<Button variant='navy' size='small' to='/experts'>
-					전문가 더보기
-				</Button>
-			</HomeSection>
+				<SingleAsyncWrapper>
+					<ExpertCardList home />
+					<Button variant='navy' size='small' to='/experts'>
+						전문가 더보기
+					</Button>
+				</SingleAsyncWrapper>
+			</ExpertSection>
 		</Container>
 	);
 }
 
-const HomeSection = styled.section<{ $css?: CSSProp }>`
+const sectionCommonStyle = css`
 	${({ theme }) => theme.common.minmaxWidth};
 	margin: 100px auto 0;
 	position: relative;
@@ -60,5 +63,15 @@ const HomeSection = styled.section<{ $css?: CSSProp }>`
 		top: -3px;
 		right: 32px;
 	}
-	${({ $css }) => $css};
+`;
+
+const NetworkSection = styled.section`
+	${sectionCommonStyle}
+	height: 320px;
+`;
+
+const ExpertSection = styled.section`
+	${sectionCommonStyle}
+	height: 474px;
+	margin-bottom: 80px;
 `;

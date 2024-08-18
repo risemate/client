@@ -1,36 +1,35 @@
+import { productsQuery } from '@queries/product';
 import styled from 'styled-components';
-import { Product } from 'types/coach/product';
-
-import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
+import { NetworkPagingQuery } from 'types/query/query';
 
 import ExpertCard from './ExpertCard';
 
 interface ExpertCardListProps {
-	experts: Product[];
+	expertQueryParams?: NetworkPagingQuery;
 	home?: boolean;
 }
 
-export default function ExpertCardList({ experts, home }: ExpertCardListProps) {
+export default function ExpertCardList({ expertQueryParams, home }: ExpertCardListProps) {
+	const experts = productsQuery(expertQueryParams);
+	const data = home ? experts.data.data.slice(0, 4) : experts.data.data;
 	return (
-		<SingleAsyncWrapper>
-			<StyledCardList $home={home}>
-				{experts.map((expert, index) => (
-					<li key={index}>
-						<ExpertCard expert={expert} />
-					</li>
-				))}
-			</StyledCardList>
-		</SingleAsyncWrapper>
+		<StyledCardList $home={home}>
+			{data.map((expert, index) => (
+				<li key={index}>
+					<ExpertCard expert={expert} />
+				</li>
+			))}
+		</StyledCardList>
 	);
 }
 
 const StyledCardList = styled.ul<{ $home?: boolean }>`
 	width: 100%;
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(4, minmax(250px, 1fr));
 	gap: 24px;
 	@media screen and (max-width: 990px) {
 		grid-template-columns: ${({ $home }) =>
-			$home ? 'repeat(4, 1fr)' : 'repeat(3, 1fr)'};
+			$home ? 'repeat(4, minmax(200px, 1fr))' : 'repeat(3, minmax(250px, 1fr))'};
 	}
 `;
