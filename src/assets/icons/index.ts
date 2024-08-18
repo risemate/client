@@ -16,6 +16,7 @@ export {
 	BiSolidDollarCircle as IconCoin,
 	BiSolidUpArrow as IconArrowUp,
 	BiSolidDownArrow as IconArrowDown,
+	BiSolidMessageSquareError as IconError,
 } from 'react-icons/bi';
 export { MdComment as IconComment, MdOutlineAddCircle as IconAdd } from 'react-icons/md';
 export { AiFillCheckCircle as IconCheck } from 'react-icons/ai';

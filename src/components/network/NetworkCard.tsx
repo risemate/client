@@ -15,8 +15,8 @@ export default function NetworkCard({ network }: NetworkCardProps) {
 		network.docType === 'BASIC'
 			? null
 			: network.docType === 'AI'
-			  ? 'AI 첨삭'
-			  : '전문가 첨삭';
+				? 'AI 첨삭'
+				: '전문가 첨삭';
 	return (
 		<CardItemLink to={`/networks/docs/${network._id}`}>
 			{hasImage ? (

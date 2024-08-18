@@ -63,7 +63,7 @@ export default function Modal({
 								: () => {
 										onClick && onClick();
 										closeModal();
-								  }
+									}
 						}
 					>
 						{confirm}
