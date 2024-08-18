@@ -55,6 +55,7 @@ export type Package = {
 };
 
 export type PackageDetail = {
+	packageName: PackageCategory;
 	price: number | null;
 	packageTitle: string;
 	description: string;

@@ -2,15 +2,26 @@
 // import { Career, CareerType } from 'types/career/careerDocument';
 import { CareerType } from 'types/career/careerDocument';
 
-// import { Expert, PackageCategory, Product } from './product';
-import { PackageCategory } from './product';
+import { PackageCategory, PackageDetail } from './product';
+
+export type CoachingRequestState = {
+	productId: string;
+	productTitle: string;
+	selectedPackage: PackageCategory;
+	selectedPackageInfo: PackageDetail;
+	careerTypes: CareerType[];
+};
 
 export type CoachingRequest = {
 	productId: string;
-	paymentId: string;
 	selectedPackage: PackageCategory;
-	originDocId: string;
 	careerType: CareerType;
+	amount: number;
+	originDocId: string;
+	impUid: string;
+	paidAt: number;
+	merchantUid: string;
+	// amount: number;
 };
 
 export type CoachingDecideRequest = {

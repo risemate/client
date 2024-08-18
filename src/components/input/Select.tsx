@@ -2,7 +2,7 @@ import React, { ForwardedRef, SelectHTMLAttributes, forwardRef } from 'react';
 import styled from 'styled-components';
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
-	label: string;
+	label?: string;
 	options: readonly (string | { label: string; value: string })[];
 }
 
@@ -12,7 +12,7 @@ const Select = forwardRef(function Select(
 ) {
 	return (
 		<SelectWrapper>
-			{label}
+			{label && label}
 			<select ref={ref} {...SelectProps}>
 				{options.map(option => (
 					<option

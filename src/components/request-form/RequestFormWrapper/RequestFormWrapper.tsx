@@ -5,6 +5,7 @@ import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 
 import RequestFormAction from './RequestFormAction';
 import RequestFormConsent from './RequestFormConsent';
+import RequestFormContent from './RequestFormContent';
 import RequestFormMessage from './RequestFormMessage';
 import RequestFormNote from './RequestFormNote';
 
@@ -58,6 +59,7 @@ const RequestFormWrapper = Object.assign(RequestFormWrapperMain, {
 	Message: RequestFormMessage,
 	Note: RequestFormNote,
 	Action: RequestFormAction,
+	Content: RequestFormContent,
 });
 
 export default RequestFormWrapper;

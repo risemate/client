@@ -1,30 +1,36 @@
 import useTab from '@hooks/common/useTab';
 import { IconCheck, IconClock } from '@icons';
 import { numberWithCommas } from '@utils/helpers';
+import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { Package as PackageType } from 'types/coach/product';
+import { CoachingRequestState } from 'types/coach/coaching';
+import { PackageCategory, Package as PackageType } from 'types/coach/product';
+import { TabItem } from 'types/common/tab';
 
 import Button from '@common/Button';
 import Tab from '@common/Tab';
 
 interface ProductInfoProps {
-	packages: Partial<PackageType> | undefined;
-	reviewCount: number | undefined;
-	avgReviewScore: number | undefined;
+	packages?: Partial<PackageType>;
+	reviewCount?: number;
+	avgReviewScore?: number;
+	formState: CoachingRequestState;
 }
 
 export default function ProductInfo({
 	packages = {} as PackageType,
 	reviewCount = 0,
 	avgReviewScore = 0,
+	formState,
 }: ProductInfoProps) {
-	const tabItems = Object.keys(packages).map(item => {
+	const tabItems: TabItem<PackageCategory>[] = Object.keys(packages).map(item => {
 		return {
 			label: item,
-			value: item,
+			value: item as PackageCategory,
 		};
 	});
-	const { currentTab, changeTab, isCurrentTab } = useTab(tabItems);
+	const { currentTab, changeTab, isCurrentTab } = useTab<PackageCategory>(tabItems);
+	const navigate = useNavigate();
 	return (
 		<article>
 			<ProductWrapper>
@@ -57,7 +63,19 @@ export default function ProductInfo({
 				<Button variant='mint' size='full'>
 					문의하기
 				</Button>
-				<Button variant='blue' size='full'>
+				<Button
+					variant='blue'
+					size='full'
+					onClick={() =>
+						navigate('/form/revise', {
+							state: {
+								...formState,
+								selectedPackage: currentTab.value,
+								selectedPacakgeInfo: packages[currentTab.value],
+							},
+						})
+					}
+				>
 					첨삭 요청하기
 				</Button>
 			</ProductWrapper>

@@ -20,7 +20,8 @@ export default function FormLayout() {
 
 const FormLayoutWrapper = styled.div`
 	width: 100%;
-	height: 100vh;
+	/* height: 100vh; */
+	padding: 60px;
 	background-color: ${({ theme }) => theme.colors.lightGrey};
 	${({ theme }) => theme.common.flexCenter};
 `;
