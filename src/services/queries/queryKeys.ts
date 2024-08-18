@@ -17,8 +17,8 @@ export const resumeKeys = {
 export const networkKeys = {
 	base: ['networks'] as const,
 	id: (id: string) => [...networkKeys.base, { id }] as const,
-	career: (params: NetworkPagingQuery | undefined) =>
-		[...networkKeys.base, params] as const,
+	career: (params?: NetworkPagingQuery) =>
+		[...networkKeys.base, { ...params }] as const,
 };
 
 export const alarmKeys = {

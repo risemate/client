@@ -70,7 +70,8 @@ export default function ProductInfo({
 						navigate('/form/revise', {
 							state: {
 								...formState,
-								selectedPacakge: packages[currentTab.value],
+								selectedPackage: currentTab.value,
+								selectedPacakgeInfo: packages[currentTab.value],
 							},
 						})
 					}
