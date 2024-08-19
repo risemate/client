@@ -26,7 +26,8 @@ import RootLayout from '@components/layout/RootLayout';
 import { signLoader } from './loader';
 
 const token = localStorage.getItem('rm-checkpoint');
-axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+// axios.defaults.baseURL = `${process.env.REACT_APP_API_URL}`;
+axios.defaults.baseURL = '/api';
 axios.defaults.headers.common.Authorization = token ? `Bearer ${token}` : '';
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 axios.interceptors.response.use(
