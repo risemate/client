@@ -4,9 +4,9 @@ import { CareerType } from 'types/career/resume';
 import { TabItem } from 'types/common/tab';
 
 import Banner from '@common/Banner';
-import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import ExpertCardList from '@components/experts/ExpertCardList';
 import Container from '@components/layout/Container';
+import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
 
 export default function Experts() {
 	const tabItems: TabItem<CareerType | undefined>[] = [

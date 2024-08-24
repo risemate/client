@@ -7,7 +7,12 @@ import {
 	fetchUpdateResume,
 } from '@api/career';
 import { resumeKeys } from '@queries/queryKeys';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import {
+	useMutation,
+	useQuery,
+	useQueryClient,
+	useSuspenseQuery,
+} from '@tanstack/react-query';
 import { Career } from 'types/career/careerDocument';
 import { Resume, ReviseResume } from 'types/career/resume';
 import {
@@ -15,14 +20,16 @@ import {
 	UseMutationResultType,
 	UseQueryOptionsType,
 	UseQueryResultType,
+	UseSuspenseQueryOptionsType,
+	UseSuspenseQueryResultType,
 } from 'types/query/query';
 import { CareersQueryProps, ResumeUpdateProps } from 'types/query/queryProps';
 
 export const careersQuery = (
 	params: CareersQueryProps,
-	options?: UseQueryOptionsType<Career<Resume>[]>,
-): UseQueryResultType<Career<Resume>[]> => {
-	return useQuery({
+	options?: UseSuspenseQueryOptionsType<Career<Resume>[]>,
+): UseSuspenseQueryResultType<Career<Resume>[]> => {
+	return useSuspenseQuery({
 		queryKey: resumeKeys.career(params),
 		queryFn: () => fetchCareers(params),
 		...options,

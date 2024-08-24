@@ -3,11 +3,11 @@ import { FormProvider } from 'react-hook-form';
 import styled from 'styled-components';
 
 import ResumeNav from '@common/ResumeNav';
-import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
 import SaveModal from '@components/modal/SaveModal';
 import CoverLetterContents from '@components/resume-edit/edit-base/CoverLetterContents';
 import CoverLetterOptionSection from '@components/resume-edit/edit-base/CoverLetterOptionSection';
+import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
 
 import useCoverletterWrite from './WirteCoverletter.hook';
 

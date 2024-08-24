@@ -1,27 +1,30 @@
+import { useState } from 'react';
 import { css } from 'styled-components';
 
 import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 import Container from '@components/layout/Container';
-import BasicCareerList from '@components/resume-view/BasicCareerList';
+import BasicCareerListWrapper from '@components/resume-view/BasicCareerList/BasicCareerListWrapper';
+import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
+import ProductSuspenseList from '@components/suspense/suspense-list/MyProductSuspenseList';
 
 import ProductCard from './components/ProductCard';
-import useMyProduct from './MyProduct.hook';
 
 export default function MyProduct() {
-	const { myProducts, selectedId } = useMyProduct();
+	const [selectedId, setSelectedId] = useState<string | null>(null);
+	const updateSelectedId = (id: string | null) => setSelectedId(id);
 	return (
 		<Container backgroundColor='lightGrey' center padding>
 			<h2 className='a11y-hidden'>나의 상품 목록</h2>
 			<WhiteBoxWrapper type='div' customCss={productWrapperStyle}>
-				<BasicCareerList
-					title='상품'
-					resumes={myProducts}
-					createTo='pr'
-					CardComponent={ProductCard}
-					selectedId={selectedId.value}
-					updateSelectedId={selectedId.update}
-					addNew
-				/>
+				<BasicCareerListWrapper title='상품' createTo='pr' addNew>
+					<SingleAsyncWrapper height='240px'>
+						<ProductSuspenseList
+							CardComponent={ProductCard}
+							selectedId={selectedId}
+							updateSelectedId={updateSelectedId}
+						/>
+					</SingleAsyncWrapper>
+				</BasicCareerListWrapper>
 			</WhiteBoxWrapper>
 		</Container>
 	);

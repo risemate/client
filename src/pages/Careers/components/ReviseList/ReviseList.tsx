@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 import { css } from 'styled-components';
 
 import Empty from '@common/Empty';
-import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 import Container from '@components/layout/Container';
+import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
 
 import useReviseList from './ReviseList.hook';
 

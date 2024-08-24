@@ -8,7 +8,9 @@ import CheckBox from '@components/input/CheckBox';
 import Select from '@components/input/Select';
 import TextArea from '@components/input/TextArea';
 import RequestFormWrapper from '@components/request-form/RequestFormWrapper/RequestFormWrapper';
-import BasicCareerList from '@components/resume-view/BasicCareerList';
+import BasicCareerListWrapper from '@components/resume-view/BasicCareerList/BasicCareerListWrapper';
+import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
+import CareerSuspenseList from '@components/suspense/suspense-list/CareerSuspenseList';
 
 import useReviseForm from './ReviseForm.hook';
 
@@ -22,7 +24,6 @@ export default function ReviseForm() {
 		disableSubmit,
 		onCancel,
 		onSubmit,
-		resumes,
 		originDocId,
 	} = useReviseForm(formState);
 	return (
@@ -49,22 +50,25 @@ export default function ReviseForm() {
 			<RequestFormWrapper.Content title='첨삭 타입 선택'>
 				<Select options={careerType.options} />
 			</RequestFormWrapper.Content>
-			<BasicCareerList
-				title={careerType.selectedText}
-				resumes={resumes}
-				CardComponent={ResumeFormCard}
-				selectedId={originDocId.value}
-				updateSelectedId={originDocId.update}
-			/>
+			<BasicCareerListWrapper title={careerType.selectedText}>
+				<SingleAsyncWrapper height='175px'>
+					<CareerSuspenseList
+						props={{ docType: 'BASIC', careerType: careerType.value }}
+						CardComponent={ResumeFormCard}
+						selectedId={originDocId.value}
+						updateSelectedId={originDocId.update}
+					/>
+				</SingleAsyncWrapper>
+			</BasicCareerListWrapper>
 			<RequestFormWrapper.Content title='메세지'>
 				<TextArea {...message} />
 			</RequestFormWrapper.Content>
 			<RequestFormWrapper.Action>
-				<Button variant='blue' size='large' disabled={disableSubmit}>
-					첨삭 신청하기
-				</Button>
 				<Button variant='mint' size='large' onClick={onCancel} type='button'>
 					취소
+				</Button>
+				<Button variant='blue' size='large' disabled={disableSubmit}>
+					첨삭 신청하기
 				</Button>
 			</RequestFormWrapper.Action>
 		</RequestFormWrapper>

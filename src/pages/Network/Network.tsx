@@ -4,9 +4,9 @@ import { CareerType } from 'types/career/careerDocument';
 import { TabItem } from 'types/common/tab';
 
 import Banner from '@common/Banner';
-import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
 import NetworkCardList from '@components/network/NetworkCardList';
+import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
 
 export default function Network() {
 	const tabItems: TabItem<CareerType | undefined>[] = [

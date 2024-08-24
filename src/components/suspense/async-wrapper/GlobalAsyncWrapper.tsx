@@ -3,7 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 
 import Spinner from '@common/Spinner';
 
-import GlobalErrorFallback from './GlobalErrorFallback';
+import GlobalErrorFallback from '../error-fallback/GlobalErrorFallback';
 
 interface GloablAsyncWrapperProps {
 	children: ReactNode;

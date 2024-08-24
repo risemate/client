@@ -6,9 +6,9 @@ import { PackageDetail } from 'types/coach/product';
 import { convertToProfile } from 'types/coach/productData';
 
 import Tab from '@common/Tab';
-import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
 import Profile from '@components/resume-view/ViewTemplate/Profile';
+import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
 
 import ExpertInfo from './components/ExpertInfo';
 import Inquiry from './components/Inquiry/Inquiry';

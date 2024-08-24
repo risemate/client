@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Toast from '@common/Toast';
-import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
+import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
 
 import 'normalize.css';
 

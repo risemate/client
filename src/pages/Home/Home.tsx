@@ -2,10 +2,10 @@ import styled, { css } from 'styled-components';
 
 import Banner from '@common/Banner';
 import Button from '@common/Button';
-import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import ExpertCardList from '@components/experts/ExpertCardList';
 import Container from '@components/layout/Container';
 import NetworkCardList from '@components/network/NetworkCardList';
+import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
 
 import 'normalize.css';
 

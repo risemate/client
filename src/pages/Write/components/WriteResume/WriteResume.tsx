@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { FormProvider } from 'react-hook-form';
 import styled from 'styled-components';
 
-import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
 import SaveModal from '@components/modal/SaveModal';
 // import UnsavedChangesModal from '@components/modal/UnsavedChangesModal';
@@ -15,6 +14,7 @@ import Profile from '@components/resume-edit/edit-base/Profile';
 import Project from '@components/resume-edit/edit-base/Project';
 import TechStack from '@components/resume-edit/edit-base/TechStack';
 import WorkExperience from '@components/resume-edit/edit-base/WorkExperience';
+import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
 
 import WriteNavigation from '../WriteNavigation/WriteNavigation';
 import useResumeWrite from './WirteResume.hook';

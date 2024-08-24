@@ -1,8 +1,8 @@
 import { Coverletter } from 'types/career/coverletter';
 
-import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
 import CoverLetterTemplate from '@components/resume-view/ViewTemplate/CoverLetterView';
+import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
 
 import useDocView from '../DocView.hook';
 

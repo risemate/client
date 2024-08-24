@@ -1,4 +1,3 @@
-import { careersQuery } from '@queries/career';
 import { applyCoachingMutation } from '@queries/coaching';
 import { isEmpty } from '@utils/helpers';
 import { ChangeEvent } from 'react';
@@ -31,7 +30,6 @@ export default function useReviseForm(formState: CoachingRequestState) {
 		},
 	});
 	const { control, watch, handleSubmit } = reviseFormMethods;
-	const resumes = careersQuery({ docType: 'BASIC', careerType: watch('careerType') });
 
 	const { field: resumeShareFields } = useController({
 		control,
@@ -72,6 +70,7 @@ export default function useReviseForm(formState: CoachingRequestState) {
 			options: formState.careerTypes.map(career => {
 				return { label: CareerTypeList[career], value: career };
 			}),
+			value: watch('careerType'),
 			selectedText: CareerTypeList[watch('careerType')],
 		},
 		resumeShare: {
@@ -86,7 +85,6 @@ export default function useReviseForm(formState: CoachingRequestState) {
 			update: (id: string | null) => originDocIdFields.onChange(id),
 		},
 		message: messageFields,
-		resumes: resumes.data || [],
 		disableSubmit,
 		onSubmit,
 		onCancel,

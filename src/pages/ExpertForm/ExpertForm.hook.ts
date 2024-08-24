@@ -1,4 +1,3 @@
-import { careersQuery } from '@queries/career';
 import { expertApplyMutation } from '@queries/expert';
 import { ChangeEvent } from 'react';
 import { useController, useForm } from 'react-hook-form';
@@ -13,7 +12,6 @@ interface FormMethodProps extends ApplyExpertProps {
 export default function useExpertForm() {
 	const navigate = useNavigate();
 	const applyExpertMutation = expertApplyMutation();
-	const resumes = careersQuery({ docType: 'BASIC', careerType: 'RESUME' });
 	const expertFormMethods = useForm<FormMethodProps>({
 		mode: 'onSubmit',
 		defaultValues: {
@@ -76,6 +74,5 @@ export default function useExpertForm() {
 		disableSubmit,
 		onSubmit,
 		onCancel,
-		resumes: resumes.data || [],
 	};
 }

@@ -1,38 +1,43 @@
-import CareerBasicCard from 'pages/Careers/components/ResumeList/CareerBasicCard/CareerBasicCard';
+import { useState } from 'react';
 import { css } from 'styled-components';
 
 import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 import Container from '@components/layout/Container';
-import BasicCareerList from '@components/resume-view/BasicCareerList';
+import BasicCareerListWrapper from '@components/resume-view/BasicCareerList/BasicCareerListWrapper';
+import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
+import CareerSuspenseList from '@components/suspense/suspense-list/CareerSuspenseList';
 
-import useCareerList from './ResumeList.hook';
+import CareerBasicCard from './CareerBasicCard/CareerBasicCard';
 
 export default function ResumeList() {
-	const { resumes, coverLetters, selectedId } = useCareerList();
+	const [selectedId, setSelectedId] = useState<string | null>(null);
+	const updateSelectedId = (id: string | null) => setSelectedId(id);
 	return (
 		<Container backgroundColor='lightGrey' center padding>
 			<h2 className='a11y-hidden'>이력서</h2>
 			<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
-				<BasicCareerList
-					title='이력서'
-					resumes={resumes}
-					createTo='re'
-					CardComponent={CareerBasicCard}
-					selectedId={selectedId.value}
-					updateSelectedId={selectedId.update}
-					addNew
-				/>
+				<BasicCareerListWrapper title='이력서' createTo='re' addNew>
+					<SingleAsyncWrapper height='290px'>
+						<CareerSuspenseList
+							props={{ docType: 'BASIC', careerType: 'RESUME' }}
+							CardComponent={CareerBasicCard}
+							selectedId={selectedId}
+							updateSelectedId={updateSelectedId}
+						/>
+					</SingleAsyncWrapper>
+				</BasicCareerListWrapper>
 			</WhiteBoxWrapper>
 			<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
-				<BasicCareerList
-					title='자기소개서'
-					resumes={coverLetters}
-					createTo='co'
-					CardComponent={CareerBasicCard}
-					selectedId={selectedId.value}
-					updateSelectedId={selectedId.update}
-					addNew
-				/>
+				<BasicCareerListWrapper title='자기소개서' createTo='co' addNew>
+					<SingleAsyncWrapper height='290px'>
+						<CareerSuspenseList
+							props={{ docType: 'BASIC', careerType: 'COVERLETTER' }}
+							CardComponent={CareerBasicCard}
+							selectedId={selectedId}
+							updateSelectedId={updateSelectedId}
+						/>
+					</SingleAsyncWrapper>
+				</BasicCareerListWrapper>
 			</WhiteBoxWrapper>
 		</Container>
 	);

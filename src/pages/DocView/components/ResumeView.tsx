@@ -1,7 +1,7 @@
 import ResumeNav from '@common/ResumeNav';
-import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
 import ResumeTemplate from '@components/resume-view/ViewTemplate/ResumeView';
+import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
 
 import useDocView from '../DocView.hook';
 

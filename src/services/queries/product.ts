@@ -28,10 +28,9 @@ import { productKeys } from './queryKeys';
 
 // 상품 보기
 export const myProductQuery = (
-	// careerType?: CareerType,
-	options?: UseQueryOptionsType<Product[]>,
-): UseQueryResultType<Product[]> => {
-	return useQuery({
+	options?: UseSuspenseQueryOptionsType<Product[]>,
+): UseSuspenseQueryResultType<Product[]> => {
+	return useSuspenseQuery({
 		queryKey: productKeys.base,
 		queryFn: () => fetchMyProduct(),
 		...options,

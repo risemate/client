@@ -3,9 +3,9 @@ import { FormProvider } from 'react-hook-form';
 import styled from 'styled-components';
 
 import Button from '@common/Button';
-import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 import Container from '@components/layout/Container';
 import SaveModal from '@components/modal/SaveModal';
+import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
 
 import Category from './components/Category/Category';
 import Images from './components/Images/Images';

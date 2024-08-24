@@ -19,7 +19,7 @@ const ResumeCardWrapper = Object.assign(CardWrapper, {
 });
 
 const StyledCardWrapper = styled.div<{ $selected: boolean }>`
-	width: 330px;
+	width: 325px;
 	height: 100%;
 	flex-shrink: 0;
 	border: 1px solid ${({ theme }) => theme.colors.grey};

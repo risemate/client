@@ -6,7 +6,7 @@ import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
+import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
 
 import Alarm from '../../alarm/Alarm';
 import ProfileMenu from './ProfileMenu';

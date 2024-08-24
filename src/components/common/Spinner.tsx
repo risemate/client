@@ -1,16 +1,20 @@
 import styled, { css } from 'styled-components';
 
-export default function Spinner() {
+interface SpinnerProps {
+	height?: string;
+}
+
+export default function Spinner({ height = '100%' }: SpinnerProps) {
 	return (
-		<SpinnerWrapper>
+		<SpinnerWrapper $height={height}>
 			<StyledSpinner />
 		</SpinnerWrapper>
 	);
 }
 
-const SpinnerWrapper = styled.div`
+const SpinnerWrapper = styled.div<{ $height: string }>`
 	width: 100%;
-	height: 100%;
+	height: ${({ $height }) => $height};
 	${({ theme }) => theme.common.flexCenter};
 `;
 

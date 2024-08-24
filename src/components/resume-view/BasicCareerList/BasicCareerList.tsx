@@ -1,13 +1,11 @@
 import { isEmpty } from '@utils/helpers';
 import { ElementType } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { CardComponentProps } from 'types/cardComponent';
 
-import Button from '@common/Button';
 import Empty from '@common/Empty';
-import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -15,7 +13,7 @@ import 'swiper/css/pagination';
 
 // eslint-disable-next-line
 interface BasicResumeListProps<T = any> {
-	title: string;
+	title?: string;
 	resumes: T[];
 	CardComponent: ElementType<CardComponentProps<T>>;
 	addNew?: boolean;
@@ -25,10 +23,8 @@ interface BasicResumeListProps<T = any> {
 }
 
 export default function BasicCareerList({
-	title,
 	resumes,
 	CardComponent,
-	addNew,
 	createTo,
 	selectedId = null,
 	updateSelectedId,
@@ -48,45 +44,35 @@ export default function BasicCareerList({
 		},
 	};
 	return (
-		<BasicResumeSection>
-			<div>
-				<h3>{title}</h3>
-				{addNew && (
-					<Button variant='navy' size='small' to={`/write?redirect=${createTo}`}>
-						새 {title} +
-					</Button>
-				)}
-			</div>
-			<SingleAsyncWrapper>
-				{isEmpty(resumes) ? (
-					<Empty>불러올 데이터가 없습니다</Empty>
-				) : (
-					<Swiper {...setting}>
-						{resumes.map(resume => (
-							<SwiperSlide key={resume._id}>
-								<CardComponent
-									careerType={createTo === 're' ? 'RESUME' : 'COVERLETTER'}
-									career={resume}
-									selectedId={selectedId}
-									updateSelectedId={updateSelectedId}
-								/>
-							</SwiperSlide>
-						))}
-					</Swiper>
-				)}
-			</SingleAsyncWrapper>
-		</BasicResumeSection>
+		<BasicResumeListWrapper>
+			{isEmpty(resumes) ? (
+				<Empty>불러올 데이터가 없습니다</Empty>
+			) : (
+				<Swiper {...setting}>
+					{resumes.map(resume => (
+						<SwiperSlide key={resume._id}>
+							<CardComponent
+								careerType={createTo === 're' ? 'RESUME' : 'COVERLETTER'}
+								career={resume}
+								selectedId={selectedId}
+								updateSelectedId={updateSelectedId}
+							/>
+						</SwiperSlide>
+					))}
+				</Swiper>
+			)}
+		</BasicResumeListWrapper>
 	);
 }
 
-const swiperStyle = css`
+const BasicResumeListWrapper = styled.div`
 	.swiper {
 		width: 100%;
 		padding-bottom: 50px;
 	}
-	.swiper-wrapper {
+	/* .swiper-wrapper {
 		padding: 5px;
-	}
+	} */
 	.swiper-slide {
 		display: flex;
 		justify-content: center;
@@ -120,20 +106,4 @@ const swiperStyle = css`
 		font-size: 25px;
 		color: ${({ theme }) => theme.colors.navy};
 	}
-`;
-
-const BasicResumeSection = styled.section`
-	/* min-height: 300px; */
-	h3 {
-		color: ${({ theme }) => theme.colors.navy};
-		font-weight: bold;
-		font-size: ${({ theme }) => theme.fontSizes.medium};
-	}
-	& > div:first-child {
-		display: flex;
-		align-items: center;
-		gap: 30px;
-		margin-bottom: 30px;
-	}
-	${swiperStyle}
 `;

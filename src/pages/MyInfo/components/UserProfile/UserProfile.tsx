@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import Button from '@common/Button';
 import DefaultImage from '@common/DefaultImage';
-import SingleAsyncWrapper from '@components/async-wrapper/SingleAsyncWrapper';
+import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
 
 import useUserProfile from './UserProfile.hook';
 

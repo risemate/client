@@ -1,14 +1,16 @@
 import ResumeAiCard from 'pages/Ai/components/ResumeAiCard/ResumeAiCard';
+import { useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import Banner from '@common/Banner';
 import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
-import BasicCareerList from '@components/resume-view/BasicCareerList';
-
-import useAi from './Ai.hook';
+import BasicCareerListWrapper from '@components/resume-view/BasicCareerList/BasicCareerListWrapper';
+import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
+import CareerSuspenseList from '@components/suspense/suspense-list/CareerSuspenseList';
 
 export default function Ai() {
-	const { resumes, coverLetters, selectedId } = useAi();
+	const [selectedId, setSelectedId] = useState<string | null>(null);
+	const updateSelectedId = (id: string | null) => setSelectedId(id);
 
 	return (
 		<AiWrapper>
@@ -17,20 +19,26 @@ export default function Ai() {
 				이력서/자기소개서를 첨삭 받아보세요!
 			</Banner>
 			<WhiteBoxWrapper type='div' customCss={aiWrapperStyle}>
-				<BasicCareerList
-					title='이력서'
-					resumes={resumes}
-					CardComponent={ResumeAiCard}
-					selectedId={selectedId.value}
-					updateSelectedId={selectedId.update}
-				/>
-				<BasicCareerList
-					title='자기소개서'
-					resumes={coverLetters}
-					CardComponent={ResumeAiCard}
-					selectedId={selectedId.value}
-					updateSelectedId={selectedId.update}
-				/>
+				<BasicCareerListWrapper title='이력서'>
+					<SingleAsyncWrapper height='224px'>
+						<CareerSuspenseList
+							props={{ docType: 'BASIC', careerType: 'RESUME' }}
+							CardComponent={ResumeAiCard}
+							selectedId={selectedId}
+							updateSelectedId={updateSelectedId}
+						/>
+					</SingleAsyncWrapper>
+				</BasicCareerListWrapper>
+				<BasicCareerListWrapper title='자기소개서'>
+					<SingleAsyncWrapper height='224px'>
+						<CareerSuspenseList
+							props={{ docType: 'BASIC', careerType: 'COVERLETTER' }}
+							CardComponent={ResumeAiCard}
+							selectedId={selectedId}
+							updateSelectedId={updateSelectedId}
+						/>
+					</SingleAsyncWrapper>
+				</BasicCareerListWrapper>
 			</WhiteBoxWrapper>
 		</AiWrapper>
 	);
