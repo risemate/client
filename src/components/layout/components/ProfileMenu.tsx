@@ -1,7 +1,10 @@
+import { useModal } from '@hooks/atoms/useModalAtom';
 import { IconCircleUser } from '@icons';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+
+import LogoutModal from '@components/modal/LogoutModal';
 
 function ProfileMenu() {
 	const navigate = useNavigate();
@@ -9,6 +12,7 @@ function ProfileMenu() {
 
 	const showMenu = () => setMenuVisible(true);
 	const hideMenu = () => setMenuVisible(false);
+	const { openModal: openLogoutModal } = useModal('logout');
 
 	return (
 		<MenuWrap onMouseLeave={hideMenu}>
@@ -25,26 +29,27 @@ function ProfileMenu() {
 				<div className='menu' onMouseEnter={showMenu} onMouseLeave={hideMenu}>
 					<ul>
 						<li>
-							<button onClick={() => navigate('/my-home')}>내 정보</button>
+							<button onClick={() => navigate('/my-info')}>내 정보</button>
 						</li>
 						<li>
-							<button onClick={() => navigate('/my-home')}>내 커리어</button>
+							<button onClick={() => navigate('/my-info/docs')}>내 커리어</button>
 						</li>
 						<li>
-							<button onClick={() => navigate('/my-home')}>첨삭 관리</button>
+							<button onClick={() => navigate('/my-info/management')}>첨삭 관리</button>
 						</li>
 						<li>
-							<button onClick={() => navigate('/my-home')}>결제 내역</button>
+							<button onClick={() => navigate('/my-info?mode=payment')}>결제 내역</button>
 						</li>
 						<li>
-							<button onClick={() => navigate('/my-home')}>정보 수정</button>
+							<button onClick={() => navigate('/my-info?mode=edit')}>정보 수정</button>
 						</li>
 						<li>
-							<button onClick={() => navigate('/my-home')}>로그아웃</button>
+							<button onClick={openLogoutModal}>로그아웃</button>
 						</li>
 					</ul>
 				</div>
 			)}
+			<LogoutModal />
 		</MenuWrap>
 	);
 }

@@ -2,12 +2,14 @@ import styled, { css } from 'styled-components';
 
 import Button from '@common/Button';
 import DefaultImage from '@common/DefaultImage';
+import LogoutModal from '@components/modal/LogoutModal';
 import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
 
 import useUserProfile from './UserProfile.hook';
 
 export default function UserProfile() {
-	const { displayAuth, logout, changeParamToEdit, expertButton } = useUserProfile();
+	const { displayAuth, changeParamToEdit, expertButton, openLogoutModal } =
+		useUserProfile();
 
 	return (
 		<UserInfoSection>
@@ -36,11 +38,12 @@ export default function UserProfile() {
 					>
 						{expertButton.label()}
 					</Button>
-					<Button variant='border' size='full' onClick={logout}>
+					<Button variant='border' size='full' onClick={openLogoutModal}>
 						로그아웃
 					</Button>
 				</ButtonWrappper>
 			</SingleAsyncWrapper>
+			<LogoutModal />
 		</UserInfoSection>
 	);
 }

@@ -1,15 +1,11 @@
+import { useModal } from '@hooks/atoms/useModalAtom';
 import { useSearchParam } from '@hooks/common/useSearchParam';
 import { authQuery } from '@queries/user';
-import { useNavigate } from 'react-router-dom';
 
 export default function useUserProfile() {
 	const { data: auth } = authQuery();
-	const navigate = useNavigate();
 	const { changeParam } = useSearchParam('mode');
-	const logout = () => {
-		localStorage.removeItem('rm-checkpoint');
-		navigate('/');
-	};
+	const { openModal: openLogoutModal } = useModal('logout');
 
 	const expertButton = {
 		to: auth?.role === 'EXPERT' ? '/coach-info' : '/form/expert',
@@ -28,7 +24,7 @@ export default function useUserProfile() {
 			picture: auth?.picture || '',
 		},
 		expertButton,
-		logout,
 		changeParamToEdit: () => changeParam('edit'),
+		openLogoutModal,
 	};
 }
