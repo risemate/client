@@ -6,8 +6,6 @@ import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
-
 import Alarm from '../../alarm/Alarm';
 import ProfileMenu from './ProfileMenu';
 
@@ -47,48 +45,38 @@ export default function NavBar() {
 							</li>
 						);
 					})}
-
-					{auth?.role === 'EXPERT' && (
+					{/* {auth?.role === 'EXPERT' && (
 						<li className='on_expert'>
 							<Link to={'/coach-info/management'}>코칭관리</Link>
 						</li>
-					)}
+					)} */}
 				</NavBarList>
 
-				<SingleAsyncWrapper>
-					<MyPageWrapper>
-						{auth ? (
-							<>
-								{auth?.role === 'EXPERT' && (
-									<Link to='/coach-info/management'>코칭 관리</Link>
-								)}
-								<button
-									type='button'
-									className={hasNewAlarm ? 'alert' : undefined}
-									onClick={toggleAlarm}
-									ref={btnAlarmRef}
-								>
-									<IconBell />
-								</button>
-								{isAlarmOpen && (
-									<Alarm closeAlarm={closeAlarm} btnAlarmRef={btnAlarmRef} />
-								)}
-								{/* <div>
-									<button type='button' onClick={() => navigate('/my-info')}>
-										<IconCircleUser />
-									</button>
-								</div> */}
-								<ProfileMenu />
-							</>
-						) : (
-							<>
-								<button type='button' onClick={openModal}>
-									로그인 | 회원가입
-								</button>
-							</>
-						)}
-					</MyPageWrapper>
-				</SingleAsyncWrapper>
+				<MyPageWrapper>
+					{auth ? (
+						<>
+							{auth?.role === 'EXPERT' && (
+								<Link to='/coach-info/management'>코칭 관리</Link>
+							)}
+							<button
+								type='button'
+								className={hasNewAlarm ? 'alert' : undefined}
+								onClick={toggleAlarm}
+								ref={btnAlarmRef}
+							>
+								<IconBell />
+							</button>
+							{isAlarmOpen && <Alarm closeAlarm={closeAlarm} btnAlarmRef={btnAlarmRef} />}
+							<ProfileMenu />
+						</>
+					) : (
+						<>
+							<button type='button' onClick={openModal}>
+								로그인 | 회원가입
+							</button>
+						</>
+					)}
+				</MyPageWrapper>
 			</nav>
 		</StyledHeader>
 	);

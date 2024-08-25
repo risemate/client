@@ -22,7 +22,7 @@ export const networkKeys = {
 };
 
 export const alarmKeys = {
-	base: ['alams'] as const,
+	base: ['alarms'] as const,
 	id: (id: string) => [...alarmKeys.base, { id }] as const,
 };
 

@@ -6,20 +6,13 @@ import {
 	fetchProducts,
 	fetchUpdateProduct,
 } from '@api/product';
-import {
-	useMutation,
-	useQuery,
-	useQueryClient,
-	useSuspenseQuery,
-} from '@tanstack/react-query';
+import { useMutation, useQueryClient, useSuspenseQuery } from '@tanstack/react-query';
 import { Product, ProductRequest } from 'types/coach/product';
 import {
 	NetworkPagingQuery,
 	PagingQueryResponse,
 	UseMutationOptionsType,
 	UseMutationResultType,
-	UseQueryOptionsType,
-	UseQueryResultType,
 	UseSuspenseQueryOptionsType,
 	UseSuspenseQueryResultType,
 } from 'types/query/query';
@@ -50,12 +43,11 @@ export const productsQuery = (
 
 export const productDetailQuery = (
 	id: string,
-	options?: UseQueryOptionsType<Product, 'enabled'>,
-): UseQueryResultType<Product> => {
-	return useQuery({
+	options?: UseSuspenseQueryOptionsType<Product>,
+): UseSuspenseQueryResultType<Product> => {
+	return useSuspenseQuery({
 		queryKey: productKeys.id(id),
 		queryFn: () => fetchProductDetail(id),
-		enabled: !!id,
 		...options,
 	});
 };

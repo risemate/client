@@ -10,7 +10,6 @@ export default function GlobalErrorFallback({
 }: FallbackProps) {
 	const navigate = useNavigate();
 	const navigatePage = (to: string) => {
-		// resetErrorBoundary를 호출하여 에러를 초기화
 		resetErrorBoundary();
 		navigate(to);
 	};

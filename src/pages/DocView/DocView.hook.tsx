@@ -1,5 +1,4 @@
-import { careerDetailQuery } from '@queries/common';
-import { isEmpty } from '@utils/helpers';
+import { resumeDetailQuery } from '@queries/career';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Resume } from 'types/career/resume';
 
@@ -8,9 +7,7 @@ export default function useDocView<T = Resume>() {
 	const { pathname } = useLocation();
 	const navigate = useNavigate();
 	const isNetwork = pathname.includes('network');
-	const { data, isLoading } = careerDetailQuery<T>(id, {
-		enabled: !isEmpty(id),
-	});
+	const careerDetail = resumeDetailQuery<T>(id);
 
 	const resumeViewNavItems = [
 		{ name: '이력서 수정', onClick: () => navigate(`/write?redirect=re&id=${id}`) },
@@ -18,8 +15,7 @@ export default function useDocView<T = Resume>() {
 	];
 
 	return {
-		isLoading,
-		data,
+		data: careerDetail.data,
 		resumeViewNavItems,
 		isNetwork,
 	};

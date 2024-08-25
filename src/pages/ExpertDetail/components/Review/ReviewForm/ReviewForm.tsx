@@ -36,7 +36,6 @@ export default function ReviewForm({
 						: '해당 서비스에 대한 후기를 남겨보세요!'
 				}
 				{...contentFields}
-				autoFocus
 			/>
 			<div>
 				{!isMyProduct && <StarRating {...scoreFields} />}

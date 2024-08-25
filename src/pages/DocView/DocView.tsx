@@ -7,10 +7,9 @@ export { default as ReviseCoverletterView } from './components/ReviseCoverletter
 export { default as ReviseResumeView } from './components/ReviseResumeView';
 
 export default function DocView() {
-	const { isLoading, data } = useDocView();
+	const { data } = useDocView();
 	return (
 		<>
-			{isLoading && <h3>loading & Skeleton UI</h3>}
 			{data?.careerType === 'RESUME' && <ResumeView />}
 			{data?.careerType === 'COVERLETTER' && <CoverLetterView />}
 		</>

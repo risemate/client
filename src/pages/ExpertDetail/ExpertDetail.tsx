@@ -8,7 +8,6 @@ import { convertToProfile } from 'types/coach/productData';
 import Tab from '@common/Tab';
 import Container from '@components/layout/Container';
 import Profile from '@components/resume-view/ViewTemplate/Profile';
-import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
 
 import ExpertInfo from './components/ExpertInfo';
 import Inquiry from './components/Inquiry/Inquiry';
@@ -19,7 +18,7 @@ import useExpertDetail from './ExpertDetail.hook';
 
 export default function ExpertDetail() {
 	const { id } = useParams();
-	const { product, isLoading, tabItems, isMyProduct } = useExpertDetail(id || '');
+	const { product, tabItems, isMyProduct } = useExpertDetail(id || '');
 	const { sectionRefs, activeSection, scrollToSection } = useScrollToSection(tabItems);
 	const { productTitle, subTitle, coverImage } = product;
 	const formState: CoachingRequestState = {
@@ -32,52 +31,46 @@ export default function ExpertDetail() {
 
 	return (
 		<Container>
-			<SingleAsyncWrapper>
-				{!isLoading && (
-					<ExpertDetailWrapper>
-						<div>
-							<Profile
-								profile={convertToProfile({ productTitle, subTitle, coverImage })}
-							/>
-							<Tab
-								items={tabItems}
-								changeTab={scrollToSection}
-								isCurrentTab={activeSection}
-								underline
-								sticky
-							/>
-							<SectionWrapper>
-								<Service
-									description={product.description}
-									packages={product.packages}
-									sectionRef={sectionRefs.current[tabItems[0]?.value ?? 0]}
-								/>
-								<ExpertInfo
-									workExperiences={product.workExperiences}
-									projects={product.projects}
-									sectionRef={sectionRefs.current[tabItems[1]?.value ?? 0]}
-								/>
-								<Review
-									avgReviewScore={product.avgReviewScore}
-									reviewCount={product.reviewCount}
-									isMyProduct={isMyProduct}
-									sectionRef={sectionRefs.current[tabItems[2]?.value ?? 0]}
-								/>
-								<Inquiry
-									isMyProduct={isMyProduct}
-									sectionRef={sectionRefs.current[tabItems[3]?.value ?? 0]}
-								/>
-							</SectionWrapper>
-						</div>
-						<ProductInfo
+			<ExpertDetailWrapper>
+				<div>
+					<Profile profile={convertToProfile({ productTitle, subTitle, coverImage })} />
+					<Tab
+						items={tabItems}
+						changeTab={scrollToSection}
+						isCurrentTab={activeSection}
+						underline
+						sticky
+					/>
+					<SectionWrapper>
+						<Service
+							description={product.description}
 							packages={product.packages}
-							reviewCount={product.reviewCount}
-							avgReviewScore={product.avgReviewScore}
-							formState={formState}
+							sectionRef={sectionRefs.current[tabItems[0]?.value ?? 0]}
 						/>
-					</ExpertDetailWrapper>
-				)}
-			</SingleAsyncWrapper>
+						<ExpertInfo
+							workExperiences={product.workExperiences}
+							projects={product.projects}
+							sectionRef={sectionRefs.current[tabItems[1]?.value ?? 0]}
+						/>
+						<Review
+							avgReviewScore={product.avgReviewScore}
+							reviewCount={product.reviewCount}
+							isMyProduct={isMyProduct}
+							sectionRef={sectionRefs.current[tabItems[2]?.value ?? 0]}
+						/>
+						<Inquiry
+							isMyProduct={isMyProduct}
+							sectionRef={sectionRefs.current[tabItems[3]?.value ?? 0]}
+						/>
+					</SectionWrapper>
+				</div>
+				<ProductInfo
+					packages={product.packages}
+					reviewCount={product.reviewCount}
+					avgReviewScore={product.avgReviewScore}
+					formState={formState}
+				/>
+			</ExpertDetailWrapper>
 		</Container>
 	);
 }

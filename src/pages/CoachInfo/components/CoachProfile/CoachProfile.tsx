@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import Button from '@common/Button';
@@ -15,7 +15,7 @@ export default function CoachProfile() {
 					<span className='a11y-hidden'>의 마이페이지</span>
 					<br />
 				</h2>
-				{displayAuth.hasPost && <Link to='link'>내 게시물 확인하러 가기 {'>'}</Link>}
+				{/* {displayAuth.hasPost && <Link to='link'>내 게시물 확인하러 가기 {'>'}</Link>} */}
 			</UserWrapper>
 			<ButtonWrapper>
 				<Button variant='blue' size='full' to='/coach-info/docs'>

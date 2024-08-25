@@ -35,7 +35,6 @@ export default function InquiryForm({
 						: '해당 서비스에 대헤 궁금한 점이 있다면 문의를 남겨보세요!'
 				}
 				{...contentFields}
-				autoFocus
 			/>
 			<div>
 				<Button variant='navy' size='small' type='submit' disabled={checkEmpty}>

@@ -3,6 +3,8 @@ import { useIntersectionObserver } from '@hooks/useIntersectionObserver ';
 import { RefObject } from 'react';
 import styled from 'styled-components';
 
+import Spinner from '@common/Spinner';
+
 import useAlarm from './Alarm.hook';
 import AlarmItem from './AlarmItem';
 
@@ -37,9 +39,8 @@ export default function Alarm({ closeAlarm, btnAlarmRef }: AlarmProps) {
 					);
 				})}
 			</ul>
-			{isLoading && <p className='loading'>Loading...</p>}
+			{isLoading && <Spinner />}
 			{!isLoading && <div ref={setTarget} />}
-			{/* //: 로딩애니메이션 추가하기 */}
 		</AlarmArticle>
 	);
 }

@@ -4,7 +4,7 @@ import TextArea from '@components/input/TextArea';
 import RequestFormWrapper from '@components/request-form/RequestFormWrapper/RequestFormWrapper';
 import BasicCareerListWrapper from '@components/resume-view/BasicCareerList/BasicCareerListWrapper';
 import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
-import CareerSuspenseList from '@components/suspense/suspense-list/CareerSuspenseList';
+import CareerSuspenseList from '@components/suspense/suspense-component/CareerSuspenseList';
 
 import ResumeFormCard from './components/ResumeFormCard';
 import useExpertForm from './ExpertForm.hook';

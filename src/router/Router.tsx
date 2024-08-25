@@ -113,7 +113,6 @@ export const router = createBrowserRouter([
 					},
 				],
 				loader: signLoader,
-				errorElement: <NotFound />,
 			},
 			{
 				path: 'write',
@@ -145,7 +144,6 @@ export const router = createBrowserRouter([
 					},
 				],
 				loader: signLoader,
-				errorElement: <NotFound />,
 			},
 		],
 		errorElement: <NotFound />,
@@ -174,5 +172,6 @@ export const router = createBrowserRouter([
 				],
 			},
 		],
+		errorElement: <NotFound />,
 	},
 ]);

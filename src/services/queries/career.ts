@@ -49,23 +49,22 @@ export const reviseResumeQuery = (
 
 export const reviseResumeDetailQuery = (
 	id: string,
-	options?: UseQueryOptionsType<Career<ReviseResume>>,
-): UseQueryResultType<Career<ReviseResume>> => {
-	return useQuery({
+	options?: UseSuspenseQueryOptionsType<Career<ReviseResume>>,
+): UseSuspenseQueryResultType<Career<ReviseResume>> => {
+	return useSuspenseQuery({
 		queryKey: resumeKeys.id(id),
 		queryFn: () => fetchResumeDetail<ReviseResume>(id),
 		...options,
 	});
 };
 
-export const resumeDetailQuery = (
+export const resumeDetailQuery = <T = Resume>(
 	id: string,
-	options?: UseQueryOptionsType<Career<Resume>, 'enabled'>,
-): UseQueryResultType<Career<Resume>> => {
-	return useQuery({
+	options?: UseSuspenseQueryOptionsType<Career<T>>,
+): UseSuspenseQueryResultType<Career<T>> => {
+	return useSuspenseQuery({
 		queryKey: resumeKeys.id(id),
-		queryFn: () => fetchResumeDetail(id),
-		enabled: !!id,
+		queryFn: () => fetchResumeDetail<T>(id),
 		...options,
 	});
 };

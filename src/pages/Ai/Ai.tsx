@@ -6,7 +6,7 @@ import Banner from '@common/Banner';
 import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 import BasicCareerListWrapper from '@components/resume-view/BasicCareerList/BasicCareerListWrapper';
 import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
-import CareerSuspenseList from '@components/suspense/suspense-list/CareerSuspenseList';
+import CareerSuspenseList from '@components/suspense/suspense-component/CareerSuspenseList';
 
 export default function Ai() {
 	const [selectedId, setSelectedId] = useState<string | null>(null);

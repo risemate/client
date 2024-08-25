@@ -5,7 +5,7 @@ import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 import Container from '@components/layout/Container';
 import BasicCareerListWrapper from '@components/resume-view/BasicCareerList/BasicCareerListWrapper';
 import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWrapper';
-import CareerSuspenseList from '@components/suspense/suspense-list/CareerSuspenseList';
+import CareerSuspenseList from '@components/suspense/suspense-component/CareerSuspenseList';
 
 import CareerBasicCard from './CareerBasicCard/CareerBasicCard';
 
