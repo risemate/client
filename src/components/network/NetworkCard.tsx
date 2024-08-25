@@ -22,7 +22,7 @@ export default function NetworkCard({ network }: NetworkCardProps) {
 			{hasImage ? (
 				<img src={''} alt='' />
 			) : (
-				<DefaultImage variant='mint' shape='rectangle' />
+				<DefaultImage variant='mint' shape='rectangle' image={network.coverImage} />
 			)}
 			<h4>{network.docTitle}</h4>
 			<p>{network.description}</p>

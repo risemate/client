@@ -14,8 +14,8 @@ export default function ExpertCardList({ expertQueryParams, home }: ExpertCardLi
 	const data = home ? experts.data.data.slice(0, 4) : experts.data.data;
 	return (
 		<StyledCardList $home={home}>
-			{data.map((expert, index) => (
-				<li key={index}>
+			{data.map(expert => (
+				<li key={expert._id}>
 					<ExpertCard expert={expert} />
 				</li>
 			))}

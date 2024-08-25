@@ -37,7 +37,7 @@ export default function Banner<T = string | number | undefined>({
 				</div>
 			)}
 			{variant !== 'home' && (
-				<>
+				<div>
 					<h2>{children}</h2>
 					{tab && (
 						<Tab
@@ -48,7 +48,7 @@ export default function Banner<T = string | number | undefined>({
 							center
 						/>
 					)}
-				</>
+				</div>
 			)}
 		</BannerSection>
 	);
@@ -85,6 +85,8 @@ const tabStyle = css`
 	ul {
 		position: absolute;
 		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
 	}
 `;
 
@@ -136,6 +138,9 @@ const BannerSection = styled.section<BannerSectionProps>`
 		font-size: ${({ theme }) => theme.fontSizes.large};
 		font-weight: bold;
 		line-height: 50px;
+	}
+	& > div {
+		${({ theme }) => theme.common.minmaxWidth};
 	}
 	.highlight {
 		&.mint {

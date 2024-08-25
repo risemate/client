@@ -1,7 +1,6 @@
-import { removeEmptyObjectField } from '@utils/hookform';
 import axios from 'axios';
 import { Product, ProductRequest } from 'types/coach/product';
-import { PagingQueryProps, PagingQueryResponse } from 'types/query/query';
+import { NetworkPagingQuery, PagingQueryResponse } from 'types/query/query';
 
 const PRODUCT_PATH = {
 	DEFAULT: '/products',
@@ -31,18 +30,19 @@ export const fetchDeleteProduct = async (id: string): Promise<Product> => {
 };
 
 export const fetchProducts = async (
-	params?: PagingQueryProps,
+	params?: NetworkPagingQuery,
 ): Promise<PagingQueryResponse<Product>> => {
+	const queryParams = {
+		...(params?.careerType !== undefined && { careerType: params?.careerType }),
+	};
 	const response = await axios.get<PagingQueryResponse<Product>>(PRODUCT_PATH.DEFAULT, {
-		params: removeEmptyObjectField<PagingQueryProps>(params || {}),
+		params: queryParams,
 	});
 	return response.data;
 };
 
-export const fetchMyProduct = async () // careerType?: CareerType
-: Promise<Product[]> => {
+export const fetchMyProduct = async (): Promise<Product[]> => {
 	try {
-		// const response = await axios.get<Product[]>(PRODUCT_PATH.MY(), { params: { careerType } });
 		const response = await axios.get<Product[]>(PRODUCT_PATH.MY());
 		return response.data;
 	} catch (error) {

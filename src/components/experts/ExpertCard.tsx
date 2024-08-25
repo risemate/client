@@ -1,6 +1,5 @@
-import React from 'react';
 import styled from 'styled-components';
-import { Product } from 'types/coach/product';
+import { Package, Product } from 'types/coach/product';
 
 import DefaultImage from '@common/DefaultImage';
 
@@ -13,6 +12,13 @@ interface ExpertCardProps {
 
 export default function ExpertCard({ expert }: ExpertCardProps) {
 	const { moveToDetail } = useExpertCard(expert._id);
+	const findMinPrice = (packages: Package): number => {
+		const filteredPackages = Object.values(packages).filter(
+			pkg => pkg !== null && pkg !== undefined,
+		);
+		const prices = filteredPackages.map(pkg => pkg?.price || 0);
+		return Math.min(...prices); // 최소값 반환
+	};
 	return (
 		<CardItemButton onClick={moveToDetail}>
 			<Tag>FRONTEND</Tag>
@@ -21,7 +27,7 @@ export default function ExpertCard({ expert }: ExpertCardProps) {
 			<p>{expert.subTitle || ' '}</p>
 			<p>{expert.description || ' '}</p>
 			<ProductInfoWrapper>
-				<span className='price'>20000원~</span>
+				<span className='price'>{findMinPrice(expert.packages)}원 ~</span>
 				<StarRating
 					rating={expert.avgReviewScore}
 					numReview={expert.reviewCount}
