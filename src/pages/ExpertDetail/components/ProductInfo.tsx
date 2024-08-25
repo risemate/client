@@ -14,6 +14,7 @@ interface ProductInfoProps {
 	packages?: Partial<PackageType>;
 	reviewCount?: number;
 	avgReviewScore?: number;
+	focusInquiry: () => void;
 	formState: CoachingRequestState;
 }
 
@@ -21,6 +22,7 @@ export default function ProductInfo({
 	packages = {} as PackageType,
 	reviewCount = 0,
 	avgReviewScore = 0,
+	focusInquiry,
 	formState,
 }: ProductInfoProps) {
 	const tabItems: TabItem<PackageCategory>[] = Object.keys(packages).map(item => {
@@ -60,7 +62,7 @@ export default function ProductInfo({
 							</div>
 						),
 				)}
-				<Button variant='mint' size='full'>
+				<Button variant='mint' size='full' onClick={focusInquiry}>
 					문의하기
 				</Button>
 				<Button
@@ -71,7 +73,7 @@ export default function ProductInfo({
 							state: {
 								...formState,
 								selectedPackage: currentTab.value,
-								selectedPacakgeInfo: packages[currentTab.value],
+								selectedPackageInfo: packages[currentTab.value],
 							},
 						})
 					}

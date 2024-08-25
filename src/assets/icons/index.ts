@@ -3,6 +3,8 @@ export {
 	FaHourglassHalf as IconProceeding,
 	FaPlus as IconPlus,
 	FaTrash as IconTrash,
+	FaLock as IconLock,
+	FaLockOpen as IconUnlock,
 } from 'react-icons/fa';
 export {
 	FaCircleUser as IconCircleUser,

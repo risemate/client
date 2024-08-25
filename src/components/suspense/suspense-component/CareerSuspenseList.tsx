@@ -9,14 +9,16 @@ import BasicCareerList from '@components/resume-view/BasicCareerList/BasicCareer
 interface CareerSuspenseListProps<T = any> {
 	props: CareersQueryProps;
 	CardComponent: ElementType<CardComponentProps<T>>;
+	createTo?: 'co' | 're' | 'pr';
 	selectedId?: string | null;
 	updateSelectedId?: (value: string | null) => void;
 }
 
 export default function CareerSuspenseList<T>({
 	props,
-	selectedId,
 	CardComponent,
+	createTo,
+	selectedId,
 	updateSelectedId,
 }: CareerSuspenseListProps<T>) {
 	const resumes = careersQuery(props);
@@ -24,6 +26,7 @@ export default function CareerSuspenseList<T>({
 	return (
 		<BasicCareerList
 			resumes={data}
+			createTo={createTo}
 			CardComponent={CardComponent}
 			selectedId={selectedId}
 			updateSelectedId={updateSelectedId}

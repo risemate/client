@@ -20,6 +20,7 @@ export default function ResumeList() {
 					<SingleAsyncWrapper height='290px'>
 						<CareerSuspenseList
 							props={{ docType: 'BASIC', careerType: 'RESUME' }}
+							createTo='re'
 							CardComponent={CareerBasicCard}
 							selectedId={selectedId}
 							updateSelectedId={updateSelectedId}

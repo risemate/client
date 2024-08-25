@@ -6,12 +6,14 @@ interface StarRatingProps {
 	numReview?: number;
 	size?: 'small' | 'medium' | 'large';
 	onClick?: (rating: number) => void;
+	displayReview?: boolean;
 }
 export default function StarRating({
 	rating,
 	numReview,
 	size,
 	onClick,
+	displayReview,
 }: StarRatingProps) {
 	const ratingList = [1, 2, 3, 4, 5];
 	return (
@@ -28,7 +30,7 @@ export default function StarRating({
 							return <IconStarHalf key={index} />;
 						else return <IconStarEmpty key={index} />;
 					})}
-			<span>({numReview || 0})</span>
+			{displayReview && <span>({numReview || 0})</span>}
 		</StarRatingWrapper>
 	);
 }

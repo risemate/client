@@ -22,7 +22,11 @@ export default function ExpertCard({ expert }: ExpertCardProps) {
 			<p>{expert.description || ' '}</p>
 			<ProductInfoWrapper>
 				<span className='price'>20000원~</span>
-				<StarRating rating={expert.avgReviewScore} numReview={expert.reviewCount} />
+				<StarRating
+					rating={expert.avgReviewScore}
+					numReview={expert.reviewCount}
+					displayReview
+				/>
 			</ProductInfoWrapper>
 		</CardItemButton>
 	);

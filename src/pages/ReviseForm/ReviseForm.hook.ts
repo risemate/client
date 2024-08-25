@@ -29,7 +29,13 @@ export default function useReviseForm(formState: CoachingRequestState) {
 			merchantUid: '',
 		},
 	});
-	const { control, watch, handleSubmit } = reviseFormMethods;
+	const { control, watch, setValue, handleSubmit } = reviseFormMethods;
+
+	const { field: careerTypeFields } = useController({
+		control,
+		name: 'careerType',
+		rules: { required: true },
+	});
 
 	const { field: resumeShareFields } = useController({
 		control,
@@ -70,8 +76,13 @@ export default function useReviseForm(formState: CoachingRequestState) {
 			options: formState.careerTypes.map(career => {
 				return { label: CareerTypeList[career], value: career };
 			}),
-			value: watch('careerType'),
-			selectedText: CareerTypeList[watch('careerType')],
+			...careerTypeFields,
+			onChange: (e: ChangeEvent<HTMLSelectElement>) => {
+				careerTypeFields.onChange(e.target.value);
+				setValue('productId', '');
+				setValue('resumeShare', false);
+			},
+			selectedText: CareerTypeList[careerTypeFields.value],
 		},
 		resumeShare: {
 			checked: resumeShareFields.value,

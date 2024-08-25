@@ -9,9 +9,10 @@ import InquiryItem from './InquiryItem/InquiryItem';
 interface InquiryProps {
 	sectionRef: React.RefObject<HTMLElement>;
 	isMyProduct: boolean;
+	inquiryRef?: React.RefObject<HTMLTextAreaElement>;
 }
 
-export default function Inquiry({ sectionRef, isMyProduct }: InquiryProps) {
+export default function Inquiry({ sectionRef, isMyProduct, inquiryRef }: InquiryProps) {
 	const { id } = useParams();
 	const { cs, openInquiryInputs, handleToggleInquiryInput, createCs } = useInquiry(
 		id || '',
@@ -22,7 +23,11 @@ export default function Inquiry({ sectionRef, isMyProduct }: InquiryProps) {
 			<h3>상품 문의</h3>
 			<InquiryWrapper>
 				{!isMyProduct && (
-					<InquiryForm isMyProduct={isMyProduct} submitCallback={createCs} />
+					<InquiryForm
+						isMyProduct={isMyProduct}
+						submitCallback={createCs}
+						inquiryRef={inquiryRef}
+					/>
 				)}
 				<ul>
 					{cs.map((inquiry, index) => (

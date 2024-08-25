@@ -17,7 +17,7 @@ const Select = forwardRef(function Select(
 				{options.map(option => (
 					<option
 						key={typeof option === 'string' ? option : option.value}
-						value={typeof option === 'string' ? option : option.label}
+						value={typeof option === 'string' ? option : option.value}
 					>
 						{typeof option === 'string' ? option : option.label}
 					</option>

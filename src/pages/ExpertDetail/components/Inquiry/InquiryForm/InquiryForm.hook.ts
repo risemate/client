@@ -1,4 +1,5 @@
 import { isEmpty } from '@utils/helpers';
+import { ChangeEvent } from 'react';
 import { useController, useForm } from 'react-hook-form';
 import { CS, RequestAnswer } from 'types/coach/product';
 
@@ -8,11 +9,12 @@ export default function useInquiryForm(
 	cs?: CS,
 	submitCallback?: (data: RequestAnswer) => void,
 ) {
-	const { control, reset, handleSubmit } = useForm<RequestAnswer>({
+	const { control, reset, handleSubmit } = useForm<RequestAnswer & { secret: boolean }>({
 		mode: 'onSubmit',
 		defaultValues: {
 			id: cs ? cs._id : id,
 			content: cs ? cs.content : '',
+			secret: false,
 		},
 	});
 
@@ -20,6 +22,11 @@ export default function useInquiryForm(
 		name: 'content',
 		control,
 		rules: { required: true },
+	});
+
+	const { field: secretFields } = useController({
+		control,
+		name: 'secret',
 	});
 
 	const checkEmpty = isEmpty(contentFields.value);
@@ -30,6 +37,13 @@ export default function useInquiryForm(
 	});
 	return {
 		contentFields,
+		secretFields: {
+			checked: secretFields.value,
+			onChange: (e: ChangeEvent<HTMLInputElement>) =>
+				secretFields.onChange(e.target.checked),
+			ref: secretFields.ref,
+			onBlur: secretFields.onBlur,
+		},
 		checkEmpty,
 		submitForm,
 	};
