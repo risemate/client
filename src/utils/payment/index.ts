@@ -10,6 +10,7 @@ export type PaymentResponse = {
 export const onClickPayment = async (data: {
 	price: number;
 	orderName: string;
+	// eslint-disable-next-line
 	user: any; // as User
 }): Promise<PaymentResponse | undefined> => {
 	const res = (await PortOne.requestPayment({

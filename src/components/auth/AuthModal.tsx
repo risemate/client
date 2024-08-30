@@ -2,7 +2,6 @@ import { useModal } from '@hooks/atoms/useModalAtom';
 import { IconGoogle, IconNaver } from '@icons';
 import logoIcon from '@images/logo-icon.svg';
 import { authKeys } from '@queries/queryKeys';
-import { authQuery } from '@queries/user';
 import { useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -14,16 +13,13 @@ import { popupLogin } from './popupLogin';
 
 export default function AuthModal() {
 	const { closeModal } = useModal('login');
-	// eslint-disable-next-line
-	const { data: auth } = authQuery();
 	const [userData, setUserData] = useState<Auth>();
 	const queryClient = useQueryClient();
+
 	const login = async (provider?: string) => {
 		closeModal();
 		popupLogin(provider).then(result => {
 			if (result.accessToken) {
-				// eslint-disable-next-line
-
 				//: 유저정보 받아오기 refetch()
 				alert('로그인 완료'); //:react-toastify로 바꾸기
 				setUserData(result.user);

@@ -3,6 +3,7 @@ export type RolesType = (typeof RolesType)[number];
 
 export type Auth = {
 	_id: string;
+	admin: boolean;
 	cash: number;
 	coin: number;
 	completedCoaching: unknown;

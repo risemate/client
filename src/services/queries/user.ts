@@ -9,14 +9,6 @@ import {
 	UseQueryResultType,
 } from 'types/query/query';
 
-// export function authQuery(): { auth: Auth | undefined; refetch: () => void } {
-// 	const { data: auth, refetch } = useQuery(['auth'], fetchAuth, {
-// 		// refetchOnMount: true,
-// 		staleTime: Infinity,
-// 	});
-// 	return { auth, refetch };
-// }
-
 export const authQuery = (
 	options?: UseQueryOptionsType<Auth>,
 ): UseQueryResultType<Auth> => {

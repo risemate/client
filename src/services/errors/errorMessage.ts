@@ -37,5 +37,8 @@ export const getErrorDataByCode = (
 	if (axiosErrorCode in ERROR_CODE) {
 		return ERROR_CODE[axiosErrorCode as keyof typeof ERROR_CODE];
 	}
-	return ERROR_CODE.default;
+	return {
+		code: 'ERROR',
+		message: error.message || ERROR_CODE.default.message,
+	};
 };

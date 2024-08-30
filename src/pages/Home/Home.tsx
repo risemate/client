@@ -1,7 +1,11 @@
+import { useModal } from '@hooks/atoms/useModalAtom';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import Banner from '@common/Banner';
 import Button from '@common/Button';
+import AuthModal from '@components/auth/AuthModal';
 import ExpertCardList from '@components/experts/ExpertCardList';
 import Container from '@components/layout/Container';
 import NetworkCardList from '@components/network/NetworkCardList';
@@ -10,6 +14,16 @@ import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWr
 import 'normalize.css';
 
 export default function Home() {
+	const { openModal: openAuthModal } = useModal('login');
+	const location = useLocation();
+	const needsLogin = location.state?.needsLogin;
+
+	useEffect(() => {
+		if (needsLogin) {
+			openAuthModal();
+		}
+	}, [needsLogin]);
+
 	return (
 		<Container>
 			<Banner variant='home'>
@@ -33,6 +47,7 @@ export default function Home() {
 					</Button>
 				</SingleAsyncWrapper>
 			</ExpertSection>
+			<AuthModal />
 		</Container>
 	);
 }

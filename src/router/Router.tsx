@@ -23,10 +23,9 @@ import { createBrowserRouter } from 'react-router-dom';
 import FormLayout from '@components/layout/FormLayout';
 import RootLayout from '@components/layout/RootLayout';
 
-import { signLoader } from './loader';
+import PrivateRoute from './PrivateRoute';
 
 const token = localStorage.getItem('rm-checkpoint');
-// axios.defaults.baseURL = `${process.env.REACT_APP_API_URL}`;
 axios.defaults.baseURL = '/api';
 axios.defaults.headers.common.Authorization = token ? `Bearer ${token}` : '';
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -38,7 +37,16 @@ axios.interceptors.response.use(
 );
 
 export const router = createBrowserRouter([
-	{ path: 'admin', element: <Admin /> },
+	{
+		path: 'admin',
+		element: <PrivateRoute admin />,
+		children: [
+			{
+				index: true,
+				element: <Admin />,
+			},
+		],
+	},
 	{ path: 'test', element: <PaymentExampleCom /> },
 	{
 		path: '/',
@@ -77,6 +85,7 @@ export const router = createBrowserRouter([
 
 			{
 				path: 'my-info',
+				element: <PrivateRoute />,
 				children: [
 					{
 						index: true,
@@ -112,14 +121,20 @@ export const router = createBrowserRouter([
 						element: <Ai />,
 					},
 				],
-				loader: signLoader,
 			},
 			{
 				path: 'write',
-				element: <WritePage />,
+				element: <PrivateRoute />,
+				children: [
+					{
+						index: true,
+						element: <WritePage />,
+					},
+				],
 			},
 			{
 				path: 'coach-info',
+				element: <PrivateRoute expert />,
 				children: [
 					{
 						index: true,
@@ -143,7 +158,6 @@ export const router = createBrowserRouter([
 						element: <ExpertDetail />,
 					},
 				],
-				loader: signLoader,
 			},
 		],
 		errorElement: <NotFound />,
@@ -155,6 +169,7 @@ export const router = createBrowserRouter([
 		children: [
 			{
 				path: 'expert',
+				element: <PrivateRoute />,
 				children: [
 					{
 						index: true,
@@ -164,6 +179,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: 'revise',
+				element: <PrivateRoute />,
 				children: [
 					{
 						index: true,
