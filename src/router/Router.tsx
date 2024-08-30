@@ -13,7 +13,7 @@ import Home from 'pages/Home/Home';
 import MyInfoPage from 'pages/MyInfo/MyInfo';
 import MyProduct from 'pages/MyProduct/MyProduct';
 import Network from 'pages/Network/Network';
-import NotFound from 'pages/NotFound';
+import NotFound from 'pages/NotFound/NotFound';
 import ReviseForm from 'pages/ReviseForm/ReviseForm';
 import ReviseManagement from 'pages/ReviseManagement/ReviseManagement';
 import PaymentExampleCom from 'pages/TestPayment';
