@@ -6,7 +6,15 @@ import styled from 'styled-components';
 
 import Button from '@common/Button';
 
-export default function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
+interface ErrorFallbackProps extends FallbackProps {
+	height?: string;
+}
+
+export default function ErrorFallback({
+	error,
+	resetErrorBoundary,
+	height = '100%',
+}: ErrorFallbackProps) {
 	const { reset } = useQueryErrorResetBoundary();
 	const errorData = getErrorDataByCode(error);
 
@@ -18,7 +26,7 @@ export default function ErrorFallback({ error, resetErrorBoundary }: FallbackPro
 		reset();
 	};
 	return (
-		<ErrorFallbackWrapper>
+		<ErrorFallbackWrapper $height={height}>
 			<p>
 				{errorData?.code} <IconError />
 			</p>
@@ -30,9 +38,9 @@ export default function ErrorFallback({ error, resetErrorBoundary }: FallbackPro
 	);
 }
 
-const ErrorFallbackWrapper = styled.div`
+const ErrorFallbackWrapper = styled.div<{ $height: string }>`
 	width: 100%;
-	height: 100%;
+	height: ${({ $height }) => $height};
 	${({ theme }) => theme.common.flexCenterColumn};
 	gap: 10px;
 	p:nth-of-type(1) {

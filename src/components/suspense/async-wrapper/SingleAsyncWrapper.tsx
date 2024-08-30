@@ -19,7 +19,7 @@ export default function SingleAsyncWrapper({
 		<QueryErrorResetBoundary>
 			{({ reset }) => (
 				<ErrorBoundary
-					FallbackComponent={ErrorFallback}
+					FallbackComponent={props => <ErrorFallback {...props} height={height} />}
 					onError={e => console.error('Error caught by ErrorBoundary:', e)}
 					onReset={reset}
 				>

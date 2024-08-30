@@ -22,8 +22,8 @@ export default function WriteCoverletter() {
 	} = useCoverletterWrite();
 	return (
 		<Container backgroundColor='lightGrey' padding>
-			<FormProvider {...coverLetterEditMethods}>
-				<SingleAsyncWrapper>
+			<SingleAsyncWrapper>
+				<FormProvider {...coverLetterEditMethods}>
 					<StyledForm id={formId} onSubmit={submitCoverletter}>
 						<h2 className='a11y-hidden'>
 							{isEmpty(getValue('docTitle')) ? '새로운 이력서' : getValue('docTitle')};
@@ -32,10 +32,10 @@ export default function WriteCoverletter() {
 						<CoverLetterContents />
 						<ResumeNav resumeNavItems={coverLetterEditNavItems} />
 					</StyledForm>
-				</SingleAsyncWrapper>
-				<SaveModal title='자기소개서' queryKey={modalQueryKey} buttonFormId={formId} />
-				{/* <UnsavedChangesModal blocker={blocker} /> */}
-			</FormProvider>
+					<SaveModal title='자기소개서' queryKey={modalQueryKey} buttonFormId={formId} />
+					{/* <UnsavedChangesModal blocker={blocker} /> */}
+				</FormProvider>
+			</SingleAsyncWrapper>
 		</Container>
 	);
 }

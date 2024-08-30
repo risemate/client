@@ -36,8 +36,8 @@ export default function WriteResume() {
 	}, [isSubmitting]);
 	return (
 		<Container backgroundColor='lightGrey' padding>
-			<FormProvider {...resumeEditMethods}>
-				<SingleAsyncWrapper>
+			<SingleAsyncWrapper>
+				<FormProvider {...resumeEditMethods}>
 					<StyledForm id={formId} onSubmit={submitResume}>
 						<div>
 							<h2 className='a11y-hidden'>
@@ -64,10 +64,10 @@ export default function WriteResume() {
 						</div>
 						<WriteNavigation />
 					</StyledForm>
-				</SingleAsyncWrapper>
-				<SaveModal title='이력서' queryKey={modalQueryKey} buttonFormId={formId} />
-				{/* <UnsavedChangesModal blocker={blocker} /> */}
-			</FormProvider>
+					<SaveModal title='이력서' queryKey={modalQueryKey} buttonFormId={formId} />
+					{/* <UnsavedChangesModal blocker={blocker} /> */}
+				</FormProvider>
+			</SingleAsyncWrapper>
 		</Container>
 	);
 }
