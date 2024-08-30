@@ -40,7 +40,7 @@ export default function Review({
 			</StarRatingWrapper>
 			<ReviewWrapper>
 				<span>전체 리뷰 {reviewCount}건</span>
-				{usedProduct && (
+				{usedProduct && !isMyProduct && (
 					<ReviewForm isMyProduct={isMyProduct} submitCallback={createReview} />
 				)}
 				<ul>

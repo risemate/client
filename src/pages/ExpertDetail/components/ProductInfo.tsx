@@ -51,8 +51,8 @@ export default function ProductInfo({
 							<div key={key}>
 								<ul>
 									<li>{pack?.description}</li>
-									{pack?.providerOptions.map(option => (
-										<li key={option.name}>
+									{pack?.providerOptions.map((option, index) => (
+										<li key={index}>
 											<IconCheck />
 											{option.name}
 										</li>
