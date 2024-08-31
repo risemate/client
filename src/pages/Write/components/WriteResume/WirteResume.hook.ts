@@ -18,8 +18,8 @@ export default function useResumeWrite() {
 	const navigate = useNavigate();
 	const isNewResume = isEmpty(resumeId);
 
-	const resumeDetail = resumeDetailQuery(resumeId);
-	const resume = isNewResume ? defaultResume : resumeDetail.data;
+	const resumeDetail = isNewResume ? defaultResume : resumeDetailQuery(resumeId).data;
+	const resume = resumeDetail;
 	const resumeEditMethods = useForm<Career<ResumeType>>({
 		mode: 'onSubmit',
 		values: resume,
