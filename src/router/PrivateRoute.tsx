@@ -2,6 +2,8 @@ import { authQuery } from '@queries/user';
 import { Navigate, Outlet } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import Spinner from '@common/Spinner';
+
 interface PrivateRouteProps {
 	expert?: boolean;
 	admin?: boolean;
@@ -12,9 +14,19 @@ export default function PrivateRoute({
 	admin = false,
 }: PrivateRouteProps) {
 	const token = localStorage.getItem('rm-checkpoint');
-	const { data: auth } = authQuery();
+	const { data: auth, isLoading, isError } = authQuery();
 	const isExpert = auth?.role === 'EXPERT';
 	const isAdmin = auth?.admin;
+
+	if (isLoading) {
+		return <Spinner />;
+	}
+
+	// 인증에 실패했을 경우
+	if (isError || !auth) {
+		toast.error('인증에 실패했습니다. 다시 로그인해 주세요.');
+		return <Navigate to='/' />;
+	}
 
 	// 로그인하지 않았을 경우
 	if (!token) {
