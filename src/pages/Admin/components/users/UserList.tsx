@@ -37,10 +37,13 @@ function UserList() {
 						<TableHeaderCell>가입일</TableHeaderCell>
 					</TableRow>
 				</TableHeader>
-				<tbody>
-					{isLoading && <div> Loading... </div>}
-					{data && data?.map(user => <UserItem key={user._id} user={user} />)}
-				</tbody>
+				{isLoading ? (
+					<caption> Loading... </caption>
+				) : (
+					<tbody>
+						{data && data?.map(user => <UserItem key={user._id} user={user} />)}
+					</tbody>
+				)}
 			</Table>
 		</Wrap>
 	);

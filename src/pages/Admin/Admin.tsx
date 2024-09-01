@@ -1,5 +1,5 @@
-import { useSearchParam } from '@hooks/common/useSearchParam';
 import theme from '@styles/theme';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Button from '@common/Button';
@@ -7,8 +7,19 @@ import Button from '@common/Button';
 import ManageExpertApplicate from './components/experts/ManageExpertApplicate';
 import UserList from './components/users/UserList';
 
-function Admin() {
-	const { queryParam } = useSearchParam('menu');
+const menuItems = [
+	{ key: 'user', label: '유저관리', component: <UserList /> },
+	{ key: 'mea', label: '전문가신청관리', component: <ManageExpertApplicate /> },
+	{ key: 'resume', label: '이력서관리', component: <div>resume component</div> },
+	{ key: 'pay', label: '결제 관리', component: <div>pay component</div> },
+	{ key: 'any', label: '기타 ...', component: <div>기타 ...</div> },
+];
+
+export default function Admin() {
+	const [searchParams] = useSearchParams();
+	const queryParam = searchParams.get('menu');
+
+	const currentMenu = menuItems.find(item => item.key === queryParam);
 
 	return (
 		<AdminWrap>
@@ -16,54 +27,30 @@ function Admin() {
 				<div className='nav'>
 					<header>관리자 {'>>'} 김탁구</header>
 					<ul>
-						<li className={queryParam === 'user' ? 'active' : ''}>
-							<NavButton variant='blue' size='full' to='?menu=user'>
-								유저관리
-							</NavButton>
-						</li>
-						<li className={queryParam === 'mea' ? 'active' : ''}>
-							<NavButton variant='blue' size='full' to='?menu=mea'>
-								전문가신청관리
-							</NavButton>
-						</li>
-						<li className={queryParam === 'resume' ? 'active' : ''}>
-							<NavButton variant='blue' size='full' to='?menu=resume'>
-								이력서관리
-							</NavButton>
-						</li>
-
-						<li className={queryParam === 'pay' ? 'active' : ''}>
-							<NavButton variant='blue' size='full' to='?menu=pay'>
-								결제 관리
-							</NavButton>
-						</li>
-						<li className={queryParam === 'any' ? 'active' : ''}>
-							<NavButton variant='blue' size='full' to='?menu=...'>
-								기타 ...
-							</NavButton>
-						</li>
-						<li className={queryParam === 'any' ? 'active' : ''}>
-							<NavButton variant='blue' size='full'>
-								기타 ...
-							</NavButton>
-						</li>
-						<li className={queryParam === 'any' ? 'active' : ''}>
-							<NavButton variant='blue' size='full'>
-								기타 ...
-							</NavButton>
-						</li>
+						{menuItems.map(item => (
+							<li key={item.key}>
+								<NavLink
+									to={`?menu=${item.key}`}
+									className={() => {
+										return searchParams.get('menu') === item.key ? 'active' : '';
+									}}
+									end
+								>
+									<NavButton variant='blue' size='full'>
+										{item.label}
+									</NavButton>
+								</NavLink>
+							</li>
+						))}
 					</ul>
 				</div>
 			</div>
 			<div className='content'>
-				{queryParam === 'mea' && <ManageExpertApplicate />}
-				{queryParam === 'user' && <UserList />}
+				{currentMenu ? currentMenu.component : <div>기본 화면</div>}
 			</div>
 		</AdminWrap>
 	);
 }
-
-export default Admin;
 
 const navWith = '300px';
 const AdminWrap = styled.div`
@@ -86,7 +73,7 @@ const AdminWrap = styled.div`
 			color: #fff;
 		}
 		ul {
-			padding: 2px !important;
+			padding: 2px;
 			li {
 				margin-bottom: 10px;
 			}

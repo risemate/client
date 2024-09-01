@@ -1,5 +1,6 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
 import { useQuery } from '@tanstack/react-query';
+import { dateToFormat } from '@utils/timeUtil';
 import axios from 'axios';
 import { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -57,10 +58,13 @@ function ManageExpertApplicate() {
 						<TableHeaderCell>처리날짜</TableHeaderCell>
 					</TableRow>
 				</TableHeader>
-				<tbody>
-					{isLoading && <div> Loading... </div>}
-					{data?.map(item => <Item key={item._id} item={item} refetch={refetch} />)}
-				</tbody>
+				{isLoading ? (
+					<caption> Loading... </caption>
+				) : (
+					<tbody>
+						{data?.map(item => <Item key={item._id} item={item} refetch={refetch} />)}
+					</tbody>
+				)}
 			</Table>
 		</Wrap>
 	);
@@ -137,7 +141,9 @@ function Item({ item, refetch }: { item: ApplyExpert; refetch: () => void }) {
 					{(item.approve === null && '대기') || (item.approve ? '승인' : '거절')}
 				</span>
 			</TableCell>
-			<TableCell>{item.createdAt !== item.updatedAt && item.updatedAt}</TableCell>
+			<TableCell>
+				{item.createdAt !== item.updatedAt && dateToFormat(item.updatedAt)}
+			</TableCell>
 		</TableRow>
 	);
 }
