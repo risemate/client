@@ -96,7 +96,7 @@ function Item({ item, refetch }: { item: ApplyExpert; refetch: () => void }) {
 			<TableCell>{item.createdAt}</TableCell>
 			<TableCell>
 				<Button variant='mint' size='small'>
-					{item.user.name}
+					{item.user.name || item.user.nickname}
 				</Button>
 			</TableCell>
 			<TableCell>{item.data.message}</TableCell>
