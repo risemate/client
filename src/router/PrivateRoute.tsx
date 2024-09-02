@@ -31,7 +31,7 @@ export default function PrivateRoute({
 	// 로그인하지 않았을 경우
 	if (!token) {
 		toast.error('로그인이 필요합니다!');
-		return <Navigate to='/' state={{ needsLogin: true }} />;
+		return <Navigate to='/' state={{ requireLogin: true }} />;
 	}
 
 	// 전문가만 갈 수 있는 곳에 전문가가 아닐 경우

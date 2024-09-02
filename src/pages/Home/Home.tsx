@@ -16,13 +16,13 @@ import 'normalize.css';
 export default function Home() {
 	const { openModal: openAuthModal } = useModal('login');
 	const location = useLocation();
-	const needsLogin = location.state?.needsLogin;
+	const requireLogin = location.state?.requireLogin;
 
 	useEffect(() => {
-		if (needsLogin) {
+		if (requireLogin) {
 			openAuthModal();
 		}
-	}, [needsLogin]);
+	}, [requireLogin]);
 
 	return (
 		<Container>
