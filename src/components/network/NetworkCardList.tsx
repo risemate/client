@@ -2,6 +2,8 @@ import { networkQuery } from '@queries/network';
 import styled from 'styled-components';
 import { NetworkPagingQuery } from 'types/query/query';
 
+import Empty from '@common/Empty';
+
 import NetworkCard from './NetworkCard';
 
 interface NetworkCardListProps {
@@ -15,6 +17,9 @@ export default function NetworkCardList({
 }: NetworkCardListProps) {
 	const networks = networkQuery(networkQueryParams);
 	const data = home ? networks.data.data.slice(0, 4) : networks.data.data;
+	if (!data || data.length === 0) {
+		return <Empty />;
+	}
 	return (
 		<StyledCardList $home={home}>
 			{data.map(network => (

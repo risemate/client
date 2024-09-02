@@ -5,12 +5,16 @@ import styled from 'styled-components';
 import Button from './Button';
 
 interface EmptyProps {
-	children: ReactNode;
+	children?: ReactNode;
 	btnText?: string;
 	onClick?: (() => void) | undefined;
 }
 
-export default function Empty({ children, btnText, onClick = undefined }: EmptyProps) {
+export default function Empty({
+	children = <>불러올 데이터가 없습니다</>,
+	btnText,
+	onClick = undefined,
+}: EmptyProps) {
 	return (
 		<EmptyWrapper>
 			<IconFileOff />
@@ -28,6 +32,7 @@ const EmptyWrapper = styled.div`
 	${({ theme }) => theme.common.flexCenterColumn};
 	gap: 20px;
 	flex: 1;
+	padding: 30px 0;
 	svg {
 		width: 50px;
 		height: 50px;

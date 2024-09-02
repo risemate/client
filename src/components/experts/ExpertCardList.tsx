@@ -2,6 +2,8 @@ import { productsQuery } from '@queries/product';
 import styled from 'styled-components';
 import { NetworkPagingQuery } from 'types/query/query';
 
+import Empty from '@common/Empty';
+
 import ExpertCard from './ExpertCard';
 
 interface ExpertCardListProps {
@@ -12,6 +14,9 @@ interface ExpertCardListProps {
 export default function ExpertCardList({ expertQueryParams, home }: ExpertCardListProps) {
 	const experts = productsQuery(expertQueryParams);
 	const data = home ? experts.data.data.slice(0, 4) : experts.data.data;
+	if (!data || data.length === 0) {
+		return <Empty />;
+	}
 	return (
 		<StyledCardList $home={home}>
 			{data.map(expert => (
