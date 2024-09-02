@@ -5,7 +5,7 @@ import {
 	fetchUpdateExpertResume,
 } from '@api/expert';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Career } from 'types/career/careerDocument';
+import { Career, CareerExpert } from 'types/career/careerDocument';
 import { ApplyExpertResponse, ExpertResumeType } from 'types/coach/expert';
 import { ApplyExpertProps } from 'types/coach/expert';
 import {
@@ -34,8 +34,8 @@ export const expertApplyMutation = (
 };
 
 export const expertResumeQuery = (
-	options?: UseQueryOptionsType<Career<ExpertResumeType>>,
-): UseQueryResultType<Career<ExpertResumeType>> => {
+	options?: UseQueryOptionsType<CareerExpert<ExpertResumeType>>,
+): UseQueryResultType<CareerExpert<ExpertResumeType>> => {
 	return useQuery({
 		queryKey: expertKeys.base,
 		queryFn: () => fetchExpertResume(),

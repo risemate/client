@@ -33,3 +33,24 @@ export type Career<T = unknown> = {
 	childAi: string | null;
 	aiStatus: AiStatus | null;
 };
+
+export type CareerExpert<T = unknown> = {
+	description: string;
+	feedback?: string;
+	contactPublic: boolean;
+	public: boolean;
+	user: BaseUser;
+	docTitle: string;
+	parentId: string | null;
+	careerType: CareerType;
+	docType: DocType;
+	career: T;
+	_id: string;
+	createdAt: string;
+	updatedAt: string;
+	coverImage: string;
+	childrenDocCount: number;
+	coaching?: object; //수정필요
+	childAi: string | null;
+	aiStatus: AiStatus | null;
+};

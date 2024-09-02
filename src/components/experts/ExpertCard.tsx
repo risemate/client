@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Package, Product } from 'types/coach/product';
+import { Product } from 'types/coach/product';
 
 import DefaultImage from '@common/DefaultImage';
 

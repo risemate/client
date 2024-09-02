@@ -18,7 +18,9 @@ import useExpertDetail from './ExpertDetail.hook';
 
 export default function ExpertDetail() {
 	const { id } = useParams();
-	const { product, tabItems, isMyProduct, focusInquiry } = useExpertDetail(id || '');
+	const { product, expert, tabItems, isMyProduct, focusInquiry } = useExpertDetail(
+		id || '',
+	);
 	const { sectionRefs, activeSection, scrollToSection } = useScrollToSection(tabItems);
 	const { productTitle, subTitle, coverImage } = product;
 	const formState: CoachingRequestState = {
@@ -48,8 +50,8 @@ export default function ExpertDetail() {
 							sectionRef={sectionRefs.current[tabItems[0]?.value ?? 0]}
 						/>
 						<ExpertInfo
-							workExperiences={product.workExperiences}
-							projects={product.projects}
+							workExperiences={expert?.career.workExperiences}
+							projects={expert?.career.projects}
 							sectionRef={sectionRefs.current[tabItems[1]?.value ?? 0]}
 						/>
 						<Review

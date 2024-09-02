@@ -19,10 +19,10 @@ export default function CoachDocs() {
 			<FormProvider {...resumeEditMethods}>
 				<SingleAsyncWrapper>
 					<StyledForm onSubmit={submitResume}>
-						<WorkExperience field='doc' />
-						<Project field='doc' />
-						<Education field='doc' />
-						<Activity field='doc' />
+						<WorkExperience field='career' />
+						<Project field='career' />
+						<Education field='career' />
+						<Activity field='career' />
 						<Button variant='navy' size='large'>
 							이력서 저장
 						</Button>

@@ -1,4 +1,4 @@
-import { Career } from 'types/career/careerDocument';
+import { Career, CareerExpert } from 'types/career/careerDocument';
 import {
 	Activity,
 	Certificate,
@@ -147,7 +147,7 @@ export const defaultResume: Career<Resume> = {
 	_id: '',
 };
 
-export const defaultCoachReumse: Career<ExpertResumeType> = {
+export const defaultCoachReumse: CareerExpert<ExpertResumeType> = {
 	careerType: 'RESUME',
 	description: '',
 	contactPublic: true,
@@ -158,7 +158,7 @@ export const defaultCoachReumse: Career<ExpertResumeType> = {
 	docTitle: '',
 	parentId: null,
 	coverImage: '',
-	doc: {
+	career: {
 		workExperiences: [defaultWorkExperience],
 		projects: [defaultProject],
 		educations: [defaultEducation],

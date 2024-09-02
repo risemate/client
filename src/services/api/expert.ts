@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Career } from 'types/career/careerDocument';
+import { Career, CareerExpert } from 'types/career/careerDocument';
 import { ApplyExpertResponse, ExpertResumeType } from 'types/coach/expert';
 import { ApplyExpertProps } from 'types/coach/expert';
 
@@ -17,8 +17,8 @@ export const fetchApplyExpert = async (
 	return response.data;
 };
 
-export const fetchExpertResume = async (): Promise<Career<ExpertResumeType>> => {
-	const response = await axios.get<Career<ExpertResumeType>>(EXPERT_PATH.DEFAULT);
+export const fetchExpertResume = async (): Promise<CareerExpert<ExpertResumeType>> => {
+	const response = await axios.get<CareerExpert<ExpertResumeType>>(EXPERT_PATH.DEFAULT);
 	return response.data;
 };
 

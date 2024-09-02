@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Package as PackageType } from 'types/coach/product';
 
 import BaseSection from './BaseSection';
@@ -18,7 +19,7 @@ export default function Service({
 		<BaseSection ref={sectionRef}>
 			<h3>서비스 설명</h3>
 			<p>{description}</p>
-			<ul>
+			<ServiceList>
 				{Object.entries(packages || {}).map(
 					([key, value]) =>
 						value !== null && (
@@ -35,7 +36,9 @@ export default function Service({
 							</li>
 						),
 				)}
-			</ul>
+			</ServiceList>
 		</BaseSection>
 	);
 }
+
+const ServiceList = styled.ul``;
