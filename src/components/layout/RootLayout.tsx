@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
+import ScrollToTopButton from '@common/ScrollToTopButton';
 import Toast from '@common/Toast';
 import Footer from '@components/layout/components/Footer';
 import NavBar from '@components/layout/components/NavBar';
@@ -19,6 +20,7 @@ export default function RootLayout() {
 			</SingleAsyncWrapper>
 			<Toast />
 			<Footer />
+			<ScrollToTopButton />
 		</GlobalAsyncWrapper>
 	);
 }
