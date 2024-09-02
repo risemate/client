@@ -11,14 +11,7 @@ interface ExpertCardProps {
 }
 
 export default function ExpertCard({ expert }: ExpertCardProps) {
-	const { moveToDetail } = useExpertCard(expert._id);
-	const findMinPrice = (packages: Package): number => {
-		const filteredPackages = Object.values(packages).filter(
-			pkg => pkg !== null && pkg !== undefined,
-		);
-		const prices = filteredPackages.map(pkg => pkg?.price || 0);
-		return Math.min(...prices); // 최소값 반환
-	};
+	const { moveToDetail, findMinPrice } = useExpertCard(expert._id);
 	return (
 		<CardItemButton onClick={moveToDetail}>
 			<Tag>FRONTEND</Tag>
