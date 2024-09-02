@@ -18,8 +18,10 @@ export default function useWriteProduct() {
 	const navigate = useNavigate();
 	const { queryParam: productId } = useSearchParam<string>('id');
 	const isNewProduct = isEmpty(productId);
-	const productDetail = productDetailQuery(productId);
-	const product = isNewProduct ? defaultProduct : productDetail.data;
+	const productDetail = isNewProduct
+		? defaultProduct
+		: productDetailQuery(productId).data;
+	const product = productDetail;
 	const productEditMethods = useForm<ProductRequest>({
 		mode: 'onSubmit',
 		values: product,
