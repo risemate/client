@@ -1,6 +1,3 @@
-import { useModal } from '@hooks/atoms/useModalAtom';
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import Banner from '@common/Banner';
@@ -14,16 +11,6 @@ import SingleAsyncWrapper from '@components/suspense/async-wrapper/SingleAsyncWr
 import 'normalize.css';
 
 export default function Home() {
-	const { openModal: openAuthModal } = useModal('login');
-	const location = useLocation();
-	const requireLogin = location.state?.requireLogin;
-
-	useEffect(() => {
-		if (requireLogin) {
-			openAuthModal();
-		}
-	}, [requireLogin]);
-
 	return (
 		<Container>
 			<Banner variant='home'>
