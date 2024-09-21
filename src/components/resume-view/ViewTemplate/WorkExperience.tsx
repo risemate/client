@@ -25,10 +25,10 @@ export default function WorkExperience({
 					<BaseSection.Title>{work.companyName}</BaseSection.Title>
 					<BaseSection.BasicInfo>
 						<li>
-							{work.departmentName} | {work.role}
+							{work.departmentName && `${work.departmentName} |`} {work.role}
 						</li>
 						<li>
-							{work.jobType} | {work.employmentStatus}
+							{work.jobType && `${work.jobType} |`} {work.employmentStatus}
 						</li>
 						<li>
 							{work.startedAt} ~ {work.endedAt}

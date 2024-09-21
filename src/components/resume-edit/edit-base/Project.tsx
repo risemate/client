@@ -52,7 +52,11 @@ export default function Project({ field }: ProjectProps) {
 								/>
 							</BaseSection.Item>
 							<BaseSection.Item>
-								<MonthInput label='프로젝트 기간' />
+								<MonthInput
+									label='프로젝트 기간'
+									startName={inputName('startedAt')}
+									endName={inputName('endedAt')}
+								/>
 							</BaseSection.Item>
 							<BaseSection.Item>
 								<Input

@@ -78,7 +78,11 @@ export default function WorkExperience({ field }: WorkExperienceProps) {
 								/>
 							</BaseSection.Item>
 							<BaseSection.Item>
-								<MonthInput label='재직 기간' />
+								<MonthInput
+									label='재직 기간'
+									startName={inputName('startedAt')}
+									endName={inputName('endedAt')}
+								/>
 							</BaseSection.Item>
 							<BaseSection.Item gridColumn='1/4'>
 								<TextArea

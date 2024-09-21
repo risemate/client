@@ -47,7 +47,11 @@ export default function Activity({ field }: ActivityProps) {
 								/>
 							</BaseSection.Item>
 							<BaseSection.Item>
-								<MonthInput label='활동년도' />
+								<MonthInput
+									label='활동년도'
+									startName={inputName('startedAt')}
+									endName={inputName('endedAt')}
+								/>
 							</BaseSection.Item>
 							<BaseSection.Item>
 								<Input

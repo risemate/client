@@ -58,7 +58,11 @@ export default function Education({ field }: EducationProps) {
 								/>
 							</BaseSection.Item>
 							<BaseSection.Item>
-								<MonthInput label='교육 기간' />
+								<MonthInput
+									label='교육 기간'
+									startName={inputName('startedAt')}
+									endName={inputName('endedAt')}
+								/>
 							</BaseSection.Item>
 							<BaseSection.Item gridColumn='1/3'>
 								<TextArea

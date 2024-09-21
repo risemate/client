@@ -1,5 +1,4 @@
 import { isEmpty } from '@utils/helpers';
-import React from 'react';
 import DatePicker from 'react-datepicker';
 import { useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
@@ -8,9 +7,11 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 interface MonthInputProps {
 	label: string;
+	startName: string;
+	endName: string;
 }
 
-export default function MonthInput({ label }: MonthInputProps) {
+export default function MonthInput({ label, startName, endName }: MonthInputProps) {
 	const { watch, setValue } = useFormContext();
 	const stringToDate = (dateString: string) => {
 		if (isEmpty(dateString)) {
@@ -28,15 +29,15 @@ export default function MonthInput({ label }: MonthInputProps) {
 			<span>{label}</span>
 			<div>
 				<DatePicker
-					selected={stringToDate(watch('startedAt'))}
-					onChange={(date: Date) => setValue('startedAt', dateToString(date))}
+					selected={stringToDate(watch(startName))}
+					onChange={(date: Date) => setValue(startName, dateToString(date))}
 					dateFormat={'yyyy-MM'}
 					showMonthYearPicker
 					showIcon
 				/>
 				<DatePicker
-					selected={stringToDate(watch('endedAt'))}
-					onChange={(date: Date) => setValue('endedAt', dateToString(date))}
+					selected={stringToDate(watch(endName))}
+					onChange={(date: Date) => setValue(endName, dateToString(date))}
 					dateFormat={'yyyy-MM'}
 					showMonthYearPicker
 					showIcon

@@ -30,6 +30,7 @@ const ResumeViewSection = styled.section`
 		padding: 20px 5px 0;
 		display: grid;
 		grid-template-columns: 250px auto;
+		grid-template-rows: fit-content(100%) 1fr;
 		&:not(:last-child) {
 			border-bottom: 0.5px solid ${({ theme }) => theme.colors.grey};
 			padding-bottom: 20px;
