@@ -1,7 +1,9 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
 import { authQuery, userInfoUpdateMutation } from '@queries/user';
-import { useForm } from 'react-hook-form';
+import { ChangeEvent } from 'react';
+import { useController, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { UserInfoRequestProps } from 'types/auth';
 
 export default function useEditUserInfo() {
@@ -16,14 +18,32 @@ export default function useEditUserInfo() {
 			nickname: auth?.nickname || null,
 			email: auth?.email || null,
 			picture: auth?.picture || null,
+			isAlarm: auth?.isAlarm || true,
 		},
 	});
 
-	const { register, handleSubmit } = methods;
+	const {
+		control,
+		register,
+		handleSubmit,
+		formState: { isDirty },
+	} = methods;
+
+	const { field: isAlarmFields } = useController({
+		control,
+		name: 'isAlarm',
+	});
 
 	const submitEditUserInfo = () => {
 		return handleSubmit((data: UserInfoRequestProps) => {
-			updateUserInfoMutation.mutate(data);
+			updateUserInfoMutation
+				.mutateAsync(data)
+				.then(() => {
+					toast.success('정보가 성공적으로 업데이트되었습니다.');
+				})
+				.catch(() => {
+					toast.error('정보 업데이트에 실패했습니다.');
+				});
 			navigate('/my-info');
 			closeModal();
 		});
@@ -36,9 +56,16 @@ export default function useEditUserInfo() {
 			nickname: register('nickname', { required: true }),
 			email: register('email'),
 			picture: register('picture'),
+			isAlarm: {
+				checked: isAlarmFields.value,
+				onChange: (e: ChangeEvent<HTMLInputElement>) =>
+					isAlarmFields.onChange(e.target.checked),
+				ref: isAlarmFields.ref,
+				onBlur: isAlarmFields.onBlur,
+			},
 		},
 		openModal,
 		submitEditUserInfo,
-		disableSubmit: !methods.watch('name') || !methods.watch('nickname'),
+		disableSubmit: !methods.watch('nickname') || !isDirty,
 	};
 }

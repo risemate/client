@@ -27,6 +27,7 @@ export type Auth = {
 	updatedAt: string;
 	waitingPaymentCoachingCount: number;
 	lastActiveAt: string;
+	isAlarm: boolean;
 };
 
 export type BaseUser = {
@@ -45,6 +46,7 @@ export type UserInfoRequestProps = {
 	nickname: string | null;
 	email: string | null;
 	picture: string | null;
+	isAlarm: boolean;
 };
 
 export interface User extends Auth {

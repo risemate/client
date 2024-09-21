@@ -2,6 +2,7 @@ import { FormProvider } from 'react-hook-form';
 import styled from 'styled-components';
 
 import Button from '@common/Button';
+import CheckBox from '@components/input/CheckBox';
 import FileInput from '@components/input/FileInput';
 import Input from '@components/input/Input';
 import Modal from '@components/modal/base/Modal';
@@ -19,6 +20,9 @@ export default function EditUserInfo() {
 				<form onSubmit={submitEditUserInfo()} id='user-info-form'>
 					<FileInput label='이미지' inputName='picture' size='small' />
 					<Input label='이름' type='text' {...registerAuth.name} />
+					<CheckBox variant='grey' {...registerAuth.isAlarm}>
+						알림 수신 옵션
+					</CheckBox>
 					<Input
 						label='이메일'
 						warning='변경할 수 없습니다.'
@@ -61,8 +65,20 @@ const UserInfoSection = styled.section`
 		display: grid;
 		grid-template-columns: 200px auto;
 		padding: 30px;
-		& > label:nth-of-type(2),
-		& > label:nth-of-type(3) {
+		& > div:nth-of-type(1) {
+			grid-column: 1 / 2;
+			grid-row: 1 / 3;
+		}
+		& > label:nth-of-type(1) {
+			grid-column: 2 / 3;
+			grid-row: 1 / 2;
+		}
+		& > label:nth-of-type(2) {
+			grid-column: 2 / 3;
+			grid-row: 2 / 3;
+		}
+		& > label:nth-of-type(3),
+		& > label:nth-of-type(4) {
 			grid-column: 1 / 3;
 		}
 		& > button {
