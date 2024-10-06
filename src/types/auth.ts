@@ -50,7 +50,7 @@ export type UserInfoRequestProps = {
 	picture: string | null;
 	alarmOptions: {
 		mail: AlarmOptions
-	}
+	} | null
 };
 
 export const AlarmOptionList = [

@@ -17,7 +17,7 @@ export default function useEditUserInfo() {
 			nickname: auth?.nickname || null,
 			email: auth?.email || null,
 			picture: auth?.picture || null,
-			alarmOptions: auth?.alarmOptions
+			alarmOptions: auth?.alarmOptions || null
 		},
 	});
 
