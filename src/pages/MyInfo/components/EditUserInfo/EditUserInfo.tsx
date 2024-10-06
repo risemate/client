@@ -1,5 +1,6 @@
 import { FormProvider } from 'react-hook-form';
 import styled from 'styled-components';
+import { AlarmOptionList } from 'types/auth';
 
 import Button from '@common/Button';
 import CheckBox from '@components/input/CheckBox';
@@ -20,9 +21,21 @@ export default function EditUserInfo() {
 				<form onSubmit={submitEditUserInfo()} id='user-info-form'>
 					<FileInput label='이미지' inputName='picture' size='small' />
 					<Input label='이름' type='text' {...registerAuth.name} />
-					<CheckBox variant='grey' {...registerAuth.isAlarm}>
-						알림 수신 옵션
-					</CheckBox>
+					<AlarmOptionGroup>
+						<span>알림 수신 옵션</span>
+						<ul>
+							{AlarmOptionList.map(option => (
+								<li key={option.value}>
+									<CheckBox
+										variant='darkerGrey'
+										{...registerAuth.alarmOptions[option.value]}
+									>
+										{option.label}
+									</CheckBox>
+								</li>
+							))}
+						</ul>
+					</AlarmOptionGroup>
 					<Input
 						label='이메일'
 						warning='변경할 수 없습니다.'
@@ -73,12 +86,12 @@ const UserInfoSection = styled.section`
 			grid-column: 2 / 3;
 			grid-row: 1 / 2;
 		}
-		& > label:nth-of-type(2) {
+		& > div:nth-of-type(2) {
 			grid-column: 2 / 3;
 			grid-row: 2 / 3;
 		}
-		& > label:nth-of-type(3),
-		& > label:nth-of-type(4) {
+		& > label:nth-of-type(2),
+		& > label:nth-of-type(3) {
 			grid-column: 1 / 3;
 		}
 		& > button {
@@ -90,5 +103,17 @@ const UserInfoSection = styled.section`
 		& > form {
 			gap: 20px;
 		}
+	}
+`;
+
+const AlarmOptionGroup = styled.div`
+	font-size: ${({ theme }) => theme.fontSizes.small};
+	span {
+		color: ${({ theme }) => theme.colors.darkGrey};
+	}
+	ul {
+		margin-top: 10px;
+		display: flex;
+		justify-content: space-between;
 	}
 `;

@@ -2,7 +2,7 @@ import { ForwardedRef, InputHTMLAttributes, ReactNode, forwardRef } from 'react'
 import styled from 'styled-components';
 
 interface CheckBoxProps extends InputHTMLAttributes<HTMLInputElement> {
-	variant?: 'navy' | 'grey';
+	variant?: 'navy' | 'darkGrey' | 'darkerGrey';
 	children?: ReactNode;
 }
 
@@ -19,13 +19,12 @@ const CheckBox = forwardRef(function CheckBox(
 	);
 });
 
-const StyledCheckBox = styled.label<{ $variant: 'navy' | 'grey' }>`
+const StyledCheckBox = styled.label<{ $variant: 'navy' | 'darkGrey' | 'darkerGrey' }>`
 	cursor: pointer;
 	position: relative;
 	font-weight: 400;
 	padding-left: 20px;
-	color: ${({ $variant, theme }) =>
-		$variant === 'navy' ? theme.colors.navy : theme.colors.darkGrey};
+	color: ${({ $variant, theme }) => theme.colors[$variant]};
 	line-height: 25px;
 	display: flex;
 	input[type='checkbox'] {
@@ -41,9 +40,7 @@ const StyledCheckBox = styled.label<{ $variant: 'navy' | 'grey' }>`
 		height: 10px;
 		width: 10px;
 		border-radius: 50%;
-		border: 1px solid
-			${({ $variant, theme }) =>
-				$variant === 'navy' ? theme.colors.navy : theme.colors.darkGrey};
+		border: 1px solid ${({ $variant, theme }) => theme.colors[$variant]};
 		background-color: white;
 		&:after {
 			content: '';
@@ -53,8 +50,7 @@ const StyledCheckBox = styled.label<{ $variant: 'navy' | 'grey' }>`
 			width: 6px;
 			height: 6px;
 			border-radius: 50%;
-			background: ${({ $variant, theme }) =>
-				$variant === 'navy' ? theme.colors.navy : theme.colors.darkGrey};
+			background: ${({ $variant, theme }) => theme.colors[$variant]};
 		}
 	}
 	input[type='checkbox']:checked ~ span {

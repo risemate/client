@@ -1,10 +1,9 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
 import { authQuery, userInfoUpdateMutation } from '@queries/user';
-import { ChangeEvent } from 'react';
 import { useController, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { UserInfoRequestProps } from 'types/auth';
+import { AlarmOptionList, UserInfoRequestProps } from 'types/auth';
 
 export default function useEditUserInfo() {
 	const { data: auth } = authQuery();
@@ -18,7 +17,7 @@ export default function useEditUserInfo() {
 			nickname: auth?.nickname || null,
 			email: auth?.email || null,
 			picture: auth?.picture || null,
-			isAlarm: auth?.isAlarm || true,
+			alarmOptions: auth?.alarmOptions
 		},
 	});
 
@@ -29,10 +28,25 @@ export default function useEditUserInfo() {
 		formState: { isDirty },
 	} = methods;
 
-	const { field: isAlarmFields } = useController({
-		control,
-		name: 'isAlarm',
-	});
+	const alarmOptionsFields = () => {
+		return AlarmOptionList.reduce((acc, option) => {
+			const { field } = useController({
+				control,
+				name: `alarmOptions.mail.${option.value}`,
+			});
+
+			acc[option.value] = {
+				checked: field.value,
+				onChange: (e: React.ChangeEvent<HTMLInputElement>) => field.onChange(e.target.checked),
+				ref: field.ref,
+				onBlur: field.onBlur,
+			};
+
+			return acc;
+			// eslint-disable-next-line
+		}, {} as Record<typeof AlarmOptionList[number]['value'], any>);
+	};
+
 
 	const submitEditUserInfo = () => {
 		return handleSubmit((data: UserInfoRequestProps) => {
@@ -56,13 +70,7 @@ export default function useEditUserInfo() {
 			nickname: register('nickname', { required: true }),
 			email: register('email'),
 			picture: register('picture'),
-			isAlarm: {
-				checked: isAlarmFields.value,
-				onChange: (e: ChangeEvent<HTMLInputElement>) =>
-					isAlarmFields.onChange(e.target.checked),
-				ref: isAlarmFields.ref,
-				onBlur: isAlarmFields.onBlur,
-			},
+			alarmOptions: alarmOptionsFields()
 		},
 		openModal,
 		submitEditUserInfo,
