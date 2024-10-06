@@ -59,7 +59,7 @@ export default function NavBar() {
 								<IconBell />
 							</button>
 							{isAlarmOpen && <Alarm closeAlarm={closeAlarm} btnAlarmRef={btnAlarmRef} />}
-							<ProfileMenu />
+							<ProfileMenu picture={auth.picture} />
 						</>
 					) : (
 						<>

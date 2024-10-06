@@ -6,7 +6,11 @@ import styled from 'styled-components';
 
 import LogoutModal from '@components/modal/LogoutModal';
 
-function ProfileMenu() {
+interface ProfileMenuProps {
+	picture?: string;
+}
+
+function ProfileMenu({ picture }: ProfileMenuProps) {
 	const navigate = useNavigate();
 	const [menuVisible, setMenuVisible] = useState(false);
 
@@ -22,7 +26,7 @@ function ProfileMenu() {
 					onClick={() => navigate('/my-info')}
 					onMouseEnter={showMenu}
 				>
-					<IconCircleUser />
+					{picture ? <img src={picture} /> : <IconCircleUser />}
 				</button>
 			</div>
 			{menuVisible && (
@@ -86,5 +90,11 @@ const MenuWrap = styled.div`
 		&:hover {
 			background-color: aliceblue;
 		}
+	}
+
+	img {
+		height: 30px;
+		width: 30px;
+		border-radius: 50%;
 	}
 `;
