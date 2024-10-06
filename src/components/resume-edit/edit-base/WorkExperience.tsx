@@ -16,6 +16,7 @@ import BaseSection from '../EditBaseSection/EditBaseSection';
 
 interface WorkExperienceProps {
 	field?: string;
+	feedback?: boolean;
 }
 
 export default function WorkExperience({ field }: WorkExperienceProps) {
@@ -88,6 +89,8 @@ export default function WorkExperience({ field }: WorkExperienceProps) {
 								<TextArea
 									label='담당 업무'
 									help
+									value={watch(inputName('description'))}
+									wordLimit={1000}
 									{...register(inputName('description'))}
 								/>
 							</BaseSection.Item>

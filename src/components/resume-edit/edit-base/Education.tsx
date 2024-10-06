@@ -67,6 +67,8 @@ export default function Education({ field }: EducationProps) {
 							<BaseSection.Item gridColumn='1/3'>
 								<TextArea
 									label='교육 설명'
+									wordLimit={1000}
+									value={watch(inputName('description'))}
 									help
 									{...register(inputName('description'))}
 								/>

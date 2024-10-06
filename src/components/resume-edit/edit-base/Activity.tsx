@@ -63,6 +63,8 @@ export default function Activity({ field }: ActivityProps) {
 							<BaseSection.Item gridColumn='1/4'>
 								<TextArea
 									label='활동 설명'
+									wordLimit={1000}
+									value={watch(inputName('description'))}
 									help
 									{...register(inputName('description'))}
 								/>

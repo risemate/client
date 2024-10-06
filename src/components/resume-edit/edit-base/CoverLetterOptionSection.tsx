@@ -21,7 +21,13 @@ export default function CoverLetterOptionSection() {
 				<WarningText>* 내용이 없을 시 이력서에 표기되지 않습니다.</WarningText>
 			</BaseSection.Title>
 			<InputWrapper>
-				<TextArea label='5줄 표현' help {...register('doc.description')} />
+				<TextArea
+					label='5줄 표현'
+					wordLimit={1000}
+					value={watch(inputName('doc.description'))}
+					help
+					{...register('doc.description')}
+				/>
 				<LinkInput
 					links={watch('doc.links')}
 					inputName={inputName('links')}

@@ -1,4 +1,10 @@
-import React, { ForwardedRef, TextareaHTMLAttributes, forwardRef } from 'react';
+import React, {
+	ForwardedRef,
+	TextareaHTMLAttributes,
+	forwardRef,
+	useEffect,
+	useState,
+} from 'react';
 import styled from 'styled-components';
 
 import HelperText from '@common/HelperText';
@@ -8,19 +14,56 @@ interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 	warning?: string;
 	help?: boolean;
 	height?: number;
+	// eslint-disable-next-line
+	value?: any;
+	wordLimit?: number;
 }
 
 const TextArea = forwardRef(function TextArea(
-	{ label, warning, help, height = 150, ...TextAreaProps }: TextAreaProps,
+	{
+		label,
+		warning,
+		help,
+		height = 150,
+		wordLimit,
+		value = '',
+		...TextAreaProps
+	}: TextAreaProps,
 	ref: ForwardedRef<HTMLTextAreaElement>,
 ) {
+	const [wordCount, setWordCount] = useState(0);
+
+	const handleWordCount = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+		const text = e.target.value;
+		const count = text.length;
+		setWordCount(count);
+		if (TextAreaProps.onChange) TextAreaProps.onChange(e);
+	};
+
+	useEffect(() => {
+		setWordCount(value.toString().length);
+	}, [value]);
+
 	return (
 		<TextAreaLabel>
 			<TitleWrapper>
 				{label && <span>{label}</span>}
 				{help && <HelperText text='해당 목록은 마크다운으로 작성할 수 있습니다.' />}
 			</TitleWrapper>
-			<StyledTextArea rows={6} ref={ref} $height={height} {...TextAreaProps} />
+			<StyledTextArea
+				rows={6}
+				ref={ref}
+				$height={height}
+				{...TextAreaProps}
+				onChange={handleWordCount}
+			/>
+			<WordCount>
+				{wordLimit && (
+					<span>
+						{wordCount}/{wordLimit}
+					</span>
+				)}
+			</WordCount>
 			{warning && <span className='warning'>{warning}</span>}
 		</TextAreaLabel>
 	);
@@ -64,6 +107,12 @@ const TitleWrapper = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 5px;
+`;
+
+const WordCount = styled.div`
+	font-size: ${({ theme }) => theme.fontSizes.small};
+	color: ${({ theme }) => theme.colors.darkGrey};
+	text-align: right;
 `;
 
 export default TextArea;

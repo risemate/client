@@ -70,6 +70,8 @@ export default function Project({ field }: ProjectProps) {
 							<BaseSection.Item gridColumn='1/4'>
 								<TextArea
 									label='프로젝트 설명'
+									wordLimit={1000}
+									value={watch(inputName('description'))}
 									help
 									{...register(inputName('description'))}
 								/>

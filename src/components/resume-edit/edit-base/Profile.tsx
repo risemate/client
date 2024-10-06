@@ -90,7 +90,13 @@ export default function Profile() {
 					/>
 					<DateInput label='생일' inputName={inputName('birthday')} />
 				</ContactWrapper>
-				<TextArea label='5줄 표현' help {...register('doc.description')} />
+				<TextArea
+					label='5줄 표현'
+					wordLimit={1000}
+					value={watch('doc.description')}
+					help
+					{...register('doc.description')}
+				/>
 				<LinkInput links={watch(inputName('links'))} inputName={inputName('links')} />
 			</InputWrapper>
 		</BaseSection>

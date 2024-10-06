@@ -10,7 +10,7 @@ import BaseSection from '@components/resume-edit/EditBaseSection/EditBaseSection
 export default function CoverLetterContents() {
 	const { queryParam: careerType } = useSearchParam('redirect');
 	const FIELD = careerType === 're' ? 'doc.coverLetter' : 'doc.contents';
-	const { register, control } = useFormContext();
+	const { register, control, watch } = useFormContext();
 	const { fields, prepend, remove, swap } = useFieldArray({
 		control,
 		name: FIELD,
@@ -40,7 +40,12 @@ export default function CoverLetterContents() {
 							editButton={edit}
 						>
 							<Input placeholder='제목' {...register(inputName('title'))} />
-							<TextArea help {...register(inputName('content'))} />
+							<TextArea
+								wordLimit={1000}
+								value={watch(inputName('content'))}
+								help
+								{...register(inputName('content'))}
+							/>
 						</BaseSection.Content>
 					);
 				})}
