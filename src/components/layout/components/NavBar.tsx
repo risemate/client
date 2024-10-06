@@ -26,9 +26,6 @@ export default function NavBar() {
 	const closeAlarm = () => setIsAlarmOpen(false);
 	const btnAlarmRef = useRef<HTMLButtonElement | null>(null);
 
-	// const first = async () => {
-	// 	await axios('auth').then(res => console.log(res.data));
-	// };
 	return (
 		<StyledHeader>
 			<nav>
@@ -45,11 +42,6 @@ export default function NavBar() {
 							</li>
 						);
 					})}
-					{/* {auth?.role === 'EXPERT' && (
-						<li className='on_expert'>
-							<Link to={'/coach-info/management'}>코칭관리</Link>
-						</li>
-					)} */}
 				</NavBarList>
 
 				<MyPageWrapper>

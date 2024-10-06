@@ -1,23 +1,23 @@
 import { authKeys } from '@queries/queryKeys';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient, useSuspenseQuery } from '@tanstack/react-query';
 import { fetchAuth, fetchUpdateUserInfo } from 'services/api/user';
 import { Auth, UserInfoRequestProps } from 'types/auth';
 import {
 	UseMutationOptionsType,
 	UseMutationResultType,
-	UseQueryOptionsType,
-	UseQueryResultType,
+	UseSuspenseQueryOptionsType,
+	UseSuspenseQueryResultType,
 } from 'types/query/query';
 
 export const authQuery = (
-	options?: UseQueryOptionsType<Auth>,
-): UseQueryResultType<Auth> => {
-	const token = localStorage.getItem('rm-checkpoint');
-	return useQuery({
+	options?: UseSuspenseQueryOptionsType<Auth>,
+): UseSuspenseQueryResultType<Auth> => {
+	// const token = localStorage.getItem('rm-checkpoint');
+	return useSuspenseQuery({
 		queryKey: authKeys.base,
 		queryFn: () => fetchAuth(),
 		staleTime: Infinity,
-		enabled: !!token,
+		// enabled: !!token,
 		...options,
 	});
 };
