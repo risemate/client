@@ -1,4 +1,3 @@
-import { expertResumeQuery } from '@queries/expert';
 import { productDetailQuery } from '@queries/product';
 import { authQuery } from '@queries/user';
 import { removeNullValues } from '@utils/helpers';
@@ -8,7 +7,6 @@ import { TabItem } from 'types/common/tab';
 
 export default function useExpertDetail(id: string) {
 	const { data: productDetail } = productDetailQuery(id);
-	const { data: expert } = expertResumeQuery();
 	const { data: authData } = authQuery();
 	const tabItems: TabItem[] = [
 		{ label: '서비스 설명', value: 'SERVICE' },
@@ -16,7 +14,7 @@ export default function useExpertDetail(id: string) {
 		{ label: '후기', value: 'REVIEW' },
 		{ label: '문의', value: 'INQUIRY' },
 	];
-	const isMyProduct = productDetail?.expert === authData?._id;
+	const isMyProduct = productDetail?.expert._id === authData?._id;
 
 	const inquiryRef = useRef<HTMLTextAreaElement>(null);
 	const moveToInquiryInput = () => {
@@ -33,7 +31,6 @@ export default function useExpertDetail(id: string) {
 				? removeNullValues<Package>(productDetail.packages, true)
 				: {},
 		},
-		expert,
 		tabItems,
 		isMyProduct,
 		focusInquiry: {

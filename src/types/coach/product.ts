@@ -1,6 +1,6 @@
 import { BaseUser } from 'types/auth';
 import { CareerType } from 'types/career/careerDocument';
-import { Project, WorkExperience } from 'types/career/resume';
+import { Project, Resume, WorkExperience } from 'types/career/resume';
 
 export type ProductRequest = {
 	_id: string;
@@ -17,7 +17,10 @@ export type ProductRequest = {
 
 export type Product = ProductRequest & {
 	user?: BaseUser;
-	expert: string;
+	expert: {
+		_id: string;
+		career: Resume;
+	};
 	reviewCount: number;
 	category: Category;
 	avgReviewScore: number;

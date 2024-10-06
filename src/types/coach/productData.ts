@@ -66,143 +66,143 @@ export const defaultProduct: ProductRequest = {
 	// defaultPrice: null,
 };
 
-export const mockProduct: ProductType = {
-	user: {
-		nickname: 'bonobono',
-		picture:
-			'https://lh3.googleusercontent.com/a/ACg8ocJMMK0-56PhKyhKJkdy3UhcAXaNHM7uBFQeA_JAZwwz2w=s96-c',
-		_id: '650d44a6398de0dbd2eb30bd',
-	},
-	expert: 'ss',
-	public: false,
-	productTitle: '프론트엔드 개발자 이력서 첨삭해드립니다.',
-	subTitle: '취업 성공까지 책입지겠습니다.....',
-	careerTypes: ['RESUME'],
-	coverImage: '',
-	category: {
-		rootCategory: '이력서',
-		subCategory: '',
-		thirdCategory: [],
-	},
-	images: [
-		{
-			name: 'image1',
-			url: 'https://...',
-			_id: '6562b04c461c70f74b259dd2',
-		},
-		{
-			name: 'image1',
-			url: 'https://...',
-			_id: '6562b04c461c70f74b259dd3',
-		},
-	],
-	description: '',
-	reviewCount: 0,
-	avgReviewScore: 4.9,
-	csCount: 0,
-	noAnswerCsCount: 0,
-	searchKeyword: ['frontend', 'naver', '당근', '면접'],
-	packages: {
-		BASIC: {
-			packageName: 'BASIC',
-			price: 10000,
-			packageTitle: '기본적인 가성비 첨삭!',
-			description: '이력서에 대한 첨삭본과 30분 간의 화상 면접 및 피드백을 제공합니다.',
-			providerOptions: [
-				{
-					name: '화상면접 및 피드백',
-					description: '',
-				},
-				{
-					name: '이력서 수정본 제공',
-					description: '',
-				},
-			],
-			_id: '6562b04c461c70f74b259dd5',
-		},
-		ADVANCED: null,
-		PREMIUM: {
-			packageName: 'BASIC',
-			price: 30000,
-			packageTitle: '기본적인 가성비 첨삭!',
-			description: '이력서에 대한 첨삭본과 30분 간의 화상 면접 및 피드백을 제공합니다.',
-			providerOptions: [
-				{
-					name: '화상면접 및 피드백',
-					description: '',
-				},
-				{
-					name: '이력서 수정본 제공',
-					description: '',
-				},
-				{
-					name: '이력서 수정본 제공',
-					description: '',
-				},
-			],
-			_id: '6562b04c461c70f74b259dd5',
-		},
-	},
-	workExperiences: [
-		{
-			companyName: 'Risemate',
-			departmentName: '기능개발',
-			role: '프론트엔드 개발자',
-			jobType: '정규직',
-			employmentStatus: '재직 중',
-			startedAt: '2018-10',
-			endedAt: '2020-10',
-			description:
-				'- 이력서 작성 등록 기능 개발 -알림 확인 여부 기능 개발  -결제 기능 개발',
-			links: [
-				{
-					linkTitle: '라메 기술 블로그',
-					linkUrl: 'https://...',
-				},
-			],
-		},
-	],
-	projects: [
-		{
-			projectName: '개발자 이력서 첨삭 프로젝트',
-			summaryIntro: '개발자 이력서 첨삭 프로젝트',
-			startedAt: '2023-08',
-			endedAt: '2023-10',
-			description:
-				'- 기존에 Server Side Rendering으로 생성하던 페이지에 Static Site Generation을 적용하여 서버 자원 절약 및 응답 속도 개선',
-			projectStatus: '완료',
-			projectOrganization: 'https://github.com/risemate/client',
-			links: [
-				{
-					linkTitle: '라메 기술 블로그',
-					linkUrl: 'https:',
-				},
-			],
-		},
-		{
-			projectName: '정적 페이지 생성과 캐싱을 활용한 렌더링 성능 개선',
-			summaryIntro: '개발자 이력서 첨삭 프로젝트',
-			startedAt: '2023-08',
-			endedAt: '2023-10',
-			description:
-				'- 기존에 Server Side Rendering으로 생성하던 페이지에 Static Site Generation을 적용하여 서버 자원 절약 및 응답 속도 개선',
-			projectStatus: '진행 중',
-			projectOrganization: '',
-			links: [
-				{
-					linkTitle: '라메 기술 블로그',
-					linkUrl: 'https:',
-				},
-				{
-					linkTitle: '라메 기술 블로그',
-					linkUrl: 'https://',
-				},
-			],
-		},
-	],
-	_id: '6562b04c461c70f74b259dd1',
-	__v: 0,
-};
+// export const mockProduct: ProductType = {
+// 	user: {
+// 		nickname: 'bonobono',
+// 		picture:
+// 			'https://lh3.googleusercontent.com/a/ACg8ocJMMK0-56PhKyhKJkdy3UhcAXaNHM7uBFQeA_JAZwwz2w=s96-c',
+// 		_id: '650d44a6398de0dbd2eb30bd',
+// 	},
+// 	// expert: 'ss',
+// 	public: false,
+// 	productTitle: '프론트엔드 개발자 이력서 첨삭해드립니다.',
+// 	subTitle: '취업 성공까지 책입지겠습니다.....',
+// 	careerTypes: ['RESUME'],
+// 	coverImage: '',
+// 	category: {
+// 		rootCategory: '이력서',
+// 		subCategory: '',
+// 		thirdCategory: [],
+// 	},
+// 	images: [
+// 		{
+// 			name: 'image1',
+// 			url: 'https://...',
+// 			_id: '6562b04c461c70f74b259dd2',
+// 		},
+// 		{
+// 			name: 'image1',
+// 			url: 'https://...',
+// 			_id: '6562b04c461c70f74b259dd3',
+// 		},
+// 	],
+// 	description: '',
+// 	reviewCount: 0,
+// 	avgReviewScore: 4.9,
+// 	csCount: 0,
+// 	noAnswerCsCount: 0,
+// 	searchKeyword: ['frontend', 'naver', '당근', '면접'],
+// 	packages: {
+// 		BASIC: {
+// 			packageName: 'BASIC',
+// 			price: 10000,
+// 			packageTitle: '기본적인 가성비 첨삭!',
+// 			description: '이력서에 대한 첨삭본과 30분 간의 화상 면접 및 피드백을 제공합니다.',
+// 			providerOptions: [
+// 				{
+// 					name: '화상면접 및 피드백',
+// 					description: '',
+// 				},
+// 				{
+// 					name: '이력서 수정본 제공',
+// 					description: '',
+// 				},
+// 			],
+// 			_id: '6562b04c461c70f74b259dd5',
+// 		},
+// 		ADVANCED: null,
+// 		PREMIUM: {
+// 			packageName: 'BASIC',
+// 			price: 30000,
+// 			packageTitle: '기본적인 가성비 첨삭!',
+// 			description: '이력서에 대한 첨삭본과 30분 간의 화상 면접 및 피드백을 제공합니다.',
+// 			providerOptions: [
+// 				{
+// 					name: '화상면접 및 피드백',
+// 					description: '',
+// 				},
+// 				{
+// 					name: '이력서 수정본 제공',
+// 					description: '',
+// 				},
+// 				{
+// 					name: '이력서 수정본 제공',
+// 					description: '',
+// 				},
+// 			],
+// 			_id: '6562b04c461c70f74b259dd5',
+// 		},
+// 	},
+// 	workExperiences: [
+// 		{
+// 			companyName: 'Risemate',
+// 			departmentName: '기능개발',
+// 			role: '프론트엔드 개발자',
+// 			jobType: '정규직',
+// 			employmentStatus: '재직 중',
+// 			startedAt: '2018-10',
+// 			endedAt: '2020-10',
+// 			description:
+// 				'- 이력서 작성 등록 기능 개발 -알림 확인 여부 기능 개발  -결제 기능 개발',
+// 			links: [
+// 				{
+// 					linkTitle: '라메 기술 블로그',
+// 					linkUrl: 'https://...',
+// 				},
+// 			],
+// 		},
+// 	],
+// 	projects: [
+// 		{
+// 			projectName: '개발자 이력서 첨삭 프로젝트',
+// 			summaryIntro: '개발자 이력서 첨삭 프로젝트',
+// 			startedAt: '2023-08',
+// 			endedAt: '2023-10',
+// 			description:
+// 				'- 기존에 Server Side Rendering으로 생성하던 페이지에 Static Site Generation을 적용하여 서버 자원 절약 및 응답 속도 개선',
+// 			projectStatus: '완료',
+// 			projectOrganization: 'https://github.com/risemate/client',
+// 			links: [
+// 				{
+// 					linkTitle: '라메 기술 블로그',
+// 					linkUrl: 'https:',
+// 				},
+// 			],
+// 		},
+// 		{
+// 			projectName: '정적 페이지 생성과 캐싱을 활용한 렌더링 성능 개선',
+// 			summaryIntro: '개발자 이력서 첨삭 프로젝트',
+// 			startedAt: '2023-08',
+// 			endedAt: '2023-10',
+// 			description:
+// 				'- 기존에 Server Side Rendering으로 생성하던 페이지에 Static Site Generation을 적용하여 서버 자원 절약 및 응답 속도 개선',
+// 			projectStatus: '진행 중',
+// 			projectOrganization: '',
+// 			links: [
+// 				{
+// 					linkTitle: '라메 기술 블로그',
+// 					linkUrl: 'https:',
+// 				},
+// 				{
+// 					linkTitle: '라메 기술 블로그',
+// 					linkUrl: 'https://',
+// 				},
+// 			],
+// 		},
+// 	],
+// 	_id: '6562b04c461c70f74b259dd1',
+// 	__v: 0,
+// };
 
 export const mockInquiry: InquiryType[] = [
 	{
