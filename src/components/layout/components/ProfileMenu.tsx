@@ -1,9 +1,9 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
-import { IconCircleUser } from '@icons';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
+import DefaultImage from '@common/DefaultImage';
 import LogoutModal from '@components/modal/LogoutModal';
 
 interface ProfileMenuProps {
@@ -26,7 +26,7 @@ function ProfileMenu({ picture }: ProfileMenuProps) {
 					onClick={() => navigate('/my-info')}
 					onMouseEnter={showMenu}
 				>
-					{picture ? <img src={picture} /> : <IconCircleUser />}
+					<DefaultImage variant='grey' shape='circle' size='tiny' image={picture} />
 				</button>
 			</div>
 			{menuVisible && (
@@ -91,10 +91,10 @@ const MenuWrap = styled.div`
 			background-color: aliceblue;
 		}
 	}
-
+	/* 
 	img {
 		height: 30px;
 		width: 30px;
 		border-radius: 50%;
-	}
+	} */
 `;
