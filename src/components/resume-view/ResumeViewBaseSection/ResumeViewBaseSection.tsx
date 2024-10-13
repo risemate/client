@@ -35,6 +35,9 @@ const ResumeViewSection = styled.section`
 			border-bottom: 0.5px solid ${({ theme }) => theme.colors.grey};
 			padding-bottom: 20px;
 		}
+		& > label {
+			grid-column: 1 / 3;
+		}
 	}
 `;
 

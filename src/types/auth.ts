@@ -28,8 +28,8 @@ export type Auth = {
 	waitingPaymentCoachingCount: number;
 	lastActiveAt: string;
 	alarmOptions: {
-		mail: AlarmOptions
-	}
+		mail: AlarmOptions;
+	};
 };
 
 export type BaseUser = {
@@ -49,22 +49,22 @@ export type UserInfoRequestProps = {
 	email: string | null;
 	picture: string | null;
 	alarmOptions: {
-		mail: AlarmOptions
-	} | null
+		mail: AlarmOptions;
+	} | null;
 };
 
 export const AlarmOptionList = [
-	{ label: "리뷰 댓글", value: "review_comment" },
-	{ label: "결제", value: "paid" },
-	{ label: "사이트", value: "site" },
-	{ label: "이벤트", value: "event" },
-	{ label: "질문/답변", value: "ask_answer" }
+	{ label: '리뷰 댓글', value: 'review_comment' },
+	{ label: '결제', value: 'paid' },
+	{ label: '사이트', value: 'site' },
+	{ label: '이벤트', value: 'event' },
+	{ label: '질문/답변', value: 'ask_answer' },
 ] as const;
 
 // AlarmOptions 타입을 value 값만 가지도록 수정
 export type AlarmOptions = {
-	[key in typeof AlarmOptionList[number]['value']]: boolean;
-}
+	[key in (typeof AlarmOptionList)[number]['value']]: boolean;
+};
 
 export interface User extends Auth {
 	deletionStatus: { isDeleted: boolean; isDeleteCancelled: boolean; deletedAt: Date };

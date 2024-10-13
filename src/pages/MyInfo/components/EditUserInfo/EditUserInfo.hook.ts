@@ -17,7 +17,7 @@ export default function useEditUserInfo() {
 			nickname: auth?.nickname || null,
 			email: auth?.email || null,
 			picture: auth?.picture || null,
-			alarmOptions: auth?.alarmOptions || null
+			alarmOptions: auth?.alarmOptions || null,
 		},
 	});
 
@@ -29,24 +29,27 @@ export default function useEditUserInfo() {
 	} = methods;
 
 	const alarmOptionsFields = () => {
-		return AlarmOptionList.reduce((acc, option) => {
-			const { field } = useController({
-				control,
-				name: `alarmOptions.mail.${option.value}`,
-			});
+		return AlarmOptionList.reduce(
+			(acc, option) => {
+				const { field } = useController({
+					control,
+					name: `alarmOptions.mail.${option.value}`,
+				});
 
-			acc[option.value] = {
-				checked: field.value,
-				onChange: (e: React.ChangeEvent<HTMLInputElement>) => field.onChange(e.target.checked),
-				ref: field.ref,
-				onBlur: field.onBlur,
-			};
+				acc[option.value] = {
+					checked: field.value,
+					onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+						field.onChange(e.target.checked),
+					ref: field.ref,
+					onBlur: field.onBlur,
+				};
 
-			return acc;
-			// eslint-disable-next-line
-		}, {} as Record<typeof AlarmOptionList[number]['value'], any>);
+				return acc;
+				// eslint-disable-next-line
+			},
+			{} as Record<(typeof AlarmOptionList)[number]['value'], any>,
+		);
 	};
-
 
 	const submitEditUserInfo = () => {
 		return handleSubmit((data: UserInfoRequestProps) => {
@@ -70,7 +73,7 @@ export default function useEditUserInfo() {
 			nickname: register('nickname', { required: true }),
 			email: register('email'),
 			picture: register('picture'),
-			alarmOptions: alarmOptionsFields()
+			alarmOptions: alarmOptionsFields(),
 		},
 		openModal,
 		submitEditUserInfo,

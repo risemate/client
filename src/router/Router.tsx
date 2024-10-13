@@ -1,3 +1,4 @@
+import WriteRevise from '@page/WriteRevise/WriteRevise';
 import axios from 'axios';
 import Admin from 'pages/Admin/Admin';
 import Ai from 'pages/Ai/Ai';
@@ -156,6 +157,10 @@ export const router = createBrowserRouter([
 					{
 						path: 'product-docs/:id',
 						element: <ExpertDetail />,
+					},
+					{
+						path: 'revise/:id',
+						element: <WriteRevise />,
 					},
 				],
 			},
