@@ -18,10 +18,8 @@ export default function GlobalErrorFallback({
 	};
 	const navigateToHome = () => {
 		resetErrorBoundary();
-		if (errorData.message.includes('유저정보를 찾지 못했습니다')) {
-			localStorage.clear();
-			location.reload();
-		}
+		localStorage.clear();
+		location.reload();
 		navigate('/');
 	};
 	return (

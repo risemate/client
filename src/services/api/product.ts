@@ -46,7 +46,7 @@ export const fetchMyProduct = async (): Promise<Product[]> => {
 		const response = await axios.get<Product[]>(PRODUCT_PATH.MY());
 		return response.data;
 	} catch (error) {
-		throw new Error((error as Error).message);
+		throw error;
 	}
 };
 

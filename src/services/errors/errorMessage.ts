@@ -17,7 +17,7 @@ export const ERROR_CODE: ErrorCodeType = {
 	// http status code 및 정의 된 코드
 	400: { code: '400', message: '잘못된 요청.' },
 	4001: { code: '4001', message: '요청에 대한 Validation 에러입니다.' },
-	401: { code: '401', message: '인증 에러.', requireLogin: true },
+	401: { code: '401', message: '인증이 만료되었습니다.', requireLogin: true },
 	4011: { code: '4011', message: '인증이 만료되었습니다.', requireLogin: true },
 	403: { code: '403', message: '권한이 없습니다.' },
 } as const;
@@ -25,20 +25,16 @@ export const ERROR_CODE: ErrorCodeType = {
 export const getErrorDataByCode = (
 	error: AxiosError<{ code: number; message: string }>,
 ) => {
-	const serverErrorCode = error?.response?.data?.code ?? '';
 	const httpErrorCode = error?.response?.status ?? '';
-	const axiosErrorCode = error?.code ?? '';
-	if (serverErrorCode in ERROR_CODE) {
-		return ERROR_CODE[serverErrorCode as keyof typeof ERROR_CODE];
-	}
+
 	if (httpErrorCode in ERROR_CODE) {
 		return ERROR_CODE[httpErrorCode as keyof typeof ERROR_CODE];
 	}
-	if (axiosErrorCode in ERROR_CODE) {
-		return ERROR_CODE[axiosErrorCode as keyof typeof ERROR_CODE];
-	}
+
 	return {
 		code: 'ERROR',
 		message: error.message || ERROR_CODE.default.message,
 	};
 };
+
+

@@ -17,6 +17,6 @@ export const fetchCareerDetail = async <T = Resume>(path: string): Promise<Caree
 		const response = await axios.get<Career<T>>(path);
 		return response.data;
 	} catch (error) {
-		throw new Error((error as Error).message);
+		throw error;
 	}
 };

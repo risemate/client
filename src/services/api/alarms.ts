@@ -17,7 +17,7 @@ export const fetchAlarms = async (
 		});
 		return response.data;
 	} catch (error) {
-		throw new Error((error as Error).message);
+		throw error;
 	}
 };
 
@@ -28,7 +28,7 @@ export const fetchReadAlarms = async (): Promise<AlamPaginationResponse<Alarm>> 
 		);
 		return response.data;
 	} catch (error) {
-		throw new Error((error as Error).message);
+		throw error;
 	}
 };
 
@@ -41,6 +41,6 @@ export const fetchReadAlarm = async (
 		);
 		return response.data;
 	} catch (error) {
-		throw new Error((error as Error).message);
+		throw error;
 	}
 };

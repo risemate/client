@@ -30,12 +30,12 @@ const token = localStorage.getItem('rm-checkpoint');
 axios.defaults.baseURL = '/api';
 axios.defaults.headers.common.Authorization = token ? `Bearer ${token}` : '';
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-axios.interceptors.response.use(
-	response => response,
-	error => {
-		throw new Error(error.response?.data?.message || error.message);
-	},
-);
+// axios.interceptors.response.use(
+// 	response => response,
+// 	error => {
+// 		throw new Error(error.response?.data?.message || error.message);
+// 	},
+// );
 
 export const router = createBrowserRouter([
 	{

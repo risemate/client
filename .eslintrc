@@ -18,6 +18,7 @@
 	"parser": "@typescript-eslint/parser",
 	"plugins": ["react", "@typescript-eslint"],
 	"rules": {
+		"no-useless-catch":"off",
 		"react/react-in-jsx-scope": "off",
 		"no-var": "error",
 		"no-multiple-empty-lines": "error",

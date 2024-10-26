@@ -20,7 +20,7 @@ export const fetchPublicCareers = async (
 		});
 		return response.data;
 	} catch (error) {
-		throw new Error((error as Error).message);
+		throw error;
 	}
 };
 
@@ -29,6 +29,6 @@ export const fetchPublicResumeDetail = async (id: string): Promise<Career<Resume
 		const response = await axios.get<Career<Resume>>(NETWORK_PATH.DETAIL(id));
 		return response.data;
 	} catch (error) {
-		throw new Error((error as Error).message);
+		throw error;
 	}
 };

@@ -17,7 +17,7 @@ export const fetchCoverletterDetail = async <T = Coverletter>(
 		const response = await axios.get<Career<T>>(COVERLETTER_PATH.DETAIL(id));
 		return response.data;
 	} catch (error) {
-		throw new Error((error as Error).message);
+		throw error;
 	}
 };
 
@@ -31,7 +31,7 @@ export const fetchCreateCoverletter = async (
 		);
 		return response.data;
 	} catch (error) {
-		throw new Error((error as Error).message);
+		throw error;
 	}
 };
 
@@ -46,7 +46,7 @@ export const fetchUpdateCoverletter = async (
 		);
 		return response.data;
 	} catch (error) {
-		throw new Error((error as Error).message);
+		throw error;
 	}
 };
 
@@ -54,6 +54,6 @@ export const fetchDeleteCoverletter = async (id: string): Promise<void> => {
 	try {
 		await axios.delete<void>(COVERLETTER_PATH.DETAIL(id));
 	} catch (error) {
-		throw new Error((error as Error).message);
+		throw error;
 	}
 };

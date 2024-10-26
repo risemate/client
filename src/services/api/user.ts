@@ -6,7 +6,7 @@ export const fetchAuth = async (): Promise<Auth> => {
 		const response = await axios.get<Auth>('auth');
 		return response.data;
 	} catch (error) {
-		throw new Error((error as Error).message);
+		throw error;
 	}
 };
 
@@ -15,6 +15,6 @@ export const fetchUpdateUserInfo = async (body: UserInfoRequestProps): Promise<A
 		const response = await axios.patch<Auth>('users', body);
 		return response.data;
 	} catch (error) {
-		throw new Error((error as Error).message);
+		throw error;
 	}
 };
