@@ -1,6 +1,6 @@
 import { IconCloseSharp } from '@icons';
 import { isEmpty } from '@utils/helpers';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import styled, { css } from 'styled-components';
 
@@ -10,23 +10,32 @@ import { FileInfoType, ImageFileUpload } from '@common/ImageUpload';
 interface FileInputProps {
 	label?: string;
 	inputName: string;
+	initialImageUrl?: string;
 	size?: Size;
 }
 
-export default function FileInput({ label, inputName, size }: FileInputProps) {
+export default function FileInput({
+	label,
+	inputName,
+	size,
+	initialImageUrl,
+}: FileInputProps) {
 	const { watch, setValue } = useFormContext();
 
 	const [preview, setPreview] = useState<FileInfoType[]>([]);
 	const [url, setUrl] = useState<FileInfoType[]>([]);
-
-	useEffect(() => {
-		url && url[0] && setValue(inputName, url[0].url);
-	}, [url]);
-
 	const resetImage = () => {
-		setValue(inputName, '');
+		setValue(inputName, initialImageUrl);
 		setPreview([]);
 	};
+
+	const updateUrl = (newUrl: FileInfoType[]) => {
+		setUrl(newUrl);
+		if (newUrl && newUrl[0]) {
+			setValue(inputName, newUrl[0].url);
+		}
+	};
+
 	return (
 		<FileInputWrapper>
 			<FileInputLabel>
@@ -38,7 +47,7 @@ export default function FileInput({ label, inputName, size }: FileInputProps) {
 				/>
 				{/* {<DefaultImage variant='grey' size={size} image={watch(inputName)} />} */}
 				{/* <input type='file' onChange={event => changeImage(event)} /> */}
-				<ImageFileUpload setUrl={setUrl} setPreview={setPreview} />
+				<ImageFileUpload setUrl={updateUrl} setPreview={setPreview} />
 			</FileInputLabel>
 			<span>
 				- 가로 600px, 세로 600px / 5MB이하 <br /> - 등록 가능 확장자: jpg, png , jpeg

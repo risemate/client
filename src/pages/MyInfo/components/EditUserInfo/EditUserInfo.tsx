@@ -11,15 +11,26 @@ import Modal from '@components/modal/base/Modal';
 import useEditUserInfo from './EditUserInfo.hook';
 
 export default function EditUserInfo() {
-	const { methods, registerAuth, openModal, submitEditUserInfo, disableSubmit } =
-		useEditUserInfo();
+	const {
+		methods,
+		registerAuth,
+		openModal,
+		submitEditUserInfo,
+		disableSubmit,
+		initialImageUrl,
+	} = useEditUserInfo();
 
 	return (
 		<FormProvider {...methods}>
 			<UserInfoSection>
 				<h3>사용자 정보 수정</h3>
 				<form onSubmit={submitEditUserInfo()} id='user-info-form'>
-					<FileInput label='이미지' inputName='picture' size='small' />
+					<FileInput
+						label='이미지'
+						inputName='picture'
+						size='small'
+						initialImageUrl={initialImageUrl}
+					/>
 					<Input label='이름' type='text' {...registerAuth.name} />
 					<AlarmOptionGroup>
 						<span>알림 수신 옵션</span>

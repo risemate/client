@@ -66,6 +66,8 @@ export default function useEditUserInfo() {
 		});
 	};
 
+	console.log(methods.watch('picture'));
+
 	return {
 		methods,
 		registerAuth: {
@@ -78,5 +80,6 @@ export default function useEditUserInfo() {
 		openModal,
 		submitEditUserInfo,
 		disableSubmit: !methods.watch('nickname') || !isDirty,
+		initialImageUrl: auth?.picture,
 	};
 }
