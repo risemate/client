@@ -22,12 +22,12 @@ export function ReviseResumeTemplate({ career }: ReviseResumeViewProps) {
 					<p>{career.feedback.feedback}</p>
 				</FeedbackWrapper>
 			)}
-			<Profile
+			{/* <Profile
 				profile={career.profile}
 				techStack={career.techStack}
 				feedback={career?.feedback.introduce}
 				description={career.description || null}
-			/>
+			/> */}
 			{career.workExperiences && (
 				<WorkExperience
 					workExperiences={career.workExperiences}
