@@ -2,21 +2,25 @@ import { isEmpty } from '@utils/helpers';
 import { useFormContext } from 'react-hook-form';
 import { Education as EducationType } from 'types/career/resume';
 
+import ToggleContent from '@common/ToggleContent';
 import TextArea from '@components/input/TextArea';
 import ResumeViewBaseSection from '@components/resume-view/ResumeViewBaseSection/ResumeViewBaseSection';
 
 import ReviseTemplate from './ReviseTemplate';
 
-export default function EducationRevise() {
-	const FIELD = 'doc.educations';
-	const { watch, register } = useFormContext();
+interface EducationReviseProps {
+	educations: EducationType[] | null;
+}
 
-	const educations: EducationType[] = watch(FIELD);
-	if (educations.length === 0) {
+export default function EducationRevise({ educations }: EducationReviseProps) {
+	const FIELD = 'doc.educations';
+	const { register } = useFormContext();
+
+	if (!educations || educations.length === 0) {
 		return null;
 	}
 	return (
-		<ReviseTemplate title='교육'>
+		<ReviseTemplate title='교육' field='educations'>
 			{educations.map((education, index) => (
 				<article key={index}>
 					<ResumeViewBaseSection.Title>
@@ -30,10 +34,12 @@ export default function EducationRevise() {
 							{education.startedAt} ~ {education.endedAt}
 						</li>
 					</ResumeViewBaseSection.BasicInfo>
-					{!isEmpty(education.description) && (
-						<ResumeViewBaseSection.Description description={education.description} />
-					)}
-					<ResumeViewBaseSection.Link links={education.links} />
+					<ToggleContent openText='상세 보기' closeText='상세 접기'>
+						{!isEmpty(education.description) && (
+							<ResumeViewBaseSection.Description description={education.description} />
+						)}
+						<ResumeViewBaseSection.Link links={education.links} />
+					</ToggleContent>
 					<TextArea
 						label={`${education.schoolName} 설명 첨삭`}
 						help

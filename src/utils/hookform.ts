@@ -1,24 +1,36 @@
-export const getDirtyValues = <
-	DirtyFields extends Record<string, unknown>,
-	Values extends Record<keyof DirtyFields, unknown>,
+export const getDirtyFields = <
+	TData extends Record<keyof TDirtyItems, unknown>,
+	TDirtyItems extends Record<string, unknown>,
 >(
-	dirtyFields: DirtyFields,
-	values: Values,
-): Partial<typeof values> => {
-	const dirtyValues = Object.keys(dirtyFields).reduce((prev, key) => {
-		// Unsure when RFH sets this to `false`, but omit the field if so.
-		if (!dirtyFields[key]) return prev;
+	formValues: TData,
+	dirtyItems: TDirtyItems,
+): Partial<TData> => {
+	return Object.entries(dirtyItems).reduce((dirtyData, [key, value]) => {
+		// value가 false면 무시
+		if (value === false) return dirtyData;
+
+		// value가 true인 경우, dirtyData에 추가
+		if (value === true) return { ...dirtyData, [key]: formValues[key] };
+
+		// 하위 필드 처리
+		const child = getDirtyFields(
+			formValues[key] as TData,
+			dirtyItems[key] as TDirtyItems,
+		);
+
+		if (typeof child === 'object' && Object.keys(child).length === 0) {
+			return dirtyData;
+		}
+
+		if (Array.isArray(child) && child.length === 0) {
+			return dirtyData;
+		}
 
 		return {
-			...prev,
-			[key]:
-				typeof dirtyFields[key] === 'object'
-					? getDirtyValues(dirtyFields[key] as DirtyFields, values[key] as Values)
-					: values[key],
+			...dirtyData,
+			[key]: child,
 		};
 	}, {});
-
-	return dirtyValues;
 };
 
 // eslint-disable-next-line

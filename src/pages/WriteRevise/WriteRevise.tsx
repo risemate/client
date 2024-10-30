@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { FormProvider } from 'react-hook-form';
 import styled, { css } from 'styled-components';
 
+import ResumeNav from '@common/ResumeNav';
 import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 import Container from '@components/layout/Container';
 import SaveModal from '@components/modal/SaveModal';
@@ -27,6 +28,7 @@ export default function WriteResume() {
 		invalidateResume,
 		isSubmitting,
 		modalQueryKey,
+		reviseNavItems,
 	} = useWriteRevise();
 	useEffect(() => {
 		invalidateResume();
@@ -44,21 +46,44 @@ export default function WriteResume() {
 							{resumeOrder.map(item => {
 								switch (item.name) {
 									case 'workExperiences':
-										return <WorkExperienceRevise key={item._id} />;
+										return (
+											<WorkExperienceRevise
+												key={item._id}
+												workExperiences={resumeDetail.workExperiences}
+											/>
+										);
 									case 'projects':
-										return <ProjectRevise key={item._id} />;
+										return (
+											<ProjectRevise key={item._id} projects={resumeDetail.projects} />
+										);
 									case 'educations':
-										return <EducationRevise key={item._id} />;
+										return (
+											<EducationRevise
+												key={item._id}
+												educations={resumeDetail.educations}
+											/>
+										);
 									case 'activities':
-										return <ActivityRevise key={item._id} />;
+										return (
+											<ActivityRevise
+												key={item._id}
+												activities={resumeDetail.activities}
+											/>
+										);
 									case 'certificates':
-										return <CertificateRevise key={item._id} />;
+										return (
+											<CertificateRevise
+												key={item._id}
+												certificates={resumeDetail.certificates}
+											/>
+										);
 									default:
 										return null;
 								}
 							})}
 						</div>
 						<TotalFeedback />
+						<ResumeNav resumeNavItems={reviseNavItems} />
 					</StyledForm>
 					<SaveModal title='이력서' queryKey={modalQueryKey} buttonFormId={formId} />
 				</FormProvider>

@@ -1,21 +1,25 @@
 import { useFormContext } from 'react-hook-form';
 import { Activity as ActivityType } from 'types/career/resume';
 
+import ToggleContent from '@common/ToggleContent';
 import TextArea from '@components/input/TextArea';
 import ResumeViewBaseSection from '@components/resume-view/ResumeViewBaseSection/ResumeViewBaseSection';
 
 import ReviseTemplate from './ReviseTemplate';
 
-export default function ActivityRevise() {
-	const FIELD = 'doc.activities';
-	const { watch, register } = useFormContext();
+interface ActivityReviseProps {
+	activities: ActivityType[] | null;
+}
 
-	const activities: ActivityType[] = watch(FIELD);
-	if (activities.length === 0) {
+export default function ActivityRevise({ activities }: ActivityReviseProps) {
+	const FIELD = 'doc.activities';
+	const { register } = useFormContext();
+
+	if (!activities || activities.length === 0) {
 		return null;
 	}
 	return (
-		<ReviseTemplate title='대외활동'>
+		<ReviseTemplate title='대외활동' field='activities'>
 			{activities.map((activity, index) => (
 				<article key={index}>
 					<ResumeViewBaseSection.Title>
@@ -27,8 +31,10 @@ export default function ActivityRevise() {
 						</li>
 						<li>{activity.activityOrganization}</li>
 					</ResumeViewBaseSection.BasicInfo>
-					<ResumeViewBaseSection.Description description={activity.description} />
-					<ResumeViewBaseSection.Link links={activity.links} />
+					<ToggleContent openText='상세 보기' closeText='상세 접기'>
+						<ResumeViewBaseSection.Description description={activity.description} />
+						<ResumeViewBaseSection.Link links={activity.links} />
+					</ToggleContent>
 					<TextArea
 						label={`${activity.activityName} 설명 첨삭`}
 						help

@@ -3,7 +3,10 @@ import { ReviseResume } from 'types/career/resume';
 
 import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 
+import Activity from './Activity';
+import Education from './Education';
 import Profile from './Profile';
+import Project from './Project';
 import WorkExperience from './WorkExperience';
 
 interface ReviseResumeViewProps {
@@ -16,24 +19,33 @@ export function ReviseResumeTemplate({ career }: ReviseResumeViewProps) {
 			{career.feedback && (
 				<FeedbackWrapper>
 					<h3>전체적인 피드백</h3>
-					<p>{career.feedback}</p>
+					<p>{career.feedback.feedback}</p>
 				</FeedbackWrapper>
 			)}
 			<Profile
 				profile={career.profile}
 				techStack={career.techStack}
-				feedback={career?.feed_description}
+				feedback={career?.feedback.introduce}
 				description={career.description || null}
 			/>
 			{career.workExperiences && (
 				<WorkExperience
 					workExperiences={career.workExperiences}
-					feedback={career?.feed_workExperience}
+					feedback={career?.feedback.workExperiences}
 				/>
 			)}
-			{/* <Project projects={career.projects} feedback={career?.feed_project} />
-			<Education educations={career.educations} feedback={career?.feed_education} />
-			<Activity activities={career.activities} feedback={career?.feed_activity} /> */}
+			{career.projects && (
+				<Project projects={career.projects} feedback={career?.feedback.projects} />
+			)}
+			{career.educations && (
+				<Education
+					educations={career.educations}
+					feedback={career?.feedback.educations}
+				/>
+			)}
+			{career.activities && (
+				<Activity activities={career.activities} feedback={career?.feedback.activities} />
+			)}
 		</WhiteBoxWrapper>
 	);
 }

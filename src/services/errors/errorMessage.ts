@@ -36,5 +36,3 @@ export const getErrorDataByCode = (
 		message: error.message || ERROR_CODE.default.message,
 	};
 };
-
-

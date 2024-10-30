@@ -1,34 +1,33 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
-import {
-	resumeCreateMutation,
-	resumeDetailQuery,
-	resumeUpdateMutation,
-} from '@queries/career';
+import { resumeDetailQuery } from '@queries/career';
+import { coachingCareerMutation } from '@queries/coaching';
 import { isEmpty } from '@utils/helpers';
+import { getDirtyFields } from '@utils/hookform';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Career } from 'types/career/careerDocument';
-import { Resume as ResumeType } from 'types/career/resume';
-import { defaultOrder, defaultResume } from 'types/career/resumeData';
+import { Resume as ResumeType, ReviseResume } from 'types/career/resume';
+import { defaultFeedback, defaultOrder, defaultResume } from 'types/career/resumeData';
 
 export default function useWriteRevise() {
 	const { id: resumeId } = useParams();
 	const navigate = useNavigate();
 	const resumeDetail = resumeId ? resumeDetailQuery(resumeId).data : defaultResume;
-	const resume = resumeDetail;
-	const resumeEditMethods = useForm<Career<ResumeType>>({
+	const resumeEditMethods = useForm<Career<ReviseResume>>({
 		mode: 'onSubmit',
-		values: resume,
+		values: {
+			...resumeDetail,
+			doc: { ...resumeDetail.doc, feedback: defaultFeedback },
+		},
 	});
 
-	const updateResumeMutation = resumeUpdateMutation();
-	const createResumeMutation = resumeCreateMutation();
+	const careerCoachingMutation = coachingCareerMutation(resumeId || '');
 
 	const {
 		handleSubmit,
 		watch,
-		formState: { errors, isSubmitting },
+		formState: { errors, isSubmitting, dirtyFields },
 	} = resumeEditMethods;
 	const getValue = (field: keyof Career<ResumeType>) => watch(field)?.toString();
 
@@ -36,17 +35,20 @@ export default function useWriteRevise() {
 	const { closeModal } = useModal(modalQueryKey);
 
 	const submitResume = handleSubmit(data => {
-		if (resumeId) {
-			updateResumeMutation.mutateAsync({ id: resumeId, body: data.doc }).then(() => {
-				toast('이력서가 저장되었습니다.');
-				navigate(`/my-info/docs/${resumeId}`);
-			});
-		} else {
-			createResumeMutation.mutateAsync(data.doc).then(({ _id }) => {
-				toast('이력서가 저장되었습니다.');
-				navigate(`/my-info/docs/${_id}`);
-			});
+		const dirtyValues = getDirtyFields(data, dirtyFields);
+		if (!dirtyValues?.doc) {
+			toast.info('값을 변경 후에 넣어주세요!');
+			return;
 		}
+		careerCoachingMutation
+			.mutateAsync(dirtyValues?.doc)
+			.then(() => {
+				toast.success('성공적으로 처리되었습니다!');
+				navigate('/coach-info/management?tab=INPROGRESS');
+			})
+			.catch(() => {
+				toast.error('처리에 실패했습니다. 다시 시도해 주세요.');
+			});
 	});
 
 	const invalidateResume = () => {
@@ -56,8 +58,16 @@ export default function useWriteRevise() {
 		}
 	};
 
+	const reviseNavItems = [
+		{ name: '이력서 저장' },
+		{
+			name: '목록으로 돌아가기',
+			onClick: () => navigate('/coach-info/management?tab=INPROGRESS'),
+		},
+	];
+
 	return {
-		resumeDetail,
+		resumeDetail: resumeDetail.doc,
 		resumeEditMethods,
 		resumeOrder:
 			watch('doc.orderType')?.filter(orderType => orderType.isVisible) || defaultOrder,
@@ -67,5 +77,6 @@ export default function useWriteRevise() {
 		invalidateResume,
 		isSubmitting,
 		modalQueryKey,
+		reviseNavItems,
 	};
 }

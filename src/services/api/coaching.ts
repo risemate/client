@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ReviseResume } from 'types/career/resume';
 import {
 	CoachingDecideRequest,
 	CoachingExpertResponse,
@@ -67,7 +68,8 @@ export const fetchExpertCoachingAction = async (
 
 export const fetchCoachingCareer = async (
 	id: string,
+	body: Partial<ReviseResume>,
 ): Promise<CoachingExpertResponse> => {
-	const response = await axios.patch(COACHING_PATH.COACHING(id));
+	const response = await axios.patch(COACHING_PATH.COACHING(id), body);
 	return response.data;
 };

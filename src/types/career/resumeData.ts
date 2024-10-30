@@ -4,6 +4,7 @@ import {
 	Certificate,
 	Education,
 	EmploymentStatus,
+	Feedback,
 	GraduationStatus,
 	JobType,
 	OrderType,
@@ -75,6 +76,17 @@ export const defaultCertificate: Certificate = {
 	certificatedAt: null,
 	certificateGrade: '',
 	links: [],
+};
+
+export const defaultFeedback: Feedback = {
+	feedback: '',
+	introduce: '',
+	techStack: '',
+	workExperiences: '',
+	projects: '',
+	educations: '',
+	activities: '',
+	certificates: '',
 };
 
 export const defaultOrder: OrderType[] = [

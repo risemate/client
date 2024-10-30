@@ -11,6 +11,7 @@ import {
 	fetchCoachingCareer,
 } from '@api/coaching';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { ReviseResume } from 'types/career/resume';
 import {
 	CoachingDecideRequest,
 	CoachingRequest,
@@ -138,12 +139,13 @@ export const expertCoachingActionMutation = (
 };
 
 export const coachingCareerMutation = (
-	options?: UseMutationOptionsType<CoachingResponse, string, 'onSuccess'>,
-): UseMutationResultType<CoachingResponse, string> => {
+	id: string,
+	options?: UseMutationOptionsType<CoachingResponse, Partial<ReviseResume>, 'onSuccess'>,
+): UseMutationResultType<CoachingResponse, Partial<ReviseResume>> => {
 	const queryClient = useQueryClient();
 	return useMutation({
-		mutationFn: (id: string) => fetchCoachingCareer(id),
-		onSuccess(_, id) {
+		mutationFn: (body: Partial<ReviseResume>) => fetchCoachingCareer(id, body),
+		onSuccess() {
 			queryClient.invalidateQueries({
 				queryKey: coachingKeys.id(id),
 				refetchType: 'active',

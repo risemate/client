@@ -15,7 +15,7 @@ export type AiStatus = (typeof AiStatus)[number];
 
 export type Career<T = unknown> = {
 	description: string;
-	feedback?: string;
+	// feedback?: string;
 	contactPublic: boolean;
 	public: boolean;
 	user: BaseUser;
@@ -29,7 +29,7 @@ export type Career<T = unknown> = {
 	updatedAt: string;
 	coverImage: string;
 	childrenDocCount: number;
-	coaching?: object; //수정필요
+	// coaching?: object; //수정필요
 	childAi: string | null;
 	aiStatus: AiStatus | null;
 };

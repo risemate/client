@@ -24,15 +24,19 @@ export type Resume = {
 	orderType?: OrderType[];
 };
 
-export type ReviseResume = Resume & {
+export type Feedback = {
 	feedback: string;
-	feed_description: string;
-	feed_profile: string;
-	feed_techStack: string;
-	feed_workExperience: string;
-	feed_project: string;
-	feed_education: string;
-	feed_activity: string;
+	introduce: string;
+	techStack: string;
+	workExperiences: string;
+	projects: string;
+	educations: string;
+	activities: string;
+	certificates: string;
+};
+
+export type ReviseResume = Resume & {
+	feedback: Feedback;
 };
 
 export type Profile = {
@@ -110,15 +114,6 @@ export type Certificate = {
 	certificatedAt: string | null;
 	certificateGrade: string | null;
 	links: Link[] | null;
-};
-
-export type Feedback = {
-	notice: string;
-	total: string;
-	workExperience: string;
-	project: string;
-	education: string;
-	activity: string;
 };
 
 export type OrderType = {

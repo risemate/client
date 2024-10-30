@@ -1,28 +1,28 @@
 import { ReactNode } from 'react';
+import { useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
 
-import ToggleContent from '@common/ToggleContent';
 import TextArea from '@components/input/TextArea';
 import EditBaseSection from '@components/resume-edit/EditBaseSection/EditBaseSection';
 import ResumeViewBaseSection from '@components/resume-view/ResumeViewBaseSection/ResumeViewBaseSection';
 
 interface ReviseTemplateProps {
 	title: string;
+	field: string;
 	children: ReactNode;
 }
 
-export default function ReviseTemplate({ title, children }: ReviseTemplateProps) {
+export default function ReviseTemplate({ title, field, children }: ReviseTemplateProps) {
+	const { register } = useFormContext();
 	return (
 		<EditBaseSection>
 			<EditBaseSection.Title title={title} />
 			<TextAreaWrapper>
-				<TextArea label={`${title} 전체 피드백`} />
+				<TextArea label={`${title} 전체 피드백`} {...register(`doc.feedback.${field}`)} />
 			</TextAreaWrapper>
-			<ToggleContent openText={`${title} 전체보기`} closeText={`${title} 접기`}>
-				<EditBaseSection.Content>
-					<ResumeViewBaseSection>{children}</ResumeViewBaseSection>
-				</EditBaseSection.Content>
-			</ToggleContent>
+			<EditBaseSection.Content>
+				<ResumeViewBaseSection>{children}</ResumeViewBaseSection>
+			</EditBaseSection.Content>
 		</EditBaseSection>
 	);
 }
