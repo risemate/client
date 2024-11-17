@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 
 import Banner from '@common/Banner';
 import Button from '@common/Button';
-import AuthModal from '@components/auth/AuthModal';
 import ExpertCardList from '@components/experts/ExpertCardList';
 import Container from '@components/layout/Container';
 import NetworkCardList from '@components/network/NetworkCardList';
@@ -34,7 +33,6 @@ export default function Home() {
 					</Button>
 				</SingleAsyncWrapper>
 			</ExpertSection>
-			<AuthModal />
 		</Container>
 	);
 }

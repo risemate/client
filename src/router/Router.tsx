@@ -1,3 +1,4 @@
+import Login from '@page/Login/Login';
 import WriteRevise from '@page/WriteRevise/WriteRevise';
 import axios from 'axios';
 import Admin from 'pages/Admin/Admin';
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
 	// { path: 'test', element: <PaymentExampleCom /> },
 	{ path: 'test', element: <CoachingManager /> },
 	{
+		path: 'login',
+		element: <Login />,
+	},
+	{
 		path: '/',
 		element: <RootLayout />,
 		children: [
@@ -59,6 +64,7 @@ export const router = createBrowserRouter([
 				index: true,
 				element: <Home />,
 			},
+
 			{
 				path: 'networks',
 				children: [

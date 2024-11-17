@@ -1,9 +1,9 @@
-import { useModal } from '@hooks/atoms/useModalAtom';
 import { IconBell } from '@icons';
 import logoMain from '@images/logo-main.svg';
 import { authQuery } from '@queries/user';
 import { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { routePath } from 'router/routePath';
 import styled from 'styled-components';
 
 import Alarm from '../../alarm/Alarm';
@@ -17,8 +17,8 @@ export default function NavBar() {
 		{ name: '네트워킹', route: '/networks' },
 	];
 
-	const { openModal } = useModal('login');
 	const { data: auth } = authQuery();
+	const navigate = useNavigate();
 
 	const hasNewAlarm = true;
 	const [isAlarmOpen, setIsAlarmOpen] = useState(false);
@@ -63,7 +63,7 @@ export default function NavBar() {
 						</>
 					) : (
 						<>
-							<button type='button' onClick={openModal}>
+							<button type='button' onClick={() => navigate(routePath.login)}>
 								로그인 | 회원가입
 							</button>
 						</>

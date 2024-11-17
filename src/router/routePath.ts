@@ -1,5 +1,6 @@
-export const path = {
+export const routePath = {
 	root: '/' as const,
+	login: '/login' as const,
 	network: {
 		default: 'networks' as const,
 		detail: (id?: number) => (id ? `resumes/${id}` : ('resumes/:id' as const)),
