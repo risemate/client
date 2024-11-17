@@ -10,6 +10,7 @@ import { CoachingDecideRequest, CoachingExpertResponse } from 'types/coach/coach
 
 export default function usePendingItem(pending: CoachingExpertResponse) {
 	const [timeRemain, setTimeRemain] = useState<string>('00:00:00');
+	console.log('여기?');
 	const navigate = useNavigate();
 	const coachingDecideMutation = decideCoachingMutation();
 	const refuseModalQueryKey = 'refuse-revise';
@@ -56,13 +57,13 @@ export default function usePendingItem(pending: CoachingExpertResponse) {
 		}
 	});
 
-	useEffect(() => {
-		const settingTimeRemain = () => {
-			setTimeRemain(calculateTimeRemaining(pending.createdAt));
-		};
-		const intervalId = setInterval(settingTimeRemain, 1000);
-		return () => clearInterval(intervalId);
-	}, [pending.createdAt]);
+	// useEffect(() => {
+	// 	const settingTimeRemain = () => {
+	// 		setTimeRemain(calculateTimeRemaining(pending.createdAt));
+	// 	};
+	// 	const intervalId = setInterval(settingTimeRemain, 1000);
+	// 	return () => clearInterval(intervalId);
+	// }, [pending.createdAt]);
 
 	useEffect(() => {
 		reset();

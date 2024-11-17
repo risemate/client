@@ -1,0 +1,98 @@
+[
+	{
+		"_id": "67395cba6aada540f3956383",
+		"careerType": "RESUME",
+		"user": {
+			"_id": "658e7f6542cab3e1bc35ec5b",
+			"name": "홍길동",
+			"nickname": "risemate undefined",
+			"picture": "https://lh3.googleusercontent.com/a/ACg8ocISc-eINWk0uAbdj-580ZMiKRXPy3lZ8q2oEv0v2meU=s96-c",
+			"email": "risemate114@gmail.com",
+			"role": "EXPERT",
+			"updatedAt": "2024-11-17T03:02:18.951Z"
+		},
+		"payment": "67395cba6aada540f3956377",
+		"expert": {
+			"_id": "650d44a6398de0dbd2eb30bd",
+			"email": "shin.github@gmail.com",
+			"name": "뽀삐",
+			"nickname": "뽀로로",
+			"picture": "https://risemate-bucket.s3.ap-southeast-2.amazonaws.com/1714279070928.df.PNG"
+		},
+		"product": {
+			"_id": "67395c206aada540f39562bf",
+			"expert": "650d44a6398de0dbd2eb30bd",
+			"productTitle": "1프론트엔드 개발자 이력서 첨삭해드립니다.",
+			"subTitle": "취업 성공까지 책입지겠습니다.....",
+			"coverImage": "https://... default null"
+		},
+		"originDoc": "67395bcf6aada540f395626b",
+		"docTitle": "risemate114 개발지망생.",
+		"reviseDoc": {
+			"_id": "67395cba6aada540f3956381",
+			"public": true,
+			"coverImage": null,
+			"docTitle": "risemate114 개발지망생."
+		},
+		"selectedPackage": "BASIC",
+		"price": 1000,
+		"discountRate": 0,
+		"coin": 0,
+		"paidAmount": 1000,
+		"userRequestMessage": "",
+		"progressStatus": "PENDING",
+		"expertCompleted": [],
+		"userCompleted": [],
+		"createdAt": "2024-11-17T03:02:18.773Z",
+		"updatedAt": "2024-11-17T03:02:18.773Z",
+		"__v": 0
+	},
+	{
+		"_id": "67395cae6aada540f395635c",
+		"careerType": "RESUME",
+		"user": {
+			"_id": "658e7f6542cab3e1bc35ec5b",
+			"name": "홍길동",
+			"nickname": "risemate undefined",
+			"picture": "https://lh3.googleusercontent.com/a/ACg8ocISc-eINWk0uAbdj-580ZMiKRXPy3lZ8q2oEv0v2meU=s96-c",
+			"email": "risemate114@gmail.com",
+			"role": "EXPERT",
+			"updatedAt": "2024-11-17T03:02:18.951Z"
+		},
+		"payment": "67395cae6aada540f3956350",
+		"expert": {
+			"_id": "650d44a6398de0dbd2eb30bd",
+			"email": "shin.github@gmail.com",
+			"name": "뽀삐",
+			"nickname": "뽀로로",
+			"picture": "https://risemate-bucket.s3.ap-southeast-2.amazonaws.com/1714279070928.df.PNG"
+		},
+		"product": {
+			"_id": "67395c206aada540f39562bf",
+			"expert": "650d44a6398de0dbd2eb30bd",
+			"productTitle": "1프론트엔드 개발자 이력서 첨삭해드립니다.",
+			"subTitle": "취업 성공까지 책입지겠습니다.....",
+			"coverImage": "https://... default null"
+		},
+		"originDoc": "67395bcf6aada540f395626b",
+		"docTitle": "risemate114 개발지망생.",
+		"reviseDoc": {
+			"_id": "67395cae6aada540f395635a",
+			"public": true,
+			"coverImage": null,
+			"docTitle": "risemate114 개발지망생."
+		},
+		"selectedPackage": "BASIC",
+		"price": 1000,
+		"discountRate": 0,
+		"coin": 0,
+		"paidAmount": 1000,
+		"userRequestMessage": "",
+		"progressStatus": "PENDING",
+		"expertCompleted": [],
+		"userCompleted": [],
+		"createdAt": "2024-11-17T03:02:06.719Z",
+		"updatedAt": "2024-11-17T03:02:06.719Z",
+		"__v": 0
+	}
+]

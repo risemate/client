@@ -12,7 +12,7 @@ import AuthModal from '@components/auth/AuthModal';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-	<QueryClientProvider client={queryClient()}>
+	<QueryClientProvider client={queryClient}>
 		<ThemeProvider theme={theme}>
 			<GlobalStyle />
 			<AuthModal />

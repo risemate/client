@@ -23,6 +23,7 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import FormLayout from '@components/layout/FormLayout';
 import RootLayout from '@components/layout/RootLayout';
+import CoachingManager from '@components/management/TestManager';
 
 import PrivateRoute from './PrivateRoute';
 
@@ -48,7 +49,8 @@ export const router = createBrowserRouter([
 			},
 		],
 	},
-	{ path: 'test', element: <PaymentExampleCom /> },
+	// { path: 'test', element: <PaymentExampleCom /> },
+	{ path: 'test', element: <CoachingManager /> },
 	{
 		path: '/',
 		element: <RootLayout />,
