@@ -208,10 +208,14 @@ export const mockInquiry: InquiryType[] = [
 	{
 		_id: '656d80faa277ee4836b8fc8',
 		user: {
-			nickname: 'bonobono',
+			_id: '658e7f6542cab3e1bc35ec5b',
+			name: '홍길동',
+			nickname: 'risemate undefined',
 			picture:
-				'https://lh3.googleusercontent.com/a/ACg8ocJMMK0-56PhKyhKJkdy3UhcAXaNHM7uBFQeA_JAZwwz2w=s96-c',
-			_id: '650d44a6398de0dbd2eb30bd',
+				'https://lh3.googleusercontent.com/a/ACg8ocISc-eINWk0uAbdj-580ZMiKRXPy3lZ8q2oEv0v2meU=s96-c',
+			email: 'risemate114@gmail.com',
+			role: 'EXPERT',
+			updatedAt: '2024-11-17T03:02:18.951Z',
 		},
 		// product: {
 		// 	productTitle: '프론트엔드 개발자 이력서 첨삭해드립니다.',
@@ -245,10 +249,14 @@ export const mockInquiry: InquiryType[] = [
 	{
 		_id: '656d80faa277ee4836b8fc',
 		user: {
-			nickname: 'bonobono',
+			_id: '658e7f6542cab3e1bc35ec5b',
+			name: '보노보노',
+			nickname: '보보경심',
 			picture:
-				'https://lh3.googleusercontent.com/a/ACg8ocJMMK0-56PhKyhKJkdy3UhcAXaNHM7uBFQeA_JAZwwz2w=s96-c',
-			_id: '650d44a6398de0dbd2eb30bd',
+				'https://lh3.googleusercontent.com/a/ACg8ocISc-eINWk0uAbdj-580ZMiKRXPy3lZ8q2oEv0v2meU=s96-c',
+			email: 'risemate114@gmail.com',
+			role: 'EXPERT',
+			updatedAt: '2024-11-17T03:02:18.951Z',
 		},
 		// product: {
 		// 	productTitle: '프론트엔드 개발자 이력서 첨삭해드립니다.',
@@ -275,10 +283,14 @@ export const mockReview: ReviewType[] = [
 	{
 		_id: '656e8ec09f14054fcebd7c6a',
 		user: {
-			nickname: 'shin kim',
+			_id: '658e7f6542cab3e1bc35ec5b',
+			name: '홍길동',
+			nickname: 'risemate undefined',
 			picture:
-				'https://lh3.googleusercontent.com/a/ACg8ocLZT1jIxyzAyNCy4nDmT_T9fcRor38HAOrKADUIf4oyZeA=s96-c',
-			_id: '650d43fcaec6caefbadc15c7',
+				'https://lh3.googleusercontent.com/a/ACg8ocISc-eINWk0uAbdj-580ZMiKRXPy3lZ8q2oEv0v2meU=s96-c',
+			email: 'risemate114@gmail.com',
+			role: 'EXPERT',
+			updatedAt: '2024-11-17T03:02:18.951Z',
 		},
 		product: '',
 		score: 4.2,
@@ -302,9 +314,14 @@ export const mockReview: ReviewType[] = [
 	{
 		_id: '656e8ec09f14054fcebd7c6',
 		user: {
-			nickname: 'shin kim',
-			picture: '',
-			_id: '650d43fcaec6caefbadc15c7',
+			_id: '658e7f6542cab3e1bc35ec5b',
+			name: '홍길동',
+			nickname: 'risemate undefined',
+			picture:
+				'https://lh3.googleusercontent.com/a/ACg8ocISc-eINWk0uAbdj-580ZMiKRXPy3lZ8q2oEv0v2meU=s96-c',
+			email: 'risemate114@gmail.com',
+			role: 'EXPERT',
+			updatedAt: '2024-11-17T03:02:18.951Z',
 		},
 		product: '',
 		score: 4.2,
@@ -317,9 +334,14 @@ export const mockReview: ReviewType[] = [
 	{
 		_id: '656e8ec09f14054fcebd7c',
 		user: {
-			nickname: 'shin kim',
-			picture: '',
-			_id: '650d43fcaec6caefbadc15c7',
+			_id: '658e7f6542cab3e1bc35ec5b',
+			name: '홍길동',
+			nickname: 'risemate undefined',
+			picture:
+				'https://lh3.googleusercontent.com/a/ACg8ocISc-eINWk0uAbdj-580ZMiKRXPy3lZ8q2oEv0v2meU=s96-c',
+			email: 'risemate114@gmail.com',
+			role: 'EXPERT',
+			updatedAt: '2024-11-17T03:02:18.951Z',
 		},
 		product: '',
 		score: 4.2,

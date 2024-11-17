@@ -32,9 +32,14 @@ export type Auth = {
 	};
 };
 
+// 문서 요청시 유저 기본정보
 export type BaseUser = {
 	nickname: string;
+	name: string;
+	email: string;
+	role: RolesType;
 	picture: string;
+	updatedAt?: string;
 	_id: string;
 };
 

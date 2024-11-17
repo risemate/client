@@ -1,5 +1,6 @@
 // import { Auth } from 'types/auth';
 // import { Career, CareerType } from 'types/career/careerDocument';
+import { BaseUser, User } from 'types/auth';
 import { CareerType } from 'types/career/careerDocument';
 
 import { PackageCategory, PackageDetail } from './product';
@@ -36,43 +37,46 @@ export const COACHING_STATUS = [
 	'COMPLETED',
 ] as const;
 export type COACHING_STATUS = (typeof COACHING_STATUS)[number];
-
-export type CoachingResponse = {
+export interface CoachingResponse {
 	_id: string;
-	careerType: CareerType;
-	// user: Auth;
-	user: string;
-	// payment: PaymentRequest;
+	careerType: string; // Enum 가능: e.g., 'RESUME'
+	user: BaseUser;
 	payment: string;
-	// expert: Expert;
-	expert: string;
-	// product: Product;
-	product: string;
-	// originDoc: Career;
-	// reviseDoc: Career;
+	expert: {
+		_id: string;
+		email: string;
+		name: string;
+		nickname: string;
+		picture: string;
+	};
+	product: {
+		_id: string;
+		expert: string;
+		productTitle: string;
+		subTitle: string;
+		coverImage: string | null; // Optional field
+	};
 	originDoc: string;
-	reviseDoc: string;
+	docTitle: string;
+	reviseDoc: {
+		_id: string;
+		public: boolean;
+		coverImage: string | null; // Optional field
+		docTitle: string;
+	};
 	selectedPackage: PackageCategory;
-	price: number | null;
-	discountRate: number | null;
-	// usedCoin: number;
-	coin: number | null;
-	paidAmount: number | null;
-	// paymentAmount: number;
-	createdAt: string;
-	updatedAt: string;
-	// expertCompleted: {
-	// 	completed: boolean;
-	// 	message: string;
-	// 	date: Date;
-	// };
-	// userCompleted: {
-	// 	completed: boolean;
-	// 	message: string;
-	// 	date: Date;
-	// };
-	progressStatus: COACHING_STATUS;
-};
+	price: number;
+	discountRate: number; // Percentage (0–100)
+	coin: number;
+	paidAmount: number;
+	userRequestMessage: string; // Could be empty
+	progressStatus: COACHING_STATUS; // Enum 가능: e.g., 'PENDING', 'COMPLETED'
+	expertCompleted: any[]; // Unknown structure, likely an array of strings or objects
+	userCompleted: any[]; // Unknown structure, likely an array of strings or objects
+	createdAt: string; // ISO8601 date string
+	updatedAt: string; // ISO8601 date string
+	__v: number;
+}
 
 export type CoachingExpertResponse = CoachingResponse & {
 	expertCompleted: string[];

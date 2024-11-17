@@ -8,7 +8,7 @@ export const defaultCoverLetter: Career<Coverletter> = {
 	description: '',
 	contactPublic: true,
 	childrenDocCount: 3,
-	user: { nickname: '', picture: '', _id: '' },
+	user: { nickname: '', picture: '', _id: '', name: '', email: '', role: 'GENERAL' },
 	docType: 'BASIC',
 	public: true,
 	docTitle: '',
