@@ -44,9 +44,6 @@ export const useModal = (key: string) => {
 	};
 
 	useEffect(() => {
-		if (isModal || overView) {
-			openModal();
-		}
 		if (isModal && !overView) {
 			closeModal();
 		}

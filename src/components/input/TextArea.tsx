@@ -41,7 +41,7 @@ const TextArea = forwardRef(function TextArea(
 	};
 
 	useEffect(() => {
-		setWordCount(value.toString().length);
+		setWordCount(value?.toString().length);
 	}, [value]);
 
 	return (

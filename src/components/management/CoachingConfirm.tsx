@@ -14,10 +14,19 @@ const CoachingConfirm: React.FC<{ pending: CoachingResponse }> = ({ pending }) =
 		usePendingItem(pending);
 
 	return (
-		<>
-			<div>
-				<Button onClick={acceptModal.open}>수락</Button>
-				<Button onClick={refuseModal.open}>거절</Button>
+		<Wrap>
+			<div className='btn_wrap'>
+				<div>
+					<Button onClick={acceptModal.open}>수락</Button>
+					<Button onClick={refuseModal.open}>거절</Button>
+				</div>
+
+				<div>
+					<Button>
+						<span style={{ color: 'blue' }}>@{pending.user.name}</span>님과의 커피챗
+					</Button>
+					<Button>완료 메시지 보내기</Button>
+				</div>
 			</div>
 			<InputModal
 				title={`${pending.selectedPackage} 수락`}
@@ -38,7 +47,7 @@ const CoachingConfirm: React.FC<{ pending: CoachingResponse }> = ({ pending }) =
 			>
 				@@님의 첨삭 요청을 거절하시겠습니까?
 			</InputModal>
-		</>
+		</Wrap>
 	);
 };
 
@@ -48,4 +57,14 @@ export default React.memo(CoachingConfirm);
 
 const Button = styled.button`
 	border: solid 1px #dbdbdb;
+	padding: 5px 10px;
+	border-radius: 10px;
+`;
+
+const Wrap = styled.div`
+	.btn_wrap {
+		display: flex;
+		justify-content: space-between;
+		padding: 10px;
+	}
 `;

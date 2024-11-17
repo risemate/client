@@ -30,12 +30,7 @@ export type CoachingDecideRequest = {
 	message: string;
 };
 
-export const COACHING_STATUS = [
-	'PENDING',
-	'PAYMENT',
-	'IN_PROGRESS',
-	'COMPLETED',
-] as const;
+export const COACHING_STATUS = ['PENDING', 'IN_PROGRESS', 'COMPLETED'] as const;
 export type COACHING_STATUS = (typeof COACHING_STATUS)[number];
 export interface CoachingResponse {
 	_id: string;
