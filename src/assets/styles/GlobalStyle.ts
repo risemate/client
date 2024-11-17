@@ -1,11 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
-import { fontFamily } from './font';
-
 export const GlobalStyle = createGlobalStyle`
+@import url('~pretendard/dist/web/pretendard.css');
     ${reset}
-    ${fontFamily}
+   
     * {
         font-size: ${({ theme }) => theme.fontSizes.default};
         margin: 0;
@@ -13,9 +12,9 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         /* white-space: pre-line; */
     }
-    body {
-        font-family: "Pretendard";
-    }
+     body {
+    font-family: 'Pretendard', sans-serif;
+  }
     html, body,#root {
         width: 100%;
         height: 100% ;
