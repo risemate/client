@@ -33,6 +33,6 @@ export default function Experts() {
 
 const ExpertSection = styled.section`
 	${({ theme }) => theme.common.minmaxWidth};
-	height: calc(100vh - 300px);
+	min-height: ${({ theme }) => theme.heights.bannerContentHeight};
 	padding: 100px 32px;
 `;

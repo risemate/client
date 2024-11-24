@@ -78,8 +78,8 @@ export default function ExpertDetail() {
 }
 
 const ExpertDetailWrapper = styled.div`
-	min-width: ${({ theme }) => theme.widths.minWidth};
 	width: 100%;
+	min-width: ${({ theme }) => theme.widths.minWidth};
 	max-width: ${({ theme }) => theme.widths.maxWidth};
 	padding: 50px 32px;
 	display: flex;

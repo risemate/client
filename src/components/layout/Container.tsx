@@ -58,13 +58,13 @@ const backgroundStyle = css<StyledLayoutProps>`
 
 const ContainerStyled = styled.main<StyledLayoutProps>`
 	width: 100%;
-	min-height: calc(80vh);
+	min-height: ${({ theme }) => theme.heights.contentHeight};
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	${backgroundStyle}
 	${({ $center, theme }) => $center && theme.common.flexCenterColumn};
-	${({ $padding }) => $padding && 'padding: 0 32px;'}
+	${({ $padding }) => $padding && 'padding: 32px;'}
 	${({ css }) => css};
 `;

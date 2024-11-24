@@ -45,18 +45,18 @@ export default function Ai() {
 }
 
 const AiWrapper = styled.div`
-	min-height: 90vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 20px;
+	/* gap: 20px; */
 	width: 100%;
 `;
 const aiWrapperStyle = css`
 	padding: 50px;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	gap: 30px;
+	min-height: ${({ theme }) => theme.heights.bannerContentHeight};
 	& > button {
 		align-self: center;
 	}
