@@ -22,7 +22,6 @@ export default function CoachInfoDetail() {
 		<>
 			{!hasPost && (
 				<Empty btnText='게시글 작성하기' onClick={navigate.toProduct}>
-					{/* //: 여기 수정 */}
 					아직 작성하신 게시글이 없습니다
 				</Empty>
 			)}
@@ -64,7 +63,9 @@ export default function CoachInfoDetail() {
 					</div>
 				</InfoDetailSection>
 			)}
-			{queryParam.withdraw && <Withdraw />}
+			{!queryParam.detail && (
+				<DetailSection>{queryParam.withdraw && <Withdraw />}</DetailSection>
+			)}
 		</>
 	);
 }
@@ -93,5 +94,15 @@ const InfoDetailSection = styled.section`
 		& > div:nth-child(2) {
 			padding: 50px 0 0;
 		}
+	}
+`;
+
+const DetailSection = styled.section`
+	padding-left: 50px;
+	h3 {
+		font-weight: bold;
+		color: ${({ theme }) => theme.colors.navy};
+		padding-bottom: 15px;
+		border-bottom: 1px solid ${({ theme }) => theme.colors.grey};
 	}
 `;
