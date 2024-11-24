@@ -107,8 +107,8 @@ const CoachingManager: React.FC = () => {
 		<Wrap>
 			<h3>전문가 코칭관리</h3>
 			<p>
-				승인대기요청: {pendingList.length} | 진행중인 첨삭 : {progressList.length}{' '}
-				| 완료된 첨삭: {completeList.length}
+				승인대기요청: {pendingList.length} | 진행중인 첨삭 : {progressList.length} |
+				완료된 첨삭: {completeList.length}
 				<br />
 				<span className='warn'>2일 이상 미응답시 자동 거절처리 됩니다.</span>
 			</p>
@@ -129,9 +129,7 @@ const CoachingManager: React.FC = () => {
 				{...tableProps}
 				pagination={{ position: ['bottomCenter'] }}
 				columns={tableColumns}
-				dataSource={
-					hasData ? filteredData.map(item => ({ ...item, key: item._id })) : []
-				}
+				dataSource={hasData ? filteredData.map(item => ({ ...item, key: item._id })) : []}
 				// scroll={scroll}
 			/>
 		</Wrap>

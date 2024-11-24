@@ -9,8 +9,13 @@ import BaseSection from '@components/resume-edit/EditBaseSection/EditBaseSection
 import useProfile from './Profile.hook';
 
 export default function Profile() {
-	const { productTitleField, productTitleError, subTitleField, descriptionField } =
-		useProfile();
+	const {
+		productTitleField,
+		productTitleError,
+		subTitleField,
+		descriptionField,
+		coverImageField,
+	} = useProfile();
 	return (
 		<BaseSection>
 			<BaseSection.Title title='상품 기본 정보'>
@@ -26,7 +31,7 @@ export default function Profile() {
 				<WarningText>* 내용이 없을 시 상품 설명에 표기되지 않습니다.</WarningText>
 			</BaseSection.Title>
 			<InputWrapper>
-				<FileInput inputName='coverImage' size='medium' />
+				<FileInput size='medium' {...coverImageField} />
 				<div>
 					<Input label='한 줄 소개' {...subTitleField} />
 					<TextArea label='간단 설명' help {...descriptionField} />

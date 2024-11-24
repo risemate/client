@@ -1,4 +1,5 @@
 import { regexEmail, regexPhone } from '@utils/regex';
+import { useEffect, useRef } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
 import { Profile as ProfileType } from 'types/career/resume';
@@ -11,7 +12,7 @@ import TextArea from '@components/input/TextArea';
 import BaseSection from '@components/resume-edit/EditBaseSection/EditBaseSection';
 
 export default function Profile() {
-	const { register, watch, control } = useFormContext();
+	const { register, watch, setValue, control } = useFormContext();
 	const inputName = (field: keyof ProfileType) => `doc.profile.${field}`;
 	const titleFields = useController({
 		name: 'doc.docTitle',
@@ -46,6 +47,22 @@ export default function Profile() {
 			},
 		},
 	});
+
+	// 컴포넌트가 처음 렌더링될 때 초기값 설정
+	const initialProfileImage = useRef<string | undefined>(undefined);
+	useEffect(() => {
+		if (!initialProfileImage.current) {
+			initialProfileImage.current = watch(inputName('profileImage'));
+		}
+	}, []);
+
+	const profileImageFields = {
+		initialImageUrl: initialProfileImage.current,
+		imageUrl: watch(inputName('profileImage')),
+		updateImageUrl: (newUrl: string) =>
+			setValue(inputName('profileImage'), newUrl, { shouldDirty: true }),
+	};
+
 	return (
 		<BaseSection>
 			<BaseSection.Title title='기본 정보'>
@@ -61,7 +78,7 @@ export default function Profile() {
 				<WarningText>* 내용이 없을 시 이력서에 표기되지 않습니다.</WarningText>
 			</BaseSection.Title>
 			<InputWrapper>
-				<FileInput inputName={inputName('profileImage')} size='medium' />
+				<FileInput size='medium' {...profileImageFields} />
 				<NameInputWrapper>
 					<ErrorInput
 						type='text'

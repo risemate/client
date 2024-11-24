@@ -1,7 +1,6 @@
 import { IconCloseSharp } from '@icons';
 import { isEmpty } from '@utils/helpers';
 import { useState } from 'react';
-import { useFormContext } from 'react-hook-form';
 import styled, { css } from 'styled-components';
 
 import DefaultImage, { Size } from '@common/DefaultImage';
@@ -9,30 +8,28 @@ import { FileInfoType, ImageFileUpload } from '@common/ImageUpload';
 
 interface FileInputProps {
 	label?: string;
-	inputName: string;
 	initialImageUrl?: string;
+	imageUrl: string | null;
+	updateImageUrl: (newUrl: string) => void;
 	size?: Size;
 }
 
 export default function FileInput({
 	label,
-	inputName,
+	initialImageUrl = '',
+	imageUrl,
+	updateImageUrl,
 	size,
-	initialImageUrl,
 }: FileInputProps) {
-	const { watch, setValue } = useFormContext();
-
 	const [preview, setPreview] = useState<FileInfoType[]>([]);
-	const [url, setUrl] = useState<FileInfoType[]>([]);
 	const resetImage = () => {
-		setValue(inputName, initialImageUrl);
+		updateImageUrl(initialImageUrl);
 		setPreview([]);
 	};
 
 	const updateUrl = (newUrl: FileInfoType[]) => {
-		setUrl(newUrl);
 		if (newUrl && newUrl[0]) {
-			setValue(inputName, newUrl[0].url);
+			updateImageUrl(newUrl[0].url);
 		}
 	};
 
@@ -43,10 +40,8 @@ export default function FileInput({
 				<DefaultImage
 					variant='grey'
 					size={size}
-					image={(preview[0] && preview[0].url) || watch(inputName)}
+					image={(preview[0] && preview[0].url) || imageUrl}
 				/>
-				{/* {<DefaultImage variant='grey' size={size} image={watch(inputName)} />} */}
-				{/* <input type='file' onChange={event => changeImage(event)} /> */}
 				<ImageFileUpload setUrl={updateUrl} setPreview={setPreview} />
 			</FileInputLabel>
 			<span>

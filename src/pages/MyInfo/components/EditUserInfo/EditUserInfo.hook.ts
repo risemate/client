@@ -26,6 +26,8 @@ export default function useEditUserInfo() {
 		register,
 		handleSubmit,
 		formState: { isDirty },
+		watch,
+		setValue,
 	} = methods;
 
 	const alarmOptionsFields = () => {
@@ -45,8 +47,8 @@ export default function useEditUserInfo() {
 				};
 
 				return acc;
-				// eslint-disable-next-line
 			},
+			// eslint-disable-next-line
 			{} as Record<(typeof AlarmOptionList)[number]['value'], any>,
 		);
 	};
@@ -66,20 +68,21 @@ export default function useEditUserInfo() {
 		});
 	};
 
-	console.log(methods.watch('picture'));
-
 	return {
 		methods,
 		registerAuth: {
 			name: register('name', { required: true }),
 			nickname: register('nickname', { required: true }),
 			email: register('email'),
-			picture: register('picture'),
 			alarmOptions: alarmOptionsFields(),
+			picture: {
+				initialImageUrl: auth?.picture,
+				imageUrl: watch('picture'),
+				updateImageUrl: (url: string) => setValue('picture', url, { shouldDirty: true }),
+			},
 		},
 		openModal,
 		submitEditUserInfo,
 		disableSubmit: !methods.watch('nickname') || !isDirty,
-		initialImageUrl: auth?.picture,
 	};
 }
