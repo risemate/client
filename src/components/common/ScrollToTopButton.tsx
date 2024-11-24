@@ -24,6 +24,7 @@ const StyledButton = styled.button`
 	height: 50px;
 	border: ${({ theme }) => theme.colors.navy} solid 2px;
 	border-radius: 50%;
+	background: white;
 	z-index: 50;
 	svg {
 		color: ${({ theme }) => theme.colors.navy};
