@@ -1,4 +1,5 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
+import useClickOutside from '@hooks/common/useClickOutside';
 import { IconCloseSharp } from '@icons';
 import { MouseEvent, ReactNode, useRef } from 'react';
 import styled from 'styled-components';
@@ -8,13 +9,18 @@ import ModalPortal from './ModalPortal';
 interface ModalBaseProps {
 	children: ReactNode;
 	queryKey: string;
+	isOutsideClick?: boolean;
 }
 
-export default function ModalBase({ children, queryKey }: ModalBaseProps) {
+export default function ModalBase({
+	children,
+	queryKey,
+	isOutsideClick = true,
+}: ModalBaseProps) {
 	const { isModal, closeModal } = useModal(queryKey);
 	const modalRef = useRef<HTMLDivElement | null>(null);
 	const modalOutSideClick = (event: MouseEvent<HTMLDivElement>) => {
-		if (modalRef.current === event.target) {
+		if (modalRef.current === event.target && isOutsideClick) {
 			closeModal();
 		}
 	};

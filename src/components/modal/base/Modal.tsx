@@ -17,6 +17,8 @@ interface ModalProps {
 	buttonFormId?: string;
 	queryKey: string;
 	customCss?: CSSProp;
+	isButtons?: boolean;
+	isOutsideClick?: boolean;
 }
 
 export default function Modal({
@@ -30,10 +32,12 @@ export default function Modal({
 	buttonFormId,
 	queryKey,
 	customCss,
+	isButtons = true,
+	isOutsideClick = true,
 }: ModalProps) {
 	const { closeModal } = useModal(queryKey);
 	return (
-		<ModalBase queryKey={queryKey}>
+		<ModalBase queryKey={queryKey} isOutsideClick={isOutsideClick}>
 			<ModalWrapper $customCss={customCss}>
 				<h1>{title}</h1>
 				{typeof children?.valueOf() === 'string' ? (
@@ -41,34 +45,36 @@ export default function Modal({
 				) : (
 					<div>{children}</div>
 				)}
-				<div>
-					<Button
-						variant='border'
-						size='full'
-						onClick={() => {
-							onCancel && onCancel();
-							closeModal();
-						}}
-					>
-						{cancel}
-					</Button>
-					<Button
-						variant='navy'
-						size='full'
-						form={buttonFormId}
-						disabled={disabledConfirmButton}
-						onClick={
-							buttonFormId
-								? undefined
-								: () => {
-										onClick && onClick();
-										closeModal();
-									}
-						}
-					>
-						{confirm}
-					</Button>
-				</div>
+				{isButtons && (
+					<div>
+						<Button
+							variant='border'
+							size='full'
+							onClick={() => {
+								onCancel && onCancel();
+								closeModal();
+							}}
+						>
+							{cancel}
+						</Button>
+						<Button
+							variant='navy'
+							size='full'
+							form={buttonFormId}
+							disabled={disabledConfirmButton}
+							onClick={
+								buttonFormId
+									? undefined
+									: () => {
+											onClick && onClick();
+											closeModal();
+									  }
+							}
+						>
+							{confirm}
+						</Button>
+					</div>
+				)}
 			</ModalWrapper>
 		</ModalBase>
 	);
