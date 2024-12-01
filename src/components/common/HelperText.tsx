@@ -1,20 +1,25 @@
 import { IconQuestion } from '@icons';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 interface HelperTextProps {
-	text: string;
+	text?: string;
 	position?: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
+	children?: ReactNode;
 }
 
-export default function HelperText({ text, position = 'topRight' }: HelperTextProps) {
+export default function HelperText({
+	text = '',
+	position = 'topRight',
+	children,
+}: HelperTextProps) {
 	const [hover, setHover] = useState<boolean>(false);
 	const hoverMouse = () => setHover(true);
 	const leaveMouse = () => setHover(false);
 	return (
 		<HelperWrapper onMouseEnter={hoverMouse} onMouseLeave={leaveMouse}>
 			<IconQuestion />
-			{hover && <PopOver $position={position}>{text}</PopOver>}
+			{hover && <PopOver $position={position}>{text ? text : children}</PopOver>}
 		</HelperWrapper>
 	);
 }
@@ -24,7 +29,7 @@ interface PopOverProps {
 }
 
 const HelperWrapper = styled.div`
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	gap: 5px;
 	position: relative;
@@ -63,10 +68,11 @@ const PopOver = styled.p<PopOverProps>`
 	position: absolute;
 	width: 250px;
 	background: ${({ theme }) => theme.colors.darkGrey};
-	color: white;
+	color: white !important;
 	padding: 10px;
 	border-radius: 10px;
 	line-height: 20px;
 	word-break: keep-all;
+	text-align: left;
 	${positionStyle}
 `;
