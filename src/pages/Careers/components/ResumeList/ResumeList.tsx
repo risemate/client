@@ -13,7 +13,7 @@ export default function ResumeList() {
 	const [selectedId, setSelectedId] = useState<string | null>(null);
 	const updateSelectedId = (id: string | null) => setSelectedId(id);
 	return (
-		<Container backgroundColor='lightGrey' center padding>
+		<Container backgroundColor='lightGrey' css={containerStyle} center padding>
 			<h2 className='a11y-hidden'>이력서</h2>
 			<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
 				<BasicCareerListWrapper title='이력서' createTo='re' addNew>
@@ -44,10 +44,13 @@ export default function ResumeList() {
 	);
 }
 
+const containerStyle = css`
+	gap: 40px;
+`;
+
 const resumeWrapperStyle = css`
 	min-height: 300px;
 	padding: 50px;
-	margin: 10px 0 40px;
 	display: flex;
 	flex-direction: column;
 	section {

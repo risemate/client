@@ -1,5 +1,5 @@
 import useTab from '@hooks/common/useTab';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 import { TabItem } from 'types/common/tab';
 
@@ -30,7 +30,7 @@ export default function ManagementWrapper({
 	];
 	const { currentTab, changeTab, isCurrentTab } = useTab(tabItems, true);
 	return (
-		<Container backgroundColor='lightGrey' padding>
+		<Container backgroundColor='lightGrey' padding center>
 			<WhiteBoxWrapper type='div' customCss={managementWrapperStyle}>
 				<ManagementTitle>{isExpert ? '코칭 관리' : '첨삭 관리'}</ManagementTitle>
 				{isExpert ? <ExpertCoachingManagement /> : <UserCoachingManagement />}
@@ -43,7 +43,6 @@ const managementWrapperStyle = css`
 	min-height: 300px;
 	height: calc(100vh - 400px);
 	padding: 50px;
-	margin-top: 70px;
 `;
 
 const ManagementTitle = styled.h2`

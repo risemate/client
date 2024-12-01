@@ -27,7 +27,15 @@ const widths = {
 	minWidth: '850px',
 	maxWidth: '1200px',
 };
+
 export type ThemeMediaWidth = typeof widths;
+
+const heights = {
+	bannerContentHeight: 'calc(100vh - 485px)',
+	contentHeight: 'calc(100vh - 235px)',
+};
+
+export type ThemeMediaHeight = typeof heights;
 
 const common = {
 	flexCenter: `
@@ -65,6 +73,7 @@ export type Theme = {
 	fontSizes: ThemeFontSize;
 	colors: ThemeColor;
 	widths: ThemeMediaWidth;
+	heights: ThemeMediaHeight;
 	common: ThemeCommonStyle;
 };
 
@@ -72,6 +81,7 @@ const theme = {
 	fontSizes,
 	colors,
 	widths,
+	heights,
 	common,
 } as Theme;
 

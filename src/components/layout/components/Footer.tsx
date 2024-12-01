@@ -33,6 +33,7 @@ const StyledFooter = styled.footer`
 
 const FooterWrapper = styled.div`
 	${({ theme }) => theme.common.minmaxWidth};
+	background: white;
 	padding: 32px;
 	margin: auto;
 	& > * {
