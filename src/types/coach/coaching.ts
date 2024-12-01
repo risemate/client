@@ -5,6 +5,7 @@ import { CareerType } from 'types/career/careerDocument';
 
 import { PackageCategory, PackageDetail } from './product';
 
+export type CHAT_ROLE = 'USER' | 'EXPERT' | 'SYSTEM';
 export type CoachingRequestState = {
 	productId: string;
 	productTitle: string;
@@ -30,13 +31,19 @@ export type CoachingDecideRequest = {
 	message: string;
 };
 
-export const COACHING_STATUS = ['PENDING', 'IN_PROGRESS', 'COMPLETED'] as const;
-export type COACHING_STATUS = (typeof COACHING_STATUS)[number];
+// export const COACHING_STATUS = ['PENDING', 'IN_PROGRESS', 'COMPLETED'] as const;
+export type COACHING_STATUS = 'PENDING' | 'IN_PROGRESS' | 'COMPLETED' | 'REJECTED';
 export interface CoachingResponse {
 	_id: string;
 	careerType: string; // Enum 가능: e.g., 'RESUME'
 	user: BaseUser;
 	payment: string;
+	chat: {
+		createdAt: string;
+		role: CHAT_ROLE;
+		content: string;
+		_id: string;
+	}[];
 	expert: {
 		_id: string;
 		email: string;
@@ -66,14 +73,15 @@ export interface CoachingResponse {
 	paidAmount: number;
 	userRequestMessage: string; // Could be empty
 	progressStatus: COACHING_STATUS; // Enum 가능: e.g., 'PENDING', 'COMPLETED'
-	expertCompleted: any[]; // Unknown structure, likely an array of strings or objects
-	userCompleted: any[]; // Unknown structure, likely an array of strings or objects
+	expertCompleted: boolean; // Unknown structure, likely an array of strings or objects
+	userCompleted: boolean; // Unknown structure, likely an array of strings or objects
 	createdAt: string; // ISO8601 date string
 	updatedAt: string; // ISO8601 date string
+
 	__v: number;
 }
 
 export type CoachingExpertResponse = CoachingResponse & {
-	expertCompleted: string[];
-	userCompleted: string[];
+	expertCompleted: boolean;
+	userCompleted: boolean;
 };

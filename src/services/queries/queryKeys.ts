@@ -67,4 +67,5 @@ export const coachingKeys = {
 		...coachingKeys.base,
 		{ id: variables.id, ...variables.body },
 	],
+	chat: (id: string) => [...coachingKeys.base, 'chat', { id }],
 };

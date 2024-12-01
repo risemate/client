@@ -12,7 +12,7 @@ export default function CoachManagement() {
 			waitingContent={<Pending pendingList={pendingList} />}
 			inProgressContent={<Progress progressList={progressList} />}
 			completeContent={<Complete completeList={completeList} />}
-			isCoach
+			isExpert
 		/>
 	);
 }

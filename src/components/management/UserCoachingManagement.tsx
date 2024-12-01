@@ -1,97 +1,124 @@
 import useCoachManagement from '@page/CoachManagement/CoachManagement.hook';
+import { dateToFormat } from '@utils/timeUtil';
 import type { GetProp, RadioChangeEvent, TableProps } from 'antd';
 import { Space, Table, Tag, Radio } from 'antd';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { COACHING_STATUS, CoachingResponse } from 'types/coach/coaching';
+import { Product } from 'types/coach/product';
 
 import Button from '@common/Button';
 import InputModal from '@components/modal/InputModal';
 
-import CoachingConfirm from './CoachingConfirm';
+import ExpertMoreAction from './ExpertMoreAction';
+import UserMoreAction from './UserMoreAction';
 
-const progStatus = { PENDING: '대기', IN_PROGRESS: '진행중', COMPLETED: '완료' };
-const color = { PENDING: 'geekblue', IN_PROGRESS: 'green', COMPLETED: 'volcano' };
+const progStatus = {
+	PENDING: '대기',
+	IN_PROGRESS: '진행중',
+	COMPLETED: '완료',
+	REJECTED: '거절',
+};
+const color = {
+	PENDING: 'geekblue',
+	IN_PROGRESS: 'green',
+	COMPLETED: 'volcano',
+	REJECTED: 'RED',
+};
 type ColumnsType<T extends object> = GetProp<TableProps<T>, 'columns'>;
-type TablePagination<T extends object> = NonNullable<
-	Exclude<TableProps<T>['pagination'], boolean>
->;
+
 type ExpandableConfig<T extends object> = TableProps<T>['expandable'];
 
 const columns: ColumnsType<CoachingResponse> = [
 	{
-		title: '이름',
-		dataIndex: 'user', // 데이터의 이름 필드와 매핑
-		key: 'user', // 열의 고유 키
-		render: (user: { name: string }) => user.name, // 객체의 특정 필드 접근
+		title: '상품',
+		dataIndex: 'product',
+		key: 'product',
+		width: 150,
+		render: (product: Product) => (
+			<Link
+				to={`/experts/${product._id}`}
+				style={{ textDecoration: 'underline', color: 'blue' }}
+			>
+				{product.productTitle}
+			</Link>
+		),
 	},
 	{
 		title: '결제금액',
-		dataIndex: 'paidAmount', // 데이터의 이름 필드와 매핑
-		key: '_id', // 열의 고유 키
-		render: data => `₩${data}`, // 객체의 특정 필드 접근
-	},
-	{
-		title: '문서제목',
-		dataIndex: 'reviseDoc', // 데이터의 이름 필드와 매핑
-		key: '_id', // 열의 고유 키
-		render: data => data.docTitle, // 객체의 특정 필드 접근
+		dataIndex: 'paidAmount',
+		key: '_id',
+		width: 100,
+		render: data => `₩${data}`,
 	},
 	{
 		title: '상태',
-		dataIndex: 'progressStatus', // 데이터의 이름 필드와 매핑
-		key: 'status', // 열의 고유 키
+		dataIndex: 'progressStatus',
+		key: 'status',
+		width: 100,
+
 		render: (state: COACHING_STATUS) => {
 			return <Tag color={color[state]}>{progStatus[state]}</Tag>;
-		}, // 객체의 특정 필드 접근
+		},
 	},
 	{
-		title: '문서',
-		key: 'originDoc', // 열의 고유 키
+		title: '문서제목',
+		// dataIndex: 'reviseDoc',
+		key: '_id',
 		render: data => (
 			<Space size='middle'>
-				<Link to={`/networks/docs/${data.originDoc}`} style={{ color: 'blue' }}>
-					원본보기
+				<Link
+					to={`/networks/docs/${data.originDoc}`}
+					style={{ textDecoration: 'underline', color: 'blue' }}
+				>
+					{data.docTitle}
 				</Link>
-				<Button size='small'>
-					<Space>첨삭하기</Space>
-				</Button>
 			</Space>
 		),
 	},
+
+	{
+		title: '첨삭',
+		key: 'originDoc',
+		width: 190,
+		render: data => (
+			<>
+				<Button size='small'>
+					<Space>첨삭문서</Space>
+				</Button>
+			</>
+		),
+	},
+	{
+		title: '생성날짜',
+		dataIndex: 'createdAt',
+		key: 'createdAt',
+		render: date => dateToFormat(date),
+	},
 ];
 
-const CoachingManager: React.FC = () => {
-	const { data, pendingList, progressList, completeList } = useCoachManagement();
-	const [loading, setLoading] = useState(false);
-	const [hasData, setHasData] = useState(true);
-	const [tableLayout, setTableLayout] = useState();
-	const [ellipsis, setEllipsis] = useState(false);
-	const [xScroll, setXScroll] = useState<string>();
+const UserCoachingManagement: React.FC = () => {
+	const { data, pendingList, progressList, completeList, isLoading } =
+		useCoachManagement();
 	const [filter, setFilter] = useState<COACHING_STATUS | 'ALL'>('ALL'); // 추가된 필터링 상태
 
-	const tableColumns = columns.map(item => ({ ...item, ellipsis }));
-	if (xScroll === 'fixed') {
-		tableColumns[0].fixed = true;
-		tableColumns[tableColumns.length - 1].fixed = 'left';
-	}
+	const tableColumns = columns.map(item => ({ ...item, ellipsis: true }));
 
 	const defaultExpandable: ExpandableConfig<CoachingResponse> = {
 		expandedRowRender: (record: CoachingResponse) => (
 			<div>
-				<p> {record.userRequestMessage} </p>
-				<CoachingConfirm pending={record} />
+				<UserMoreAction data={record} />
 				<hr />
 			</div>
 		),
 	};
 
 	const tableProps: TableProps<CoachingResponse> = {
-		loading,
+		loading: isLoading,
 		size: 'middle',
 		expandable: defaultExpandable,
-		tableLayout,
+		scroll: { x: 1100 },
 	};
 
 	// 필터링된 데이터 계산
@@ -105,7 +132,7 @@ const CoachingManager: React.FC = () => {
 
 	return (
 		<Wrap>
-			<h3>전문가 코칭관리</h3>
+			<h3>첨삭관리</h3>
 			<p>
 				승인대기요청: {pendingList.length} | 진행중인 첨삭 : {progressList.length} |
 				완료된 첨삭: {completeList.length}
@@ -129,14 +156,16 @@ const CoachingManager: React.FC = () => {
 				{...tableProps}
 				pagination={{ position: ['bottomCenter'] }}
 				columns={tableColumns}
-				dataSource={hasData ? filteredData.map(item => ({ ...item, key: item._id })) : []}
+				dataSource={
+					filteredData ? filteredData.map(item => ({ ...item, key: item._id })) : []
+				}
 				// scroll={scroll}
 			/>
 		</Wrap>
 	);
 };
 
-export default CoachingManager;
+export default UserCoachingManagement;
 
 // 스타일링
 const Wrap = styled.div`

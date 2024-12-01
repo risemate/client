@@ -7,15 +7,18 @@ import Tab from '@common/Tab';
 import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 import Container from '@components/layout/Container';
 
+import ExpertCoachingManagement from './ExpertCoachingManagement';
+import UserCoachingManagement from './UserCoachingManagement';
+
 interface ManagementWrapperProps {
-	isCoach?: boolean;
+	isExpert?: boolean;
 	waitingContent: ReactNode;
 	inProgressContent: ReactNode;
 	completeContent: ReactNode;
 }
 
 export default function ManagementWrapper({
-	isCoach = false,
+	isExpert = false,
 	waitingContent,
 	inProgressContent,
 	completeContent,
@@ -29,37 +32,8 @@ export default function ManagementWrapper({
 	return (
 		<Container backgroundColor='lightGrey' padding>
 			<WhiteBoxWrapper type='div' customCss={managementWrapperStyle}>
-				<ManagementTitle>{isCoach ? '코칭 관리' : '첨삭 관리'}</ManagementTitle>
-				<Tab
-					items={tabItems}
-					changeTab={changeTab}
-					isCurrentTab={isCurrentTab}
-					underline
-				/>
-				{currentTab.value === 'WAITING' && (
-					<ManagementTabWrapper>
-						<h3>응답 대기</h3>
-						{isCoach && (
-							<p>
-								미확인 첨삭요청이 있습니다. <br />
-								<span>2일 이상 미응답시 자동 거절처리 됩니다.</span>
-							</p>
-						)}
-						<ManagementList>{waitingContent}</ManagementList>
-					</ManagementTabWrapper>
-				)}
-				{currentTab.value === 'INPROGRESS' && (
-					<ManagementTabWrapper>
-						<h3>진행 중인 첨삭 코칭</h3>
-						<ManagementList>{inProgressContent}</ManagementList>
-					</ManagementTabWrapper>
-				)}
-				{currentTab.value === 'COMPLETE' && (
-					<ManagementTabWrapper>
-						<h3>완료한 첨삭 코칭</h3>
-						<ManagementList>{completeContent}</ManagementList>
-					</ManagementTabWrapper>
-				)}
+				<ManagementTitle>{isExpert ? '코칭 관리' : '첨삭 관리'}</ManagementTitle>
+				{isExpert ? <ExpertCoachingManagement /> : <UserCoachingManagement />}
 			</WhiteBoxWrapper>
 		</Container>
 	);

@@ -2,7 +2,7 @@ import { expertCoachingListQuery } from '@queries/coaching';
 import { CoachingExpertResponse } from 'types/coach/coaching';
 
 export default function useCoachManagement() {
-	const { data: coachinghist } = expertCoachingListQuery();
+	const { data: coachinghist, ...res } = expertCoachingListQuery();
 	// const progressQuery = userCoachingListQuery();
 	// const completeQuery = userCoachingListQuery();
 	return {
@@ -19,5 +19,6 @@ export default function useCoachManagement() {
 			? coachinghist?.filter(t => t.progressStatus === 'COMPLETED')
 			: [],
 		data: coachinghist ? coachinghist : [],
+		...res,
 	};
 }

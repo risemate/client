@@ -9,10 +9,13 @@ import {
 	fetchExpertCoachingDetail,
 	fetchExpertCoachingAction,
 	fetchCoachingCareer,
+	fetchCoachingExpertDone,
+	fetchCoachingChat,
 } from '@api/coaching';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { ReviseResume } from 'types/career/resume';
 import {
+	CHAT_ROLE,
 	CoachingDecideRequest,
 	CoachingRequest,
 	CoachingResponse,
@@ -145,6 +148,62 @@ export const coachingCareerMutation = (
 	const queryClient = useQueryClient();
 	return useMutation({
 		mutationFn: (body: Partial<ReviseResume>) => fetchCoachingCareer(id, body),
+		onSuccess() {
+			queryClient.invalidateQueries({
+				queryKey: coachingKeys.id(id),
+				refetchType: 'active',
+			});
+		},
+		...options,
+	});
+};
+
+export const coachingExpertDoneMutation = (
+	id: string,
+	options?: UseMutationOptionsType<CoachingResponse, { message: string }, 'onSuccess'>,
+): UseMutationResultType<CoachingResponse, { message: string }> => {
+	const queryClient = useQueryClient();
+	return useMutation({
+		mutationFn: (body: { message: string }) => fetchCoachingExpertDone(id, body),
+		onSuccess() {
+			queryClient.invalidateQueries({
+				queryKey: coachingKeys.id(id),
+				refetchType: 'active',
+			});
+		},
+		...options,
+	});
+};
+
+export const coachingUserDoneMutation = (
+	id: string,
+	options?: UseMutationOptionsType<CoachingResponse, { message: string }, 'onSuccess'>,
+): UseMutationResultType<CoachingResponse, { message: string }> => {
+	const queryClient = useQueryClient();
+	return useMutation({
+		mutationFn: (body: { message: string }) => fetchCoachingExpertDone(id, body),
+		onSuccess() {
+			queryClient.invalidateQueries({
+				queryKey: coachingKeys.id(id),
+				refetchType: 'active',
+			});
+		},
+		...options,
+	});
+};
+
+export const coachingChatMutation = (
+	id: string,
+	options?: UseMutationOptionsType<
+		CoachingResponse,
+		{ message: string; role: CHAT_ROLE },
+		'onSuccess'
+	>,
+): UseMutationResultType<CoachingResponse, { message: string; role: CHAT_ROLE }> => {
+	const queryClient = useQueryClient();
+	return useMutation({
+		mutationFn: (body: { message: string; role: CHAT_ROLE }) =>
+			fetchCoachingChat(id, body),
 		onSuccess() {
 			queryClient.invalidateQueries({
 				queryKey: coachingKeys.id(id),
