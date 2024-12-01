@@ -23,7 +23,11 @@ export default function FileInput({
 }: FileInputProps) {
 	const [preview, setPreview] = useState<FileInfoType[]>([]);
 	const resetImage = () => {
-		updateImageUrl(initialImageUrl);
+		if (imageUrl === initialImageUrl) {
+			updateImageUrl('');
+		} else {
+			updateImageUrl(initialImageUrl);
+		}
 		setPreview([]);
 	};
 
