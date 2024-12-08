@@ -66,7 +66,7 @@ export default function useReviseForm(formState: CoachingRequestState) {
 		} catch (error) {
 			toast('첨삭 신청을 실패하였습니다. 다시 시도해주세요.');
 		} finally {
-			navigate(`expert/${formState.productId}`);
+			navigate(`/experts/${formState.productId}`);
 		}
 	});
 
