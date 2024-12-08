@@ -5,6 +5,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { CoachingExpertResponse, CoachingResponse } from 'types/coach/coaching';
 
+import Button from '@common/Button';
 import HelperText from '@common/HelperText';
 import InputModal from '@components/modal/InputModal';
 
@@ -21,30 +22,41 @@ const UserMoreAction: React.FC<{ data: CoachingResponse }> = ({ data }) => {
 				{data.progressStatus === 'PENDING' && (
 					<>
 						<p> 승인 대기중입니다. </p>
-						<Button>
-							{' '}
-							<HelperText position='topRight'>
-								승인되면 취소 불가
-								<br />
+						<div>
+							<HelperText position='topLeft'>
+								전문가 승인 후에는 취소가 불가합니다.
 							</HelperText>
-							취소 (준비중)
-						</Button>
+							<Button variant='border' size='small'>
+								취소
+							</Button>
+						</div>
 					</>
 				)}
 				{data.progressStatus === 'REJECTED' && (
-					<div>
+					<div className='reject_wrap'>
 						<p> 첨삭 요청이 거절 되었습니다. </p>
-						<p>받은 메시지: 시간없음{/* data.chat[1] 의 데이터로 바꾸기 */}</p>
+						<p>
+							받은 메시지: <span>시간없음{/* data.chat[1] 의 데이터로 바꾸기 */}</span>
+						</p>
 					</div>
 				)}
 
 				{data.progressStatus !== 'PENDING' && data.progressStatus !== 'REJECTED' && (
-					<Button style={{ display: 'flex' }} onClick={openChatModal}>
-						<HelperText position='topLeft'>
-							첨삭완료나 추가자료 요청시 메시지를 보낼수 있습니다. <br />
-						</HelperText>
-						메이트 챗
-					</Button>
+					<ChatWrapper>
+						<div>
+							<p>전문가와 소통하거나 첨삭 결과를 승인하세요! </p>
+							<HelperText>
+								메시지를 보내거나 첨삭 결과를 승인할 경우, 아래 버튼을 눌러 진행 상태를
+								업데이트하세요.
+							</HelperText>
+						</div>
+						<div>
+							<Button variant='navy' onClick={openChatModal}>
+								메시지 보내기
+							</Button>
+							<Button variant='navy'>첨삭 승인</Button>
+						</div>
+					</ChatWrapper>
 				)}
 			</div>
 			<InputModal
@@ -74,17 +86,39 @@ const UserMoreAction: React.FC<{ data: CoachingResponse }> = ({ data }) => {
 UserMoreAction.displayName = 'UserMoreAction';
 export default React.memo(UserMoreAction);
 
-const Button = styled.button`
-	border: solid 1px #dbdbdb;
-	padding: 5px 10px;
-	border-radius: 10px;
-	height: fit-content;
-`;
-
 const Wrap = styled.div`
 	.btn_wrap {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 		padding: 10px;
+		p {
+			font-weight: 700;
+		}
+	}
+	.reject_wrap {
+		p:nth-of-type(2) {
+			font-weight: 400;
+			font-size: ${({ theme }) => theme.fontSizes.small};
+			color: ${({ theme }) => theme.colors.darkerGrey};
+			span {
+				font-weight: bold;
+				font-size: ${({ theme }) => theme.fontSizes.default};
+				color: ${({ theme }) => theme.colors.navy};
+			}
+		}
+	}
+`;
+
+const ChatWrapper = styled.div`
+	width: 100%;
+	& > div {
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		margin-bottom: 10px;
+		& > p {
+			padding: 0;
+		}
 	}
 `;

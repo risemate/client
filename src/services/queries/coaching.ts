@@ -206,7 +206,7 @@ export const coachingChatMutation = (
 			fetchCoachingChat(id, body),
 		onSuccess() {
 			queryClient.invalidateQueries({
-				queryKey: coachingKeys.id(id),
+				queryKey: coachingKeys.base,
 				refetchType: 'active',
 			});
 		},

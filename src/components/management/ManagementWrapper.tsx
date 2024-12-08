@@ -32,7 +32,7 @@ export default function ManagementWrapper({
 	return (
 		<Container backgroundColor='lightGrey' padding center>
 			<WhiteBoxWrapper type='div' customCss={managementWrapperStyle}>
-				<ManagementTitle>{isExpert ? '코칭 관리' : '첨삭 관리'}</ManagementTitle>
+				<ManagementTitle>{isExpert ? '전문가 코칭 관리' : '첨삭 관리'}</ManagementTitle>
 				{isExpert ? <ExpertCoachingManagement /> : <UserCoachingManagement />}
 			</WhiteBoxWrapper>
 		</Container>

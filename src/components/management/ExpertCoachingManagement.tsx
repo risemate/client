@@ -1,4 +1,5 @@
 import useCoachManagement from '@page/CoachManagement/CoachManagement.hook';
+import { numberWithCommas } from '@utils/helpers';
 import { dateToFormat } from '@utils/timeUtil';
 import type { GetProp, RadioChangeEvent, TableProps } from 'antd';
 import { Space, Table, Tag, Radio } from 'antd';
@@ -9,7 +10,6 @@ import { COACHING_STATUS, CoachingResponse } from 'types/coach/coaching';
 import { Product } from 'types/coach/product';
 
 import Button from '@common/Button';
-import InputModal from '@components/modal/InputModal';
 
 import ExpertMoreAction from './ExpertMoreAction';
 
@@ -41,12 +41,20 @@ const columns: ColumnsType<CoachingResponse> = [
 		title: '상품',
 		dataIndex: 'product',
 		key: 'product',
+		ellipsis: true,
 		render: (product: Product) => (
 			<Link
 				to={`/experts/${product._id}`}
-				style={{ textDecoration: 'underline', color: 'blue' }}
+				style={{
+					textDecoration: 'underline',
+					color: 'blue',
+					overflow: 'hidden',
+					textOverflow: 'ellipsis',
+					whiteSpace: 'nowrap',
+					display: 'block',
+				}}
 			>
-				{product.productTitle.slice(0, 10)}...
+				{product.productTitle}
 			</Link>
 		),
 	},
@@ -55,14 +63,7 @@ const columns: ColumnsType<CoachingResponse> = [
 		dataIndex: 'paidAmount',
 		width: 100,
 		key: '_id',
-		render: data => `₩${data}`,
-	},
-	{
-		title: '문서제목',
-		dataIndex: 'reviseDoc',
-		width: 180,
-		key: '_id',
-		render: data => data.docTitle,
+		render: data => `₩${numberWithCommas(data)}`,
 	},
 	{
 		title: '상태',
@@ -75,15 +76,34 @@ const columns: ColumnsType<CoachingResponse> = [
 		},
 	},
 	{
-		title: '문서',
+		title: '원문',
+		width: 180,
 		key: 'originDoc',
-		width: 190,
+		ellipsis: true,
+		render: data => (
+			<Link
+				to={`/networks/docs/${data.originDoc}`}
+				style={{
+					textDecoration: 'underline',
+					color: 'blue',
+					overflow: 'hidden',
+					textOverflow: 'ellipsis',
+					whiteSpace: 'nowrap',
+					display: 'block',
+				}}
+			>
+				{data.docTitle}
+			</Link>
+		),
+	},
+
+	{
+		title: '첨삭',
+		key: 'originDoc',
+		width: 120,
 		render: data => (
 			<Space size='middle'>
-				<Link to={`/networks/docs/${data.originDoc}`} style={{ color: 'blue' }}>
-					원본보기
-				</Link>
-				<Button size='small'>
+				<Button to={`/coach-info/revise/${data.originDoc}`} size='small'>
 					<Space>첨삭하기</Space>
 				</Button>
 			</Space>
@@ -92,15 +112,9 @@ const columns: ColumnsType<CoachingResponse> = [
 	{
 		title: '생성날짜',
 		dataIndex: 'createdAt',
-		width: 100,
+		width: 165,
 		key: 'createdAt',
 		render: date => dateToFormat(date),
-	},
-	{
-		title: 'UID',
-		width: 100,
-		dataIndex: '_id',
-		key: '_id',
 	},
 ];
 
@@ -125,7 +139,6 @@ const ExpertCoachingManagement: React.FC = () => {
 		size: 'middle',
 		expandable: defaultExpandable,
 		bordered: true,
-		scroll: { x: 1100 },
 	};
 
 	// 필터링된 데이터 계산
@@ -139,11 +152,11 @@ const ExpertCoachingManagement: React.FC = () => {
 
 	return (
 		<Wrap>
-			<h3>전문가 코칭관리</h3>
 			<p>
-				승인 대기: {pendingList.length} | 진행 중 : {progressList.length} | 완료한 첨삭:{' '}
-				{completeList.length}
-				<br />
+				<span>
+					승인 대기: {pendingList.length} | 진행 중 : {progressList.length} | 완료한 첨삭:{' '}
+					{completeList.length}
+				</span>
 				<span className='warn'>2일 이상 미응답시 자동 거절처리 됩니다.</span>
 			</p>
 			<hr />
@@ -176,12 +189,11 @@ export default ExpertCoachingManagement;
 
 // 스타일링
 const Wrap = styled.div`
-	padding: 16px;
-	h3 {
-		padding: 20px;
-		font-size: 24px;
-		font-weight: bolder;
-		text-align: center;
+	p {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		padding-bottom: 10px;
 	}
 	.warn {
 		color: red;

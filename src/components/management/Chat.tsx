@@ -55,7 +55,7 @@ function Chat({ data }: { data: CoachingResponse }) {
 
 	return (
 		<Modal
-			title={`@${data.user.name} 챗`}
+			title={`@${data.user.name} 님과의 챗`}
 			queryKey='coaching-community'
 			isButtons={false}
 			isOutsideClick={false}
@@ -63,6 +63,9 @@ function Chat({ data }: { data: CoachingResponse }) {
 			<Wrap>
 				<div className='chat_wrap'>
 					{data.chat.map(chat => {
+						if (!chat.content || chat.content === '') {
+							return null;
+						}
 						if (chat.role === 'SYSTEM') {
 							return (
 								<div className='center content' key={chat._id}>
@@ -111,6 +114,8 @@ function Chat({ data }: { data: CoachingResponse }) {
 					<div className='btn_group'>
 						<Button
 							type='submit'
+							size='small'
+							variant='border'
 							onClick={submitCoachingDone}
 							disabled={isExpert ? data.expertCompleted : data.userCompleted}
 						>
@@ -119,7 +124,13 @@ function Chat({ data }: { data: CoachingResponse }) {
 							)}
 							첨삭완료
 						</Button>
-						<Button type='submit' onClick={submitChat} disabled={data.userCompleted}>
+						<Button
+							size='small'
+							variant='border'
+							type='submit'
+							onClick={submitChat}
+							disabled={data.userCompleted}
+						>
 							보내기
 						</Button>
 					</div>
@@ -133,10 +144,10 @@ export default Chat;
 
 const Wrap = styled.div`
 	.chat_wrap {
-		border: solid 1px green;
+		background: ${({ theme }) => theme.colors.lighterGrey};
 		min-height: 300px;
 		margin-bottom: 20px;
-
+		border-radius: 10px;
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
@@ -157,14 +168,16 @@ const Wrap = styled.div`
 		justify-content: left;
 		p {
 			width: fit-content;
-			background-color: #00ff0026;
+			color: white;
+			background-color: ${({ theme }) => theme.colors.navy};
 		}
 	}
 	.left {
 		justify-content: right;
 		p {
 			width: fit-content;
-			background-color: #0051ff2b;
+			color: white;
+			background-color: ${({ theme }) => theme.colors.blue};
 		}
 	}
 
@@ -172,19 +185,21 @@ const Wrap = styled.div`
 		justify-content: center;
 		p {
 			width: 100%;
-			background-color: #6e6e6e39;
+			background-color: ${({ theme }) => theme.colors.grey};
 			text-align: center;
 		}
 	}
-
 	textarea {
 		width: 100%;
 		padding: 10px;
 		line-height: 1.3;
 		border-radius: 5px;
+		margin-bottom: 10px;
+		border-color: ${({ theme }) => theme.colors.grey};
 	}
 	.btn_group {
 		display: flex;
+		/* justify-content: end; */
 		justify-content: space-between;
 	}
 `;

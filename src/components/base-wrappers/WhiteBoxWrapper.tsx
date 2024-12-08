@@ -59,8 +59,9 @@ const commonStyle = css<StyledBoxProps>`
 	min-width: calc(${({ theme }) => theme.widths.minWidth} - 64px);
 	border-radius: 40px;
 	background: white;
-	${({ $customCss }) => $customCss && $customCss}
-	&.border {
+	overflow-y: auto;
+	max-height: 100%;
+	${({ $customCss }) => $customCss && $customCss} &.border {
 		border: 1px solid ${({ theme }) => theme.colors.navy};
 	}
 `;

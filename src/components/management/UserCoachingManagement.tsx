@@ -11,7 +11,6 @@ import { Product } from 'types/coach/product';
 import Button from '@common/Button';
 import InputModal from '@components/modal/InputModal';
 
-import ExpertMoreAction from './ExpertMoreAction';
 import UserMoreAction from './UserMoreAction';
 
 const progStatus = {
@@ -35,11 +34,18 @@ const columns: ColumnsType<CoachingResponse> = [
 		title: '상품',
 		dataIndex: 'product',
 		key: 'product',
-		width: 150,
+		ellipsis: true,
 		render: (product: Product) => (
 			<Link
 				to={`/experts/${product._id}`}
-				style={{ textDecoration: 'underline', color: 'blue' }}
+				style={{
+					textDecoration: 'underline',
+					color: 'blue',
+					overflow: 'hidden',
+					textOverflow: 'ellipsis',
+					whiteSpace: 'nowrap',
+					display: 'block',
+				}}
 			>
 				{product.productTitle}
 			</Link>
@@ -65,12 +71,20 @@ const columns: ColumnsType<CoachingResponse> = [
 	{
 		title: '문서제목',
 		// dataIndex: 'reviseDoc',
+		ellipsis: true,
 		key: '_id',
 		render: data => (
 			<Space size='middle'>
 				<Link
 					to={`/networks/docs/${data.originDoc}`}
-					style={{ textDecoration: 'underline', color: 'blue' }}
+					style={{
+						textDecoration: 'underline',
+						color: 'blue',
+						overflow: 'hidden',
+						textOverflow: 'ellipsis',
+						whiteSpace: 'nowrap',
+						display: 'block',
+					}}
 				>
 					{data.docTitle}
 				</Link>
@@ -81,7 +95,7 @@ const columns: ColumnsType<CoachingResponse> = [
 	{
 		title: '첨삭',
 		key: 'originDoc',
-		width: 190,
+		width: 120,
 		render: data => (
 			<>
 				<Button size='small'>
@@ -93,6 +107,7 @@ const columns: ColumnsType<CoachingResponse> = [
 	{
 		title: '생성날짜',
 		dataIndex: 'createdAt',
+		width: 165,
 		key: 'createdAt',
 		render: date => dateToFormat(date),
 	},
@@ -118,7 +133,6 @@ const UserCoachingManagement: React.FC = () => {
 		loading: isLoading,
 		size: 'middle',
 		expandable: defaultExpandable,
-		scroll: { x: 1100 },
 	};
 
 	// 필터링된 데이터 계산
@@ -132,11 +146,11 @@ const UserCoachingManagement: React.FC = () => {
 
 	return (
 		<Wrap>
-			<h3>첨삭관리</h3>
 			<p>
-				승인대기요청: {pendingList.length} | 진행중인 첨삭 : {progressList.length} |
-				완료된 첨삭: {completeList.length}
-				<br />
+				<span>
+					승인대기요청: {pendingList.length} | 진행중인 첨삭 : {progressList.length} |
+					완료된 첨삭: {completeList.length}
+				</span>
 				<span className='warn'>2일 이상 미응답시 자동 거절처리 됩니다.</span>
 			</p>
 			<hr />
@@ -169,12 +183,11 @@ export default UserCoachingManagement;
 
 // 스타일링
 const Wrap = styled.div`
-	padding: 16px;
-	h3 {
-		padding: 20px;
-		font-size: 24px;
-		font-weight: bolder;
-		text-align: center;
+	p {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		padding-bottom: 10px;
 	}
 	.warn {
 		color: red;
