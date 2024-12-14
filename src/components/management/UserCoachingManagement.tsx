@@ -1,4 +1,4 @@
-import useCoachManagement from '@page/CoachManagement/CoachManagement.hook';
+import useCoachingManagement from '@page/CoachManagement/CoachManagement.hook';
 import { dateToFormat } from '@utils/timeUtil';
 import type { GetProp, RadioChangeEvent, TableProps } from 'antd';
 import { Space, Table, Tag, Radio } from 'antd';
@@ -115,7 +115,7 @@ const columns: ColumnsType<CoachingResponse> = [
 
 const UserCoachingManagement: React.FC = () => {
 	const { data, pendingList, progressList, completeList, isLoading } =
-		useCoachManagement();
+		useCoachingManagement({ isExpert: false });
 	const [filter, setFilter] = useState<COACHING_STATUS | 'ALL'>('ALL'); // 추가된 필터링 상태
 
 	const tableColumns = columns.map(item => ({ ...item, ellipsis: true }));

@@ -1,14 +1,14 @@
-import { expertCoachingListQuery } from '@queries/coaching';
-import { CoachingExpertResponse } from 'types/coach/coaching';
+import { expertCoachingListQuery, userCoachingListQuery } from '@queries/coaching';
 
-export default function useCoachManagement() {
-	const { data: coachinghist, ...res } = expertCoachingListQuery();
-	// const progressQuery = userCoachingListQuery();
-	// const completeQuery = userCoachingListQuery();
+export default function useCoachingManagement({
+	isExpert = false,
+}: {
+	isExpert?: boolean;
+}) {
+	const { data: coachinghist, ...res } = isExpert
+		? expertCoachingListQuery()
+		: userCoachingListQuery();
 	return {
-		// pendingList: pendingQuery.data || [],
-		// progressList: progressQuery.data || [],
-		// completeList: completeQuery.data || []
 		pendingList: coachinghist
 			? coachinghist?.filter(t => t.progressStatus === 'PENDING')
 			: [],

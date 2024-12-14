@@ -1,9 +1,5 @@
-import useTab from '@hooks/common/useTab';
-import { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
-import { TabItem } from 'types/common/tab';
 
-import Tab from '@common/Tab';
 import WhiteBoxWrapper from '@components/base-wrappers/WhiteBoxWrapper';
 import Container from '@components/layout/Container';
 
@@ -12,23 +8,9 @@ import UserCoachingManagement from './UserCoachingManagement';
 
 interface ManagementWrapperProps {
 	isExpert?: boolean;
-	waitingContent: ReactNode;
-	inProgressContent: ReactNode;
-	completeContent: ReactNode;
 }
 
-export default function ManagementWrapper({
-	isExpert = false,
-	waitingContent,
-	inProgressContent,
-	completeContent,
-}: ManagementWrapperProps) {
-	const tabItems: TabItem[] = [
-		{ label: '대기', value: 'WAITING' },
-		{ label: '진행 중', value: 'INPROGRESS' },
-		{ label: '완료', value: 'COMPLETE' },
-	];
-	const { currentTab, changeTab, isCurrentTab } = useTab(tabItems, true);
+export default function ManagementWrapper({ isExpert = false }: ManagementWrapperProps) {
 	return (
 		<Container backgroundColor='lightGrey' padding center>
 			<WhiteBoxWrapper type='div' customCss={managementWrapperStyle}>
@@ -50,37 +32,4 @@ const ManagementTitle = styled.h2`
 	font-size: ${({ theme }) => theme.fontSizes.medium};
 	font-weight: bold;
 	margin-bottom: 30px;
-`;
-
-const ManagementTabWrapper = styled.div`
-	padding: 30px;
-	h3 {
-		color: ${({ theme }) => theme.colors.navy};
-		font-weight: bold;
-		margin-bottom: 20px;
-	}
-	& > p {
-		line-height: 20px;
-		& > span {
-			color: red;
-			font-size: ${({ theme }) => theme.fontSizes.small};
-			font-weight: 200;
-		}
-	}
-`;
-
-const ManagementList = styled.ul`
-	height: calc(100vh - 740px);
-	display: flex;
-	flex-direction: column;
-	gap: 30px;
-	padding-top: 20px;
-	overflow-y: scroll;
-	li {
-		position: relative;
-		padding: 30px;
-		border-radius: 10px;
-		border: 1px solid ${({ theme }) => theme.colors.grey};
-		background: white;
-	}
 `;
