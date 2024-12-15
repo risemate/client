@@ -2,7 +2,7 @@ import { IconBell } from '@icons';
 import logoMain from '@images/logo-main.svg';
 import { authQuery } from '@queries/user';
 import { useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { routePath } from 'router/routePath';
 import styled from 'styled-components';
 
@@ -17,6 +17,7 @@ export default function NavBar() {
 		{ name: '네트워킹', route: '/networks' },
 	];
 
+	const location = useLocation();
 	const { data: auth } = authQuery();
 	const navigate = useNavigate();
 
