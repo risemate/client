@@ -33,7 +33,6 @@ export default function ReviseList() {
 						</ul>
 					)}
 				</SingleAsyncWrapper>
-				`
 			</WhiteBoxWrapper>
 		</Container>
 	);
