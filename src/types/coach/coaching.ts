@@ -5,7 +5,7 @@ import { CareerType } from 'types/career/careerDocument';
 
 import { PackageCategory, PackageDetail } from './product';
 
-export type CHAT_ROLE = 'USER' | 'EXPERT' | 'SYSTEM';
+export type CHAT_ROLE = 'SYSTEM' | 'CHAT';
 export type CoachingRequestState = {
 	productId: string;
 	productTitle: string;

@@ -14,7 +14,7 @@ import Chat from './Chat';
 const ExpertMoreAction: React.FC<{ data: CoachingResponse }> = ({ data }) => {
 	const { timeRemain, navigateToResume, acceptModal, refuseModal, messageField } =
 		usePendingItem(data);
-	const { openModal: openChatModal } = useModal('coaching-community');
+	const { openModal: openChatModal } = useModal(`${data._id}-coaching-community`);
 	const { data: auth } = authQuery();
 	const isExpert = auth?._id === data.expert._id;
 	return (

@@ -27,7 +27,7 @@ function Chat({ data }: { data: CoachingResponse }) {
 	const submitCoachingDone = useCallback(() => {
 		if (!content) {
 			toast.warn('내용을 입력해주세요');
-			alert(`${isExpert}'내용을 입력해주세요'`);
+			alert('내용을 입력해주세요');
 			return;
 		}
 		coachingDoneMutation.mutateAsync({ message: content }).then(() => {
@@ -43,7 +43,7 @@ function Chat({ data }: { data: CoachingResponse }) {
 			return;
 		}
 		chatMutation
-			.mutateAsync({ message: content, role: isExpert ? 'EXPERT' : 'USER' })
+			.mutateAsync({ message: content, role: 'CHAT' })
 			.then(() => {
 				toast.success('전송되었습니다.');
 				setContent('');
@@ -56,7 +56,7 @@ function Chat({ data }: { data: CoachingResponse }) {
 	return (
 		<Modal
 			title={`@${data.user.name} 님과의 챗`}
-			queryKey='coaching-community'
+			queryKey={`${data._id}-coaching-community`}
 			isButtons={false}
 			isOutsideClick={false}
 		>
@@ -72,35 +72,18 @@ function Chat({ data }: { data: CoachingResponse }) {
 									<p>{chat.content}</p>
 								</div>
 							);
-						}
-						if (isExpert) {
-							if (chat.role === 'EXPERT') {
-								return (
-									<div className='right content' key={chat._id}>
-										<p>{chat.content}</p>
-									</div>
-								);
-							} else {
-								return (
-									<div className='left content' key={chat._id}>
-										<p>{chat.content}</p>
-									</div>
-								);
-							}
+						} else if (chat._id === auth?._id) {
+							return (
+								<div className='right content' key={chat._id}>
+									<p>{chat.content}</p>
+								</div>
+							);
 						} else {
-							if (chat.role === 'USER') {
-								return (
-									<div className='right content' key={chat._id}>
-										<p>{chat.content}</p>
-									</div>
-								);
-							} else {
-								return (
-									<div className='left content' key={chat._id}>
-										<p>{chat.content}</p>
-									</div>
-								);
-							}
+							return (
+								<div className='left content' key={chat._id}>
+									<p>{chat.content}</p>
+								</div>
+							);
 						}
 					})}
 				</div>
@@ -165,7 +148,7 @@ const Wrap = styled.div`
 	}
 
 	.right {
-		justify-content: left;
+		justify-content: right;
 		p {
 			width: fit-content;
 			color: white;
@@ -173,7 +156,7 @@ const Wrap = styled.div`
 		}
 	}
 	.left {
-		justify-content: right;
+		justify-content: left;
 		p {
 			width: fit-content;
 			color: white;

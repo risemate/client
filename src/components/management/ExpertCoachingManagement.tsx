@@ -3,7 +3,7 @@ import { numberWithCommas } from '@utils/helpers';
 import { dateToFormat } from '@utils/timeUtil';
 import type { GetProp, RadioChangeEvent, TableProps } from 'antd';
 import { Space, Table, Tag, Radio } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { COACHING_STATUS, CoachingResponse } from 'types/coach/coaching';
@@ -119,15 +119,19 @@ const columns: ColumnsType<CoachingResponse> = [
 ];
 
 const ExpertCoachingManagement: React.FC = () => {
-	const { data, pendingList, progressList, completeList, isLoading } =
+	const { data, pendingList, progressList, completeList, isLoading, refetch } =
 		useCoachingManagement({ isExpert: true });
+
+	useEffect(() => {
+		refetch();
+	}, []);
 	const [filter, setFilter] = useState<COACHING_STATUS | 'ALL'>('ALL'); // 추가된 필터링 상태
 
 	const tableColumns = columns.map(item => ({ ...item, ellipsis: true }));
 
 	const defaultExpandable: ExpandableConfig<CoachingResponse> = {
 		expandedRowRender: (record: CoachingResponse) => (
-			<div>
+			<div key={record._id}>
 				<ExpertMoreAction data={record} />
 				<hr />
 			</div>
