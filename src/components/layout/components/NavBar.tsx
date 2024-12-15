@@ -63,7 +63,14 @@ export default function NavBar() {
 						</>
 					) : (
 						<>
-							<button type='button' onClick={() => navigate(routePath.login)}>
+							<button
+								type='button'
+								onClick={() =>
+									navigate(routePath.login, {
+										state: { from: location }, // Pass the current location as state
+									})
+								}
+							>
 								로그인 | 회원가입
 							</button>
 						</>

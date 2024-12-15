@@ -1,6 +1,7 @@
 import { IconCheck } from '@icons';
 import ResumeFormCard from 'pages/ExpertForm/components/ResumeFormCard';
-import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { CoachingRequestState } from 'types/coach/coaching';
 
@@ -18,6 +19,10 @@ import useReviseForm from './ReviseForm.hook';
 export default function ReviseForm() {
 	const location = useLocation();
 	const formState = (location.state as CoachingRequestState) || {};
+	if (!formState?.productId) {
+		window.history.back(); //: 수정필요 useNavigate가 안먹힘ㅜ
+		return null;
+	}
 	const {
 		careerType,
 		resumeShare,

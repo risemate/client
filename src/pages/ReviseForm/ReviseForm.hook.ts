@@ -14,6 +14,8 @@ interface FormMethodProps extends CoachingRequest {
 
 export default function useReviseForm(formState: CoachingRequestState) {
 	const navigate = useNavigate();
+	console.log('formState: ', formState);
+
 	const coachingApplyMutation = applyCoachingMutation();
 	const reviseFormMethods = useForm<FormMethodProps>({
 		mode: 'onBlur',
