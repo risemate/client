@@ -26,7 +26,7 @@ export default function Login() {
 				toast.success('로그인 완료'); //:react-toastify로 바꾸기
 				setUserData(result.user);
 				localStorage.setItem('rm-checkpoint', result.accessToken);
-				axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+				// axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 				axios.defaults.headers.common.Authorization = `Bearer ${result.accessToken}`;
 				axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 				const redirectTo = location.state?.from?.pathname || '/';
