@@ -1,5 +1,4 @@
 import { useModal } from '@hooks/atoms/useModalAtom';
-import usePendingItem from '@page/CoachManagement/components/Pending/PendingItem.hook';
 import { authQuery } from '@queries/user';
 import React from 'react';
 import styled from 'styled-components';
@@ -10,6 +9,7 @@ import Button from '@components/common/Button';
 import InputModal from '@components/modal/InputModal';
 
 import Chat from './Chat';
+import usePendingItem from './PendingItem.hook';
 
 const ExpertMoreAction: React.FC<{ data: CoachingResponse }> = ({ data }) => {
 	const { timeRemain, navigateToResume, acceptModal, refuseModal, messageField } =
