@@ -21,7 +21,7 @@ export default function WorkExperience({
 				</BaseSection.Feedback>
 			)}
 			{workExperiences.map((work, index) => (
-				<article key={index}>
+				<article key={work._id || index}>
 					<BaseSection.Title>{work.companyName}</BaseSection.Title>
 					<BaseSection.BasicInfo>
 						<li>

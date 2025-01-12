@@ -14,7 +14,43 @@ interface ResumeViewProps {
 	career: ResumeType;
 }
 
+// OrderType 인터페이스 추가
+interface OrderType {
+	name: string;
+	isVisible: boolean;
+	_id: number; // string에서 number로 변경
+}
+
 export default function ResumeTemplate({ career }: ResumeViewProps) {
+	const renderSection = (item: OrderType) => {
+		if (!item.isVisible) return null;
+
+		switch (item.name) {
+			case 'workExperiences':
+				return career.workExperiences?.length ? (
+					<WorkExperience key={item._id} workExperiences={career.workExperiences} />
+				) : null;
+			case 'projects':
+				return career.projects?.length ? (
+					<Project key={item._id} projects={career.projects} />
+				) : null;
+			case 'educations':
+				return career.educations?.length ? (
+					<Education key={item._id} educations={career.educations} />
+				) : null;
+			case 'activities':
+				return career.activities?.length ? (
+					<Activity key={item._id} activities={career.activities} />
+				) : null;
+			case 'certificates':
+				return career.certificates?.length ? (
+					<Certificate key={item._id} certificates={career.certificates} />
+				) : null;
+			default:
+				return undefined;
+		}
+	};
+
 	return (
 		<WhiteBoxWrapper type='div' customCss={resumeWrapperStyle}>
 			<Profile
@@ -22,50 +58,7 @@ export default function ResumeTemplate({ career }: ResumeViewProps) {
 				techStack={career.techStack}
 				description={career.description}
 			/>
-			{career.orderType?.map(item => {
-				switch (item.name) {
-					case 'workExperiences':
-						return (
-							item.isVisible &&
-							career.workExperiences &&
-							career.workExperiences[0] && (
-								<WorkExperience key={item._id} workExperiences={career.workExperiences} />
-							)
-						);
-					case 'projects':
-						return (
-							item.isVisible &&
-							career.projects &&
-							career.projects[0] && <Project key={item._id} projects={career.projects} />
-						);
-					case 'educations':
-						return (
-							item.isVisible &&
-							career.educations &&
-							career.educations[0] && (
-								<Education key={item._id} educations={career.educations} />
-							)
-						);
-					case 'activities':
-						return (
-							item.isVisible &&
-							career.activities &&
-							career.activities[0] && (
-								<Activity key={item._id} activities={career.activities} />
-							)
-						);
-					case 'certificates':
-						return (
-							item.isVisible &&
-							career.certificates &&
-							career.certificates[0] && (
-								<Certificate key={item._id} certificates={career.certificates} />
-							)
-						);
-					default:
-						return null;
-				}
-			})}
+			{career.orderType?.map(item => renderSection(item)).filter(Boolean)}
 		</WhiteBoxWrapper>
 	);
 }

@@ -71,6 +71,7 @@ export type WorkExperience = {
 	endedAt: string | null;
 	description: string | null;
 	links: Link[] | null;
+	_id: string
 };
 
 export const ProjectStatus = ['완료', '진행 중', '리팩토링 중', '완료되지 않음'] as const;
