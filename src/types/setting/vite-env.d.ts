@@ -6,6 +6,7 @@ interface ImportMetaEnv {
     readonly VITE_IMP_CODE: string;
     readonly VITE_IMP_STORE_ID: string;
     readonly VITE_IMP_CHANNEL_KEY: string;
+    readonly VITE_API_URL: string;
 }
 
 interface ImportMeta {
