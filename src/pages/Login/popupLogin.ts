@@ -15,7 +15,7 @@ export async function popupLogin(provider = 'google'): Promise<LoginResponse> {
 		window.addEventListener('message', handleMessage);
 
 		window.open(
-			`${process.env.REACT_APP_API_URL}/auth/login/${provider}`,
+			`${process.env.VITE_API_URL}/auth/login/${provider}`,
 			'소셜 로그인',
 			'width=600,height=400',
 		);

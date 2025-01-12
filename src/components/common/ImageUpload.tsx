@@ -25,9 +25,9 @@ export const ImageFileUpload = ({
 	...props
 }: ImageUploadProps) => {
 	AWS.config.update({
-		region: process.env.REACT_APP_S3REGION,
-		accessKeyId: process.env.REACT_APP_S3ACCESS_KEY_ID,
-		secretAccessKey: process.env.REACT_APP_S3SECRET_ACCESS_KEY,
+		region: process.env.VITE_S3REGION,
+		accessKeyId: process.env.VITE_S3ACCESS_KEY_ID,
+		secretAccessKey: process.env.VITE_S3SECRET_ACCESS_KEY,
 	});
 	const s3 = new AWS.S3();
 	const uploadFileToS3 = async (file: File): Promise<FileInfoType | null> => {

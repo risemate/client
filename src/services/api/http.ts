@@ -5,7 +5,7 @@ export default class HttpRequest {
 	private token = localStorage.getItem('rm-checkpoint');
 	constructor() {
 		this.axiosInstance = axios.create({
-			baseURL: process.env.REACT_APP_API_URL,
+			baseURL: process.env.VITE_API_URL,
 			headers: {
 				Authorization: `Bearer ${this.token}`,
 			},
@@ -16,7 +16,7 @@ export default class HttpRequest {
 	//   this.axiosInstance.interceptors.request.use(
 	//     (config: AxiosRequestConfig): AxiosRequestConfig => {
 	//       config.headers = {
-	//         Authorization: `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`,
+	//         Authorization: `Bearer ${process.env.VITE_GITHUB_TOKEN}`,
 	//       };
 	//       return config;
 	//     },
