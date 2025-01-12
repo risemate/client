@@ -15,8 +15,8 @@ export const onClickPayment = async (data: {
 }): Promise<PaymentResponse | undefined> => {
 	const res = (await PortOne.requestPayment({
 		pgProvider: 'PG_PROVIDER_SMARTRO_V2',
-		storeId: process.env.VITE_IMP_STORE_ID as string,
-		channelKey: process.env.VITE_IMP_CHANNEL_KEY as string,
+		storeId: import.meta.env.VITE_IMP_STORE_ID as string,
+		channelKey: import.meta.env.VITE_IMP_CHANNEL_KEY as string,
 		paymentId: `payment${new Date().getTime()}`,
 		orderName: data.orderName,
 		totalAmount: data.price, //data.price
